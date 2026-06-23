@@ -1,0 +1,37 @@
+{
+  "workpack_id": "P1-SPEC-02-STAGE-ARTIFACTS",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "DRD-CHARTER-001",
+    "DRD-CHARTER-002"
+  ],
+  "generated_outputs": [
+    "STAGE_CONTRACTS.md",
+    "ARTIFACT_CONTRACTS.md",
+    "SOURCE_SNAPSHOT_RULES.md",
+    "STAGE_DEPENDENCY_RULES.md",
+    "STAGE_PROJECTIONS.md",
+    "STAGE_VALIDATOR_SPEC.md",
+    "STAGE_EXAMPLES.md",
+    "STAGE_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "CONTRACT",
+    "RULE",
+    "PROJECTION",
+    "VALIDATOR_SPEC",
+    "EXAMPLES",
+    "IMPLEMENTATION_BLUEPRINT"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "seal_state": "NOT_SEALED",
+  "forbidden_write_paths_changed": [],
+  "next_action": "Validate and review P1-SPEC-02-STAGE-ARTIFACTS Candidate; do not implement repository code."
+}
