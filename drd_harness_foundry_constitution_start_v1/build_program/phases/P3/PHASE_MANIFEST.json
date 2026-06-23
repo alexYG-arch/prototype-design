@@ -1,0 +1,30 @@
+{
+  "goal": "Complete all stages, validators, adapters and runtime domain skills.",
+  "implementation_workpacks": [
+    "P3-IMPL-SOURCE",
+    "P3-IMPL-DISTILL",
+    "P3-IMPL-CLOSURE",
+    "P3-IMPL-ELEMENTS",
+    "P3-IMPL-PATTERNS",
+    "P3-IMPL-LAYOUT",
+    "P3-IMPL-COMPILER",
+    "P3-IMPL-ASSURANCE"
+  ],
+  "outputs": [
+    "P3_SPEC_LOCK",
+    "P3_BUILD_LOCK"
+  ],
+  "phase": "P3",
+  "spec_workpacks": [
+    "P3-SPEC-SOURCE",
+    "P3-SPEC-DISTILL",
+    "P3-SPEC-CLOSURE",
+    "P3-SPEC-ELEMENTS",
+    "P3-SPEC-PATTERNS",
+    "P3-SPEC-LAYOUT",
+    "P3-SPEC-COMPILER",
+    "P3-SPEC-ASSURANCE"
+  ],
+  "status": "WAITING_UPSTREAM_LOCK",
+  "title": "Full capability expansion"
+}

@@ -1,0 +1,23 @@
+{
+  "automatic_phase_advance": false,
+  "current_lane": "SPEC",
+  "current_phase": "P1",
+  "current_workpack": "P1-SPEC-00",
+  "phases": {
+    "P1": {
+      "status": "ACTIVE"
+    },
+    "P2": {
+      "status": "WAITING_UPSTREAM_LOCK"
+    },
+    "P3": {
+      "status": "WAITING_UPSTREAM_LOCK"
+    },
+    "P4": {
+      "status": "WAITING_UPSTREAM_LOCK"
+    }
+  },
+  "program_id": "DRD-HARNESS-FOUNDRY-V1",
+  "stop_at_human_gate": true,
+  "target": "DRD_HARNESS_RELEASE_LOCK"
+}

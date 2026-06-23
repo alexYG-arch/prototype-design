@@ -1,0 +1,22 @@
+{
+  "goal": "Implement one complete PRD-to-FINAL_DRD flow to test all abstractions.",
+  "implementation_workpacks": [
+    "P2-IMPL-01",
+    "P2-IMPL-02",
+    "P2-IMPL-03",
+    "P2-IMPL-04",
+    "P2-IMPL-05"
+  ],
+  "outputs": [
+    "P2_SPEC_LOCK",
+    "P2_BUILD_LOCK"
+  ],
+  "phase": "P2",
+  "spec_workpacks": [
+    "P2-SPEC-01",
+    "P2-SPEC-02",
+    "P2-SPEC-03"
+  ],
+  "status": "WAITING_UPSTREAM_LOCK",
+  "title": "Minimum vertical slice"
+}

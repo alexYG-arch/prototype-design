@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "acceptance_commands": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "allowed_write_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "forbidden_write_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "required_files": {
+      "items": {
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "workpack_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "workpack_id",
+    "required_files",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "acceptance_commands"
+  ],
+  "type": "object"
+}

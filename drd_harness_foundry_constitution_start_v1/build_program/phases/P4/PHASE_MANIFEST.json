@@ -1,0 +1,23 @@
+{
+  "goal": "Integrate CLI, adapters, recovery, regression, packaging and release locks.",
+  "implementation_workpacks": [
+    "P4-IMPL-01",
+    "P4-IMPL-02",
+    "P4-IMPL-03",
+    "P4-IMPL-04",
+    "P4-IMPL-05"
+  ],
+  "outputs": [
+    "P4_SPEC_LOCK",
+    "P4_BUILD_LOCK",
+    "DRD_HARNESS_RELEASE_LOCK"
+  ],
+  "phase": "P4",
+  "spec_workpacks": [
+    "P4-SPEC-01",
+    "P4-SPEC-02",
+    "P4-SPEC-03"
+  ],
+  "status": "WAITING_UPSTREAM_LOCK",
+  "title": "Integration and release"
+}

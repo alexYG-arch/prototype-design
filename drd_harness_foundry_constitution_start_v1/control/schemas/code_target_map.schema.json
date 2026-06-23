@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "mappings": {
+      "items": {
+        "properties": {
+          "code_targets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "contract_id": {
+            "type": "string"
+          },
+          "test_targets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "validator_targets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "contract_id",
+          "code_targets",
+          "validator_targets",
+          "test_targets"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "mappings"
+  ],
+  "type": "object"
+}

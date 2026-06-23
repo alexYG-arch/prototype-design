@@ -1,0 +1,36 @@
+{
+  "gates": [
+    {
+      "id": "P1_SPEC_GATE",
+      "subject": "P1 normative specs and implementation blueprint"
+    },
+    {
+      "id": "P1_BUILD_GATE",
+      "subject": "Kernel, orchestrator, runtimes and assurance foundation"
+    },
+    {
+      "id": "P2_SPEC_GATE",
+      "subject": "Minimum vertical slice specs"
+    },
+    {
+      "id": "P2_VERTICAL_SLICE_GATE",
+      "subject": "One PRD to FINAL_DRD end-to-end run"
+    },
+    {
+      "id": "P3_SPEC_GATE",
+      "subject": "Complete stage and domain contracts"
+    },
+    {
+      "id": "P3_MODULE_GATES",
+      "subject": "All full-capability modules"
+    },
+    {
+      "id": "P4_SPEC_GATE",
+      "subject": "Integration and release specs"
+    },
+    {
+      "id": "P4_RELEASE_GATE",
+      "subject": "Installable, recoverable, regression-tested release"
+    }
+  ]
+}

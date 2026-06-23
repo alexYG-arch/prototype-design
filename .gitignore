@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+drd_harness_foundry_constitution_start_v1/current_capsule/outputs/

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "files": {
+      "type": "array"
+    },
+    "lock_id": {
+      "type": "string"
+    },
+    "phase": {
+      "enum": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "review_decision_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "root_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "lock_id",
+    "phase",
+    "root_sha256",
+    "files",
+    "review_decision_hash"
+  ],
+  "type": "object"
+}

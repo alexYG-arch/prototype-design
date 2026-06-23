@@ -1,0 +1,161 @@
+{
+  "clauses": [
+    {
+      "id": "DRD-CHARTER-001",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-002",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-003",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-004",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-005",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-006",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-007",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-008",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-009",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-010",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-011",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-012",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-013",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-014",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-015",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-016",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-017",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-018",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-001",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-002",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-003",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-004",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-005",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-006",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-007",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "RD-RULE-008",
+      "owner": "constitution/REASONING_DOCTRINE.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    }
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,129 @@
+{
+  "acceptance_commands": [
+    "python tooling/validate_p1_spec00_candidate.py",
+    "python tooling/preflight_current_workpack.py --post"
+  ],
+  "allowed_write_paths": [
+    "build_program/phases/P1/candidates/P1-SPEC-00/**",
+    "current_capsule/outputs/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "build_program/program/**",
+    "repository/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "lane": "SPEC",
+  "phase": "P1",
+  "required_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec"
+    },
+    {
+      "path": "constitution/DRD_HARNESS_CHARTER.md",
+      "sha256": "934e859bbb2fb7520b81a3533b0f7cd1d4942658dc1ec0a3f7baa9277f272d48"
+    },
+    {
+      "path": "constitution/REASONING_DOCTRINE.md",
+      "sha256": "ae52f0437d4da0e39fed3f025fa91bed713b317a9f25d7e0205024ccbe8be1db"
+    },
+    {
+      "path": "constitution/AUTHORITY_MODEL.md",
+      "sha256": "1169f114391d04b9634a9090919850b8b18387989723b30e9a5fc384863c0f87"
+    },
+    {
+      "path": "constitution/STAGE_DEPENDENCY_AND_RUNTIME_MODEL.md",
+      "sha256": "6c79b3b501d66784d97305cf4855e871a05d3a55974dd20cfd40932d81052a89"
+    },
+    {
+      "path": "constitution/INTERACTION_CLOSURE_POLICY.md",
+      "sha256": "551837e9c0eb2088a4f20ad5457c6d7c1aacb7f7c693b98604710f4dbc9f81b8"
+    },
+    {
+      "path": "constitution/PRD_ELEMENT_ADOPTION_POLICY.md",
+      "sha256": "a44315069483b7fb414064a6b491b103e23a0a5ca35542e82bce883338c8a288"
+    },
+    {
+      "path": "constitution/INFORMATION_PRESENTATION_CONSISTENCY.md",
+      "sha256": "dd1a58bb4485cbb8c2580bd9fa74f0b6f951cfac27d4a3ff2a2ce8b76cb7e966"
+    },
+    {
+      "path": "constitution/SHARED_COMPONENT_POLICY.md",
+      "sha256": "94eb4d6fff46915432a16d1f662930d020683f8d71288bb1021c2553862a8e34"
+    },
+    {
+      "path": "constitution/NATURAL_LANGUAGE_LAYOUT_POLICY.md",
+      "sha256": "c2378219e44f3d997e37af73f943c8d9192a2ce8a44dd73361308778e6460976"
+    },
+    {
+      "path": "constitution/FIGMA_COMPATIBILITY_POLICY.md",
+      "sha256": "637d8155f7760e35b69720d4f475e0a5bfcc3becca111dba64ce78475e8cac3e"
+    },
+    {
+      "path": "constitution/VALIDATION_MODEL.md",
+      "sha256": "abb79e6e9199136d83b7b4061e8cd81840b52426b7d977215905f9f87a925dc5"
+    },
+    {
+      "path": "constitution/SPEC_TO_CODE_POLICY.md",
+      "sha256": "df9a0627e2688c84de09480451865a5b44ec26adf169eeb7bf72a1d2d29f8c8d"
+    },
+    {
+      "path": "constitution/SKILL_POLICY.md",
+      "sha256": "152e914e0f7fe30f045bf117242f8d9be205d817d6c86300508505a76b32fc00"
+    },
+    {
+      "path": "control/CLAUSE_INVENTORY.json",
+      "sha256": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8"
+    },
+    {
+      "path": "control/DECISION_CATALOG.json",
+      "sha256": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb"
+    },
+    {
+      "path": "build_program/program/PROGRAM_MANIFEST.json",
+      "sha256": "c53643af8bf6c8d8fd5db4692d21619f637216275d6f5c40c3130ca74b4c2526"
+    },
+    {
+      "path": "build_program/program/PROGRAM_STATE.json",
+      "sha256": "083b34a07ebe854cd1f79fd53e2947d906c4404a17ee7f2d23363ea5cb36a288"
+    },
+    {
+      "path": "build_program/phases/P1/PHASE_MANIFEST.json",
+      "sha256": "b31a8aeccb695a5a75d81868e92fe159593b65111eb10bbc681461faae512ec9"
+    },
+    {
+      "path": "build_program/phases/P1/P1_SPEC_SEED.md",
+      "sha256": "66c70e15bb46a39c4cb72a41095ee85682b5c708fa271dc651b0001897a3b8bb"
+    },
+    {
+      "path": "current_capsule/TASK.md",
+      "sha256": "88fe4af2b0df5efc92702b62b77c0f962823816ed749236c33da992ee58372e8"
+    },
+    {
+      "path": "control/CONSTITUTION_LOCK.json",
+      "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779"
+    }
+  ],
+  "required_outputs": [
+    "P1_PHASE_PLAN.md",
+    "P1_CLAUSE_OWNERSHIP.json",
+    "P1_SPEC_PART_MAP.json",
+    "P1_IMPLEMENTATION_WORKPACK_MAP.json",
+    "P1_ACCEPTANCE_MATRIX.json",
+    "P1_ASSEMBLY_SEED.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_skills": [
+    "foundry-read-locks",
+    "foundry-generate-spec-part",
+    "foundry-validate-spec-part"
+  ],
+  "status": "READY",
+  "workpack_id": "P1-SPEC-00"
+}

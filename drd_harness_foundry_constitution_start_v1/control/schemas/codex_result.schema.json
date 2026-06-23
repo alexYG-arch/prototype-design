@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "changed_files": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "next_action": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "BLOCKED"
+      ]
+    },
+    "validation_commands": {
+      "items": {
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "exit_code": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "command",
+          "exit_code"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "workpack_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "workpack_id",
+    "status",
+    "changed_files",
+    "validation_commands",
+    "blockers",
+    "next_action"
+  ],
+  "type": "object"
+}

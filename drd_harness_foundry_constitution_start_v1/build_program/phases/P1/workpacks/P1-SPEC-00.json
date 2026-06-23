@@ -1,0 +1,31 @@
+{
+  "acceptance_commands": [
+    "python tooling/validate_p1_spec00_candidate.py",
+    "python tooling/preflight_current_workpack.py --post"
+  ],
+  "allowed_write_paths": [
+    "build_program/phases/P1/candidates/P1-SPEC-00/**",
+    "current_capsule/outputs/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "build_program/program/**",
+    "repository/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "lane": "SPEC",
+  "objective": "Generate P1 phase plan, clause ownership, spec part map, implementation workpack map, acceptance matrix and assembly seed.",
+  "phase": "P1",
+  "required_specs": [
+    {
+      "id": "DRD-HARNESS-CONSTITUTION",
+      "lock": "control/CONSTITUTION_LOCK.json",
+      "version": "1.0.0"
+    }
+  ],
+  "status": "READY",
+  "workpack_id": "P1-SPEC-00"
+}

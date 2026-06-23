@@ -1,0 +1,60 @@
+{
+  "transitions": [
+    {
+      "from": "P1_SPEC_LOCK",
+      "requires": [
+        "P1_SPEC_GATE_APPROVED"
+      ],
+      "to": "P1_IMPLEMENT"
+    },
+    {
+      "from": "P1_BUILD_LOCK",
+      "requires": [
+        "P1_BUILD_GATE_APPROVED"
+      ],
+      "to": "P2_SPEC"
+    },
+    {
+      "from": "P2_SPEC_LOCK",
+      "requires": [
+        "P2_SPEC_GATE_APPROVED"
+      ],
+      "to": "P2_IMPLEMENT"
+    },
+    {
+      "from": "P2_BUILD_LOCK",
+      "requires": [
+        "P2_VERTICAL_SLICE_GATE_APPROVED"
+      ],
+      "to": "P3_SPEC"
+    },
+    {
+      "from": "P3_SPEC_LOCK",
+      "requires": [
+        "P3_SPEC_GATE_APPROVED"
+      ],
+      "to": "P3_IMPLEMENT"
+    },
+    {
+      "from": "P3_BUILD_LOCK",
+      "requires": [
+        "P3_MODULE_GATES_APPROVED"
+      ],
+      "to": "P4_SPEC"
+    },
+    {
+      "from": "P4_SPEC_LOCK",
+      "requires": [
+        "P4_SPEC_GATE_APPROVED"
+      ],
+      "to": "P4_IMPLEMENT"
+    },
+    {
+      "from": "P4_BUILD_LOCK",
+      "requires": [
+        "P4_RELEASE_GATE_APPROVED"
+      ],
+      "to": "DRD_HARNESS_RELEASE_LOCK"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drd-harness"
+version = "0.0.0"
+description = "Governed PRD-to-DRD harness"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,611 @@
+{
+  "constitution_lock": "control/CONSTITUTION_LOCK.json",
+  "current_workpack": "P1-SPEC-00",
+  "files": [
+    {
+      "path": ".agents/skills/foundry/foundry-assemble-spec/SKILL.md",
+      "sha256": "23ab4ebb435bacbf105a370a6c10536c5889fb84b9a67aa923c24f180d9adfd1",
+      "size_bytes": 515
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-assemble-spec/SKILL_MANIFEST.json",
+      "sha256": "5280257af8c0e534e08338557ff86696371fe0f04831dfca927def7b16b3cfb4",
+      "size_bytes": 167
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-build-lock/SKILL.md",
+      "sha256": "ecbd7c38f15602a81f9c39d94c5369377cc4d4f575c795be31aafc68c386bc76",
+      "size_bytes": 488
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-build-lock/SKILL_MANIFEST.json",
+      "sha256": "cd645f4338d3fabb417072cbf994bcaef42957ac39fd4a4137eca09cd8bd7bd6",
+      "size_bytes": 170
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-release-lock/SKILL.md",
+      "sha256": "3af4060221a5f8685b4eaeaf91a4cc2d6fb4ea9cca264be2c9ef2d0c441ec109",
+      "size_bytes": 504
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-release-lock/SKILL_MANIFEST.json",
+      "sha256": "504b6eb603a96daca2b3b1839c548247b38d8dcf3ada01d359b4a6c3a471e417",
+      "size_bytes": 172
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-spec-lock/SKILL.md",
+      "sha256": "fb0d8b4926b2efd62ba15946f5227bb67e269f17267362a309961ece296208a8",
+      "size_bytes": 511
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-build-spec-lock/SKILL_MANIFEST.json",
+      "sha256": "13ba578e7e22126d40bf4742d0e10d337c9204b631c100752472d409a57d51a3",
+      "size_bytes": 169
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-execute-implementation-workpack/SKILL.md",
+      "sha256": "27ddbf00e525718c2f4a72dbe678e52ceae1970b7e52696ace7d2569eec33c1e",
+      "size_bytes": 544
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-execute-implementation-workpack/SKILL_MANIFEST.json",
+      "sha256": "7f7e48ae32cbc6b3aaa72881a698a9b6cfa8dcdabb468bc16652a98cf406710c",
+      "size_bytes": 185
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-fix-spec-findings/SKILL.md",
+      "sha256": "2ab8ec8b240365bc5a09fc709ffee1c4c22fc34b093d9a5e99d899c1b4b58cf1",
+      "size_bytes": 515
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-fix-spec-findings/SKILL_MANIFEST.json",
+      "sha256": "6d7780b82b69aa020718a0ea103f1baf9121e76825ff04d9f418e0850af69b75",
+      "size_bytes": 171
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-generate-implementation-workpacks/SKILL.md",
+      "sha256": "fcc169f0b2c0a1f63bc5a3024db9662e856afd7f6200b874f9e1104a665ed555",
+      "size_bytes": 574
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-generate-implementation-workpacks/SKILL_MANIFEST.json",
+      "sha256": "12d7a49a4274c56c6cc02de54f895f34fbee5eddfe8a33557a21466d844e8a61",
+      "size_bytes": 187
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-generate-spec-part/SKILL.md",
+      "sha256": "70552b6196e7db278e1bcf64a93bef5ccc794d1c262cd6d180aa3f3c7e7a68a4",
+      "size_bytes": 547
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-generate-spec-part/SKILL_MANIFEST.json",
+      "sha256": "cc539696f7610ee05f9c69c4ff2efddae7fce3d7aab000d7ba639b8e969ec45a",
+      "size_bytes": 172
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-hydrate-workpack/SKILL.md",
+      "sha256": "56b471876aabf956ed8167aa4869192a7edc98caea777e469cc5008a3c2bf14c",
+      "size_bytes": 522
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-hydrate-workpack/SKILL_MANIFEST.json",
+      "sha256": "7c8775588e3e4344b6c44321c9ebda1ac8b1d31c55df83100ef70b42a21af17e",
+      "size_bytes": 170
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-invalidate-downstream/SKILL.md",
+      "sha256": "69547411fc284454fb01b81bb543bc415f256274f47428b97c2167f96d3348e5",
+      "size_bytes": 519
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-invalidate-downstream/SKILL_MANIFEST.json",
+      "sha256": "c4c8fb5fb3e06e35254ba437d17c277da7b49fc0b40dc72dce5b61a95866933a",
+      "size_bytes": 175
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-read-locks/SKILL.md",
+      "sha256": "2ee93b905e21e76a9af1f98c5736382a9ca6f85b32cfd6c92690051993496b04",
+      "size_bytes": 529
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-read-locks/SKILL_MANIFEST.json",
+      "sha256": "100eea9614e34afd6704dfb199761f761dc4df08310dd1a8f348c62f757e0234",
+      "size_bytes": 164
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-review-spec-part/SKILL.md",
+      "sha256": "c935f46358fa572a6d41cc4e54c338e51e2a77760b73f7eef2b4998247e46dfd",
+      "size_bytes": 529
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-review-spec-part/SKILL_MANIFEST.json",
+      "sha256": "0e609faa6eb062bb2e99acfc896bda4fabbf4c625262bed187089ee0754ca521",
+      "size_bytes": 170
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-phase-gate/SKILL.md",
+      "sha256": "214c593b17199ad239ea6af028bcca8f01c30e0d2e8276ba95ac82ebe438bcb5",
+      "size_bytes": 511
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-phase-gate/SKILL_MANIFEST.json",
+      "sha256": "8a089368dc6e10713e1042544ae4dc014784ea4afec3d9c6e120a58167c903c6",
+      "size_bytes": 168
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-postflight/SKILL.md",
+      "sha256": "2b98d9d078ab5dd662414ca565f9f05f788bc33d529117cf7aa0cbfb0f73c18a",
+      "size_bytes": 536
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-postflight/SKILL_MANIFEST.json",
+      "sha256": "0269bafc0b217617bb52a82fcdcb6cc24f7b9f174dcfc8fce857a0c921206cef",
+      "size_bytes": 168
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-program/SKILL.md",
+      "sha256": "442532ad6fc203f5f059c6020fe2c205f22d1b6406fc8a784c5bb99f2d3e8fb1",
+      "size_bytes": 500
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-run-program/SKILL_MANIFEST.json",
+      "sha256": "ee3ba00018a727a32fe15a9e4841600a2d4b27193fa0b8cad66630fd5419d76d",
+      "size_bytes": 165
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-seal-spec-part/SKILL.md",
+      "sha256": "63d570c1fc4b86769b6b136a68537a413b4820d9646e51990df3d120550075a4",
+      "size_bytes": 529
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-seal-spec-part/SKILL_MANIFEST.json",
+      "sha256": "a58f204a6e1ee3d8988a6210618893101cea87f46b97b20b0d556d7240e58169",
+      "size_bytes": 168
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-validate-spec-part/SKILL.md",
+      "sha256": "cb29145bfbb7df087342180caa6e61698978ecb1627b33918f151b585e25b8ee",
+      "size_bytes": 543
+    },
+    {
+      "path": ".agents/skills/foundry/foundry-validate-spec-part/SKILL_MANIFEST.json",
+      "sha256": "92061c278b067aae457cad6a369b6b1211508628f2ac3971b3b6a318119ebfd8",
+      "size_bytes": 172
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec",
+      "size_bytes": 1913
+    },
+    {
+      "path": "CODEX_START_PROMPT.md",
+      "sha256": "143b75d6162b1690abe51c46ce0bb1f23eda3e92dfc8ce86edb00df80af7532e",
+      "size_bytes": 1207
+    },
+    {
+      "path": "PACKAGE_SCOPE.md",
+      "sha256": "6684a3d851010fac4cad637696a387e97b3eb6f8508c32239a5a718eddd947c9",
+      "size_bytes": 602
+    },
+    {
+      "path": "START_HERE.md",
+      "sha256": "08ebf0a27018b1665126e7f96f92e5d9a7af7acc5476cbd16fa631f6b00efe95",
+      "size_bytes": 2285
+    },
+    {
+      "path": "build_program/phases/P1/P1_SPEC_SEED.md",
+      "sha256": "66c70e15bb46a39c4cb72a41095ee85682b5c708fa271dc651b0001897a3b8bb",
+      "size_bytes": 573
+    },
+    {
+      "path": "build_program/phases/P1/PHASE.md",
+      "sha256": "90b1a9fcd91a01d73535d28b08de6b9d2f0a32c2c0310fc72a91ee32c593fedd",
+      "size_bytes": 500
+    },
+    {
+      "path": "build_program/phases/P1/PHASE_MANIFEST.json",
+      "sha256": "b31a8aeccb695a5a75d81868e92fe159593b65111eb10bbc681461faae512ec9",
+      "size_bytes": 533
+    },
+    {
+      "path": "build_program/phases/P1/workpacks/P1-SPEC-00.json",
+      "sha256": "50b17ed572abbd72f2fc4d7dae0a81b176c748a7f28b942b2870ee7aa76a1089",
+      "size_bytes": 839
+    },
+    {
+      "path": "build_program/phases/P2/PHASE.md",
+      "sha256": "99afb7202a29a5535f443567b0676ac8ffe04b6a5808a96c31e2afaa8cf7ddf4",
+      "size_bytes": 411
+    },
+    {
+      "path": "build_program/phases/P2/PHASE_MANIFEST.json",
+      "sha256": "0ae4ee8e319d8f4223b92b3aa3c20cb779a1a2f43a8e3f6bfcdf0e5d1294e12a",
+      "size_bytes": 444
+    },
+    {
+      "path": "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+      "sha256": "050d9b108dae47c733bfb09797cefaf8f4dbc7e66cd1b5b605f1a1fa94fc0c85",
+      "size_bytes": 438
+    },
+    {
+      "path": "build_program/phases/P3/MODULE_MAP.md",
+      "sha256": "3d71cdbc4bfb2ade280b4565ff5640b51c7b8f8574349b1586d9ee5236658e10",
+      "size_bytes": 367
+    },
+    {
+      "path": "build_program/phases/P3/PHASE.md",
+      "sha256": "51f189d6869722d7672274a0cb6674b74722e2f124781c0be4cd63082116e257",
+      "size_bytes": 618
+    },
+    {
+      "path": "build_program/phases/P3/PHASE_MANIFEST.json",
+      "sha256": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
+      "size_bytes": 675
+    },
+    {
+      "path": "build_program/phases/P4/PHASE.md",
+      "sha256": "f1725b59ae72ba132ad3ec9a3d0118b24595864a2f9b9d4447717a23e1cdb877",
+      "size_bytes": 446
+    },
+    {
+      "path": "build_program/phases/P4/PHASE_MANIFEST.json",
+      "sha256": "5aa6b6f016f3d98bfe949a9ba0650017f12b5203e57f30072c27ff95acde90b5",
+      "size_bytes": 482
+    },
+    {
+      "path": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "sha256": "0cf8791abb113139458e36d3ec7872eda6c14a94b6daa254ca097a2ee19b520e",
+      "size_bytes": 374
+    },
+    {
+      "path": "build_program/program/GATE_REGISTRY.json",
+      "sha256": "33994035ea1ca06b288828e40fb1c064a1f1bdbe9027b10b2ddf6d1d07f57bb8",
+      "size_bytes": 832
+    },
+    {
+      "path": "build_program/program/PHASE_TRANSITIONS.json",
+      "sha256": "ab9b255d5dc2512895f0ae807a64146046c71db9d151877082df1f31ebc99fd3",
+      "size_bytes": 1092
+    },
+    {
+      "path": "build_program/program/PROGRAM_MANIFEST.json",
+      "sha256": "c53643af8bf6c8d8fd5db4692d21619f637216275d6f5c40c3130ca74b4c2526",
+      "size_bytes": 1041
+    },
+    {
+      "path": "build_program/program/PROGRAM_STATE.json",
+      "sha256": "083b34a07ebe854cd1f79fd53e2947d906c4404a17ee7f2d23363ea5cb36a288",
+      "size_bytes": 477
+    },
+    {
+      "path": "build_program/program/run_program.py",
+      "sha256": "cd97be67f781337eb377b7768f918c085c7f5ebabaa483e9c1779e1d916aae9d",
+      "size_bytes": 1532
+    },
+    {
+      "path": "constitution/AUTHORITY_MODEL.md",
+      "sha256": "1169f114391d04b9634a9090919850b8b18387989723b30e9a5fc384863c0f87",
+      "size_bytes": 917
+    },
+    {
+      "path": "constitution/DRD_HARNESS_CHARTER.md",
+      "sha256": "934e859bbb2fb7520b81a3533b0f7cd1d4942658dc1ec0a3f7baa9277f272d48",
+      "size_bytes": 4046
+    },
+    {
+      "path": "constitution/ENGINEERING_DIRECTORY_RULES.md",
+      "sha256": "3ff5208d0bb116cf17b4ed3c5c825b204c28da8700fd0fddb30fa5b9251f8161",
+      "size_bytes": 726
+    },
+    {
+      "path": "constitution/FIGMA_COMPATIBILITY_POLICY.md",
+      "sha256": "637d8155f7760e35b69720d4f475e0a5bfcc3becca111dba64ce78475e8cac3e",
+      "size_bytes": 721
+    },
+    {
+      "path": "constitution/GLOSSARY.md",
+      "sha256": "5fabffcef238279607110926a906df1daf9e5dda2ae154925eae80fb4ee1b732",
+      "size_bytes": 808
+    },
+    {
+      "path": "constitution/INFORMATION_PRESENTATION_CONSISTENCY.md",
+      "sha256": "dd1a58bb4485cbb8c2580bd9fa74f0b6f951cfac27d4a3ff2a2ce8b76cb7e966",
+      "size_bytes": 1095
+    },
+    {
+      "path": "constitution/INTERACTION_CLOSURE_POLICY.md",
+      "sha256": "551837e9c0eb2088a4f20ad5457c6d7c1aacb7f7c693b98604710f4dbc9f81b8",
+      "size_bytes": 1714
+    },
+    {
+      "path": "constitution/NATURAL_LANGUAGE_LAYOUT_POLICY.md",
+      "sha256": "c2378219e44f3d997e37af73f943c8d9192a2ce8a44dd73361308778e6460976",
+      "size_bytes": 1103
+    },
+    {
+      "path": "constitution/OUTPUT_FORMAT_POLICY.md",
+      "sha256": "2c12ba7cb3ee7a1ebb439d4a19b9751cc4b305de1152e3ea458d91633cd70096",
+      "size_bytes": 752
+    },
+    {
+      "path": "constitution/PRD_ELEMENT_ADOPTION_POLICY.md",
+      "sha256": "a44315069483b7fb414064a6b491b103e23a0a5ca35542e82bce883338c8a288",
+      "size_bytes": 957
+    },
+    {
+      "path": "constitution/REASONING_DOCTRINE.md",
+      "sha256": "ae52f0437d4da0e39fed3f025fa91bed713b317a9f25d7e0205024ccbe8be1db",
+      "size_bytes": 2491
+    },
+    {
+      "path": "constitution/REVIEW_PROMOTION_INVALIDATION_MODEL.md",
+      "sha256": "6bbb0b5c4205ae165bd9461dea7d4085bc53cee130ddb156f9c450effb8b03fc",
+      "size_bytes": 853
+    },
+    {
+      "path": "constitution/SHARED_COMPONENT_POLICY.md",
+      "sha256": "94eb4d6fff46915432a16d1f662930d020683f8d71288bb1021c2553862a8e34",
+      "size_bytes": 551
+    },
+    {
+      "path": "constitution/SKILL_POLICY.md",
+      "sha256": "152e914e0f7fe30f045bf117242f8d9be205d817d6c86300508505a76b32fc00",
+      "size_bytes": 668
+    },
+    {
+      "path": "constitution/SPEC_TO_CODE_POLICY.md",
+      "sha256": "df9a0627e2688c84de09480451865a5b44ec26adf169eeb7bf72a1d2d29f8c8d",
+      "size_bytes": 915
+    },
+    {
+      "path": "constitution/STAGE_DEPENDENCY_AND_RUNTIME_MODEL.md",
+      "sha256": "6c79b3b501d66784d97305cf4855e871a05d3a55974dd20cfd40932d81052a89",
+      "size_bytes": 1684
+    },
+    {
+      "path": "constitution/VALIDATION_MODEL.md",
+      "sha256": "abb79e6e9199136d83b7b4061e8cd81840b52426b7d977215905f9f87a925dc5",
+      "size_bytes": 847
+    },
+    {
+      "path": "control/CLAUSE_INVENTORY.json",
+      "sha256": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8",
+      "size_bytes": 4034
+    },
+    {
+      "path": "control/CONSTITUTION_LOCK.json",
+      "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779",
+      "size_bytes": 3743
+    },
+    {
+      "path": "control/DECISION_CATALOG.json",
+      "sha256": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb",
+      "size_bytes": 1496
+    },
+    {
+      "path": "control/ERROR_CODE_CATALOG.json",
+      "sha256": "e993b2b9260acf7be3f1d542f5a77ab451516b54fa262a1c04fd3bae90fb37c1",
+      "size_bytes": 1199
+    },
+    {
+      "path": "control/schemas/build_lock.schema.json",
+      "sha256": "41d3ca5e27606ccad6b050b4c3f50c913586f265fd9a72f21fc6c320d1faa19f",
+      "size_bytes": 689
+    },
+    {
+      "path": "control/schemas/code_target_map.schema.json",
+      "sha256": "a052787b8f88ed4ea44739e2e02dba8152099698c4ee18d342ceb1549c004de3",
+      "size_bytes": 935
+    },
+    {
+      "path": "control/schemas/codex_result.schema.json",
+      "sha256": "8761d7bb904937331bc45c24bda33f1a5409fb457ed9a7e427c61a047034bf81",
+      "size_bytes": 1016
+    },
+    {
+      "path": "control/schemas/context_manifest.schema.json",
+      "sha256": "22a6927ddcb3cf3eb1f15cb794acd0636f8c808d1eb741c9f2bf9fb23e0a5384",
+      "size_bytes": 1037
+    },
+    {
+      "path": "control/schemas/review_decision.schema.json",
+      "sha256": "bbe75ae5e256008f431d8254bf7c89e522649e1316daf110a7ebf8676d6a6220",
+      "size_bytes": 764
+    },
+    {
+      "path": "control/schemas/spec_lock.schema.json",
+      "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+      "size_bytes": 619
+    },
+    {
+      "path": "control/schemas/workpack.schema.json",
+      "sha256": "1849dfde46fa93f2dd29aa31ceeda0b52cd4e03ebdab0889832495d5eacb1195",
+      "size_bytes": 1348
+    },
+    {
+      "path": "current_capsule/AGENTS.md",
+      "sha256": "d2f5fa9411b186d1a3fdf6c21735334e9d72d6ad8f1217086bc36fada2bfc3ad",
+      "size_bytes": 371
+    },
+    {
+      "path": "current_capsule/PROMPT.md",
+      "sha256": "143b75d6162b1690abe51c46ce0bb1f23eda3e92dfc8ce86edb00df80af7532e",
+      "size_bytes": 1207
+    },
+    {
+      "path": "current_capsule/TASK.md",
+      "sha256": "88fe4af2b0df5efc92702b62b77c0f962823816ed749236c33da992ee58372e8",
+      "size_bytes": 1406
+    },
+    {
+      "path": "current_capsule/context_manifest.json",
+      "sha256": "4d9e7e585b1ef3f6084a0913de8e4f709e1b81e2585cfee0362877f23838e619",
+      "size_bytes": 4288
+    },
+    {
+      "path": "current_capsule/output_schema.json",
+      "sha256": "8761d7bb904937331bc45c24bda33f1a5409fb457ed9a7e427c61a047034bf81",
+      "size_bytes": 1016
+    },
+    {
+      "path": "references/v3_1/BASELINE_DESCRIPTOR.json",
+      "sha256": "d4ddc6cb12afa11c173229eaaf6b9f587342e680d7aa8ed3c865fbda595d44c3",
+      "size_bytes": 277
+    },
+    {
+      "path": "references/v3_1/CAPABILITY_MIGRATION_SEED.md",
+      "sha256": "55454a5bd273c6130c171843b88ba638d5cde483693d1833d96e847c50c552d2",
+      "size_bytes": 488
+    },
+    {
+      "path": "references/v3_1/README.md",
+      "sha256": "71d4f0192a17971dc44302cc9683f5d281272367114a8e8f96e8c3d5bbc34001",
+      "size_bytes": 300
+    },
+    {
+      "path": "repository/AGENTS.md",
+      "sha256": "2f012ee4d5413ef71523941a21918131779377f60b4267a9474dfe5ec91ff2e3",
+      "size_bytes": 439
+    },
+    {
+      "path": "repository/README.md",
+      "sha256": "cfea0b08a823ff5597ee05523d8022dcee5c2513c4fe78db5cc4c4709aeb4b3d",
+      "size_bytes": 151
+    },
+    {
+      "path": "repository/contracts/README.md",
+      "sha256": "64546bfb1fe1188a81006b5982fba2ce596c0c716641eed2d027abd2b98f0f04",
+      "size_bytes": 78
+    },
+    {
+      "path": "repository/docs/adr/README.md",
+      "sha256": "446523de4deb957c7f82166af80f6b547a8e97607af53ac7e986fed3c11b9d08",
+      "size_bytes": 38
+    },
+    {
+      "path": "repository/docs/architecture/README.md",
+      "sha256": "3d7c4610fb062600988e91430168dc3d8e3538593dabdf4fafb72e7b95de2810",
+      "size_bytes": 68
+    },
+    {
+      "path": "repository/pyproject.toml",
+      "sha256": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b",
+      "size_bytes": 255
+    },
+    {
+      "path": "repository/rules/README.md",
+      "sha256": "13d0b2ea22d38e147f50bbee8ebabc00b3c7510b60b4448565bfe77353474de7",
+      "size_bytes": 48
+    },
+    {
+      "path": "repository/schemas/README.md",
+      "sha256": "ad13761bfbbb578de396b513d4b971d16356792f924e0e034761e50abdda7b00",
+      "size_bytes": 37
+    },
+    {
+      "path": "repository/src/drd_harness/__init__.py",
+      "sha256": "4a15d00558f2892387c684094b606f346dfde56e0a65fa8cc59581011d0c66b1",
+      "size_bytes": 22
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/README.md",
+      "sha256": "34b7434ea41996de1b9605f996c6c693f4584016bb33a20bb8709d1908b5056f",
+      "size_bytes": 51
+    },
+    {
+      "path": "repository/src/drd_harness/cli/README.md",
+      "sha256": "fd4b862602edfad5ef9a2a32089f23ecc6f1b84c3985b7f7fe3cbec9425fe1b6",
+      "size_bytes": 26
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/README.md",
+      "sha256": "d3618776b603fabbf686e7675e311f0dcdef52e3e8679ebdfdc2d3290873e23b",
+      "size_bytes": 46
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/README.md",
+      "sha256": "8b0b16f6e75df9e04418463ca11b296e878609ad26a47e5805aecea0528ac401",
+      "size_bytes": 59
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/README.md",
+      "sha256": "2b6cce6b2192b398673177a729107fa3382c1ea95c4e29e07c09312b08e3e700",
+      "size_bytes": 69
+    },
+    {
+      "path": "repository/src/drd_harness/runtimes/README.md",
+      "sha256": "f6651f778cbae67013beb638303a51ab13d0336f5634ea04a363fa925817f4b5",
+      "size_bytes": 46
+    },
+    {
+      "path": "repository/src/drd_harness/stages/README.md",
+      "sha256": "73ff71c1f5e4616abfc6b980ed0558f36e7032f4c27c54ee3918db53f2f0a87b",
+      "size_bytes": 49
+    },
+    {
+      "path": "repository/src/drd_harness/validators/README.md",
+      "sha256": "1dc2f0f8dc595fbe9111922c7b89a0d5580e578a70a4c51d9a2417d6e326012c",
+      "size_bytes": 52
+    },
+    {
+      "path": "repository/templates/README.md",
+      "sha256": "30eee4a00b453ff62f0372e2c662649af6050e529f2c42e09723d572192d3c9e",
+      "size_bytes": 59
+    },
+    {
+      "path": "repository/tests/README.md",
+      "sha256": "6f5298bff9624e2daedb727aeb2a59bfb54b777946e1f8a7641249063e0043cd",
+      "size_bytes": 60
+    },
+    {
+      "path": "tooling/_common.py",
+      "sha256": "4e3956d50591d3d6a93cd11e69feef0e88691ef52135ef700f4efaef7e5b8aad",
+      "size_bytes": 383
+    },
+    {
+      "path": "tooling/install_v31_baseline.py",
+      "sha256": "bde8b216dd4cdcd17608f33a4148566350910892b5b7c97e522f2031de3a2d2d",
+      "size_bytes": 1592
+    },
+    {
+      "path": "tooling/preflight_current_workpack.py",
+      "sha256": "373d4b81a08b6d205f902f78ed072b50e475b54e23b786ff18b2bf564d5c3f09",
+      "size_bytes": 865
+    },
+    {
+      "path": "tooling/run_codex_current.sh",
+      "sha256": "f13c036f765573d6730f027c0c398eb77bc6c9ef3bf2eea3eb890eab27294d6a",
+      "size_bytes": 518
+    },
+    {
+      "path": "tooling/validate_constitution.py",
+      "sha256": "3e5cb7c9a5c0e97a1f004c8a508fa7e18628950dd0ee26d90e812bde4b2cc2b4",
+      "size_bytes": 1500
+    },
+    {
+      "path": "tooling/validate_p1_spec00_candidate.py",
+      "sha256": "c258dc9f66d970d12a1ffbe0f0ca77c2840c4f11ec54a913de13d4bef44995c4",
+      "size_bytes": 1548
+    },
+    {
+      "path": "tooling/validate_program.py",
+      "sha256": "262b88a63e627c8d8c31f0b1e454d32b2f4d4302a747eddad0dd7192fbd1d9cd",
+      "size_bytes": 835
+    },
+    {
+      "path": "tooling/validate_skills.py",
+      "sha256": "56a44f00ab63dc7a9c0d5edcfb37d20214a5a403ca6f2d1ee8e68901903f2561",
+      "size_bytes": 857
+    },
+    {
+      "path": "tooling/verify_start_package.py",
+      "sha256": "6ed1bcc6ecda28080c8b6d90719642c1099603bf32b7d13a8a9e3b831dc1f4d0",
+      "size_bytes": 1271
+    }
+  ],
+  "package_id": "DRD-HARNESS-FOUNDRY-CONSTITUTION-START-001",
+  "root_sha256": "27c30e132c7a1e5fed6df47ab5d42eb56bd48f9694fd6adcfca9986f1f111a27",
+  "status": "SEALED",
+  "target": "DRD_HARNESS_RELEASE_LOCK",
+  "version": "1.0.0"
+}

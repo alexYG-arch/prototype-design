@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "acceptance_commands": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "allowed_write_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "forbidden_write_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "lane": {
+      "enum": [
+        "SPEC",
+        "IMPLEMENT",
+        "ASSURANCE",
+        "RELEASE"
+      ]
+    },
+    "objective": {
+      "type": "string"
+    },
+    "phase": {
+      "enum": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "required_specs": {
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "PLANNED",
+        "WAITING_UPSTREAM_LOCK",
+        "READY",
+        "RUNNING",
+        "CANDIDATE",
+        "VALIDATED",
+        "REVIEW_REQUIRED",
+        "APPROVED",
+        "PROMOTED",
+        "BLOCKED",
+        "INVALIDATED"
+      ]
+    },
+    "workpack_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "workpack_id",
+    "phase",
+    "lane",
+    "objective",
+    "required_specs",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "acceptance_commands",
+    "status"
+  ],
+  "type": "object"
+}

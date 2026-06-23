@@ -1,0 +1,55 @@
+{
+  "decisions": [
+    {
+      "decision": "DRD Harness is standalone and consumes PRD; it does not modify PRD.",
+      "id": "DEC-001",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Deductive reasoning is primary; inductive reasoning is secondary.",
+      "id": "DEC-002",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "PRD explicit elements are validated before adoption.",
+      "id": "DEC-003",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "All clickable elements require interaction closure.",
+      "id": "DEC-004",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Information presentation is consistent by intent, trigger, scope and lifecycle.",
+      "id": "DEC-005",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Layout authority is natural-language Markdown.",
+      "id": "DEC-006",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Figma compatibility is required; Figma renderer is excluded.",
+      "id": "DEC-007",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "DRD-05 compilation is deterministic Python; Codex only performs read-only QA afterward.",
+      "id": "DEC-008",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "P1-P4 each contain SPEC and IMPLEMENT lanes.",
+      "id": "DEC-009",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Business skills are generated only after applicable specs are locked.",
+      "id": "DEC-010",
+      "status": "LOCKED"
+    }
+  ],
+  "version": "1.0.0"
+}

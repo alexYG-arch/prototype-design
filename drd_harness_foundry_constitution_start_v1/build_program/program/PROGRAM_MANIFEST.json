@@ -1,0 +1,53 @@
+{
+  "current_workpack": "P1-SPEC-00",
+  "phases": [
+    {
+      "id": "P1",
+      "name": "Architecture and foundation",
+      "outputs": [
+        "P1_SPEC_LOCK",
+        "P1_BUILD_LOCK"
+      ],
+      "requires": []
+    },
+    {
+      "id": "P2",
+      "name": "Minimum vertical slice",
+      "outputs": [
+        "P2_SPEC_LOCK",
+        "P2_BUILD_LOCK"
+      ],
+      "requires": [
+        "P1_SPEC_LOCK",
+        "P1_BUILD_LOCK"
+      ]
+    },
+    {
+      "id": "P3",
+      "name": "Full stage and capability expansion",
+      "outputs": [
+        "P3_SPEC_LOCK",
+        "P3_BUILD_LOCK"
+      ],
+      "requires": [
+        "P2_SPEC_LOCK",
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "id": "P4",
+      "name": "Integration, adapters and release",
+      "outputs": [
+        "P4_SPEC_LOCK",
+        "P4_BUILD_LOCK",
+        "DRD_HARNESS_RELEASE_LOCK"
+      ],
+      "requires": [
+        "P3_SPEC_LOCK",
+        "P3_BUILD_LOCK"
+      ]
+    }
+  ],
+  "program_id": "DRD-HARNESS-FOUNDRY-V1",
+  "target": "DRD_HARNESS_RELEASE_LOCK"
+}

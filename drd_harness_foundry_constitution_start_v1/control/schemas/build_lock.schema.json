@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "git_commit": {
+      "type": "string"
+    },
+    "lock_id": {
+      "type": "string"
+    },
+    "phase": {
+      "enum": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ]
+    },
+    "root_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "spec_lock_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "test_results": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "lock_id",
+    "phase",
+    "git_commit",
+    "spec_lock_hash",
+    "test_results",
+    "root_sha256"
+  ],
+  "type": "object"
+}

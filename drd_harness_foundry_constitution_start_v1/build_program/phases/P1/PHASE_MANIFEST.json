@@ -1,0 +1,27 @@
+{
+  "goal": "Freeze and implement the control plane capable of executing one governed stage.",
+  "implementation_workpacks": [
+    "P1-IMPL-01",
+    "P1-IMPL-02",
+    "P1-IMPL-03",
+    "P1-IMPL-04",
+    "P1-IMPL-05",
+    "P1-IMPL-06"
+  ],
+  "outputs": [
+    "P1_SPEC_LOCK",
+    "P1_BUILD_LOCK"
+  ],
+  "phase": "P1",
+  "spec_workpacks": [
+    "P1-SPEC-00",
+    "P1-SPEC-01",
+    "P1-SPEC-02",
+    "P1-SPEC-03",
+    "P1-SPEC-04",
+    "P1-SPEC-05",
+    "P1-SPEC-06"
+  ],
+  "status": "ACTIVE",
+  "title": "Architecture and foundation"
+}

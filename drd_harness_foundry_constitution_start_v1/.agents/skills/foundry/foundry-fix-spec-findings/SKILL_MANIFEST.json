@@ -1,0 +1,7 @@
+{
+  "authority": "process-only",
+  "may_modify_locked_specs": false,
+  "requires_active_workpack": true,
+  "skill_id": "foundry-fix-spec-findings",
+  "version": "1.0.0"
+}

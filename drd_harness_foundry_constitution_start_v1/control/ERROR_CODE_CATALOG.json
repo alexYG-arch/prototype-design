@@ -1,0 +1,41 @@
+{
+  "errors": [
+    {
+      "code": "LOCK_MISMATCH",
+      "meaning": "Required lock or hash differs."
+    },
+    {
+      "code": "WRITE_SCOPE_VIOLATION",
+      "meaning": "A workpack changed a forbidden path."
+    },
+    {
+      "code": "SPEC_REFERENCE_MISSING",
+      "meaning": "Required contract, rule or projection cannot be resolved."
+    },
+    {
+      "code": "UNVERIFIED_MUST",
+      "meaning": "A mandatory rule has no machine, human or hybrid verification."
+    },
+    {
+      "code": "INTERACTION_NOT_CLOSED",
+      "meaning": "A clickable element or non-terminal node lacks a valid closure."
+    },
+    {
+      "code": "PRESENTATION_PATTERN_CONFLICT",
+      "meaning": "Equivalent information intent has inconsistent or duplicate presentation without rationale."
+    },
+    {
+      "code": "LAYOUT_SEMANTICS_COMPRESSED",
+      "meaning": "Natural-language layout authority is missing or replaced by structured data."
+    },
+    {
+      "code": "COMPILER_SEMANTIC_DRIFT",
+      "meaning": "Compiler introduced new business IDs or decisions."
+    },
+    {
+      "code": "SPEC_GAP",
+      "meaning": "Implementation cannot proceed without a spec change."
+    }
+  ],
+  "version": "1.0.0"
+}
