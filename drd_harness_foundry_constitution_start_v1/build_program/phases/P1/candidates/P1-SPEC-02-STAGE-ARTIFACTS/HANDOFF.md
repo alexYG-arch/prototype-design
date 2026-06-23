@@ -29,6 +29,9 @@ Reviewers should inspect:
 3. Whether the stage chain covers `DRD-00` through `DRD-06` without letting later stages consume unapproved Candidates.
 4. Whether `DRD-05` is constrained to approved inputs and cannot add semantic decisions.
 5. Whether the implementation blueprint maps clauses to rules, projections, code targets, validators, tests, and commands with enough precision.
+6. Whether source snapshot and dependency manifest schemas are explicit enough for mechanical validation.
+7. Whether `DRD-03B` ordering is represented by `stage_order_index` rather than string sorting.
+8. Whether `DRD-06` has a strict read-only output boundary.
 
 ## Next Authorized Action
 

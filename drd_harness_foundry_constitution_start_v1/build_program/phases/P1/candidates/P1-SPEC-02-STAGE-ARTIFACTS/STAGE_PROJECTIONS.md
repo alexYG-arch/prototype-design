@@ -12,6 +12,8 @@
 | `STAGE-PROJ-006` | Approved DRD-02, DRD-03, DRD-03B plus source snapshot | Layout spec, Figma guidance, and layout anchor index | Projects approved page semantics into natural-language layout. |
 | `STAGE-PROJ-007` | Approved DRD-01 through DRD-04 | `FINAL_DRD.md` and final manifest | Deterministically compiles approved sections without semantic rewrite. |
 | `STAGE-PROJ-008` | Frozen source, approved artifacts, and final DRD | Read-only QA report and finding index | Projects consistency findings without mutating canonical artifacts. |
+| `STAGE-PROJ-009` | Canonical stage chain | Stage order index | Projects human-readable stage order into explicit numeric ordering for mechanical validation. |
+| `STAGE-PROJ-010` | Source snapshot and dependency contracts | Stage schemas | Projects manifest contracts into `source_snapshot_manifest.schema.json`, `stage_manifest.schema.json`, and `dependency_manifest.schema.json`. |
 
 ## Projection Requirements
 
@@ -32,6 +34,8 @@ A projection must not:
 - Drop upstream artifact hashes.
 - Change stage order without locked spec authority.
 - Add semantic decisions during deterministic compilation.
+- Infer `DRD-03B` order by string sorting.
+- Allow `DRD-06` read-only QA to mutate canonical artifacts.
 
 ## Projection To Validators
 
@@ -43,3 +47,5 @@ A projection must not:
 - Artifact lineage validator.
 - Review binding validator.
 - Compilation input validator.
+- Stage order index validator.
+- Read-only QA boundary validator.

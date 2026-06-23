@@ -97,3 +97,37 @@ This fails with `STAGE009` because deterministic compilation cannot introduce ne
 ```
 
 This passes when the subject hash matches the reviewed artifact bundle.
+
+## Positive Example: Stage Order Index
+
+```json
+[
+  {"stage_id": "DRD-03", "stage_order_index": 30},
+  {"stage_id": "DRD-03B", "stage_order_index": 35},
+  {"stage_id": "DRD-04", "stage_order_index": 40}
+]
+```
+
+This passes because `DRD-03B` is explicitly ordered between `DRD-03` and `DRD-04`.
+
+## Negative Example: Lexical Stage Ordering
+
+```python
+sorted(["DRD-03", "DRD-03B", "DRD-04"])
+```
+
+This is insufficient as an authority mechanism because stage ordering must come from `stage_order_index`, not string sorting behavior.
+
+## Negative Example: DRD-06 Mutates Final DRD
+
+```json
+{
+  "stage_id": "DRD-06",
+  "output_artifacts": [
+    "READ_ONLY_QA_REPORT.md",
+    "FINAL_DRD.md"
+  ]
+}
+```
+
+This fails with `STAGE011` because `DRD-06` may report findings but must not mutate `FINAL_DRD.md` or any canonical artifact.

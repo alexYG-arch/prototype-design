@@ -9,6 +9,8 @@ P1 stage and artifact contracts require these validator families:
 - `stage_dependency_validator`.
 - `artifact_lineage_validator`.
 - `review_binding_validator`.
+- `stage_order_index_validator`.
+- `read_only_qa_boundary_validator`.
 
 ## Checks
 
@@ -23,6 +25,9 @@ P1 stage and artifact contracts require these validator families:
 | `STAGE-CHECK-007` | `STAGE-RULE-009` | Yes | `STAGE007` | Stage execution order follows canonical chain. |
 | `STAGE-CHECK-008` | `STAGE-RULE-010` | Yes | `STAGE008` | Human Gate decision binds the reviewed artifact or bundle hash. |
 | `STAGE-CHECK-009` | `STAGE-RULE-011` | Yes | `STAGE009` | `DRD-05` compiles only approved upstream artifacts and operational indexes. |
+| `STAGE-CHECK-010` | `STAGE-RULE-012` | Yes | `STAGE010` | Stage ordering uses explicit numeric `stage_order_index`, with `DRD-03B` between `DRD-03` and `DRD-04`. |
+| `STAGE-CHECK-011` | `STAGE-RULE-013` | Yes | `STAGE011` | `DRD-06` emits only read-only QA artifacts and does not mutate canonical artifacts, manifests, locks, or review decisions. |
+| `STAGE-CHECK-012` | `STAGE-RULE-001`, `STAGE-RULE-007` | Yes | `STAGE012` | Source snapshot and dependency manifests conform to promoted repository-local schemas. |
 
 ## Validator Inputs
 
@@ -32,6 +37,9 @@ Validators consume:
 - Stage input bundle.
 - Artifact manifests.
 - Dependency manifests.
+- Source snapshot manifest schema.
+- Dependency manifest schema.
+- Stage order index.
 - Review decision records.
 - Current stage output manifest.
 

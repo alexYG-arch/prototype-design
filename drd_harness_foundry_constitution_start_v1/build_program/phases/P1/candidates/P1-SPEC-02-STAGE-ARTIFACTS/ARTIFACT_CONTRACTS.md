@@ -17,6 +17,14 @@ Every stage artifact must have:
 - `review_decision_id` when a Human Gate applies.
 - `status`.
 
+Machine-readable artifact identity and dependency records must be represented by promoted repository-local schemas:
+
+```text
+repository/schemas/stages/source_snapshot_manifest.schema.json
+repository/schemas/stages/stage_manifest.schema.json
+repository/schemas/stages/dependency_manifest.schema.json
+```
+
 ## Artifact Status Values
 
 Allowed artifact statuses:
@@ -43,6 +51,8 @@ Only Python promotion can move an approved Candidate to `PROMOTED`.
 | `DRD-04` | `LAYOUT_COMPOSITION_SPEC.md`, `FIGMA_RECONSTRUCTION_GUIDANCE.md` | `layout_anchor_index.json` |
 | `DRD-05` | `FINAL_DRD.md` | `final_drd_manifest.json` |
 | `DRD-06` | `READ_ONLY_QA_REPORT.md` | `qa_finding_index.json` |
+
+`DRD-06` has no canonical mutation target. Its QA report and finding index are review inputs only.
 
 ## Hash Binding
 

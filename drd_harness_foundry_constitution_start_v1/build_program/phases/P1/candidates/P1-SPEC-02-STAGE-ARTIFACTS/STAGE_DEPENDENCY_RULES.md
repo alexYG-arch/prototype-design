@@ -10,6 +10,8 @@
 | `STAGE-RULE-009` | `DRD-CHARTER-002` | Stage execution order must follow the canonical DRD stage chain unless a locked spec explicitly declares an allowed skip. |
 | `STAGE-RULE-010` | `DRD-CHARTER-002` | Human Gate decisions must bind the hash of the reviewed stage artifact or reviewed artifact bundle. |
 | `STAGE-RULE-011` | `DRD-CHARTER-002` | `DRD-05` may compile only approved stage artifacts and operational indexes. |
+| `STAGE-RULE-012` | `DRD-CHARTER-002` | Stage order must be determined by explicit numeric `stage_order_index`, not lexical stage ID ordering. |
+| `STAGE-RULE-013` | `DRD-CHARTER-002` | `DRD-06` may only emit read-only QA artifacts and must not mutate canonical artifacts, manifests, locks, or review decisions. |
 
 ## Required Dependency Edges
 
@@ -37,6 +39,16 @@ Every stage execution must produce or update a dependency manifest containing:
 - `output_hashes`.
 - `validator_result_hash`.
 - `review_decision_hash` when applicable.
+
+The dependency manifest schema target is:
+
+```text
+repository/schemas/stages/dependency_manifest.schema.json
+```
+
+## Stage Order Manifest
+
+The stage order manifest must contain explicit rows for `DRD-00`, `DRD-01`, `DRD-02`, `DRD-03`, `DRD-03B`, `DRD-04`, `DRD-05`, and `DRD-06`, each with a unique numeric `stage_order_index`. `DRD-03B` must sort after `DRD-03` and before `DRD-04`.
 
 ## Candidate Versus Approved Inputs
 

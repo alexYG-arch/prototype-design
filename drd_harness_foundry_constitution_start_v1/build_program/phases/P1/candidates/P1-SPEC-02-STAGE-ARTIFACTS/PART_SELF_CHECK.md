@@ -46,4 +46,4 @@ The Candidate defines stage contracts, artifact contracts, rules, projections, v
 
 ## Review Focus
 
-Review should focus on whether every semantic stage must re-read Source PRD, whether derived briefs are prevented from replacing source, whether stage dependency edges are complete, and whether candidate versus approved artifact boundaries are mechanically enforceable.
+Review should focus on whether every semantic stage must re-read Source PRD, whether derived briefs are prevented from replacing source, whether stage dependency edges are complete, whether source and dependency manifest schemas are explicit, whether `DRD-03B` ordering is mechanically represented, whether `DRD-06` is strictly read-only, and whether candidate versus approved artifact boundaries are mechanically enforceable.

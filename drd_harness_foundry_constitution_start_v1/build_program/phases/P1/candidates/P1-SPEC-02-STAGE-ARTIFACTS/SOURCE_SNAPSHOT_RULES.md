@@ -24,6 +24,12 @@
 - `normalization_method`.
 - `source_identity`.
 
+The manifest schema target is:
+
+```text
+repository/schemas/stages/source_snapshot_manifest.schema.json
+```
+
 ## Normalization
 
 The snapshot process may normalize file encoding and line endings only when the normalization method is declared in the snapshot manifest. It must not summarize, rewrite, delete, reorder, or reinterpret PRD content.
@@ -33,6 +39,8 @@ The snapshot process may normalize file encoding and line endings only when the 
 `DRD-01`, `DRD-02`, `DRD-03`, `DRD-03B`, and `DRD-04` must include the Source PRD snapshot in their input bundle.
 
 `DRD-06` must read the frozen source and final compiled output for consistency QA.
+
+`DRD-06` must not change the frozen source, any approved upstream artifact, the compiled final DRD, or any manifest. It only reports findings.
 
 `DRD-05` must not read source for new semantic decisions. It consumes source identity through approved upstream artifact manifests.
 

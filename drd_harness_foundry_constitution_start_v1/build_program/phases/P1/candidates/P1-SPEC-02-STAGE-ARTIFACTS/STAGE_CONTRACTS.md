@@ -54,11 +54,28 @@ Every stage from `DRD-00` through `DRD-06` must declare:
 | `DRD-05` | Compile approved sections into final DRD. | `PYTHON` | Consumes source snapshot hash through approved artifacts. | Consumes only approved DRD-01 through DRD-04 artifacts and control indexes. | Final Review. |
 | `DRD-06` | Perform read-only consistency QA. | `CODEX` | Reads frozen source and compiled outputs. | Consumes final compiled artifact and approved upstream hashes. | Final Review input. |
 
+## Stage Order Index
+
+The stage chain must be represented by an explicit numeric `stage_order_index`. Implementations must not infer order by string sorting stage IDs because `DRD-03B` is intentionally inserted between `DRD-03` and `DRD-04`.
+
+| Stage | stage_order_index |
+|---|---:|
+| `DRD-00` | 0 |
+| `DRD-01` | 10 |
+| `DRD-02` | 20 |
+| `DRD-03` | 30 |
+| `DRD-03B` | 35 |
+| `DRD-04` | 40 |
+| `DRD-05` | 50 |
+| `DRD-06` | 60 |
+
 ## Source Permanence
 
 Every semantic reasoning stage must read the immutable Source PRD snapshot. A brief, summary, extracted fact list, or previous Candidate cannot replace the Source PRD snapshot.
 
 `DRD-05` is the exception only because it is a deterministic compiler. It must not make semantic decisions and must preserve the Source PRD snapshot hash through approved upstream artifact lineage.
+
+`DRD-06` is read-only QA. It may emit only `READ_ONLY_QA_REPORT.md` and `qa_finding_index.json`. It must not mutate approved artifacts, `FINAL_DRD.md`, manifests, locks, source snapshots, or review decisions.
 
 ## Ordered Dependency
 
