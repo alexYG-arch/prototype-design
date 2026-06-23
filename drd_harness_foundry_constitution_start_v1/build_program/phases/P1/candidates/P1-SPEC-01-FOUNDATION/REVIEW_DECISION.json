@@ -1,0 +1,21 @@
+{
+  "decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-001",
+  "subject_hash": "796e91afc3f94351b134010065134a8a282561faf070dbc7cbb82ac3d056267f",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "open_blockers": [],
+  "approved_sections": [
+    "ARCHITECTURE_CONTRACT.md",
+    "AUTHORITY_RUNTIME_CONTRACT.md",
+    "DIRECTORY_CONTRACT.md",
+    "OUTPUT_FORMAT_CONTRACT.md",
+    "FOUNDATION_RULES.md",
+    "FOUNDATION_PROJECTIONS.md",
+    "FOUNDATION_VALIDATOR_SPEC.md",
+    "FOUNDATION_EXAMPLES.md",
+    "FOUNDATION_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

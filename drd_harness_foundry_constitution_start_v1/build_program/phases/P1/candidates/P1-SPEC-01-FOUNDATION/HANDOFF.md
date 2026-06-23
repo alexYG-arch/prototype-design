@@ -4,7 +4,9 @@
 
 `P1-SPEC-01-FOUNDATION` has been generated as a Spec Candidate after Human Gate approval of `P1-SPEC-00`.
 
-This Candidate is not approved and not sealed. It does not authorize Harness business implementation.
+This Candidate is approved by Human Gate review and is not sealed. It does not authorize Harness business implementation.
+
+Approval is recorded in `REVIEW_DECISION.json` and binds the reviewed Candidate subject hash.
 
 ## Generated Files
 
@@ -34,4 +36,4 @@ Reviewers should inspect:
 
 ## Next Authorized Action
 
-The next action is validation and Human Gate review of this Candidate. If approved by the user, the chain may continue to `P1-SPEC-02-STAGE-ARTIFACTS`. This handoff does not grant permission to implement Harness code.
+The next action is generation of `P1-SPEC-02-STAGE-ARTIFACTS` only if the user explicitly asks to continue. This handoff does not grant permission to implement Harness code.
