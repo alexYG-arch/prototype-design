@@ -1,0 +1,20 @@
+{
+  "decision_id": "P1-SPEC-02-STAGE-ARTIFACTS-REVIEW-001",
+  "subject_hash": "2012c7d6de8c59314fb06f20de9514b1d7b24db6cb7d3e545f7bd246bec00361",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "open_blockers": [],
+  "approved_sections": [
+    "STAGE_CONTRACTS.md",
+    "ARTIFACT_CONTRACTS.md",
+    "SOURCE_SNAPSHOT_RULES.md",
+    "STAGE_DEPENDENCY_RULES.md",
+    "STAGE_PROJECTIONS.md",
+    "STAGE_VALIDATOR_SPEC.md",
+    "STAGE_EXAMPLES.md",
+    "STAGE_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}
