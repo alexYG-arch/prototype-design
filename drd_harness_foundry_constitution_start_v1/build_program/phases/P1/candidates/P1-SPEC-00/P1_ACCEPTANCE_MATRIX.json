@@ -1,0 +1,164 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "candidate_acceptance": [
+    {
+      "id": "P1-SPEC00-ACC-001",
+      "description": "All locked clauses in control/CLAUSE_INVENTORY.json have exactly one P1 Spec owner.",
+      "verification": "python tooling/validate_p1_spec00_candidate.py",
+      "evidence": "P1_CLAUSE_OWNERSHIP.json"
+    },
+    {
+      "id": "P1-SPEC00-ACC-002",
+      "description": "The Candidate writes only required outputs in the allowed candidate directory and current capsule output directory.",
+      "verification": "python tooling/preflight_current_workpack.py --post",
+      "evidence": "current_capsule/context_manifest.json"
+    },
+    {
+      "id": "P1-SPEC00-ACC-003",
+      "description": "Each P1 Spec part requires Contract, Rule, Projection, Validator Spec, Examples, and Implementation Blueprint outputs.",
+      "verification": "review P1_SPEC_PART_MAP.json and P1_PHASE_PLAN.md",
+      "evidence": "P1_SPEC_PART_MAP.json"
+    },
+    {
+      "id": "P1-SPEC00-ACC-004",
+      "description": "Implementation Workpacks map to repository code targets, validators, tests, and acceptance commands.",
+      "verification": "review P1_IMPLEMENTATION_WORKPACK_MAP.json",
+      "evidence": "P1_IMPLEMENTATION_WORKPACK_MAP.json"
+    },
+    {
+      "id": "P1-SPEC00-ACC-005",
+      "description": "Python Runtime, Codex Runtime, and Human Gate responsibilities are explicit.",
+      "verification": "review P1_PHASE_PLAN.md and P1_SPEC_PART_MAP.json",
+      "evidence": "runtime_split fields"
+    },
+    {
+      "id": "P1-SPEC00-ACC-006",
+      "description": "Spec-to-code traceability binds Contract Clause, Rule, Projection, Code Target, Validator, Test, and Acceptance Command.",
+      "verification": "review P1_IMPLEMENTATION_WORKPACK_MAP.json and P1_ASSEMBLY_SEED.json",
+      "evidence": "trace_links, code_targets, validators, tests, acceptance_commands"
+    }
+  ],
+  "spec_part_acceptance": [
+    {
+      "spec_part": "P1-SPEC-01-FOUNDATION",
+      "checks": [
+        "Every Stage has explicit runtime ownership.",
+        "Output formats separate Markdown semantic artifacts from JSON operational artifacts.",
+        "Directory boundaries prevent final runtime imports from build_program and references."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "checks": [
+        "Every semantic Stage re-reads immutable Source PRD.",
+        "Every downstream Stage binds approved upstream artifact hashes.",
+        "DRD-00 through DRD-06 have input, output, runtime, validator, and gate contracts."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-03-REASONING-ADOPTION",
+      "checks": [
+        "Inference records expose auditable premises, rules, conclusions, and sources.",
+        "PRD explicit elements are validated before adoption or rejection.",
+        "Product expansion questions route to gap artifacts and Human Gate."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "checks": [
+        "Every visible clickable element has a Reaction and target.",
+        "Async, handoff, exit, and failure behavior are modeled as graph edges or terminals.",
+        "No task graph contains isolated states, dead-end errors, or unexpanded clickable elements."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "checks": [
+        "Information presentation mode is unique for equivalent intent, trigger, scope, and lifecycle.",
+        "Shared components compare semantic role, data, operations, state, hierarchy, and surface constraints.",
+        "Layout text is sufficient for Page Frame, Region, Component, and Element reconstruction."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-06-VALIDATION-LOCKS",
+      "checks": [
+        "Codex Candidate output cannot promote or approve itself.",
+        "Validators are independent from the workpack being implemented.",
+        "Upstream hash changes invalidate dependent artifacts, skills, workpacks, tests, and locks."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "checks": [
+        "DRD-05 consumes only approved sections and control indexes.",
+        "Compiler output preserves approved semantics without adding pages, states, CTAs, components, interactions, or layout decisions.",
+        "Compiler conservation validation detects semantic additions, omissions, and hash drift."
+      ]
+    },
+    {
+      "spec_part": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "checks": [
+        "Business implementation is blocked until applicable specs are locked.",
+        "Every implementation obligation maps Contract Clause, Rule, Projection, Code Target, Validator, Test, and Acceptance Command.",
+        "Skill manifests bind locked spec versions and hashes without becoming a second authority."
+      ]
+    }
+  ],
+  "implementation_acceptance": [
+    {
+      "workpack": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "minimum_commands": [
+        "python -m pytest repository/tests/kernel"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "minimum_commands": [
+        "python -m pytest repository/tests/stages"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "minimum_commands": [
+        "python -m pytest repository/tests/reasoning"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "minimum_commands": [
+        "python -m pytest repository/tests/interaction"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "minimum_commands": [
+        "python -m pytest repository/tests/presentation repository/tests/layout"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "minimum_commands": [
+        "python -m pytest repository/tests/validators repository/tests/orchestrator"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "minimum_commands": [
+        "python -m pytest repository/tests/compiler"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "minimum_commands": [
+        "python -m pytest repository/tests/workpacks"
+      ]
+    },
+    {
+      "workpack": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "minimum_commands": [
+        "python -m pytest repository/tests/integration"
+      ]
+    }
+  ]
+}

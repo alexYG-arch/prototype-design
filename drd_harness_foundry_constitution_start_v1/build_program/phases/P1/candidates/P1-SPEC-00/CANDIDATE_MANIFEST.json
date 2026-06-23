@@ -1,0 +1,63 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "candidate_directory": "build_program/phases/P1/candidates/P1-SPEC-00",
+  "required_skills_used": [
+    "foundry-read-locks",
+    "foundry-generate-spec-part",
+    "foundry-validate-spec-part"
+  ],
+  "source_locks": [
+    {
+      "id": "DRD-HARNESS-CONSTITUTION-LOCK-001",
+      "path": "control/CONSTITUTION_LOCK.json",
+      "status": "SEALED"
+    }
+  ],
+  "generated_outputs": [
+    "P1_PHASE_PLAN.md",
+    "P1_CLAUSE_OWNERSHIP.json",
+    "P1_SPEC_PART_MAP.json",
+    "P1_IMPLEMENTATION_WORKPACK_MAP.json",
+    "P1_ACCEPTANCE_MATRIX.json",
+    "P1_ASSEMBLY_SEED.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "coverage_claim": {
+    "clause_inventory_version": "1.0.0",
+    "locked_clause_count": 26,
+    "unique_owner_required": true,
+    "spec_parts": [
+      "P1-SPEC-01-FOUNDATION",
+      "P1-SPEC-02-STAGE-ARTIFACTS",
+      "P1-SPEC-03-REASONING-ADOPTION",
+      "P1-SPEC-04-INTERACTION-CLOSURE",
+      "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "P1-SPEC-06-VALIDATION-LOCKS",
+      "P1-SPEC-07-COMPILER-CONSERVATION",
+      "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"
+    ]
+  },
+  "allowed_write_paths_used": [
+    "build_program/phases/P1/candidates/P1-SPEC-00/**"
+  ],
+  "forbidden_write_paths_changed": [],
+  "validation_commands": [
+    {
+      "command": "python tooling/validate_p1_spec00_candidate.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python tooling/preflight_current_workpack.py --post",
+      "exit_code": 0
+    }
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "next_action": "Generate P1-SPEC-01-FOUNDATION Candidate; do not seal or start Harness implementation."
+}

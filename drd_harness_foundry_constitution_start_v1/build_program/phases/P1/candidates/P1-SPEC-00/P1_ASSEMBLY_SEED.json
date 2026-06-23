@@ -1,0 +1,129 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "assembly_seed_version": "1.0.0-candidate",
+  "inputs": {
+    "constitution_lock": "control/CONSTITUTION_LOCK.json",
+    "clause_inventory": "control/CLAUSE_INVENTORY.json",
+    "decision_catalog": "control/DECISION_CATALOG.json",
+    "program_manifest": "build_program/program/PROGRAM_MANIFEST.json",
+    "phase_manifest": "build_program/phases/P1/PHASE_MANIFEST.json",
+    "p1_seed": "build_program/phases/P1/P1_SPEC_SEED.md"
+  },
+  "ordered_spec_parts": [
+    "P1-SPEC-01-FOUNDATION",
+    "P1-SPEC-02-STAGE-ARTIFACTS",
+    "P1-SPEC-03-REASONING-ADOPTION",
+    "P1-SPEC-04-INTERACTION-CLOSURE",
+    "P1-SPEC-05-PRESENTATION-LAYOUT",
+    "P1-SPEC-06-VALIDATION-LOCKS",
+    "P1-SPEC-07-COMPILER-CONSERVATION",
+    "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"
+  ],
+  "part_dependencies": [
+    {
+      "part": "P1-SPEC-01-FOUNDATION",
+      "requires": []
+    },
+    {
+      "part": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION"
+      ]
+    },
+    {
+      "part": "P1-SPEC-03-REASONING-ADOPTION",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS"
+      ]
+    },
+    {
+      "part": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS",
+        "P1-SPEC-03-REASONING-ADOPTION"
+      ]
+    },
+    {
+      "part": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS",
+        "P1-SPEC-03-REASONING-ADOPTION",
+        "P1-SPEC-04-INTERACTION-CLOSURE"
+      ]
+    },
+    {
+      "part": "P1-SPEC-06-VALIDATION-LOCKS",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS",
+        "P1-SPEC-03-REASONING-ADOPTION",
+        "P1-SPEC-04-INTERACTION-CLOSURE",
+        "P1-SPEC-05-PRESENTATION-LAYOUT"
+      ]
+    },
+    {
+      "part": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS",
+        "P1-SPEC-06-VALIDATION-LOCKS"
+      ]
+    },
+    {
+      "part": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "requires": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS",
+        "P1-SPEC-03-REASONING-ADOPTION",
+        "P1-SPEC-04-INTERACTION-CLOSURE",
+        "P1-SPEC-05-PRESENTATION-LAYOUT",
+        "P1-SPEC-06-VALIDATION-LOCKS",
+        "P1-SPEC-07-COMPILER-CONSERVATION"
+      ]
+    }
+  ],
+  "phase_outputs": [
+    "P1_SPEC_LOCK_CANDIDATE.json",
+    "IMPLEMENTATION_BLUEPRINT.md",
+    "CODE_TARGET_MAP.json",
+    "TEST_OBLIGATION_MATRIX.json",
+    "IMPLEMENTATION_WORKPACK_INDEX.json",
+    "P1_SPEC_VALIDATION_REPORT.json",
+    "P1_ERROR_CODE_CATALOG.json",
+    "P1_EXAMPLE_FIXTURE_INDEX.json"
+  ],
+  "assembly_rules": [
+    "All locked clauses must be owned by exactly one P1 Spec part.",
+    "Every Spec part must include Contract, Rule, Projection, Validator Spec, Examples, and Implementation Blueprint outputs.",
+    "Implementation Workpacks must be generated from SPEC_LOCK content and must bind exact Contract, Rule, and Projection IDs.",
+    "No Implementation Workpack may modify Constitution, control catalogs, Foundry skills, references, or tooling.",
+    "No business Skill may be generated until the relevant Contract, Rule, Projection, and Validator Spec are locked.",
+    "Codex may create Candidate outputs, but Python promotion and Human Gate approval are required for canonical state changes."
+  ],
+  "traceability_chain": {
+    "required_fields": [
+      "contract_clause_id",
+      "rule_id",
+      "projection_id",
+      "code_module",
+      "class_or_function",
+      "validator",
+      "test",
+      "acceptance_command"
+    ],
+    "minimum_grain": "One row per implementation obligation."
+  },
+  "lock_inputs": [
+    "All P1 Spec part manifests",
+    "All P1 Validator Specs",
+    "All P1 Examples",
+    "P1 Acceptance Matrix",
+    "P1 Implementation Workpack Index",
+    "Human review decisions when applicable"
+  ],
+  "promotion_boundary": "This seed prepares assembly inputs only. It does not create or approve a SPEC_LOCK."
+}

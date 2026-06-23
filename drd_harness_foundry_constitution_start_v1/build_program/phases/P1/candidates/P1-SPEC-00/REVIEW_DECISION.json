@@ -1,0 +1,18 @@
+{
+  "decision_id": "P1-SPEC-00-REVIEW-001",
+  "subject_hash": "14befbfd749d31771b440460e4daaf63586684701b2c1c9896f204d9dcd058ee",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "open_blockers": [],
+  "approved_sections": [
+    "P1_PHASE_PLAN.md",
+    "P1_CLAUSE_OWNERSHIP.json",
+    "P1_SPEC_PART_MAP.json",
+    "P1_IMPLEMENTATION_WORKPACK_MAP.json",
+    "P1_ACCEPTANCE_MATRIX.json",
+    "P1_ASSEMBLY_SEED.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

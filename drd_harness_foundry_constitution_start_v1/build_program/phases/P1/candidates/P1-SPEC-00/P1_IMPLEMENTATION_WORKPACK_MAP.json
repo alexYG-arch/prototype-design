@@ -1,0 +1,409 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "generation_rule": "Implementation Workpacks are generated only after the applicable P1 Spec parts are locked and their SPEC_LOCK hash is available.",
+  "implementation_workpacks": [
+    {
+      "id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "depends_on_spec_parts": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "objective": "Create the core package skeleton, authority model types, runtime declarations, artifact manifest model, and directory boundary checks.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/kernel/**",
+        "repository/src/drd_harness/__init__.py",
+        "repository/contracts/**",
+        "repository/schemas/**",
+        "repository/tests/kernel/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/kernel/authority.py",
+        "repository/src/drd_harness/kernel/runtime.py",
+        "repository/src/drd_harness/kernel/artifacts.py",
+        "repository/schemas/artifact_manifest.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/foundation.py"
+      ],
+      "tests": [
+        "repository/tests/kernel/test_authority_runtime.py",
+        "repository/tests/kernel/test_artifact_manifest_schema.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-012",
+        "DRD-CHARTER-016",
+        "DRD-CHARTER-014"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/kernel"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "depends_on_spec_parts": [
+        "P1-SPEC-02-STAGE-ARTIFACTS"
+      ],
+      "objective": "Implement Source PRD snapshot, stage contract models, stage dependency manifests, and hash lineage validation.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/stages/**",
+        "repository/src/drd_harness/kernel/**",
+        "repository/schemas/stages/**",
+        "repository/tests/stages/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/stages/contracts.py",
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/kernel/hashline.py",
+        "repository/schemas/stages/stage_manifest.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/stage_lineage.py"
+      ],
+      "tests": [
+        "repository/tests/stages/test_source_snapshot.py",
+        "repository/tests/stages/test_stage_lineage.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-001",
+        "DRD-CHARTER-002"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/stages"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "depends_on_spec_parts": [
+        "P1-SPEC-03-REASONING-ADOPTION"
+      ],
+      "objective": "Implement inference record schemas, PRD element adoption outcomes, derivation checks, and product gap routing.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/rules/**",
+        "repository/src/drd_harness/validators/**",
+        "repository/schemas/reasoning/**",
+        "repository/tests/reasoning/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/rules/reasoning.py",
+        "repository/src/drd_harness/rules/prd_adoption.py",
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/schemas/reasoning/inference_record.schema.json",
+        "repository/schemas/reasoning/prd_element_decision.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "tests": [
+        "repository/tests/reasoning/test_inference_records.py",
+        "repository/tests/reasoning/test_prd_element_adoption.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-003",
+        "DRD-CHARTER-004",
+        "DRD-CHARTER-007",
+        "DRD-CHARTER-018",
+        "RD-RULE-001"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/reasoning"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "depends_on_spec_parts": [
+        "P1-SPEC-04-INTERACTION-CLOSURE"
+      ],
+      "objective": "Implement interaction graph models, Reaction validation, reachability checks, terminal checks, async, handoff, exit, and failure validators.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/rules/**",
+        "repository/src/drd_harness/validators/**",
+        "repository/schemas/interaction/**",
+        "repository/tests/interaction/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/rules/interaction.py",
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/schemas/interaction/interaction_graph.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/interaction_closure.py"
+      ],
+      "tests": [
+        "repository/tests/interaction/test_reaction_targets.py",
+        "repository/tests/interaction/test_graph_closure.py",
+        "repository/tests/interaction/test_async_handoff_failure.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-005",
+        "RD-RULE-002",
+        "RD-RULE-003",
+        "RD-RULE-004",
+        "RD-RULE-005",
+        "RD-RULE-006"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/interaction"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "depends_on_spec_parts": [
+        "P1-SPEC-05-PRESENTATION-LAYOUT"
+      ],
+      "objective": "Implement shared component registry checks, information presentation consistency checks, natural-language layout completeness checks, and Figma compatibility metadata checks.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/rules/**",
+        "repository/src/drd_harness/validators/**",
+        "repository/schemas/presentation/**",
+        "repository/schemas/layout/**",
+        "repository/tests/presentation/**",
+        "repository/tests/layout/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/rules/presentation.py",
+        "repository/src/drd_harness/rules/layout.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/src/drd_harness/validators/layout_completeness.py",
+        "repository/schemas/presentation/information_presentation_registry.schema.json",
+        "repository/schemas/layout/layout_composition_index.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/src/drd_harness/validators/layout_completeness.py"
+      ],
+      "tests": [
+        "repository/tests/presentation/test_shared_component_registry.py",
+        "repository/tests/presentation/test_information_presentation_consistency.py",
+        "repository/tests/layout/test_layout_completeness.py",
+        "repository/tests/layout/test_figma_compatibility_metadata.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-006",
+        "DRD-CHARTER-008",
+        "DRD-CHARTER-009",
+        "DRD-CHARTER-017",
+        "RD-RULE-007",
+        "RD-RULE-008"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/presentation repository/tests/layout"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "depends_on_spec_parts": [
+        "P1-SPEC-06-VALIDATION-LOCKS",
+        "P1-SPEC-02-STAGE-ARTIFACTS"
+      ],
+      "objective": "Implement independent validation layers, review and promotion state, SPEC_LOCK and BUILD_LOCK support, and downstream invalidation checks.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/**",
+        "repository/src/drd_harness/orchestrator/**",
+        "repository/schemas/locks/**",
+        "repository/tests/validators/**",
+        "repository/tests/orchestrator/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/spec_validator.py",
+        "repository/src/drd_harness/validators/postflight.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/src/drd_harness/orchestrator/invalidation.py",
+        "repository/src/drd_harness/orchestrator/promotion.py",
+        "repository/schemas/locks/spec_lock.schema.json",
+        "repository/schemas/locks/build_lock.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/spec_validator.py",
+        "repository/src/drd_harness/validators/postflight.py",
+        "repository/src/drd_harness/validators/phase_gate.py"
+      ],
+      "tests": [
+        "repository/tests/validators/test_spec_validator.py",
+        "repository/tests/validators/test_postflight_scope.py",
+        "repository/tests/orchestrator/test_invalidation.py",
+        "repository/tests/orchestrator/test_promotion_lock_state.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-010",
+        "DRD-CHARTER-015"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/validators repository/tests/orchestrator"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "depends_on_spec_parts": [
+        "P1-SPEC-07-COMPILER-CONSERVATION",
+        "P1-SPEC-02-STAGE-ARTIFACTS"
+      ],
+      "objective": "Implement deterministic final DRD compilation and compiler conservation validation without adding semantic decisions during DRD-05.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/compiler/**",
+        "repository/src/drd_harness/validators/**",
+        "repository/schemas/compiler/**",
+        "repository/tests/compiler/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/compiler/final_drd.py",
+        "repository/src/drd_harness/compiler/conservation.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/schemas/compiler/final_drd_manifest.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/compiler_conservation.py"
+      ],
+      "tests": [
+        "repository/tests/compiler/test_final_drd_compilation.py",
+        "repository/tests/compiler/test_compiler_conservation.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-011"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/compiler"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "depends_on_spec_parts": [
+        "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+        "P1-SPEC-06-VALIDATION-LOCKS"
+      ],
+      "objective": "Implement skill manifest binding, workpack generation, code target maps, test obligation matrices, and spec-to-code traceability checks.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/orchestrator/**",
+        "repository/src/drd_harness/validators/**",
+        "repository/schemas/workpacks/**",
+        "repository/tests/workpacks/**"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/orchestrator/workpacks.py",
+        "repository/src/drd_harness/orchestrator/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/schemas/workpacks/implementation_workpack.schema.json",
+        "repository/schemas/workpacks/code_target_map.schema.json",
+        "repository/schemas/workpacks/test_obligation_matrix.schema.json"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/traceability.py"
+      ],
+      "tests": [
+        "repository/tests/workpacks/test_workpack_generation.py",
+        "repository/tests/workpacks/test_code_target_map.py",
+        "repository/tests/workpacks/test_test_obligation_matrix.py",
+        "repository/tests/workpacks/test_skill_version_binding.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-013",
+        "DRD-CHARTER-014"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/workpacks"
+      ]
+    },
+    {
+      "id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "depends_on_spec_parts": [
+        "P1-SPEC-01-FOUNDATION",
+        "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "objective": "Implement a thin CLI, governed templates, architecture docs, and integration smoke tests without hiding business rules in the CLI.",
+      "allowed_write_paths": [
+        "repository/src/drd_harness/cli/**",
+        "repository/templates/**",
+        "repository/docs/**",
+        "repository/tests/integration/**",
+        "repository/README.md"
+      ],
+      "forbidden_write_paths": [
+        "constitution/**",
+        "control/**",
+        ".agents/skills/**",
+        "references/**",
+        "tooling/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/cli/main.py",
+        "repository/templates/stage_manifest.json",
+        "repository/templates/review_decision.json",
+        "repository/docs/architecture/p1-architecture.md"
+      ],
+      "validators": [
+        "repository/src/drd_harness/validators/foundation.py"
+      ],
+      "tests": [
+        "repository/tests/integration/test_cli_smoke.py",
+        "repository/tests/integration/test_template_validation.py"
+      ],
+      "trace_links": [
+        "DRD-CHARTER-012",
+        "DRD-CHARTER-014",
+        "DRD-CHARTER-016"
+      ],
+      "acceptance_commands": [
+        "python -m pytest repository/tests/integration"
+      ]
+    }
+  ]
+}

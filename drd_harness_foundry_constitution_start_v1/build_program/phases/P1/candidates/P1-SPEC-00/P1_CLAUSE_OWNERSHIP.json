@@ -1,0 +1,189 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "version": "1.0.0-candidate",
+  "ownership": [
+    {
+      "clause_id": "DRD-CHARTER-001",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "owner_rationale": "Source permanence is enforced by stage input contracts, Source PRD snapshots, and hash-bound artifacts.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-002",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "owner_rationale": "Ordered dependency is governed by stage artifact lineage and approved upstream hash binding.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-003",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-03-REASONING-ADOPTION",
+      "owner_rationale": "Deduction-first reasoning belongs to inference classification, proof record, and adoption rules.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-004",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-03-REASONING-ADOPTION",
+      "owner_rationale": "PRD element validation is owned by the adoption contract and its validator spec.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-005",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Clickable inventory, Reaction targets, graph expansion, and terminal rules are interaction closure concerns.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-006",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Information presentation consistency is governed with shared presentation registries and layout obligations.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-007",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-03-REASONING-ADOPTION",
+      "owner_rationale": "Element derivation is constrained by adoption priority and deductive necessity.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-008",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Natural-language layout authority belongs with page composition and Figma reconstruction guidance.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-009",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Figma compatibility is specified as reconstructable layout metadata without renderer ownership.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-010",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-06-VALIDATION-LOCKS",
+      "owner_rationale": "Candidate-only behavior is enforced by validation, review, promotion, and lock boundaries.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-011",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "owner_rationale": "Deterministic compilation is governed by compiler conservation contracts and validators.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-012",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-01-FOUNDATION",
+      "owner_rationale": "Explicit runtime belongs in foundation contracts used by every stage and workpack.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-013",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "owner_rationale": "Spec-before-code is enforced by lock models, generated workpacks, and builder restrictions.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-014",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "owner_rationale": "Spec-to-code traceability is owned by code target maps, test obligation matrices, and acceptance commands.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-015",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-06-VALIDATION-LOCKS",
+      "owner_rationale": "Invalidation is enforced by hash-bound locks, artifact manifests, and downstream dependency checks.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-016",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-01-FOUNDATION",
+      "owner_rationale": "No-semantic-YAML is a foundation output-format and directory contract rule.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-017",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Shared pattern discipline is specified with component registry and presentation consistency contracts.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "DRD-CHARTER-018",
+      "source_owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "spec_owner": "P1-SPEC-03-REASONING-ADOPTION",
+      "owner_rationale": "No silent product expansion is enforced through inference classes, gap outputs, and human gate routing.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-001",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-03-REASONING-ADOPTION",
+      "owner_rationale": "Input obligations are derived during task and element adoption reasoning before interaction expansion.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-002",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Async obligations determine processing states and repeated-trigger behavior in the interaction graph.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-003",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Handoff obligations require success, cancel, failure, and exit paths as interaction edges.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-004",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Click obligations are the core Reaction and target requirements of interaction closure.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-005",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Exit obligations are validated through non-terminal node continuation, return, recovery, or exit paths.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-006",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "owner_rationale": "Failure obligations require reason visibility plus recovery or exit behavior in graph states.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-007",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Content growth obligations belong to layout completeness and presentation behavior specs.",
+      "verification_mode": "hybrid"
+    },
+    {
+      "clause_id": "RD-RULE-008",
+      "source_owner": "constitution/REASONING_DOCTRINE.md",
+      "spec_owner": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "owner_rationale": "Presentation obligations are enforced by information lifetime and recoverability rules.",
+      "verification_mode": "hybrid"
+    }
+  ]
+}

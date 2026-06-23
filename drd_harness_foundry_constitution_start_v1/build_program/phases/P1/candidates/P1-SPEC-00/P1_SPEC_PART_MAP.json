@@ -1,0 +1,318 @@
+{
+  "workpack_id": "P1-SPEC-00",
+  "phase": "P1",
+  "parts": [
+    {
+      "id": "P1-SPEC-01-FOUNDATION",
+      "title": "Architecture, Authority, Runtime, Directory, and Output Format Contracts",
+      "objective": "Define foundational Harness boundaries that every later specification and implementation workpack inherits.",
+      "owned_clauses": [
+        "DRD-CHARTER-012",
+        "DRD-CHARTER-016"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "ARCHITECTURE_CONTRACT.md",
+        "AUTHORITY_RUNTIME_CONTRACT.md",
+        "DIRECTORY_CONTRACT.md",
+        "OUTPUT_FORMAT_CONTRACT.md",
+        "FOUNDATION_RULES.md",
+        "FOUNDATION_PROJECTIONS.md",
+        "FOUNDATION_VALIDATOR_SPEC.md",
+        "FOUNDATION_EXAMPLES.md",
+        "FOUNDATION_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Validate directory boundaries, JSON versus Markdown formats, and runtime declarations.",
+        "codex": "Draft natural-language contracts and explain cross-runtime ownership.",
+        "human_gate": "Resolve authority or ownership disputes."
+      },
+      "acceptance_focus": [
+        "Every Stage declares primary runtime, Python duties, Codex duties, Validator, and Human Gate.",
+        "Markdown remains human semantic authority and JSON remains operational index authority.",
+        "No generated contract allows semantic YAML."
+      ]
+    },
+    {
+      "id": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "title": "Stage and Artifact Contracts",
+      "objective": "Define DRD-00 through DRD-06 contracts, artifact lineage, source permanence, and ordered dependency checks.",
+      "owned_clauses": [
+        "DRD-CHARTER-001",
+        "DRD-CHARTER-002"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "STAGE_CONTRACTS.md",
+        "ARTIFACT_CONTRACTS.md",
+        "SOURCE_SNAPSHOT_RULES.md",
+        "STAGE_DEPENDENCY_RULES.md",
+        "STAGE_PROJECTIONS.md",
+        "STAGE_VALIDATOR_SPEC.md",
+        "STAGE_EXAMPLES.md",
+        "STAGE_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Snapshot source PRD, calculate hashes, validate artifact manifests, and enforce ordered dependencies.",
+        "codex": "Generate stage-specific semantic Candidate text from source and approved upstream artifacts.",
+        "human_gate": "Approve stage outputs when Review A, Review B, or Final Review is required."
+      },
+      "acceptance_focus": [
+        "Every semantic stage re-reads immutable Source PRD.",
+        "Every downstream artifact binds approved upstream hashes.",
+        "DRD-05 consumes only approved sections and control indexes."
+      ]
+    },
+    {
+      "id": "P1-SPEC-03-REASONING-ADOPTION",
+      "title": "Reasoning and PRD Element Adoption Rules",
+      "objective": "Define inference classes, deductive proof records, PRD element validation, element derivation, and product expansion gap routing.",
+      "owned_clauses": [
+        "DRD-CHARTER-003",
+        "DRD-CHARTER-004",
+        "DRD-CHARTER-007",
+        "DRD-CHARTER-018",
+        "RD-RULE-001"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "REASONING_CONTRACT.md",
+        "INFERENCE_RECORD_RULES.md",
+        "PRD_ELEMENT_ADOPTION_RULES.md",
+        "ELEMENT_DERIVATION_RULES.md",
+        "PRODUCT_EXPANSION_GAP_RULES.md",
+        "REASONING_PROJECTIONS.md",
+        "REASONING_VALIDATOR_SPEC.md",
+        "REASONING_EXAMPLES.md",
+        "REASONING_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Validate inference record fields, source citations, adoption outcomes, duplicate IDs, and gap routing.",
+        "codex": "Classify PRD facts, write audit-friendly inference records, and produce Candidate element adoption decisions.",
+        "human_gate": "Decide inductive candidates and unresolved product expansion questions."
+      },
+      "acceptance_focus": [
+        "Inductive candidates do not enter canonical artifacts without approval.",
+        "PRD explicit elements are validated before adoption, normalization, question routing, or rejection.",
+        "Input obligations create actionable input, selection, import, or acquisition paths."
+      ]
+    },
+    {
+      "id": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "title": "Interaction Closure Contract",
+      "objective": "Define node, edge, clickable inventory, Reaction taxonomy, async, handoff, exit, failure, and terminal validation rules.",
+      "owned_clauses": [
+        "DRD-CHARTER-005",
+        "RD-RULE-002",
+        "RD-RULE-003",
+        "RD-RULE-004",
+        "RD-RULE-005",
+        "RD-RULE-006"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "INTERACTION_GRAPH_CONTRACT.md",
+        "CLICKABLE_INVENTORY_RULES.md",
+        "REACTION_RULES.md",
+        "ASYNC_HANDOFF_EXIT_FAILURE_RULES.md",
+        "INTERACTION_PROJECTIONS.md",
+        "INTERACTION_VALIDATOR_SPEC.md",
+        "INTERACTION_EXAMPLES.md",
+        "INTERACTION_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Build and validate graph reachability, node identity, edge targets, overlay closure, legal cycles, and terminal conditions.",
+        "codex": "Derive tasks, pages, states, overlays, handoffs, clickable elements, and Reaction Candidate descriptions.",
+        "human_gate": "Review task, page, state, overlay, handoff, and major interaction semantics at Review A."
+      },
+      "acceptance_focus": [
+        "Every clickable element has a Reaction, target, success behavior, failure behavior, and cancellation behavior when applicable.",
+        "Every non-terminal node has continuation, recovery, return, or exit.",
+        "Failure states explain reasons and provide recovery or exit."
+      ]
+    },
+    {
+      "id": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "title": "Shared Component, Information Presentation, Natural-language Layout, and Figma Compatibility Contracts",
+      "objective": "Define presentation consistency, shared pattern discipline, layout completeness, content growth behavior, and Figma reconstruction compatibility.",
+      "owned_clauses": [
+        "DRD-CHARTER-006",
+        "DRD-CHARTER-008",
+        "DRD-CHARTER-009",
+        "DRD-CHARTER-017",
+        "RD-RULE-007",
+        "RD-RULE-008"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "SHARED_COMPONENT_CONTRACT.md",
+        "INFORMATION_PRESENTATION_CONTRACT.md",
+        "NATURAL_LANGUAGE_LAYOUT_CONTRACT.md",
+        "FIGMA_COMPATIBILITY_CONTRACT.md",
+        "PRESENTATION_LAYOUT_RULES.md",
+        "PRESENTATION_LAYOUT_PROJECTIONS.md",
+        "PRESENTATION_LAYOUT_VALIDATOR_SPEC.md",
+        "PRESENTATION_LAYOUT_EXAMPLES.md",
+        "PRESENTATION_LAYOUT_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Validate registry uniqueness, presentation mode consistency, layout completeness fields, and Figma reconstruction metadata presence.",
+        "codex": "Draft shared component rationale, presentation mode rationale, layout descriptions, and Figma-compatible reconstruction notes.",
+        "human_gate": "Approve page elements, shared patterns, presentation modes, and layouts at Review B."
+      },
+      "acceptance_focus": [
+        "Information that requires sustained user processing is not represented only by short-lived feedback.",
+        "Shared components compare semantic role, data structure, operation set, state model, information hierarchy, and surface constraints.",
+        "Natural-language layout describes hierarchy, containment, ordering, sizing, scrolling, state changes, overlays, and Figma reconstruction."
+      ]
+    },
+    {
+      "id": "P1-SPEC-06-VALIDATION-LOCKS",
+      "title": "Validation, Review, Promotion, Locks, and Invalidation",
+      "objective": "Define candidate-only enforcement, validator independence, review and promotion state, lock formats, hash binding, and downstream invalidation.",
+      "owned_clauses": [
+        "DRD-CHARTER-010",
+        "DRD-CHARTER-015"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "VALIDATION_CONTRACT.md",
+        "REVIEW_PROMOTION_CONTRACT.md",
+        "LOCK_STATE_CONTRACT.md",
+        "INVALIDATION_CONTRACT.md",
+        "VALIDATION_LOCK_RULES.md",
+        "VALIDATION_LOCK_PROJECTIONS.md",
+        "VALIDATION_LOCK_VALIDATOR_SPEC.md",
+        "VALIDATION_LOCK_EXAMPLES.md",
+        "VALIDATION_LOCK_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Validate Candidate outputs, preserve validator independence, produce lock hashes, and mark downstream dependencies invalidated when upstream hashes change.",
+        "codex": "Generate Candidate specs and scoped repair candidates without approval or promotion authority.",
+        "human_gate": "Approve review decisions, promotion decisions, lock readiness, and semantic repair acceptance."
+      },
+      "acceptance_focus": [
+        "Codex output remains Candidate until Python promotion and Human Gate approval.",
+        "Validators are independent from the implementation workpack being checked.",
+        "Upstream hash changes invalidate dependent artifacts, skills, workpacks, tests, and locks."
+      ]
+    },
+    {
+      "id": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "title": "Deterministic Compiler Conservation",
+      "objective": "Define DRD-05 deterministic compilation inputs, output assembly, conservation checks, and read-only post-compile QA boundaries.",
+      "owned_clauses": [
+        "DRD-CHARTER-011"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "COMPILER_CONSERVATION_CONTRACT.md",
+        "FINAL_DRD_ASSEMBLY_RULES.md",
+        "COMPILER_INPUT_BOUNDARY_RULES.md",
+        "COMPILER_PROJECTIONS.md",
+        "COMPILER_VALIDATOR_SPEC.md",
+        "COMPILER_EXAMPLES.md",
+        "COMPILER_IMPLEMENTATION_BLUEPRINT.md"
+      ],
+      "runtime_split": {
+        "python": "Deterministically assemble approved sections, tables of contents, references, hashes, and final artifacts without creating new semantic decisions.",
+        "codex": "Perform read-only consistency QA after compilation when requested by a governed workpack.",
+        "human_gate": "Approve final compiled document readiness and unresolved issue handling."
+      },
+      "acceptance_focus": [
+        "DRD-05 consumes only approved sections and control indexes.",
+        "Compilation does not add pages, states, CTAs, components, interactions, or layout decisions.",
+        "Compiler conservation validation detects semantic additions, omissions, and source hash drift."
+      ]
+    },
+    {
+      "id": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "title": "Skills, Workpack Generation, and Spec-to-code Traceability",
+      "objective": "Define spec-before-code enforcement, skill version binding, implementation workpack generation, and traceability from clauses to code, validators, tests, and commands.",
+      "owned_clauses": [
+        "DRD-CHARTER-013",
+        "DRD-CHARTER-014"
+      ],
+      "required_output_families": [
+        "CONTRACT",
+        "RULE",
+        "PROJECTION",
+        "VALIDATOR_SPEC",
+        "EXAMPLES",
+        "IMPLEMENTATION_BLUEPRINT"
+      ],
+      "must_produce": [
+        "SPEC_TO_CODE_TRACEABILITY_CONTRACT.md",
+        "SKILL_VERSION_BINDING_CONTRACT.md",
+        "WORKPACK_GENERATION_CONTRACT.md",
+        "SPEC_BEFORE_CODE_RULES.md",
+        "TRACEABILITY_PROJECTIONS.md",
+        "SKILLS_WORKPACK_VALIDATOR_SPEC.md",
+        "SKILLS_WORKPACK_EXAMPLES.md",
+        "IMPLEMENTATION_BLUEPRINT.md",
+        "CODE_TARGET_MAP.json",
+        "TEST_OBLIGATION_MATRIX.json",
+        "IMPLEMENTATION_WORKPACK_INDEX.json"
+      ],
+      "runtime_split": {
+        "python": "Validate SPEC_LOCK references, workpack read/write scopes, code target maps, test obligation matrices, and skill manifest version hashes.",
+        "codex": "Generate implementation workpack candidates, domain skill candidates, and scoped implementation code only after applicable specs are locked.",
+        "human_gate": "Approve business skill introduction, workpack scope disputes, and traceability exceptions."
+      },
+      "acceptance_focus": [
+        "Business code is not implemented until applicable Contract, Rule, Projection, and Validator Spec are locked.",
+        "Every implementation obligation maps Contract Clause to Rule, Projection, Code Target, Validator, Test, and Acceptance Command.",
+        "Skills reference locked specs and never become a second authority."
+      ]
+    }
+  ]
+}

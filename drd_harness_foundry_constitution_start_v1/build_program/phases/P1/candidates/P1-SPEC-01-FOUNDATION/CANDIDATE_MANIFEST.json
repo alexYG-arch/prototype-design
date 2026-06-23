@@ -1,0 +1,38 @@
+{
+  "workpack_id": "P1-SPEC-01-FOUNDATION",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-00",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-00/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "DRD-CHARTER-012",
+    "DRD-CHARTER-016"
+  ],
+  "generated_outputs": [
+    "ARCHITECTURE_CONTRACT.md",
+    "AUTHORITY_RUNTIME_CONTRACT.md",
+    "DIRECTORY_CONTRACT.md",
+    "OUTPUT_FORMAT_CONTRACT.md",
+    "FOUNDATION_RULES.md",
+    "FOUNDATION_PROJECTIONS.md",
+    "FOUNDATION_VALIDATOR_SPEC.md",
+    "FOUNDATION_EXAMPLES.md",
+    "FOUNDATION_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "CONTRACT",
+    "RULE",
+    "PROJECTION",
+    "VALIDATOR_SPEC",
+    "EXAMPLES",
+    "IMPLEMENTATION_BLUEPRINT"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "seal_state": "NOT_SEALED",
+  "forbidden_write_paths_changed": [],
+  "next_action": "Validate and review P1-SPEC-01-FOUNDATION Candidate; do not implement repository code."
+}
