@@ -18,8 +18,9 @@ The Harness may:
 
 - Convert explicit PRD facts into auditable inference records.
 - Derive necessary UX obligations from explicit facts, platform constraints, approved upstream artifacts, and locked reasoning rules.
-- Propose inductive candidates as review material.
+- Use deductive reasoning as the primary completion strategy and inductive reasoning only to propose bounded review candidates.
 - Route unresolved product expansion questions to a Human Gate.
+- Route under-specified structural completion choices to a Human Gate when a page or flow is required but its elements, sections, or child surfaces are not uniquely determined.
 
 The Harness must not:
 
@@ -27,6 +28,7 @@ The Harness must not:
 - Promote an inductive candidate into a canonical artifact without Human Gate approval.
 - Accept an explicit PRD element before validating consistency and executability.
 - Hide product expansion inside normalization, layout, component selection, or copy editing.
+- Treat a PRD-named page as complete when its required sections, child pages, task paths, states, data surfaces, or interactions are missing.
 
 ## Runtime Split
 
@@ -78,7 +80,9 @@ Every PRD-explicit page, state, CTA, or element must receive an adoption decisio
 
 ### REASON-CONTRACT-004 Derivation Boundaries
 
-Missing elements may be derived only from tasks, states, information obligations, feedback, recovery, navigation, exit paths, accessibility obligations, approved upstream artifacts, or locked reasoning rules.
+Missing UX surfaces may be derived only from tasks, states, information obligations, feedback, recovery, navigation, exit paths, accessibility obligations, approved upstream artifacts, or locked reasoning rules.
+
+Missing UX surfaces include more than buttons, states, and input paths. They may include page regions, list/detail relationships, create/edit/detail child pages, second-level or third-level task surfaces, data views, filters, empty states, loading states, error states, permission states, feedback messages, recovery paths, navigation paths, and accessibility affordances.
 
 ### REASON-CONTRACT-005 Input Obligation
 
@@ -88,3 +92,6 @@ If task success depends on input `X`, the DRD must include an actionable path to
 
 Any capability, data collection, workflow, integration, or product promise not supported by source, approved decisions, or deductive necessity must be routed as a product expansion gap.
 
+### REASON-CONTRACT-007 Structural Completion Review
+
+If the PRD requires a page or flow but omits elements or second-level or third-level surfaces that are necessary to make the page executable, the Harness may generate structural completion candidates. Those candidates remain blocked until Human Gate review unless a single completion follows as a strict deductive necessity with no unresolved product choice.

@@ -13,6 +13,7 @@
 | `REASON-PROJ-007` | Unsupported capability or unresolved product choice | Product expansion gap queue | Blocks silent product expansion. |
 | `REASON-PROJ-008` | Human Gate approval | `HUMAN_DECIDED` inference records and resolved gaps | Allows approved semantic decisions to flow downstream. |
 | `REASON-PROJ-009` | Source PRD plus DRD-01 fact index | PRD explicit element inventory | Provides the coverage universe for adoption decisions. |
+| `REASON-PROJ-010` | PRD-required page or flow plus missing-surface sweep | Structural completion review queue | Routes necessary but under-specified elements, sections, and child surfaces to Human Gate. |
 
 ## Projection Requirements
 
@@ -33,6 +34,8 @@ A projection must not:
 - Convert `INDUCTIVE_CANDIDATE` directly into canonical output.
 - Treat normalization as permission to add capability.
 - Treat missing input paths as optional when task success depends on them.
+- Treat a PRD-named page as complete when required elements, sections, child pages, or lifecycle states are missing.
+- Treat structural completion candidates as canonical before Human Gate approval when multiple valid choices remain.
 - Drop rejected inferences from audit records.
 - Allow unresolved product gaps into deterministic compilation inputs.
 
@@ -46,5 +49,6 @@ The projection set feeds these validator families:
 - Derived element obligation validator.
 - Input obligation validator.
 - Product expansion gap validator.
+- Structural completion review validator.
 - Human Gate binding validator.
 - Non-canonical induction validator.

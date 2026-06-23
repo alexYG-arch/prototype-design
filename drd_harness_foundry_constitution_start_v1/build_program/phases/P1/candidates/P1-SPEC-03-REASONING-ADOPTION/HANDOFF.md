@@ -29,10 +29,12 @@ Reviewers should inspect:
 2. Whether inductive candidates stay non-canonical without Human Gate approval.
 3. Whether every PRD-explicit page, state, CTA, input, and element requires an adoption decision.
 4. Whether the PRD explicit element inventory is sufficient as the mechanical coverage universe for adoption decisions.
-5. Whether derived elements are limited to explicit obligations.
-6. Whether tasks requiring input `X` always produce an actionable input path or a product gap.
-7. Whether unresolved product expansion gaps block downstream canonical artifacts and deterministic compilation.
-8. Whether the implementation blueprint maps clauses to schemas, validators, tests, and acceptance commands with enough precision.
+5. Whether missing UX surfaces include page sections, child pages, second-level or third-level pages, data surfaces, lifecycle states, navigation, recovery, and accessibility, not only buttons, states, and input paths.
+6. Whether under-specified required pages or flows create structural completion review records before new elements or child pages become canonical.
+7. Whether derived elements are limited to explicit obligations.
+8. Whether tasks requiring input `X` always produce an actionable input path or a product gap.
+9. Whether unresolved product expansion gaps block downstream canonical artifacts and deterministic compilation.
+10. Whether the implementation blueprint maps clauses to schemas, validators, tests, and acceptance commands with enough precision.
 
 ## Next Authorized Action
 

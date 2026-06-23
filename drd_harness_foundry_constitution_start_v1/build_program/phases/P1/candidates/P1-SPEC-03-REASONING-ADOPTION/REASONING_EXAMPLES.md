@@ -140,3 +140,61 @@ Why this passes:
 
 - The candidate options are review material only.
 - Dependent artifacts remain blocked until Human Gate resolves the gap.
+
+## Structural Completion Review Example
+
+Source condition:
+
+```text
+The PRD names "Project Dashboard" as a page but does not define sections, cards, child pages, or drilldown behavior.
+```
+
+Review record:
+
+```json
+{
+  "review_id": "SCR-PROJECT-DASHBOARD-001",
+  "required_page_or_flow": "Project Dashboard",
+  "missing_surface_summary": [
+    "Dashboard sections are not specified.",
+    "Second-level drilldown pages are not specified.",
+    "Data cards and table surfaces are not specified."
+  ],
+  "deductive_obligations": [
+    "A named page must have executable user-visible content.",
+    "Navigation targets and data surfaces must be defined before canonical layout."
+  ],
+  "candidate_options": [
+    "Summary cards plus recent project activity list",
+    "Project list plus status filters and detail page",
+    "No dashboard content beyond an empty-state shell until product defines metrics"
+  ],
+  "product_expansion_risk": "Some options may introduce analytics scope not authorized by source.",
+  "canonical_eligibility": "BLOCKED_PENDING_HUMAN"
+}
+```
+
+Expected result: pass as review material, fail if consumed by canonical artifacts before Human Gate approval.
+
+Why this matters:
+
+- The page is required, so doing nothing is incomplete.
+- The missing sections and second-level pages are not uniquely determined.
+- Induction can propose options, but Human Gate must choose.
+
+## Product Expansion Inside Structural Completion Example
+
+```json
+{
+  "review_id": "SCR-SETTINGS-001",
+  "required_page_or_flow": "Settings",
+  "candidate_options": [
+    "Profile settings",
+    "Billing settings",
+    "Automation rule builder"
+  ],
+  "product_expansion_risk": "Automation rule builder adds new product capability."
+}
+```
+
+Expected result: the automation option must route to product expansion gap before approval.

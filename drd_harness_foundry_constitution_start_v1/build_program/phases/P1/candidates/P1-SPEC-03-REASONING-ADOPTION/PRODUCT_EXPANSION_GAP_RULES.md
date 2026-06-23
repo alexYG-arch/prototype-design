@@ -4,6 +4,8 @@
 
 Product expansion gaps preserve the boundary between deduction and product decision-making.
 
+Not every required completion is product expansion. If the PRD already requires a page or flow and the missing work is choosing the UX structure needed to make that page executable, the item is a structural completion review. It becomes a product expansion gap only when completing it requires a new capability, integration, role, policy, data scope, pricing rule, workflow promise, or product commitment.
+
 ## Gap Types
 
 | Gap Type | Meaning |
@@ -14,6 +16,7 @@ Product expansion gaps preserve the boundary between deduction and product decis
 | `UNAPPROVED_INTEGRATION` | A candidate requires an external system or handoff not approved by source. |
 | `UNAPPROVED_DATA_SCOPE` | A candidate requires collecting, exposing, or retaining data beyond approved scope. |
 | `CONFLICTING_SOURCE` | Source statements conflict and require product judgment. |
+| `STRUCTURAL_COMPLETION_ESCALATED` | A required structural completion option crosses into new product capability, data scope, integration, role, policy, or product promise. |
 
 ## Rules
 
@@ -36,6 +39,15 @@ A product expansion gap cannot be resolved by hiding it in layout wording, compo
 ### GAP-RULE-005 No Compilation Escape
 
 Deterministic compilation must reject approved-section inputs that contain unresolved product expansion gaps.
+
+### GAP-RULE-006 Split Structural Completion From Product Expansion
+
+Validators must distinguish:
+
+- Required UX structure for an already approved page or flow.
+- New product scope required by one or more structural options.
+
+The first requires structural completion review. The second requires product expansion gap routing.
 
 ## Gap Record Fields
 
@@ -60,4 +72,3 @@ Human Gate may:
 - Defer the decision and keep dependents blocked.
 
 Codex may not substitute its own decision for any of these outcomes.
-

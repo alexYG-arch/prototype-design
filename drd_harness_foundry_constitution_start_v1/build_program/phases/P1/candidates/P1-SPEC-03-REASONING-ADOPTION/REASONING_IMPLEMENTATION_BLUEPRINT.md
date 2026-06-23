@@ -16,6 +16,7 @@ This blueprint is for future implementation only. It does not authorize reposito
 | `repository/schemas/reasoning/prd_element_inventory.schema.json` | Source-explicit PRD element inventory schema used as adoption coverage universe. | `repository/tests/reasoning/test_prd_element_inventory_schema.py` |
 | `repository/schemas/reasoning/prd_element_decision.schema.json` | PRD element adoption decision schema. | `repository/tests/reasoning/test_prd_element_decision_schema.py` |
 | `repository/schemas/reasoning/derived_element_decision.schema.json` | Derived element decision schema. | `repository/tests/reasoning/test_derived_element_decision.py` |
+| `repository/schemas/reasoning/structural_completion_review.schema.json` | Structural completion review schema for under-specified required pages and child surfaces. | `repository/tests/reasoning/test_structural_completion_review.py` |
 | `repository/schemas/reasoning/product_expansion_gap.schema.json` | Product expansion gap schema. | `repository/tests/reasoning/test_product_expansion_gap.py` |
 | `repository/schemas/reasoning/input_obligation.schema.json` | Input obligation schema. | `repository/tests/reasoning/test_input_obligation.py` |
 
@@ -45,6 +46,9 @@ Tests must include positive and negative fixtures for:
 - Rejected inference blocking.
 - PRD explicit element inventory coverage.
 - PRD element adoption coverage.
+- Missing surface sweep beyond buttons, states, and input paths.
+- Structural completion review for under-specified required pages and child surfaces.
+- Product expansion split from structural completion.
 - Input obligation path or gap.
 - Product expansion gap blocking.
 
@@ -68,6 +72,6 @@ Additional full-suite commands may be required by later lock and validation spec
 |---|---|---|---|
 | `DRD-CHARTER-003` | Deduction first, induction containment | `rules/reasoning.py`, `validators/reasoning.py` | `REASON-CHECK-003`, `REASON-CHECK-004` |
 | `DRD-CHARTER-004` | PRD element inventory and adoption | `rules/prd_adoption.py`, `validators/prd_adoption.py` | `REASON-CHECK-005`, `REASON-CHECK-006`, `REASON-CHECK-013` |
-| `DRD-CHARTER-007` | Element derivation | `rules/reasoning.py`, `validators/reasoning.py` | `REASON-CHECK-007` |
-| `DRD-CHARTER-018` | Product expansion gaps | `validators/reasoning.py`, `validators/prd_adoption.py` | `REASON-CHECK-009`, `REASON-CHECK-012` |
+| `DRD-CHARTER-007` | Element derivation and structural completion review | `rules/reasoning.py`, `validators/reasoning.py` | `REASON-CHECK-007`, `REASON-CHECK-014`, `REASON-CHECK-015` |
+| `DRD-CHARTER-018` | Product expansion gaps | `validators/reasoning.py`, `validators/prd_adoption.py` | `REASON-CHECK-009`, `REASON-CHECK-012`, `REASON-CHECK-016` |
 | `RD-RULE-001` | Input obligation | `rules/reasoning.py`, `validators/reasoning.py` | `REASON-CHECK-008` |
