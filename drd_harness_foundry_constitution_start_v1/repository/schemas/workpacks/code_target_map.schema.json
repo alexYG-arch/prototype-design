@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_command": {"minLength": 1, "type": "string"},
+    "allowed_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "class_or_function": {"minLength": 1, "type": "string"},
+    "code_target": {"minLength": 1, "type": "string"},
+    "contract_clause_id": {"minLength": 1, "type": "string"},
+    "contract_section_id": {"minLength": 1, "type": "string"},
+    "dependency_edges": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "edge_type": {
+            "enum": [
+              "SOURCE_DEPENDENCY",
+              "REVIEW_DEPENDENCY",
+              "SPEC_LOCK_DEPENDENCY",
+              "BUILD_LOCK_DEPENDENCY",
+              "VALIDATOR_DEPENDENCY",
+              "TEST_EVIDENCE_DEPENDENCY",
+              "WORKPACK_DEPENDENCY",
+              "SKILL_DEPENDENCY",
+              "RELEASE_DEPENDENCY"
+            ],
+            "type": "string"
+          },
+          "subject": {"minLength": 1, "type": "string"}
+        },
+        "required": ["edge_type", "subject"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "forbidden_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "implementation_duty": {"minLength": 1, "type": "string"},
+    "implementation_workpack_id": {"minLength": 1, "type": "string"},
+    "invalidation_policy": {"minLength": 1, "type": "string"},
+    "projection_id": {"minLength": 1, "type": "string"},
+    "rule_id": {"minLength": 1, "type": "string"},
+    "source_spec_part": {"minLength": 1, "type": "string"},
+    "spec_lock_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "lock_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+        "lock_id": {"minLength": 1, "type": "string"}
+      },
+      "required": ["lock_id", "lock_hash"],
+      "type": "object"
+    },
+    "test": {"minLength": 1, "type": "string"},
+    "trace_row_id": {"minLength": 1, "type": "string"},
+    "validator": {"minLength": 1, "type": "string"},
+    "validator_check_ids": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "trace_row_id",
+    "implementation_duty",
+    "contract_clause_id",
+    "source_spec_part",
+    "spec_lock_ref",
+    "contract_section_id",
+    "rule_id",
+    "projection_id",
+    "implementation_workpack_id",
+    "code_target",
+    "class_or_function",
+    "validator",
+    "test",
+    "acceptance_command",
+    "validator_check_ids",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "dependency_edges",
+    "invalidation_policy"
+  ],
+  "type": "object"
+}

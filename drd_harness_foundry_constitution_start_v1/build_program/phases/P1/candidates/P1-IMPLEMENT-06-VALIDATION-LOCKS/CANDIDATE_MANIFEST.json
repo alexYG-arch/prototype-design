@@ -1,0 +1,37 @@
+{
+  "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+  "phase": "P1",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "upstream_spec_lock": "control/locks/P1_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/REVIEW_DECISION.json",
+  "owned_workpack": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/**",
+    "repository/src/drd_harness/orchestrator/**",
+    "repository/schemas/locks/**",
+    "repository/tests/validators/**",
+    "repository/tests/orchestrator/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Continue to the next explicitly authorized implementation workpack; BUILD_LOCK still requires a separate lock step."
+}

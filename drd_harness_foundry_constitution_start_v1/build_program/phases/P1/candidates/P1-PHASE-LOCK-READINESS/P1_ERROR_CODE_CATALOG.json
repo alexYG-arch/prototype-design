@@ -1,0 +1,49 @@
+{
+  "catalog_id": "P1-ERROR-CODE-CATALOG-001",
+  "phase": "P1",
+  "status": "CANDIDATE",
+  "codes": [
+    {
+      "code": "P1LOCK001",
+      "severity": "BLOCKER",
+      "name": "Review subject hash mismatch",
+      "meaning": "A candidate's current generated output hash does not match the Human Gate review decision subject hash.",
+      "required_action": "Re-approve the current subject hash or restore the reviewed output exactly before SPEC_LOCK readiness."
+    },
+    {
+      "code": "P1LOCK002",
+      "severity": "BLOCKER",
+      "name": "Missing phase review decision",
+      "meaning": "The phase-level lock candidate lacks Human Gate approval for the exact phase subject.",
+      "required_action": "Create a phase-level review decision after all other blockers are resolved."
+    },
+    {
+      "code": "P1LOCK003",
+      "severity": "BLOCKER",
+      "name": "Candidate treated as lock",
+      "meaning": "A lock readiness Candidate is being used as a canonical SPEC_LOCK.",
+      "required_action": "Use Python-controlled lock tooling after Human Gate approval."
+    },
+    {
+      "code": "P1TRACE001",
+      "severity": "BLOCKER",
+      "name": "Traceability row missing evidence",
+      "meaning": "An implementation obligation lacks clause, rule, projection, code target, validator, test, or acceptance command.",
+      "required_action": "Repair CODE_TARGET_MAP.json and TEST_OBLIGATION_MATRIX.json before implementation workpack generation."
+    },
+    {
+      "code": "P1WORK001",
+      "severity": "BLOCKER",
+      "name": "Implementation workpack ready before SPEC_LOCK",
+      "meaning": "An implementation workpack is READY before P1 SPEC_LOCK exists.",
+      "required_action": "Keep workpack state WAITING_UPSTREAM_LOCK."
+    },
+    {
+      "code": "P1SKILL001",
+      "severity": "BLOCKER",
+      "name": "Business Skill before lock",
+      "meaning": "A business Skill is created, edited, or used before applicable specs are locked and Skill binding is reviewed.",
+      "required_action": "Block Skill usage until SPEC_LOCK and Skill binding manifest exist."
+    }
+  ]
+}

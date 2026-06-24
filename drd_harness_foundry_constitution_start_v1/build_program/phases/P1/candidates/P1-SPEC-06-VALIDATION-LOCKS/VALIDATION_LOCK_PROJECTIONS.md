@@ -15,6 +15,11 @@
 | `VLOCK-PROJ-009` | Upstream dependency hashes | Dependency graph | Maps downstream subjects to upstream hash bindings. |
 | `VLOCK-PROJ-010` | Changed upstream hashes | Invalidation records | Marks affected downstream subjects and required action. |
 | `VLOCK-PROJ-011` | Superseding locks | Supersession index | Links new lock to old lock and affected dependents. |
+| `VLOCK-PROJ-012` | Validator code, schema, runtime, and command | Validator identity records | Binds validation results to reproducible validator identity. |
+| `VLOCK-PROJ-013` | Dependency graph edges | Typed dependency edge index | Distinguishes source, review, spec lock, build lock, validator, test, workpack, skill, and release dependencies. |
+| `VLOCK-PROJ-014` | Partial invalidation analysis | Partial unaffected claim records | Structures affected and unaffected paths plus proof. |
+| `VLOCK-PROJ-015` | Invalidated subjects | Invalidation recovery plan | Assigns owner and required command or workflow. |
+| `VLOCK-PROJ-016` | Lock supersession index | Acyclic supersession graph | Detects direct and transitive self-supersession. |
 
 ## Projection Requirements
 
@@ -24,9 +29,12 @@ Each projection must preserve:
 - Candidate subject hash.
 - Review decision hash.
 - Validator result hash.
+- Validator identity hash.
 - Lock root hash when a lock applies.
-- Dependency graph edges.
+- Typed dependency graph edges.
 - Invalidation IDs when a downstream subject is affected.
+- Partial unaffected claim IDs when a subject is only partly affected.
+- Recovery owner and required command when a subject is invalidated.
 
 ## Disallowed Projection Behavior
 
@@ -36,7 +44,12 @@ A projection must not:
 - Treat Candidate output as canonical without approval and promotion readiness.
 - Create a lock from incomplete file lists.
 - Drop validator command or result evidence.
+- Drop validator code hash, schema hash, runtime identity, or version.
 - Ignore old downstream subjects when an upstream hash changes.
+- Use untyped dependency edges.
+- Accept prose-only unaffected claims.
+- Mark invalidation ready without owner and required command or workflow.
+- Create a cyclic lock supersession chain.
 - Edit old lock records in place.
 
 ## Projection To Validators
@@ -53,4 +66,8 @@ The projection set feeds:
 - Dependency graph validator.
 - Invalidation propagation validator.
 - Lock supersession validator.
-
+- Validator identity validator.
+- Dependency edge type validator.
+- Partial unaffected claim validator.
+- Invalidation recovery plan validator.
+- Supersession acyclicity validator.

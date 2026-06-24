@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "coverage": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "message_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "obligation_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "reaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_node_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "obligation_id",
+          "source_node_id",
+          "reaction_id",
+          "message_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "index_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "index_id",
+    "coverage"
+  ],
+  "type": "object"
+}

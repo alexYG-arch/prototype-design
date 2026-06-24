@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "inventory_id": {"minLength": 1, "type": "string"},
+    "inventory_version": {"minLength": 1, "type": "string"},
+    "semantic_units": {
+      "items": {"$ref": "compiler_atomic_semantic_unit.schema.json"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "source_artifact_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "source_artifact_ref": {"minLength": 1, "type": "string"},
+    "validator_result_ref": {"minLength": 1, "type": "string"}
+  },
+  "required": [
+    "inventory_id", "inventory_version", "source_artifact_ref", "source_artifact_hash",
+    "validator_result_ref", "semantic_units"
+  ],
+  "type": "object"
+}

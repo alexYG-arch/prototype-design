@@ -1,0 +1,60 @@
+{
+  "matrix_id": "P1-PHASE-TEST-OBLIGATION-MATRIX-001",
+  "phase": "P1",
+  "status": "CANDIDATE_READY_FOR_HUMAN_PHASE_REVIEW",
+  "readiness_note": "Implementation test obligations are planning evidence only until canonical P1 SPEC_LOCK exists.",
+  "minimum_acceptance_commands": [
+    {
+      "workpack": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "command": "python -m pytest repository/tests/kernel",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "command": "python -m pytest repository/tests/stages",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "command": "python -m pytest repository/tests/reasoning",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "command": "python -m pytest repository/tests/interaction",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "command": "python -m pytest repository/tests/presentation repository/tests/layout",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "command": "python -m pytest repository/tests/validators repository/tests/orchestrator",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "command": "python -m pytest repository/tests/compiler",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "command": "python -m pytest repository/tests/workpacks",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "command": "python -m pytest repository/tests/integration",
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    }
+  ],
+  "phase_level_negative_tests_required": [
+    "Missing SPEC_LOCK blocks implementation workpack readiness.",
+    "Review subject hash mismatch blocks SPEC_LOCK readiness.",
+    "Candidate lock artifact cannot be treated as canonical SPEC_LOCK.",
+    "Forbidden path changes block implementation workpacks.",
+    "Skill source or spec lock drift invalidates Skill binding."
+  ]
+}

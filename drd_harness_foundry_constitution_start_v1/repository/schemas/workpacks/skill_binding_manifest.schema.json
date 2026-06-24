@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed_commands": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "allowed_workpack_types": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "allowed_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "bound_spec_locks": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "lock_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+          "lock_id": {"minLength": 1, "type": "string"},
+          "unaffected_claim_ref": {"type": "string"}
+        },
+        "required": ["lock_id", "lock_hash"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "forbidden_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "human_gate_required": {"const": true},
+    "invalidation_dependencies": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "skill_id": {"minLength": 1, "type": "string"},
+    "skill_source_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "skill_source_path": {"minLength": 1, "type": "string"},
+    "skill_version": {"minLength": 1, "type": "string"},
+    "test_refs": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "traceability_rows": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "validator_refs": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "skill_id",
+    "skill_version",
+    "skill_source_path",
+    "skill_source_hash",
+    "bound_spec_locks",
+    "allowed_workpack_types",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "allowed_commands",
+    "traceability_rows",
+    "validator_refs",
+    "test_refs",
+    "human_gate_required",
+    "invalidation_dependencies"
+  ],
+  "type": "object"
+}

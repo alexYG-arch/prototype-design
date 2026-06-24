@@ -1,0 +1,52 @@
+{
+  "report_id": "P1-SPEC-LOCK-TOOLING-GAP-001",
+  "phase": "P1",
+  "status": "TOOL_PRESENT_NOT_EXECUTED",
+  "summary": "P1 lock inputs are review-approved, and narrow Python SPEC_LOCK creation tooling is present. Canonical SPEC_LOCK has not yet been written to an authorized path.",
+  "observed_present_artifacts": [
+    {
+      "path": "control/schemas/spec_lock.schema.json",
+      "status": "PRESENT",
+      "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+    },
+    {
+      "path": "tooling/create_spec_lock.py",
+      "status": "PRESENT",
+      "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+    },
+    {
+      "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/REVIEW_DECISION.json",
+      "status": "PRESENT",
+      "sha256": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590"
+    }
+  ],
+  "resolved_gaps": [
+    {
+      "gap_id": "LOCK-GAP-001",
+      "artifact": "tooling/create_spec_lock.py",
+      "status": "RESOLVED",
+      "verified_behavior": "Dry-run and temporary output both create a schema-valid lock object after recomputing subject hashes, validating review decisions, and validating schema."
+    }
+  ],
+  "remaining_followups": [
+    {
+      "gap_id": "LOCK-GAP-002",
+      "missing_artifact": "repository/src/drd_harness/orchestrator/promotion.py",
+      "severity": "P1_AFTER_SPEC_LOCK",
+      "expected_behavior": "Own promotion state transitions from approved Candidate to locked state."
+    },
+    {
+      "gap_id": "LOCK-GAP-003",
+      "missing_artifact": "repository/schemas/locks/spec_lock.schema.json",
+      "severity": "P2_AFTER_SPEC_LOCK",
+      "expected_behavior": "Mirror or import canonical lock schema for implementation-side validation, or explicitly declare control/schemas/spec_lock.schema.json as the only schema authority."
+    }
+  ],
+  "forbidden_shortcuts": [
+    "Hand-writing a canonical SPEC_LOCK JSON file.",
+    "Renaming P1_SPEC_LOCK_CANDIDATE.json into a canonical lock.",
+    "Treating phase approval as implementation authorization.",
+    "Skipping recomputation of generated-output subject hashes."
+  ],
+  "recommended_resolution": "Review tooling/create_spec_lock.py, then explicitly authorize running it to write P1-SPEC-LOCK-001 to the chosen canonical lock path."
+}

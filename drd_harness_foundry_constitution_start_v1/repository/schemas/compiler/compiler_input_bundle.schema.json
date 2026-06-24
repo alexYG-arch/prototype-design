@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "inputRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "approval_ref": {"type": ["string", "null"]},
+        "covered_paths": {"items": {"type": "string"}, "type": "array"},
+        "input_id": {"minLength": 1, "type": "string"},
+        "input_type": {
+          "enum": [
+            "APPROVED_SEMANTIC_ARTIFACT",
+            "APPROVED_OPERATIONAL_INDEX",
+            "REVIEW_DECISION",
+            "SPEC_LOCK_REF",
+            "CONTROL_INDEX",
+            "VALIDATOR_RESULT",
+            "SCHEMA"
+          ],
+          "type": "string"
+        },
+        "lock_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+        "lock_ref": {"type": ["string", "null"]},
+        "path": {"minLength": 1, "type": "string"},
+        "review_decision_ref": {"type": ["string", "null"]},
+        "schema_id": {"type": "string"},
+        "schema_ref": {"type": "string"},
+        "section_index_ref": {"type": "string"},
+        "semantic_role": {"type": "string"},
+        "sha256": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+        "stage_id": {"type": "string"},
+        "status": {"type": "string"},
+        "subject_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+        "supersession_state": {"type": "string"},
+        "validator_identity": {"type": "object"}
+      },
+      "required": ["input_id", "input_type", "path", "sha256"],
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "approved_operational_indexes": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
+    "approved_semantic_artifacts": {"items": {"$ref": "#/$defs/inputRecord"}, "minItems": 1, "type": "array"},
+    "bundle_id": {"minLength": 1, "type": "string"},
+    "bundle_version": {"minLength": 1, "type": "string"},
+    "closed_input_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "compiler_stage_id": {"const": "DRD-05", "type": "string"},
+    "control_indexes": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
+    "lock_refs": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
+    "review_decisions": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
+    "schemas": {"items": {"$ref": "#/$defs/inputRecord"}, "minItems": 1, "type": "array"},
+    "section_order": {"items": {"type": "object"}, "minItems": 1, "type": "array"},
+    "source_snapshot_identity": {"type": "object"},
+    "stage_order": {"items": {"type": "object"}, "minItems": 5, "type": "array"},
+    "validator_results": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"}
+  },
+  "required": [
+    "bundle_id",
+    "bundle_version",
+    "compiler_stage_id",
+    "source_snapshot_identity",
+    "approved_semantic_artifacts",
+    "approved_operational_indexes",
+    "review_decisions",
+    "lock_refs",
+    "validator_results",
+    "control_indexes",
+    "schemas",
+    "stage_order",
+    "section_order",
+    "closed_input_hash"
+  ],
+  "type": "object"
+}

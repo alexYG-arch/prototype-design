@@ -1,0 +1,52 @@
+{
+  "index_id": "P1-EXAMPLE-FIXTURE-INDEX-001",
+  "phase": "P1",
+  "status": "CANDIDATE",
+  "fixture_policy": "Examples remain review and implementation-planning evidence. They do not override contracts, rules, projections, validator specs, or Human Gate decisions.",
+  "example_sources": [
+    {
+      "spec_part": "P1-SPEC-01-FOUNDATION",
+      "example_file": "FOUNDATION_EXAMPLES.md",
+      "coverage": ["runtime authority", "directory boundaries", "output format"]
+    },
+    {
+      "spec_part": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "example_file": "STAGE_EXAMPLES.md",
+      "coverage": ["source snapshot", "stage dependency", "DRD-05 input boundary"]
+    },
+    {
+      "spec_part": "P1-SPEC-03-REASONING-ADOPTION",
+      "example_file": "REASONING_EXAMPLES.md",
+      "coverage": ["deductive inference", "PRD element adoption", "product gap routing"]
+    },
+    {
+      "spec_part": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "example_file": "INTERACTION_EXAMPLES.md",
+      "coverage": ["clickable inventory", "Reaction target", "async", "handoff", "failure"]
+    },
+    {
+      "spec_part": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "example_file": "PRESENTATION_LAYOUT_EXAMPLES.md",
+      "coverage": ["shared component", "presentation mode", "layout completeness", "carrier adaptation"]
+    },
+    {
+      "spec_part": "P1-SPEC-06-VALIDATION-LOCKS",
+      "example_file": "VALIDATION_LOCK_EXAMPLES.md",
+      "coverage": ["review binding", "validator identity", "invalidation", "partial unaffected claim"]
+    },
+    {
+      "spec_part": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "example_file": "COMPILER_EXAMPLES.md",
+      "coverage": ["approved compiler input", "atomic semantic inventory", "hash drift", "read-only QA"]
+    },
+    {
+      "spec_part": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "example_file": "SKILLS_WORKPACK_EXAMPLES.md",
+      "coverage": ["spec before code", "Skill binding", "orphan code", "CLI hidden business rule"]
+    }
+  ],
+  "required_fixture_followup": [
+    "Future implementation workpacks must convert relevant positive and negative examples into test fixtures.",
+    "Fixture conversion remains blocked until P1 SPEC_LOCK exists."
+  ]
+}

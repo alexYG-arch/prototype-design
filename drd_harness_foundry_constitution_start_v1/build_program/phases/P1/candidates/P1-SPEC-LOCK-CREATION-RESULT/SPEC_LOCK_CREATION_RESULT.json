@@ -1,0 +1,44 @@
+{
+  "result_id": "P1-SPEC-LOCK-CREATION-RESULT-001",
+  "phase": "P1",
+  "status": "SPEC_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "lock_id": "P1-SPEC-LOCK-001",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1",
+    "review_decision_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590",
+    "review_decision_file_root_sha256": "2f98caaeab5db11686e58747ed53624f6173798c27b2ef154b590731e8932509",
+    "file_entry_count": 9
+  },
+  "creation_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "runtime_kind": "python",
+    "runtime_version": "3.9.6"
+  },
+  "input_bundle": {
+    "path": "build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "fe902709fb0f16618c4d366a7320a57e7c68fde4a183f0ceb081890539416033"
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "authorized_by_review": {
+    "path": "build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS/REVIEW_DECISION.json",
+    "decision_id": "P1-SPEC-LOCK-CREATION-READINESS-REVIEW-001"
+  },
+  "covered_spec_parts": [
+    "P1-SPEC-00",
+    "P1-SPEC-01-FOUNDATION",
+    "P1-SPEC-02-STAGE-ARTIFACTS",
+    "P1-SPEC-03-REASONING-ADOPTION",
+    "P1-SPEC-04-INTERACTION-CLOSURE",
+    "P1-SPEC-05-PRESENTATION-LAYOUT",
+    "P1-SPEC-06-VALIDATION-LOCKS",
+    "P1-SPEC-07-COMPILER-CONSERVATION",
+    "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"
+  ],
+  "not_an_implementation_authorization": true
+}

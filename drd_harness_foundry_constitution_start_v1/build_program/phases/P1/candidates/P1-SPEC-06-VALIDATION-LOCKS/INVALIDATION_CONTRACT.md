@@ -42,8 +42,44 @@ Downstream subjects include:
 | `new_hash` | New hash or null when removed. |
 | `affected_subjects` | Downstream artifacts, workpacks, tests, skills, or locks. |
 | `required_action` | Revalidate, repair, review, relock, rebuild, retest, or discard. |
+| `recovery_owner` | Person, runtime, workpack, or role responsible for resolving the invalidation. |
+| `required_command` | Concrete command or workflow required to restore trust, when mechanical action is needed. |
+| `due_before_consumption` | Whether recovery must happen before any downstream consumption. |
 | `blocking_state` | Whether downstream use is blocked. |
 | `created_by_runtime` | Runtime that detected invalidation. |
+
+## Dependency Edge Types
+
+Dependency graph edges must declare why a downstream subject depends on an upstream hash.
+
+| Edge Type | Meaning |
+|---|---|
+| `SOURCE_DEPENDENCY` | Depends on Source PRD, constitution, source lock, or source snapshot. |
+| `REVIEW_DEPENDENCY` | Depends on a Human Gate review decision or review hash. |
+| `SPEC_LOCK_DEPENDENCY` | Depends on SPEC_LOCK content or hash. |
+| `BUILD_LOCK_DEPENDENCY` | Depends on BUILD_LOCK content or hash. |
+| `VALIDATOR_DEPENDENCY` | Depends on validator code, schema, command, or runtime identity. |
+| `TEST_EVIDENCE_DEPENDENCY` | Depends on a test result or test evidence hash. |
+| `WORKPACK_DEPENDENCY` | Depends on workpack scope, inputs, acceptance commands, or status. |
+| `SKILL_DEPENDENCY` | Depends on skill pack, skill version, or skill source hash. |
+| `RELEASE_DEPENDENCY` | Depends on release artifact, release evidence, or publish state. |
+
+Each edge must include source subject, target subject, edge type, upstream hash, downstream binding field, and invalidation behavior.
+
+## Partial Unaffected Claim Fields
+
+If an invalidation does not affect an entire downstream subject, the unaffected claim must be structured.
+
+| Field | Requirement |
+|---|---|
+| `claim_id` | Stable ID. |
+| `changed_dependency` | Changed upstream dependency. |
+| `affected_paths` | Paths, sections, tests, skills, locks, or workpacks affected. |
+| `unaffected_paths` | Paths, sections, tests, skills, locks, or workpacks claimed unaffected. |
+| `reason` | Dependency analysis explaining why the claim is valid. |
+| `validator_result_ref` | Validator result proving or checking the claim. |
+| `review_required` | Whether Human Gate must review the unaffected claim. |
+| `expires_on_dependency_change` | Dependencies that invalidate the unaffected claim if changed. |
 
 ## Contract Clauses
 
@@ -67,7 +103,12 @@ Invalidation must propagate through dependency graphs until all affected downstr
 
 If only part of a downstream subject is affected, the unaffected claim must cite dependency analysis and validator result.
 
+The claim must use the structured partial unaffected claim fields. A prose-only "not affected" statement is invalid.
+
 ### INVALIDATION-CONTRACT-006 Skill And Workpack Impact Is Recorded
 
 Skills, workpacks, and tests depending on old hashes must be marked invalidated or revalidated, even when their files did not change.
 
+### INVALIDATION-CONTRACT-007 Recovery Is Owned And Executable
+
+Every invalidated subject must name a recovery owner and required command or workflow before it can leave blocking state.

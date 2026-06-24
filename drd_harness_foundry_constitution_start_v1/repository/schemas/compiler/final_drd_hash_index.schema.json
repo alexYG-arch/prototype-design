@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "compiler_code_hash": {"type": "string"},
+    "conservation_report_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "full_output_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "input_bundle_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "mechanical_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "reference_index_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "schema_hashes": {"type": "object"},
+    "semantic_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "toc_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"}
+  },
+  "required": [
+    "input_bundle_hash", "semantic_hash", "mechanical_hash", "full_output_hash",
+    "toc_hash", "reference_index_hash", "conservation_report_hash",
+    "schema_hashes", "compiler_code_hash"
+  ],
+  "type": "object"
+}

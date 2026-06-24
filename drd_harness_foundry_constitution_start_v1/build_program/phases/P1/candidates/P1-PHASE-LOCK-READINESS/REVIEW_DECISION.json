@@ -1,0 +1,25 @@
+{
+  "decision_id": "P1-PHASE-LOCK-READINESS-REVIEW-001",
+  "subject": "P1-PHASE-LOCK-READINESS",
+  "subject_hash": "da2a6acd1c9be5dbfc6a5426a1b467142e6e86b34b15cd042e74934d6cafe4cb",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User accepted the phase-level lock readiness Candidate with pass. This approval only covers the Candidate subject hash and does not create a canonical SPEC_LOCK.",
+  "approved_sections": [
+    "P1_SPEC_LOCK_CANDIDATE.json",
+    "IMPLEMENTATION_BLUEPRINT.md",
+    "CODE_TARGET_MAP.json",
+    "TEST_OBLIGATION_MATRIX.json",
+    "IMPLEMENTATION_WORKPACK_INDEX.json",
+    "P1_SPEC_VALIDATION_REPORT.json",
+    "P1_ERROR_CODE_CATALOG.json",
+    "P1_EXAMPLE_FIXTURE_INDEX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "open_blockers": [],
+  "not_a_spec_lock": true,
+  "next_required_gate": "Python-controlled canonical SPEC_LOCK creation"
+}

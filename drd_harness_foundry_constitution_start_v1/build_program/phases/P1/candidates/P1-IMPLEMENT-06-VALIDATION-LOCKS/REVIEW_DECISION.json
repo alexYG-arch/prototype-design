@@ -1,0 +1,32 @@
+{
+  "decision_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS-REVIEW-001",
+  "subject": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+  "subject_hash": "d3b22af3ac6a5cc9dab51258350cd858eacc0b1c0135950b751fe9889d205995",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User approved the repaired P1-IMPLEMENT-06 implementation candidate after the four P1 review findings and the fifth P2 edge-type finding were fixed.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+    "test_command": "python3 -m pytest repository/tests/kernel repository/tests/stages repository/tests/reasoning repository/tests/interaction repository/tests/presentation repository/tests/layout repository/tests/validators repository/tests/orchestrator -q",
+    "test_result": "158 passed",
+    "spec_lock": "control/locks/P1_SPEC_LOCK.json",
+    "spec_lock_sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "remaining_followups": [
+    "BUILD_LOCK is not created.",
+    "Automatic SPEC_LOCK or BUILD_LOCK creation remains a separate Python-controlled authority step.",
+    "Repository-wide dependency graph extraction remains deferred to a later orchestration task.",
+    "Validation and lock readiness helpers do not promote or lock any candidate by themselves."
+  ]
+}

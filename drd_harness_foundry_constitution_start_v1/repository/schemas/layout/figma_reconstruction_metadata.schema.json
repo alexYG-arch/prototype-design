@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "auto_layout_guidance": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "carrier_variants": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "component_instances": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "constraints": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "figma_metadata_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "frame_hierarchy": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "layout_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "non_goals": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "scroll_frames": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "selection_box_hierarchy": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "state_variants": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "z_axis_layers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "figma_metadata_id",
+    "layout_id",
+    "frame_hierarchy",
+    "selection_box_hierarchy",
+    "auto_layout_guidance",
+    "carrier_variants",
+    "scroll_frames",
+    "constraints",
+    "non_goals",
+    "trace_refs"
+  ],
+  "type": "object"
+}

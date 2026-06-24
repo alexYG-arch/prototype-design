@@ -1,0 +1,87 @@
+{
+  "result_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL-RESULT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+  "status": "IMPLEMENTATION_CANDIDATE_COMPLETE",
+  "spec_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "lock_id": "P1-SPEC-LOCK-001",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1"
+  },
+  "objective": "Create the core package skeleton, authority model types, runtime declarations, artifact manifest model, and directory boundary checks.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/kernel/__init__.py",
+      "sha256": "8e8c130c70d85f1666cc8dfc62f9034dd8f7cf9910a4702f342759405629d0a0"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/authority.py",
+      "sha256": "a1a0e27c2b385d114b6671669cfdbd5c871e8ece6dfe6cab88580ee379ae5ad3"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/runtime.py",
+      "sha256": "ddfcf3123cd16695cb2c9e1790f1b75fcab7b4de05090bb5c05c5b7fc90074d5"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/artifacts.py",
+      "sha256": "d8289ea881c9bf3d036c48551d8768e95961db1110166681c71f7b56e9f3f349"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "sha256": "aafbb9226958fe321378bea965fc9a23a45f1def33d947c75bd0fd8ca3c32242"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/promoted_authority.py",
+      "sha256": "c2a58409cbfaafffe424f868e9c7c700d0b70fed0cfc95ef6c83a62d85058ee6"
+    },
+    {
+      "path": "repository/schemas/runtime_declaration.schema.json",
+      "sha256": "f6c55be67ecfea69db963cd795da539449569f59d92bee6192ca3b852a8bb771"
+    },
+    {
+      "path": "repository/schemas/artifact_manifest.schema.json",
+      "sha256": "879a31daf306e4f445b9c3191231c6a70b079f780c24201648e212626b67cd70"
+    },
+    {
+      "path": "repository/tests/kernel/conftest.py",
+      "sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+    },
+    {
+      "path": "repository/tests/kernel/test_authority_runtime.py",
+      "sha256": "d34dd226c86b56c21c9d0a651db0755a394b7f72d155fa1a7216eadab4d8b4a8"
+    },
+    {
+      "path": "repository/tests/kernel/test_artifact_manifest_schema.py",
+      "sha256": "f962f6881cdb1163c2b254fd0c4b15a5b1f3a6c61121822a0be4fb7865a5d2db"
+    },
+    {
+      "path": "repository/tests/kernel/test_import_boundaries.py",
+      "sha256": "2cf732f42e4118dc7d6ec1105e54e9df2180475a63017fb3209ecc8ffe864e05"
+    },
+    {
+      "path": "repository/tests/kernel/test_runtime_declaration_schema.py",
+      "sha256": "5e1b544d0152bd015fa02cdacbdfcea83d5987ad563364314da7dd27ff40fced"
+    }
+  ],
+  "implemented_capabilities": [
+    "Authority ordering and silent override rejection.",
+    "Runtime declaration dataclass with explicit runtime, duties, validator, human gate, authority inputs, write scope, and forbidden scope.",
+    "Runtime responsibility guard preventing Codex duties from claiming approval, promotion, locking, sealing, or canonical authority.",
+    "Artifact manifest dataclass and hash helper.",
+    "Markdown versus JSON format policy for semantic and operational artifacts.",
+    "Runtime import boundary checks for construction-time packages.",
+    "Runtime read boundary checks for construction authority paths.",
+    "Repository-local promoted authority path checks.",
+    "Runtime declaration and artifact manifest schemas.",
+    "Kernel test path setup for repository src-layout imports.",
+    "Kernel tests for authority, runtime, artifact, schema, and boundary behavior."
+  ],
+  "deferred_due_scope": [
+    {
+      "item": "repository/src/drd_harness/validators/foundation.py",
+      "reason": "P1-IMPLEMENT-01 allowed_write_paths do not include repository/src/drd_harness/validators/**."
+    }
+  ],
+  "not_a_build_lock": true
+}

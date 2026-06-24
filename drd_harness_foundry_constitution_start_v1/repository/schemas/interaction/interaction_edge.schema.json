@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "edge_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "edge_type": {
+      "enum": [
+        "NAVIGATES_TO",
+        "OPENS_OVERLAY",
+        "CLOSES_OVERLAY",
+        "SUBMITS_ACTION",
+        "STARTS_ASYNC",
+        "ASYNC_SUCCESS",
+        "ASYNC_FAILURE",
+        "HANDOFF_EXTERNAL",
+        "HANDOFF_SUCCESS",
+        "HANDOFF_CANCEL",
+        "HANDOFF_FAILURE",
+        "RETRIES",
+        "CANCELS",
+        "EXITS",
+        "TERMINATES"
+      ]
+    },
+    "source_node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_ref": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "edge_id",
+    "source_node_id",
+    "target_ref",
+    "edge_type"
+  ],
+  "type": "object"
+}

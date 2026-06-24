@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_command": {"minLength": 1, "type": "string"},
+    "implementation_duty": {"minLength": 1, "type": "string"},
+    "negative_case": {"minLength": 1, "type": "string"},
+    "positive_case": {"minLength": 1, "type": "string"},
+    "test": {"minLength": 1, "type": "string"},
+    "trace_row_id": {"minLength": 1, "type": "string"},
+    "validator_check_ids": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "trace_row_id",
+    "implementation_duty",
+    "validator_check_ids",
+    "test",
+    "positive_case",
+    "negative_case",
+    "acceptance_command"
+  ],
+  "type": "object"
+}

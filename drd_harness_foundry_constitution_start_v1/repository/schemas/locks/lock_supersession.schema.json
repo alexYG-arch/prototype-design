@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "invalidation_impact": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "lock_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "supersedes": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "supersession_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "supersession_id",
+    "lock_id",
+    "supersedes",
+    "invalidation_impact"
+  ],
+  "type": "object"
+}

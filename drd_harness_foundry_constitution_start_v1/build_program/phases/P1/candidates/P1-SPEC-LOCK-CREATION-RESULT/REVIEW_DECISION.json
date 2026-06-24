@@ -1,0 +1,28 @@
+{
+  "decision_id": "P1-SPEC-LOCK-CREATION-RESULT-REVIEW-001",
+  "subject": "P1-SPEC-LOCK-CREATION-RESULT",
+  "subject_hash": "82d26026b829f35597c159895fc6119e6f13c3a65d63d6bcfece617792046c12",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User accepted the P1 SPEC_LOCK creation result with pass. This approval validates the recorded result that control/locks/P1_SPEC_LOCK.json was created by the approved Python lock creation tool.",
+  "approved_sections": [
+    "SPEC_LOCK_CREATION_RESULT.json",
+    "SPEC_LOCK_VALIDATION_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "lock_id": "P1-SPEC-LOCK-001",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1"
+  },
+  "open_blockers": [],
+  "remaining_followups": [
+    "BUILD_LOCK is not created.",
+    "Promotion automation is not implemented.",
+    "Next implementation or promotion workpack still requires explicit authorization."
+  ]
+}

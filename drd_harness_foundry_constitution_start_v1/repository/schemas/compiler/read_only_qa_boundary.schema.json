@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "drd06_run_id": {"minLength": 1, "type": "string"},
+    "finding_type": {"minLength": 1, "type": "string"},
+    "mutation_claim": {"enum": ["NO_MUTATION", "MUTATION_DETECTED"], "type": "string"},
+    "mutated_artifacts": {"items": {"type": "string"}, "type": "array"},
+    "qa_finding_id": {"minLength": 1, "type": "string"},
+    "read_paths": {"items": {"minLength": 1, "type": "string"}, "type": "array"},
+    "written_paths": {
+      "items": {"enum": ["READ_ONLY_QA_REPORT.md", "qa_finding_index.json"], "type": "string"},
+      "type": "array"
+    }
+  },
+  "required": [
+    "drd06_run_id", "qa_finding_id", "finding_type", "read_paths",
+    "written_paths", "mutated_artifacts", "mutation_claim"
+  ],
+  "type": "object"
+}

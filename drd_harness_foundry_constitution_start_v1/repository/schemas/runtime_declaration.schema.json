@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_inputs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "codex_duties": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "forbidden_scope": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "human_gate": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "primary_runtime": {
+      "enum": [
+        "PYTHON",
+        "CODEX",
+        "CODEX_PYTHON_LOOP",
+        "HUMAN_GATE"
+      ]
+    },
+    "python_duties": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "unit_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "validator": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "write_scope": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "unit_id",
+    "primary_runtime",
+    "python_duties",
+    "codex_duties",
+    "validator",
+    "human_gate",
+    "authority_inputs",
+    "write_scope",
+    "forbidden_scope"
+  ],
+  "type": "object"
+}

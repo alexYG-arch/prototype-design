@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acquisition_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gap_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "obligation_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "required_input": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "task_ref": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "obligation_id",
+    "required_input",
+    "task_ref",
+    "acquisition_path",
+    "gap_ref"
+  ],
+  "type": "object"
+}

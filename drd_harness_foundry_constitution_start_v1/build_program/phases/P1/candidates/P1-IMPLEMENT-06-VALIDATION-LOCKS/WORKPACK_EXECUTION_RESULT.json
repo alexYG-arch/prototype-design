@@ -1,0 +1,142 @@
+{
+  "result_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS-RESULT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+  "status": "IMPLEMENTATION_CANDIDATE_COMPLETE",
+  "spec_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "lock_id": "P1-SPEC-LOCK-001",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1"
+  },
+  "objective": "Implement validation, review promotion, lock readiness, dependency invalidation, recovery, and supersession helpers from P1-SPEC-06.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/validators/spec_validator.py",
+      "sha256": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/postflight.py",
+      "sha256": "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/__init__.py",
+      "sha256": "e93cc8a18f0386d27099d141d5c2dd4d9ceb68dabd169bc19fdce2c18bd47334"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/invalidation.py",
+      "sha256": "8effdc8ce72dda99e061f39587cfdb0b285db9e3bb471e3ae435b4351bb3b5e7"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/promotion.py",
+      "sha256": "fab0ddf9685694e7591a1daf3fe4829838f5017f98bc151b521049d2845503fe"
+    },
+    {
+      "path": "repository/schemas/locks/spec_lock.schema.json",
+      "sha256": "72887b25b63af462f14f834e58b9ac31791a4d73a6a788c60b3be7c186ed0814"
+    },
+    {
+      "path": "repository/schemas/locks/build_lock.schema.json",
+      "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+    },
+    {
+      "path": "repository/schemas/locks/review_lock.schema.json",
+      "sha256": "a0a6a69e09cd225b459b99d371bef3203a218e13db81859621e9d7f3180aa9b5"
+    },
+    {
+      "path": "repository/schemas/locks/validation_result.schema.json",
+      "sha256": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2"
+    },
+    {
+      "path": "repository/schemas/locks/validator_identity.schema.json",
+      "sha256": "b36ddbb624b84677e7f8000cf127e29149214af2b52030e5aa3ed94131900a55"
+    },
+    {
+      "path": "repository/schemas/locks/promotion_audit.schema.json",
+      "sha256": "9773b061f587b717fed25df4d2becfd07c5e34bc799dc40340bc55955934789c"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_record.schema.json",
+      "sha256": "af035fd7e7a40fe3ae132044f3d4bddcd2ec48d9c2f91559272a335bcb53d2f4"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_recovery_plan.schema.json",
+      "sha256": "b6ce8595472df5077c491fb4a06da36431ca23fc64d3ea69676979cf73a83539"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_graph.schema.json",
+      "sha256": "48a38a7b69e1f27538d613a82515ceab5fdc85dbfbd3cb0e8d5b721c89b63878"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_edge.schema.json",
+      "sha256": "4347aa1dcf6c6d97067e1504c88793f0368509732719a0f2f545702826cebd75"
+    },
+    {
+      "path": "repository/schemas/locks/partial_unaffected_claim.schema.json",
+      "sha256": "53cc7554a93b4009098fd247baacdf06a52a933d525dbfb32b88f4d5338c9609"
+    },
+    {
+      "path": "repository/schemas/locks/lock_supersession.schema.json",
+      "sha256": "c7ab2ae7aef0a8a58d007914649bc09956d6462a9759f24f82cb4f34677ec494"
+    },
+    {
+      "path": "repository/tests/validators/conftest.py",
+      "sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+    },
+    {
+      "path": "repository/tests/validators/test_spec_validator.py",
+      "sha256": "cc4e9280f96847240c93989a79f70dfdfab53560df026c44d6de534d0fb1bab6"
+    },
+    {
+      "path": "repository/tests/validators/test_postflight_scope.py",
+      "sha256": "24d87eb14d3236308f6bb9175a2d5442378d25777ecb4ef0fabe5cc8a9a53591"
+    },
+    {
+      "path": "repository/tests/orchestrator/conftest.py",
+      "sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+    },
+    {
+      "path": "repository/tests/orchestrator/test_promotion_lock_state.py",
+      "sha256": "fc55b6232730a1d596fa266af7d7bb47a42c9e27b7664ca777fc4940a0f00004"
+    },
+    {
+      "path": "repository/tests/orchestrator/test_invalidation.py",
+      "sha256": "2071fb18843218c925dc1675a6191c42b7cf7baeeb8a14c7848b51a4c7e45c27"
+    }
+  ],
+  "implemented_capabilities": [
+    "Candidate-only validation that rejects self approval, promoted state, and candidate lock claims.",
+    "Required output validation for missing, empty, malformed JSON, and marker-containing generated outputs.",
+    "Deterministic candidate subject hash computation over generated output file hashes.",
+    "Review binding validation that rejects stale subject hashes, non-approved decisions, open blockers, missing reviewers, and missing approved sections.",
+    "Validator identity checks for validator id, kind, version, code hash, schema hashes, runtime identity, and result hash.",
+    "Postflight scope validation for allowed paths and forbidden path violations.",
+    "Promotion readiness checks that require passing validation, matching human review approval, upstream bindings, clean scope, and resolved invalidation state.",
+    "SPEC_LOCK readiness checks for files, review hashes, source lock refs, validator results, validator identity hashes, root hash, and Python runtime.",
+    "BUILD_LOCK readiness checks for git commit, SPEC_LOCK hash, build files, test results, validator identity hashes, invalidation dependencies, and root hash.",
+    "Dependency graph checks with typed edges and transitive downstream invalidation discovery.",
+    "Invalidation records, recovery plans, partial unaffected claims, invalidated evidence blocking, and lock supersession acyclicity checks.",
+    "Lock, validation, promotion, invalidation, dependency graph, and supersession JSON schemas.",
+    "Validator and orchestrator tests for positive and blocking cases.",
+    "Review patch checks that validation result fields align with schema, candidate outputs cannot escape their package directory, failed validator or test evidence blocks lock readiness, readiness validates canonical lock roots, and dependency edge types are runtime-checked."
+  ],
+  "deferred_due_scope": [
+    {
+      "item": "Automatic SPEC_LOCK or BUILD_LOCK creation",
+      "reason": "P1-SPEC-06 requires lock creation to remain a separate Python-controlled authority step after approval and readiness checks."
+    },
+    {
+      "item": "End-to-end git commit and build lock capture",
+      "reason": "This workpack provides deterministic readiness checks and records; canonical lock emission belongs to an explicit lock workpack."
+    },
+    {
+      "item": "Cross-workpack dependency graph population from the full repository history",
+      "reason": "This workpack implements the typed graph model and propagation logic; repository-wide graph extraction is a later orchestration task."
+    }
+  ],
+  "not_a_build_lock": true
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_terminal": {
+      "type": "boolean"
+    },
+    "message_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "node_type": {
+      "enum": [
+        "PAGE",
+        "STATE",
+        "OVERLAY",
+        "PROCESSING",
+        "EXTERNAL_HANDOFF",
+        "SUCCESS",
+        "FAILURE",
+        "TERMINAL"
+      ]
+    },
+    "source_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "recovery_targets": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "resume_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "terminal_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trap_justification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "node_id",
+    "node_type",
+    "source_refs",
+    "is_terminal"
+  ],
+  "type": "object"
+}

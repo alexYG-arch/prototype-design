@@ -1,0 +1,23 @@
+{
+  "index_id": "P1-PHASE-IMPLEMENTATION-WORKPACK-INDEX-001",
+  "phase": "P1",
+  "status": "CANDIDATE_READY_FOR_HUMAN_PHASE_REVIEW",
+  "blocking_reason": null,
+  "global_state": "NO_IMPLEMENTATION_WORKPACK_READY",
+  "workpacks": [
+    {"id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-03-REASONING-ADOPTION", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-06-VALIDATION-LOCKS", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"},
+    {"id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS", "state": "WAITING_CANONICAL_P1_SPEC_LOCK"}
+  ],
+  "next_state_requirements": [
+    "P1 phase Human Gate review decision is recorded for exact phase assembly subject.",
+    "Canonical SPEC_LOCK is created by Python-controlled lock tooling.",
+    "Workpack generator consumes SPEC_LOCK hash and current traceability rows."
+  ]
+}

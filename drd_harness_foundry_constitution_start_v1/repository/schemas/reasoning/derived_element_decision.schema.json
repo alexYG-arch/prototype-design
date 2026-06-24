@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocked_by": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "canonical_eligibility": {
+      "enum": [
+        "ELIGIBLE",
+        "BLOCKED_PENDING_HUMAN",
+        "BLOCKED_INVALID",
+        "REJECTED"
+      ]
+    },
+    "derivation_source": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "derivation_strategy": {
+      "enum": [
+        "DEDUCTIVE_PRIMARY",
+        "INDUCTIVE_AUXILIARY"
+      ]
+    },
+    "derived_element_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "derived_surface_type": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "inference_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "obligation_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "structural_completion_review": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "derived_element_id",
+    "derived_surface_type",
+    "derivation_source",
+    "obligation_refs",
+    "inference_refs",
+    "derivation_strategy",
+    "structural_completion_review",
+    "canonical_eligibility",
+    "blocked_by"
+  ],
+  "type": "object"
+}

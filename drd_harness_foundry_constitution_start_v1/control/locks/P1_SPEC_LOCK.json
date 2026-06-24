@@ -1,0 +1,617 @@
+{
+  "lock_id": "P1-SPEC-LOCK-001",
+  "phase": "P1",
+  "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1",
+  "files": [
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-00",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-00",
+      "subject_hash": "4b0fa80ad9ea9daf577b7c8c2737f34e074c05b7425d32de62ff0cdcd1713831",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-00/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-00-REVIEW-002",
+        "sha256": "1ccc84f02c1bad52b4ea782637143fdf1427bb67465e0fcfb03e4302fbe03632"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_PHASE_PLAN.md",
+          "sha256": "d94795673a39d22a36821800a6b8c70c3125a6f0061d37f480ea114c0a5fa3cb"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_CLAUSE_OWNERSHIP.json",
+          "sha256": "fdf0523b95c40ac350a157c5a1e00fd34de48059328b953db043422a3616f813"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_SPEC_PART_MAP.json",
+          "sha256": "5dc89a6eb2669feec90d81022116c1cfd1c2e0b44843114c7ba992821e784a15"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_IMPLEMENTATION_WORKPACK_MAP.json",
+          "sha256": "97d9f0c08c7a02649a1e8d25dda58d58f4f8d4b5f138b812ea33faea881ac1bc"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_ACCEPTANCE_MATRIX.json",
+          "sha256": "6873c036bc27833c9d82f726a178ecacc24e84e4a86edac2d9b77bbafe3b7474"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/P1_ASSEMBLY_SEED.json",
+          "sha256": "7eb04fd4278a08512152d4244f8842d6f6e91aff4efa06b30aeb0ad04c5c94ef"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/CANDIDATE_MANIFEST.json",
+          "sha256": "2cc0c4f920a8b6d0a50709d127bf555f8608f56a45859ec3c9a52470525d8a45"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/PART_SELF_CHECK.md",
+          "sha256": "7c20253c38e135d0e62ef0eb36c16ad3b9dd7114357375f6c20a9915abca1635"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-00/HANDOFF.md",
+          "sha256": "cc70e44c2a6bf2789d60ef4f865b269c42072b6ce768decd9c1e33244df5dd0b"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-01-FOUNDATION",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION",
+      "subject_hash": "f48436c28d9b877ac277a6e45b45197259a1e51de113ebd57a6c3b5ecd50f429",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-002",
+        "sha256": "e07a02915ab255ab69055e21db4fb668f3ee55a8c5dba32cc699f47750b69cc3"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/ARCHITECTURE_CONTRACT.md",
+          "sha256": "9848488e66b7b190b7eaae2e5936e673009aae3a8f1130a0114ad3a991d54bc3"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/AUTHORITY_RUNTIME_CONTRACT.md",
+          "sha256": "f6dbf04a94ac031f47d9c516fd8bf1bed8bfab2a6495e1b699c4d05b0da68e65"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/DIRECTORY_CONTRACT.md",
+          "sha256": "93f5188207ad22ebcf92599c2b2a9920d63a0a0a71483bf8af75128a856c68a3"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/OUTPUT_FORMAT_CONTRACT.md",
+          "sha256": "3661a622b373a2f4c17b1e42e65e9e5f65ba002626ede6c5e87dca65efc2b173"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/FOUNDATION_RULES.md",
+          "sha256": "506bc91b6746cdd1e8bbfb3ff11d93cd4970eca00aed5c3820f247b656233d9b"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/FOUNDATION_PROJECTIONS.md",
+          "sha256": "ca2f8bdd36d6c3aa39434c8f7e049b815b98d8687607880afa868ac83a46e6b6"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/FOUNDATION_VALIDATOR_SPEC.md",
+          "sha256": "eef6d3ec99bc9ba575693b9510f1cbbf75f8a84e1cc0722e81bd05e72f2242eb"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/FOUNDATION_EXAMPLES.md",
+          "sha256": "01fa519783068d7c9437197ef0573ddf2985852bcad2ac8a61a9713de4210373"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/FOUNDATION_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "0a556c4eac643d288109b1ae445f1d0bc9bcc6172f6862bfc61c871274b411d0"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/CANDIDATE_MANIFEST.json",
+          "sha256": "e571a00b5e83f87fc33e74f437fdb91a965db1119a3ac03e506f62a538713577"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/PART_SELF_CHECK.md",
+          "sha256": "c7a8411a655049fdb94d2f9e9fa8f00df2442ec24b31d366962c98d793ee421e"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-01-FOUNDATION/HANDOFF.md",
+          "sha256": "9ddab15991c1efb67f4c5f9aa4aba339ca119e9ba6810e1054b89c9f02abb2ad"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS",
+      "subject_hash": "2012c7d6de8c59314fb06f20de9514b1d7b24db6cb7d3e545f7bd246bec00361",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-02-STAGE-ARTIFACTS-REVIEW-001",
+        "sha256": "e289e33c2fb66fcbb7e1c57de0c9d48fd125fa384df6ae2d41eaf1844cc4a797"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_CONTRACTS.md",
+          "sha256": "a98c0984e51af2288d19cba3f4026a0f1c2fb1ad9b26804bf8e47041ab0d24dd"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/ARTIFACT_CONTRACTS.md",
+          "sha256": "4c447560eee51949e4bbc0f384628809abe4cbc6fb1629e527d0579419916826"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/SOURCE_SNAPSHOT_RULES.md",
+          "sha256": "fdd4b17bc462f180002cff5e5a391435bc5f620bcf495a2931432196f21c08b1"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_DEPENDENCY_RULES.md",
+          "sha256": "2f64236eaeb2367f488126c01ada53700c2269685fad6e228b028ceba6c8f5f6"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_PROJECTIONS.md",
+          "sha256": "7cef387e03f455aac78a1a7405547aeb7d448ecfa4ba9a5ccca56bcd6d8934ae"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_VALIDATOR_SPEC.md",
+          "sha256": "cfdba401a6caa8b324342ef6f025562eb50f8228b6141e27f20c8adb654203cb"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_EXAMPLES.md",
+          "sha256": "53a428d9f9c6e82bc990d0673f731c695c962469b247f2ea864a9d0c9a420c73"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/STAGE_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "2d695ed4b28e6b4ba1d1e1ed6479c80237fcbae2a83a935c88a74833b5698677"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/CANDIDATE_MANIFEST.json",
+          "sha256": "2d81a08059d85c09ee586ad00b66942e6bd9562ac5bcf4573d2f21457e84656b"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/PART_SELF_CHECK.md",
+          "sha256": "600539b008002a0476d1b3591e724ef8f7a5db3c28fa1f09b17af220758e8bb8"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-02-STAGE-ARTIFACTS/HANDOFF.md",
+          "sha256": "8ef14a7b7db3ab20b8cda4dd8ebfbb4c1946ee82c460e3d6f549562ecd56ff5b"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-03-REASONING-ADOPTION",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION",
+      "subject_hash": "f710d1b12c28d18550249cb00986751a14e99dc1136678a65816110e8a590cfb",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-03-REASONING-ADOPTION-REVIEW-001",
+        "sha256": "327a711fa2f588332006834b26d64ab93c96d51a082821ef5210e456697d1f66"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REASONING_CONTRACT.md",
+          "sha256": "61bf013c8eeb2b81e6fe1c58399901c0f9213194f052de8f4d05b29884921f52"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/INFERENCE_RECORD_RULES.md",
+          "sha256": "0417365e43bb7f3fc6e11a6c574e1e4233f79ed9df3872cc53e054331b7965a6"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/PRD_ELEMENT_ADOPTION_RULES.md",
+          "sha256": "b5919a27bb28a097ae8384f1520732e57ec53684c84246bb08764557c964c619"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/ELEMENT_DERIVATION_RULES.md",
+          "sha256": "4de102086a1f4c31be6e6366f327efc53b132501ed0273e7d9da4e54261fbdaa"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/PRODUCT_EXPANSION_GAP_RULES.md",
+          "sha256": "a4ac57aa8a4c2d701eac903fb8739d898b1c44d21b3e118c117f176944881811"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REASONING_PROJECTIONS.md",
+          "sha256": "87692f31de44b131c10dca0eb25590130c017596da4d35ec83894decfa937c77"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REASONING_VALIDATOR_SPEC.md",
+          "sha256": "d8784b2ba11e21e197f67f17348f1bccbe8c0bad628879fb6ec0bc82b4847f92"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REASONING_EXAMPLES.md",
+          "sha256": "5006158f4be5c8bca0b1e0492e816807bd84fbd846b5d02eed5025b7fa87843d"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REASONING_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "a420fcf9cbfad5f55359310a0c1b851a6bb3a4dc196ece665e75a3a0b1370db7"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/CANDIDATE_MANIFEST.json",
+          "sha256": "f75e766654bd12192a1e3e87de09c9789656bcdf432760e3c5bd0606d2b861b2"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/PART_SELF_CHECK.md",
+          "sha256": "74cc834ef310e160ef34fc325504d3ff7b4ede9a77e25f24b595c0b0703b5334"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/HANDOFF.md",
+          "sha256": "22262ea4159d2e46c0ff999a122c6215f0c630ebd8a8a8e917f17a16510c655b"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE",
+      "subject_hash": "d1778531844f7556c7f5a9a3aa39cd77847190864fa8e2718c1d247aa688a8e0",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-04-INTERACTION-CLOSURE-REVIEW-001",
+        "sha256": "5688d8c6ac47600b133a3ca5ea3978978515dd6cb6eb202ad29651613676df1d"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_GRAPH_CONTRACT.md",
+          "sha256": "4b4d7103dcf52243f8539eeae96d1a889e8b5ef90502cc7b0637909c5fe44262"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/CLICKABLE_INVENTORY_RULES.md",
+          "sha256": "1296d88edc975216e2036ca03e842ab86e43a8f47c8da5971afc3cedcc1f7bb5"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/REACTION_RULES.md",
+          "sha256": "26187dfd3d13c753466094d38daf2bb960ebd6d19649f6a195e259a9d2595fdb"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/ASYNC_HANDOFF_EXIT_FAILURE_RULES.md",
+          "sha256": "d0d17ac3ea65ea5ec2227af7f2b6989aa183733feba63be9d435d283e98603ab"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_COPY_RULES.md",
+          "sha256": "be3d556e53ea19d8c543bf3d43fd6588b4f9582bdff7e8ae932971dfb966a6d3"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_PROJECTIONS.md",
+          "sha256": "09c3b528a20b43b3348109ecd91b347c12b34428b3e4155f44131117684326a7"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_VALIDATOR_SPEC.md",
+          "sha256": "02998a8b60266731435e8749363c737897deab7f53973d3699d7ce29e74e7eaf"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_EXAMPLES.md",
+          "sha256": "5449ebcdea96df265779f165d03aa2e28315813af56e8f2bf750be58e017f0c4"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/INTERACTION_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "ac3c6ae0ff2870e20a81602c3d36b46f6772dc0cee179b0ceb423691fd990783"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/CANDIDATE_MANIFEST.json",
+          "sha256": "b801925a919cdff547b0bea33295a99395d140f5e6889af25132eed6344213b7"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/PART_SELF_CHECK.md",
+          "sha256": "ba8f833f7795cb36eb3ab423293251e0388b3233b42f77782b34588ce11e5882"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-04-INTERACTION-CLOSURE/HANDOFF.md",
+          "sha256": "cfcd2efce8af16e2e61cb3d59ca6ac33475b717ccfcedf6c55b81cd7f9742523"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT",
+      "subject_hash": "2749676726510e6c64448df120e1be2bf33a306ae317cf3280e0ee4c57fd8472",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-05-PRESENTATION-LAYOUT-REVIEW-001",
+        "sha256": "d90cf6ae15746e38535fc49c1c6a656b98568abcfc3f1b089dc1bd3c9f84672c"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/SHARED_COMPONENT_CONTRACT.md",
+          "sha256": "4ccb33a64df4684163c028da185e782cbec836eb649c90abd302fa70e8d2b54d"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/INFORMATION_PRESENTATION_CONTRACT.md",
+          "sha256": "8a98eccc871d9e6512e7c8910169493e55cbde026d337842466ecf23cc2962dc"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/NATURAL_LANGUAGE_LAYOUT_CONTRACT.md",
+          "sha256": "eba7d054490df61a5c14942bc528c176a72f1a018c65ef77791db6d6a8802cee"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/FIGMA_COMPATIBILITY_CONTRACT.md",
+          "sha256": "deae16f8669f952900e58ccc575a58dc7d051a1ad522f7e823efd53043a44ea8"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PRESENTATION_LAYOUT_RULES.md",
+          "sha256": "bcde4dbe7ffa86f433e6b221af8469511aa2066dcab7227b8b121c3c8e911dcf"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PRESENTATION_LAYOUT_PROJECTIONS.md",
+          "sha256": "4375c926fcb6703da10e7d3436e1be1b837ee489df676011bb109bd5d44e5751"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PRESENTATION_LAYOUT_VALIDATOR_SPEC.md",
+          "sha256": "a311333b7764402268c068fcbea366df4a491ba4f7fbd7df850a64f821c2b031"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PRESENTATION_LAYOUT_EXAMPLES.md",
+          "sha256": "a66878888256e782b6e77171ca868de82ba94be9c31b7a54dd74a4152bae05ed"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PRESENTATION_LAYOUT_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "41811b80d7d9e649087fd97a1a0a23ae11355932e96f9f7cfe47625d27daa887"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/CANDIDATE_MANIFEST.json",
+          "sha256": "24826e7b2fa410d7155868cffb740d8077de3767754761dcfa1e09415ec31cd8"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/PART_SELF_CHECK.md",
+          "sha256": "1deea29db6db101ae829ac8d4efb5d3e252e79c1c8c49225ad39f9b18390b50c"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-05-PRESENTATION-LAYOUT/HANDOFF.md",
+          "sha256": "441f5ea8ba42a1d5ab44c3e5792992148aab335cbd32d0fff67fdff909497692"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-06-VALIDATION-LOCKS",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS",
+      "subject_hash": "7245968df4f63559691c06b4d4bb949a5c830a7b366276abbc3ed6171430de6e",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-06-VALIDATION-LOCKS-REVIEW-001",
+        "sha256": "6a5825486ac0144efddf248367decf3a5fb881d744968277c2146ace0565e75b"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_CONTRACT.md",
+          "sha256": "bcacb3fda73dcf46a4ccdcaf9c1b0fc60dd6b940ca9c0b250b1caa4c27b7e433"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/REVIEW_PROMOTION_CONTRACT.md",
+          "sha256": "c8543169bee5aad705e55c10e0c678af451d963c171d5fc3c6a07159bb444801"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/LOCK_STATE_CONTRACT.md",
+          "sha256": "5cea515c270166bd649abdfddba415d3b1d898572a628fec2e395517885d7349"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/INVALIDATION_CONTRACT.md",
+          "sha256": "cf8d8e6f5d15f6f52e5646c05f0eeec7d97cbb13c3d55354250d2c85d81c6263"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_LOCK_RULES.md",
+          "sha256": "fe114bd1d8b03c7dd37e1f05d5db64d95dfc7da138ff1d011d2e12870f883330"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_LOCK_PROJECTIONS.md",
+          "sha256": "b9a143daac2224ec3f118518e1bd11717b1a48b16110a848779c70f80a469697"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_LOCK_VALIDATOR_SPEC.md",
+          "sha256": "1819af93033d8ecb60b0e9343971bde3c79e94d92552024198ea65a95f7ba0bf"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_LOCK_EXAMPLES.md",
+          "sha256": "406677e5a06e89234e2fae389156cb6444043223db42829becd2a30173aeaf37"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/VALIDATION_LOCK_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "72a1232a40682bf5d753299b57a2ebb6f39c92be68af451ec46b29f9f369b73e"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/CANDIDATE_MANIFEST.json",
+          "sha256": "1883e646ef0aaf318fea211ff95f27f3e2ec9a5896ba264ece5fa7018397a087"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/PART_SELF_CHECK.md",
+          "sha256": "5a62a7430a12e533b5f6ab2e73cc20d3e0273b0de8bcb57653b5864f6932cffe"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/HANDOFF.md",
+          "sha256": "0494023fb5be512d1b346a9c55d002774da74ee832ed6530ed4c93f55de77af3"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION",
+      "subject_hash": "dbe63902a17cabe7938080658b5edb5a4c118f9410aa2ec851ab6f05aff47f0f",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-07-COMPILER-CONSERVATION-REVIEW-001",
+        "sha256": "754f65b9eb35f250e812d984db5a87e59109499d5115d9ffac3ff4c92beb5523"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_CONSERVATION_CONTRACT.md",
+          "sha256": "8677746b2a1da9c03798525dcb1ac192554b6abde2ef7d0821baf62c5a6f023b"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/FINAL_DRD_ASSEMBLY_RULES.md",
+          "sha256": "907a52da5dd9ba1f0ddf2fb0ccfe5eba50eba30524b9237225a1ed08a2bfdb97"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_INPUT_BOUNDARY_RULES.md",
+          "sha256": "daa1e629fb99c01849b67f0c84bbb11bbdd9a38466bbe89dd9b84444f24cfec1"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_PROJECTIONS.md",
+          "sha256": "6ce9a0be4776d3161ad74642b1a938bf9e8723e978a0278fac73abcdcb83935c"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_VALIDATOR_SPEC.md",
+          "sha256": "1bf04c4ece6210d5664df6113d055865fbf472005e4b7fa7a54135e819df0d32"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_EXAMPLES.md",
+          "sha256": "5c4e47eedfa47d2582228afe0c0588aaaad3aad3f3e9b0d0d140b3427cb6fc89"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/COMPILER_IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "5dfc207749955ce0814fb107072474caeebc59d506f943b60a615e49b04d8c13"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/CANDIDATE_MANIFEST.json",
+          "sha256": "83f022aca0d828f8adec0f74a93bc5851a2cff08e83ae98b9c92561238a351f3"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/PART_SELF_CHECK.md",
+          "sha256": "ab2d681d96be5ef3ec733b1e84e5c70b89d0b220c3091025e209bded6961be77"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/HANDOFF.md",
+          "sha256": "6241e701d70fa2b57357776adbf06d6bcd434f812b0ddba0e518f353c8bdc3c1"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "candidate_path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "subject_hash": "22bbbe2ae6e378d64675cc193d3ffb19ca37e7e5d4b7ae89762cd0a85b5d2d9a",
+      "review_decision": {
+        "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/REVIEW_DECISION.json",
+        "decision_id": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY-REVIEW-001",
+        "sha256": "1e8e0fd02b2b6b499494934e5f90f8abdeaec7e824424da218103d6241ea2524"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/SPEC_TO_CODE_TRACEABILITY_CONTRACT.md",
+          "sha256": "765f4aa4f6481642f33e7382057f74173c12c5e9a635c92ee84978c3236def2b"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/SKILL_VERSION_BINDING_CONTRACT.md",
+          "sha256": "d640dc9529cf5891faeab90b1e5c4e6a6bb1942a162a702f153371ff020751ee"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/WORKPACK_GENERATION_CONTRACT.md",
+          "sha256": "e87ef4dce9ab212c160388fa435d981bf0895f34a2395bb01564b79b69a2ffae"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/SPEC_BEFORE_CODE_RULES.md",
+          "sha256": "92a0c16db3347aa32d1c2c16847593c7291631f03b863576f053600c5490ea9b"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/TRACEABILITY_PROJECTIONS.md",
+          "sha256": "7aa25ceb73bb8f481d14e999dd460c95c3cb42d900379d5e85e907ee4b2e9f25"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/SKILLS_WORKPACK_VALIDATOR_SPEC.md",
+          "sha256": "3a23d60a3a8345194e564cd773da7739883e97bbf90b82866b543980b0aedbab"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/SKILLS_WORKPACK_EXAMPLES.md",
+          "sha256": "3d694e4521daff4ece7b1307abe6e8dae74680e14ca4e5ae482df535161c4acd"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/IMPLEMENTATION_BLUEPRINT.md",
+          "sha256": "2d0c38ac09308f3b74fc94ededbe09b098c37c0a515d401ca7e78336677228ed"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/CODE_TARGET_MAP.json",
+          "sha256": "785fb5a124d35ca5d194a2666d6c8e27be237b3e46798b15749243e0a46455cd"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/TEST_OBLIGATION_MATRIX.json",
+          "sha256": "9fab4a173de2f904205908ad83dc8cfa1a1e777e6974a82415fe6061e33ffe6a"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/IMPLEMENTATION_WORKPACK_INDEX.json",
+          "sha256": "e673119308aeb07a9deb990f5bfe0a24bb191496823143b4f3c3deffb9e1e85a"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/CANDIDATE_MANIFEST.json",
+          "sha256": "6c4bee70dd844eda0faf3dd7a5420b91a41fc59a11c2ea024c7ed059e772ab61"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/PART_SELF_CHECK.md",
+          "sha256": "778344aaa5e92a350a53deeecbbbd0adab2e477033d37036cef6057dd3ee9bd6"
+        },
+        {
+          "path": "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/HANDOFF.md",
+          "sha256": "a6a708aedaec0b615c8489be682f1d30bb02a41b634775248318ed8d269691fc"
+        }
+      ]
+    }
+  ],
+  "review_decision_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590",
+  "review_decision_file_root_sha256": "2f98caaeab5db11686e58747ed53624f6173798c27b2ef154b590731e8932509",
+  "source_candidate": {
+    "candidate_path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS",
+    "subject_hash": "da2a6acd1c9be5dbfc6a5426a1b467142e6e86b34b15cd042e74934d6cafe4cb",
+    "review_decision_path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/REVIEW_DECISION.json",
+    "review_decision_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590",
+    "generated_outputs": [
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/P1_SPEC_LOCK_CANDIDATE.json",
+        "sha256": "3befd3f90a2b92ef0c80aff83c2e5876d9c43ad9199536e2dcfbe8419c754765"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/IMPLEMENTATION_BLUEPRINT.md",
+        "sha256": "74848105420d12fd051a6ad5f88b1725b54122ba64f153cc6351d3ae2c80a887"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/CODE_TARGET_MAP.json",
+        "sha256": "844ca12fefa340073d64dfbc033e7532db5723041990f2c4cb319932f9d9f944"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/TEST_OBLIGATION_MATRIX.json",
+        "sha256": "f2050baf9000ce516243364a85132d6432072c52fa7521f07ff3520cf2121203"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/IMPLEMENTATION_WORKPACK_INDEX.json",
+        "sha256": "1a05390672242dd8565aa6299ceb7491b3a5b259d4f288078df8aa9a563d83ca"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/P1_SPEC_VALIDATION_REPORT.json",
+        "sha256": "da72735a1c3b9228c5ab70221555e486a9a3114fb24eb7ac6aedb312edc57346"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/P1_ERROR_CODE_CATALOG.json",
+        "sha256": "bdde2b516bfcecea69f83aa588229e3715eb18fd8e756b87e44a32790e69d166"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/P1_EXAMPLE_FIXTURE_INDEX.json",
+        "sha256": "01e2785a9318eb1993b6e179bb7f0d379357b92d3155bc9e60463e60fc6943d6"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/CANDIDATE_MANIFEST.json",
+        "sha256": "22e52c73e586b21a74060caa233d15c84ff89964b32694a8f3fa233cabbac4ed"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/PART_SELF_CHECK.md",
+        "sha256": "d53bb85a770ddd544f6cb1b0b875f63fd1bfefc76cc46af17e3348484bf67e4b"
+      },
+      {
+        "path": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/HANDOFF.md",
+        "sha256": "3a9cfa8479ad6a592510baa17aa5c80a3de78eb23eba5537cdf6b9f3060e9932"
+      }
+    ]
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "input_bundle": {
+    "path": "build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "fe902709fb0f16618c4d366a7320a57e7c68fde4a183f0ceb081890539416033"
+  },
+  "created_by_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "created_by_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+  },
+  "root_algorithm": "sha256(join_lines(spec_part + NUL + subject_hash))",
+  "review_file_root_algorithm": "sha256(join_lines(spec_part + NUL + review_decision_file_sha256))",
+  "validation": {
+    "candidate_subject_bindings": "PASS",
+    "phase_review_binding": "PASS",
+    "schema_minimum": "PASS"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocking_findings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {"minLength": 1, "type": "string"},
+          "message": {"minLength": 1, "type": "string"},
+          "subject_id": {"minLength": 1, "type": "string"}
+        },
+        "required": ["code", "subject_id", "message"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "readiness_state": {
+      "enum": [
+        "WAITING_UPSTREAM_LOCK",
+        "READY",
+        "REVIEW_REQUIRED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "report_id": {"minLength": 1, "type": "string"},
+    "workpack_id": {"minLength": 1, "type": "string"}
+  },
+  "required": ["report_id", "workpack_id", "readiness_state", "blocking_findings"],
+  "type": "object"
+}

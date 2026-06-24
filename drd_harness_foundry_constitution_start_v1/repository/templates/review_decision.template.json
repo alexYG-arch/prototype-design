@@ -1,0 +1,14 @@
+{
+  "review_id": "<review_id>",
+  "workpack_id": "<workpack_id>",
+  "subject_hash": "<sha256_subject_hash>",
+  "decision": "<APPROVED_OR_CHANGES_REQUESTED>",
+  "reviewer": "<human_gate_reviewer>",
+  "approved_scope": [
+    "<path_or_glob>"
+  ],
+  "open_blockers": [],
+  "notes": [
+    "<review_note>"
+  ]
+}

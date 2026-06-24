@@ -20,6 +20,8 @@ Approval applies only to the exact Candidate subject hash reviewed by Human Gate
 
 Validation must be performed by Python validators or externally reviewable deterministic checks independent of the generation action.
 
+Validator identity must include code hash, schema hash, runtime identity, and version. Validation evidence without validator identity cannot justify approval, promotion, lock, or unaffected claims.
+
 ### VLOCK-RULE-005 Validator Cannot Repair
 
 Validators must not change semantic artifacts. They emit failures, findings, and repair requirements.
@@ -60,15 +62,23 @@ Lock root hashes must be computed from deterministic ordered file path and sha25
 
 Lock inputs must list every file, review decision, validator result, source lock, and upstream lock needed to justify the lock.
 
+Lock inputs must include validator identity hashes for every validator result used as evidence.
+
 ### VLOCK-RULE-014 Supersede Do Not Mutate
 
 Existing lock artifacts must not be edited in place; new locks must supersede old locks explicitly.
+
+### VLOCK-RULE-014A Supersession Graph Is Acyclic
+
+Lock supersession records must form an acyclic graph. Direct or transitive self-supersession is invalid.
 
 ## Invalidation Rules
 
 ### VLOCK-RULE-015 Dependency Graph Required
 
 Invalidation must use an explicit dependency graph mapping upstream hashes to downstream subjects.
+
+Every dependency edge must declare an edge type: `SOURCE_DEPENDENCY`, `REVIEW_DEPENDENCY`, `SPEC_LOCK_DEPENDENCY`, `BUILD_LOCK_DEPENDENCY`, `VALIDATOR_DEPENDENCY`, `TEST_EVIDENCE_DEPENDENCY`, `WORKPACK_DEPENDENCY`, `SKILL_DEPENDENCY`, or `RELEASE_DEPENDENCY`.
 
 ### VLOCK-RULE-016 Transitive Propagation
 
@@ -82,3 +92,8 @@ Invalidated tests, locks, Candidates, skills, workpacks, or artifacts cannot be 
 
 Every invalidated subject must record whether it requires revalidation, repair, review, relock, rebuild, retest, or discard.
 
+It must also record recovery owner and required command or workflow. Unowned invalidation cannot be marked ready.
+
+### VLOCK-RULE-019 Structured Partial Unaffected Claim
+
+If only part of a subject is claimed unaffected, the claim must list affected paths, unaffected paths, reason, validator result reference, review requirement, and dependency expiry.

@@ -1,0 +1,56 @@
+{
+  "report_id": "P1-SPEC-LOCK-VALIDATION-REPORT-001",
+  "phase": "P1",
+  "status": "PASS",
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "schema_minimum_valid": true,
+    "file_entry_count": 9,
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1",
+    "lock_sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+  },
+  "checks": [
+    {
+      "check_id": "P1LOCK-RESULT-001",
+      "name": "Canonical lock file exists",
+      "status": "PASS",
+      "details": "control/locks/P1_SPEC_LOCK.json exists."
+    },
+    {
+      "check_id": "P1LOCK-RESULT-002",
+      "name": "Lock identifier and phase",
+      "status": "PASS",
+      "details": "lock_id is P1-SPEC-LOCK-001 and phase is P1."
+    },
+    {
+      "check_id": "P1LOCK-RESULT-003",
+      "name": "Approved spec root binding",
+      "status": "PASS",
+      "details": "root_sha256 equals the approved P1 spec input root."
+    },
+    {
+      "check_id": "P1LOCK-RESULT-004",
+      "name": "Phase review decision binding",
+      "status": "PASS",
+      "details": "review_decision_hash equals the phase-level review decision file hash."
+    },
+    {
+      "check_id": "P1LOCK-RESULT-005",
+      "name": "Tool identity binding",
+      "status": "PASS",
+      "details": "created_by_tool.sha256 equals the current tooling/create_spec_lock.py hash."
+    },
+    {
+      "check_id": "P1LOCK-RESULT-006",
+      "name": "Schema minimum validation",
+      "status": "PASS",
+      "details": "The generated lock contains lock_id, phase, root_sha256, files, and review_decision_hash."
+    }
+  ],
+  "blocking_findings": [],
+  "remaining_followups": [
+    "Promotion module is still absent and should be handled before automated promotion workflows.",
+    "Implementation workpacks need an explicit next-stage authorization policy."
+  ]
+}

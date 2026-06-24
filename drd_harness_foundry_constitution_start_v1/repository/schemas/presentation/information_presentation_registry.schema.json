@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "decisions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "information_lifecycle": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "message_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "presentation_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "presentation_mode": {
+            "enum": [
+              "INLINE_MESSAGE",
+              "BANNER",
+              "TOAST",
+              "MODAL_DIALOG",
+              "EMPTY_STATE",
+              "TABLE_OR_LIST_STATE",
+              "DETAIL_PANEL",
+              "HELP_TEXT",
+              "STATUS_BADGE",
+              "ERROR_SUMMARY"
+            ]
+          },
+          "reason_for_difference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "recoverability": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scope": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "semantic_intent": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sustained_processing_required": {
+            "type": "boolean"
+          },
+          "trace_refs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "trigger_condition": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "user_decision_need": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "presentation_id",
+          "semantic_intent",
+          "trigger_condition",
+          "scope",
+          "information_lifecycle",
+          "presentation_mode",
+          "recoverability",
+          "trace_refs"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "registry_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "registry_id",
+    "decisions"
+  ],
+  "type": "object"
+}

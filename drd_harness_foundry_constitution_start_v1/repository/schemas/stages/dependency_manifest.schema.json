@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "input_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "input_hashes": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "output_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "output_hashes": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "review_decision_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "run_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_prd_snapshot_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "stage_id": {
+      "enum": [
+        "DRD-00",
+        "DRD-01",
+        "DRD-02",
+        "DRD-03",
+        "DRD-03B",
+        "DRD-04",
+        "DRD-05",
+        "DRD-06"
+      ]
+    },
+    "validator_result_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "stage_id",
+    "run_id",
+    "input_artifacts",
+    "input_hashes",
+    "source_prd_snapshot_hash",
+    "output_artifacts",
+    "output_hashes",
+    "validator_result_hash"
+  ],
+  "type": "object"
+}

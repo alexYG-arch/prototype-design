@@ -1,0 +1,103 @@
+{
+  "result_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE-RESULT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+  "status": "IMPLEMENTATION_CANDIDATE_COMPLETE",
+  "spec_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "lock_id": "P1-SPEC-LOCK-001",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1"
+  },
+  "objective": "Implement Source PRD snapshot, stage contract models, stage dependency manifests, and hash lineage validation.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/kernel/hashline.py",
+      "sha256": "6638c001c20fc7ea4ad4a501b140ee1f41158cc7d33162b8066478df5d8cc44e"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/__init__.py",
+      "sha256": "fb88fb0a2066dabb5a7f68874fbc3b057d1229780a4093bb472e9cee6e7b97dd"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/contracts.py",
+      "sha256": "180f8301032e1fb1b363d0b6ff1c5d9379b1ece392872bc0ce761fa3d3a6ce87"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "5e4f1c13ac567f36a8e516f9fc57840a1495f1613f3dee76651c8abdce0bd0b5"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/stage_order.py",
+      "sha256": "860174ca5eb68b57589773c63971377c9e509aee80b3e1a1ff120d04e686ef0b"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/review_binding.py",
+      "sha256": "979899a92d65eb541d051fca4f49163c73d6701002546b20d7085038efa896aa"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/read_only_qa.py",
+      "sha256": "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837"
+    },
+    {
+      "path": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "sha256": "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96"
+    },
+    {
+      "path": "repository/schemas/stages/stage_manifest.schema.json",
+      "sha256": "c874b11692908bb3892226f0452c655167c178220b1729d44706c5578f87288b"
+    },
+    {
+      "path": "repository/schemas/stages/dependency_manifest.schema.json",
+      "sha256": "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746"
+    },
+    {
+      "path": "repository/tests/stages/conftest.py",
+      "sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+    },
+    {
+      "path": "repository/tests/stages/test_source_snapshot.py",
+      "sha256": "344086eb6674cfa7f7b9d11d8bda1104d57c05d9574c7d60915070ffe199cd78"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_lineage.py",
+      "sha256": "8d359a2ad2a374a1909539aaa1c8d3fb4cd7d13f279c13e2996d7c1f896db39b"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_order.py",
+      "sha256": "5c867e165c19892e1de7128de2452cb3a9e6a47d0aa766531672cc455cc8b753"
+    },
+    {
+      "path": "repository/tests/stages/test_review_binding.py",
+      "sha256": "441fb760bf8cfb69b5e15f6d7bb089ad9f382c0a755b7359dc0baf3fceabd79e"
+    },
+    {
+      "path": "repository/tests/stages/test_read_only_qa_boundary.py",
+      "sha256": "d3d6414703a2fbd60bd4539c72f436cabb358b42b62c5ba5f279d5bd011d39d5"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_schemas.py",
+      "sha256": "c6fcdbc66db3f15872c39ac58e54c5850d833960d2ad58c4785a047631072f12"
+    }
+  ],
+  "implemented_capabilities": [
+    "Immutable Source PRD snapshot creation that refuses overwrite and records declared normalization.",
+    "Source snapshot manifest model and schema.",
+    "Stage contract and input bundle models for canonical DRD stages.",
+    "Approved-upstream-only guard for downstream authority inputs.",
+    "Required upstream stage checking.",
+    "Explicit numeric stage ordering with DRD-03B between DRD-03 and DRD-04.",
+    "Hash binding root and drift detection utilities.",
+    "Review decision subject-hash binding helper.",
+    "DRD-06 read-only QA output boundary helper.",
+    "Stage manifest and dependency manifest schemas.",
+    "Stage tests for source permanence, upstream approval, order, review binding, read-only QA, schemas, and hash drift."
+  ],
+  "deferred_due_scope": [
+    {
+      "item": "repository/src/drd_harness/validators/stage_lineage.py",
+      "reason": "P1-IMPLEMENT-02 allowed_write_paths do not include repository/src/drd_harness/validators/**."
+    }
+  ],
+  "not_a_build_lock": true
+}

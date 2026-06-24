@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "duplicate_trigger_strategy": {
+      "enum": [
+        "DISABLE_DUPLICATE_TRIGGER",
+        "IGNORE_WITH_VISIBLE_STATE",
+        "QUEUE_DUPLICATE_TRIGGER",
+        "IDEMPOTENT_RETRY",
+        "CANCEL_AND_RESTART"
+      ]
+    },
+    "processing_node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reaction_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "timeout_behavior": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "reaction_id",
+    "processing_node_id",
+    "duplicate_trigger_strategy",
+    "timeout_behavior"
+  ],
+  "type": "object"
+}

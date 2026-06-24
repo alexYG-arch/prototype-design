@@ -1,0 +1,66 @@
+{
+  "map_id": "P1-PHASE-CODE-TARGET-MAP-001",
+  "phase": "P1",
+  "status": "CANDIDATE_READY_FOR_HUMAN_PHASE_REVIEW",
+  "source_maps": [
+    "build_program/phases/P1/candidates/P1-SPEC-00/P1_IMPLEMENTATION_WORKPACK_MAP.json",
+    "build_program/phases/P1/candidates/P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY/CODE_TARGET_MAP.json"
+  ],
+  "readiness_note": "This map summarizes implementation target families only. Detailed one-duty traceability rows are owned by P1-SPEC-08. No implementation target is READY until canonical P1 SPEC_LOCK exists.",
+  "workpack_target_families": [
+    {
+      "workpack": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "required_specs": ["P1-SPEC-01-FOUNDATION", "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"],
+      "target_families": ["kernel", "contracts", "artifact manifest schema"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "required_specs": ["P1-SPEC-02-STAGE-ARTIFACTS"],
+      "target_families": ["stages", "source snapshot", "hashline", "stage schemas"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "required_specs": ["P1-SPEC-03-REASONING-ADOPTION"],
+      "target_families": ["reasoning rules", "PRD adoption validators", "reasoning schemas"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "required_specs": ["P1-SPEC-04-INTERACTION-CLOSURE"],
+      "target_families": ["interaction rules", "interaction closure validator", "interaction schemas"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "required_specs": ["P1-SPEC-05-PRESENTATION-LAYOUT"],
+      "target_families": ["presentation rules", "layout rules", "presentation validators", "layout validators"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "required_specs": ["P1-SPEC-06-VALIDATION-LOCKS", "P1-SPEC-02-STAGE-ARTIFACTS"],
+      "target_families": ["spec validators", "postflight", "phase gate", "promotion", "invalidation", "lock schemas"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "required_specs": ["P1-SPEC-07-COMPILER-CONSERVATION", "P1-SPEC-02-STAGE-ARTIFACTS"],
+      "target_families": ["final DRD compiler", "compiler conservation", "compiler schemas"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "required_specs": ["P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY", "P1-SPEC-06-VALIDATION-LOCKS"],
+      "target_families": ["workpack orchestrator", "traceability orchestrator", "workpack scope validator", "traceability validator"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    },
+    {
+      "workpack": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "required_specs": ["P1-SPEC-01-FOUNDATION", "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"],
+      "target_families": ["thin CLI", "governed templates", "architecture docs", "integration tests"],
+      "readiness": "BLOCKED_WAITING_P1_SPEC_LOCK"
+    }
+  ]
+}

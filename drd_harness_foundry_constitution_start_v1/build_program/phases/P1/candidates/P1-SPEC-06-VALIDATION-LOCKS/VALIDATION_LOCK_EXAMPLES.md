@@ -68,6 +68,9 @@ Reason:
     "repository/tests/layout/test_layout_completeness.py"
   ],
   "required_action": "revalidate_rebuild_retest",
+  "recovery_owner": "P1-IMPLEMENT-05 owner",
+  "required_command": "python -m pytest repository/tests/layout",
+  "due_before_consumption": true,
   "blocking_state": true,
   "created_by_runtime": "python"
 }
@@ -76,6 +79,70 @@ Reason:
 Why this passes:
 
 - It names the changed dependency, old and new hashes, affected subjects, action, and blocking state.
+- It names recovery owner and executable command.
+
+## Positive Example: Validator Identity
+
+```json
+{
+  "validator_id": "spec_validator",
+  "validator_kind": "python_module",
+  "validator_version": "1.0.0",
+  "validator_code_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "schema_hashes": {
+    "review_decision.schema.json": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "runtime_identity": "python-3.12",
+  "result_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
+```
+
+Why this passes:
+
+- The result can be reproduced against a concrete validator and schema identity.
+
+## Positive Example: Typed Dependency Edge
+
+```json
+{
+  "edge_id": "DEP-P1-0001",
+  "edge_type": "SPEC_LOCK_DEPENDENCY",
+  "source_subject": "P1-SPEC-05-PRESENTATION-LAYOUT/SPEC_LOCK",
+  "target_subject": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+  "upstream_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "downstream_binding_field": "spec_lock_hash",
+  "invalidation_behavior": "invalidate_target_and_tests"
+}
+```
+
+Why this passes:
+
+- The graph explains why the downstream subject depends on the upstream hash.
+
+## Positive Example: Partial Unaffected Claim
+
+```json
+{
+  "claim_id": "UNAFFECTED-P1-0001",
+  "changed_dependency": "P1-SPEC-05 layout carrier profile",
+  "affected_paths": [
+    "repository/tests/layout/test_carrier_adaptation_profile.py"
+  ],
+  "unaffected_paths": [
+    "repository/tests/presentation/test_shared_component_registry.py"
+  ],
+  "reason": "The change only affects carrier adaptation schemas; shared component registry schema and fixtures do not depend on carrier profiles.",
+  "validator_result_ref": "validation_result:shared_component_registry:2026-06-24",
+  "review_required": false,
+  "expires_on_dependency_change": [
+    "shared_component_registry.schema.json"
+  ]
+}
+```
+
+Why this passes:
+
+- The unaffected claim is structured and evidence-bound.
 
 ## Negative Example: Lock Missing Review
 
@@ -111,3 +178,37 @@ Reason:
 
 - Invalidated evidence cannot justify current build or lock state.
 
+## Negative Example: Supersession Cycle
+
+```json
+{
+  "lock_id": "SPEC-LOCK-P1-003",
+  "supersedes": ["SPEC-LOCK-P1-002"],
+  "known_superseded_by": ["SPEC-LOCK-P1-004"],
+  "cycle_path": ["SPEC-LOCK-P1-003", "SPEC-LOCK-P1-002", "SPEC-LOCK-P1-004", "SPEC-LOCK-P1-003"]
+}
+```
+
+Expected result: fail.
+
+Reason:
+
+- Lock supersession must be acyclic.
+
+## Negative Example: Unowned Invalidation
+
+```json
+{
+  "invalidation_id": "INV-P1-0002",
+  "cause": "VALIDATOR_VERSION_CHANGED",
+  "affected_subjects": ["BUILD-LOCK-P1-001"],
+  "required_action": "retest",
+  "blocking_state": false
+}
+```
+
+Expected result: fail.
+
+Reason:
+
+- The invalidation has no recovery owner and no required command or workflow.

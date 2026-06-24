@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "allowed_modes": {
+      "items": {
+        "enum": [
+          "INLINE_MESSAGE",
+          "BANNER",
+          "TOAST",
+          "MODAL_DIALOG",
+          "EMPTY_STATE",
+          "TABLE_OR_LIST_STATE",
+          "DETAIL_PANEL",
+          "HELP_TEXT",
+          "STATUS_BADGE",
+          "ERROR_SUMMARY"
+        ]
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "exception_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "information_lifecycle": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "scope": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "semantic_intent": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "trigger_condition": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "exception_id",
+    "semantic_intent",
+    "trigger_condition",
+    "scope",
+    "information_lifecycle",
+    "allowed_modes",
+    "reason",
+    "trace_refs"
+  ],
+  "type": "object"
+}

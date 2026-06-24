@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "async_applicability": {
+      "enum": [
+        "IMMEDIATE",
+        "NON_IMMEDIATE",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "cancel_applicability": {
+      "enum": [
+        "CANCELLABLE",
+        "NOT_CANCELLABLE",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "cancel_behavior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clickable_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "exception_behavior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "failure_applicability": {
+      "enum": [
+        "CAN_FAIL",
+        "CANNOT_FAIL",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "failure_behavior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "handoff_applicability": {
+      "enum": [
+        "INTERNAL_ONLY",
+        "EXTERNAL_HANDOFF",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "message_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "no_return_terminal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preconditions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "reaction_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reaction_type": {
+      "enum": [
+        "NAVIGATE",
+        "OPEN_OVERLAY",
+        "CLOSE_OVERLAY",
+        "SUBMIT",
+        "START_ASYNC",
+        "SELECT",
+        "TOGGLE",
+        "RETRY",
+        "CANCEL",
+        "EXIT",
+        "HANDOFF",
+        "TERMINATE"
+      ]
+    },
+    "repeat_trigger_strategy": {
+      "enum": [
+        "DISABLE_DUPLICATE_TRIGGER",
+        "IGNORE_WITH_VISIBLE_STATE",
+        "QUEUE_DUPLICATE_TRIGGER",
+        "IDEMPOTENT_RETRY",
+        "CANCEL_AND_RESTART",
+        null
+      ]
+    },
+    "source_node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "success_behavior": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "reaction_id",
+    "clickable_id",
+    "source_node_id",
+    "reaction_type",
+    "target_ref",
+    "preconditions",
+    "failure_applicability",
+    "cancel_applicability",
+    "async_applicability",
+    "handoff_applicability",
+    "success_behavior",
+    "failure_behavior",
+    "cancel_behavior",
+    "exception_behavior",
+    "message_refs",
+    "trace_refs"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,2518 @@
+{
+  "matrix_id": "P1-IMPLEMENTATION-BUILD-READINESS-AUDIT-BUILD-LOCK-INPUT-MATRIX-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENTATION-BUILD-READINESS-AUDIT",
+  "status": "EVIDENCE_PASS_LOCK_BLOCKED",
+  "not_a_build_lock": true,
+  "build_lock_authority": "NOT_CREATED_REQUIRES_EXPLICIT_AUTHORIZATION",
+  "required_field_matrix": [
+    {
+      "field": "lock_id",
+      "status": "PENDING_AUTHORIZATION",
+      "evidence": "Canonical BUILD_LOCK was not requested or created."
+    },
+    {
+      "field": "phase",
+      "status": "PASS",
+      "value": "P1"
+    },
+    {
+      "field": "git_commit",
+      "status": "BLOCKED",
+      "current_head": "2dfa344ad0231dab71111d7f4b8a2f736eee1fe8",
+      "commit_contains_current_outputs": false,
+      "evidence": "Worktree has uncommitted and untracked outputs."
+    },
+    {
+      "field": "spec_lock_hash",
+      "status": "PASS",
+      "value": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+      "path": "control/locks/P1_SPEC_LOCK.json"
+    },
+    {
+      "field": "files",
+      "status": "PASS_PRECOMMIT_REPOSITORY_HASHES_CAPTURED",
+      "count": 161,
+      "evidence_ref": "repository_build_output_hashes",
+      "candidate_evidence_ref": "candidate_evidence_output_hashes"
+    },
+    {
+      "field": "test_results",
+      "status": "PASS_LOCK_FORMAT_READY",
+      "count": 1,
+      "evidence_ref": "lock_format_test_results"
+    },
+    {
+      "field": "validator_identity_hashes",
+      "status": "PASS_LOCK_FORMAT_READY",
+      "count": 5,
+      "evidence_ref": "validator_identity_candidates"
+    },
+    {
+      "field": "root_sha256",
+      "status": "NOT_COMPUTED_NO_BUILD_LOCK_CREATED",
+      "evidence": "Root hash belongs to the future canonical BUILD_LOCK content."
+    },
+    {
+      "field": "invalidates_on",
+      "status": "PASS_PRELIMINARY_DEPENDENCIES_CAPTURED",
+      "count": 10,
+      "evidence_ref": "invalidation_dependencies"
+    }
+  ],
+  "binding_count_by_scope": {
+    "implementation_approved_bindings": 9,
+    "all_approved_bindings": 21,
+    "binding_failures": 0
+  },
+  "lock_format_test_results": [
+    {
+      "command": "python3 -m pytest repository/tests/kernel repository/tests/stages repository/tests/reasoning repository/tests/interaction repository/tests/presentation repository/tests/layout repository/tests/validators repository/tests/orchestrator repository/tests/compiler repository/tests/workpacks repository/tests/integration -q",
+      "exit_code": 0,
+      "summary": "216 passed",
+      "status": "PASS",
+      "result_hash": "774ed0ff7fd26d8682a40c5469c53a699c8386de2981b122b892661f84e32873"
+    }
+  ],
+  "validator_identity_candidates": [
+    {
+      "validator_id": "spec_validator",
+      "path": "repository/src/drd_harness/validators/spec_validator.py",
+      "sha256": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
+      "runtime_identity": "python3",
+      "identity_hash_basis": "canonical_json_without_identity_hash",
+      "identity_hash": "3b18102b4b843284cfcf911fc0295e901632f41f8be6efd4f879bc350e201d2d"
+    },
+    {
+      "validator_id": "phase_gate",
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c",
+      "runtime_identity": "python3",
+      "identity_hash_basis": "canonical_json_without_identity_hash",
+      "identity_hash": "9105a59c71f3bb463e0f17591735b827ce90e765bf1dd926e04eecd83e3ae179"
+    },
+    {
+      "validator_id": "postflight",
+      "path": "repository/src/drd_harness/validators/postflight.py",
+      "sha256": "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b",
+      "runtime_identity": "python3",
+      "identity_hash_basis": "canonical_json_without_identity_hash",
+      "identity_hash": "9c573bf51d62a6a1bf70546138b2cf1f6dd71b71046bcada812c249097aa6b4c"
+    },
+    {
+      "validator_id": "build_lock_schema",
+      "path": "repository/schemas/locks/build_lock.schema.json",
+      "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505",
+      "runtime_identity": "python3",
+      "identity_hash_basis": "canonical_json_without_identity_hash",
+      "identity_hash": "69b863ac5709b963455b7a0c8fddc45c0c3aea6dad74ffdd1d5de08fa85ca316"
+    },
+    {
+      "validator_id": "review_lock_schema",
+      "path": "repository/schemas/locks/review_lock.schema.json",
+      "sha256": "a0a6a69e09cd225b459b99d371bef3203a218e13db81859621e9d7f3180aa9b5",
+      "runtime_identity": "python3",
+      "identity_hash_basis": "canonical_json_without_identity_hash",
+      "identity_hash": "e890007c7cfc1c06850960c515d918296b45772608ae4c039b8e7088f2884d9f"
+    }
+  ],
+  "invalidation_dependencies": [
+    {
+      "dependency_id": "P1_SPEC_LOCK",
+      "edge_type": "SPEC_LOCK_DEPENDENCY",
+      "hash": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "c482ccdaf09e8de1515cffcf8c61f35a7c252679b9ddcc6166fba3a3b5c800a0",
+      "review_decision_sha256": "e257ed141cb113b9d07e09d654f7394126006459ae3870549baa5ebe1eae90fb"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "294a3ad1dfdab3e6063f5eb525fdd42f97bd1ffcb34ec3e0565816ed70994066",
+      "review_decision_sha256": "3926f1a2a91af42b62427214f869134aa3935f5328fa88a4f9b5c6219d7a69ea"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "e9a1e75c90aa56117b5e80edb255dd936cc902be771fbadd8474c3de0e11562b",
+      "review_decision_sha256": "a686824cb04fa9ad3f06ae3ac1fc81fe82687565887a70cf3a41c2f60672a21c"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "7103c4506e0456c3765afbbe0660bad61ce6ecd6888379139d6444cd39f53a71",
+      "review_decision_sha256": "d5c8441fcd6cdb117d8c885734275fbc6294215068fd1db773cc15bc02c23153"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "20ba48d0c8b3aebda76430be0fbed293de146c42bf37aa3f7d65f5b8eec95fed",
+      "review_decision_sha256": "189b6f7e5bf9a323f84adbeb403eb52eb9183a7434617edff1ebc3a1db622bd8"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "d3b22af3ac6a5cc9dab51258350cd858eacc0b1c0135950b751fe9889d205995",
+      "review_decision_sha256": "2e92296ae6f21a2da6514d03f84a2374b69037eff0519e055e3f42485393e5e2"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "229b39b1bbd36dd9fda0d0fe831161287037583eac3674e21887e4d568456705",
+      "review_decision_sha256": "d7cdd88091b8673e3d3f86da565d9968a744c79131d89f7e9464662274877618"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "7449e7fddcbec846ebeaf55549d3c505f78f4b0d17d7683647750deddc689d80",
+      "review_decision_sha256": "a5f6ad249d655c66a4e03bc36aac8cee6179f1a91546dd0ce3a615df6c18cc98"
+    },
+    {
+      "dependency_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "edge_type": "REVIEW_DEPENDENCY",
+      "subject_hash": "2680e2fbcfca13abd2a9fb2398b1e9bc0a013d6d2d7a6dc128bd957ffe216c05",
+      "review_decision_sha256": "fc0734232acc917e4b01a1ecf1fcb0d545ff251006f95ae374718026180d4cbd"
+    }
+  ],
+  "implementation_candidate_output_hashes": [
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "d23eee66506326f325035e3ef68a56699b3ad1e9f6d5ee1a73d78119864fd47a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/SCOPE_REPORT.json",
+      "sha256": "68a879b35c256757e3df4b6874e28b50306f08e425178b5c7d83c54fdad8a89a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/TEST_REPORT.json",
+      "sha256": "c43770e26a4530a1e4d7611c59fbb42444fbde963f6130faaf477e91867b8305"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/CANDIDATE_MANIFEST.json",
+      "sha256": "f605ae4aaf6075ec9d8cab591d9a73a8a828fe23c4961267e8c3c3c7a8b7c81f"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/PART_SELF_CHECK.md",
+      "sha256": "155265fef248a0a151238798b03f243c06f520f9396d7c33b869ef097b628e05"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/HANDOFF.md",
+      "sha256": "10b3acd798287f9d15cd1fef4785fca4975b736125a4639d6d974f3e8d33f2ce"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "59c33d0a630d61f701ca922d10c048cb08d5e2241e7bc63a0e34ff9200b3b20c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/SCOPE_REPORT.json",
+      "sha256": "dc78a8fc593931042a672a453943674b3c3294169b551bef538ae40346ca8240"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/TEST_REPORT.json",
+      "sha256": "6b2ecde4b5a6e9c81a9622775835d5ca59e89d13a42ad67c55f9c83715b11c83"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/CANDIDATE_MANIFEST.json",
+      "sha256": "6ab1515556d9044468337f9feea1825ad93b3b6a4f783796158677725485ab5b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/PART_SELF_CHECK.md",
+      "sha256": "7c42b3e93ff5afc45d041a5857cdcb1649715a0e80629649b140b2a64cbfaa38"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/HANDOFF.md",
+      "sha256": "30f46448f4f6baf0b140f6afbe64b8b63aca89054b2b7498ff39a40e5c7cb629"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "69c9ab84cc09f49fce313cbe581ed23238540ed943ad84a4ec53748e6566670e"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/SCOPE_REPORT.json",
+      "sha256": "11b6ee1cf87787e971683b670c65fe8c33f4ae320ddd7f9f3562e115627b1976"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/TEST_REPORT.json",
+      "sha256": "3b9f61ae78f6bd4d1bf6f3081d7cf287754f0da64fc549901cd9c93a453dc0e7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/CANDIDATE_MANIFEST.json",
+      "sha256": "d8a19e27147b837a413fdfd132a57868b2d694b0928e62f89975109b062aef0c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/PART_SELF_CHECK.md",
+      "sha256": "f535eaa4cdceb37d5b0c783f3b3c0949b16b8055e19fe8c75fad8b75c13328c3"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/HANDOFF.md",
+      "sha256": "cffe1e1f78137d1d97c70917059e517950d42aa075d7b898672fb70602046fe7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "b2eb2e7fb1a89ccd407ab15846c4ecd5fdc75f72b29d8573c9eb97be4ca8d3d9"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/SCOPE_REPORT.json",
+      "sha256": "252175928473cc17eb6a0a503554d572d496bdb143c9f92466009af5882bab50"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/TEST_REPORT.json",
+      "sha256": "1e932a7059ae199ef140ecaf71001ca16783c4822add327b6270a84c9433a5ba"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/CANDIDATE_MANIFEST.json",
+      "sha256": "49631ffbae22a449fc2a2eaf6c4d1bc9a3ff4c82a66cd479ebf28b69ef606624"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/PART_SELF_CHECK.md",
+      "sha256": "a8ef33c4dd59467f7b461b2aac6948f917be7dcb04fceee7c503d0a278d927fe"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/HANDOFF.md",
+      "sha256": "3f96d082984d3db9b052e0cbcdc703505f9650aa24139bba2aacfc5661f0c9ed"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "68e1f73bdcd5b9e41a49ddaa84e92e6d2c5c5888446c48f27a8d09a71e5a629b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/SCOPE_REPORT.json",
+      "sha256": "45744251d889224864bf7e1a4a9509d52c09f6a66d01d1ba7b0685a65ea4b5ae"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/TEST_REPORT.json",
+      "sha256": "266e7fde6829f4d6768361cbebb7a10a42a04da926f5ae92977a723ec704f811"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/CANDIDATE_MANIFEST.json",
+      "sha256": "d3e8f6cc2c390a5356f7c571f5068edb02e28ac7dbdf94a67122f566c906ac12"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/PART_SELF_CHECK.md",
+      "sha256": "2a82ae2adf556e6bac4080ae6addea90a22a13182fb945b78ee6cab71e3406bc"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/HANDOFF.md",
+      "sha256": "5664ef5208b8549a1990520293df3dd4e501a178876f3f90f986efe38f7b851c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "9f9d5d38bc4e9617ad674b33deaa3924ab22576fb8833b55e7347cf6d4b5c1e1"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/SCOPE_REPORT.json",
+      "sha256": "f566f88e12399d70819695258bf1d543fd43c480eedd1e00f7d084f3d6400431"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/TEST_REPORT.json",
+      "sha256": "2b34432b5da1408f80f50e93bc9fedc769d8a1969b1373544bacdc427023f697"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/CANDIDATE_MANIFEST.json",
+      "sha256": "acd0b16fdc5636f1a32fd38db312ec1a168b50e0fc77ec17efa5249c66df8101"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/PART_SELF_CHECK.md",
+      "sha256": "1a86e223251dad71fa635626c7335ee626df8c6fe1140e1219cded507732c47a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/HANDOFF.md",
+      "sha256": "ab446cab1a338a4fa728fa6d3f55e94c2eacfee6ebcadfddd5329e3b957e03d7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "92353e391c2595be100481de64781780db3f16e3c81279e7d7dca463cb1b2756"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/SCOPE_REPORT.json",
+      "sha256": "c06dd77cd9d4d1e19f6d907117f8ea87d0905719443cee87e6bf6a43305192cf"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/TEST_REPORT.json",
+      "sha256": "1fd502d3ef85ec02b07e351197938a336f59ce8f751dea73d98c52ce05c32e56"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/CANDIDATE_MANIFEST.json",
+      "sha256": "668b5f88602f527e7edf114b08aa522738f49e8e08b7b6c651cfa30c68b37d5d"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/PART_SELF_CHECK.md",
+      "sha256": "7449c306688bf89f1bad90e2c404dee049ef51f41bb40604a889298321ad2bc6"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/HANDOFF.md",
+      "sha256": "05c1ff96d8d8e16bff815483ce3213a8d8c83fba3deaa1e76aefe483da9f4eb0"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "f1b6b0397da0433a3331aae5c799b6d37ec3543a90794368f34def544b2cfafa"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/SCOPE_REPORT.json",
+      "sha256": "e746512a61dca5e449d56d2814af2cf5d7528d31aeb887d66b2e8cfbb8798b0b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/TEST_REPORT.json",
+      "sha256": "dbaf57c65f98a30787f5aaef7d0e3377e2230c3c3cc85fc5471925c68aeb91d4"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/CANDIDATE_MANIFEST.json",
+      "sha256": "b09acfd6cac0f6a35bdf2b43c5bd304c208e998e5ab5c3419c04ebcba09a450c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/PART_SELF_CHECK.md",
+      "sha256": "a7e42d0e92e58d6e195224ac80e54e44f56301a2a4dd923f009c1b76c901ba48"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/HANDOFF.md",
+      "sha256": "61c9996fa9e225f86bd061a5b3a6d0da62c539038d8cafa276e13a9afcf9ba0d"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "54d7cfd43aa5f0a8706a09ba72cd16e3d7eec559ef41e380b5202aff716043c8"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/SCOPE_REPORT.json",
+      "sha256": "22c1c2444b9182c506fec4a0076d63e80fa48fb94a085f46977f8f5fa2074778"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/TEST_REPORT.json",
+      "sha256": "246d6e93e720e77196d65ee3bba504da3255766be7f7faa1e1d061df1d52eb61"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/CANDIDATE_MANIFEST.json",
+      "sha256": "76f5ca7f250dbaf44fa1ed333afe280ad8b0c99b351e7fcecd60df71b519e3f0"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/PART_SELF_CHECK.md",
+      "sha256": "44f8d251c8d6fb9aaccc5747438a9d7a92c3b80c73b56fa4d2fe1374df1fae2c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/HANDOFF.md",
+      "sha256": "9565df63d1c3704d3625751cdf9f882b98f300a17597fd776fb9569992b3df56"
+    }
+  ],
+  "current_change_inventory_summary": {
+    "tracked_or_untracked_change_count": 91,
+    "current_head": "2dfa344ad0231dab71111d7f4b8a2f736eee1fe8"
+  },
+  "external_precondition_repairs": [
+    {
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/REVIEW_DECISION.json",
+      "reason": "Added approved_sections so strict review binding validation can verify the approved scope. Subject hash unchanged because REVIEW_DECISION is not part of reviewed generated outputs.",
+      "current_sha256": "a5f6ad249d655c66a4e03bc36aac8cee6179f1a91546dd0ce3a615df6c18cc98"
+    }
+  ],
+  "next_blocking_condition": "A git commit containing the approved implementation outputs is required before BUILD_LOCK creation can be valid.",
+  "repository_build_output_hashes": [
+    {
+      "path": "repository/docs/architecture/thin_cli_templates.md",
+      "current_sha256": "e7973e542c9a1c83b8afacdbe1b7e663bc6494b0951f522bed01ef87ca705a89",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "e7973e542c9a1c83b8afacdbe1b7e663bc6494b0951f522bed01ef87ca705a89"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/artifact_manifest.schema.json",
+      "current_sha256": "879a31daf306e4f445b9c3191231c6a70b079f780c24201648e212626b67cd70",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "879a31daf306e4f445b9c3191231c6a70b079f780c24201648e212626b67cd70"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json",
+      "current_sha256": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+      "current_sha256": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+      "current_sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+      "current_sha256": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+      "current_sha256": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_manifest.schema.json",
+      "current_sha256": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+      "current_sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_toc.schema.json",
+      "current_sha256": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+      "current_sha256": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/async_behavior.schema.json",
+      "current_sha256": "d0b9e3c72989613020a350a5e3e20f2b1892118a7470da177500b3ac4d3f0d42",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "d0b9e3c72989613020a350a5e3e20f2b1892118a7470da177500b3ac4d3f0d42"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/clickable_inventory.schema.json",
+      "current_sha256": "c5142adfb2ff3f5460053ca0da4a8700bd4441a03b9d31ebd9f97397f785606e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "c5142adfb2ff3f5460053ca0da4a8700bd4441a03b9d31ebd9f97397f785606e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/failure_recovery.schema.json",
+      "current_sha256": "29b6847125e85b45fcb39159bc66c39236ba61c4e3ed4f43e9fa904469528cb4",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "29b6847125e85b45fcb39159bc66c39236ba61c4e3ed4f43e9fa904469528cb4"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/handoff_behavior.schema.json",
+      "current_sha256": "501837a91b08fd7dca35156596b465bb8a31f1107c5a2087505150c5526087da",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "501837a91b08fd7dca35156596b465bb8a31f1107c5a2087505150c5526087da"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_edge.schema.json",
+      "current_sha256": "53682c74c4f610785722c585af4a0d65f71147fc4018d5d7197cd8b0896d5555",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "53682c74c4f610785722c585af4a0d65f71147fc4018d5d7197cd8b0896d5555"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_graph.schema.json",
+      "current_sha256": "303b988ef19bf7a707955b4d6449dd9bb5eddb00618ba6e4cda63bf8c9dba712",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "303b988ef19bf7a707955b4d6449dd9bb5eddb00618ba6e4cda63bf8c9dba712"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_message.schema.json",
+      "current_sha256": "a60f978bb0e0f8ebc7633118581004adbc1336bc9d26a92bce46de6b531f7460",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "a60f978bb0e0f8ebc7633118581004adbc1336bc9d26a92bce46de6b531f7460"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_node.schema.json",
+      "current_sha256": "06e088646760c7cfef1b96137ca72a2dc9ee8941c3b0c3737c930aa238a71dde",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "06e088646760c7cfef1b96137ca72a2dc9ee8941c3b0c3737c930aa238a71dde"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/message_coverage_index.schema.json",
+      "current_sha256": "db90472abf1c5c412a7a79452c61151b73a83220e1dfa99bdb87450093e2fdbb",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "db90472abf1c5c412a7a79452c61151b73a83220e1dfa99bdb87450093e2fdbb"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/overlay_closure.schema.json",
+      "current_sha256": "63a2a53efdd936e6f5aa9dd5cad33998734b518b8887c7dd28907a246dd5ad05",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "63a2a53efdd936e6f5aa9dd5cad33998734b518b8887c7dd28907a246dd5ad05"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_applicability.schema.json",
+      "current_sha256": "b31e897ae073975aa84227a2f9e2284ae9cfcfcfb4437e252de541be830bdcce",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "b31e897ae073975aa84227a2f9e2284ae9cfcfcfb4437e252de541be830bdcce"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_record.schema.json",
+      "current_sha256": "189202ed1f57c0bb2d90d88f7e77e768f3051fa33ec6038b42c78b1088318a51",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "189202ed1f57c0bb2d90d88f7e77e768f3051fa33ec6038b42c78b1088318a51"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+      "current_sha256": "3357cebb6c57b4af57f1d2b5e090b3aa94ed19a575a11f9fb27231b0e913a779",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "3357cebb6c57b4af57f1d2b5e090b3aa94ed19a575a11f9fb27231b0e913a779"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/containment_hierarchy.schema.json",
+      "current_sha256": "98cfe72f29f3aa21873162d51730208a0faba12c9593b83c247d659472759ae7",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "98cfe72f29f3aa21873162d51730208a0faba12c9593b83c247d659472759ae7"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/content_growth_rule.schema.json",
+      "current_sha256": "79f57ce83dc131f82b2cd85c5ffb0ef4c0b9bc46d28dc5bc49d003b8191801bd",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "79f57ce83dc131f82b2cd85c5ffb0ef4c0b9bc46d28dc5bc49d003b8191801bd"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/figma_reconstruction_metadata.schema.json",
+      "current_sha256": "4e77c3b3401601f486b57b2b4e39f5d70656cbca6dde95e4462e7b4c5ab9e4a2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "4e77c3b3401601f486b57b2b4e39f5d70656cbca6dde95e4462e7b4c5ab9e4a2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/information_completeness_rule.schema.json",
+      "current_sha256": "8030efdad6f255924ba7c2b3597065e54fde04f13deaabb793ce5402e90aec5b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "8030efdad6f255924ba7c2b3597065e54fde04f13deaabb793ce5402e90aec5b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/layout_composition_index.schema.json",
+      "current_sha256": "e0a4c5978fc0742a4f24244ef8dacd768e37d311d5f29733ea162bebeff0275f",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "e0a4c5978fc0742a4f24244ef8dacd768e37d311d5f29733ea162bebeff0275f"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/natural_language_layout.schema.json",
+      "current_sha256": "200db205fbf9d26d177d1508f3e48e5d223a266fc5b30e95a98c43f60bbb9808",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "200db205fbf9d26d177d1508f3e48e5d223a266fc5b30e95a98c43f60bbb9808"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/state_placement_index.schema.json",
+      "current_sha256": "1d54dc6754204a5c2c5c3b62a7e0485ff58d730840d3753e50a10585166d6b1b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "1d54dc6754204a5c2c5c3b62a7e0485ff58d730840d3753e50a10585166d6b1b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/layout/z_axis_layering.schema.json",
+      "current_sha256": "35c7b9c5bf111c0431624690463f9c76993706bc3dc0b21ba8d05bc652ba4730",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "35c7b9c5bf111c0431624690463f9c76993706bc3dc0b21ba8d05bc652ba4730"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/build_lock.schema.json",
+      "current_sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_edge.schema.json",
+      "current_sha256": "4347aa1dcf6c6d97067e1504c88793f0368509732719a0f2f545702826cebd75",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "4347aa1dcf6c6d97067e1504c88793f0368509732719a0f2f545702826cebd75"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_graph.schema.json",
+      "current_sha256": "48a38a7b69e1f27538d613a82515ceab5fdc85dbfbd3cb0e8d5b721c89b63878",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "48a38a7b69e1f27538d613a82515ceab5fdc85dbfbd3cb0e8d5b721c89b63878"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_record.schema.json",
+      "current_sha256": "af035fd7e7a40fe3ae132044f3d4bddcd2ec48d9c2f91559272a335bcb53d2f4",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "af035fd7e7a40fe3ae132044f3d4bddcd2ec48d9c2f91559272a335bcb53d2f4"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_recovery_plan.schema.json",
+      "current_sha256": "b6ce8595472df5077c491fb4a06da36431ca23fc64d3ea69676979cf73a83539",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "b6ce8595472df5077c491fb4a06da36431ca23fc64d3ea69676979cf73a83539"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/lock_supersession.schema.json",
+      "current_sha256": "c7ab2ae7aef0a8a58d007914649bc09956d6462a9759f24f82cb4f34677ec494",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "c7ab2ae7aef0a8a58d007914649bc09956d6462a9759f24f82cb4f34677ec494"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/partial_unaffected_claim.schema.json",
+      "current_sha256": "53cc7554a93b4009098fd247baacdf06a52a933d525dbfb32b88f4d5338c9609",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "53cc7554a93b4009098fd247baacdf06a52a933d525dbfb32b88f4d5338c9609"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/promotion_audit.schema.json",
+      "current_sha256": "9773b061f587b717fed25df4d2becfd07c5e34bc799dc40340bc55955934789c",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "9773b061f587b717fed25df4d2becfd07c5e34bc799dc40340bc55955934789c"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/review_lock.schema.json",
+      "current_sha256": "a0a6a69e09cd225b459b99d371bef3203a218e13db81859621e9d7f3180aa9b5",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "a0a6a69e09cd225b459b99d371bef3203a218e13db81859621e9d7f3180aa9b5"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/spec_lock.schema.json",
+      "current_sha256": "72887b25b63af462f14f834e58b9ac31791a4d73a6a788c60b3be7c186ed0814",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "72887b25b63af462f14f834e58b9ac31791a4d73a6a788c60b3be7c186ed0814"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/validation_result.schema.json",
+      "current_sha256": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/locks/validator_identity.schema.json",
+      "current_sha256": "b36ddbb624b84677e7f8000cf127e29149214af2b52030e5aa3ed94131900a55",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "b36ddbb624b84677e7f8000cf127e29149214af2b52030e5aa3ed94131900a55"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/presentation/information_presentation_registry.schema.json",
+      "current_sha256": "65d2320b6095ec214cad160b7bba521ed1d8bc39a88b2aa0bbed246d523b3149",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "65d2320b6095ec214cad160b7bba521ed1d8bc39a88b2aa0bbed246d523b3149"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/presentation/presentation_consistency_exception.schema.json",
+      "current_sha256": "418012bacb3492952edaa92474475fd2df10508926fbbf86ea6c6b16e8184f9e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "418012bacb3492952edaa92474475fd2df10508926fbbf86ea6c6b16e8184f9e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/presentation/shared_component_registry.schema.json",
+      "current_sha256": "ba27b28986941dcaa4263de2831049c82b9811e9146d38cd517104a3ab3a1b73",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "ba27b28986941dcaa4263de2831049c82b9811e9146d38cd517104a3ab3a1b73"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/derived_element_decision.schema.json",
+      "current_sha256": "aa67d7409247b77d7b5c0a06629957a2b825cf27180e226aa09aac5bbea7a381",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "aa67d7409247b77d7b5c0a06629957a2b825cf27180e226aa09aac5bbea7a381"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/inference_record.schema.json",
+      "current_sha256": "85dc112ac5bd9106b16281f054620f507de3142837895a8ec6a81abd073ef769",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "85dc112ac5bd9106b16281f054620f507de3142837895a8ec6a81abd073ef769"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/input_obligation.schema.json",
+      "current_sha256": "54c9dd31e4a027b2d38ee1855bc362d76a13198b78338a21a6cbe61240304bda",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "54c9dd31e4a027b2d38ee1855bc362d76a13198b78338a21a6cbe61240304bda"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/prd_element_decision.schema.json",
+      "current_sha256": "e2d90e34b247fdbaaa6c1d115b4cd19864410f472124e95c321b3e93bdaa82f3",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "e2d90e34b247fdbaaa6c1d115b4cd19864410f472124e95c321b3e93bdaa82f3"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+      "current_sha256": "805573a899156b0885885cae1a526f3ce4c2f9d448f660ced61cfbf574abf44c",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "805573a899156b0885885cae1a526f3ce4c2f9d448f660ced61cfbf574abf44c"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/product_expansion_gap.schema.json",
+      "current_sha256": "cad82ebb6a4958ee9330c26ab8b5cf0dd2a4fd9bbd20f5a2dd8eda827d3ac84e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "cad82ebb6a4958ee9330c26ab8b5cf0dd2a4fd9bbd20f5a2dd8eda827d3ac84e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/reasoning/structural_completion_review.schema.json",
+      "current_sha256": "350d688a883ab05c31b624d46d11c82ff79df4865c5c7aa4fb02daa9c74271df",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "350d688a883ab05c31b624d46d11c82ff79df4865c5c7aa4fb02daa9c74271df"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/runtime_declaration.schema.json",
+      "current_sha256": "f6c55be67ecfea69db963cd795da539449569f59d92bee6192ca3b852a8bb771",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "f6c55be67ecfea69db963cd795da539449569f59d92bee6192ca3b852a8bb771"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/stages/dependency_manifest.schema.json",
+      "current_sha256": "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "current_sha256": "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/stages/stage_manifest.schema.json",
+      "current_sha256": "c874b11692908bb3892226f0452c655167c178220b1729d44706c5578f87288b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "c874b11692908bb3892226f0452c655167c178220b1729d44706c5578f87288b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/code_target_map.schema.json",
+      "current_sha256": "9b15e6e1bc505f011fcc8b63fb5373974317534ba27b683825d6ab92daebbcef",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "9b15e6e1bc505f011fcc8b63fb5373974317534ba27b683825d6ab92daebbcef"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/implementation_workpack.schema.json",
+      "current_sha256": "2e566af91c6f8f02c9c64a3d9993a81ca13dfe35948b766ae7e295ccab76bdd4",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "2e566af91c6f8f02c9c64a3d9993a81ca13dfe35948b766ae7e295ccab76bdd4"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+      "current_sha256": "d5342206187295d0247738c11a7b886ea89567f42a9900d245a452eae560a235",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "d5342206187295d0247738c11a7b886ea89567f42a9900d245a452eae560a235"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+      "current_sha256": "16a64717e9b9702afcb1c2e4232e1a0d226daaaffe32521b4ac696e7a1bbffa4",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "16a64717e9b9702afcb1c2e4232e1a0d226daaaffe32521b4ac696e7a1bbffa4"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+      "current_sha256": "751b727efe46803373ccef7c70889e258a0135b7f2dd431f3f8248de4e3f88b3",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "751b727efe46803373ccef7c70889e258a0135b7f2dd431f3f8248de4e3f88b3"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/traceability_exception.schema.json",
+      "current_sha256": "1abb61a8e8791721c8b9b6b48bd1b2e1608770c894ac91b0aa6aa0208a9f98f2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "1abb61a8e8791721c8b9b6b48bd1b2e1608770c894ac91b0aa6aa0208a9f98f2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/schemas/workpacks/workpack_readiness_report.schema.json",
+      "current_sha256": "b2ff63f9e09b79042dd8012792c428c3c0e1d8780082115616366a970ac805ac",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "b2ff63f9e09b79042dd8012792c428c3c0e1d8780082115616366a970ac805ac"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/__init__.py",
+      "current_sha256": "39d17e40b8f9c70517050d8144bc0dc40fc7fb972589393a1d6fbb3367f761f4",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "39d17e40b8f9c70517050d8144bc0dc40fc7fb972589393a1d6fbb3367f761f4"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/main.py",
+      "current_sha256": "a4d3889021dd8bea1a7d18705274d5172ce990a7beeb107d52823657c3b7bf7e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "a4d3889021dd8bea1a7d18705274d5172ce990a7beeb107d52823657c3b7bf7e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/__init__.py",
+      "current_sha256": "f70ceb5c123bbec37d31266fa0cf64543228c6732706dc8afaf9607ffde923ab",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "f70ceb5c123bbec37d31266fa0cf64543228c6732706dc8afaf9607ffde923ab"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/conservation.py",
+      "current_sha256": "8074fe2dafd7e155a9f37e0da40548b85652e34f7ff7583f8e62ef7fe7f16d76",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "8074fe2dafd7e155a9f37e0da40548b85652e34f7ff7583f8e62ef7fe7f16d76"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/final_drd.py",
+      "current_sha256": "f0649541eb9e1fbc023f755ff3e0a858f247e06a3efd636dec75ef907183fc52",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "f0649541eb9e1fbc023f755ff3e0a858f247e06a3efd636dec75ef907183fc52"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/__init__.py",
+      "current_sha256": "8e8c130c70d85f1666cc8dfc62f9034dd8f7cf9910a4702f342759405629d0a0",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "8e8c130c70d85f1666cc8dfc62f9034dd8f7cf9910a4702f342759405629d0a0"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/artifacts.py",
+      "current_sha256": "d8289ea881c9bf3d036c48551d8768e95961db1110166681c71f7b56e9f3f349",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "d8289ea881c9bf3d036c48551d8768e95961db1110166681c71f7b56e9f3f349"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/authority.py",
+      "current_sha256": "a1a0e27c2b385d114b6671669cfdbd5c871e8ece6dfe6cab88580ee379ae5ad3",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "a1a0e27c2b385d114b6671669cfdbd5c871e8ece6dfe6cab88580ee379ae5ad3"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/hashline.py",
+      "current_sha256": "6638c001c20fc7ea4ad4a501b140ee1f41158cc7d33162b8066478df5d8cc44e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "6638c001c20fc7ea4ad4a501b140ee1f41158cc7d33162b8066478df5d8cc44e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "current_sha256": "12f5527c13cfa6bf951e9f669ac19663a4ae1447fac173d117bf3a079d94e825",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "12f5527c13cfa6bf951e9f669ac19663a4ae1447fac173d117bf3a079d94e825",
+        "aafbb9226958fe321378bea965fc9a23a45f1def33d947c75bd0fd8ca3c32242"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/promoted_authority.py",
+      "current_sha256": "c2a58409cbfaafffe424f868e9c7c700d0b70fed0cfc95ef6c83a62d85058ee6",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "c2a58409cbfaafffe424f868e9c7c700d0b70fed0cfc95ef6c83a62d85058ee6"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/runtime.py",
+      "current_sha256": "ddfcf3123cd16695cb2c9e1790f1b75fcab7b4de05090bb5c05c5b7fc90074d5",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "ddfcf3123cd16695cb2c9e1790f1b75fcab7b4de05090bb5c05c5b7fc90074d5"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/__init__.py",
+      "current_sha256": "e93cc8a18f0386d27099d141d5c2dd4d9ceb68dabd169bc19fdce2c18bd47334",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "e93cc8a18f0386d27099d141d5c2dd4d9ceb68dabd169bc19fdce2c18bd47334"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/invalidation.py",
+      "current_sha256": "8effdc8ce72dda99e061f39587cfdb0b285db9e3bb471e3ae435b4351bb3b5e7",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "8effdc8ce72dda99e061f39587cfdb0b285db9e3bb471e3ae435b4351bb3b5e7"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/promotion.py",
+      "current_sha256": "fab0ddf9685694e7591a1daf3fe4829838f5017f98bc151b521049d2845503fe",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "fab0ddf9685694e7591a1daf3fe4829838f5017f98bc151b521049d2845503fe"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/traceability.py",
+      "current_sha256": "6acd61b5cbbc8cc431b05f401f52800191b0298d870d7fd56b3a58e141fb3ece",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "6acd61b5cbbc8cc431b05f401f52800191b0298d870d7fd56b3a58e141fb3ece"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/workpacks.py",
+      "current_sha256": "86f9bbcaf53a0ad07f117ead08571461a6836efd1e87d9106fb28d8ee8ec6034",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "86f9bbcaf53a0ad07f117ead08571461a6836efd1e87d9106fb28d8ee8ec6034"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/__init__.py",
+      "current_sha256": "5df52d779a3017e1ac2d78bfa3a48164ba97ebc6531d207aa22681124ed60c30",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "5df52d779a3017e1ac2d78bfa3a48164ba97ebc6531d207aa22681124ed60c30"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/interaction.py",
+      "current_sha256": "7bdcf2a51b9acc57535023c07e7d52d08b4dbc307de6247e4f32486a2c4ddb53",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "7bdcf2a51b9acc57535023c07e7d52d08b4dbc307de6247e4f32486a2c4ddb53"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/layout.py",
+      "current_sha256": "73134d144c00eaab3799f832f9c2bb922be57059ffcdeb0727385ff5bd13c157",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "73134d144c00eaab3799f832f9c2bb922be57059ffcdeb0727385ff5bd13c157"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/prd_adoption.py",
+      "current_sha256": "e81f0233d904b68664b4db5c58f0b1023cf559d36ab2fa34d7f9c9bbb9b14200",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "e81f0233d904b68664b4db5c58f0b1023cf559d36ab2fa34d7f9c9bbb9b14200"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/presentation.py",
+      "current_sha256": "5bff002a9e8dbde3e11666c9c93c8d0aed0e3318fca367d04069616459a1c2bc",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "5bff002a9e8dbde3e11666c9c93c8d0aed0e3318fca367d04069616459a1c2bc"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/reasoning.py",
+      "current_sha256": "c3f3768be58fe017d0d6ab7bba5b1135b12b6514080f2e4c0a225bddab80a0d9",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "c3f3768be58fe017d0d6ab7bba5b1135b12b6514080f2e4c0a225bddab80a0d9"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/__init__.py",
+      "current_sha256": "fb88fb0a2066dabb5a7f68874fbc3b057d1229780a4093bb472e9cee6e7b97dd",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "fb88fb0a2066dabb5a7f68874fbc3b057d1229780a4093bb472e9cee6e7b97dd"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/contracts.py",
+      "current_sha256": "180f8301032e1fb1b363d0b6ff1c5d9379b1ece392872bc0ce761fa3d3a6ce87",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "180f8301032e1fb1b363d0b6ff1c5d9379b1ece392872bc0ce761fa3d3a6ce87"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/read_only_qa.py",
+      "current_sha256": "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/review_binding.py",
+      "current_sha256": "979899a92d65eb541d051fca4f49163c73d6701002546b20d7085038efa896aa",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "979899a92d65eb541d051fca4f49163c73d6701002546b20d7085038efa896aa"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "current_sha256": "5e4f1c13ac567f36a8e516f9fc57840a1495f1613f3dee76651c8abdce0bd0b5",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "5e4f1c13ac567f36a8e516f9fc57840a1495f1613f3dee76651c8abdce0bd0b5"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/stage_order.py",
+      "current_sha256": "860174ca5eb68b57589773c63971377c9e509aee80b3e1a1ff120d04e686ef0b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "860174ca5eb68b57589773c63971377c9e509aee80b3e1a1ff120d04e686ef0b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/__init__.py",
+      "current_sha256": "b34f66575c065612d64019e92450db7cc359557276cc5a66dd143295df082060",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "b34f66575c065612d64019e92450db7cc359557276cc5a66dd143295df082060"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "current_sha256": "4e17041cdde495c37696cb2e7704fdbb8841aee96f7977cc44c6e1990a7cebe0",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "4e17041cdde495c37696cb2e7704fdbb8841aee96f7977cc44c6e1990a7cebe0"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/interaction_closure.py",
+      "current_sha256": "69cc1f332aae4772584d84fb6787478f183108ebbf3c03bcc2719eb81a59144b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "69cc1f332aae4772584d84fb6787478f183108ebbf3c03bcc2719eb81a59144b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/layout_completeness.py",
+      "current_sha256": "c838776a34db4553691e2775a1a39516c16f227e96eed49976e25afee711697d",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "c838776a34db4553691e2775a1a39516c16f227e96eed49976e25afee711697d"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "current_sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/postflight.py",
+      "current_sha256": "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "current_sha256": "185e6748a528caee30fb9023d0e00733b59b395b2cbca43dfe69e9b977155c65",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "185e6748a528caee30fb9023d0e00733b59b395b2cbca43dfe69e9b977155c65"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "current_sha256": "5922a3a25054bca87f87a80472ef263fa8b106b32fe838b356a7b2b10905c216",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "5922a3a25054bca87f87a80472ef263fa8b106b32fe838b356a7b2b10905c216"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/reasoning.py",
+      "current_sha256": "30a1821bdac017f046d88396c3836f356aba95a71c82dfcf5b95bfb092542b99",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "30a1821bdac017f046d88396c3836f356aba95a71c82dfcf5b95bfb092542b99"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/spec_validator.py",
+      "current_sha256": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/traceability.py",
+      "current_sha256": "b65602720e2d3263322aa8ff80671619d53041485e1105c7c08b7bcd07f1cb81",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "b65602720e2d3263322aa8ff80671619d53041485e1105c7c08b7bcd07f1cb81"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/workpack_scope.py",
+      "current_sha256": "40d85a107c6bd350d01d14c775cd61b5fe9987447e1c143823235b28a29a913a",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "40d85a107c6bd350d01d14c775cd61b5fe9987447e1c143823235b28a29a913a"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/templates/review_decision.template.json",
+      "current_sha256": "c4b5ab7c2e0ecbc039d3a1accc6e62f6b55b0d3131138a62e96a9a32894af66c",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "c4b5ab7c2e0ecbc039d3a1accc6e62f6b55b0d3131138a62e96a9a32894af66c"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/templates/stage_manifest.template.json",
+      "current_sha256": "ad8d0decdb25a2e86cd969b8cdd17c6d9a3d599f931a152b8179a8a42832fc7a",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "ad8d0decdb25a2e86cd969b8cdd17c6d9a3d599f931a152b8179a8a42832fc7a"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/compiler/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/compiler/test_compiler_conservation.py",
+      "current_sha256": "c34a23b5d5f270a6f8e9d3a97ec8e46b093a45d532eecc0655b9ac343a9e59fe",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "c34a23b5d5f270a6f8e9d3a97ec8e46b093a45d532eecc0655b9ac343a9e59fe"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/compiler/test_final_drd_compilation.py",
+      "current_sha256": "4b714cf5bafcf38062950bdaa58232262be97ce23cc11bc068343d94bd8c3eb2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-07-COMPILER-CONSERVATION"
+      ],
+      "declared_sha256_values": [
+        "4b714cf5bafcf38062950bdaa58232262be97ce23cc11bc068343d94bd8c3eb2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/integration/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/integration/test_cli_smoke.py",
+      "current_sha256": "141f0ecbab924d7d572d0bd12971e0fb1e0c12579964ec957ca1a341a35f4497",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "141f0ecbab924d7d572d0bd12971e0fb1e0c12579964ec957ca1a341a35f4497"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/integration/test_cli_thinness.py",
+      "current_sha256": "cf977c5623047861ec73af3ae11cf8ce85ca3facd05848f2bec723497c8f6762",
+      "workpack_ids": [
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "cf977c5623047861ec73af3ae11cf8ce85ca3facd05848f2bec723497c8f6762"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/test_async_handoff_failure.py",
+      "current_sha256": "d6561a771043d4fb37bcbcec1288acdacf5b8eb8027fbf4a1dbb389f9658880c",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "d6561a771043d4fb37bcbcec1288acdacf5b8eb8027fbf4a1dbb389f9658880c"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/test_graph_closure.py",
+      "current_sha256": "d134b38da74a3ea1f508d863289e1384c17161679dd1f7b6442b8fe5cb2e49b5",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "d134b38da74a3ea1f508d863289e1384c17161679dd1f7b6442b8fe5cb2e49b5"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/test_interaction_message_scope.py",
+      "current_sha256": "e65512443fedfb357d778272e4dffe450492deb4422281c73a81e493a208d782",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "e65512443fedfb357d778272e4dffe450492deb4422281c73a81e493a208d782"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/test_interaction_schemas.py",
+      "current_sha256": "4433d006eb1e6c33eacda7e931d6f36736b8221852d41c752a1f39ea9f226cec",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "4433d006eb1e6c33eacda7e931d6f36736b8221852d41c752a1f39ea9f226cec"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/interaction/test_reaction_targets.py",
+      "current_sha256": "301915e5169711dc3ff4e618a7faaad4ebb64665944c4dfbb3a14c3c3aa7a00d",
+      "workpack_ids": [
+        "P1-IMPLEMENT-04-INTERACTION-CLOSURE"
+      ],
+      "declared_sha256_values": [
+        "301915e5169711dc3ff4e618a7faaad4ebb64665944c4dfbb3a14c3c3aa7a00d"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/kernel/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/kernel/test_artifact_manifest_schema.py",
+      "current_sha256": "f962f6881cdb1163c2b254fd0c4b15a5b1f3a6c61121822a0be4fb7865a5d2db",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "f962f6881cdb1163c2b254fd0c4b15a5b1f3a6c61121822a0be4fb7865a5d2db"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/kernel/test_authority_runtime.py",
+      "current_sha256": "d34dd226c86b56c21c9d0a651db0755a394b7f72d155fa1a7216eadab4d8b4a8",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "d34dd226c86b56c21c9d0a651db0755a394b7f72d155fa1a7216eadab4d8b4a8"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/kernel/test_import_boundaries.py",
+      "current_sha256": "6c3c8de106818942906628b10caf4526cfd2a7894336ae1b632466620bfc71db",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+        "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS"
+      ],
+      "declared_sha256_values": [
+        "2cf732f42e4118dc7d6ec1105e54e9df2180475a63017fb3209ecc8ffe864e05",
+        "6c3c8de106818942906628b10caf4526cfd2a7894336ae1b632466620bfc71db"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/kernel/test_runtime_declaration_schema.py",
+      "current_sha256": "5e1b544d0152bd015fa02cdacbdfcea83d5987ad563364314da7dd27ff40fced",
+      "workpack_ids": [
+        "P1-IMPLEMENT-01-FOUNDATION-KERNEL"
+      ],
+      "declared_sha256_values": [
+        "5e1b544d0152bd015fa02cdacbdfcea83d5987ad563364314da7dd27ff40fced"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_carrier_adaptation_profile.py",
+      "current_sha256": "d437100d1361e21a3d7860214a98146b01cbb2c68f75d4c4d34aa2a981e99fbf",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "d437100d1361e21a3d7860214a98146b01cbb2c68f75d4c4d34aa2a981e99fbf"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_containment_hierarchy.py",
+      "current_sha256": "ea3569db97eb0d3d95e9eb6e5dfe5d556ae5a6780316b6058c4e2f1775acebb8",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "ea3569db97eb0d3d95e9eb6e5dfe5d556ae5a6780316b6058c4e2f1775acebb8"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_figma_compatibility_metadata.py",
+      "current_sha256": "60687f78ccb30fc45fc7c73d8d250a7b56e219aaa8be4257b64c1d969381b2fa",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "60687f78ccb30fc45fc7c73d8d250a7b56e219aaa8be4257b64c1d969381b2fa"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_information_completeness.py",
+      "current_sha256": "fb044b38f3d98299e902b18e476b51c9f22fae393a64ff3d228e75fb682396c0",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "fb044b38f3d98299e902b18e476b51c9f22fae393a64ff3d228e75fb682396c0"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_layout_completeness.py",
+      "current_sha256": "b4c81ddd95678dd90672c515e0a4f1c805fc88a4ab84b30928d2f1c8715ff1b0",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "b4c81ddd95678dd90672c515e0a4f1c805fc88a4ab84b30928d2f1c8715ff1b0"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_layout_schemas.py",
+      "current_sha256": "5f96e220216ab9a4d44db6fb819548837d94887845ff060153d05e84f9ebadbc",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "5f96e220216ab9a4d44db6fb819548837d94887845ff060153d05e84f9ebadbc"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/layout/test_z_axis_layering.py",
+      "current_sha256": "d0ed526aac880b14a52cc8d4ee7432f698405df70e51fa87de1c4a26573fe31e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "d0ed526aac880b14a52cc8d4ee7432f698405df70e51fa87de1c4a26573fe31e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/orchestrator/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/orchestrator/test_invalidation.py",
+      "current_sha256": "2071fb18843218c925dc1675a6191c42b7cf7baeeb8a14c7848b51a4c7e45c27",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "2071fb18843218c925dc1675a6191c42b7cf7baeeb8a14c7848b51a4c7e45c27"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/orchestrator/test_promotion_lock_state.py",
+      "current_sha256": "fc55b6232730a1d596fa266af7d7bb47a42c9e27b7664ca777fc4940a0f00004",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "fc55b6232730a1d596fa266af7d7bb47a42c9e27b7664ca777fc4940a0f00004"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/presentation/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/presentation/test_information_presentation_consistency.py",
+      "current_sha256": "ea6e1d2266390a743003ce493252f3446268e2b50075e00e152bc60a35fdb602",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "ea6e1d2266390a743003ce493252f3446268e2b50075e00e152bc60a35fdb602"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/presentation/test_presentation_schemas.py",
+      "current_sha256": "8846e3eae42ec6998eb4db1d3633a254e24f338e2c8f030e78bdd059068697fc",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "8846e3eae42ec6998eb4db1d3633a254e24f338e2c8f030e78bdd059068697fc"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/presentation/test_shared_component_registry.py",
+      "current_sha256": "753c83b9cdec27adb3c7d8f688faf7ececd2b862fab822a8fd188faa077023c2",
+      "workpack_ids": [
+        "P1-IMPLEMENT-05-PRESENTATION-LAYOUT"
+      ],
+      "declared_sha256_values": [
+        "753c83b9cdec27adb3c7d8f688faf7ececd2b862fab822a8fd188faa077023c2"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/reasoning/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/reasoning/test_inference_records.py",
+      "current_sha256": "05bfbac2b462bc2a9d235110da71147a93c9256eb179b8bd41fde586f3468684",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "05bfbac2b462bc2a9d235110da71147a93c9256eb179b8bd41fde586f3468684"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/reasoning/test_prd_element_adoption.py",
+      "current_sha256": "a6f48640801ee64d49ad40fe1c369e5aae20803e4135acd71ca5049615239a30",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "a6f48640801ee64d49ad40fe1c369e5aae20803e4135acd71ca5049615239a30"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/reasoning/test_reasoning_schemas.py",
+      "current_sha256": "667bb7ceb04886e88f54e6d3660dd6fd5e2c7a676ec1f7dbd7ea78113d5bc889",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "667bb7ceb04886e88f54e6d3660dd6fd5e2c7a676ec1f7dbd7ea78113d5bc889"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/reasoning/test_structural_completion_review.py",
+      "current_sha256": "54e02f1af0768ce3347522f0b26e5d6c52db657818e0e05a534fc1a7f8cd47b7",
+      "workpack_ids": [
+        "P1-IMPLEMENT-03-REASONING-ADOPTION"
+      ],
+      "declared_sha256_values": [
+        "54e02f1af0768ce3347522f0b26e5d6c52db657818e0e05a534fc1a7f8cd47b7"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_read_only_qa_boundary.py",
+      "current_sha256": "d3d6414703a2fbd60bd4539c72f436cabb358b42b62c5ba5f279d5bd011d39d5",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "d3d6414703a2fbd60bd4539c72f436cabb358b42b62c5ba5f279d5bd011d39d5"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_review_binding.py",
+      "current_sha256": "441fb760bf8cfb69b5e15f6d7bb089ad9f382c0a755b7359dc0baf3fceabd79e",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "441fb760bf8cfb69b5e15f6d7bb089ad9f382c0a755b7359dc0baf3fceabd79e"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_source_snapshot.py",
+      "current_sha256": "344086eb6674cfa7f7b9d11d8bda1104d57c05d9574c7d60915070ffe199cd78",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "344086eb6674cfa7f7b9d11d8bda1104d57c05d9574c7d60915070ffe199cd78"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_lineage.py",
+      "current_sha256": "8d359a2ad2a374a1909539aaa1c8d3fb4cd7d13f279c13e2996d7c1f896db39b",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "8d359a2ad2a374a1909539aaa1c8d3fb4cd7d13f279c13e2996d7c1f896db39b"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_order.py",
+      "current_sha256": "5c867e165c19892e1de7128de2452cb3a9e6a47d0aa766531672cc455cc8b753",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "5c867e165c19892e1de7128de2452cb3a9e6a47d0aa766531672cc455cc8b753"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/stages/test_stage_schemas.py",
+      "current_sha256": "c6fcdbc66db3f15872c39ac58e54c5850d833960d2ad58c4785a047631072f12",
+      "workpack_ids": [
+        "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE"
+      ],
+      "declared_sha256_values": [
+        "c6fcdbc66db3f15872c39ac58e54c5850d833960d2ad58c4785a047631072f12"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/validators/conftest.py",
+      "current_sha256": "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "23e34bd34d49154223cf1183a6e72b1c7d70a64e36e6aeced880202b83af45ee"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/validators/test_postflight_scope.py",
+      "current_sha256": "24d87eb14d3236308f6bb9175a2d5442378d25777ecb4ef0fabe5cc8a9a53591",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "24d87eb14d3236308f6bb9175a2d5442378d25777ecb4ef0fabe5cc8a9a53591"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/validators/test_spec_validator.py",
+      "current_sha256": "cc4e9280f96847240c93989a79f70dfdfab53560df026c44d6de534d0fb1bab6",
+      "workpack_ids": [
+        "P1-IMPLEMENT-06-VALIDATION-LOCKS"
+      ],
+      "declared_sha256_values": [
+        "cc4e9280f96847240c93989a79f70dfdfab53560df026c44d6de534d0fb1bab6"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/conftest.py",
+      "current_sha256": "3a1bc16331c01a977ab89b4424ff23425f8b1345cb4d722ac7c74319664a3fcd",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "3a1bc16331c01a977ab89b4424ff23425f8b1345cb4d722ac7c74319664a3fcd"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/test_code_target_map.py",
+      "current_sha256": "2bc68d95c0cbc96969eae382a8ae9675ca98d60011de9738539e98409f8c9127",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "2bc68d95c0cbc96969eae382a8ae9675ca98d60011de9738539e98409f8c9127"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/test_skill_version_binding.py",
+      "current_sha256": "1949a75f0ab7b22705c9ee2336d399903185a986fcbec81183df428776af4ffa",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "1949a75f0ab7b22705c9ee2336d399903185a986fcbec81183df428776af4ffa"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/test_test_obligation_matrix.py",
+      "current_sha256": "1bcc02404ac4960b28da4611196be5c8b6758ca01bf0a920437c85a5652144a9",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "1bcc02404ac4960b28da4611196be5c8b6758ca01bf0a920437c85a5652144a9"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/test_workpack_generation.py",
+      "current_sha256": "38ba0370ed7af21c339c31484eea5964f2c817d452a5c97c1ec0a17a7229dcca",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "38ba0370ed7af21c339c31484eea5964f2c817d452a5c97c1ec0a17a7229dcca"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    },
+    {
+      "path": "repository/tests/workpacks/test_workpack_schemas.py",
+      "current_sha256": "79d0c6cc714846ae74eac68f36aadb4c2afc65dd79854b37876fe8bde4737e00",
+      "workpack_ids": [
+        "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY"
+      ],
+      "declared_sha256_values": [
+        "79d0c6cc714846ae74eac68f36aadb4c2afc65dd79854b37876fe8bde4737e00"
+      ],
+      "hash_status": "CURRENT_MATCHES_A_DECLARED_IMPLEMENTATION_HASH"
+    }
+  ],
+  "candidate_evidence_output_hashes": [
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "d23eee66506326f325035e3ef68a56699b3ad1e9f6d5ee1a73d78119864fd47a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/SCOPE_REPORT.json",
+      "sha256": "68a879b35c256757e3df4b6874e28b50306f08e425178b5c7d83c54fdad8a89a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/TEST_REPORT.json",
+      "sha256": "c43770e26a4530a1e4d7611c59fbb42444fbde963f6130faaf477e91867b8305"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/CANDIDATE_MANIFEST.json",
+      "sha256": "f605ae4aaf6075ec9d8cab591d9a73a8a828fe23c4961267e8c3c3c7a8b7c81f"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/PART_SELF_CHECK.md",
+      "sha256": "155265fef248a0a151238798b03f243c06f520f9396d7c33b869ef097b628e05"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-01-FOUNDATION-KERNEL/HANDOFF.md",
+      "sha256": "10b3acd798287f9d15cd1fef4785fca4975b736125a4639d6d974f3e8d33f2ce"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "59c33d0a630d61f701ca922d10c048cb08d5e2241e7bc63a0e34ff9200b3b20c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/SCOPE_REPORT.json",
+      "sha256": "dc78a8fc593931042a672a453943674b3c3294169b551bef538ae40346ca8240"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/TEST_REPORT.json",
+      "sha256": "6b2ecde4b5a6e9c81a9622775835d5ca59e89d13a42ad67c55f9c83715b11c83"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/CANDIDATE_MANIFEST.json",
+      "sha256": "6ab1515556d9044468337f9feea1825ad93b3b6a4f783796158677725485ab5b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/PART_SELF_CHECK.md",
+      "sha256": "7c42b3e93ff5afc45d041a5857cdcb1649715a0e80629649b140b2a64cbfaa38"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE/HANDOFF.md",
+      "sha256": "30f46448f4f6baf0b140f6afbe64b8b63aca89054b2b7498ff39a40e5c7cb629"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "69c9ab84cc09f49fce313cbe581ed23238540ed943ad84a4ec53748e6566670e"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/SCOPE_REPORT.json",
+      "sha256": "11b6ee1cf87787e971683b670c65fe8c33f4ae320ddd7f9f3562e115627b1976"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/TEST_REPORT.json",
+      "sha256": "3b9f61ae78f6bd4d1bf6f3081d7cf287754f0da64fc549901cd9c93a453dc0e7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/CANDIDATE_MANIFEST.json",
+      "sha256": "d8a19e27147b837a413fdfd132a57868b2d694b0928e62f89975109b062aef0c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/PART_SELF_CHECK.md",
+      "sha256": "f535eaa4cdceb37d5b0c783f3b3c0949b16b8055e19fe8c75fad8b75c13328c3"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-03-REASONING-ADOPTION/HANDOFF.md",
+      "sha256": "cffe1e1f78137d1d97c70917059e517950d42aa075d7b898672fb70602046fe7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "b2eb2e7fb1a89ccd407ab15846c4ecd5fdc75f72b29d8573c9eb97be4ca8d3d9"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/SCOPE_REPORT.json",
+      "sha256": "252175928473cc17eb6a0a503554d572d496bdb143c9f92466009af5882bab50"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/TEST_REPORT.json",
+      "sha256": "1e932a7059ae199ef140ecaf71001ca16783c4822add327b6270a84c9433a5ba"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/CANDIDATE_MANIFEST.json",
+      "sha256": "49631ffbae22a449fc2a2eaf6c4d1bc9a3ff4c82a66cd479ebf28b69ef606624"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/PART_SELF_CHECK.md",
+      "sha256": "a8ef33c4dd59467f7b461b2aac6948f917be7dcb04fceee7c503d0a278d927fe"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-04-INTERACTION-CLOSURE/HANDOFF.md",
+      "sha256": "3f96d082984d3db9b052e0cbcdc703505f9650aa24139bba2aacfc5661f0c9ed"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "68e1f73bdcd5b9e41a49ddaa84e92e6d2c5c5888446c48f27a8d09a71e5a629b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/SCOPE_REPORT.json",
+      "sha256": "45744251d889224864bf7e1a4a9509d52c09f6a66d01d1ba7b0685a65ea4b5ae"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/TEST_REPORT.json",
+      "sha256": "266e7fde6829f4d6768361cbebb7a10a42a04da926f5ae92977a723ec704f811"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/CANDIDATE_MANIFEST.json",
+      "sha256": "d3e8f6cc2c390a5356f7c571f5068edb02e28ac7dbdf94a67122f566c906ac12"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/PART_SELF_CHECK.md",
+      "sha256": "2a82ae2adf556e6bac4080ae6addea90a22a13182fb945b78ee6cab71e3406bc"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-05-PRESENTATION-LAYOUT/HANDOFF.md",
+      "sha256": "5664ef5208b8549a1990520293df3dd4e501a178876f3f90f986efe38f7b851c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "9f9d5d38bc4e9617ad674b33deaa3924ab22576fb8833b55e7347cf6d4b5c1e1"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/SCOPE_REPORT.json",
+      "sha256": "f566f88e12399d70819695258bf1d543fd43c480eedd1e00f7d084f3d6400431"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/TEST_REPORT.json",
+      "sha256": "2b34432b5da1408f80f50e93bc9fedc769d8a1969b1373544bacdc427023f697"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/CANDIDATE_MANIFEST.json",
+      "sha256": "acd0b16fdc5636f1a32fd38db312ec1a168b50e0fc77ec17efa5249c66df8101"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/PART_SELF_CHECK.md",
+      "sha256": "1a86e223251dad71fa635626c7335ee626df8c6fe1140e1219cded507732c47a"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-06-VALIDATION-LOCKS/HANDOFF.md",
+      "sha256": "ab446cab1a338a4fa728fa6d3f55e94c2eacfee6ebcadfddd5329e3b957e03d7"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "92353e391c2595be100481de64781780db3f16e3c81279e7d7dca463cb1b2756"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/SCOPE_REPORT.json",
+      "sha256": "c06dd77cd9d4d1e19f6d907117f8ea87d0905719443cee87e6bf6a43305192cf"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/TEST_REPORT.json",
+      "sha256": "1fd502d3ef85ec02b07e351197938a336f59ce8f751dea73d98c52ce05c32e56"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/CANDIDATE_MANIFEST.json",
+      "sha256": "668b5f88602f527e7edf114b08aa522738f49e8e08b7b6c651cfa30c68b37d5d"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/PART_SELF_CHECK.md",
+      "sha256": "7449c306688bf89f1bad90e2c404dee049ef51f41bb40604a889298321ad2bc6"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-07-COMPILER-CONSERVATION/HANDOFF.md",
+      "sha256": "05c1ff96d8d8e16bff815483ce3213a8d8c83fba3deaa1e76aefe483da9f4eb0"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "f1b6b0397da0433a3331aae5c799b6d37ec3543a90794368f34def544b2cfafa"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/SCOPE_REPORT.json",
+      "sha256": "e746512a61dca5e449d56d2814af2cf5d7528d31aeb887d66b2e8cfbb8798b0b"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/TEST_REPORT.json",
+      "sha256": "dbaf57c65f98a30787f5aaef7d0e3377e2230c3c3cc85fc5471925c68aeb91d4"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/CANDIDATE_MANIFEST.json",
+      "sha256": "b09acfd6cac0f6a35bdf2b43c5bd304c208e998e5ab5c3419c04ebcba09a450c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/PART_SELF_CHECK.md",
+      "sha256": "a7e42d0e92e58d6e195224ac80e54e44f56301a2a4dd923f009c1b76c901ba48"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY/HANDOFF.md",
+      "sha256": "61c9996fa9e225f86bd061a5b3a6d0da62c539038d8cafa276e13a9afcf9ba0d"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "54d7cfd43aa5f0a8706a09ba72cd16e3d7eec559ef41e380b5202aff716043c8"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/SCOPE_REPORT.json",
+      "sha256": "22c1c2444b9182c506fec4a0076d63e80fa48fb94a085f46977f8f5fa2074778"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/TEST_REPORT.json",
+      "sha256": "246d6e93e720e77196d65ee3bba504da3255766be7f7faa1e1d061df1d52eb61"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/CANDIDATE_MANIFEST.json",
+      "sha256": "76f5ca7f250dbaf44fa1ed333afe280ad8b0c99b351e7fcecd60df71b519e3f0"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/PART_SELF_CHECK.md",
+      "sha256": "44f8d251c8d6fb9aaccc5747438a9d7a92c3b80c73b56fa4d2fe1374df1fae2c"
+    },
+    {
+      "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "path": "build_program/phases/P1/candidates/P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS/HANDOFF.md",
+      "sha256": "9565df63d1c3704d3625751cdf9f882b98f300a17597fd776fb9569992b3df56"
+    }
+  ],
+  "repository_build_output_hash_status": {
+    "unique_repository_file_count": 161,
+    "current_hash_mismatch_count": 0,
+    "mismatch_meaning": "A mismatch is allowed only when a later approved implementation workpack superseded an earlier file hash before BUILD_LOCK creation."
+  }
+}

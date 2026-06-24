@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "added_semantic_units": {"items": {"type": "string"}, "type": "array"},
+    "approved_input_semantic_units": {"items": {"type": "string"}, "type": "array"},
+    "compiled_output_semantic_units": {"items": {"type": "string"}, "type": "array"},
+    "hash_drift": {"items": {"type": "string"}, "type": "array"},
+    "human_review_required": {"type": "boolean"},
+    "matched_semantic_units": {"items": {"type": "string"}, "type": "array"},
+    "non_atomic_semantic_units": {"items": {"type": "object"}, "type": "array"},
+    "nondeterminism_findings": {"items": {"type": "object"}, "type": "array"},
+    "omitted_semantic_units": {"items": {"type": "string"}, "type": "array"},
+    "ordering_findings": {"items": {"type": "object"}, "type": "array"},
+    "read_only_qa_boundary_status": {"minLength": 1, "type": "string"},
+    "status": {
+      "enum": [
+        "PASS", "FAIL_SEMANTIC_ADDITION", "FAIL_SEMANTIC_OMISSION",
+        "FAIL_HASH_DRIFT", "FAIL_UNAPPROVED_INPUT", "FAIL_NONDETERMINISTIC_OUTPUT",
+        "REQUIRES_HUMAN_REVIEW"
+      ],
+      "type": "string"
+    },
+    "unapproved_inputs": {"items": {"type": "string"}, "type": "array"}
+  },
+  "required": [
+    "status", "approved_input_semantic_units", "compiled_output_semantic_units",
+    "matched_semantic_units", "added_semantic_units", "omitted_semantic_units",
+    "non_atomic_semantic_units", "hash_drift", "unapproved_inputs",
+    "ordering_findings", "nondeterminism_findings", "read_only_qa_boundary_status",
+    "human_review_required"
+  ],
+  "type": "object"
+}

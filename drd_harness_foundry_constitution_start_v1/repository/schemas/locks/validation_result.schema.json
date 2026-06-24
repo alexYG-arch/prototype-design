@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "checked_subject_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "command": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "exit_code": {
+      "type": "integer"
+    },
+    "findings": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "result_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "result_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED"
+      ],
+      "type": "string"
+    },
+    "validator_identity": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "result_id",
+    "command",
+    "exit_code",
+    "status",
+    "checked_subject_hash",
+    "result_hash",
+    "validator_identity",
+    "findings",
+    "blockers"
+  ],
+  "type": "object"
+}

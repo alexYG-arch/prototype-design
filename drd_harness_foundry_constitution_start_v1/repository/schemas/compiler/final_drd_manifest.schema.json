@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "added_semantic_unit_count": {"type": "integer"},
+    "approved_input_count": {"type": "integer"},
+    "assembly_plan": {"type": "object"},
+    "compiled_section_count": {"type": "integer"},
+    "compiled_semantic_unit_count": {"type": "integer"},
+    "conservation_report_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "conservation_status": {"type": "string"},
+    "final_drd_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "final_drd_path": {"minLength": 1, "type": "string"},
+    "hash_drift_count": {"type": "integer"},
+    "hash_index_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "input_bundle_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "mechanical_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "omitted_semantic_unit_count": {"type": "integer"},
+    "reference_index_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "semantic_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "toc_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "unapproved_input_count": {"type": "integer"}
+  },
+  "required": [
+    "final_drd_path", "final_drd_hash", "semantic_hash", "mechanical_hash",
+    "input_bundle_hash", "toc_hash", "reference_index_hash", "hash_index_hash",
+    "conservation_report_hash", "approved_input_count", "compiled_section_count",
+    "compiled_semantic_unit_count", "omitted_semantic_unit_count",
+    "added_semantic_unit_count", "hash_drift_count", "unapproved_input_count",
+    "conservation_status", "assembly_plan"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "hierarchy_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "nodes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "arrangement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "entry_context": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "node_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "order": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "parent_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "return_placement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scroll_behavior": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sizing": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "surface_kind": {
+            "enum": [
+              "PAGE",
+              "SECTION",
+              "GROUP",
+              "REPEATED_ITEM",
+              "OVERLAY",
+              "DRAWER",
+              "PANEL",
+              "POPOVER",
+              "STATE_CONTAINER"
+            ]
+          },
+          "width_behavior": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "node_id",
+          "surface_kind",
+          "parent_id",
+          "order",
+          "arrangement",
+          "sizing",
+          "scroll_behavior",
+          "width_behavior"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "surface_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "hierarchy_id",
+    "surface_id",
+    "nodes"
+  ],
+  "type": "object"
+}

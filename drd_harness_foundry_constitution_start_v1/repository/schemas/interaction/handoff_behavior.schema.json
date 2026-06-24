@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "cancel_target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "external_target": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "failure_target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "no_return_terminal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reaction_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "success_return_target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "reaction_id",
+    "external_target",
+    "success_return_target",
+    "cancel_target",
+    "failure_target",
+    "no_return_terminal"
+  ],
+  "type": "object"
+}

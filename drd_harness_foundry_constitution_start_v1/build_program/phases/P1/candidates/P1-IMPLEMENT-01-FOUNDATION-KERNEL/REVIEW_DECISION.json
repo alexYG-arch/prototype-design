@@ -1,0 +1,31 @@
+{
+  "decision_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL-REVIEW-001",
+  "subject": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+  "subject_hash": "c482ccdaf09e8de1515cffcf8c61f35a7c252679b9ddcc6166fba3a3b5c800a0",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User accepted the implementation review and asked to continue. This approval covers the foundation kernel implementation candidate only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+    "test_command": "python3 -m pytest repository/tests/kernel -q",
+    "test_result": "16 passed",
+    "spec_lock": "control/locks/P1_SPEC_LOCK.json",
+    "spec_lock_sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "remaining_followups": [
+    "BUILD_LOCK is not created.",
+    "foundation validator module is deferred because this workpack did not allow validators/** writes.",
+    "Next implementation workpack still requires scoped execution and review."
+  ]
+}

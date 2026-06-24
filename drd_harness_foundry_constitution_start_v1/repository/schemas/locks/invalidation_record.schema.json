@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "affected_subjects": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "blocking_state": {
+      "const": true,
+      "type": "boolean"
+    },
+    "cause": {
+      "enum": [
+        "UPSTREAM_HASH_CHANGED",
+        "REVIEW_DECISION_SUPERSEDED",
+        "LOCK_SUPERSEDED",
+        "VALIDATOR_VERSION_CHANGED",
+        "FORBIDDEN_SCOPE_CHANGE",
+        "SOURCE_LOCK_CHANGED"
+      ],
+      "type": "string"
+    },
+    "changed_dependency": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "created_by_runtime": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "due_before_consumption": {
+      "const": true,
+      "type": "boolean"
+    },
+    "invalidation_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "new_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "old_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "recovery_owner": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "required_action": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "required_command": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "invalidation_id",
+    "cause",
+    "changed_dependency",
+    "old_hash",
+    "new_hash",
+    "affected_subjects",
+    "required_action",
+    "recovery_owner",
+    "required_command",
+    "due_before_consumption",
+    "blocking_state",
+    "created_by_runtime"
+  ],
+  "type": "object"
+}

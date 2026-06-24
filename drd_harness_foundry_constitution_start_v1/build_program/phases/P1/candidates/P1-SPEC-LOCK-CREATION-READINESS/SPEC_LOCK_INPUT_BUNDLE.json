@@ -1,0 +1,110 @@
+{
+  "bundle_id": "P1-SPEC-LOCK-INPUT-BUNDLE-001",
+  "phase": "P1",
+  "status": "INPUTS_READY_TOOLING_BLOCKED",
+  "not_a_spec_lock": true,
+  "source_candidate": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS",
+  "source_candidate_review_decision": "build_program/phases/P1/candidates/P1-PHASE-LOCK-READINESS/REVIEW_DECISION.json",
+  "phase_readiness_subject_hash": "da2a6acd1c9be5dbfc6a5426a1b467142e6e86b34b15cd042e74934d6cafe4cb",
+  "phase_review_decision_file_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590",
+  "canonical_spec_lock_schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "required_fields": [
+      "lock_id",
+      "phase",
+      "root_sha256",
+      "files",
+      "review_decision_hash"
+    ]
+  },
+  "proposed_canonical_lock_fields": {
+    "lock_id": "P1-SPEC-LOCK-001",
+    "phase": "P1",
+    "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1",
+    "review_decision_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590",
+    "review_decision_file_root_sha256": "2f98caaeab5db11686e58747ed53624f6173798c27b2ef154b590731e8932509",
+    "created_by_runtime": "python",
+    "source_candidate_review_decision_hash": "14c949af9914dc93463e4f0f5892f2c66b11a4c42af6b34ef0611361b5125590"
+  },
+  "approved_spec_inputs": [
+    {
+      "spec_part": "P1-SPEC-00",
+      "generated_output_count": 9,
+      "subject_hash": "4b0fa80ad9ea9daf577b7c8c2737f34e074c05b7425d32de62ff0cdcd1713831",
+      "review_decision_id": "P1-SPEC-00-REVIEW-002",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-01-FOUNDATION",
+      "generated_output_count": 12,
+      "subject_hash": "f48436c28d9b877ac277a6e45b45197259a1e51de113ebd57a6c3b5ecd50f429",
+      "review_decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-002",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-02-STAGE-ARTIFACTS",
+      "generated_output_count": 11,
+      "subject_hash": "2012c7d6de8c59314fb06f20de9514b1d7b24db6cb7d3e545f7bd246bec00361",
+      "review_decision_id": "P1-SPEC-02-STAGE-ARTIFACTS-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-03-REASONING-ADOPTION",
+      "generated_output_count": 12,
+      "subject_hash": "f710d1b12c28d18550249cb00986751a14e99dc1136678a65816110e8a590cfb",
+      "review_decision_id": "P1-SPEC-03-REASONING-ADOPTION-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-04-INTERACTION-CLOSURE",
+      "generated_output_count": 12,
+      "subject_hash": "d1778531844f7556c7f5a9a3aa39cd77847190864fa8e2718c1d247aa688a8e0",
+      "review_decision_id": "P1-SPEC-04-INTERACTION-CLOSURE-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-05-PRESENTATION-LAYOUT",
+      "generated_output_count": 12,
+      "subject_hash": "2749676726510e6c64448df120e1be2bf33a306ae317cf3280e0ee4c57fd8472",
+      "review_decision_id": "P1-SPEC-05-PRESENTATION-LAYOUT-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-06-VALIDATION-LOCKS",
+      "generated_output_count": 12,
+      "subject_hash": "7245968df4f63559691c06b4d4bb949a5c830a7b366276abbc3ed6171430de6e",
+      "review_decision_id": "P1-SPEC-06-VALIDATION-LOCKS-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-07-COMPILER-CONSERVATION",
+      "generated_output_count": 10,
+      "subject_hash": "dbe63902a17cabe7938080658b5edb5a4c118f9410aa2ec851ab6f05aff47f0f",
+      "review_decision_id": "P1-SPEC-07-COMPILER-CONSERVATION-REVIEW-001",
+      "review_binding_status": "PASS"
+    },
+    {
+      "spec_part": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+      "generated_output_count": 14,
+      "subject_hash": "22bbbe2ae6e378d64675cc193d3ffb19ca37e7e5d4b7ae89762cd0a85b5d2d9a",
+      "review_decision_id": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY-REVIEW-001",
+      "review_binding_status": "PASS"
+    }
+  ],
+  "creation_preconditions": [
+    "Human reviewer accepts tooling/create_spec_lock.py as the Python-controlled lock creation path.",
+    "Python tool re-reads every approved Candidate manifest and REVIEW_DECISION.json.",
+    "Python tool recomputes each subject hash over generated outputs only.",
+    "Python tool verifies the phase readiness review decision hash.",
+    "Python tool validates the output against control/schemas/spec_lock.schema.json.",
+    "Python tool writes a new immutable lock artifact only after all checks pass."
+  ],
+  "resolved_gap_ids": [
+    "LOCK-GAP-001"
+  ],
+  "remaining_followup_gap_ids": [
+    "LOCK-GAP-002",
+    "LOCK-GAP-003"
+  ]
+}

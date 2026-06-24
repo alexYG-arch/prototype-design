@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "patterns": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "data_structure": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "information_hierarchy": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "interaction_model": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "non_reuse_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "operation_set": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "pattern_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "pattern_kind": {
+            "enum": [
+              "COMPONENT",
+              "PRESENTATION_PATTERN",
+              "LAYOUT_PATTERN",
+              "INTERACTION_PATTERN"
+            ]
+          },
+          "reuse_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reuse_scope": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "semantic_role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "state_model": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "surface_constraints": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "trace_refs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "pattern_id",
+          "pattern_kind",
+          "semantic_role",
+          "data_structure",
+          "operation_set",
+          "state_model",
+          "information_hierarchy",
+          "interaction_model",
+          "surface_constraints",
+          "reuse_scope",
+          "trace_refs"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "registry_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "registry_id",
+    "patterns"
+  ],
+  "type": "object"
+}

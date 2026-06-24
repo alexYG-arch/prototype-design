@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": {"minLength": 1, "type": "string"},
+    "index_id": {"minLength": 1, "type": "string"},
+    "workpacks": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {"minLength": 1, "type": "string"},
+          "traceability_rows": {
+            "items": {"minLength": 1, "type": "string"},
+            "minItems": 1,
+            "type": "array"
+          },
+          "workpack_id": {"minLength": 1, "type": "string"}
+        },
+        "required": ["workpack_id", "status", "traceability_rows"],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": ["index_id", "generated_at", "workpacks"],
+  "type": "object"
+}

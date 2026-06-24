@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "closure_targets": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "overlay_node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "return_context": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trap_justification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "overlay_node_id",
+    "closure_targets",
+    "return_context",
+    "trap_justification"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "byte_size": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "content_type": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "created_at": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "normalization_method": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "snapshot_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "snapshot_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_identity": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_prd_snapshot_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_prd_snapshot_id",
+    "source_path",
+    "snapshot_path",
+    "snapshot_hash",
+    "created_at",
+    "byte_size",
+    "content_type",
+    "normalization_method",
+    "source_identity"
+  ],
+  "type": "object"
+}

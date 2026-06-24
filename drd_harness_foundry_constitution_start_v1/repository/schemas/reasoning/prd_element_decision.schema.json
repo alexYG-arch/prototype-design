@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocking_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "element_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "element_type": {
+      "enum": [
+        "PAGE",
+        "STATE",
+        "CTA",
+        "INPUT",
+        "NAVIGATION",
+        "MESSAGE",
+        "ROLE",
+        "PERMISSION",
+        "UI_ELEMENT"
+      ]
+    },
+    "inference_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "input_obligations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "normalized_label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "outcome": {
+      "enum": [
+        "ADOPT_AS_IS",
+        "ADOPT_NORMALIZED",
+        "REQUEST_CLARIFICATION",
+        "REJECT_CONFLICT",
+        "ROUTE_PRODUCT_GAP"
+      ]
+    },
+    "source_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "element_id",
+    "source_refs",
+    "element_type",
+    "outcome",
+    "normalized_label",
+    "blocking_reason",
+    "input_obligations",
+    "inference_refs"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "applied_rules": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "artifact_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "canonical_eligibility": {
+      "enum": [
+        "ELIGIBLE",
+        "BLOCKED_PENDING_HUMAN",
+        "BLOCKED_INVALID",
+        "REJECTED"
+      ]
+    },
+    "conclusion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "downstream_use": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "inference_class": {
+      "enum": [
+        "SOURCE_EXPLICIT",
+        "DEDUCTIVE_NECESSITY",
+        "INDUCTIVE_CANDIDATE",
+        "HUMAN_DECIDED",
+        "REJECTED_INFERENCE"
+      ]
+    },
+    "inference_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "necessity_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "premises": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "source_refs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "stage_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "unresolved_product_choices": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "inference_id",
+    "inference_class",
+    "stage_id",
+    "artifact_id",
+    "source_refs",
+    "premises",
+    "applied_rules",
+    "necessity_basis",
+    "unresolved_product_choices",
+    "conclusion",
+    "canonical_eligibility",
+    "downstream_use"
+  ],
+  "type": "object"
+}

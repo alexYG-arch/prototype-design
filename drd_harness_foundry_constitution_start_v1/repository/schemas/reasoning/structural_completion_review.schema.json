@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_options": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "canonical_eligibility": {
+      "enum": [
+        "ELIGIBLE",
+        "BLOCKED_PENDING_HUMAN",
+        "BLOCKED_INVALID",
+        "REJECTED"
+      ]
+    },
+    "deductive_obligations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "missing_surface_summary": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "product_expansion_risk": {
+      "enum": [
+        "NONE",
+        "PRESENT",
+        "UNKNOWN"
+      ]
+    },
+    "required_page_or_flow": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "review_id",
+    "required_page_or_flow",
+    "missing_surface_summary",
+    "deductive_obligations",
+    "candidate_options",
+    "product_expansion_risk",
+    "canonical_eligibility"
+  ],
+  "type": "object"
+}

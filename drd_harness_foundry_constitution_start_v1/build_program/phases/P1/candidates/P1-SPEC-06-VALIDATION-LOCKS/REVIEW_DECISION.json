@@ -1,0 +1,21 @@
+{
+  "decision_id": "P1-SPEC-06-VALIDATION-LOCKS-REVIEW-001",
+  "subject_hash": "7245968df4f63559691c06b4d4bb949a5c830a7b366276abbc3ed6171430de6e",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "open_blockers": [],
+  "approved_sections": [
+    "VALIDATION_CONTRACT.md",
+    "REVIEW_PROMOTION_CONTRACT.md",
+    "LOCK_STATE_CONTRACT.md",
+    "INVALIDATION_CONTRACT.md",
+    "VALIDATION_LOCK_RULES.md",
+    "VALIDATION_LOCK_PROJECTIONS.md",
+    "VALIDATION_LOCK_VALIDATOR_SPEC.md",
+    "VALIDATION_LOCK_EXAMPLES.md",
+    "VALIDATION_LOCK_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

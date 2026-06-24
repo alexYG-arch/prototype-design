@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "affected_subjects": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "exit_criteria": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "invalidation_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "plan_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "recovery_owner": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "required_command": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "plan_id",
+    "invalidation_ids",
+    "affected_subjects",
+    "recovery_owner",
+    "required_command",
+    "exit_criteria"
+  ],
+  "type": "object"
+}

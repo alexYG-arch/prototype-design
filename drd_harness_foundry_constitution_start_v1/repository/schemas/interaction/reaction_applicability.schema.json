@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "async_applicability": {
+      "enum": [
+        "IMMEDIATE",
+        "NON_IMMEDIATE",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "cancel_applicability": {
+      "enum": [
+        "CANCELLABLE",
+        "NOT_CANCELLABLE",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "failure_applicability": {
+      "enum": [
+        "CAN_FAIL",
+        "CANNOT_FAIL",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    },
+    "handoff_applicability": {
+      "enum": [
+        "INTERNAL_ONLY",
+        "EXTERNAL_HANDOFF",
+        "UNKNOWN_REQUIRES_REVIEW"
+      ]
+    }
+  },
+  "required": [
+    "failure_applicability",
+    "cancel_applicability",
+    "async_applicability",
+    "handoff_applicability"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "collapse": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "empty_behavior": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expansion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "growth_rule_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "overflow": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pagination": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scroll": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "truncation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "truncation_recovery": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "variable_content": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "wrapping": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "growth_rule_id",
+    "target_ref",
+    "variable_content",
+    "wrapping",
+    "overflow",
+    "scroll",
+    "empty_behavior",
+    "trace_refs"
+  ],
+  "type": "object"
+}

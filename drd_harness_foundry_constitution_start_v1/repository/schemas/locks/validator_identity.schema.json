@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "result_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "runtime_identity": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_hashes": {
+      "additionalProperties": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "minProperties": 1,
+      "type": "object"
+    },
+    "validator_code_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "validator_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "validator_kind": {
+      "enum": [
+        "python_module",
+        "schema",
+        "cli_command",
+        "external_deterministic_checker"
+      ],
+      "type": "string"
+    },
+    "validator_version": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "validator_id",
+    "validator_kind",
+    "validator_version",
+    "validator_code_hash",
+    "schema_hashes",
+    "runtime_identity",
+    "result_hash"
+  ],
+  "type": "object"
+}

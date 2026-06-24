@@ -1,0 +1,36 @@
+{
+  "workpack_id": "P1-SPEC-07-COMPILER-CONSERVATION",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-06-VALIDATION-LOCKS/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "DRD-CHARTER-011"
+  ],
+  "generated_outputs": [
+    "COMPILER_CONSERVATION_CONTRACT.md",
+    "FINAL_DRD_ASSEMBLY_RULES.md",
+    "COMPILER_INPUT_BOUNDARY_RULES.md",
+    "COMPILER_PROJECTIONS.md",
+    "COMPILER_VALIDATOR_SPEC.md",
+    "COMPILER_EXAMPLES.md",
+    "COMPILER_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "CONTRACT",
+    "RULE",
+    "PROJECTION",
+    "VALIDATOR_SPEC",
+    "EXAMPLES",
+    "IMPLEMENTATION_BLUEPRINT"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "forbidden_write_paths_changed": [],
+  "next_action": "Generate P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY Candidate if the user explicitly asks to continue; do not seal or implement repository code."
+}

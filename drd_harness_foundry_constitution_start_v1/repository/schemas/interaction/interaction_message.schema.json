@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "message_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "message_type": {
+      "enum": [
+        "PROCESSING_MESSAGE",
+        "SUCCESS_MESSAGE",
+        "FAILURE_MESSAGE",
+        "VALIDATION_MESSAGE",
+        "DISABLED_REASON",
+        "CANCEL_CONFIRMATION",
+        "EXIT_CONSEQUENCE",
+        "HANDOFF_NOTICE",
+        "RECOVERY_INSTRUCTION",
+        "EMPTY_STATE_MESSAGE",
+        "PERMISSION_BLOCK_MESSAGE"
+      ]
+    },
+    "node_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reaction_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recovery_targets": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "required_user_next_step": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "trigger_condition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "user_visible_summary": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "message_id",
+    "message_type",
+    "node_id",
+    "reaction_id",
+    "trigger_condition",
+    "user_visible_summary",
+    "required_user_next_step",
+    "recovery_targets",
+    "trace_refs"
+  ],
+  "type": "object"
+}

@@ -43,6 +43,22 @@ Python validators must not:
 | `lock_readiness` | Verifies approved Candidate can be included in SPEC_LOCK or BUILD_LOCK inputs. |
 | `invalidation_check` | Verifies downstream dependencies are invalidated when locked upstream hashes change. |
 
+## Validator Identity
+
+Every validation result must identify the validator itself, not only the command that was run.
+
+Required identity fields:
+
+| Field | Requirement |
+|---|---|
+| `validator_id` | Stable validator ID. |
+| `validator_kind` | Python module, schema, CLI command, or external deterministic checker. |
+| `validator_version` | Semantic version, git commit, package version, or declared equivalent. |
+| `validator_code_hash` | Hash of validator code, schema, or executable definition used for the result. |
+| `schema_hashes` | Hashes of schemas used by the validator. |
+| `runtime_identity` | Python version, package environment, or runtime declaration needed to reproduce the result. |
+| `result_hash` | Hash of validator output, findings, and checked subject hash. |
+
 ## Contract Clauses
 
 ### VALIDATION-CONTRACT-001 Candidate State Is Default
@@ -65,7 +81,8 @@ Postflight validation must reject changes outside the current workpack allowed p
 
 Validation results, review decisions, lock readiness, and invalidation state must bind to concrete hashes of reviewed outputs and upstream dependencies.
 
+Validator identity must also be hash-bound. If validator code or schema changes, prior validation results cannot be reused without explicit compatibility proof or revalidation.
+
 ### VALIDATION-CONTRACT-006 Failure Is Blocking
 
 Failed validation blocks review approval, promotion, lock creation, and downstream consumption until repaired and revalidated.
-

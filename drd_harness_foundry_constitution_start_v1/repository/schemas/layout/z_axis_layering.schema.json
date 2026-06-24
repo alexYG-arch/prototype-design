@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "focus_restoration": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "layers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "blocks_lower_layers": {
+            "type": "boolean"
+          },
+          "layer": {
+            "type": "integer"
+          },
+          "layer_kind": {
+            "enum": [
+              "BASE",
+              "STICKY",
+              "FIXED",
+              "OVERLAY",
+              "MODAL",
+              "DRAWER",
+              "POPOVER",
+              "MENU",
+              "TOAST",
+              "SNACKBAR",
+              "LOADING"
+            ]
+          },
+          "occlusion_rule": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "preserves_background_context": {
+            "type": "boolean"
+          },
+          "surface_ref": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "layer",
+          "surface_ref",
+          "layer_kind",
+          "blocks_lower_layers",
+          "preserves_background_context",
+          "occlusion_rule"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "material_elevation_intent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "z_axis_layer_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "z_axis_layer_id",
+    "layers",
+    "focus_restoration",
+    "trace_refs"
+  ],
+  "type": "object"
+}

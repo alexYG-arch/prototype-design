@@ -1,0 +1,81 @@
+{
+  "workpack_id": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+  "version": "1.0.0-candidate",
+  "status": "CANDIDATE_PLANNING_ONLY",
+  "readiness_policy": "Implementation workpacks remain WAITING_UPSTREAM_LOCK until all required specs have current SPEC_LOCK refs.",
+  "workpacks": [
+    {
+      "id": "P1-IMPLEMENT-01-FOUNDATION-KERNEL",
+      "required_specs": ["P1-SPEC-01-FOUNDATION", "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["kernel", "contracts", "schemas", "tests/kernel"],
+      "acceptance_commands": ["python -m pytest repository/tests/kernel"],
+      "skill_binding_policy": "No business Skill required."
+    },
+    {
+      "id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+      "required_specs": ["P1-SPEC-02-STAGE-ARTIFACTS"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["stages", "kernel/hashline", "schemas/stages", "tests/stages"],
+      "acceptance_commands": ["python -m pytest repository/tests/stages"],
+      "skill_binding_policy": "No business Skill required."
+    },
+    {
+      "id": "P1-IMPLEMENT-03-REASONING-ADOPTION",
+      "required_specs": ["P1-SPEC-03-REASONING-ADOPTION"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["rules/reasoning", "validators/reasoning", "schemas/reasoning", "tests/reasoning"],
+      "acceptance_commands": ["python -m pytest repository/tests/reasoning"],
+      "skill_binding_policy": "Skill use requires locked reasoning spec and binding manifest."
+    },
+    {
+      "id": "P1-IMPLEMENT-04-INTERACTION-CLOSURE",
+      "required_specs": ["P1-SPEC-04-INTERACTION-CLOSURE"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["rules/interaction", "validators/interaction", "schemas/interaction", "tests/interaction"],
+      "acceptance_commands": ["python -m pytest repository/tests/interaction"],
+      "skill_binding_policy": "Skill use requires locked interaction spec and binding manifest."
+    },
+    {
+      "id": "P1-IMPLEMENT-05-PRESENTATION-LAYOUT",
+      "required_specs": ["P1-SPEC-05-PRESENTATION-LAYOUT"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["rules/presentation", "rules/layout", "validators/presentation", "validators/layout", "schemas/presentation", "schemas/layout", "tests/presentation", "tests/layout"],
+      "acceptance_commands": ["python -m pytest repository/tests/presentation repository/tests/layout"],
+      "skill_binding_policy": "Skill use requires locked presentation/layout spec and binding manifest."
+    },
+    {
+      "id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+      "required_specs": ["P1-SPEC-06-VALIDATION-LOCKS", "P1-SPEC-02-STAGE-ARTIFACTS"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["validators", "orchestrator", "schemas/locks", "tests/validators", "tests/orchestrator"],
+      "acceptance_commands": ["python -m pytest repository/tests/validators repository/tests/orchestrator"],
+      "skill_binding_policy": "Skill use requires locked validation spec and binding manifest."
+    },
+    {
+      "id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+      "required_specs": ["P1-SPEC-07-COMPILER-CONSERVATION", "P1-SPEC-02-STAGE-ARTIFACTS"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["compiler", "validators/compiler", "schemas/compiler", "tests/compiler"],
+      "acceptance_commands": ["python -m pytest repository/tests/compiler"],
+      "skill_binding_policy": "Skill use requires locked compiler spec and binding manifest."
+    },
+    {
+      "id": "P1-IMPLEMENT-08-SKILLS-WORKPACK-TRACEABILITY",
+      "required_specs": ["P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY", "P1-SPEC-06-VALIDATION-LOCKS"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["orchestrator/workpacks", "orchestrator/traceability", "validators/workpack_scope", "validators/traceability", "schemas/workpacks", "tests/workpacks"],
+      "acceptance_commands": ["python -m pytest repository/tests/workpacks"],
+      "skill_binding_policy": "Skill binding manifest validation is in scope; writing .agents/skills is forbidden for this workpack."
+    },
+    {
+      "id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+      "required_specs": ["P1-SPEC-01-FOUNDATION", "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY"],
+      "readiness_state": "WAITING_UPSTREAM_LOCK",
+      "code_target_families": ["cli", "templates", "docs", "tests/integration"],
+      "acceptance_commands": ["python -m pytest repository/tests/integration"],
+      "skill_binding_policy": "No business Skill required; CLI must remain thin."
+    }
+  ],
+  "global_forbidden_write_paths": ["constitution/**", "control/**", ".agents/skills/**", "references/**", "tooling/**"]
+}

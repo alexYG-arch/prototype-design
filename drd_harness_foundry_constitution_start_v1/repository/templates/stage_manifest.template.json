@@ -1,0 +1,21 @@
+{
+  "stage_id": "<stage_id>",
+  "stage_name": "<stage_name>",
+  "source_refs": [
+    "<source_ref>"
+  ],
+  "generated_artifacts": [
+    {
+      "artifact_id": "<artifact_id>",
+      "path": "<repository_relative_path>",
+      "format": "<markdown_or_json>",
+      "authority_role": "<human_semantic_or_operational_control>"
+    }
+  ],
+  "validator_refs": [
+    "<validator_ref>"
+  ],
+  "acceptance_commands": [
+    "<command>"
+  ]
+}

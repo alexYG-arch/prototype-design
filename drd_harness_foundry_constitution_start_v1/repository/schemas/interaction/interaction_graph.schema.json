@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "clickables": {
+      "items": {
+        "$ref": "clickable_inventory.schema.json"
+      },
+      "type": "array"
+    },
+    "edges": {
+      "items": {
+        "$ref": "interaction_edge.schema.json"
+      },
+      "type": "array"
+    },
+    "entry_node_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "graph_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "messages": {
+      "items": {
+        "$ref": "interaction_message.schema.json"
+      },
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "interaction_node.schema.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "reactions": {
+      "items": {
+        "$ref": "reaction_record.schema.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "graph_id",
+    "entry_node_ids",
+    "nodes",
+    "edges",
+    "clickables",
+    "reactions",
+    "messages"
+  ],
+  "type": "object"
+}

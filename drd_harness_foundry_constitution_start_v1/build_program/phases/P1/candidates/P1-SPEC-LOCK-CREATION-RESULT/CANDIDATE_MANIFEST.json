@@ -1,0 +1,33 @@
+{
+  "workpack_id": "P1-SPEC-LOCK-CREATION-RESULT",
+  "phase": "P1",
+  "lane": "SPEC_LOCK_RESULT",
+  "status": "CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "P1-SPEC-LOCK-CREATION-RESULT"
+  ],
+  "generated_outputs": [
+    "SPEC_LOCK_CREATION_RESULT.json",
+    "SPEC_LOCK_VALIDATION_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "LOCK_CREATION_RESULT",
+    "LOCK_VALIDATION_REPORT",
+    "HANDOFF"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "SPEC_LOCK_CREATED_BY_PYTHON_TOOL",
+  "created_lock": "control/locks/P1_SPEC_LOCK.json",
+  "forbidden_write_paths_changed": [
+    "control/locks/P1_SPEC_LOCK.json"
+  ],
+  "authorized_write_basis": "P1-SPEC-LOCK-CREATION-READINESS-REVIEW-001",
+  "next_action": "Use the approved P1 SPEC_LOCK as the authority for the next explicitly authorized implementation or promotion workpack."
+}

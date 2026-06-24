@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "downstream_binding_field": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "edge_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "edge_type": {
+      "enum": [
+        "SOURCE_DEPENDENCY",
+        "REVIEW_DEPENDENCY",
+        "SPEC_LOCK_DEPENDENCY",
+        "BUILD_LOCK_DEPENDENCY",
+        "VALIDATOR_DEPENDENCY",
+        "TEST_EVIDENCE_DEPENDENCY",
+        "WORKPACK_DEPENDENCY",
+        "SKILL_DEPENDENCY",
+        "RELEASE_DEPENDENCY"
+      ],
+      "type": "string"
+    },
+    "invalidation_behavior": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_subject": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_subject": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "upstream_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "edge_id",
+    "edge_type",
+    "source_subject",
+    "target_subject",
+    "upstream_hash",
+    "downstream_binding_field",
+    "invalidation_behavior"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,31 @@
+{
+  "decision_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE-REVIEW-001",
+  "subject": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+  "subject_hash": "294a3ad1dfdab3e6063f5eb525fdd42f97bd1ffcb34ec3e0565816ed70994066",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User asked to continue after the P1-IMPLEMENT-02 implementation candidate. This approval covers the source-stage-lineage implementation candidate only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+    "test_command": "python3 -m pytest repository/tests/kernel repository/tests/stages -q",
+    "test_result": "36 passed",
+    "spec_lock": "control/locks/P1_SPEC_LOCK.json",
+    "spec_lock_sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "remaining_followups": [
+    "BUILD_LOCK is not created.",
+    "stage lineage validator module is deferred because this workpack did not allow validators/** writes.",
+    "Next implementation workpack still requires scoped execution and review."
+  ]
+}

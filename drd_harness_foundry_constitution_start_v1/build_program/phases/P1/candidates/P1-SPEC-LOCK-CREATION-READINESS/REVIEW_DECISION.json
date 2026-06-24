@@ -1,0 +1,29 @@
+{
+  "decision_id": "P1-SPEC-LOCK-CREATION-READINESS-REVIEW-001",
+  "subject": "P1-SPEC-LOCK-CREATION-READINESS",
+  "subject_hash": "7aebfde550d43d7123bd6db239fd6ad18ffc1ed811965677fc0a36641dfb10aa",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-24",
+  "basis": "User continued at the lock creation review point. This approves the narrow Python lock creation tool and authorizes writing the canonical P1 SPEC_LOCK to control/locks/P1_SPEC_LOCK.json.",
+  "approved_sections": [
+    "SPEC_LOCK_CREATION_READINESS.md",
+    "SPEC_LOCK_INPUT_BUNDLE.json",
+    "SPEC_LOCK_TOOLING_GAP_REPORT.json",
+    "SPEC_LOCK_CREATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "authorized_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+  },
+  "authorized_command": "python3 tooling/create_spec_lock.py --phase P1 --input-bundle build_program/phases/P1/candidates/P1-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --output control/locks/P1_SPEC_LOCK.json",
+  "authorized_output": "control/locks/P1_SPEC_LOCK.json",
+  "open_blockers": [],
+  "remaining_followups": [
+    "Promotion module remains a later implementation concern after SPEC_LOCK creation.",
+    "Repository-side schema mirroring remains optional unless later required by implementation."
+  ]
+}

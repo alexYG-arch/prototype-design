@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "blocked_artifacts": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "candidate_options": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "decision_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gap_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "gap_type": {
+      "enum": [
+        "MISSING_PRODUCT_DECISION",
+        "MISSING_INPUT_PATH",
+        "UNAPPROVED_CAPABILITY",
+        "UNAPPROVED_INTEGRATION",
+        "UNAPPROVED_DATA_SCOPE",
+        "CONFLICTING_SOURCE",
+        "STRUCTURAL_COMPLETION_ESCALATED"
+      ]
+    },
+    "required_decision": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "RESOLVED_APPROVED",
+        "RESOLVED_REJECTED",
+        "SUPERSEDED"
+      ]
+    }
+  },
+  "required": [
+    "gap_id",
+    "gap_type",
+    "source_refs",
+    "blocked_artifacts",
+    "candidate_options",
+    "required_decision",
+    "status",
+    "decision_ref"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "approved_sections": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "decision": {
+      "enum": [
+        "APPROVED",
+        "REVISION_REQUIRED",
+        "REJECTED"
+      ],
+      "type": "string"
+    },
+    "decision_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "lock_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "open_blockers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "reviewer": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "subject_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "lock_id",
+    "decision_id",
+    "subject_hash",
+    "decision",
+    "reviewer",
+    "open_blockers",
+    "approved_sections"
+  ],
+  "type": "object"
+}

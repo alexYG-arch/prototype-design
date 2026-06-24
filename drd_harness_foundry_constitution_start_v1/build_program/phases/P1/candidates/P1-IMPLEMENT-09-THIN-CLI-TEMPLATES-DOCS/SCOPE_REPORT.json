@@ -1,0 +1,40 @@
+{
+  "report_id": "P1-IMPLEMENT-09-SCOPE-REPORT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-09-THIN-CLI-TEMPLATES-DOCS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/cli/**",
+    "repository/src/drd_harness/kernel/import_boundaries.py",
+    "repository/templates/**",
+    "repository/docs/**",
+    "repository/tests/integration/**",
+    "repository/tests/kernel/test_import_boundaries.py"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/cli/__init__.py",
+    "repository/src/drd_harness/cli/main.py",
+    "repository/src/drd_harness/kernel/import_boundaries.py",
+    "repository/templates/review_decision.template.json",
+    "repository/templates/stage_manifest.template.json",
+    "repository/docs/architecture/thin_cli_templates.md",
+    "repository/tests/integration/conftest.py",
+    "repository/tests/integration/test_cli_smoke.py",
+    "repository/tests/integration/test_cli_thinness.py",
+    "repository/tests/kernel/test_import_boundaries.py"
+  ],
+  "forbidden_write_violations": [],
+  "scope_notes": [
+    "No constitution, control, references, tooling, or skills paths were modified by this implementation workpack.",
+    "The CLI delegates to existing repository validators and orchestrator helpers instead of defining business rules.",
+    "A narrow review repair updated the delegated foundation boundary helper to avoid false positives from policy constants.",
+    "Templates are repository-local field skeletons and do not approve, promote, seal, lock, or expand write scope."
+  ]
+}

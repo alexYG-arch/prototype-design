@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "element_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "element_type": {
+      "enum": [
+        "PAGE",
+        "STATE",
+        "CTA",
+        "INPUT",
+        "NAVIGATION",
+        "MESSAGE",
+        "ROLE",
+        "PERMISSION",
+        "UI_ELEMENT"
+      ]
+    },
+    "source_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "source_text_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "stage_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "element_id",
+    "element_type",
+    "source_refs",
+    "source_text_hash",
+    "stage_id",
+    "artifact_id"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,52 @@
+{
+  "report_id": "P1-IMPLEMENT-06-SCOPE-REPORT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-06-VALIDATION-LOCKS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/**",
+    "repository/src/drd_harness/orchestrator/**",
+    "repository/schemas/locks/**",
+    "repository/tests/validators/**",
+    "repository/tests/orchestrator/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "repository/src/drd_harness/validators/postflight.py",
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/src/drd_harness/orchestrator/__init__.py",
+    "repository/src/drd_harness/orchestrator/invalidation.py",
+    "repository/src/drd_harness/orchestrator/promotion.py",
+    "repository/schemas/locks/spec_lock.schema.json",
+    "repository/schemas/locks/build_lock.schema.json",
+    "repository/schemas/locks/review_lock.schema.json",
+    "repository/schemas/locks/validation_result.schema.json",
+    "repository/schemas/locks/validator_identity.schema.json",
+    "repository/schemas/locks/promotion_audit.schema.json",
+    "repository/schemas/locks/invalidation_record.schema.json",
+    "repository/schemas/locks/invalidation_recovery_plan.schema.json",
+    "repository/schemas/locks/dependency_graph.schema.json",
+    "repository/schemas/locks/dependency_edge.schema.json",
+    "repository/schemas/locks/partial_unaffected_claim.schema.json",
+    "repository/schemas/locks/lock_supersession.schema.json",
+    "repository/tests/validators/conftest.py",
+    "repository/tests/validators/test_spec_validator.py",
+    "repository/tests/validators/test_postflight_scope.py",
+    "repository/tests/orchestrator/conftest.py",
+    "repository/tests/orchestrator/test_promotion_lock_state.py",
+    "repository/tests/orchestrator/test_invalidation.py"
+  ],
+  "forbidden_write_violations": [],
+  "scope_notes": [
+    "No constitution, control, references, tooling, or skills paths were modified by this implementation workpack.",
+    "Validators report findings and do not rewrite semantic artifacts.",
+    "The implementation adds readiness and invalidation checks only; it does not create canonical SPEC_LOCK or BUILD_LOCK authority."
+  ]
+}

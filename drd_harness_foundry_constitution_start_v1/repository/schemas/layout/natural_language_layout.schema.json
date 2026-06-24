@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "carrier_profile_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "containment_tree_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "content_growth_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "figma_metadata_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "information_completeness_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "layout_body_ref": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "layout_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "layout_text": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "semantic_authority": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "inventory_role": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pattern_refs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "section_index": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "state_variants": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "surface_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "z_axis_refs": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "layout_id",
+    "surface_id",
+    "layout_body_ref",
+    "layout_text",
+    "semantic_authority",
+    "inventory_role",
+    "carrier_profile_refs",
+    "section_index",
+    "containment_tree_ref",
+    "content_growth_refs",
+    "information_completeness_refs",
+    "trace_refs"
+  ],
+  "type": "object"
+}

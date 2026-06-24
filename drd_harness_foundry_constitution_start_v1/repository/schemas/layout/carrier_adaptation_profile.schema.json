@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "carrier_profile_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "carrier_rules": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "arrangement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "height_scroll_behavior": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "input_keyboard_behavior": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "navigation_placement": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "platform_constraints": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "safe_area_or_system_bars": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "width_behavior": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "arrangement",
+          "width_behavior",
+          "height_scroll_behavior",
+          "navigation_placement",
+          "safe_area_or_system_bars",
+          "input_keyboard_behavior",
+          "platform_constraints"
+        ],
+        "type": "object"
+      },
+      "type": "object"
+    },
+    "required_carriers": {
+      "items": {
+        "enum": [
+          "DESKTOP",
+          "TABLET",
+          "MOBILE",
+          "MOBILE_IOS",
+          "MOBILE_MATERIAL"
+        ]
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "unsupported_carriers": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "carrier_profile_id",
+    "required_carriers",
+    "carrier_rules"
+  ],
+  "type": "object"
+}

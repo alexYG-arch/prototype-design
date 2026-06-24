@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "approval_ref": {"minLength": 1, "type": "string"},
+    "canonical_value": {"minLength": 1, "type": "string"},
+    "inventory_version": {"minLength": 1, "type": "string"},
+    "lock_ref": {"type": ["string", "null"]},
+    "parent_unit_id": {"type": ["string", "null"]},
+    "relationship_kind": {"minLength": 1, "type": "string"},
+    "semantic_unit_id": {"minLength": 1, "type": "string"},
+    "source_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "source_path": {"minLength": 1, "type": "string"},
+    "source_section_id": {"minLength": 1, "type": "string"},
+    "source_span_ref": {"minLength": 1, "type": "string"},
+    "stage_id": {"enum": ["DRD-01", "DRD-02", "DRD-03", "DRD-03B", "DRD-04"], "type": "string"},
+    "unit_class": {
+      "enum": ["Product object", "Interaction object", "Presentation object", "Layout object", "Copy object", "Trace object"],
+      "type": "string"
+    },
+    "unit_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "unit_type": {
+      "enum": [
+        "PAGE", "PAGE_STATE", "OVERLAY", "REGION", "COMPONENT_DEFINITION", "COMPONENT_INSTANCE",
+        "COMPONENT_VARIANT", "ELEMENT", "CTA", "INPUT_FIELD", "OPTION", "VALIDATION_RULE",
+        "DATA_OBJECT", "DATA_FIELD", "COPY_STRING", "GRAPH_NODE", "GRAPH_EDGE", "REACTION",
+        "GUARD_CONDITION", "ASYNC_PATH", "HANDOFF_PATH", "FAILURE_PATH", "CANCEL_PATH",
+        "RETRY_PATH", "RETURN_PATH", "EXIT_PATH", "PRESENTATION_MODE", "SHARED_PATTERN",
+        "MESSAGE_PLACEMENT", "STATE_PLACEMENT", "CONTAINMENT_EDGE", "ORDER_RULE",
+        "ARRANGEMENT_RULE", "SIZING_RULE", "WIDTH_BEHAVIOR", "HEIGHT_SCROLL_BEHAVIOR",
+        "CONTENT_GROWTH_RULE", "CARRIER_ADAPTATION_RULE", "SAFE_AREA_RULE", "Z_AXIS_LAYER",
+        "MATERIAL_ELEVATION", "TRACE_BINDING"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "semantic_unit_id", "unit_type", "unit_class", "stage_id", "source_path", "source_section_id",
+    "source_span_ref", "source_hash", "approval_ref", "lock_ref", "parent_unit_id",
+    "relationship_kind", "canonical_value", "unit_hash", "inventory_version"
+  ],
+  "type": "object"
+}

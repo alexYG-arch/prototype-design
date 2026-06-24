@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "artifact_type": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "candidate_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "format": {
+      "enum": [
+        "markdown",
+        "json"
+      ]
+    },
+    "path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "promotion_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "review_decision_id": {
+      "type": "string"
+    },
+    "source_prd_snapshot_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "source_prd_snapshot_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage_id": {
+      "enum": [
+        "DRD-00",
+        "DRD-01",
+        "DRD-02",
+        "DRD-03",
+        "DRD-03B",
+        "DRD-04",
+        "DRD-05",
+        "DRD-06"
+      ]
+    },
+    "status": {
+      "enum": [
+        "SOURCE_FROZEN",
+        "CANDIDATE",
+        "VALIDATED",
+        "APPROVED",
+        "PROMOTED",
+        "REJECTED",
+        "INVALIDATED"
+      ]
+    },
+    "upstream_artifact_hashes": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "stage_id",
+    "artifact_type",
+    "format",
+    "path",
+    "source_prd_snapshot_id",
+    "source_prd_snapshot_hash",
+    "upstream_artifact_hashes",
+    "candidate_hash",
+    "status"
+  ],
+  "type": "object"
+}

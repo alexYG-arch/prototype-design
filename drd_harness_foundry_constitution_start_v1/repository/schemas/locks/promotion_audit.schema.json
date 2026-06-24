@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "created_by_runtime": {
+      "const": "python",
+      "type": "string"
+    },
+    "invalidation_effects": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "output_state": {
+      "enum": [
+        "PROMOTION_READY",
+        "PROMOTED",
+        "BLOCKED"
+      ],
+      "type": "string"
+    },
+    "promotion_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_decision_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "subject_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "subject_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "upstream_hashes": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "validator_result_hashes": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "promotion_id",
+    "subject_id",
+    "subject_hash",
+    "validator_result_hashes",
+    "review_decision_hash",
+    "upstream_hashes",
+    "output_state",
+    "invalidation_effects",
+    "created_by_runtime"
+  ],
+  "type": "object"
+}

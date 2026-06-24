@@ -1,0 +1,43 @@
+{
+  "report_id": "P1-IMPLEMENT-07-SCOPE-REPORT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-07-COMPILER-CONSERVATION",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/compiler/**",
+    "repository/src/drd_harness/validators/**",
+    "repository/schemas/compiler/**",
+    "repository/tests/compiler/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/compiler/__init__.py",
+    "repository/src/drd_harness/compiler/conservation.py",
+    "repository/src/drd_harness/compiler/final_drd.py",
+    "repository/src/drd_harness/validators/compiler_conservation.py",
+    "repository/schemas/compiler/compiler_input_bundle.schema.json",
+    "repository/schemas/compiler/final_drd_manifest.schema.json",
+    "repository/schemas/compiler/final_drd_toc.schema.json",
+    "repository/schemas/compiler/final_drd_reference_index.schema.json",
+    "repository/schemas/compiler/final_drd_hash_index.schema.json",
+    "repository/schemas/compiler/compiler_conservation_report.schema.json",
+    "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+    "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json",
+    "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+    "repository/tests/compiler/conftest.py",
+    "repository/tests/compiler/test_final_drd_compilation.py",
+    "repository/tests/compiler/test_compiler_conservation.py"
+  ],
+  "forbidden_write_violations": [],
+  "scope_notes": [
+    "No constitution, control, references, tooling, or skills paths were modified by this implementation workpack.",
+    "The compiler primitives do not read Source PRD text to fill gaps.",
+    "No final DRD release artifact, BUILD_LOCK, promotion, or approval authority was created."
+  ]
+}

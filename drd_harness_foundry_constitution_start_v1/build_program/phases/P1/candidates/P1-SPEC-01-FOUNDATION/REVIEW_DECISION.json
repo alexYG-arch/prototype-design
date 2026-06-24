@@ -1,6 +1,8 @@
 {
-  "decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-001",
-  "subject_hash": "796e91afc3f94351b134010065134a8a282561faf070dbc7cbb82ac3d056267f",
+  "decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-002",
+  "supersedes_decision_id": "P1-SPEC-01-FOUNDATION-REVIEW-001",
+  "supersedes_subject_hash": "796e91afc3f94351b134010065134a8a282561faf070dbc7cbb82ac3d056267f",
+  "subject_hash": "f48436c28d9b877ac277a6e45b45197259a1e51de113ebd57a6c3b5ecd50f429",
   "decision": "APPROVED",
   "reviewer": "human-user",
   "open_blockers": [],

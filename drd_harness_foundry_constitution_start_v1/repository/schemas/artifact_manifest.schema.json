@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "authority_role": {
+      "enum": [
+        "human_semantic",
+        "operational_control",
+        "index",
+        "schema"
+      ]
+    },
+    "format": {
+      "enum": [
+        "markdown",
+        "json"
+      ]
+    },
+    "path": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "path",
+    "format",
+    "authority_role"
+  ],
+  "type": "object"
+}

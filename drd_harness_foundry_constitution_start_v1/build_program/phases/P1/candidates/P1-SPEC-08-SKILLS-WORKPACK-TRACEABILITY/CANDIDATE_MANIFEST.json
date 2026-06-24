@@ -1,0 +1,41 @@
+{
+  "workpack_id": "P1-SPEC-08-SKILLS-WORKPACK-TRACEABILITY",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-07-COMPILER-CONSERVATION/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "DRD-CHARTER-013",
+    "DRD-CHARTER-014"
+  ],
+  "generated_outputs": [
+    "SPEC_TO_CODE_TRACEABILITY_CONTRACT.md",
+    "SKILL_VERSION_BINDING_CONTRACT.md",
+    "WORKPACK_GENERATION_CONTRACT.md",
+    "SPEC_BEFORE_CODE_RULES.md",
+    "TRACEABILITY_PROJECTIONS.md",
+    "SKILLS_WORKPACK_VALIDATOR_SPEC.md",
+    "SKILLS_WORKPACK_EXAMPLES.md",
+    "IMPLEMENTATION_BLUEPRINT.md",
+    "CODE_TARGET_MAP.json",
+    "TEST_OBLIGATION_MATRIX.json",
+    "IMPLEMENTATION_WORKPACK_INDEX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "CONTRACT",
+    "RULE",
+    "PROJECTION",
+    "VALIDATOR_SPEC",
+    "EXAMPLES",
+    "IMPLEMENTATION_BLUEPRINT"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "forbidden_write_paths_changed": [],
+  "next_action": "Prepare P1 phase-level assembly and lock readiness review if the user explicitly asks to continue; do not seal or implement repository code."
+}

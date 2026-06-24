@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "affected_paths": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "changed_dependency": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "claim_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "expires_on_dependency_change": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "reason": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "review_required": {
+      "type": "boolean"
+    },
+    "unaffected_paths": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "validator_result_ref": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "changed_dependency",
+    "affected_paths",
+    "unaffected_paths",
+    "reason",
+    "validator_result_ref",
+    "review_required",
+    "expires_on_dependency_change"
+  ],
+  "type": "object"
+}

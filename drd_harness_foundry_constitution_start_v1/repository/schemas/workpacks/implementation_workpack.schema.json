@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "acceptance_commands": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "allowed_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "code_targets": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "dependency_edges": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "forbidden_write_paths": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "invalidation_policy": {"minLength": 1, "type": "string"},
+    "lane": {"minLength": 1, "type": "string"},
+    "objective": {"minLength": 1, "type": "string"},
+    "phase": {"minLength": 1, "type": "string"},
+    "promotion_policy": {"minLength": 1, "type": "string"},
+    "required_spec_locks": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "lock_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+          "spec_part": {"minLength": 1, "type": "string"}
+        },
+        "required": ["spec_part", "lock_hash"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "required_specs": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "review_policy": {"minLength": 1, "type": "string"},
+    "skill_bindings": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "PLANNED",
+        "WAITING_UPSTREAM_LOCK",
+        "READY",
+        "RUNNING",
+        "CANDIDATE",
+        "VALIDATED",
+        "REVIEW_REQUIRED",
+        "APPROVED",
+        "PROMOTED",
+        "INVALIDATED"
+      ],
+      "type": "string"
+    },
+    "tests": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "traceability_rows": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "validators": {
+      "items": {"minLength": 1, "type": "string"},
+      "minItems": 1,
+      "type": "array"
+    },
+    "workpack_id": {"minLength": 1, "type": "string"}
+  },
+  "required": [
+    "workpack_id",
+    "phase",
+    "lane",
+    "objective",
+    "required_specs",
+    "required_spec_locks",
+    "traceability_rows",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "code_targets",
+    "validators",
+    "tests",
+    "acceptance_commands",
+    "skill_bindings",
+    "dependency_edges",
+    "status",
+    "review_policy",
+    "promotion_policy",
+    "invalidation_policy"
+  ],
+  "type": "object"
+}

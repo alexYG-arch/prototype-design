@@ -1,0 +1,43 @@
+{
+  "report_id": "P1-IMPLEMENT-02-SCOPE-REPORT-001",
+  "phase": "P1",
+  "workpack_id": "P1-IMPLEMENT-02-SOURCE-STAGE-LINEAGE",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/stages/**",
+    "repository/src/drd_harness/kernel/**",
+    "repository/schemas/stages/**",
+    "repository/tests/stages/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/kernel/hashline.py",
+    "repository/src/drd_harness/stages/__init__.py",
+    "repository/src/drd_harness/stages/contracts.py",
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/stages/stage_order.py",
+    "repository/src/drd_harness/stages/review_binding.py",
+    "repository/src/drd_harness/stages/read_only_qa.py",
+    "repository/schemas/stages/source_snapshot_manifest.schema.json",
+    "repository/schemas/stages/stage_manifest.schema.json",
+    "repository/schemas/stages/dependency_manifest.schema.json",
+    "repository/tests/stages/conftest.py",
+    "repository/tests/stages/test_source_snapshot.py",
+    "repository/tests/stages/test_stage_lineage.py",
+    "repository/tests/stages/test_stage_order.py",
+    "repository/tests/stages/test_review_binding.py",
+    "repository/tests/stages/test_read_only_qa_boundary.py",
+    "repository/tests/stages/test_stage_schemas.py"
+  ],
+  "forbidden_write_violations": [],
+  "scope_notes": [
+    "repository/src/drd_harness/validators/stage_lineage.py is intentionally deferred because validators/** is outside this workpack allowed_write_paths.",
+    "control/locks/P1_SPEC_LOCK.json existed before this implementation workpack and was not modified by this workpack."
+  ]
+}
