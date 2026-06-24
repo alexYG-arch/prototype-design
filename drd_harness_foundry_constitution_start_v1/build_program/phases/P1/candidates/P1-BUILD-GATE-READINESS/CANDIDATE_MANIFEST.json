@@ -1,0 +1,41 @@
+{
+  "workpack_id": "P1-BUILD-GATE-READINESS",
+  "phase": "P1",
+  "lane": "BUILD_GATE_READINESS",
+  "status": "BUILD_GATE_APPROVED_BY_HUMAN",
+  "upstream_build_lock": "control/locks/P1_BUILD_LOCK.json",
+  "upstream_build_lock_hash": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2",
+  "upstream_build_lock_creation_result": "build_program/phases/P1/candidates/P1-BUILD-LOCK-CREATION-RESULT",
+  "owned_workpack": "P1-BUILD-GATE-READINESS",
+  "generated_outputs": [
+    "BUILD_GATE_READINESS_REPORT.json",
+    "TRANSITION_READINESS_MATRIX.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_gate_state": "P1_BUILD_GATE_APPROVED",
+  "review_target": "REVIEW_TARGET.json",
+  "allowed_write_paths": [
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P2/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P2_SPEC may start according to build_program/program/PHASE_TRANSITIONS.json after this approved gate package is committed and pushed."
+}

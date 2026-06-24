@@ -1,0 +1,40 @@
+{
+  "review_id": "P1-BUILD-GATE-REVIEW-001",
+  "workpack_id": "P1-BUILD-GATE-READINESS",
+  "gate_id": "P1_BUILD_GATE",
+  "gate_decision": "P1_BUILD_GATE_APPROVED",
+  "subject_hash": "5e1b66ae3847bf766fee0e48b9764447bea4e91acb9717cc09c77fad2180d66e",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "approved_sections": [
+    "BUILD_GATE_READINESS_REPORT.json",
+    "TRANSITION_READINESS_MATRIX.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/**"
+  ],
+  "transition_authorized": {
+    "from": "P1_BUILD_LOCK",
+    "to": "P2_SPEC",
+    "requires": "P1_BUILD_GATE_APPROVED"
+  },
+  "accepted_evidence": [
+    "control/locks/P1_BUILD_LOCK.json",
+    "build_program/phases/P1/candidates/P1-BUILD-LOCK-CREATION-RESULT",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/SCOPE_REPORT.json"
+  ],
+  "source_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P1 build gate readiness review.",
+    "This decision satisfies P1_BUILD_GATE_APPROVED for the P1_BUILD_LOCK to P2_SPEC transition.",
+    "The P1-BUILD-LOCK-CREATION-RESULT candidate remains unchanged; its evidence is accepted here for gate review only.",
+    "This approval does not create a new lock and does not start P2_SPEC by itself."
+  ]
+}

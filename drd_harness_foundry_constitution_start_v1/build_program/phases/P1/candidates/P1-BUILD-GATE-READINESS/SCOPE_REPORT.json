@@ -1,0 +1,38 @@
+{
+  "report_id": "P1-BUILD-GATE-READINESS-SCOPE-001",
+  "phase": "P1",
+  "workpack_id": "P1-BUILD-GATE-READINESS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P2/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/BUILD_GATE_READINESS_REPORT.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/TRANSITION_READINESS_MATRIX.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/SCOPE_REPORT.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/PART_SELF_CHECK.md",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/HANDOFF.md",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/REVIEW_TARGET.json",
+    "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "p2_files_modified": false,
+  "repository_files_modified": false,
+  "control_files_modified": false,
+  "scope_notes": [
+    "This package records Human Gate approval for P1_BUILD_GATE_APPROVED.",
+    "It does not modify P2 scope, repository implementation, control locks, tooling, references, constitution files, or skills.",
+    "REVIEW_TARGET.json and REVIEW_DECISION.json are supporting review metadata and are excluded from the candidate subject hash to avoid circular self-hashing."
+  ]
+}

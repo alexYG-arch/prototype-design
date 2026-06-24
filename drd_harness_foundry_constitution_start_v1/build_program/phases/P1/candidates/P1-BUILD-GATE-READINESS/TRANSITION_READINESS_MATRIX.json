@@ -1,0 +1,68 @@
+{
+  "matrix_id": "P1-BUILD-GATE-TRANSITION-READINESS-001",
+  "phase": "P1",
+  "from": "P1_BUILD_LOCK",
+  "to": "P2_SPEC",
+  "required_gate": "P1_BUILD_GATE_APPROVED",
+  "checks": [
+    {
+      "check": "P1_SPEC_LOCK_EXISTS",
+      "status": "PASS",
+      "evidence": "control/locks/P1_SPEC_LOCK.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_EXISTS",
+      "status": "PASS",
+      "evidence": "control/locks/P1_BUILD_LOCK.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_VALIDATES",
+      "status": "PASS",
+      "finding_count": 0,
+      "evidence_ref": "VALIDATION_EVIDENCE.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_CREATION_RESULT_SOURCE_STATE",
+      "status": "NOT_APPROVED_NOT_MUTATED",
+      "evidence": "build_program/phases/P1/candidates/P1-BUILD-LOCK-CREATION-RESULT/CANDIDATE_MANIFEST.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_CREATION_RESULT_EVIDENCE_ACCEPTED",
+      "status": "PASS",
+      "evidence": "build_program/phases/P1/candidates/P1-BUILD-LOCK-CREATION-RESULT/CANDIDATE_MANIFEST.json",
+      "decision_evidence": "REVIEW_DECISION.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_PUSHED",
+      "status": "PASS",
+      "origin_main": "42238b7debe8bb57ee2b2633db00db481c349b60"
+    },
+    {
+      "check": "PRE_CANDIDATE_WORKTREE_CLEAN",
+      "status": "PASS",
+      "head": "42238b7debe8bb57ee2b2633db00db481c349b60"
+    },
+    {
+      "check": "CURRENT_UNCOMMITTED_SCOPE",
+      "status": "PASS",
+      "evidence_ref": "SCOPE_REPORT.json",
+      "meaning": "Only this gate-readiness candidate is currently uncommitted."
+    },
+    {
+      "check": "REVIEW_TARGET_BOUND",
+      "status": "PASS",
+      "evidence_ref": "REVIEW_TARGET.json"
+    },
+    {
+      "check": "P1_BUILD_GATE_APPROVED",
+      "status": "PASS",
+      "evidence": "REVIEW_DECISION.json"
+    },
+    {
+      "check": "P2_SPEC_STARTED",
+      "status": "NOT_STARTED_BY_THIS_CANDIDATE"
+    }
+  ],
+  "transition_readiness": "APPROVED_FOR_P2_SPEC_WITH_SOURCE_BUILD_LOCK_RESULT_UNMUTATED",
+  "next_allowed_action_after_approval": "Start P2_SPEC according to build_program/program/PHASE_TRANSITIONS.json after committing and pushing this approved gate package."
+}

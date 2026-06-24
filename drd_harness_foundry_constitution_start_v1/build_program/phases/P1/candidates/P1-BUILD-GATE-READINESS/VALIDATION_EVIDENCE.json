@@ -1,0 +1,39 @@
+{
+  "evidence_id": "P1-BUILD-GATE-READINESS-VALIDATION-001",
+  "phase": "P1",
+  "workpack_id": "P1-BUILD-GATE-READINESS",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P1_BUILD_LOCK_VALIDATES",
+      "command": "PYTHONPATH=repository/src python3 -c \"import json; from pathlib import Path; from drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness; lock=json.loads(Path('control/locks/P1_BUILD_LOCK.json').read_text()); findings=validate_build_lock_readiness(lock); assert lock['root_sha256']==canonical_lock_root(lock); assert not findings; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "P1_BUILD_LOCK root hash matches canonical root and validate_build_lock_readiness returned 0 findings",
+      "status": "PASS",
+      "result_hash": "4d761acee0559130deba7427a6ffe5888611c33110b9ba57c9646a6dad1e0c82",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P1_REPOSITORY_TESTS",
+      "command": "python3 -m pytest repository/tests/kernel repository/tests/stages repository/tests/reasoning repository/tests/interaction repository/tests/presentation repository/tests/layout repository/tests/validators repository/tests/orchestrator repository/tests/compiler repository/tests/workpacks repository/tests/integration -q",
+      "exit_code": 0,
+      "summary": "216 passed",
+      "status": "PASS",
+      "result_hash": "774ed0ff7fd26d8682a40c5469c53a699c8386de2981b122b892661f84e32873",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P1_BUILD_GATE_READINESS_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert all(p.startswith('build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/') for p in scope['actual_writes']); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "SCOPE_REPORT actual_writes exist, stay within allowed candidate path, and contain no forbidden violations",
+      "status": "PASS",
+      "result_hash": "b9d02580f38e942fa789251d1b01bfa1e2f730a609e8df521b157c8ac3b5583c",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/src/drd_harness/validators/spec_validator.py"
+  ]
+}
