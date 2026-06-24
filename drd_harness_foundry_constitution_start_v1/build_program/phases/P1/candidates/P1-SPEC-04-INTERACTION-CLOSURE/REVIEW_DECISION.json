@@ -1,0 +1,21 @@
+{
+  "decision_id": "P1-SPEC-04-INTERACTION-CLOSURE-REVIEW-001",
+  "subject_hash": "d1778531844f7556c7f5a9a3aa39cd77847190864fa8e2718c1d247aa688a8e0",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "open_blockers": [],
+  "approved_sections": [
+    "INTERACTION_GRAPH_CONTRACT.md",
+    "CLICKABLE_INVENTORY_RULES.md",
+    "REACTION_RULES.md",
+    "ASYNC_HANDOFF_EXIT_FAILURE_RULES.md",
+    "INTERACTION_COPY_RULES.md",
+    "INTERACTION_PROJECTIONS.md",
+    "INTERACTION_VALIDATOR_SPEC.md",
+    "INTERACTION_EXAMPLES.md",
+    "INTERACTION_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

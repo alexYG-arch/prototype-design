@@ -1,0 +1,43 @@
+{
+  "workpack_id": "P1-SPEC-04-INTERACTION-CLOSURE",
+  "phase": "P1",
+  "lane": "SPEC",
+  "status": "CANDIDATE",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION",
+  "upstream_review_decision": "build_program/phases/P1/candidates/P1-SPEC-03-REASONING-ADOPTION/REVIEW_DECISION.json",
+  "owned_clauses": [
+    "DRD-CHARTER-005",
+    "RD-RULE-002",
+    "RD-RULE-003",
+    "RD-RULE-004",
+    "RD-RULE-005",
+    "RD-RULE-006"
+  ],
+  "generated_outputs": [
+    "INTERACTION_GRAPH_CONTRACT.md",
+    "CLICKABLE_INVENTORY_RULES.md",
+    "REACTION_RULES.md",
+    "ASYNC_HANDOFF_EXIT_FAILURE_RULES.md",
+    "INTERACTION_COPY_RULES.md",
+    "INTERACTION_PROJECTIONS.md",
+    "INTERACTION_VALIDATOR_SPEC.md",
+    "INTERACTION_EXAMPLES.md",
+    "INTERACTION_IMPLEMENTATION_BLUEPRINT.md",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "required_output_families": [
+    "CONTRACT",
+    "RULE",
+    "PROJECTION",
+    "VALIDATOR_SPEC",
+    "EXAMPLES",
+    "IMPLEMENTATION_BLUEPRINT"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "forbidden_write_paths_changed": [],
+  "next_action": "Generate P1-SPEC-05-PRESENTATION-LAYOUT Candidate if the user explicitly asks to continue; do not seal or implement repository code."
+}

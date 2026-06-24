@@ -34,9 +34,9 @@
     "EXAMPLES",
     "IMPLEMENTATION_BLUEPRINT"
   ],
-  "approval_state": "NOT_APPROVED",
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
   "seal_state": "NOT_SEALED",
   "forbidden_write_paths_changed": [],
-  "next_action": "Validate and review P1-SPEC-03-REASONING-ADOPTION Candidate; do not implement repository code."
+  "next_action": "Generate P1-SPEC-04-INTERACTION-CLOSURE Candidate if the user explicitly asks to continue; do not seal or implement repository code."
 }
-
