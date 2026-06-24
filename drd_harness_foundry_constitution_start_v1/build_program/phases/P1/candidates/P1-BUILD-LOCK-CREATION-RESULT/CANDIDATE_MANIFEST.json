@@ -1,0 +1,28 @@
+{
+  "workpack_id": "P1-BUILD-LOCK-CREATION-RESULT",
+  "phase": "P1",
+  "lane": "BUILD_LOCK_RESULT",
+  "status": "CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "upstream_candidate": "build_program/phases/P1/candidates/P1-IMPLEMENTATION-BUILD-READINESS-AUDIT",
+  "upstream_spec_lock": "control/locks/P1_SPEC_LOCK.json",
+  "owned_clauses": [
+    "P1-BUILD-LOCK-CREATION-RESULT"
+  ],
+  "generated_outputs": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "review_decision": null,
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "BUILD_LOCK_CREATED_BY_PYTHON_RUNTIME",
+  "created_lock": "control/locks/P1_BUILD_LOCK.json",
+  "forbidden_write_paths_changed": [
+    "control/locks/P1_BUILD_LOCK.json"
+  ],
+  "authorized_write_basis": "user_explicit_build_lock_creation_request_2026-06-24",
+  "next_action": "Human review the BUILD_LOCK creation result, then commit and push the new lock artifacts if accepted."
+}

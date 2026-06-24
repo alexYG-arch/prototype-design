@@ -1,0 +1,55 @@
+{
+  "report_id": "P1-BUILD-LOCK-CREATION-VALIDATION-001",
+  "phase": "P1",
+  "status": "PASS",
+  "validated_lock": {
+    "path": "control/locks/P1_BUILD_LOCK.json",
+    "sha256": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2",
+    "root_sha256": "163dee6ac68384c6dc605a946a79702694b8fc9992c1ade02f3e7080acd1df3c"
+  },
+  "checks": [
+    {
+      "check": "git_worktree_clean_before_creation",
+      "status": "PASS"
+    },
+    {
+      "check": "origin_main_matches_head_before_creation",
+      "status": "PASS",
+      "head": "6c2a5e66385364a6a11b8991960bc7d950f0454d"
+    },
+    {
+      "check": "spec_lock_hash_matches_current_file",
+      "status": "PASS",
+      "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+    },
+    {
+      "check": "repository_build_output_hashes",
+      "status": "PASS",
+      "count": 161
+    },
+    {
+      "check": "test_results_lock_schema_shape",
+      "status": "PASS",
+      "count": 1
+    },
+    {
+      "check": "validator_identity_hashes_present",
+      "status": "PASS",
+      "count": 5
+    },
+    {
+      "check": "invalidates_on_present",
+      "status": "PASS",
+      "count": 25
+    },
+    {
+      "check": "validate_build_lock_readiness",
+      "status": "PASS",
+      "finding_count": 0
+    },
+    {
+      "check": "strict_build_lock_key_shape",
+      "status": "PASS"
+    }
+  ]
+}

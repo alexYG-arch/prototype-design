@@ -1,0 +1,33 @@
+{
+  "result_id": "P1-BUILD-LOCK-CREATION-RESULT-001",
+  "phase": "P1",
+  "status": "BUILD_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P1_BUILD_LOCK.json",
+    "sha256": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2",
+    "lock_id": "P1-BUILD-LOCK-001",
+    "root_sha256": "163dee6ac68384c6dc605a946a79702694b8fc9992c1ade02f3e7080acd1df3c",
+    "git_commit": "6c2a5e66385364a6a11b8991960bc7d950f0454d",
+    "spec_lock_hash": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17",
+    "file_entry_count": 161,
+    "test_result_count": 1,
+    "validator_identity_hash_count": 5,
+    "invalidates_on_count": 25
+  },
+  "input_matrix": {
+    "path": "build_program/phases/P1/candidates/P1-IMPLEMENTATION-BUILD-READINESS-AUDIT/BUILD_LOCK_INPUT_MATRIX.json",
+    "sha256": "62d97de87249ecfbe574574ad71b348b6a5ae0013bc017de496d08328caa3269",
+    "matrix_id": "P1-IMPLEMENTATION-BUILD-READINESS-AUDIT-BUILD-LOCK-INPUT-MATRIX-001"
+  },
+  "upstream_spec_lock": {
+    "path": "control/locks/P1_SPEC_LOCK.json",
+    "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+  },
+  "creation_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "authorized_by_user_message": "2026-06-24 explicit instruction: create BUILD_LOCK",
+  "not_a_release_lock": true,
+  "not_a_promotion": true
+}
