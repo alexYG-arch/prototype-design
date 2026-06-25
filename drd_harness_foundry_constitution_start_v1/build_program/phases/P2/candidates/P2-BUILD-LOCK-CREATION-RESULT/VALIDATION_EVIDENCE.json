@@ -6,29 +6,29 @@
   "validation_results": [
     {
       "check": "P2_BUILD_LOCK_READINESS_VALIDATION",
-      "command": "PYTHONPATH=repository/src python3 - <<'PY' ... validate_build_lock_readiness(lock) ... PY",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfrom drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness\nlock = json.loads(Path('control/locks/P2_BUILD_LOCK.json').read_text(encoding='utf-8'))\nfindings = validate_build_lock_readiness(lock)\nassert findings == [], findings\nassert lock['root_sha256'] == canonical_lock_root(lock)\nprint('PASS')\nPY",
       "exit_code": 0,
       "summary": "validate_build_lock_readiness returns PASS with zero findings for control/locks/P2_BUILD_LOCK.json",
       "status": "PASS",
-      "result_hash": "4af8bb0647dbe688db65e259c568bf3ef87572d4a7186e87f1408568a324ea55",
+      "result_hash": "715871eca28157b1455826ba8f4931cc35ecf7b2bc56c0f2013e49a28b96fe8d",
       "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
     },
     {
       "check": "P2_BUILD_LOCK_BOUND_FILE_HASHES",
-      "command": "python3 - <<'PY' ... assert every lock file sha256 matches disk ... PY",
+      "command": "python3 - <<'PY'\nimport hashlib\nimport json\nfrom pathlib import Path\nlock = json.loads(Path('control/locks/P2_BUILD_LOCK.json').read_text(encoding='utf-8'))\nfor entry in lock['files']:\n    actual = hashlib.sha256(Path(entry['path']).read_bytes()).hexdigest()\n    assert actual == entry['sha256'], entry['path']\nprint('PASS')\nPY",
       "exit_code": 0,
       "summary": "all 44 file entries listed in P2_BUILD_LOCK hash to the current file values",
       "status": "PASS",
-      "result_hash": "a0d205cf55235bbe45bd430c4b6a5f76472795bdaa9d30757f1d05ae1bf6abb3",
+      "result_hash": "e8ac4d774fb97a1c52efaeed8c7d2859089d3b8034bf224718fce35d23d7471d",
       "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
     },
     {
       "check": "P2_BUILD_LOCK_RESULT_SCOPE",
-      "command": "python3 - <<'PY' ... verify scope report writes ... PY",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot = Path('build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT')\nscope = json.loads((root / 'SCOPE_REPORT.json').read_text(encoding='utf-8'))\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['created_control_lock'] == 'control/locks/P2_BUILD_LOCK.json'\nassert scope['repository_files_modified'] is False\nassert scope['p1_files_modified'] is False\nassert scope['p2_phase_manifest_modified'] is False\nprint('PASS')\nPY",
       "exit_code": 0,
       "summary": "scope report records only the authorized P2_BUILD_LOCK and result candidate writes",
       "status": "PASS",
-      "result_hash": "ca4d7da66b7f518024f5340e62f7434fcaaa5e99bbd6858a1855061ff8e23a5f",
+      "result_hash": "249707d42b51d94af152665237000082d49626a8793763513603b9ec1f29e04c",
       "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
     }
   ],
