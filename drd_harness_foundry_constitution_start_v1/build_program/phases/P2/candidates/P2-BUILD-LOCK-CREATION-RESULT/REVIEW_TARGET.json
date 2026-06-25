@@ -1,0 +1,27 @@
+{
+  "target_id": "P2-BUILD-LOCK-CREATION-RESULT-REVIEW-TARGET-001",
+  "workpack_id": "P2-BUILD-LOCK-CREATION-RESULT",
+  "phase": "P2",
+  "lane": "BUILD_LOCK_RESULT",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT",
+  "review_subject_hash": "2cacf782796741c7efac59d3575f7c903050346ad09957736f789c48ea245683",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the created P2 BUILD_LOCK bind the clean committed implementation git_commit?",
+    "Do lock files, test results, validator identities, and invalidation inputs match the approved readiness matrix?",
+    "Does validate_build_lock_readiness pass with zero findings?",
+    "Does the result candidate avoid promotion, release lock creation, P2 spec lock mutation, and root P2 phase file changes?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null
+}

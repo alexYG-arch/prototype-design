@@ -1,0 +1,37 @@
+{
+  "workpack_id": "P2-BUILD-LOCK-CREATION-RESULT",
+  "phase": "P2",
+  "lane": "BUILD_LOCK_RESULT",
+  "status": "CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT",
+  "upstream_candidate": "build_program/phases/P2/candidates/P2-BUILD-READINESS",
+  "upstream_review_decision": "build_program/phases/P2/candidates/P2-BUILD-READINESS/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "5ba74a829d7c626292a73cabe46d8867ab87ca46c4cde04948c0a54595bbef37",
+  "upstream_review_decision_subject_hash": "a17709f2a0357bbb52042a342189b3cb89e1bef2fd18a0bc339d31c96caf35e2",
+  "upstream_spec_lock": "control/locks/P2_SPEC_LOCK.json",
+  "generated_outputs": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "review_decision": null,
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "BUILD_LOCK_CREATED_BY_PYTHON_RUNTIME",
+  "created_lock": "control/locks/P2_BUILD_LOCK.json",
+  "created_lock_sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad",
+  "authorized_write_basis": "P2-BUILD-READINESS-REVIEW-001",
+  "allowed_write_paths": [
+    "control/locks/P2_BUILD_LOCK.json",
+    "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review the P2 BUILD_LOCK creation result before any promotion or next phase work."
+}

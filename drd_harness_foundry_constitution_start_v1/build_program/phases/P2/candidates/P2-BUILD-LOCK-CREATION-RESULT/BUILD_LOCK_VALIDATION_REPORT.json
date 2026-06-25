@@ -1,0 +1,69 @@
+{
+  "report_id": "P2-BUILD-LOCK-CREATION-VALIDATION-001",
+  "phase": "P2",
+  "status": "PASS",
+  "validated_lock": {
+    "path": "control/locks/P2_BUILD_LOCK.json",
+    "sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad",
+    "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d"
+  },
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "build_lock_readiness_valid": true,
+    "file_entry_count": 44,
+    "test_result_count": 3,
+    "validator_identity_hash_count": 1,
+    "invalidates_on_count": 4,
+    "bound_git_commit": "043611842c5c5a00616cc822098ac5295389e02b",
+    "input_matrix_sha256": "9d2b7bd28f8143b74c563ecb6fb88a7d9e84b09051fd9d54f994ca273b5c60b1",
+    "authorized_review_sha256": "5ba74a829d7c626292a73cabe46d8867ab87ca46c4cde04948c0a54595bbef37"
+  },
+  "checks": [
+    {
+      "check": "git_worktree_clean_before_creation",
+      "status": "PASS",
+      "head": "043611842c5c5a00616cc822098ac5295389e02b"
+    },
+    {
+      "check": "readiness_review_authorizes_build_lock",
+      "status": "PASS",
+      "decision_id": "P2-BUILD-READINESS-REVIEW-001"
+    },
+    {
+      "check": "spec_lock_hash_matches_current_file",
+      "status": "PASS",
+      "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+    },
+    {
+      "check": "lock_file_candidate_hashes_match_current_files",
+      "status": "PASS",
+      "count": 44
+    },
+    {
+      "check": "test_results_lock_schema_shape",
+      "status": "PASS",
+      "count": 3
+    },
+    {
+      "check": "validator_identity_hashes_present",
+      "status": "PASS",
+      "count": 1
+    },
+    {
+      "check": "invalidates_on_present",
+      "status": "PASS",
+      "count": 4
+    },
+    {
+      "check": "validate_build_lock_readiness",
+      "status": "PASS",
+      "finding_count": 0
+    },
+    {
+      "check": "strict_build_lock_key_shape",
+      "status": "PASS"
+    }
+  ],
+  "blocking_findings": []
+}

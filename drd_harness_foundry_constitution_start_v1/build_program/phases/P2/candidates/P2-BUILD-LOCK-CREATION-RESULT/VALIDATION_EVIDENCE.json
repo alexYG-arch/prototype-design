@@ -1,0 +1,40 @@
+{
+  "evidence_id": "P2-BUILD-LOCK-CREATION-RESULT-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-BUILD-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P2_BUILD_LOCK_READINESS_VALIDATION",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY' ... validate_build_lock_readiness(lock) ... PY",
+      "exit_code": 0,
+      "summary": "validate_build_lock_readiness returns PASS with zero findings for control/locks/P2_BUILD_LOCK.json",
+      "status": "PASS",
+      "result_hash": "4af8bb0647dbe688db65e259c568bf3ef87572d4a7186e87f1408568a324ea55",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_BUILD_LOCK_BOUND_FILE_HASHES",
+      "command": "python3 - <<'PY' ... assert every lock file sha256 matches disk ... PY",
+      "exit_code": 0,
+      "summary": "all 44 file entries listed in P2_BUILD_LOCK hash to the current file values",
+      "status": "PASS",
+      "result_hash": "a0d205cf55235bbe45bd430c4b6a5f76472795bdaa9d30757f1d05ae1bf6abb3",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_BUILD_LOCK_RESULT_SCOPE",
+      "command": "python3 - <<'PY' ... verify scope report writes ... PY",
+      "exit_code": 0,
+      "summary": "scope report records only the authorized P2_BUILD_LOCK and result candidate writes",
+      "status": "PASS",
+      "result_hash": "ca4d7da66b7f518024f5340e62f7434fcaaa5e99bbd6858a1855061ff8e23a5f",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/schemas/locks/build_lock.schema.json",
+    "control/locks/P2_BUILD_LOCK.json"
+  ]
+}

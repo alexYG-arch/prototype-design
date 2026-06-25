@@ -1,0 +1,52 @@
+{
+  "result_id": "P2-BUILD-LOCK-CREATION-RESULT-001",
+  "phase": "P2",
+  "status": "BUILD_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P2_BUILD_LOCK.json",
+    "sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad",
+    "lock_id": "P2-BUILD-LOCK-001",
+    "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d",
+    "git_commit": "043611842c5c5a00616cc822098ac5295389e02b",
+    "spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+    "file_entry_count": 44,
+    "test_result_count": 3,
+    "validator_identity_hash_count": 1,
+    "invalidates_on_count": 4
+  },
+  "input_matrix": {
+    "path": "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+    "sha256": "9d2b7bd28f8143b74c563ecb6fb88a7d9e84b09051fd9d54f994ca273b5c60b1",
+    "matrix_id": "P2-BUILD-READINESS-MATRIX-001",
+    "readiness_workpack_id": "P2-IMPL-05"
+  },
+  "upstream_spec_lock": {
+    "path": "control/locks/P2_SPEC_LOCK.json",
+    "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+  },
+  "authorized_by_review": {
+    "path": "build_program/phases/P2/candidates/P2-BUILD-READINESS/REVIEW_DECISION.json",
+    "sha256": "5ba74a829d7c626292a73cabe46d8867ab87ca46c4cde04948c0a54595bbef37",
+    "decision_id": "P2-BUILD-READINESS-REVIEW-001",
+    "subject_hash": "a17709f2a0357bbb52042a342189b3cb89e1bef2fd18a0bc339d31c96caf35e2",
+    "reviewer": "human-user",
+    "reviewed_at": "2026-06-25"
+  },
+  "schema": {
+    "path": "repository/schemas/locks/build_lock.schema.json",
+    "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+  },
+  "validator": {
+    "path": "repository/src/drd_harness/validators/phase_gate.py",
+    "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c",
+    "function": "validate_build_lock_readiness"
+  },
+  "creation_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "authorized_by_user_message": "2026-06-25 explicit instruction: 创建lock，继续",
+  "not_a_release_lock": true,
+  "not_a_spec_lock": true,
+  "not_a_promotion": true
+}
