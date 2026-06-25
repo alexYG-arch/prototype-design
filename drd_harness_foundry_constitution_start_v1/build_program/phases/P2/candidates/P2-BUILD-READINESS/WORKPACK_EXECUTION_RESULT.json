@@ -15,7 +15,7 @@
   "implemented_files": [
     {
       "path": "repository/tests/p2/test_tiny_brief_end_to_end.py",
-      "sha256": "6b981948aba5884c5b952a71a17b7a761bffd6087d821f861538a88e4d5f2516"
+      "sha256": "e29e6d707d1b3c17f396add003f0385d28c55d00491c01e1122efa81b3c18534"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
@@ -42,7 +42,7 @@
     "DRD-06 final manifest, hash index, and reference index fixture artifacts generated from deterministic FINAL_DRD compiler output.",
     "Final review target binds FINAL_DRD.md, conservation report, final manifest, hash index, and reference index by subject hash.",
     "Final review decision fixture binds the final review subject hash with no open blockers and required review-decision contract fields.",
-    "P2 end-to-end test validates final artifact wrappers, compiler equality, upstream hash bindings, final review binding, build-readiness matrix code-target coverage, and absence of P2_BUILD_LOCK.",
+    "P2 end-to-end test validates final artifact wrappers, compiler equality, upstream hash bindings, final review binding, build-readiness matrix code-target coverage, explicit P2_BUILD_LOCK state, and lock readiness when the lock exists.",
     "P2 build lock readiness matrix records fixture, test, and P2 implementation code candidate lock inputs while blocking actual lock creation until human review, commit, and explicit lock authorization."
   ],
   "required_stage_ids": [

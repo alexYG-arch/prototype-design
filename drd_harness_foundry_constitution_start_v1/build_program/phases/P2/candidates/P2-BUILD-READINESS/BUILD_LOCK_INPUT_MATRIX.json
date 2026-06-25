@@ -216,7 +216,7 @@
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_end_to_end.py",
-      "sha256": "6b981948aba5884c5b952a71a17b7a761bffd6087d821f861538a88e4d5f2516"
+      "sha256": "e29e6d707d1b3c17f396add003f0385d28c55d00491c01e1122efa81b3c18534"
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_final_drd.py",

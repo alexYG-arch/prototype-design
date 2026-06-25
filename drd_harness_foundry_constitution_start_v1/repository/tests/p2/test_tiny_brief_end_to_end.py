@@ -4,7 +4,7 @@ from pathlib import Path
 
 from drd_harness.compiler.final_drd import compile_final_drd, deterministic_hash
 from drd_harness.validators.compiler_conservation import validate_final_manifest
-from drd_harness.validators.phase_gate import validate_promotion_readiness
+from drd_harness.validators.phase_gate import validate_build_lock_readiness, validate_promotion_readiness
 from drd_harness.validators.spec_validator import validate_validation_result
 
 
@@ -214,8 +214,31 @@ def test_build_lock_readiness_matrix_covers_p2_code_targets():
         assert file_hash == _sha256_file(Path(path))
 
 
-def test_end_to_end_readiness_does_not_create_p2_build_lock():
-    assert not Path("control/locks/P2_BUILD_LOCK.json").exists()
+def test_p2_build_lock_state_is_explicit():
+    matrix = json.loads(
+        Path("build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    lock_path = Path("control/locks/P2_BUILD_LOCK.json")
+    if not lock_path.exists():
+        assert matrix["build_lock_created"] is False
+        assert matrix["not_a_build_lock"] is True
+        return
+
+    lock = json.loads(lock_path.read_text(encoding="utf-8"))
+    assert lock["phase"] == "P2"
+    assert lock["spec_lock_hash"] == matrix["spec_lock"]["sha256"]
+    assert lock["files"] == matrix["lock_file_candidates"]
+    assert lock["test_results"] == [
+        {
+            "command": result["command"],
+            "exit_code": result["exit_code"],
+            "result_hash": result["result_hash"],
+        }
+        for result in matrix["test_results"]
+    ]
+    assert validate_build_lock_readiness(lock) == []
 
 
 def _load_json(filename: str):

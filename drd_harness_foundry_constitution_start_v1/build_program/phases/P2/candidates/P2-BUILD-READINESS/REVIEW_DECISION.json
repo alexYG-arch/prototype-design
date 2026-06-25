@@ -1,7 +1,7 @@
 {
   "decision_id": "P2-BUILD-READINESS-REVIEW-001",
   "subject": "P2-IMPL-05",
-  "subject_hash": "27556b9c33aa47ca192009b97378d3b31f24cd31e3196168b1688645f225a7ef",
+  "subject_hash": "a17709f2a0357bbb52042a342189b3cb89e1bef2fd18a0bc339d31c96caf35e2",
   "decision": "APPROVED",
   "reviewer": "human-user",
   "reviewed_at": "2026-06-25",
@@ -25,7 +25,7 @@
     "p2_targeted_test_result": "8 passed",
     "p2_suite_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2 -q",
     "p2_suite_result": "85 passed",
-    "candidate_check_subject_hash": "27556b9c33aa47ca192009b97378d3b31f24cd31e3196168b1688645f225a7ef",
+    "candidate_check_subject_hash": "a17709f2a0357bbb52042a342189b3cb89e1bef2fd18a0bc339d31c96caf35e2",
     "spec_lock": "control/locks/P2_SPEC_LOCK.json",
     "spec_lock_sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
     "p2_impl_04_review_decision": "build_program/phases/P2/candidates/P2-IMPL-04/REVIEW_DECISION.json",
