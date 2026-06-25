@@ -1,0 +1,388 @@
+{
+  "coverage_id": "P2-SPEC-02-SCHEMA-VALIDATOR-COVERAGE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "fixture_id": "tiny_brief_intake",
+  "rows": [
+    {
+      "artifact_id": "p2.tiny_brief.source_prd",
+      "ref_kind": "schema_ref",
+      "ref": null,
+      "exists_in_repository_now": null,
+      "schema_absence_reason": "Markdown is the immutable natural-language source; source_snapshot_manifest binds its hash and source_snapshot validator checks it."
+    },
+    {
+      "artifact_id": "p2.tiny_brief.source_prd",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/stages/source_snapshot.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.source_snapshot_manifest",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.source_snapshot_manifest",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/stages/source_snapshot.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.prd_element_inventory",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.prd_element_inventory",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.derived_element_decisions",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/reasoning/derived_element_decision.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.derived_element_decisions",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.product_expansion_gaps",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/reasoning/product_expansion_gap.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.product_expansion_gaps",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/reasoning/inference_record.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/reasoning.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.structural_completion_review",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/reasoning/structural_completion_review.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.structural_completion_review",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/reasoning.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.interaction_graph",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/interaction/interaction_graph.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.interaction_graph",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.clickable_inventory",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/interaction/clickable_inventory.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.clickable_inventory",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.async_behavior",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/interaction/async_behavior.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.async_behavior",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.failure_recovery",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/interaction/failure_recovery.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.failure_recovery",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.interaction_messages",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/interaction/interaction_message.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.interaction_messages",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.information_presentation_registry",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/presentation/information_presentation_registry.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.information_presentation_registry",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.shared_component_registry",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/presentation/shared_component_registry.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.shared_component_registry",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.natural_language_layout",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/layout/natural_language_layout.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.natural_language_layout",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.carrier_adaptation_profile",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.carrier_adaptation_profile",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.containment_hierarchy",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/layout/containment_hierarchy.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.containment_hierarchy",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.z_axis_layering",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/layout/z_axis_layering.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.z_axis_layering",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_input_bundle",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_input_bundle",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_semantic_unit_inventory",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_semantic_unit_inventory",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_conservation_report",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.compiler_conservation_report",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd",
+      "ref_kind": "schema_ref",
+      "ref": null,
+      "exists_in_repository_now": null,
+      "schema_absence_reason": "FINAL_DRD.md is a Markdown compilation target; compiler manifest, hash index, and conservation report provide structured validation."
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_manifest",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/final_drd_manifest.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_manifest",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_hash_index",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_hash_index",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_reference_index",
+      "ref_kind": "schema_ref",
+      "ref": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_drd_reference_index",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_review_target",
+      "ref_kind": "schema_ref",
+      "ref": null,
+      "exists_in_repository_now": null,
+      "schema_absence_reason": "Final review target is a review-binding object; final_review_decision and spec_validator bind the reviewed subject hash."
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_review_target",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/spec_validator.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_review_decision",
+      "ref_kind": "schema_ref",
+      "ref": "repository/templates/review_decision.template.json",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    },
+    {
+      "artifact_id": "p2.tiny_brief.final_review_decision",
+      "ref_kind": "validator_ref",
+      "ref": "repository/src/drd_harness/validators/spec_validator.py",
+      "exists_in_repository_now": true,
+      "schema_absence_reason": null
+    }
+  ],
+  "missing_refs": [],
+  "coverage_rule": "Non-null schema_ref and validator_ref entries must point to repository-local files available before P2 implementation begins; null schema_ref entries must carry schema_absence_reason."
+}

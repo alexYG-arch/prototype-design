@@ -1,0 +1,339 @@
+{
+  "bundle_id": "P2-SPEC-03-LOCK-INPUT-BUNDLE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "target_lock": "P2_SPEC_LOCK",
+  "not_a_lock": true,
+  "status": "CANDIDATE_LOCK_INPUT_BUNDLE",
+  "approved_input_root_sha256": "525cc9bb83bf7d1447d2b615ade14f79183695b5b8f09386b9b090dd1e326936",
+  "approved_input_root_basis": "canonical_json_sha256([{candidate_id, subject_hash, review_decision_sha256}]) for approved P2-SPEC-01 and P2-SPEC-02 only",
+  "required_spec_candidates": [
+    {
+      "candidate_id": "P2-SPEC-01",
+      "candidate_dir": "build_program/phases/P2/candidates/P2-SPEC-01",
+      "approval_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json",
+      "review_decision_sha256": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+      "subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+      "review_binding_status": "PASS"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "candidate_dir": "build_program/phases/P2/candidates/P2-SPEC-02",
+      "approval_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json",
+      "review_decision_sha256": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+      "subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+      "review_binding_status": "PASS"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "candidate_dir": "build_program/phases/P2/candidates/P2-SPEC-03",
+      "approval_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+      "review_decision_sha256": null,
+      "subject_hash": null,
+      "review_binding_status": "BOUND_BY_REVIEW_DECISION_SUPPORTING_OUTPUT",
+      "self_hash_policy": "subject_hash and review_decision_sha256 are recorded in REVIEW_DECISION.json and final P2_SPEC_LOCK to avoid circular generated-output hashing."
+    }
+  ],
+  "lock_input_files": [
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+      "sha256": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_CONTRACT.md",
+      "sha256": "c6bd50e05ccc67d6628b1e5f5529e83003266a500ab91075bf5d078d230da0df",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_STAGE_PATH_SPEC.md",
+      "sha256": "59a6e093f9392051654930b825962df10dbe6a951e293d9c3d7dbb2dc8de87b5",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_SCOPE_COVERAGE_MATRIX.json",
+      "sha256": "92abea931f1aa11e1f587feaba0713d49591391a1eb43e32a1a69dd024188e4f",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json",
+      "sha256": "94671b7fb0cd2dccf1d0b4aa51297055c85ceb3f06d882472bb3a0159a8f1a12",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_INTERACTION_EDGE_TABLE.json",
+      "sha256": "0d5d9397ddbd90dd3c580b6f7a25f7ac4a2b6de5ed109ab215198a90017d1668",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_PHASE_TRANSITION_EVIDENCE.json",
+      "sha256": "dfe6620128242e486aad5f1a772592906c93bd92b39d90b71acde75042a6a3c6",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_ARTIFACT_INVENTORY.json",
+      "sha256": "73458134a4533a541b6d8f979482eda4648082101ea9cd896849be12e6faf207",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json",
+      "sha256": "0638673f42dc3394e7d7f1023158476db0774e41e454abd43ffbfd241d959368",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_SPEC_PART_PLAN.json",
+      "sha256": "cec70c7801a2e5cc392b57ac0ed1f302325634a1ac113c26129e05dcaf876cdc",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_IMPLEMENTATION_WORKPACK_MAP.json",
+      "sha256": "c6d39c3accd869730532d6dd46bb22a82d42ba5d18ef1dd2fa7336ac52bafb0c",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_ACCEPTANCE_MATRIX.json",
+      "sha256": "599f7f79b90d6d4433d637dd720ad184643c20c03db275361933d668020b078e",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/VALIDATION_EVIDENCE.json",
+      "sha256": "e90d658e85d0eadece3dd2b9d96c295db93b6ca2b339dbdc914ab6f5b600c81e",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/SCOPE_REPORT.json",
+      "sha256": "4f39744150d250cfee056d0f643037cdf7ff87d0e702f016af19b40cbe032028",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/CANDIDATE_MANIFEST.json",
+      "sha256": "90decb840f8554f2db48b74d50e2e00ba2394bfe0545747073bf339c74dbac3a",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/PART_SELF_CHECK.md",
+      "sha256": "b4a7ad4d5cb0fb37ea2de9a51e81068d3325d8abfedef67102c015cae32b3745",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/HANDOFF.md",
+      "sha256": "5cebcac3ac49a7c48498f88dfa619b7c8e4abf86f4fc75d9259f9e5437d5b940",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-01",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json",
+      "sha256": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+      "input_kind": "review_decision"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_ARTIFACT_CONTRACTS.md",
+      "sha256": "0b3dbc6f062b777c4580654226c0d60052055eb83da1f4e89995b69808d9f5f6",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_ARTIFACT_MATRIX.json",
+      "sha256": "59825f26e1dee672f257a10d5c00b96bcb7c940001221cfd0459dd5a46bad826",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_FIXTURE_VALIDATION_MATRIX.json",
+      "sha256": "61ae6409e8669ba6c4cbf552aa1eac1b6ce8dfed6aa75940ac3ff49fef8f815f",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_REVIEW_GATE_MAP.json",
+      "sha256": "d61898394e69f9bb683830056847de76b9f75dc9a3b96cb36f8fc684bc6a5997",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_DEPENDENCY_GRAPH.json",
+      "sha256": "683edc3b6962c5a289e3fe758821f398cfe2c406925efd8f2606526a9a2b8c6e",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_ARTIFACT_FIELD_CONTRACTS.json",
+      "sha256": "8e7573051197f761609546ab68deed50c6ef90c7d7b269ebbb14044aeaabfb49",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_SCHEMA_VALIDATOR_COVERAGE.json",
+      "sha256": "f5a27a7e0d4e85f089697e9b7f5f5d510bbabe20e8ef2aabba9b8f264c395515",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_SPEC_LOCK_INPUT_PREVIEW.json",
+      "sha256": "d9369775b3437eafdc25208003eee414ae7e68f9766a4c28d157d59090573a4d",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/P2_IMPLEMENTATION_HANDOFF_CONTRACT.json",
+      "sha256": "404c88699fc96236e66faff017015420dc35c3c9b8053ffd58085a2a481a0e0c",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/VALIDATION_EVIDENCE.json",
+      "sha256": "003583c8bc34d1e98625c2a95a2109bc5247e1f0137cffd6225dfce08f2760f2",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/SCOPE_REPORT.json",
+      "sha256": "0f824ae2995ff84844db1db0fec2ba18238c8b37a23ccf4631aa50b23918f940",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/CANDIDATE_MANIFEST.json",
+      "sha256": "10d53c162f09f62e5db506ad9d644b7cc0c20aa6f1f4e3d0817be2f2680b38dc",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/PART_SELF_CHECK.md",
+      "sha256": "042fbcaf5c28fb06b4102f10f2566e6b3d395bd377793c928014f3b94b32cf21",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/HANDOFF.md",
+      "sha256": "08ad48eee20c2f1bde1181510f902687734306cd533b80c9da74127fc7b9226e",
+      "input_kind": "generated_output"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json",
+      "sha256": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+      "input_kind": "review_decision"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_INPUT_BUNDLE.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_IMPLEMENTATION_WORKPACK_INDEX.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_TEST_OBLIGATION_MATRIX.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_READINESS_CRITERIA.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_READINESS_REPORT.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/P2_IMPLEMENTATION_SEQUENCE.md",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/VALIDATION_EVIDENCE.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/SCOPE_REPORT.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/CANDIDATE_MANIFEST.json",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/PART_SELF_CHECK.md",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/HANDOFF.md",
+      "sha256": null,
+      "input_kind": "generated_output_pending_hash"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "path": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+      "sha256": null,
+      "input_kind": "review_decision_pending_hash"
+    }
+  ],
+  "lock_creation_preconditions": [
+    "P2-SPEC-03 REVIEW_DECISION.json must approve the current P2-SPEC-03 subject hash.",
+    "P2_SPEC_LOCK must be created by Python lock tooling after explicit user request.",
+    "P2_SPEC_LOCK must bind each candidate review decision hash and subject hash.",
+    "P2_SPEC_LOCK root hash must be recomputed from canonical lock content before any P2 implementation starts.",
+    "P2_SPEC_LOCK must reject pending P2-SPEC-03 null file hashes and recompute concrete file hashes from disk."
+  ],
+  "forbidden_in_this_candidate": [
+    "creating control/locks/P2_SPEC_LOCK.json",
+    "modifying repository implementation code",
+    "promoting P2 implementation workpacks",
+    "changing approved P2-SPEC-01 or P2-SPEC-02 outputs"
+  ],
+  "pending_candidate_hash_resolution": {
+    "candidate_id": "P2-SPEC-03",
+    "current_subject_hash_source": "REVIEW_DECISION.json subject_hash after approval generation",
+    "self_reference_policy": "P2_SPEC_LOCK_INPUT_BUNDLE.json cannot contain its own final sha256 without changing itself; the review target subject hash binds the candidate until approval.",
+    "actual_lock_rule": "P2_SPEC_LOCK creation must recompute file hashes from disk and must not copy null sha256 values or generated_output_pending_hash rows into the final lock.",
+    "required_after_human_approval": [
+      "P2-SPEC-03 REVIEW_DECISION.json subject_hash equals current review target subject hash",
+      "P2_SPEC_LOCK records concrete sha256 for each P2-SPEC-03 generated output",
+      "P2_SPEC_LOCK records P2-SPEC-03 review decision sha256"
+    ],
+    "approval_processed": true,
+    "human_review_status": "APPROVED_BY_HUMAN",
+    "review_decision_path": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json"
+  }
+}

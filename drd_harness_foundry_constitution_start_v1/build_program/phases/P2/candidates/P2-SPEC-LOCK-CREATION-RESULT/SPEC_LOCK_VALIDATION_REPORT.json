@@ -1,0 +1,110 @@
+{
+  "report_id": "P2-SPEC-LOCK-VALIDATION-REPORT-001",
+  "phase": "P2",
+  "status": "PASS",
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "schema_minimum_valid": true,
+    "file_entry_count": 3,
+    "root_sha256": "93eddcc641eaceb0d9793b2fb6eaa833a1526e4dc9d90345e2b018cc5beb1580",
+    "review_decision_file_root_sha256": "be11efe1ee5313854168eb7f2ebc76b6c6294cedaee24facfaa00605acf03b13",
+    "lock_sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+    "input_bundle_sha256": "462a3100a8219abf0d4a81c31ce9b046508028c0f02329401d2a7e6a369bd54e",
+    "schema_sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "tool_sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "authorized_review_sha256": "fec22f7fc50d7c8791c6acbe7358f0effa1594075e48853833f0b99197243a05",
+    "generated_output_hashes_verified": true,
+    "review_decision_hashes_verified": true,
+    "overwrite_guard_verified": true,
+    "lock_result_review_status": "APPROVED_BY_HUMAN"
+  },
+  "checks": [
+    {
+      "check_id": "P2LOCK-RESULT-001",
+      "name": "Canonical lock file exists",
+      "status": "PASS",
+      "details": "control/locks/P2_SPEC_LOCK.json exists."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-002",
+      "name": "Lock identifier and phase",
+      "status": "PASS",
+      "details": "lock_id is P2-SPEC-LOCK-001 and phase is P2."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-003",
+      "name": "Approved spec root binding",
+      "status": "PASS",
+      "details": "root_sha256 equals the approved P2 spec input root."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-004",
+      "name": "Review decision file root binding",
+      "status": "PASS",
+      "details": "review_decision_file_root_sha256 equals the P2 review decision file root."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-005",
+      "name": "Phase review decision binding",
+      "status": "PASS",
+      "details": "review_decision_hash equals the approved P2 readiness review decision file hash."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-006",
+      "name": "Tool identity binding",
+      "status": "PASS",
+      "details": "created_by_tool.sha256 equals the current tooling/create_spec_lock.py hash."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-007",
+      "name": "Schema minimum validation",
+      "status": "PASS",
+      "details": "The generated lock contains lock_id, phase, root_sha256, files, and review_decision_hash."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-008",
+      "name": "Lock file hash binding",
+      "status": "PASS",
+      "details": "SPEC_LOCK_CREATION_RESULT.json created_lock.sha256 equals the current control/locks/P2_SPEC_LOCK.json sha256."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-009",
+      "name": "Input bundle, schema, and tool hash binding",
+      "status": "PASS",
+      "details": "Input bundle, schema, and tool hashes match the current files and the values recorded inside the lock."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-010",
+      "name": "Authorized review binding",
+      "status": "PASS",
+      "details": "The readiness review file hash and subject hash match the current approved review decision."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-011",
+      "name": "Per-file lock entry binding",
+      "status": "PASS",
+      "details": "Every generated output and review decision file listed inside the lock hashes to the value recorded by the lock."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-012",
+      "name": "No-overwrite guard",
+      "status": "PASS",
+      "details": "A second create_spec_lock.py write to the same output path is expected to fail and leave the existing lock hash unchanged."
+    },
+    {
+      "check_id": "P2LOCK-RESULT-013",
+      "name": "No implementation authorization",
+      "status": "PASS",
+      "details": "The result remains not a BUILD_LOCK and not an implementation authorization."
+    }
+  ],
+  "blocking_findings": [],
+  "remaining_followups": [
+    "P2 BUILD_LOCK is not created.",
+    "P2 implementation workpacks still require explicit next-stage authorization.",
+    "Root P2 phase files are not updated by this result candidate.",
+    "P2 lock result is approved; P2 implementation workpacks still require explicit next-stage authorization."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

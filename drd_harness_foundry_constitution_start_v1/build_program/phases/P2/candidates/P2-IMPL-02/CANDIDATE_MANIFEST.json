@@ -1,0 +1,52 @@
+{
+  "workpack_id": "P2-IMPL-02",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-IMPL-02",
+  "upstream_spec_lock": "control/locks/P2_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+  "upstream_spec_lock_id": "P2-SPEC-LOCK-001",
+  "depends_on_workpacks": [
+    "P2-IMPL-01"
+  ],
+  "depends_on_review_decisions": [
+    "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json"
+  ],
+  "owned_workpack": "P2-IMPL-02",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+    "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+    "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+    "repository/tests/p2/test_tiny_brief_reasoning.py",
+    "repository/tests/p2/test_tiny_brief_interaction.py",
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/src/drd_harness/validators/interaction_closure.py",
+    "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P2-IMPL-02 is approved by Human Gate. P2-IMPL-03 may start only on explicit continuation; P2_BUILD_LOCK remains a separate lock step."
+}

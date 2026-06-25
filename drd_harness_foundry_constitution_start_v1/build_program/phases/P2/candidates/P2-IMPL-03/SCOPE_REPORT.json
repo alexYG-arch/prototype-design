@@ -1,0 +1,69 @@
+{
+  "report_id": "P2-IMPL-03-SCOPE-REPORT-001",
+  "phase": "P2",
+  "workpack_id": "P2-IMPL-03",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+    "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+    "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+    "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+    "repository/tests/p2/test_tiny_brief_presentation.py",
+    "repository/tests/p2/test_tiny_brief_layout.py",
+    "repository/src/drd_harness/validators/presentation_consistency.py",
+    "repository/src/drd_harness/validators/layout_completeness.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P2/candidates/P2-IMPL-03/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/validators/presentation_consistency.py",
+    "repository/src/drd_harness/validators/layout_completeness.py",
+    "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+    "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+    "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+    "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+    "repository/tests/p2/test_tiny_brief_presentation.py",
+    "repository/tests/p2/test_tiny_brief_layout.py"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P2/candidates/P2-IMPL-03/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/TEST_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-IMPL-03/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-IMPL-03/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p2_spec_lock_path": "control/locks/P2_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false
+  },
+  "dependency_status": {
+    "p2_impl_02_review_decision": "build_program/phases/P2/candidates/P2-IMPL-02/REVIEW_DECISION.json",
+    "p2_impl_02_review_decision_present": true,
+    "p2_impl_02_review_decision_hash": "c080e3d57a96adf92e398eccf7c0b038f6366a2d6ee05eeb31e08c6f40aa7877"
+  },
+  "p1_paths_modified": false,
+  "p2_spec_candidate_paths_modified": false,
+  "build_lock_created": false,
+  "review_decision_created": false,
+  "scope_notes": [
+    "P2_SPEC_LOCK is consumed as input only; implementation did not create or rewrite control locks.",
+    "P2-IMPL-02 approved review is consumed as dependency only; no P2-IMPL-02 file was modified by this workpack.",
+    "Natural-language layout auxiliary slices are embedded in natural_language_layout.json because P2-IMPL-03 has no allowed write path for separate growth, state-placement, or Figma metadata artifacts.",
+    "REVIEW_TARGET.json is supporting review metadata and is excluded from candidate subject hash to avoid circular self-hashing."
+  ]
+}

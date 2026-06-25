@@ -1,0 +1,32 @@
+{
+  "target_id": "P2-IMPL-02-REVIEW-TARGET-001",
+  "workpack_id": "P2-IMPL-02",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-IMPL-02",
+  "review_subject_hash": "5530151c9567b8437844c07fe47e4c44e9150c994d0ae4bb0e7b33edf01d3f44",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Do inference records bind the P2-IMPL-01 failure-copy derived refs without leaving unresolved product choices?",
+    "Are canonical reasoning records source-explicit or deductive rather than inductive?",
+    "Does structural completion expose concrete Human Gate candidate options without adding child pages or secondary workflows?",
+    "Does every approved PRD clickable have exactly one reaction and matching graph edge coverage?",
+    "Do spec edge rows conserve source/target state, overlay linkage, no-product-expansion locks, and clickable trigger traces without treating field_input rows as click reactions?",
+    "Are graph edges outside the spec edge table limited to reaction-traced overlay decomposition or failure recovery paths with no hidden navigation?",
+    "Do validate, generate, retry, and save-draft failure paths include processing, timeout, duplicate-trigger, failure, retry, edit, close, and recovery-copy coverage?",
+    "Do split artifacts match the interaction graph payload?",
+    "Does interaction copy avoid adding new product scope?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

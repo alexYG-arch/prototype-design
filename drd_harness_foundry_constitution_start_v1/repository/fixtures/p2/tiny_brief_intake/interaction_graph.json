@@ -1,0 +1,677 @@
+{
+  "artifact_id": "p2.tiny_brief.interaction_graph",
+  "stage_id": "DRD-03-INTERACTION",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+  "schema_ref": "repository/schemas/interaction/interaction_graph.schema.json",
+  "schema_payload_key": "graph",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+  "review_gate": "REVIEW_A_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "graph": {
+    "graph_id": "p2.tiny_brief.interaction_graph.001",
+    "entry_node_ids": [
+      "state.empty"
+    ],
+    "nodes": [
+      {
+        "node_id": "state.empty",
+        "node_type": "STATE",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+        ],
+        "is_terminal": false,
+        "terminal_reason": null,
+        "message_refs": [],
+        "failure_reason": null,
+        "recovery_targets": [],
+        "resume_source": null,
+        "trap_justification": null
+      },
+      {
+        "node_id": "state.editing",
+        "node_type": "STATE",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+        ],
+        "is_terminal": false,
+        "terminal_reason": null,
+        "message_refs": [
+          "msg.generate_disabled",
+          "msg.draft_saved"
+        ],
+        "failure_reason": null,
+        "recovery_targets": [],
+        "resume_source": "state.empty",
+        "trap_justification": null
+      },
+      {
+        "node_id": "overlay.validation",
+        "node_type": "OVERLAY",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Handoff Or Overlay"
+        ],
+        "is_terminal": false,
+        "terminal_reason": null,
+        "message_refs": [],
+        "failure_reason": null,
+        "recovery_targets": [
+          "state.editing",
+          "state.validating"
+        ],
+        "resume_source": "state.editing",
+        "trap_justification": "Validation progress is system-controlled; user close is modeled after recoverable failure through overlay.close."
+      },
+      {
+        "node_id": "state.validating",
+        "node_type": "PROCESSING",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States",
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Handoff Or Overlay"
+        ],
+        "is_terminal": false,
+        "terminal_reason": null,
+        "message_refs": [
+          "msg.validation_progress",
+          "msg.generation_progress",
+          "msg.retry_progress"
+        ],
+        "failure_reason": null,
+        "recovery_targets": [],
+        "resume_source": "overlay.validation",
+        "trap_justification": null
+      },
+      {
+        "node_id": "state.recoverable_failure",
+        "node_type": "FAILURE",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States",
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery"
+        ],
+        "is_terminal": false,
+        "terminal_reason": null,
+        "message_refs": [
+          "msg.failure.transient",
+          "msg.failure.missing_required",
+          "msg.recovery_instruction"
+        ],
+        "failure_reason": "Validation or generation failed, or required information is missing.",
+        "recovery_targets": [
+          "reaction.overlay.retry",
+          "reaction.overlay.edit_brief",
+          "reaction.overlay.close"
+        ],
+        "resume_source": "state.validating",
+        "trap_justification": null
+      },
+      {
+        "node_id": "state.final_ready",
+        "node_type": "SUCCESS",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States",
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Required Final Output"
+        ],
+        "is_terminal": true,
+        "terminal_reason": "FINAL_DRD.md has been produced and review evidence is available.",
+        "message_refs": [
+          "msg.final_ready"
+        ],
+        "failure_reason": null,
+        "recovery_targets": [],
+        "resume_source": "state.validating",
+        "trap_justification": null
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "edge.empty.field_input.to_editing",
+        "source_node_id": "state.empty",
+        "target_ref": "state.editing",
+        "edge_type": "NAVIGATES_TO"
+      },
+      {
+        "edge_id": "edge.empty.page_type_select.to_editing",
+        "source_node_id": "state.empty",
+        "target_ref": "state.editing",
+        "edge_type": "NAVIGATES_TO"
+      },
+      {
+        "edge_id": "edge.editing.save_draft.stays_editing",
+        "source_node_id": "state.editing",
+        "target_ref": "state.editing",
+        "edge_type": "SUBMITS_ACTION"
+      },
+      {
+        "edge_id": "edge.editing.save_draft.failure_to_recoverable_failure",
+        "source_node_id": "state.editing",
+        "target_ref": "state.recoverable_failure",
+        "edge_type": "ASYNC_FAILURE"
+      },
+      {
+        "edge_id": "edge.editing.opens_validation_overlay",
+        "source_node_id": "state.editing",
+        "target_ref": "overlay.validation",
+        "edge_type": "OPENS_OVERLAY"
+      },
+      {
+        "edge_id": "edge.overlay.validation.starts_processing",
+        "source_node_id": "overlay.validation",
+        "target_ref": "state.validating",
+        "edge_type": "STARTS_ASYNC"
+      },
+      {
+        "edge_id": "edge.editing.validate.to_validating",
+        "source_node_id": "state.editing",
+        "target_ref": "state.validating",
+        "edge_type": "STARTS_ASYNC"
+      },
+      {
+        "edge_id": "edge.editing.generate.to_validating",
+        "source_node_id": "state.editing",
+        "target_ref": "state.validating",
+        "edge_type": "STARTS_ASYNC"
+      },
+      {
+        "edge_id": "edge.validating.success.to_final_ready",
+        "source_node_id": "state.validating",
+        "target_ref": "state.final_ready",
+        "edge_type": "ASYNC_SUCCESS"
+      },
+      {
+        "edge_id": "edge.validating.failure.to_recoverable_failure",
+        "source_node_id": "state.validating",
+        "target_ref": "state.recoverable_failure",
+        "edge_type": "ASYNC_FAILURE"
+      },
+      {
+        "edge_id": "edge.recoverable_failure.retry.to_validating",
+        "source_node_id": "state.recoverable_failure",
+        "target_ref": "state.validating",
+        "edge_type": "RETRIES"
+      },
+      {
+        "edge_id": "edge.recoverable_failure.edit.to_editing",
+        "source_node_id": "state.recoverable_failure",
+        "target_ref": "state.editing",
+        "edge_type": "NAVIGATES_TO"
+      },
+      {
+        "edge_id": "edge.recoverable_failure.close.to_editing",
+        "source_node_id": "state.recoverable_failure",
+        "target_ref": "state.editing",
+        "edge_type": "CLOSES_OVERLAY"
+      }
+    ],
+    "clickables": [
+      {
+        "clickable_id": "brief.page_type.select",
+        "source_node_id": "state.empty",
+        "label_or_affordance": "Page type",
+        "clickable_type": "select",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Page type field is editable while drafting."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.brief.page_type.select"
+      },
+      {
+        "clickable_id": "brief.save_draft",
+        "source_node_id": "state.editing",
+        "label_or_affordance": "Save draft",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "At least one brief field has content."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.brief.save_draft"
+      },
+      {
+        "clickable_id": "brief.validate",
+        "source_node_id": "state.editing",
+        "label_or_affordance": "Validate brief",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Draft contains at least one field and validation can start."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.brief.validate"
+      },
+      {
+        "clickable_id": "brief.generate",
+        "source_node_id": "state.editing",
+        "label_or_affordance": "Generate DRD",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Required brief fields pass validation."
+        ],
+        "disabled_behavior": "Show why generation is unavailable while required fields are missing.",
+        "reaction_id": "reaction.brief.generate"
+      },
+      {
+        "clickable_id": "overlay.retry",
+        "source_node_id": "state.recoverable_failure",
+        "label_or_affordance": "Retry",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Validation or generation failed recoverably."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.overlay.retry"
+      },
+      {
+        "clickable_id": "overlay.edit_brief",
+        "source_node_id": "state.recoverable_failure",
+        "label_or_affordance": "Edit brief",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Recoverable failure or missing required information is visible."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.overlay.edit_brief"
+      },
+      {
+        "clickable_id": "overlay.close",
+        "source_node_id": "state.recoverable_failure",
+        "label_or_affordance": "Close",
+        "clickable_type": "button",
+        "source_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+        ],
+        "enabled_conditions": [
+          "Validation overlay is visible."
+        ],
+        "disabled_behavior": null,
+        "reaction_id": "reaction.overlay.close"
+      }
+    ],
+    "reactions": [
+      {
+        "reaction_id": "reaction.brief.page_type.select",
+        "clickable_id": "brief.page_type.select",
+        "source_node_id": "state.empty",
+        "reaction_type": "SELECT",
+        "target_ref": "state.editing",
+        "preconditions": [
+          "Page type selection remains within the single-page fixture."
+        ],
+        "failure_applicability": "CANNOT_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Move to editing draft state without creating another page.",
+        "failure_behavior": null,
+        "cancel_behavior": null,
+        "exception_behavior": null,
+        "message_refs": [],
+        "trace_refs": [
+          "edge.empty.page_type_select.to_editing",
+          "p2.tiny_brief.inference.clickable_closure.001"
+        ],
+        "repeat_trigger_strategy": null,
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.brief.save_draft",
+        "clickable_id": "brief.save_draft",
+        "source_node_id": "state.editing",
+        "reaction_type": "SUBMIT",
+        "target_ref": "state.editing",
+        "preconditions": [
+          "At least one brief field has content."
+        ],
+        "failure_applicability": "CAN_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Save the current draft and remain in editing state.",
+        "failure_behavior": "Show recoverable failure copy and keep draft content.",
+        "cancel_behavior": null,
+        "exception_behavior": "Runtime save error returns to recoverable failure copy without draft loss.",
+        "message_refs": [
+          "msg.draft_saved",
+          "msg.failure.transient",
+          "msg.recovery_instruction"
+        ],
+        "trace_refs": [
+          "edge.editing.save_draft.stays_editing",
+          "edge.editing.save_draft.failure_to_recoverable_failure",
+          "p2.tiny_brief.inference.clickable_closure.001"
+        ],
+        "repeat_trigger_strategy": null,
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.brief.validate",
+        "clickable_id": "brief.validate",
+        "source_node_id": "state.editing",
+        "reaction_type": "START_ASYNC",
+        "target_ref": "state.validating",
+        "preconditions": [
+          "Draft can be checked for source completeness and expansion gaps."
+        ],
+        "failure_applicability": "CAN_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "NON_IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Open validation overlay and show validation progress.",
+        "failure_behavior": "Show missing-required or transient failure copy with retry and edit paths.",
+        "cancel_behavior": null,
+        "exception_behavior": "Timeout returns to recoverable failure without draft loss.",
+        "message_refs": [
+          "msg.validation_progress",
+          "msg.failure.transient",
+          "msg.failure.missing_required",
+          "msg.recovery_instruction"
+        ],
+        "trace_refs": [
+          "edge.editing.opens_validation_overlay",
+          "edge.overlay.validation.starts_processing",
+          "edge.editing.validate.to_validating",
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ],
+        "repeat_trigger_strategy": "DISABLE_DUPLICATE_TRIGGER",
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.brief.generate",
+        "clickable_id": "brief.generate",
+        "source_node_id": "state.editing",
+        "reaction_type": "START_ASYNC",
+        "target_ref": "state.validating",
+        "preconditions": [
+          "All required brief fields pass validation."
+        ],
+        "failure_applicability": "CAN_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "NON_IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Start governed DRD generation and show progress.",
+        "failure_behavior": "Show missing-required or transient failure copy with retry and edit paths.",
+        "cancel_behavior": null,
+        "exception_behavior": "Timeout returns to recoverable failure without draft loss.",
+        "message_refs": [
+          "msg.generation_progress",
+          "msg.failure.transient",
+          "msg.failure.missing_required",
+          "msg.recovery_instruction"
+        ],
+        "trace_refs": [
+          "edge.editing.opens_validation_overlay",
+          "edge.overlay.validation.starts_processing",
+          "edge.editing.generate.to_validating",
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ],
+        "repeat_trigger_strategy": "DISABLE_DUPLICATE_TRIGGER",
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.overlay.retry",
+        "clickable_id": "overlay.retry",
+        "source_node_id": "state.recoverable_failure",
+        "reaction_type": "RETRY",
+        "target_ref": "state.validating",
+        "preconditions": [
+          "A recoverable validation or generation failure is visible."
+        ],
+        "failure_applicability": "CAN_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "NON_IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Retry validation or generation and show progress.",
+        "failure_behavior": "Return to recoverable failure copy without draft loss.",
+        "cancel_behavior": null,
+        "exception_behavior": "Retry timeout remains recoverable and keeps edit path available.",
+        "message_refs": [
+          "msg.retry_progress",
+          "msg.failure.transient",
+          "msg.recovery_instruction"
+        ],
+        "trace_refs": [
+          "edge.recoverable_failure.retry.to_validating",
+          "p2.tiny_brief.inference.failure_recovery_copy.001"
+        ],
+        "repeat_trigger_strategy": "IDEMPOTENT_RETRY",
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.overlay.edit_brief",
+        "clickable_id": "overlay.edit_brief",
+        "source_node_id": "state.recoverable_failure",
+        "reaction_type": "NAVIGATE",
+        "target_ref": "state.editing",
+        "preconditions": [
+          "A recoverable failure or missing required message is visible."
+        ],
+        "failure_applicability": "CANNOT_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Return focus to editable brief fields without losing draft.",
+        "failure_behavior": null,
+        "cancel_behavior": null,
+        "exception_behavior": null,
+        "message_refs": [],
+        "trace_refs": [
+          "edge.recoverable_failure.edit.to_editing",
+          "p2.tiny_brief.inference.failure_recovery_copy.002"
+        ],
+        "repeat_trigger_strategy": null,
+        "no_return_terminal": null
+      },
+      {
+        "reaction_id": "reaction.overlay.close",
+        "clickable_id": "overlay.close",
+        "source_node_id": "state.recoverable_failure",
+        "reaction_type": "CLOSE_OVERLAY",
+        "target_ref": "state.editing",
+        "preconditions": [
+          "Validation overlay is visible."
+        ],
+        "failure_applicability": "CANNOT_FAIL",
+        "cancel_applicability": "NOT_CANCELLABLE",
+        "async_applicability": "IMMEDIATE",
+        "handoff_applicability": "INTERNAL_ONLY",
+        "success_behavior": "Close overlay and preserve draft content.",
+        "failure_behavior": null,
+        "cancel_behavior": null,
+        "exception_behavior": null,
+        "message_refs": [],
+        "trace_refs": [
+          "edge.recoverable_failure.close.to_editing",
+          "p2.tiny_brief.inference.failure_recovery_copy.001"
+        ],
+        "repeat_trigger_strategy": null,
+        "no_return_terminal": null
+      }
+    ],
+    "messages": [
+      {
+        "message_id": "msg.generate_disabled",
+        "message_type": "DISABLED_REASON",
+        "node_id": "state.editing",
+        "reaction_id": null,
+        "trigger_condition": "Generate DRD is unavailable while required fields are missing or unvalidated.",
+        "user_visible_summary": "Complete the required brief fields before generating the DRD.",
+        "required_user_next_step": "Fill missing fields, then validate or generate again.",
+        "recovery_targets": [
+          "state.editing"
+        ],
+        "trace_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+        ]
+      },
+      {
+        "message_id": "msg.draft_saved",
+        "message_type": "SUCCESS_MESSAGE",
+        "node_id": "state.editing",
+        "reaction_id": "reaction.brief.save_draft",
+        "trigger_condition": "Draft save succeeds.",
+        "user_visible_summary": "Draft saved.",
+        "required_user_next_step": "Continue editing, validate, or generate when ready.",
+        "recovery_targets": [
+          "state.editing"
+        ],
+        "trace_refs": [
+          "edge.editing.save_draft.stays_editing"
+        ]
+      },
+      {
+        "message_id": "msg.validation_progress",
+        "message_type": "PROCESSING_MESSAGE",
+        "node_id": "state.validating",
+        "reaction_id": "reaction.brief.validate",
+        "trigger_condition": "Validate brief starts.",
+        "user_visible_summary": "Checking the brief for required inputs and expansion gaps.",
+        "required_user_next_step": "Wait for validation to finish.",
+        "recovery_targets": [
+          "state.recoverable_failure",
+          "state.final_ready"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ]
+      },
+      {
+        "message_id": "msg.generation_progress",
+        "message_type": "PROCESSING_MESSAGE",
+        "node_id": "state.validating",
+        "reaction_id": "reaction.brief.generate",
+        "trigger_condition": "Generate DRD starts.",
+        "user_visible_summary": "Generating the governed DRD from the validated brief.",
+        "required_user_next_step": "Wait for generation to finish.",
+        "recovery_targets": [
+          "state.recoverable_failure",
+          "state.final_ready"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ]
+      },
+      {
+        "message_id": "msg.retry_progress",
+        "message_type": "PROCESSING_MESSAGE",
+        "node_id": "state.validating",
+        "reaction_id": "reaction.overlay.retry",
+        "trigger_condition": "Retry starts after recoverable failure.",
+        "user_visible_summary": "Retrying the same validation or generation step.",
+        "required_user_next_step": "Wait for the retry result.",
+        "recovery_targets": [
+          "state.recoverable_failure",
+          "state.final_ready"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.failure_recovery_copy.001"
+        ]
+      },
+      {
+        "message_id": "msg.failure.transient",
+        "message_type": "FAILURE_MESSAGE",
+        "node_id": "state.recoverable_failure",
+        "reaction_id": null,
+        "trigger_condition": "Validation or generation hits a recoverable runtime failure.",
+        "user_visible_summary": "The check did not complete. Your draft is still available.",
+        "required_user_next_step": "Retry the step or edit the brief.",
+        "recovery_targets": [
+          "reaction.overlay.retry",
+          "reaction.overlay.edit_brief"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.failure_recovery_copy.001"
+        ]
+      },
+      {
+        "message_id": "msg.failure.missing_required",
+        "message_type": "VALIDATION_MESSAGE",
+        "node_id": "state.recoverable_failure",
+        "reaction_id": null,
+        "trigger_condition": "Required brief information is missing.",
+        "user_visible_summary": "Some required brief fields are missing.",
+        "required_user_next_step": "Edit the brief and complete the missing fields.",
+        "recovery_targets": [
+          "reaction.overlay.edit_brief"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.failure_recovery_copy.002"
+        ]
+      },
+      {
+        "message_id": "msg.recovery_instruction",
+        "message_type": "RECOVERY_INSTRUCTION",
+        "node_id": "state.recoverable_failure",
+        "reaction_id": null,
+        "trigger_condition": "Recoverable failure is visible.",
+        "user_visible_summary": "You can retry or edit the brief without losing draft content.",
+        "required_user_next_step": "Choose Retry or Edit brief.",
+        "recovery_targets": [
+          "reaction.overlay.retry",
+          "reaction.overlay.edit_brief"
+        ],
+        "trace_refs": [
+          "p2.tiny_brief.inference.failure_recovery_copy.001"
+        ]
+      },
+      {
+        "message_id": "msg.final_ready",
+        "message_type": "SUCCESS_MESSAGE",
+        "node_id": "state.final_ready",
+        "reaction_id": null,
+        "trigger_condition": "FINAL_DRD.md and review evidence are available.",
+        "user_visible_summary": "The source-backed FINAL_DRD is ready for review.",
+        "required_user_next_step": "Review the final DRD and evidence.",
+        "recovery_targets": [],
+        "trace_refs": [
+          "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Required Final Output"
+        ]
+      }
+    ]
+  }
+}

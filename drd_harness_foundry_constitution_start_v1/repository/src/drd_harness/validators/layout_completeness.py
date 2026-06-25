@@ -1,11 +1,13 @@
 """Validators for natural-language layout completeness and reconstruction metadata."""
 
 from dataclasses import dataclass
-from typing import Iterable, List, Set
+from typing import Iterable, List, Mapping, Set
 
 from drd_harness.rules.layout import (
     Carrier,
+    CarrierRule,
     ContainmentHierarchy,
+    ContainmentNode,
     ContentGrowthRule,
     FIGMA_WRITE_TERMS,
     FigmaReconstructionMetadata,
@@ -14,8 +16,10 @@ from drd_harness.rules.layout import (
     LAYOUT_COVERAGE_TERMS,
     LayerKind,
     NaturalLanguageLayout,
+    StatePlacementRecord,
     StatePlacementIndex,
     SurfaceKind,
+    ZAxisLayer,
     HORIZONTAL_SCROLL_TERMS,
     WIDTH_FATAL_TERMS,
     WIDTH_HORIZONTAL_EXCEPTION_TERMS,
@@ -109,6 +113,18 @@ def validate_information_completeness_rule(rule: InformationCompletenessRule) ->
     return findings
 
 
+def validate_information_completeness_refs(
+    completeness_rules: Iterable[InformationCompletenessRule],
+    known_information_refs: Iterable[str],
+) -> List[LayoutFinding]:
+    known = set(known_information_refs)
+    findings: List[LayoutFinding] = []
+    for rule in completeness_rules:
+        for ref in sorted(set(rule.required_information_refs) - known):
+            findings.append(LayoutFinding("PL010", ref, "required information ref does not resolve"))
+    return findings
+
+
 def validate_z_axis_layering(layering: ZAxisLayering, material_profile_required: bool = False) -> List[LayoutFinding]:
     findings = _collect("PL013", layering.z_axis_layer_id, layering.require_complete)
     layer_values = [layer.layer for layer in layering.layers]
@@ -132,10 +148,12 @@ def validate_state_placement_index(
     findings: List[LayoutFinding] = []
     for placement in index.placements:
         findings.extend(_collect("PL011", placement.message_id, placement.require_complete))
+    required = set(required_message_ids)
     placed = index.message_ids()
-    for message_id in required_message_ids:
-        if message_id not in placed:
-            findings.append(LayoutFinding("PL011", message_id, "interaction message lacks layout placement"))
+    for message_id in sorted(required - placed):
+        findings.append(LayoutFinding("PL011", message_id, "interaction message lacks layout placement"))
+    for message_id in sorted(placed - required):
+        findings.append(LayoutFinding("PL011", message_id, "layout placement references unknown interaction message"))
     return findings
 
 
@@ -196,21 +214,245 @@ def validate_layout_package(
     state_index: StatePlacementIndex,
     required_message_ids: Iterable[str],
     figma_metadata: FigmaReconstructionMetadata,
+    known_information_refs: Iterable[str] = (),
 ) -> List[LayoutFinding]:
     findings: List[LayoutFinding] = []
+    growth_rule_list = list(growth_rules)
+    completeness_rule_list = list(completeness_rules)
     findings.extend(validate_natural_language_layout(layout))
     findings.extend(validate_carrier_adaptation_profile(carrier_profile))
     findings.extend(validate_containment_hierarchy(hierarchy))
-    for rule in growth_rules:
+    for rule in growth_rule_list:
         findings.extend(validate_content_growth_rule(rule))
-    for rule in completeness_rules:
+    for rule in completeness_rule_list:
         findings.extend(validate_information_completeness_rule(rule))
+    known_refs = set(known_information_refs)
+    if known_refs:
+        findings.extend(validate_information_completeness_refs(completeness_rule_list, known_refs))
     material_required = Carrier.MOBILE_MATERIAL in carrier_profile.required_carriers
     findings.extend(validate_z_axis_layering(z_axis_layering, material_required))
     findings.extend(validate_state_placement_index(state_index, required_message_ids))
     findings.extend(validate_nested_surface_layout(hierarchy))
     findings.extend(validate_figma_metadata(figma_metadata, layout))
+    findings.extend(
+        validate_layout_reference_integrity(
+            layout,
+            carrier_profile,
+            hierarchy,
+            growth_rule_list,
+            completeness_rule_list,
+            z_axis_layering,
+            state_index,
+            figma_metadata,
+        )
+    )
     return findings
+
+
+def validate_layout_reference_integrity(
+    layout: NaturalLanguageLayout,
+    carrier_profile: CarrierAdaptationProfile,
+    hierarchy: ContainmentHierarchy,
+    growth_rules: Iterable[ContentGrowthRule],
+    completeness_rules: Iterable[InformationCompletenessRule],
+    z_axis_layering: ZAxisLayering,
+    state_index: StatePlacementIndex,
+    figma_metadata: FigmaReconstructionMetadata,
+) -> List[LayoutFinding]:
+    findings: List[LayoutFinding] = []
+    growth_rule_list = list(growth_rules)
+    completeness_rule_list = list(completeness_rules)
+    surface_ids = hierarchy.node_ids() | {hierarchy.surface_id, layout.surface_id}
+    if layout.carrier_profile_refs != [carrier_profile.carrier_profile_id]:
+        findings.append(LayoutFinding("PL016", layout.layout_id, "carrier_profile_refs do not bind carrier profile"))
+    if layout.containment_tree_ref != hierarchy.hierarchy_id:
+        findings.append(LayoutFinding("PL016", layout.layout_id, "containment_tree_ref does not bind hierarchy"))
+
+    growth_ids = {rule.growth_rule_id for rule in growth_rule_list}
+    missing_growth = sorted(set(layout.content_growth_refs) - growth_ids)
+    for missing_id in missing_growth:
+        findings.append(LayoutFinding("PL016", missing_id, "content growth ref does not resolve"))
+    for rule in growth_rule_list:
+        if not _surface_ref_resolves(rule.target_ref, surface_ids):
+            findings.append(LayoutFinding("PL016", rule.target_ref, "content growth target_ref does not resolve"))
+
+    completeness_ids = {rule.completeness_id for rule in completeness_rule_list}
+    missing_completeness = sorted(set(layout.information_completeness_refs) - completeness_ids)
+    for missing_id in missing_completeness:
+        findings.append(LayoutFinding("PL016", missing_id, "information completeness ref does not resolve"))
+
+    if layout.z_axis_refs and z_axis_layering.z_axis_layer_id not in set(layout.z_axis_refs):
+        findings.append(LayoutFinding("PL016", z_axis_layering.z_axis_layer_id, "z-axis layering is not referenced by layout"))
+    for layer in z_axis_layering.layers:
+        if not _surface_ref_resolves(layer.surface_ref, surface_ids):
+            findings.append(LayoutFinding("PL016", layer.surface_ref, "z-axis surface_ref does not resolve"))
+    if layout.figma_metadata_ref and layout.figma_metadata_ref != figma_metadata.figma_metadata_id:
+        findings.append(LayoutFinding("PL016", layout.figma_metadata_ref, "figma metadata ref does not resolve"))
+    if state_index.index_id not in layout.state_variants:
+        findings.append(LayoutFinding("PL016", state_index.index_id, "state placement index is not referenced by layout state_variants"))
+    for placement in state_index.placements:
+        if not _surface_ref_resolves(placement.surface_id, surface_ids):
+            findings.append(LayoutFinding("PL016", placement.surface_id, "state placement surface_id does not resolve"))
+    return findings
+
+
+def natural_language_layout_from_mapping(record: Mapping[str, object]) -> NaturalLanguageLayout:
+    return NaturalLanguageLayout(
+        layout_id=str(record["layout_id"]),
+        surface_id=str(record["surface_id"]),
+        layout_body_ref=str(record["layout_body_ref"]),
+        layout_text=str(record["layout_text"]),
+        semantic_authority=str(record["semantic_authority"]),
+        inventory_role=str(record["inventory_role"]),
+        carrier_profile_refs=_string_list(record["carrier_profile_refs"]),
+        section_index=_string_list(record["section_index"]),
+        containment_tree_ref=str(record["containment_tree_ref"]),
+        pattern_refs=_string_list(record.get("pattern_refs", [])),
+        state_variants=_string_list(record.get("state_variants", [])),
+        content_growth_refs=_string_list(record["content_growth_refs"]),
+        z_axis_refs=_string_list(record.get("z_axis_refs", [])),
+        information_completeness_refs=_string_list(record["information_completeness_refs"]),
+        figma_metadata_ref=_optional_string(record.get("figma_metadata_ref")),
+        trace_refs=_string_list(record["trace_refs"]),
+    )
+
+
+def carrier_adaptation_profile_from_mapping(record: Mapping[str, object]) -> CarrierAdaptationProfile:
+    carrier_rules = {
+        Carrier(str(carrier_name)): carrier_rule_from_mapping(rule)
+        for carrier_name, rule in _mapping(record["carrier_rules"]).items()
+    }
+    unsupported = record.get("unsupported_carriers")
+    unsupported_carriers = None
+    if isinstance(unsupported, Mapping):
+        unsupported_carriers = {Carrier(str(carrier)): str(reason) for carrier, reason in unsupported.items()}
+    return CarrierAdaptationProfile(
+        carrier_profile_id=str(record["carrier_profile_id"]),
+        required_carriers=[Carrier(str(carrier)) for carrier in _string_list(record["required_carriers"])],
+        carrier_rules=carrier_rules,
+        unsupported_carriers=unsupported_carriers,
+    )
+
+
+def carrier_rule_from_mapping(record: Mapping[str, object]) -> CarrierRule:
+    return CarrierRule(
+        arrangement=str(record["arrangement"]),
+        width_behavior=str(record["width_behavior"]),
+        height_scroll_behavior=str(record["height_scroll_behavior"]),
+        navigation_placement=str(record["navigation_placement"]),
+        safe_area_or_system_bars=str(record["safe_area_or_system_bars"]),
+        input_keyboard_behavior=str(record["input_keyboard_behavior"]),
+        platform_constraints=_string_list(record["platform_constraints"]),
+    )
+
+
+def containment_hierarchy_from_mapping(record: Mapping[str, object]) -> ContainmentHierarchy:
+    return ContainmentHierarchy(
+        hierarchy_id=str(record["hierarchy_id"]),
+        surface_id=str(record["surface_id"]),
+        nodes=[containment_node_from_mapping(node) for node in _mapping_list(record["nodes"])],
+    )
+
+
+def containment_node_from_mapping(record: Mapping[str, object]) -> ContainmentNode:
+    return ContainmentNode(
+        node_id=str(record["node_id"]),
+        surface_kind=SurfaceKind(str(record["surface_kind"])),
+        parent_id=_optional_string(record.get("parent_id")),
+        order=int(record["order"]),
+        arrangement=str(record["arrangement"]),
+        sizing=str(record["sizing"]),
+        scroll_behavior=str(record["scroll_behavior"]),
+        width_behavior=str(record["width_behavior"]),
+        entry_context=_optional_string(record.get("entry_context")),
+        return_placement=_optional_string(record.get("return_placement")),
+    )
+
+
+def content_growth_rule_from_mapping(record: Mapping[str, object]) -> ContentGrowthRule:
+    return ContentGrowthRule(
+        growth_rule_id=str(record["growth_rule_id"]),
+        target_ref=str(record["target_ref"]),
+        variable_content=_string_list(record["variable_content"]),
+        wrapping=str(record["wrapping"]),
+        overflow=str(record["overflow"]),
+        scroll=str(record["scroll"]),
+        collapse=_optional_string(record.get("collapse")),
+        truncation=_optional_string(record.get("truncation")),
+        truncation_recovery=_optional_string(record.get("truncation_recovery")),
+        expansion=_optional_string(record.get("expansion")),
+        pagination=_optional_string(record.get("pagination")),
+        empty_behavior=str(record["empty_behavior"]),
+        trace_refs=_string_list(record["trace_refs"]),
+    )
+
+
+def information_completeness_rule_from_mapping(record: Mapping[str, object]) -> InformationCompletenessRule:
+    return InformationCompletenessRule(
+        completeness_id=str(record["completeness_id"]),
+        required_information_refs=_string_list(record["required_information_refs"]),
+        height_behavior=str(record["height_behavior"]),
+        width_behavior=str(record["width_behavior"]),
+        information_access_path=str(record["information_access_path"]),
+        trace_refs=_string_list(record["trace_refs"]),
+        horizontal_scroll_exception=_optional_string(record.get("horizontal_scroll_exception")),
+    )
+
+
+def z_axis_layering_from_mapping(record: Mapping[str, object]) -> ZAxisLayering:
+    return ZAxisLayering(
+        z_axis_layer_id=str(record["z_axis_layer_id"]),
+        layers=[
+            ZAxisLayer(
+                layer=int(layer["layer"]),
+                surface_ref=str(layer["surface_ref"]),
+                layer_kind=LayerKind(str(layer["layer_kind"])),
+                blocks_lower_layers=bool(layer["blocks_lower_layers"]),
+                preserves_background_context=bool(layer["preserves_background_context"]),
+                occlusion_rule=str(layer["occlusion_rule"]),
+            )
+            for layer in _mapping_list(record["layers"])
+        ],
+        material_elevation_intent=_optional_string(record.get("material_elevation_intent")),
+        focus_restoration=str(record["focus_restoration"]),
+        trace_refs=_string_list(record["trace_refs"]),
+    )
+
+
+def state_placement_index_from_mapping(record: Mapping[str, object]) -> StatePlacementIndex:
+    return StatePlacementIndex(
+        index_id=str(record["index_id"]),
+        placements=[state_placement_record_from_mapping(item) for item in _mapping_list(record["placements"])],
+    )
+
+
+def state_placement_record_from_mapping(record: Mapping[str, object]) -> StatePlacementRecord:
+    return StatePlacementRecord(
+        message_id=str(record["message_id"]),
+        state_type=str(record["state_type"]),
+        presentation_mode=str(record["presentation_mode"]),
+        layout_placement=str(record["layout_placement"]),
+        surface_id=str(record["surface_id"]),
+        trace_refs=_string_list(record["trace_refs"]),
+    )
+
+
+def figma_reconstruction_metadata_from_mapping(record: Mapping[str, object]) -> FigmaReconstructionMetadata:
+    return FigmaReconstructionMetadata(
+        figma_metadata_id=str(record["figma_metadata_id"]),
+        layout_id=str(record["layout_id"]),
+        frame_hierarchy=_string_list(record["frame_hierarchy"]),
+        selection_box_hierarchy=_string_list(record["selection_box_hierarchy"]),
+        auto_layout_guidance=str(record["auto_layout_guidance"]),
+        component_instances=_string_list(record.get("component_instances", [])),
+        state_variants=_string_list(record.get("state_variants", [])),
+        carrier_variants=_string_list(record["carrier_variants"]),
+        z_axis_layers=_string_list(record.get("z_axis_layers", [])),
+        scroll_frames=_string_list(record["scroll_frames"]),
+        constraints=_string_list(record["constraints"]),
+        non_goals=_string_list(record["non_goals"]),
+        trace_refs=_string_list(record["trace_refs"]),
+    )
 
 
 def _collect(code: str, subject_id: str, check) -> List[LayoutFinding]:
@@ -253,6 +495,16 @@ def _inventory_is_index_only(value: str) -> bool:
     return has_index and has_validation and has_limited_role and no_semantic_authority
 
 
+def _surface_ref_resolves(surface_ref: str, surface_ids: Set[str]) -> bool:
+    if surface_ref in surface_ids:
+        return True
+    parts = surface_ref.split(".")
+    for end in range(len(parts) - 1, 0, -1):
+        if ".".join(parts[:end]) in surface_ids:
+            return True
+    return False
+
+
 def _max_depth(hierarchy: ContainmentHierarchy) -> int:
     children_by_parent = {}
     for node in hierarchy.nodes:
@@ -270,3 +522,27 @@ def _max_depth(hierarchy: ContainmentHierarchy) -> int:
     if not roots:
         return 0
     return max(depth(root, set()) for root in roots)
+
+
+def _mapping(value: object) -> Mapping[str, object]:
+    if not isinstance(value, Mapping):
+        raise ValueError("expected mapping")
+    return value
+
+
+def _mapping_list(value: object) -> List[Mapping[str, object]]:
+    if not isinstance(value, list) or not all(isinstance(item, Mapping) for item in value):
+        raise ValueError("expected list of mapping records")
+    return value
+
+
+def _optional_string(value: object):
+    if value is None:
+        return None
+    return str(value)
+
+
+def _string_list(value: object) -> List[str]:
+    if not isinstance(value, list):
+        raise ValueError("expected list")
+    return [str(item) for item in value]

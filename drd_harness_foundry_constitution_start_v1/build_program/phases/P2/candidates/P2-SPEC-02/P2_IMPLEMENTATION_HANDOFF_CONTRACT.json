@@ -1,0 +1,130 @@
+{
+  "contract_id": "P2-SPEC-02-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "handoff_rule": "P2 implementation workpacks remain blocked until P2_SPEC_LOCK exists.",
+  "implementation_inputs_after_lock": [
+    {
+      "implementation_workpack": "P2-IMPL-01",
+      "required_spec_inputs": [
+        "DRD-00-SOURCE-FREEZE",
+        "DRD-01-PRD-ELEMENTS",
+        "P2-VAL-SOURCE-HASH",
+        "P2-VAL-PRD-INVENTORY-COVERAGE",
+        "P2-VAL-NO-PRODUCT-EXPANSION"
+      ],
+      "required_stage_ids": [
+        "DRD-00-SOURCE-FREEZE",
+        "DRD-01-PRD-ELEMENTS"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-SOURCE-HASH",
+        "P2-VAL-PRD-INVENTORY-COVERAGE",
+        "P2-VAL-NO-PRODUCT-EXPANSION"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.product_expansion_gaps",
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ],
+      "typed_reference_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately."
+    },
+    {
+      "implementation_workpack": "P2-IMPL-02",
+      "required_spec_inputs": [
+        "DRD-02-REASONING",
+        "DRD-03-INTERACTION",
+        "P2-VAL-DEDUCTION-TRACE",
+        "P2-VAL-CLICKABLE-CLOSURE",
+        "P2-VAL-ASYNC-FAILURE-COPY"
+      ],
+      "required_stage_ids": [
+        "DRD-02-REASONING",
+        "DRD-03-INTERACTION"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-DEDUCTION-TRACE",
+        "P2-VAL-CLICKABLE-CLOSURE",
+        "P2-VAL-ASYNC-FAILURE-COPY"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.interaction_messages",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "typed_reference_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately."
+    },
+    {
+      "implementation_workpack": "P2-IMPL-03",
+      "required_spec_inputs": [
+        "DRD-04-PRESENTATION-LAYOUT",
+        "P2-VAL-PRESENTATION-PATTERN",
+        "P2-VAL-LAYOUT-CARRIERS"
+      ],
+      "required_stage_ids": [
+        "DRD-04-PRESENTATION-LAYOUT"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-PRESENTATION-PATTERN",
+        "P2-VAL-LAYOUT-CARRIERS"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.shared_component_registry",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "typed_reference_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately."
+    },
+    {
+      "implementation_workpack": "P2-IMPL-04",
+      "required_spec_inputs": [
+        "DRD-05-COMPILATION",
+        "P2-VAL-COMPILER-CONSERVATION"
+      ],
+      "required_stage_ids": [
+        "DRD-05-COMPILATION"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-COMPILER-CONSERVATION"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.final_drd"
+      ],
+      "typed_reference_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately."
+    },
+    {
+      "implementation_workpack": "P2-IMPL-05",
+      "required_spec_inputs": [
+        "DRD-06-FINAL-REVIEW",
+        "P2-VAL-FINAL-REVIEW-BINDING"
+      ],
+      "required_stage_ids": [
+        "DRD-06-FINAL-REVIEW"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-FINAL-REVIEW-BINDING"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.final_drd_hash_index",
+        "p2.tiny_brief.final_drd_manifest",
+        "p2.tiny_brief.final_drd_reference_index",
+        "p2.tiny_brief.final_review_decision",
+        "p2.tiny_brief.final_review_target"
+      ],
+      "typed_reference_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately."
+    }
+  ],
+  "maintainability_rule": "Implementation workpacks must cite validation IDs and artifact IDs rather than copying free-form stage descriptions."
+}

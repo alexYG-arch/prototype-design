@@ -1,0 +1,67 @@
+{
+  "evidence_id": "P2-SPEC-03-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P2_SPEC_03_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-03",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings after human approval metadata is applied",
+      "status": "PASS",
+      "result_hash": "edbb7ebdf3d78f9a85fa5a597a7619f7440e5574e72c4c43582a56ffe7511b81",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_03_REVIEW_BINDING_AFTER_PASS",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-03 --review-decision build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "review decision binds the approved P2-SPEC-03 subject hash with zero findings",
+      "status": "PASS",
+      "result_hash": "ad638d570756cc1fe847647ad130dc440ab4e123bca15e55afbb9be6885dcc0c",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_03_LOCK_READINESS_STRUCTURE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-03'); bundle=json.loads((root/'P2_SPEC_LOCK_INPUT_BUNDLE.json').read_text()); index=json.loads((root/'P2_IMPLEMENTATION_WORKPACK_INDEX.json').read_text()); tests=json.loads((root/'P2_TEST_OBLIGATION_MATRIX.json').read_text()); criteria=json.loads((root/'P2_SPEC_LOCK_READINESS_CRITERIA.json').read_text()); report=json.loads((root/'P2_SPEC_LOCK_READINESS_REPORT.json').read_text()); assert len(bundle['required_spec_candidates'])==3; assert bundle['required_spec_candidates'][0]['approval_state']=='APPROVED_BY_HUMAN'; assert bundle['required_spec_candidates'][1]['approval_state']=='APPROVED_BY_HUMAN'; assert bundle['required_spec_candidates'][2]['approval_state']=='APPROVED_BY_HUMAN'; assert bundle['required_spec_candidates'][2]['review_binding_status']=='BOUND_BY_REVIEW_DECISION_SUPPORTING_OUTPUT'; assert bundle['pending_candidate_hash_resolution']['approval_processed'] is True; assert len(index['implementation_workpacks'])==5; assert all(w['readiness_state']=='WAITING_P2_SPEC_LOCK' for w in index['implementation_workpacks']); assert all(w['path_coverage_status']=='PASS' for w in index['implementation_workpacks']); assert tests['obligation_count']==len(tests['obligations'])==10; assert all(o['owning_implementation_workpacks'] and o['path_coverage_status']=='PASS' for o in tests['obligations']); assert criteria['not_a_lock'] is True; assert criteria['lock_creation_allowed_now'] is False; assert report['readiness_status']=='APPROVED_FOR_SPEC_LOCK_CREATION_NOT_LOCKED'; assert report['human_review_summary']['p2_spec_03_review_status']=='APPROVED_BY_HUMAN'; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "approved lock input bundle, implementation index, test obligations, criteria, report, path coverage flags, and pending hash policy are internally consistent",
+      "status": "PASS",
+      "result_hash": "9cf28c8e4be49011006eccbcdbb05c1e22e318564dfa98905bb41af341da1eab",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_03_IMPLEMENTATION_EXECUTABILITY",
+      "command": "python3 -c \"import fnmatch,json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-03'); idx=json.loads((root/'P2_IMPLEMENTATION_WORKPACK_INDEX.json').read_text()); contracts=json.loads(Path('build_program/phases/P2/candidates/P2-SPEC-02/P2_ARTIFACT_FIELD_CONTRACTS.json').read_text()); artifact={a['artifact_id']:a['path'] for a in contracts['artifact_contracts']};\n\ndef covered(path, patterns):\n    return any(fnmatch.fnmatchcase(path, pat) or (pat.endswith('/**') and (path==pat[:-3] or path.startswith(pat[:-3] + '/'))) for pat in patterns)\nprev=[]\nfor w in idx['implementation_workpacks']:\n    allowed=w['allowed_write_paths_after_lock']\n    assert all(covered(p, allowed) for p in w['code_targets']), w['workpack_id']\n    assert all(covered(p, allowed) for p in w['test_targets']), w['workpack_id']\n    assert all(covered(artifact[a], allowed) for a in w['required_artifact_ids']), w['workpack_id']\n    assert w['requires_completed_workpacks']==prev, w['workpack_id']\n    assert w['write_path_coverage']['code_targets_covered_by_allowed_write_paths_after_lock'] is True\n    assert w['write_path_coverage']['required_artifact_paths_covered_by_allowed_write_paths_after_lock'] is True\n    assert w['write_path_coverage']['test_targets_covered_by_allowed_write_paths_after_lock'] is True\n    prev.append(w['workpack_id'])\nprint('PASS')\"",
+      "exit_code": 0,
+      "summary": "every code target, test target, and required artifact path is covered by allowed write paths; implementation dependencies are machine-readable and monotonic",
+      "status": "PASS",
+      "result_hash": "365927a9efb2b6c5880b0bf3a0c53204e26ac52f931dd6a4293f3d3f779e7977",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_03_LOCK_PENDING_HASH_POLICY",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-03'); bundle=json.loads((root/'P2_SPEC_LOCK_INPUT_BUNDLE.json').read_text()); rows=bundle['lock_input_files']; assert all(r['sha256'] or r['candidate_id']=='P2-SPEC-03' for r in rows); assert all(r['input_kind'] not in ('generated_output_pending_hash','review_decision_pending_hash') or r['candidate_id']=='P2-SPEC-03' for r in rows); policy=bundle['pending_candidate_hash_resolution']; assert 'must not copy null sha256' in policy['actual_lock_rule']; assert policy['approval_processed'] is True; assert policy['human_review_status']=='APPROVED_BY_HUMAN'; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "pending P2-SPEC-03 null hashes are candidate-only and final lock creation must recompute concrete file hashes after approval",
+      "status": "PASS",
+      "result_hash": "e56644965db6a58a737bdc3e511462c8e56624e8d0762107aeefabaf92fbb5f9",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_03_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-03'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert all(p.startswith('build_program/phases/P2/candidates/P2-SPEC-03/') for p in scope['actual_writes']); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "SCOPE_REPORT actual_writes exist, stay inside P2-SPEC-03 candidate path, and contain no forbidden violations",
+      "status": "PASS",
+      "result_hash": "15aecadd435af4fa7c235ddcbcf10a118c9ff5eabf8a439136ea3ba54e168191",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_FIXTURE_VALIDATION_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_ARTIFACT_FIELD_CONTRACTS.json"
+  ]
+}

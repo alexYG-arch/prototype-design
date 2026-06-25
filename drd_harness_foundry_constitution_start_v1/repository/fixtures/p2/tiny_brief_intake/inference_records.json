@@ -1,0 +1,178 @@
+{
+  "artifact_id": "p2.tiny_brief.inference_records",
+  "stage_id": "DRD-02-REASONING",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+  "schema_ref": "repository/schemas/reasoning/inference_record.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_INDUCTIVE_CANDIDATES",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "records": [
+    {
+      "inference_id": "p2.tiny_brief.inference.failure_recovery_copy.001",
+      "inference_class": "DEDUCTIVE_NECESSITY",
+      "stage_id": "DRD-02-REASONING",
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery",
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json#copy.failure.transient"
+      ],
+      "premises": [
+        "The PRD states that transient validation or generation failure must show a plain-language failure message.",
+        "The PRD states Retry and Edit brief must remain available without draft loss."
+      ],
+      "applied_rules": [
+        "DERIVE-RULE-008",
+        "DERIVE-RULE-009",
+        "INTERACTION-CHECK-017"
+      ],
+      "necessity_basis": "A recoverable failure state cannot be usable without user-visible failure copy and recovery actions.",
+      "unresolved_product_choices": [],
+      "conclusion": "Create recoverable transient failure copy and bind it to retry and edit recovery paths.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p2.tiny_brief.interaction_messages",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_graph"
+      ]
+    },
+    {
+      "inference_id": "p2.tiny_brief.inference.failure_recovery_copy.002",
+      "inference_class": "DEDUCTIVE_NECESSITY",
+      "stage_id": "DRD-02-REASONING",
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery",
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json#copy.failure.missing_required"
+      ],
+      "premises": [
+        "The PRD requires a specific missing-field message when required information is absent.",
+        "The PRD prohibits inventing a new page or new product capability for missing required information."
+      ],
+      "applied_rules": [
+        "DERIVE-RULE-008",
+        "DERIVE-RULE-009",
+        "INTERACTION-CHECK-017"
+      ],
+      "necessity_basis": "Required-field validation cannot be resolved by navigation or new capability; the same task must show missing input copy.",
+      "unresolved_product_choices": [],
+      "conclusion": "Create same-task missing-required-field copy bound to edit recovery.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p2.tiny_brief.interaction_messages",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_graph"
+      ]
+    },
+    {
+      "inference_id": "p2.tiny_brief.inference.clickable_closure.001",
+      "inference_class": "DEDUCTIVE_NECESSITY",
+      "stage_id": "DRD-02-REASONING",
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory",
+        "build_program/phases/P2/candidates/P2-SPEC-01/P2_INTERACTION_EDGE_TABLE.json"
+      ],
+      "premises": [
+        "The PRD lists exactly seven clickable command or select elements.",
+        "The P2 interaction edge table assigns each clickable a same-task state transition."
+      ],
+      "applied_rules": [
+        "INTERACTION-CHECK-003",
+        "INTERACTION-CHECK-013",
+        "P2-VAL-CLICKABLE-CLOSURE"
+      ],
+      "necessity_basis": "A clickable inventory is not closed unless each clickable binds exactly one reaction and matching graph edge.",
+      "unresolved_product_choices": [],
+      "conclusion": "Bind each approved clickable to one reaction and one same-task graph edge.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.interaction_graph"
+      ]
+    },
+    {
+      "inference_id": "p2.tiny_brief.inference.async_failure_copy.001",
+      "inference_class": "DEDUCTIVE_NECESSITY",
+      "stage_id": "DRD-02-REASONING",
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Handoff Or Overlay",
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery",
+        "build_program/phases/P2/candidates/P2-SPEC-01/P2_INTERACTION_EDGE_TABLE.json"
+      ],
+      "premises": [
+        "Validate brief, Generate DRD, and Retry move through validation overlay or processing states.",
+        "Async or failure edges must name user-facing copy or an explicit no-copy decision."
+      ],
+      "applied_rules": [
+        "INTERACTION-CHECK-008",
+        "INTERACTION-CHECK-016",
+        "INTERACTION-CHECK-017",
+        "P2-VAL-ASYNC-FAILURE-COPY"
+      ],
+      "necessity_basis": "Non-immediate validation or generation needs visible processing state, duplicate-trigger handling, timeout behavior, and recovery copy.",
+      "unresolved_product_choices": [],
+      "conclusion": "Bind validate, generate, and retry to processing messages, duplicate-trigger strategy, timeout behavior, and recoverable failure copy.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages",
+        "p2.tiny_brief.interaction_graph"
+      ]
+    },
+    {
+      "inference_id": "p2.tiny_brief.inference.no_product_expansion.001",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-02-REASONING",
+      "artifact_id": "p2.tiny_brief.inference_records",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#PRD Element Validation",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+      ],
+      "premises": [
+        "The PRD states that new user task, secondary page, and new product capability require Human Gate review.",
+        "P2-IMPL-01 routes secondary page, multi-user workflow, and live product output to open product expansion gaps."
+      ],
+      "applied_rules": [
+        "DERIVE-RULE-004",
+        "P2-VAL-NO-PRODUCT-EXPANSION"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "Do not add second page, multi-user workflow, or live product output in interaction artifacts.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.interaction_messages"
+      ]
+    }
+  ]
+}

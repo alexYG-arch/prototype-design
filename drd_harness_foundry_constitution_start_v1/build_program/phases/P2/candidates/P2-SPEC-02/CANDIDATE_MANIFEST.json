@@ -1,0 +1,59 @@
+{
+  "workpack_id": "P2-SPEC-02",
+  "phase": "P2",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-SPEC-02",
+  "upstream_candidate": "build_program/phases/P2/candidates/P2-SPEC-01",
+  "upstream_review_decision": "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+  "upstream_review_decision_subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+  "upstream_inputs": {
+    "p2_artifact_inventory_hash": "73458134a4533a541b6d8f979482eda4648082101ea9cd896849be12e6faf207",
+    "p2_prd_element_inventory_hash": "94671b7fb0cd2dccf1d0b4aa51297055c85ceb3f06d882472bb3a0159a8f1a12",
+    "p2_interaction_edge_table_hash": "0d5d9397ddbd90dd3c580b6f7a25f7ac4a2b6de5ed109ab215198a90017d1668",
+    "p2_layout_validation_parameters_hash": "0638673f42dc3394e7d7f1023158476db0774e41e454abd43ffbfd241d959368",
+    "p2_phase_transition_evidence_hash": "dfe6620128242e486aad5f1a772592906c93bd92b39d90b71acde75042a6a3c6"
+  },
+  "generated_outputs": [
+    "P2_STAGE_ARTIFACT_CONTRACTS.md",
+    "P2_STAGE_ARTIFACT_MATRIX.json",
+    "P2_FIXTURE_VALIDATION_MATRIX.json",
+    "P2_REVIEW_GATE_MAP.json",
+    "P2_STAGE_DEPENDENCY_GRAPH.json",
+    "P2_ARTIFACT_FIELD_CONTRACTS.json",
+    "P2_SCHEMA_VALIDATOR_COVERAGE.json",
+    "P2_SPEC_LOCK_INPUT_PREVIEW.json",
+    "P2_IMPLEMENTATION_HANDOFF_CONTRACT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-02/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Generate P2-SPEC-03 lock and implementation readiness from artifact, validation, dependency, field-contract, schema-coverage, review-gate, and implementation-handoff evidence if the user explicitly asks to continue; do not implement repository code or create P2_SPEC_LOCK from this candidate alone."
+}

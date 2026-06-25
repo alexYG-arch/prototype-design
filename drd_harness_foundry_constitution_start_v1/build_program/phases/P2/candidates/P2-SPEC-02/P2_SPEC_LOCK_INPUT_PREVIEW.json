@@ -1,0 +1,45 @@
+{
+  "preview_id": "P2-SPEC-02-SPEC-LOCK-INPUT-PREVIEW-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "lock_target": "P2_SPEC_LOCK",
+  "required_before_lock": [
+    {
+      "workpack_id": "P2-SPEC-01",
+      "required_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json",
+      "subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e"
+    },
+    {
+      "workpack_id": "P2-SPEC-02",
+      "required_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json",
+      "subject_hash": null,
+      "binding_state": "RECORDED_IN_SUPPORTING_REVIEW_DECISION",
+      "subject_hash_source": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json"
+    },
+    {
+      "workpack_id": "P2-SPEC-03",
+      "required_state": "APPROVED_BY_HUMAN",
+      "review_decision": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+      "subject_hash": null,
+      "binding_state": "PENDING_GENERATION"
+    }
+  ],
+  "lock_inputs_from_this_candidate": [
+    "P2_STAGE_ARTIFACT_CONTRACTS.md",
+    "P2_STAGE_ARTIFACT_MATRIX.json",
+    "P2_FIXTURE_VALIDATION_MATRIX.json",
+    "P2_REVIEW_GATE_MAP.json",
+    "P2_STAGE_DEPENDENCY_GRAPH.json",
+    "P2_ARTIFACT_FIELD_CONTRACTS.json",
+    "P2_SCHEMA_VALIDATOR_COVERAGE.json",
+    "P2_IMPLEMENTATION_HANDOFF_CONTRACT.json"
+  ],
+  "lock_blockers": [
+    "P2-SPEC-03 has not been generated yet.",
+    "No P2_SPEC_LOCK candidate has been produced."
+  ],
+  "non_goal": "This preview is not a lock and must not be treated as a P2_SPEC_LOCK.",
+  "lock_input_rule": "P2_SPEC_LOCK candidate must bind every reviewed generated output that carries stage, artifact, validation, dependency, review-gate, field-contract, schema-coverage, or implementation-handoff authority."
+}

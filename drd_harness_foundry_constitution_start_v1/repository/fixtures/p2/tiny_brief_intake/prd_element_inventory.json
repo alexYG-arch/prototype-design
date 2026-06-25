@@ -1,0 +1,264 @@
+{
+  "artifact_id": "p2.tiny_brief.prd_element_inventory",
+  "stage_id": "DRD-01-PRD-ELEMENTS",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+  "schema_ref": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+  "review_gate": "EXPANSION_GAP_ONLY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json"
+  ],
+  "semantic_source_model": {
+    "primary_semantics": "natural_language_prd",
+    "inventory_role": "index_and_verification_skeleton",
+    "rule": "Natural language remains the semantic source; inventory rows make coverage, validation, and downstream conservation checkable."
+  },
+  "records": [
+    {
+      "element_id": "brief.task.submit_one_page_design_brief",
+      "element_type": "UI_ELEMENT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#User Task"
+      ],
+      "source_text_hash": "c50e4b53ad4330ae8fe9a098186bc572faba8f6652810043c571f2f2526ee575",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.page",
+      "element_type": "PAGE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.field.project_name",
+      "element_type": "INPUT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.field.audience",
+      "element_type": "INPUT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.field.page_type",
+      "element_type": "INPUT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.field.primary_user_goal",
+      "element_type": "INPUT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.field.business_constraint",
+      "element_type": "INPUT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Real Page"
+      ],
+      "source_text_hash": "947a48942d957509bcc809e01b49b956ad4524a47cb8aadbc27f123667d1a34d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.page_type.select",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.save_draft",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.validate",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "brief.generate",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "overlay.retry",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "overlay.edit_brief",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "overlay.close",
+      "element_type": "CTA",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Clickable Inventory"
+      ],
+      "source_text_hash": "ad0e052642fcf539935bc11090c732489f2fbd3dd5f4553ddaf4ae1530336fd9",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "state.empty",
+      "element_type": "STATE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+      ],
+      "source_text_hash": "d5423e630884af9ea47a458288ce71cf686eff3980886fbf2912776c26aad91d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "state.editing",
+      "element_type": "STATE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+      ],
+      "source_text_hash": "d5423e630884af9ea47a458288ce71cf686eff3980886fbf2912776c26aad91d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "state.validating",
+      "element_type": "STATE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+      ],
+      "source_text_hash": "d5423e630884af9ea47a458288ce71cf686eff3980886fbf2912776c26aad91d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "state.recoverable_failure",
+      "element_type": "STATE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+      ],
+      "source_text_hash": "d5423e630884af9ea47a458288ce71cf686eff3980886fbf2912776c26aad91d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "state.final_ready",
+      "element_type": "STATE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#States"
+      ],
+      "source_text_hash": "d5423e630884af9ea47a458288ce71cf686eff3980886fbf2912776c26aad91d",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "overlay.validation",
+      "element_type": "UI_ELEMENT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Handoff Or Overlay"
+      ],
+      "source_text_hash": "98b26cb7a1a851edcd33fa1922d033c62643fbb335fbfee8f681127efcd6ad21",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "copy.failure.transient",
+      "element_type": "MESSAGE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery"
+      ],
+      "source_text_hash": "4a2060a5c345831bcfa1c88af19e51b6a915147132a5dc3e8c8b8728a4c0c602",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "copy.failure.missing_required",
+      "element_type": "MESSAGE",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Failure Recovery"
+      ],
+      "source_text_hash": "4a2060a5c345831bcfa1c88af19e51b6a915147132a5dc3e8c8b8728a4c0c602",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    },
+    {
+      "element_id": "final.output.final_drd",
+      "element_type": "UI_ELEMENT",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#Required Final Output"
+      ],
+      "source_text_hash": "235f2e170e54a53ad84929132aee9b74bc45bdbd01169b7e11cf01c9a488acee",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "artifact_id": "p2.tiny_brief.prd_element_inventory"
+    }
+  ],
+  "schema_payload_key": "records"
+}

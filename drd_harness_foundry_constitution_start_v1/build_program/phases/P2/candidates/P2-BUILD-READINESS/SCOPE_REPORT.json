@@ -1,0 +1,55 @@
+{
+  "report_id": "P2-IMPL-05-SCOPE-REPORT-001",
+  "phase": "P2",
+  "workpack_id": "P2-IMPL-05",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/tests/p2/test_tiny_brief_end_to_end.py",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/**",
+    "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT/**",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_review_target.json"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "repository/src/drd_harness/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/tests/p2/test_tiny_brief_end_to_end.py",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+    "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/TEST_REPORT.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p2_spec_lock_path": "control/locks/P2_SPEC_LOCK.json",
+    "used_as_input": true,
+    "p2_build_lock_path": "control/locks/P2_BUILD_LOCK.json",
+    "p2_build_lock_created": false
+  },
+  "dependency_status": {
+    "p2_impl_04_review_decision_present": true,
+    "p2_impl_04_review_decision_hash": "8bba84f739833fdf26e917d51a8bfa96df4b8a5399b743ad0a7ac1a554db66b6",
+    "p2_impl_04_review_subject_hash": "30f0a087746b6074604721f332fa5a15768b80ef3c232faf893fe4fefe99cd36"
+  },
+  "p1_paths_modified": false,
+  "repository_src_modified_by_this_workpack": false,
+  "actual_write_scope_status": "PASS"
+}

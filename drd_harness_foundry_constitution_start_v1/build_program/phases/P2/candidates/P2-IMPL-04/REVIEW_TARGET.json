@@ -1,0 +1,33 @@
+{
+  "target_id": "P2-IMPL-04-REVIEW-TARGET-001",
+  "workpack_id": "P2-IMPL-04",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-IMPL-04",
+  "review_subject_hash": "30f0a087746b6074604721f332fa5a15768b80ef3c232faf893fe4fefe99cd36",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the compiler input bundle consume only approved semantic artifacts, operational indexes, review decisions, lock refs, validator evidence, control indexes, and schemas?",
+    "Does the bundle avoid direct semantic reads from source_prd.md and use it only as frozen source identity?",
+    "Are all input record groups list-shaped so malformed dict/string groups cannot bypass record validation?",
+    "Are the 33 semantic units atomic, source-bound, hash-bound, approval-bound, lock-bound, and referenced exactly once by compiled sections?",
+    "Does section ordering reject duplicate section IDs within a stage and duplicate stage/section order slots before FINAL_DRD assembly?",
+    "Does semantic_content_hash exist and bind sections and semantic units while closed_input_hash binds input records?",
+    "Does current_hashes cover every bundled input record and reject missing hash coverage as drift evidence?",
+    "Does FINAL_DRD.md exactly match deterministic compiler output from the bundle?",
+    "Does the conservation report show PASS with zero added, omitted, drifted, or unapproved units?",
+    "Does P2-IMPL-04 avoid creating final review artifacts, build locks, or P2-IMPL-05 outputs?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

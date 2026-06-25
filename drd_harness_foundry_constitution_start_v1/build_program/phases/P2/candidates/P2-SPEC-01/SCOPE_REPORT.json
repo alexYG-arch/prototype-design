@@ -1,0 +1,53 @@
+{
+  "report_id": "P2-SPEC-01-SCOPE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md"
+  ],
+  "actual_writes": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_CONTRACT.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_STAGE_PATH_SPEC.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_SCOPE_COVERAGE_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_INTERACTION_EDGE_TABLE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_PHASE_TRANSITION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_ARTIFACT_INVENTORY.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_SPEC_PART_PLAN.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_IMPLEMENTATION_WORKPACK_MAP.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_ACCEPTANCE_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_TARGET.json",
+    "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "repository_files_modified": false,
+  "control_files_modified": false,
+  "p1_files_modified": false,
+  "p2_phase_manifest_modified": false,
+  "scope_notes": [
+    "This candidate starts P2 specification only.",
+    "It does not mutate P1 artifacts, P2 phase root files, repository code, control locks, tooling, references, constitution files, or skills.",
+    "REVIEW_TARGET.json and REVIEW_DECISION.json are supporting review metadata and are excluded from the candidate subject hash to avoid circular self-hashing.",
+    "P2_PHASE_TRANSITION_EVIDENCE.json reconciles effective P2_SPEC activation without mutating the root P2 phase manifest."
+  ]
+}

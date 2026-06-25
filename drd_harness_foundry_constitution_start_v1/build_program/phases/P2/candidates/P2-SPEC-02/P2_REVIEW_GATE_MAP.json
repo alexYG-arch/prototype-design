@@ -1,0 +1,57 @@
+{
+  "map_id": "P2-SPEC-02-REVIEW-GATE-MAP-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "fixture_id": "tiny_brief_intake",
+  "review_gates": [
+    {
+      "gate_id": "P2_EXPANSION_GAP_REVIEW",
+      "trigger": "product_expansion_gaps is non-empty or a missing element would require new product capability",
+      "allowed_decisions": [
+        "APPROVE_GAP_AS_SCOPE_CHANGE",
+        "REJECT_EXPANSION",
+        "REQUEST_SPEC_REPAIR"
+      ],
+      "blocks": [
+        "DRD-02-REASONING",
+        "P2_SPEC_LOCK"
+      ]
+    },
+    {
+      "gate_id": "P2_REVIEW_A_INTERACTION",
+      "trigger": "interaction closure, async behavior, failure recovery, or user-facing copy is disputed",
+      "allowed_decisions": [
+        "APPROVE_INTERACTION_CLOSURE",
+        "REQUEST_INTERACTION_REPAIR"
+      ],
+      "blocks": [
+        "DRD-04-PRESENTATION-LAYOUT",
+        "P2_SPEC_LOCK"
+      ]
+    },
+    {
+      "gate_id": "P2_REVIEW_B_PRESENTATION_LAYOUT",
+      "trigger": "presentation pattern, shared component decision, carrier adaptation, containment, horizontal scroll exception, or z-axis layering is disputed",
+      "allowed_decisions": [
+        "APPROVE_PRESENTATION_LAYOUT",
+        "REQUEST_PRESENTATION_LAYOUT_REPAIR"
+      ],
+      "blocks": [
+        "DRD-05-COMPILATION",
+        "P2_SPEC_LOCK"
+      ]
+    },
+    {
+      "gate_id": "P2_FINAL_REVIEW",
+      "trigger": "FINAL_DRD.md, final manifest, hash index, reference index, and conservation report are ready",
+      "allowed_decisions": [
+        "APPROVE_FINAL_VERTICAL_SLICE",
+        "REQUEST_FINAL_REPAIR"
+      ],
+      "blocks": [
+        "P2_BUILD_LOCK"
+      ]
+    }
+  ],
+  "review_binding_rule": "Every approval must bind the reviewed subject hash, approved sections, reviewer, decision, and open blockers. Chat-only approval is not sufficient unless recorded in a REVIEW_DECISION.json artifact."
+}

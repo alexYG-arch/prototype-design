@@ -1,0 +1,52 @@
+{
+  "report_id": "P2-SPEC-02-SCOPE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-02/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_ARTIFACT_CONTRACTS.md",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_ARTIFACT_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_FIXTURE_VALIDATION_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_REVIEW_GATE_MAP.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_STAGE_DEPENDENCY_GRAPH.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_ARTIFACT_FIELD_CONTRACTS.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_SCHEMA_VALIDATOR_COVERAGE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_SPEC_LOCK_INPUT_PREVIEW.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/P2_IMPLEMENTATION_HANDOFF_CONTRACT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-SPEC-02/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_TARGET.json",
+    "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "repository_files_modified": false,
+  "control_files_modified": false,
+  "p1_files_modified": false,
+  "p2_spec_01_modified": false,
+  "p2_phase_manifest_modified": false,
+  "scope_notes": [
+    "This candidate specifies P2 stage artifact contracts only.",
+    "It does not implement repository code, mutate P2-SPEC-01, create P2_SPEC_LOCK, create P2_BUILD_LOCK, or update root phase files.",
+    "REVIEW_TARGET.json and REVIEW_DECISION.json are supporting review metadata and are excluded from the candidate subject hash to avoid circular self-hashing.",
+    "Artifact field contracts and schema validator coverage are generated outputs because P2-SPEC-03 and P2 implementation workpacks need machine-checkable authority."
+  ]
+}

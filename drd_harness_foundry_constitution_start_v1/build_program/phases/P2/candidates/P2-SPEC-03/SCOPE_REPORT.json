@@ -1,0 +1,52 @@
+{
+  "scope_report_id": "P2-SPEC-03-SCOPE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-03/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**",
+    "build_program/phases/P2/candidates/P2-SPEC-02/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_INPUT_BUNDLE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_IMPLEMENTATION_WORKPACK_INDEX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_TEST_OBLIGATION_MATRIX.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_READINESS_CRITERIA.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_SPEC_LOCK_READINESS_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/P2_IMPLEMENTATION_SEQUENCE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-03/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-SPEC-03/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_TARGET.json",
+    "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "scope_status": "PASS",
+  "status": "PASS",
+  "repository_files_modified": false,
+  "control_files_modified": false,
+  "p1_files_modified": false,
+  "p2_spec_01_modified": false,
+  "p2_spec_02_modified": false,
+  "p2_phase_manifest_modified": false,
+  "scope_notes": [
+    "This candidate specifies P2 lock input and implementation readiness only.",
+    "It does not implement repository code, mutate P2-SPEC-01 or P2-SPEC-02, create P2_SPEC_LOCK, create P2_BUILD_LOCK, or update root phase files.",
+    "REVIEW_TARGET.json and REVIEW_DECISION.json are supporting review metadata and are excluded from the candidate subject hash to avoid circular self-hashing.",
+    "Final P2_SPEC_LOCK creation must recompute concrete hashes for all P2-SPEC-03 generated and supporting outputs from disk."
+  ]
+}

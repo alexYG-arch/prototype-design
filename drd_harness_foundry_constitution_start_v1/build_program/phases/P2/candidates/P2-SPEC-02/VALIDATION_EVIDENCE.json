@@ -1,0 +1,38 @@
+{
+  "evidence_id": "P2-SPEC-02-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P2_SPEC_02_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-02",
+      "exit_code": 0,
+      "summary": "candidate-check returned PASS with zero findings",
+      "status": "PASS",
+      "result_hash": "1166cb7771e755b5db6635278bc5a241a61423ff3e7b66bef0f8fd4387382e5b",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_02_ARTIFACT_MATRIX",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-02'); matrix=json.loads((root/'P2_STAGE_ARTIFACT_MATRIX.json').read_text()); field=json.loads((root/'P2_ARTIFACT_FIELD_CONTRACTS.json').read_text()); schema=json.loads((root/'P2_SCHEMA_VALIDATOR_COVERAGE.json').read_text()); validation=json.loads((root/'P2_FIXTURE_VALIDATION_MATRIX.json').read_text()); deps=json.loads((root/'P2_STAGE_DEPENDENCY_GRAPH.json').read_text()); impl=json.loads((root/'P2_IMPLEMENTATION_HANDOFF_CONTRACT.json').read_text()); artifacts=[a for s in matrix['stages'] for a in s['required_artifacts']]; assert matrix['artifact_count']==len(artifacts)==len(field['artifact_contracts']); assert matrix['stage_count']==len(matrix['stages'])==7; assert all(a.get('stage_id') and a.get('fixture_id')=='tiny_brief_intake' for a in artifacts); assert all(a.get('required_payload_fields') for a in artifacts); assert all(a.get('schema_ref') is not None or a.get('schema_absence_reason') for a in artifacts); assert schema['missing_refs']==[]; assert all(v.get('expected_evidence',{}).get('result_hash_required') for v in validation['validation_rows']); assert validation['validation_count']==len(validation['validation_rows']); assert deps['nodes']==[s['stage_id'] for s in matrix['stages']]; assert all(e.get('from_artifact_ids') and e.get('to_artifact_ids') and e.get('required_binding_artifact_ids') for e in deps['edges']); assert all(r.get('required_stage_ids') is not None and r.get('required_validation_ids') is not None and r.get('required_artifact_ids') for r in impl['implementation_inputs_after_lock']); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "artifact matrix, field contracts, schema coverage, validation matrix, dependency graph, and implementation handoff are structurally consistent",
+      "status": "PASS",
+      "result_hash": "953c914a847a61785bfbe760ead2902163a5702255a69d750926bf3651852b8b",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_02_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-02'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert all(p.startswith('build_program/phases/P2/candidates/P2-SPEC-02/') for p in scope['actual_writes']); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "SCOPE_REPORT actual_writes exist, stay within allowed P2-SPEC-02 candidate path, and contain no forbidden violations",
+      "status": "PASS",
+      "result_hash": "d1be6a1294a99ebd699c46fb9906ed40c564cf4dafab3bc86f125c561aba6c0f",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/spec_validator.py"
+  ]
+}

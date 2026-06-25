@@ -1,0 +1,33 @@
+{
+  "artifact_id": "p2.tiny_brief.source_snapshot_manifest",
+  "stage_id": "DRD-00-SOURCE-FREEZE",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+  "schema_ref": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [],
+  "upstream_hashes": {
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb"
+  },
+  "validator_ref": "repository/src/drd_harness/stages/source_snapshot.py",
+  "review_gate": "NONE",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "source_prd_snapshot_hash"
+  ],
+  "manifest": {
+    "source_prd_snapshot_id": "p2.tiny_brief.source.snapshot.001",
+    "source_path": "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "snapshot_path": "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md",
+    "snapshot_hash": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "created_at": "2026-06-25T00:00:00Z",
+    "byte_size": 4336,
+    "content_type": "text/markdown",
+    "normalization_method": "none",
+    "source_identity": "P2_VERTICAL_SLICE_PRD.md"
+  },
+  "schema_payload_key": "manifest"
+}

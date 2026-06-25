@@ -1,0 +1,157 @@
+{
+  "map_id": "P2-IMPLEMENTATION-WORKPACK-MAP-001",
+  "phase": "P2",
+  "source": "P2-SPEC-01",
+  "implementation_workpacks": [
+    {
+      "workpack_id": "P2-IMPL-01",
+      "lane": "IMPLEMENTATION",
+      "objective": "Create the Tiny Brief Intake fixture source snapshot and PRD element inventory path.",
+      "allowed_write_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/source/**",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_source_snapshot.py repository/tests/p2/test_tiny_brief_prd_elements.py -q"
+      ],
+      "blocked_until": "P2_SPEC_LOCK"
+    },
+    {
+      "workpack_id": "P2-IMPL-02",
+      "lane": "IMPLEMENTATION",
+      "objective": "Wire deduction-first reasoning records and interaction closure for the fixture.",
+      "allowed_write_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/tests/p2/test_tiny_brief_reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/src/drd_harness/validators/interaction_closure.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_reasoning.py repository/tests/p2/test_tiny_brief_interaction.py -q"
+      ],
+      "blocked_until": "P2_SPEC_LOCK"
+    },
+    {
+      "workpack_id": "P2-IMPL-03",
+      "lane": "IMPLEMENTATION",
+      "objective": "Wire presentation registry, shared component decision, and carrier-specific natural-language layout for the fixture.",
+      "allowed_write_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+        "repository/tests/p2/test_tiny_brief_presentation.py",
+        "repository/tests/p2/test_tiny_brief_layout.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/src/drd_harness/validators/layout_completeness.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_presentation.py",
+        "repository/tests/p2/test_tiny_brief_layout.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_presentation.py repository/tests/p2/test_tiny_brief_layout.py -q"
+      ],
+      "blocked_until": "P2_SPEC_LOCK"
+    },
+    {
+      "workpack_id": "P2-IMPL-04",
+      "lane": "IMPLEMENTATION",
+      "objective": "Wire compiler input, semantic unit inventory, conservation report, and FINAL_DRD assembly for the fixture.",
+      "allowed_write_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+        "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/compiler/final_drd.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_compiler.py repository/tests/p2/test_tiny_brief_final_drd.py -q"
+      ],
+      "blocked_until": "P2_SPEC_LOCK"
+    },
+    {
+      "workpack_id": "P2-IMPL-05",
+      "lane": "IMPLEMENTATION",
+      "objective": "Add end-to-end vertical slice validation and P2 build lock readiness evidence.",
+      "allowed_write_paths": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py",
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS/**",
+        "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT/**"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "repository/src/drd_harness/**"
+      ],
+      "code_targets": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py",
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q"
+      ],
+      "blocked_until": "P2_SPEC_LOCK"
+    }
+  ],
+  "implementation_guardrail": "No P2 implementation workpack may modify repository code until P2_SPEC_LOCK exists and binds the reviewed P2 spec artifacts."
+}

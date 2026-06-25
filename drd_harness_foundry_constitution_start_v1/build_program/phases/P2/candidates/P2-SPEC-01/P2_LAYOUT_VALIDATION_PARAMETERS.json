@@ -1,0 +1,97 @@
+{
+  "parameters_id": "P2-TINY-BRIEF-LAYOUT-PARAMETERS-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "carriers": [
+    {
+      "carrier_id": "desktop_web",
+      "min_width_px": 1024,
+      "max_width_px": null,
+      "height_rule": "required information may exceed viewport height only through vertical scroll",
+      "horizontal_scroll_allowed": false,
+      "required_constraints": [
+        "full page hierarchy",
+        "visible primary action",
+        "validation overlay z-axis",
+        "long content scroll behavior"
+      ]
+    },
+    {
+      "carrier_id": "tablet",
+      "min_width_px": 768,
+      "max_width_px": 1023,
+      "height_rule": "required information may exceed viewport height only through vertical scroll",
+      "horizontal_scroll_allowed": false,
+      "required_constraints": [
+        "reflowed hierarchy",
+        "preserved ordering",
+        "no hidden required information"
+      ]
+    },
+    {
+      "carrier_id": "mobile_ios",
+      "min_width_px": 375,
+      "max_width_px": 767,
+      "height_rule": "required information may exceed viewport height only through vertical scroll or anchored actions",
+      "horizontal_scroll_allowed": false,
+      "required_constraints": [
+        "safe area awareness",
+        "bottom-action ergonomics",
+        "modal overlay layering",
+        "iOS-style control expectations"
+      ]
+    },
+    {
+      "carrier_id": "mobile_material",
+      "min_width_px": 360,
+      "max_width_px": 767,
+      "height_rule": "required information may exceed viewport height only through vertical scroll or anchored actions",
+      "horizontal_scroll_allowed": false,
+      "required_constraints": [
+        "Material-style control expectations",
+        "elevation-aware overlay behavior",
+        "snackbar versus dialog distinction when applicable",
+        "bottom-action ergonomics"
+      ]
+    }
+  ],
+  "horizontal_scroll_exception": {
+    "allowed": true,
+    "only_for": [
+      "code blocks",
+      "wide data tables",
+      "hash indexes"
+    ],
+    "required_condition": "content is intrinsically wide and cannot be meaningfully wrapped without losing identity or comparability",
+    "not_allowed_for": [
+      "primary form fields",
+      "primary actions",
+      "required review copy",
+      "navigation",
+      "overlay controls"
+    ]
+  },
+  "z_axis_layers": [
+    {
+      "layer_id": "page_base",
+      "z_index": 0,
+      "usage": "default page content"
+    },
+    {
+      "layer_id": "sticky_action",
+      "z_index": 4,
+      "usage": "carrier-specific anchored action area when required"
+    },
+    {
+      "layer_id": "overlay_scrim",
+      "z_index": 16,
+      "usage": "validation overlay background"
+    },
+    {
+      "layer_id": "overlay_panel",
+      "z_index": 24,
+      "usage": "validation, failure, and final-ready overlay panel"
+    }
+  ],
+  "validation_rule": "Future layout artifacts must bind every required information group to a carrier, containment parent, order, scroll behavior, and z-axis layer."
+}

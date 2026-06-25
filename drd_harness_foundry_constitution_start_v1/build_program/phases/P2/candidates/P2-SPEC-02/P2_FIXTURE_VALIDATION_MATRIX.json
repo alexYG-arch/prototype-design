@@ -1,0 +1,256 @@
+{
+  "matrix_id": "P2-SPEC-02-FIXTURE-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "fixture_id": "tiny_brief_intake",
+  "validation_rows": [
+    {
+      "validation_id": "P2-VAL-SOURCE-HASH",
+      "stage_id": "DRD-00-SOURCE-FREEZE",
+      "assertion": "source snapshot manifest names source_prd.md and binds its sha256",
+      "validator_ref": "repository/src/drd_harness/stages/source_snapshot.py",
+      "required_artifacts": [
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.source_prd",
+          "p2.tiny_brief.source_snapshot_manifest"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-PRD-INVENTORY-COVERAGE",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "assertion": "PRD element inventory covers every element_id from P2_PRD_ELEMENT_INVENTORY.json",
+      "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "required_artifacts": [
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.prd_element_inventory",
+          "p2.tiny_brief.derived_element_decisions",
+          "p2.tiny_brief.product_expansion_gaps"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-NO-PRODUCT-EXPANSION",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "assertion": "new page, new primary task, secondary page, multi-user workflow, and live product output are rejected or routed to human review",
+      "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "required_artifacts": [
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.product_expansion_gaps"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-DEDUCTION-TRACE",
+      "stage_id": "DRD-02-REASONING",
+      "assertion": "every derived element has source premise, locked rule, conclusion, and non-expansion decision",
+      "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+      "required_artifacts": [
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.inference_records",
+          "p2.tiny_brief.structural_completion_review"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-CLICKABLE-CLOSURE",
+      "stage_id": "DRD-03-INTERACTION",
+      "assertion": "every clickable from P2_INTERACTION_EDGE_TABLE.json appears in clickable_inventory and has an interaction_graph edge",
+      "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "required_artifacts": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.clickable_inventory"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.interaction_graph",
+          "p2.tiny_brief.clickable_inventory"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-ASYNC-FAILURE-COPY",
+      "stage_id": "DRD-03-INTERACTION",
+      "assertion": "loading, disabled, failure, retry, exit, and recoverable failure states have user-facing copy or explicit no-copy decision",
+      "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "required_artifacts": [
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.async_behavior",
+          "p2.tiny_brief.failure_recovery",
+          "p2.tiny_brief.interaction_messages"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-PRESENTATION-PATTERN",
+      "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+      "assertion": "validate and generate action presentation decision is recorded with evidence",
+      "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "required_artifacts": [
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.shared_component_registry"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.information_presentation_registry",
+          "p2.tiny_brief.shared_component_registry"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-LAYOUT-CARRIERS",
+      "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+      "assertion": "desktop, tablet, mobile iOS, and mobile Material layout records bind width, scroll, containment, and z-axis behavior",
+      "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "required_artifacts": [
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.natural_language_layout",
+          "p2.tiny_brief.carrier_adaptation_profile",
+          "p2.tiny_brief.containment_hierarchy",
+          "p2.tiny_brief.z_axis_layering"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-COMPILER-CONSERVATION",
+      "stage_id": "DRD-05-COMPILATION",
+      "assertion": "compiler conservation report shows FINAL_DRD.md contains only approved semantic units",
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "required_artifacts": [
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.final_drd"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.compiler_input_bundle",
+          "p2.tiny_brief.compiler_semantic_unit_inventory",
+          "p2.tiny_brief.compiler_conservation_report",
+          "p2.tiny_brief.final_drd"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    },
+    {
+      "validation_id": "P2-VAL-FINAL-REVIEW-BINDING",
+      "stage_id": "DRD-06-FINAL-REVIEW",
+      "assertion": "final review decision binds final subject hash and has no open blockers",
+      "validator_ref": "repository/src/drd_harness/validators/spec_validator.py",
+      "required_artifacts": [
+        "p2.tiny_brief.final_drd_manifest",
+        "p2.tiny_brief.final_drd_hash_index",
+        "p2.tiny_brief.final_drd_reference_index",
+        "p2.tiny_brief.final_review_target",
+        "p2.tiny_brief.final_review_decision"
+      ],
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.final_drd_manifest",
+          "p2.tiny_brief.final_drd_hash_index",
+          "p2.tiny_brief.final_drd_reference_index",
+          "p2.tiny_brief.final_review_target",
+          "p2.tiny_brief.final_review_decision"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "blocks_until_pass": [
+        "P2_BUILD_LOCK"
+      ]
+    }
+  ],
+  "validation_count": 10,
+  "blocking_rule": "P2_BUILD_LOCK must not be created until every validation row has passing evidence or an approved human-review exception."
+}

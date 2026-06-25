@@ -1,0 +1,527 @@
+{
+  "index_id": "P2-SPEC-03-IMPLEMENTATION-WORKPACK-INDEX-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "source_workpack_map": "build_program/phases/P2/candidates/P2-SPEC-01/P2_IMPLEMENTATION_WORKPACK_MAP.json",
+  "source_handoff_contract": "build_program/phases/P2/candidates/P2-SPEC-02/P2_IMPLEMENTATION_HANDOFF_CONTRACT.json",
+  "upstream_review_bindings": [
+    {
+      "candidate_id": "P2-SPEC-01",
+      "subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+      "review_decision_sha256": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+      "review_decision_sha256": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88"
+    }
+  ],
+  "implementation_start_rule": "P2 implementation starts only after P2_SPEC_LOCK exists and binds approved P2-SPEC-01, P2-SPEC-02, and P2-SPEC-03 review decisions.",
+  "implementation_workpacks": [
+    {
+      "sequence": 1,
+      "workpack_id": "P2-IMPL-01",
+      "lane": "IMPLEMENTATION",
+      "readiness_state": "WAITING_P2_SPEC_LOCK",
+      "blocked_until": "P2_SPEC_LOCK",
+      "objective": "Create the Tiny Brief Intake fixture source snapshot and PRD element inventory path.",
+      "allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/source/**",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_source_snapshot.py repository/tests/p2/test_tiny_brief_prd_elements.py -q"
+      ],
+      "required_stage_ids": [
+        "DRD-00-SOURCE-FREEZE",
+        "DRD-01-PRD-ELEMENTS"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-SOURCE-HASH",
+        "P2-VAL-PRD-INVENTORY-COVERAGE",
+        "P2-VAL-NO-PRODUCT-EXPANSION"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.product_expansion_gaps",
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ],
+      "validation_refs": [
+        {
+          "validation_id": "P2-VAL-SOURCE-HASH",
+          "stage_id": "DRD-00-SOURCE-FREEZE",
+          "validator_ref": "repository/src/drd_harness/stages/source_snapshot.py",
+          "required_artifacts": [
+            "p2.tiny_brief.source_prd",
+            "p2.tiny_brief.source_snapshot_manifest"
+          ]
+        },
+        {
+          "validation_id": "P2-VAL-PRD-INVENTORY-COVERAGE",
+          "stage_id": "DRD-01-PRD-ELEMENTS",
+          "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+          "required_artifacts": [
+            "p2.tiny_brief.prd_element_inventory",
+            "p2.tiny_brief.derived_element_decisions",
+            "p2.tiny_brief.product_expansion_gaps"
+          ]
+        },
+        {
+          "validation_id": "P2-VAL-NO-PRODUCT-EXPANSION",
+          "stage_id": "DRD-01-PRD-ELEMENTS",
+          "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+          "required_artifacts": [
+            "p2.tiny_brief.product_expansion_gaps"
+          ]
+        }
+      ],
+      "handoff_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately.",
+      "artifact_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json"
+      ],
+      "direct_depends_on_workpacks": [],
+      "requires_completed_workpacks": [],
+      "unblocks_workpacks": [
+        "P2-IMPL-02"
+      ],
+      "path_coverage_status": "PASS",
+      "write_path_coverage": {
+        "code_targets_covered_by_allowed_write_paths_after_lock": true,
+        "required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+        "test_targets_covered_by_allowed_write_paths_after_lock": true
+      },
+      "lock_release_conditions": [
+        "P2_SPEC_LOCK_EXISTS"
+      ]
+    },
+    {
+      "sequence": 2,
+      "workpack_id": "P2-IMPL-02",
+      "lane": "IMPLEMENTATION",
+      "readiness_state": "WAITING_P2_SPEC_LOCK",
+      "blocked_until": "P2_SPEC_LOCK",
+      "objective": "Wire deduction-first reasoning records and interaction closure for the fixture.",
+      "allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/tests/p2/test_tiny_brief_reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/src/drd_harness/validators/interaction_closure.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_reasoning.py repository/tests/p2/test_tiny_brief_interaction.py -q"
+      ],
+      "required_stage_ids": [
+        "DRD-02-REASONING",
+        "DRD-03-INTERACTION"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-DEDUCTION-TRACE",
+        "P2-VAL-CLICKABLE-CLOSURE",
+        "P2-VAL-ASYNC-FAILURE-COPY"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.interaction_messages",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "validation_refs": [
+        {
+          "validation_id": "P2-VAL-DEDUCTION-TRACE",
+          "stage_id": "DRD-02-REASONING",
+          "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+          "required_artifacts": [
+            "p2.tiny_brief.inference_records",
+            "p2.tiny_brief.structural_completion_review"
+          ]
+        },
+        {
+          "validation_id": "P2-VAL-CLICKABLE-CLOSURE",
+          "stage_id": "DRD-03-INTERACTION",
+          "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+          "required_artifacts": [
+            "p2.tiny_brief.interaction_graph",
+            "p2.tiny_brief.clickable_inventory"
+          ]
+        },
+        {
+          "validation_id": "P2-VAL-ASYNC-FAILURE-COPY",
+          "stage_id": "DRD-03-INTERACTION",
+          "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+          "required_artifacts": [
+            "p2.tiny_brief.async_behavior",
+            "p2.tiny_brief.failure_recovery",
+            "p2.tiny_brief.interaction_messages"
+          ]
+        }
+      ],
+      "handoff_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately.",
+      "artifact_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json"
+      ],
+      "direct_depends_on_workpacks": [
+        "P2-IMPL-01"
+      ],
+      "requires_completed_workpacks": [
+        "P2-IMPL-01"
+      ],
+      "unblocks_workpacks": [
+        "P2-IMPL-03"
+      ],
+      "path_coverage_status": "PASS",
+      "write_path_coverage": {
+        "code_targets_covered_by_allowed_write_paths_after_lock": true,
+        "required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+        "test_targets_covered_by_allowed_write_paths_after_lock": true
+      },
+      "lock_release_conditions": [
+        "P2_SPEC_LOCK_EXISTS",
+        "P2-IMPL-01_COMPLETED"
+      ]
+    },
+    {
+      "sequence": 3,
+      "workpack_id": "P2-IMPL-03",
+      "lane": "IMPLEMENTATION",
+      "readiness_state": "WAITING_P2_SPEC_LOCK",
+      "blocked_until": "P2_SPEC_LOCK",
+      "objective": "Wire presentation registry, shared component decision, and carrier-specific natural-language layout for the fixture.",
+      "allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+        "repository/tests/p2/test_tiny_brief_presentation.py",
+        "repository/tests/p2/test_tiny_brief_layout.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/src/drd_harness/validators/layout_completeness.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/src/drd_harness/validators/layout_completeness.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_presentation.py",
+        "repository/tests/p2/test_tiny_brief_layout.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_presentation.py repository/tests/p2/test_tiny_brief_layout.py -q"
+      ],
+      "required_stage_ids": [
+        "DRD-04-PRESENTATION-LAYOUT"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-PRESENTATION-PATTERN",
+        "P2-VAL-LAYOUT-CARRIERS"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.shared_component_registry",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "validation_refs": [
+        {
+          "validation_id": "P2-VAL-PRESENTATION-PATTERN",
+          "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+          "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+          "required_artifacts": [
+            "p2.tiny_brief.information_presentation_registry",
+            "p2.tiny_brief.shared_component_registry"
+          ]
+        },
+        {
+          "validation_id": "P2-VAL-LAYOUT-CARRIERS",
+          "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+          "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+          "required_artifacts": [
+            "p2.tiny_brief.natural_language_layout",
+            "p2.tiny_brief.carrier_adaptation_profile",
+            "p2.tiny_brief.containment_hierarchy",
+            "p2.tiny_brief.z_axis_layering"
+          ]
+        }
+      ],
+      "handoff_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately.",
+      "artifact_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json"
+      ],
+      "direct_depends_on_workpacks": [
+        "P2-IMPL-02"
+      ],
+      "requires_completed_workpacks": [
+        "P2-IMPL-01",
+        "P2-IMPL-02"
+      ],
+      "unblocks_workpacks": [
+        "P2-IMPL-04"
+      ],
+      "path_coverage_status": "PASS",
+      "write_path_coverage": {
+        "code_targets_covered_by_allowed_write_paths_after_lock": true,
+        "required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+        "test_targets_covered_by_allowed_write_paths_after_lock": true
+      },
+      "lock_release_conditions": [
+        "P2_SPEC_LOCK_EXISTS",
+        "P2-IMPL-02_COMPLETED"
+      ]
+    },
+    {
+      "sequence": 4,
+      "workpack_id": "P2-IMPL-04",
+      "lane": "IMPLEMENTATION",
+      "readiness_state": "WAITING_P2_SPEC_LOCK",
+      "blocked_until": "P2_SPEC_LOCK",
+      "objective": "Wire compiler input, semantic unit inventory, conservation report, and FINAL_DRD assembly for the fixture.",
+      "allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+        "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/compiler/final_drd.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "build_program/phases/P2/candidates/P2-SPEC-*/**"
+      ],
+      "code_targets": [
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/compiler/final_drd.py"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_compiler.py repository/tests/p2/test_tiny_brief_final_drd.py -q"
+      ],
+      "required_stage_ids": [
+        "DRD-05-COMPILATION"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-COMPILER-CONSERVATION"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.final_drd"
+      ],
+      "validation_refs": [
+        {
+          "validation_id": "P2-VAL-COMPILER-CONSERVATION",
+          "stage_id": "DRD-05-COMPILATION",
+          "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+          "required_artifacts": [
+            "p2.tiny_brief.compiler_input_bundle",
+            "p2.tiny_brief.compiler_semantic_unit_inventory",
+            "p2.tiny_brief.compiler_conservation_report",
+            "p2.tiny_brief.final_drd"
+          ]
+        }
+      ],
+      "handoff_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately.",
+      "artifact_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md"
+      ],
+      "direct_depends_on_workpacks": [
+        "P2-IMPL-03"
+      ],
+      "requires_completed_workpacks": [
+        "P2-IMPL-01",
+        "P2-IMPL-02",
+        "P2-IMPL-03"
+      ],
+      "unblocks_workpacks": [
+        "P2-IMPL-05"
+      ],
+      "path_coverage_status": "PASS",
+      "write_path_coverage": {
+        "code_targets_covered_by_allowed_write_paths_after_lock": true,
+        "required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+        "test_targets_covered_by_allowed_write_paths_after_lock": true
+      },
+      "lock_release_conditions": [
+        "P2_SPEC_LOCK_EXISTS",
+        "P2-IMPL-03_COMPLETED"
+      ]
+    },
+    {
+      "sequence": 5,
+      "workpack_id": "P2-IMPL-05",
+      "lane": "IMPLEMENTATION",
+      "readiness_state": "WAITING_P2_SPEC_LOCK",
+      "blocked_until": "P2_SPEC_LOCK",
+      "objective": "Add end-to-end vertical slice validation and P2 build lock readiness evidence.",
+      "allowed_write_paths_after_lock": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py",
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS/**",
+        "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT/**",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_target.json"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P1/**",
+        "repository/src/drd_harness/**"
+      ],
+      "code_targets": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py",
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS"
+      ],
+      "test_targets": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py"
+      ],
+      "acceptance_commands": [
+        "python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q"
+      ],
+      "required_stage_ids": [
+        "DRD-06-FINAL-REVIEW"
+      ],
+      "required_validation_ids": [
+        "P2-VAL-FINAL-REVIEW-BINDING"
+      ],
+      "required_artifact_ids": [
+        "p2.tiny_brief.final_drd_hash_index",
+        "p2.tiny_brief.final_drd_manifest",
+        "p2.tiny_brief.final_drd_reference_index",
+        "p2.tiny_brief.final_review_decision",
+        "p2.tiny_brief.final_review_target"
+      ],
+      "validation_refs": [
+        {
+          "validation_id": "P2-VAL-FINAL-REVIEW-BINDING",
+          "stage_id": "DRD-06-FINAL-REVIEW",
+          "validator_ref": "repository/src/drd_harness/validators/spec_validator.py",
+          "required_artifacts": [
+            "p2.tiny_brief.final_drd_manifest",
+            "p2.tiny_brief.final_drd_hash_index",
+            "p2.tiny_brief.final_drd_reference_index",
+            "p2.tiny_brief.final_review_target",
+            "p2.tiny_brief.final_review_decision"
+          ]
+        }
+      ],
+      "handoff_rule": "Implementation workpacks must cite required_stage_ids, required_validation_ids, and required_artifact_ids separately.",
+      "artifact_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_target.json"
+      ],
+      "direct_depends_on_workpacks": [
+        "P2-IMPL-04"
+      ],
+      "requires_completed_workpacks": [
+        "P2-IMPL-01",
+        "P2-IMPL-02",
+        "P2-IMPL-03",
+        "P2-IMPL-04"
+      ],
+      "unblocks_workpacks": [],
+      "path_coverage_status": "PASS",
+      "write_path_coverage": {
+        "code_targets_covered_by_allowed_write_paths_after_lock": true,
+        "required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+        "test_targets_covered_by_allowed_write_paths_after_lock": true
+      },
+      "lock_release_conditions": [
+        "P2_SPEC_LOCK_EXISTS",
+        "P2-IMPL-04_COMPLETED"
+      ]
+    }
+  ],
+  "workpack_count": 5,
+  "global_forbidden_write_paths_before_lock": [
+    "repository/**",
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md"
+  ],
+  "maintainability_rule": "Implementation rows cite stage IDs, validation IDs, artifact IDs, artifact paths, path coverage, and dependencies so later code changes can be checked mechanically.",
+  "path_coverage_rule": "Every code_target, test_target, and required artifact contract path must be covered by allowed_write_paths_after_lock before the workpack can run.",
+  "dependency_rule": "Implementation order is machine-readable through direct_depends_on_workpacks and requires_completed_workpacks; prose sequence is not the authority."
+}

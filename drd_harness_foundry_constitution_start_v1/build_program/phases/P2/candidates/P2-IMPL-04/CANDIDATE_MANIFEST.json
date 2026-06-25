@@ -1,0 +1,53 @@
+{
+  "workpack_id": "P2-IMPL-04",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-IMPL-04",
+  "upstream_spec_lock": "control/locks/P2_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+  "upstream_spec_lock_id": "P2-SPEC-LOCK-001",
+  "depends_on_workpacks": [
+    "P2-IMPL-01",
+    "P2-IMPL-02",
+    "P2-IMPL-03"
+  ],
+  "depends_on_review_decisions": [
+    "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/REVIEW_DECISION.json",
+    "build_program/phases/P2/candidates/P2-IMPL-03/REVIEW_DECISION.json"
+  ],
+  "owned_workpack": "P2-IMPL-04",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "CANDIDATE_PENDING_HUMAN_REVIEW",
+  "review_decision": null,
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+    "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+    "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+    "repository/tests/p2/test_tiny_brief_compiler.py",
+    "repository/tests/p2/test_tiny_brief_final_drd.py",
+    "repository/src/drd_harness/validators/compiler_conservation.py",
+    "repository/src/drd_harness/compiler/final_drd.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review may approve or request repair for P2-IMPL-04. P2-IMPL-05 should not start until this candidate is approved."
+}

@@ -1,0 +1,56 @@
+{
+  "scope_report_id": "P2-SPEC-LOCK-CREATION-RESULT-SCOPE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "control/locks/P2_SPEC_LOCK.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**",
+    "build_program/phases/P2/candidates/P2-SPEC-02/**",
+    "build_program/phases/P2/candidates/P2-SPEC-03/**",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/**"
+  ],
+  "actual_writes": [
+    "control/locks/P2_SPEC_LOCK.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_CREATION_RESULT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_VALIDATION_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/REVIEW_TARGET.json",
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_files_modified": true,
+  "created_control_lock": "control/locks/P2_SPEC_LOCK.json",
+  "repository_files_modified": false,
+  "p1_files_modified": false,
+  "p2_prior_candidates_modified": false,
+  "p2_phase_manifest_modified": false,
+  "scope_notes": [
+    "control/locks/P2_SPEC_LOCK.json was explicitly authorized by the user request to create P2_SPEC_LOCK.",
+    "This result candidate records the lock creation result only.",
+    "No repository implementation or root P2 phase file was modified."
+  ],
+  "review_metadata_supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "build_lock_created": false,
+  "implementation_authorized": false
+}

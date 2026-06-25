@@ -1,0 +1,31 @@
+{
+  "target_id": "P2-IMPL-01-REVIEW-TARGET-001",
+  "workpack_id": "P2-IMPL-01",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-IMPL-01",
+  "review_subject_hash": "072ddddb85df60908441056181fdec28d441bd2739bd72992f6c07f86308ec7c",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the source snapshot remain an exact copy of the approved P2 PRD?",
+    "Does the inventory act as an index and verification skeleton while natural language remains the primary semantic source?",
+    "Are derived elements limited to deductive failure-copy obligations with no product capability expansion?",
+    "Are inductive auxiliary derived elements blocked from canonical eligibility without Human Gate approval?",
+    "Are malformed product expansion gaps rejected and approved expansion candidates still blocked behind Human Gate?",
+    "Does the scope report avoid unauthorized implementation writes such as repository/tests/p2/conftest.py?",
+    "Is the schema_payload_key wrapper convention acceptable for these fixture artifacts?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json",
+  "resolved_decision": "P2-IMPL-01 approved by Human Gate; P2-IMPL-02 remains separately gated by explicit continuation."
+}

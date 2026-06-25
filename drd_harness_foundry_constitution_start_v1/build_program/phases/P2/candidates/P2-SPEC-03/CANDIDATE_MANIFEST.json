@@ -1,0 +1,63 @@
+{
+  "workpack_id": "P2-SPEC-03",
+  "phase": "P2",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-SPEC-03",
+  "upstream_candidate": "build_program/phases/P2/candidates/P2-SPEC-02",
+  "upstream_review_decision": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+  "upstream_review_decision_subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+  "upstream_inputs": {
+    "p2_spec_01_review_decision_hash": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+    "p2_spec_01_subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+    "p2_spec_02_review_decision_hash": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+    "p2_spec_02_subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+    "approved_input_root_sha256": "525cc9bb83bf7d1447d2b615ade14f79183695b5b8f09386b9b090dd1e326936",
+    "p2_stage_artifact_matrix_hash": "59825f26e1dee672f257a10d5c00b96bcb7c940001221cfd0459dd5a46bad826",
+    "p2_fixture_validation_matrix_hash": "61ae6409e8669ba6c4cbf552aa1eac1b6ce8dfed6aa75940ac3ff49fef8f815f",
+    "p2_artifact_field_contracts_hash": "8e7573051197f761609546ab68deed50c6ef90c7d7b269ebbb14044aeaabfb49",
+    "p2_schema_validator_coverage_hash": "f5a27a7e0d4e85f089697e9b7f5f5d510bbabe20e8ef2aabba9b8f264c395515",
+    "p2_implementation_handoff_contract_hash": "404c88699fc96236e66faff017015420dc35c3c9b8053ffd58085a2a481a0e0c"
+  },
+  "generated_outputs": [
+    "P2_SPEC_LOCK_INPUT_BUNDLE.json",
+    "P2_IMPLEMENTATION_WORKPACK_INDEX.json",
+    "P2_TEST_OBLIGATION_MATRIX.json",
+    "P2_SPEC_LOCK_READINESS_CRITERIA.json",
+    "P2_SPEC_LOCK_READINESS_REPORT.json",
+    "P2_IMPLEMENTATION_SEQUENCE.md",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_readiness_status": "APPROVED_FOR_SPEC_LOCK_CREATION_NOT_LOCKED",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-03/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**",
+    "build_program/phases/P2/candidates/P2-SPEC-02/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "If the user explicitly requests lock creation, create P2_SPEC_LOCK with Python lock tooling that recomputes concrete file hashes from disk. Do not start P2 implementation until P2_SPEC_LOCK exists."
+}

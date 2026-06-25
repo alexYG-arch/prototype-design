@@ -1,0 +1,51 @@
+{
+  "workpack_id": "P2-SPEC-LOCK-CREATION-READINESS",
+  "phase": "P2",
+  "lane": "SPEC_LOCK_TOOLING",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS",
+  "upstream_candidate": "build_program/phases/P2/candidates/P2-SPEC-03",
+  "upstream_review_decision": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1",
+  "upstream_review_decision_subject_hash": "1b2a2145ec44c7f9a523166c635c22b7b26fe54108c58545ff36254ba386c2a7",
+  "generated_outputs": [
+    "SPEC_LOCK_CREATION_READINESS.md",
+    "SPEC_LOCK_INPUT_BUNDLE.json",
+    "SPEC_LOCK_TOOLING_COMPATIBILITY_REPORT.json",
+    "SPEC_LOCK_DRY_RUN_VALIDATION_REPORT.json",
+    "SPEC_LOCK_CREATION_BLUEPRINT.md",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "APPROVED_FOR_EXPLICIT_LOCK_CREATION_NOT_WRITTEN",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/**",
+    "build_program/phases/P2/candidates/P2-SPEC-02/**",
+    "build_program/phases/P2/candidates/P2-SPEC-03/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "If the user explicitly requests P2_SPEC_LOCK creation, run tooling/create_spec_lock.py to write control/locks/P2_SPEC_LOCK.json. Do not create the lock from pass or generic continue."
+}

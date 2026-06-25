@@ -1,0 +1,80 @@
+{
+  "matrix_id": "P2-SPEC-01-SCOPE-COVERAGE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "source_scope": "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+  "coverage_rows": [
+    {
+      "scope_requirement_id": "P2-SCOPE-USER-TASK",
+      "requirement": "one user task",
+      "status": "PASS",
+      "evidence": "P2_VERTICAL_SLICE_PRD.md#User Task",
+      "verification_basis": "named task exists and is the only primary user task"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-REAL-PAGE",
+      "requirement": "one real page",
+      "status": "PASS",
+      "evidence": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "verification_basis": "single page name is declared as Brief Intake"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-HANDOFF-OVERLAY",
+      "requirement": "one system handoff or overlay",
+      "status": "PASS",
+      "evidence": "P2_VERTICAL_SLICE_PRD.md#Handoff Or Overlay",
+      "verification_basis": "validation overlay is declared as the required system handoff"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-CLICKABLES",
+      "requirement": "all page clickable elements",
+      "status": "PASS",
+      "evidence": "P2_PRD_ELEMENT_INVENTORY.json",
+      "verification_basis": "clickable elements are enumerated with stable element ids and mirrored in P2_INTERACTION_EDGE_TABLE.json"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-STATES",
+      "requirement": "three to five states",
+      "status": "PASS",
+      "evidence": "P2_PRD_ELEMENT_INVENTORY.json",
+      "verification_basis": "exactly five user-visible states are listed"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-FAILURE-RECOVERY",
+      "requirement": "one failure recovery",
+      "status": "PASS",
+      "evidence": "P2_INTERACTION_EDGE_TABLE.json",
+      "verification_basis": "recoverable failure state has retry and edit edges"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-PRD-ELEMENT-VALIDATION",
+      "requirement": "PRD element validation",
+      "status": "PASS",
+      "evidence": "P2_PRD_ELEMENT_INVENTORY.json",
+      "verification_basis": "inventory separates explicit elements, derived elements, rejected expansions, and human-review gaps"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-SHARED-PATTERN",
+      "requirement": "shared component or presentation pattern decision",
+      "status": "PASS",
+      "evidence": "P2_VERTICAL_SLICE_PRD.md#Shared Component Or Presentation Pattern",
+      "verification_basis": "validate and generate primary-action pattern decision is required downstream"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-NATURAL-LANGUAGE-LAYOUT",
+      "requirement": "natural-language layout",
+      "status": "PASS",
+      "evidence": "P2_LAYOUT_VALIDATION_PARAMETERS.json",
+      "verification_basis": "desktop, tablet, mobile iOS, and mobile Material carrier constraints are enumerated"
+    },
+    {
+      "scope_requirement_id": "P2-SCOPE-FINAL-DRD",
+      "requirement": "one FINAL_DRD.md",
+      "status": "PASS",
+      "evidence": "P2_ARTIFACT_INVENTORY.json",
+      "verification_basis": "DRD-05 and DRD-06 artifact skeletons require final DRD manifest, hash index, reference index, and final review evidence"
+    }
+  ],
+  "coverage_rule": "A row is PASS only when the evidence path exists in this candidate and the requirement is expressed as a stable downstream artifact obligation.",
+  "open_blockers": []
+}

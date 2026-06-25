@@ -1,0 +1,48 @@
+{
+  "evidence_id": "P2-SPEC-01-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P2_SPEC_01_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-01",
+      "exit_code": 0,
+      "summary": "candidate-check returned PASS with zero findings",
+      "status": "PASS",
+      "result_hash": "79117db45a685332b653adc95fe600ed6d03fe5dcb92c55ca7c1fc9696b51410",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_01_STRUCTURED_COVERAGE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-01'); coverage=json.loads((root/'P2_SCOPE_COVERAGE_MATRIX.json').read_text()); inventory=json.loads((root/'P2_PRD_ELEMENT_INVENTORY.json').read_text()); edges=json.loads((root/'P2_INTERACTION_EDGE_TABLE.json').read_text()); phase=json.loads((root/'P2_PHASE_TRANSITION_EVIDENCE.json').read_text()); artifacts=json.loads((root/'P2_ARTIFACT_INVENTORY.json').read_text()); layout=json.loads((root/'P2_LAYOUT_VALIDATION_PARAMETERS.json').read_text()); assert len(coverage['coverage_rows'])==10; assert all(r['status']=='PASS' for r in coverage['coverage_rows']); clickable={e['element_id'] for e in inventory['elements'] if e['category']=='clickable'}; triggers={e['trigger_element'] for e in edges['edges']}; assert clickable <= triggers; assert phase['effective_state_for_this_candidate']['status']=='P2_SPEC_ACTIVE_BY_COMMITTED_P1_BUILD_GATE'; assert len(artifacts['stages'])==7; assert len(layout['carriers'])==4; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "scope coverage rows, atomic PRD inventory, clickable edges, phase transition evidence, artifact inventory, and layout parameters are structurally complete",
+      "status": "PASS",
+      "result_hash": "26ac56060e94e1f474642727fc5149ef6304b2ea1519ca970476fc45627b1eab",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P1_BUILD_LOCK_VALIDATES",
+      "command": "PYTHONPATH=repository/src python3 -c \"import json; from pathlib import Path; from drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness; lock=json.loads(Path('control/locks/P1_BUILD_LOCK.json').read_text()); assert lock['root_sha256']==canonical_lock_root(lock); assert not validate_build_lock_readiness(lock); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "P1_BUILD_LOCK root hash matches canonical root and validate_build_lock_readiness returned 0 findings",
+      "status": "PASS",
+      "result_hash": "df49d78767ca87211d174f9d9fa44e254e657f602038cca8424d3545ec136a89",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_01_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-01'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert all(p.startswith('build_program/phases/P2/candidates/P2-SPEC-01/') for p in scope['actual_writes']); print('PASS')\"",
+      "exit_code": 0,
+      "summary": "SCOPE_REPORT actual_writes exist, stay within allowed candidate path, and contain no forbidden violations",
+      "status": "PASS",
+      "result_hash": "8b79d0263faaf7892cf1667d98e99e3d993f7cf98f55a54471739c5f007fb7bd",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ]
+}

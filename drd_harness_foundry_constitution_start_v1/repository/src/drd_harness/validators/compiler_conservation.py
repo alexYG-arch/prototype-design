@@ -34,6 +34,16 @@ FORBIDDEN_INPUT_TYPES = {
     "INVALIDATED_EVIDENCE",
 }
 
+INPUT_RECORD_GROUPS = (
+    "approved_semantic_artifacts",
+    "approved_operational_indexes",
+    "review_decisions",
+    "lock_refs",
+    "validator_results",
+    "control_indexes",
+    "schemas",
+)
+
 ALLOWED_QA_WRITES = {"READ_ONLY_QA_REPORT.md", "qa_finding_index.json"}
 
 
@@ -66,6 +76,9 @@ def validate_input_bundle(bundle: Mapping[str, Any]) -> List[CompilerFinding]:
     for field in required:
         if field not in bundle or bundle.get(field) in (None, "", []):
             findings.append(CompilerFinding("COMP-CHECK-001", bundle_id, f"{field} is required"))
+    for field in INPUT_RECORD_GROUPS:
+        if field in bundle and not isinstance(bundle.get(field), list):
+            findings.append(CompilerFinding("COMP-CHECK-001", bundle_id, f"{field} must be a list of input records"))
     if bundle.get("compiler_stage_id") != "DRD-05":
         findings.append(CompilerFinding("COMP-CHECK-001", bundle_id, "compiler_stage_id must be DRD-05"))
 
@@ -76,20 +89,14 @@ def validate_input_bundle(bundle: Mapping[str, Any]) -> List[CompilerFinding]:
     expected_hash = compute_closed_input_hash(bundle)
     if bundle.get("closed_input_hash") != expected_hash:
         findings.append(CompilerFinding("COMP-CHECK-001", bundle_id, "closed_input_hash does not match closed input records"))
+    if "semantic_content_hash" in bundle and bundle.get("semantic_content_hash") != compute_semantic_content_hash(bundle):
+        findings.append(CompilerFinding("COMP-CHECK-001", bundle_id, "semantic_content_hash does not match sections and semantic units"))
     return findings
 
 
 def input_records(bundle: Mapping[str, Any]) -> List[Mapping[str, Any]]:
     records = []
-    for field in (
-        "approved_semantic_artifacts",
-        "approved_operational_indexes",
-        "review_decisions",
-        "lock_refs",
-        "validator_results",
-        "control_indexes",
-        "schemas",
-    ):
+    for field in INPUT_RECORD_GROUPS:
         values = bundle.get(field, [])
         if isinstance(values, list):
             records.extend(values)
@@ -106,7 +113,10 @@ def validate_input_record(record: Mapping[str, Any]) -> List[CompilerFinding]:
         findings.append(CompilerFinding("COMP-CHECK-001", input_id, "path and sha256 are required"))
     elif not _is_hash(record.get("sha256")):
         findings.append(CompilerFinding("COMP-CHECK-001", input_id, "sha256 must be sha256"))
-    if input_type in {"APPROVED_SEMANTIC_ARTIFACT", "APPROVED_OPERATIONAL_INDEX"}:
+    if input_type == "APPROVED_SEMANTIC_ARTIFACT":
+        if not (record.get("approval_ref") or record.get("review_decision_ref")):
+            findings.append(CompilerFinding("COMP-CHECK-003", input_id, "semantic artifact requires approval or review decision reference"))
+    if input_type == "APPROVED_OPERATIONAL_INDEX":
         if not (record.get("approval_ref") or record.get("lock_ref") or record.get("review_decision_ref")):
             findings.append(CompilerFinding("COMP-CHECK-003", input_id, "structured approval or lock reference is required"))
     if record.get("approval_ref") == "approved in prose":
@@ -141,13 +151,65 @@ def compute_closed_input_hash(bundle: Mapping[str, Any]) -> str:
     return sha256_text(canonical_json(payload))
 
 
+def compute_semantic_content_hash(bundle: Mapping[str, Any]) -> str:
+    payload = {
+        "bundle_id": bundle.get("bundle_id"),
+        "sections": bundle.get("sections", []),
+        "semantic_units": bundle.get("semantic_units", []),
+        "compiled_semantic_units": bundle.get("compiled_semantic_units"),
+    }
+    return sha256_text(canonical_json(payload))
+
+
 def validate_hash_drift(records: Iterable[Mapping[str, Any]], current_hashes: Mapping[str, str]) -> List[CompilerFinding]:
     findings: List[CompilerFinding] = []
     for record in records:
         path = str(record.get("path") or "")
         expected = record.get("sha256")
-        if path in current_hashes and current_hashes[path] != expected:
+        if path not in current_hashes:
+            findings.append(CompilerFinding("COMP-CHECK-004", path, "current hash is missing for bundled input"))
+        elif current_hashes[path] != expected:
             findings.append(CompilerFinding("COMP-CHECK-004", path, "current hash differs from bundled hash"))
+    return findings
+
+
+def validate_section_semantic_unit_refs(bundle: Mapping[str, Any]) -> List[CompilerFinding]:
+    findings: List[CompilerFinding] = []
+    unit_ids = {str(unit.get("semantic_unit_id")) for unit in bundle.get("semantic_units", []) if unit.get("semantic_unit_id")}
+    seen_refs = {}
+    for section in bundle.get("sections", []):
+        section_id = str(section.get("section_id") or "section")
+        refs = [str(unit_id) for unit_id in section.get("semantic_unit_ids", [])]
+        if not refs:
+            findings.append(CompilerFinding("COMP-CHECK-011", section_id, "section must reference semantic_unit_ids"))
+        missing = sorted(set(refs) - unit_ids)
+        if missing:
+            findings.append(
+                CompilerFinding(
+                    "COMP-CHECK-011",
+                    section_id,
+                    "section references unknown semantic_unit_ids: " + ", ".join(missing),
+                )
+            )
+        duplicate_refs = sorted({unit_id for unit_id in refs if refs.count(unit_id) > 1})
+        if duplicate_refs:
+            findings.append(
+                CompilerFinding(
+                    "COMP-CHECK-011",
+                    section_id,
+                    "section references semantic_unit_ids more than once: " + ", ".join(duplicate_refs),
+                )
+            )
+        for unit_id in refs:
+            if unit_id in seen_refs and unit_id in unit_ids:
+                findings.append(
+                    CompilerFinding(
+                        "COMP-CHECK-011",
+                        unit_id,
+                        f"semantic_unit_id is referenced by multiple sections: {seen_refs[unit_id]}, {section_id}",
+                    )
+                )
+            seen_refs.setdefault(unit_id, section_id)
     return findings
 
 
@@ -169,7 +231,22 @@ def validate_stage_order(stage_order: Iterable[Mapping[str, Any]]) -> List[Compi
 
 def validate_section_order(sections: Iterable[Mapping[str, Any]]) -> List[CompilerFinding]:
     findings: List[CompilerFinding] = []
-    for section in sections:
+    rows = list(sections)
+    section_keys = [
+        (section.get("stage_id"), section.get("section_id"))
+        for section in rows
+        if section.get("stage_id") and section.get("section_id")
+    ]
+    for key in sorted({key for key in section_keys if section_keys.count(key) > 1}):
+        findings.append(CompilerFinding("COMP-CHECK-005", str(key[1]), "section_id must be unique within a stage"))
+    order_slots = [
+        (section.get("stage_order_index"), section.get("section_order_index"))
+        for section in rows
+        if "stage_order_index" in section and "section_order_index" in section
+    ]
+    for slot in sorted({slot for slot in order_slots if order_slots.count(slot) > 1}):
+        findings.append(CompilerFinding("COMP-CHECK-005", "section_order", f"section order slot must be unique: {slot[0]}.{slot[1]}"))
+    for section in rows:
         subject = str(section.get("section_id") or "section")
         for field in ("stage_order_index", "section_order_index", "section_id"):
             if field not in section:
@@ -245,6 +322,86 @@ def validate_final_manifest(manifest: Mapping[str, Any]) -> List[CompilerFinding
         ]
         if any(blocking_counts):
             findings.append(CompilerFinding("COMP-CHECK-015", subject, "PASS manifest cannot contain blocking counts"))
+    return findings
+
+
+def validate_compiler_output_package(
+    bundle: Mapping[str, Any],
+    semantic_unit_inventory: Mapping[str, Any],
+    conservation_report: Mapping[str, Any],
+    final_drd_text: str,
+) -> List[CompilerFinding]:
+    findings: List[CompilerFinding] = []
+    units = semantic_unit_inventory.get("semantic_units", [])
+    findings.extend(validate_input_bundle(bundle))
+    findings.extend(validate_section_semantic_unit_refs(bundle))
+    findings.extend(validate_atomic_inventory_for_compiler(units))
+    findings.extend(validate_conservation_report(conservation_report))
+    current_hashes = bundle.get("current_hashes")
+    if not isinstance(current_hashes, Mapping) or not current_hashes:
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-004",
+                str(bundle.get("bundle_id") or "compiler_input_bundle"),
+                "current_hashes is required for compiler output package",
+            )
+        )
+    else:
+        findings.extend(validate_hash_drift(input_records(bundle), current_hashes))
+    expected_semantic_hash = compute_semantic_content_hash(bundle)
+    if not bundle.get("semantic_content_hash"):
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-001",
+                str(bundle.get("bundle_id") or "compiler_input_bundle"),
+                "semantic_content_hash is required for compiler output package",
+            )
+        )
+    elif bundle.get("semantic_content_hash") != expected_semantic_hash:
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-001",
+                str(bundle.get("bundle_id") or "compiler_input_bundle"),
+                "semantic_content_hash does not match sections and semantic units",
+            )
+        )
+    if semantic_unit_inventory.get("source_artifact_hash") != expected_semantic_hash:
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-011",
+                str(semantic_unit_inventory.get("inventory_id") or "compiler_semantic_unit_inventory"),
+                "semantic unit inventory source_artifact_hash does not bind semantic content hash",
+            )
+        )
+
+    try:
+        from drd_harness.compiler.final_drd import CompilerFailure, compile_final_drd
+
+        compiled = compile_final_drd(bundle)
+    except CompilerFailure as exc:
+        findings.extend(CompilerFinding(finding.code, finding.subject_id, finding.message) for finding in exc.findings)
+        return findings
+
+    if final_drd_text != compiled["FINAL_DRD.md"]:
+        findings.append(CompilerFinding("COMP-CHECK-011", "FINAL_DRD.md", "FINAL_DRD does not match deterministic compiler output"))
+    if units != compiled["compiler_semantic_unit_inventory.json"]:
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-011",
+                str(semantic_unit_inventory.get("inventory_id") or "compiler_semantic_unit_inventory"),
+                "semantic unit inventory does not match deterministic compiler output",
+            )
+        )
+    if dict(conservation_report) != compiled["compiler_conservation_report.json"]:
+        findings.append(
+            CompilerFinding(
+                "COMP-CHECK-011",
+                "compiler_conservation_report",
+                "conservation report does not match deterministic compiler output",
+            )
+        )
+    if conservation_report.get("status") != "PASS":
+        findings.append(CompilerFinding("COMP-CHECK-015", "compiler_conservation_report", "compiled package must pass conservation"))
     return findings
 
 

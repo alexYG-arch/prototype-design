@@ -1,0 +1,99 @@
+{
+  "criteria_id": "P2-SPEC-03-LOCK-READINESS-CRITERIA-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "target_lock": "P2_SPEC_LOCK",
+  "not_a_lock": true,
+  "criteria": [
+    {
+      "criterion_id": "P2-LOCK-CR-01",
+      "name": "approved spec inputs bound",
+      "rule": "P2-SPEC-01 and P2-SPEC-02 must have approved review decisions whose subject_hash matches current generated outputs.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2-SPEC-01/REVIEW_DECISION.json",
+        "P2-SPEC-02/REVIEW_DECISION.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-02",
+      "name": "self review approved",
+      "rule": "P2-SPEC-03 must have a human review decision approving the current review target subject hash before lock creation.",
+      "current_status": "PASS",
+      "evidence": [
+        "REVIEW_TARGET.json",
+        "REVIEW_DECISION.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-03",
+      "name": "implementation remains blocked",
+      "rule": "Every P2 implementation workpack remains WAITING_P2_SPEC_LOCK before lock creation.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2_IMPLEMENTATION_WORKPACK_INDEX.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-04",
+      "name": "test obligations closed structurally",
+      "rule": "Every P2 validation row maps to an implementation workpack, required artifacts, and minimum test targets.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2_TEST_OBLIGATION_MATRIX.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-05",
+      "name": "scope constrained to candidate",
+      "rule": "This workpack may write only P2-SPEC-03 candidate files and must not change locks, source code, or P2 phase control files.",
+      "current_status": "PASS",
+      "evidence": [
+        "SCOPE_REPORT.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-06",
+      "name": "explicit lock command required",
+      "rule": "A later step must explicitly request P2_SPEC_LOCK creation; this candidate only prepares reviewed inputs.",
+      "current_status": "WAITING_EXPLICIT_REQUEST",
+      "evidence": [
+        "HANDOFF.md"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-07",
+      "name": "implementation write paths executable",
+      "rule": "Every implementation code_target, test_target, and required artifact contract path must be covered by allowed_write_paths_after_lock.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2_IMPLEMENTATION_WORKPACK_INDEX.json",
+        "P2_TEST_OBLIGATION_MATRIX.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-08",
+      "name": "implementation dependencies machine readable",
+      "rule": "Each implementation workpack must declare direct_depends_on_workpacks and requires_completed_workpacks, not only prose order.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2_IMPLEMENTATION_WORKPACK_INDEX.json"
+      ]
+    },
+    {
+      "criterion_id": "P2-LOCK-CR-09",
+      "name": "pending candidate hashes resolved by lock tooling",
+      "rule": "P2-SPEC-03 pending null file hashes are acceptable only in this candidate bundle; final P2_SPEC_LOCK must recompute concrete hashes and reject pending rows.",
+      "current_status": "PASS",
+      "evidence": [
+        "P2_SPEC_LOCK_INPUT_BUNDLE.json",
+        "REVIEW_TARGET.json"
+      ]
+    }
+  ],
+  "lock_creation_allowed_now": false,
+  "lock_creation_blockers": [
+    "The user has not explicitly requested P2_SPEC_LOCK creation in this step.",
+    "Final lock tooling must recompute concrete P2-SPEC-03 file hashes from disk and reject pending rows."
+  ]
+}

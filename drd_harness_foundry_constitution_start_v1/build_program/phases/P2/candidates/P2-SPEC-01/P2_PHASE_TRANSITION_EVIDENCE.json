@@ -1,0 +1,41 @@
+{
+  "transition_evidence_id": "P2-PHASE-TRANSITION-EVIDENCE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "transition": {
+    "from": "P1_BUILD_LOCK",
+    "to": "P2_SPEC",
+    "required_gate": "P1_BUILD_GATE_APPROVED"
+  },
+  "upstream_evidence": {
+    "p1_build_lock": {
+      "path": "control/locks/P1_BUILD_LOCK.json",
+      "sha256": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2",
+      "root_sha256": "163dee6ac68384c6dc605a946a79702694b8fc9992c1ade02f3e7080acd1df3c"
+    },
+    "p1_build_gate_review": {
+      "path": "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/REVIEW_DECISION.json",
+      "sha256": "eca3206136a35a0fac60600e0bb14499bb2960fb70875d9d1d137d7e26a7968b",
+      "subject_hash": "5e1b66ae3847bf766fee0e48b9764447bea4e91acb9717cc09c77fad2180d66e",
+      "decision": "APPROVED",
+      "gate_decision": "P1_BUILD_GATE_APPROVED"
+    },
+    "git_head": "3bb13fabe02c397a27f98192caf539b3c64675bb"
+  },
+  "phase_manifest_state": {
+    "path": "build_program/phases/P2/PHASE_MANIFEST.json",
+    "declared_status": "WAITING_UPSTREAM_LOCK",
+    "sha256": "0ae4ee8e319d8f4223b92b3aa3c20cb779a1a2f43a8e3f6bfcdf0e5d1294e12a",
+    "mutated_by_this_candidate": false
+  },
+  "effective_state_for_this_candidate": {
+    "status": "P2_SPEC_ACTIVE_BY_COMMITTED_P1_BUILD_GATE",
+    "reason": "The committed P1 build gate review satisfies the transition condition from P1_BUILD_LOCK to P2_SPEC.",
+    "automation_rule": "For this candidate, use P2_PHASE_TRANSITION_EVIDENCE.json as the effective transition record. Updating the root P2 PHASE_MANIFEST status requires a separate explicit phase-status workpack."
+  },
+  "open_follow_up": {
+    "id": "P2-PHASE-MANIFEST-STATUS-UPDATE",
+    "required_if": "downstream automation reads only build_program/phases/P2/PHASE_MANIFEST.json for active phase status",
+    "allowed_in_this_workpack": false
+  }
+}

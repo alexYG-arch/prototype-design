@@ -1,0 +1,56 @@
+{
+  "artifact_id": "p2.tiny_brief.structural_completion_review",
+  "stage_id": "DRD-02-REASONING",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+  "schema_ref": "repository/schemas/reasoning/structural_completion_review.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_OPEN_GAPS",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "records": [
+    {
+      "review_id": "p2.tiny_brief.structural_completion.single_page_scope.001",
+      "required_page_or_flow": "Brief Intake",
+      "missing_surface_summary": [
+        "No unresolved second-level page, third-level page, child task surface, or data view is required for this fixture after source inventory closure.",
+        "Secondary page, multi-user workflow, and generated live product are routed to product_expansion_gaps and remain outside canonical interaction artifacts."
+      ],
+      "deductive_obligations": [
+        "P2_VERTICAL_SLICE_PRD.md#Real Page defines one real page: Brief Intake.",
+        "P2_VERTICAL_SLICE_PRD.md#States defines the full state set required for the fixture.",
+        "DERIVE-RULE-010 requires review before silently adding missing child surfaces."
+      ],
+      "candidate_options": [
+        "Keep a single Brief Intake page with validation overlay and recoverable failure state; do not add child pages."
+      ],
+      "product_expansion_risk": "NONE",
+      "canonical_eligibility": "REJECTED"
+    }
+  ]
+}

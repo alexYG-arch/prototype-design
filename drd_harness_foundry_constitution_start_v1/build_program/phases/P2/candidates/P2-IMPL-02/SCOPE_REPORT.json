@@ -1,0 +1,71 @@
+{
+  "report_id": "P2-IMPL-02-SCOPE-REPORT-001",
+  "phase": "P2",
+  "workpack_id": "P2-IMPL-02",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+    "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+    "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+    "repository/tests/p2/test_tiny_brief_reasoning.py",
+    "repository/tests/p2/test_tiny_brief_interaction.py",
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/src/drd_harness/validators/interaction_closure.py",
+    "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P2/candidates/P2-IMPL-02/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/src/drd_harness/validators/interaction_closure.py",
+    "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+    "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+    "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+    "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+    "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json",
+    "repository/tests/p2/test_tiny_brief_reasoning.py",
+    "repository/tests/p2/test_tiny_brief_interaction.py"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P2/candidates/P2-IMPL-02/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/TEST_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-IMPL-02/HANDOFF.md",
+    "build_program/phases/P2/candidates/P2-IMPL-02/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p2_spec_lock_path": "control/locks/P2_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false
+  },
+  "dependency_status": {
+    "p2_impl_01_review_decision": "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json",
+    "p2_impl_01_review_decision_present": true,
+    "p2_impl_01_review_decision_hash": "f4de9db66429ad55c041411ac55146f687b7204179c41af8fc6b82712519840a"
+  },
+  "p1_paths_modified": false,
+  "p2_spec_candidate_paths_modified": false,
+  "build_lock_created": false,
+  "review_decision_created": false,
+  "scope_notes": [
+    "P2_SPEC_LOCK is consumed as input only; implementation did not create or rewrite control locks.",
+    "P2-IMPL-01 approved review is consumed as dependency only; no P2-IMPL-01 file was modified by this workpack.",
+    "Artifact schemas are applied to graph or records via schema_payload_key because fixture JSON files include artifact wrapper metadata.",
+    "REVIEW_TARGET.json is supporting review metadata and is excluded from candidate subject hash to avoid circular self-hashing."
+  ]
+}

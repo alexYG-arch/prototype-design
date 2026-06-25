@@ -1,0 +1,31 @@
+{
+  "target_id": "P2-IMPL-03-REVIEW-TARGET-001",
+  "workpack_id": "P2-IMPL-03",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-IMPL-03",
+  "review_subject_hash": "01db2c067c7e1563a684ed641273dd5c467d8650658300d804c4fd6efcbb22b2",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the presentation registry cover every interaction message, reject unknown message refs, and record validate/generate action treatment?",
+    "Is shared component reuse justified by semantics, operations, state, information hierarchy, and interaction model rather than visual similarity, and do layout pattern refs bind to the registry?",
+    "Does natural-language layout remain the canonical semantic authority while inventory is only an index and validation skeleton?",
+    "Do desktop, tablet, mobile, mobile iOS, and mobile Material carrier rules preserve width, scroll, safe-area/system-bar, keyboard, and platform constraints?",
+    "Is the containment hierarchy multi-level and coupled to ordering, scroll behavior, and overlay entry/return context?",
+    "Does layout preserve full information access under height constraints, bind required information refs to known sources, and respect width constraints without unauthorized horizontal scroll?",
+    "Does z-axis layering include Material elevation intent, blocking behavior, preserved background context, focus restoration, and resolvable surface refs?",
+    "Does P2-IMPL-03 avoid adding new pages, secondary workflows, live product output, or external integrations?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

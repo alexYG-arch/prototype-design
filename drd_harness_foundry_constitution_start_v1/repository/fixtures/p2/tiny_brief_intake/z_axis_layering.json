@@ -1,0 +1,109 @@
+{
+  "artifact_id": "p2.tiny_brief.z_axis_layering",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+  "schema_ref": "repository/schemas/layout/z_axis_layering.schema.json",
+  "schema_payload_key": "layering",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "layering": {
+    "z_axis_layer_id": "p2.tiny_brief.z_axis_layering.001",
+    "layers": [
+      {
+        "layer": 0,
+        "surface_ref": "brief.page",
+        "layer_kind": "BASE",
+        "blocks_lower_layers": false,
+        "preserves_background_context": true,
+        "occlusion_rule": "Base page content remains behind overlay surfaces."
+      },
+      {
+        "layer": 4,
+        "surface_ref": "layout.action_group",
+        "layer_kind": "STICKY",
+        "blocks_lower_layers": false,
+        "preserves_background_context": true,
+        "occlusion_rule": "Carrier-specific sticky actions remain above page content without blocking required fields."
+      },
+      {
+        "layer": 16,
+        "surface_ref": "overlay.validation.scrim",
+        "layer_kind": "OVERLAY",
+        "blocks_lower_layers": true,
+        "preserves_background_context": true,
+        "occlusion_rule": "Scrim blocks background interaction while keeping page context visible."
+      },
+      {
+        "layer": 24,
+        "surface_ref": "overlay.validation",
+        "layer_kind": "MODAL",
+        "blocks_lower_layers": true,
+        "preserves_background_context": true,
+        "occlusion_rule": "Validation overlay panel blocks lower layers until success, recoverable failure, close, or edit brief."
+      },
+      {
+        "layer": 32,
+        "surface_ref": "overlay.validation.loading",
+        "layer_kind": "LOADING",
+        "blocks_lower_layers": true,
+        "preserves_background_context": true,
+        "occlusion_rule": "Loading state sits inside the overlay panel and does not add a separate page."
+      }
+    ],
+    "material_elevation_intent": "Material mobile maps overlay.scrim and overlay.validation to elevation above sticky actions while snackbar-style transient copy is not used for required decisions.",
+    "focus_restoration": "Focus returns to Validate brief, Generate DRD, Retry, Edit brief, or the edited field that opened the overlay.",
+    "trace_refs": [
+      "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json",
+      "overlay.validation"
+    ]
+  }
+}

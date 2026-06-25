@@ -1,0 +1,86 @@
+{
+  "artifact_id": "p2.tiny_brief.product_expansion_gaps",
+  "stage_id": "DRD-01-PRD-ELEMENTS",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+  "schema_ref": "repository/schemas/reasoning/product_expansion_gap.schema.json",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+  "review_gate": "HUMAN_REQUIRED_IF_NON_EMPTY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json"
+  ],
+  "records": [
+    {
+      "gap_id": "expansion.secondary_page",
+      "gap_type": "MISSING_PRODUCT_DECISION",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#PRD Element Validation",
+        "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json#rejected_expansion_candidates"
+      ],
+      "blocked_artifacts": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.final_drd"
+      ],
+      "candidate_options": [
+        "expansion.secondary_page"
+      ],
+      "required_decision": "A secondary page would exceed the one real page scope. Human Gate approval is required before adoption.",
+      "status": "OPEN",
+      "decision_ref": null
+    },
+    {
+      "gap_id": "expansion.multi_user_workflow",
+      "gap_type": "UNAPPROVED_CAPABILITY",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#PRD Element Validation",
+        "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json#rejected_expansion_candidates"
+      ],
+      "blocked_artifacts": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.final_drd"
+      ],
+      "candidate_options": [
+        "expansion.multi_user_workflow"
+      ],
+      "required_decision": "A multi-user workflow would add a new user task. Human Gate approval is required before adoption.",
+      "status": "OPEN",
+      "decision_ref": null
+    },
+    {
+      "gap_id": "expansion.generated_live_product",
+      "gap_type": "UNAPPROVED_CAPABILITY",
+      "source_refs": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md#PRD Element Validation",
+        "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json#rejected_expansion_candidates"
+      ],
+      "blocked_artifacts": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.final_drd"
+      ],
+      "candidate_options": [
+        "expansion.generated_live_product"
+      ],
+      "required_decision": "Generating a live product page is outside the DRD harness fixture. Human Gate approval is required before adoption.",
+      "status": "OPEN",
+      "decision_ref": null
+    }
+  ],
+  "schema_payload_key": "records"
+}

@@ -1,0 +1,32 @@
+{
+  "target_id": "P2-BUILD-READINESS-REVIEW-TARGET-001",
+  "workpack_id": "P2-IMPL-05",
+  "candidate_id": "P2-BUILD-READINESS",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION_BUILD_READINESS",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-BUILD-READINESS",
+  "review_subject_hash": "27556b9c33aa47ca192009b97378d3b31f24cd31e3196168b1688645f225a7ef",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "BUILD_LOCK_INPUT_MATRIX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Do final manifest, hash index, and reference index exactly match deterministic compiler output?",
+    "Do final review artifacts recompute and bind upstream hashes to current source, compiler, and final artifact files?",
+    "Does final review target bind the final subject hash without self-including target or decision artifacts?",
+    "Does final review decision bind that hash, have zero open blockers, and keep required review-decision contract fields?",
+    "Does end-to-end validation pass and cover final review binding?",
+    "Does build lock readiness cover fixture, test, and P2 implementation code candidates while remaining evidence-only?",
+    "Does P2-IMPL-05 avoid writing control/locks/P2_BUILD_LOCK.json, repository/src changes, or P1 paths?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

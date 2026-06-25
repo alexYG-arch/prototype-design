@@ -1,0 +1,148 @@
+{
+  "artifact_id": "p2.tiny_brief.containment_hierarchy",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+  "schema_ref": "repository/schemas/layout/containment_hierarchy.schema.json",
+  "schema_payload_key": "hierarchy",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "hierarchy": {
+    "hierarchy_id": "p2.tiny_brief.containment_hierarchy.001",
+    "surface_id": "brief.page",
+    "nodes": [
+      {
+        "node_id": "brief.page",
+        "surface_kind": "PAGE",
+        "parent_id": null,
+        "order": 0,
+        "arrangement": "Root page contains header, main content, state message group, and overlay host.",
+        "sizing": "Fills available carrier width with readable max width on desktop.",
+        "scroll_behavior": "Page owns vertical scroll for height overflow.",
+        "width_behavior": "Children wrap or stack inside parent width.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "layout.header",
+        "surface_kind": "SECTION",
+        "parent_id": "brief.page",
+        "order": 0,
+        "arrangement": "Header sits above the main field content.",
+        "sizing": "Full parent width with compact height.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps title and status inside parent width.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "layout.main",
+        "surface_kind": "SECTION",
+        "parent_id": "brief.page",
+        "order": 1,
+        "arrangement": "Desktop row, tablet and mobile vertical stack inside parent.",
+        "sizing": "Consumes remaining width and height while preserving readable minimums.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps inside parent width and stacks before overflow.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "layout.field_group",
+        "surface_kind": "GROUP",
+        "parent_id": "layout.main",
+        "order": 0,
+        "arrangement": "Fields appear in task order with page type select after audience.",
+        "sizing": "Fields fill available group width with minimum touch and text targets.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps labels and stacks controls inside parent width.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "layout.action_group",
+        "surface_kind": "GROUP",
+        "parent_id": "layout.main",
+        "order": 1,
+        "arrangement": "Save draft, Validate brief, and Generate DRD appear after fields.",
+        "sizing": "Actions keep stable touch/click dimensions.",
+        "scroll_behavior": "May become sticky within parent without contradiction on constrained height.",
+        "width_behavior": "Actions wrap or stack before clipping.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "layout.state_messages",
+        "surface_kind": "STATE_CONTAINER",
+        "parent_id": "layout.main",
+        "order": 2,
+        "arrangement": "Disabled, save, and inline recovery messages appear near the controls they explain.",
+        "sizing": "Message area grows with copy while keeping actions reachable.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps message copy inside parent width.",
+        "entry_context": null,
+        "return_placement": null
+      },
+      {
+        "node_id": "overlay.validation",
+        "surface_kind": "OVERLAY",
+        "parent_id": "brief.page",
+        "order": 3,
+        "arrangement": "Overlay panel contains processing, failure, recovery, and final-ready states.",
+        "sizing": "Panel fits within carrier safe area and scrolls internally when needed.",
+        "scroll_behavior": "Overlay body scrolls without contradiction while actions remain reachable.",
+        "width_behavior": "Panel wraps copy and controls inside carrier width.",
+        "entry_context": "Opened by brief.validate, brief.generate, or overlay.retry from the same Brief Intake task.",
+        "return_placement": "Returns focus to the triggering action or editable brief fields after close or edit brief."
+      }
+    ]
+  }
+}

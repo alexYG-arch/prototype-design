@@ -198,11 +198,13 @@ def _require_compilable_bundle(bundle: Mapping[str, Any]) -> None:
         validate_hash_drift,
         validate_input_bundle,
         validate_section_order,
+        validate_section_semantic_unit_refs,
     )
 
     findings = []
     findings.extend(validate_input_bundle(bundle))
     findings.extend(validate_section_order(bundle.get("sections", [])))
+    findings.extend(validate_section_semantic_unit_refs(bundle))
     findings.extend(validate_atomic_inventory_for_compiler(bundle.get("semantic_units", [])))
     current_hashes = bundle.get("current_hashes", {})
     if current_hashes:

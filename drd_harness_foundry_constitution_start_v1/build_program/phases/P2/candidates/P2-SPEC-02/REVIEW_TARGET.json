@@ -1,0 +1,29 @@
+{
+  "target_id": "P2-SPEC-02-REVIEW-TARGET-001",
+  "workpack_id": "P2-SPEC-02",
+  "phase": "P2",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-SPEC-02",
+  "review_subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "approved_sections": [
+    "P2_STAGE_ARTIFACT_CONTRACTS.md",
+    "P2_STAGE_ARTIFACT_MATRIX.json",
+    "P2_FIXTURE_VALIDATION_MATRIX.json",
+    "P2_REVIEW_GATE_MAP.json",
+    "P2_STAGE_DEPENDENCY_GRAPH.json",
+    "P2_ARTIFACT_FIELD_CONTRACTS.json",
+    "P2_SCHEMA_VALIDATOR_COVERAGE.json",
+    "P2_SPEC_LOCK_INPUT_PREVIEW.json",
+    "P2_IMPLEMENTATION_HANDOFF_CONTRACT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "resolved_decision": "P2-SPEC-02 approved for P2-SPEC-03 generation.",
+  "review_decision": "REVIEW_DECISION.json",
+  "not_a_review_decision": false
+}

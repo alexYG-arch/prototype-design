@@ -1,0 +1,32 @@
+{
+  "target_id": "P2-SPEC-01-REVIEW-TARGET-001",
+  "workpack_id": "P2-SPEC-01",
+  "phase": "P2",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P2/candidates/P2-SPEC-01",
+  "review_subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "approved_sections": [
+    "P2_VERTICAL_SLICE_PRD.md",
+    "P2_VERTICAL_SLICE_CONTRACT.md",
+    "P2_STAGE_PATH_SPEC.md",
+    "P2_SCOPE_COVERAGE_MATRIX.json",
+    "P2_PRD_ELEMENT_INVENTORY.json",
+    "P2_INTERACTION_EDGE_TABLE.json",
+    "P2_PHASE_TRANSITION_EVIDENCE.json",
+    "P2_ARTIFACT_INVENTORY.json",
+    "P2_LAYOUT_VALIDATION_PARAMETERS.json",
+    "P2_SPEC_PART_PLAN.json",
+    "P2_IMPLEMENTATION_WORKPACK_MAP.json",
+    "P2_ACCEPTANCE_MATRIX.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "resolved_decision": "P2-SPEC-01 approved for P2-SPEC-02 generation.",
+  "review_decision": "REVIEW_DECISION.json",
+  "not_a_review_decision": false
+}

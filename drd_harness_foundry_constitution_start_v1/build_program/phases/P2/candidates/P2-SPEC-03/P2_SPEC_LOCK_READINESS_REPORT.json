@@ -1,0 +1,86 @@
+{
+  "report_id": "P2-SPEC-03-LOCK-READINESS-REPORT-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "readiness_status": "APPROVED_FOR_SPEC_LOCK_CREATION_NOT_LOCKED",
+  "not_a_lock": true,
+  "approved_inputs": [
+    {
+      "candidate_id": "P2-SPEC-01",
+      "subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+      "review_decision_sha256": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "P2-SPEC-02",
+      "subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+      "review_decision_sha256": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "P2-SPEC-03",
+      "subject_hash": null,
+      "review_decision_sha256": null,
+      "status": "BOUND_BY_REVIEW_DECISION_SUPPORTING_OUTPUT",
+      "self_hash_policy": "REVIEW_DECISION.json binds the subject hash; final P2_SPEC_LOCK recomputes the review decision sha256 from disk."
+    }
+  ],
+  "pending_inputs": [],
+  "workpack_readiness_summary": {
+    "workpack_count": 5,
+    "all_waiting_for_p2_spec_lock": true,
+    "implementation_ready_after_lock": [
+      "P2-IMPL-01",
+      "P2-IMPL-02",
+      "P2-IMPL-03",
+      "P2-IMPL-04",
+      "P2-IMPL-05"
+    ],
+    "all_code_targets_covered_by_allowed_write_paths_after_lock": true,
+    "all_required_artifact_paths_covered_by_allowed_write_paths_after_lock": true,
+    "all_test_targets_covered_by_allowed_write_paths_after_lock": true,
+    "machine_readable_dependencies_present": true
+  },
+  "validation_summary": {
+    "validation_count": 10,
+    "obligation_count": 10,
+    "all_validation_rows_have_evidence_rules": true,
+    "all_obligations_mapped_to_workpacks": true,
+    "path_coverage_checked": true,
+    "dependency_coverage_checked": true
+  },
+  "scope_summary": {
+    "writes_only_p2_spec_03_candidate": true,
+    "forbidden_write_violations": []
+  },
+  "decision_for_review": "Approved by human gate for use as P2_SPEC_LOCK input evidence.",
+  "next_allowed_action_if_approved": "Create P2_SPEC_LOCK only after explicit user request; otherwise continue with the next review or discussion step.",
+  "repair_summary": [
+    {
+      "gap": "code_targets were not covered by allowed_write_paths_after_lock for P2-IMPL-01 through P2-IMPL-04",
+      "fix": "added exact code target paths and executable path coverage checks to the implementation index",
+      "risk_removed": "implementation workpacks no longer require code changes that their own path policy forbids"
+    },
+    {
+      "gap": "required artifact contract paths were missing from allowed_write_paths_after_lock for P2-IMPL-01, P2-IMPL-02, and P2-IMPL-05",
+      "fix": "added missing artifact paths from P2_ARTIFACT_FIELD_CONTRACTS.json and mirrored them into test obligations",
+      "risk_removed": "build-lock obligations can be implemented without off-contract writes"
+    },
+    {
+      "gap": "implementation order existed mainly as prose and sequence numbers",
+      "fix": "added direct and cumulative dependency fields for every implementation workpack",
+      "risk_removed": "later automation can verify execution order without parsing markdown"
+    },
+    {
+      "gap": "P2-SPEC-03 lock input file hashes were null without an explicit final-lock resolution rule",
+      "fix": "added pending candidate hash resolution policy requiring lock tooling to recompute concrete file hashes",
+      "risk_removed": "final P2_SPEC_LOCK cannot accidentally preserve candidate-only null hash rows"
+    }
+  ],
+  "human_review_summary": {
+    "p2_spec_03_review_status": "APPROVED_BY_HUMAN",
+    "review_decision": "REVIEW_DECISION.json",
+    "lock_creation_status": "NOT_CREATED",
+    "lock_creation_requires_explicit_user_request": true
+  }
+}

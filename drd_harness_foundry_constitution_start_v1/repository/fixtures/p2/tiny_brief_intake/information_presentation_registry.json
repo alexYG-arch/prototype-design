@@ -1,0 +1,257 @@
+{
+  "artifact_id": "p2.tiny_brief.information_presentation_registry",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+  "schema_ref": "repository/schemas/presentation/information_presentation_registry.schema.json",
+  "schema_payload_key": "registry",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "registry": {
+    "registry_id": "p2.tiny_brief.information_presentation_registry.001",
+    "decisions": [
+      {
+        "presentation_id": "presentation.msg.generate_disabled",
+        "semantic_intent": "Explain why Generate DRD is unavailable before required fields pass validation.",
+        "trigger_condition": "Generate DRD is disabled while required fields are missing or unvalidated.",
+        "scope": "Brief Intake editing state",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "INLINE_MESSAGE",
+        "recoverability": "Recoverable by filling missing fields, then validating or generating again.",
+        "trace_refs": [
+          "msg.generate_disabled",
+          "brief.generate"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": "msg.generate_disabled",
+        "reason_for_difference": "Disabled reason remains inline because the user needs it beside the unavailable action."
+      },
+      {
+        "presentation_id": "presentation.msg.draft_saved",
+        "semantic_intent": "Confirm that draft save succeeded without moving the user out of editing.",
+        "trigger_condition": "Draft save succeeds.",
+        "scope": "Brief Intake editing state",
+        "information_lifecycle": "session",
+        "presentation_mode": "STATUS_BADGE",
+        "recoverability": "Recoverable because the editing form remains visible and no next-step decision is forced.",
+        "trace_refs": [
+          "msg.draft_saved",
+          "reaction.brief.save_draft"
+        ],
+        "user_decision_need": false,
+        "sustained_processing_required": false,
+        "message_ref": "msg.draft_saved",
+        "reason_for_difference": "Save confirmation is low-risk status feedback and does not need the overlay pattern."
+      },
+      {
+        "presentation_id": "presentation.msg.validation_progress",
+        "semantic_intent": "Show validation progress while the system checks required inputs and expansion gaps.",
+        "trigger_condition": "Validate brief starts.",
+        "scope": "Validation overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "MODAL_DIALOG",
+        "recoverability": "Recoverable because the overlay resolves to success, failure, retry, edit, or close paths.",
+        "trace_refs": [
+          "msg.validation_progress",
+          "brief.validate",
+          "overlay.validation"
+        ],
+        "user_decision_need": false,
+        "sustained_processing_required": true,
+        "message_ref": "msg.validation_progress",
+        "reason_for_difference": "Validation uses the overlay because it is a system handoff, not a transient toast."
+      },
+      {
+        "presentation_id": "presentation.msg.generation_progress",
+        "semantic_intent": "Show governed DRD generation progress after required inputs pass validation.",
+        "trigger_condition": "Generate DRD starts.",
+        "scope": "Validation overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "MODAL_DIALOG",
+        "recoverability": "Recoverable because timeout or failure returns to recoverable failure copy without draft loss.",
+        "trace_refs": [
+          "msg.generation_progress",
+          "brief.generate",
+          "overlay.validation"
+        ],
+        "user_decision_need": false,
+        "sustained_processing_required": true,
+        "message_ref": "msg.generation_progress",
+        "reason_for_difference": "Generation shares the primary overlay status pattern with validation but keeps a distinct semantic intent."
+      },
+      {
+        "presentation_id": "presentation.msg.retry_progress",
+        "semantic_intent": "Show retry progress after a recoverable validation or generation failure.",
+        "trigger_condition": "Retry starts after recoverable failure.",
+        "scope": "Validation overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "MODAL_DIALOG",
+        "recoverability": "Recoverable because retry failure returns to the same recoverable failure actions.",
+        "trace_refs": [
+          "msg.retry_progress",
+          "overlay.retry",
+          "state.recoverable_failure"
+        ],
+        "user_decision_need": false,
+        "sustained_processing_required": true,
+        "message_ref": "msg.retry_progress",
+        "reason_for_difference": "Retry uses the same overlay status pattern as validation and generation."
+      },
+      {
+        "presentation_id": "presentation.msg.failure.transient",
+        "semantic_intent": "Explain transient validation or generation failure and preserve recovery choices.",
+        "trigger_condition": "Validation, generation, retry, or draft save fails recoverably.",
+        "scope": "Recoverable failure overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "ERROR_SUMMARY",
+        "recoverability": "Recoverable with Retry, Edit brief, or Close without draft loss.",
+        "trace_refs": [
+          "msg.failure.transient",
+          "state.recoverable_failure"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": "msg.failure.transient",
+        "reason_for_difference": "Failure copy needs persistent error summary treatment so recovery actions remain visible."
+      },
+      {
+        "presentation_id": "presentation.msg.failure.missing_required",
+        "semantic_intent": "Explain missing required information without adding a new page or product capability.",
+        "trigger_condition": "Required information is absent during validation or generation.",
+        "scope": "Recoverable failure overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "ERROR_SUMMARY",
+        "recoverability": "Recoverable by editing the same brief fields and retrying in the same task.",
+        "trace_refs": [
+          "msg.failure.missing_required",
+          "state.recoverable_failure"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": "msg.failure.missing_required",
+        "reason_for_difference": "Missing-field failure shares error summary treatment with transient failure because both require action."
+      },
+      {
+        "presentation_id": "presentation.msg.recovery_instruction",
+        "semantic_intent": "Tell the user how to recover from a failure without losing draft content.",
+        "trigger_condition": "Recoverable failure is visible.",
+        "scope": "Recoverable failure overlay",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "INLINE_MESSAGE",
+        "recoverability": "Recoverable through Retry, Edit brief, or Close.",
+        "trace_refs": [
+          "msg.recovery_instruction",
+          "overlay.retry",
+          "overlay.edit_brief",
+          "overlay.close"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": "msg.recovery_instruction",
+        "reason_for_difference": "Recovery instruction sits with the failure actions instead of becoming a separate modal."
+      },
+      {
+        "presentation_id": "presentation.msg.final_ready",
+        "semantic_intent": "Confirm that FINAL_DRD.md and review evidence are ready.",
+        "trigger_condition": "Validation and governed generation succeed.",
+        "scope": "Final ready overlay",
+        "information_lifecycle": "persistent",
+        "presentation_mode": "MODAL_DIALOG",
+        "recoverability": "Recoverable because the final state names the produced artifact and does not require a new workflow.",
+        "trace_refs": [
+          "msg.final_ready",
+          "state.final_ready"
+        ],
+        "user_decision_need": false,
+        "sustained_processing_required": false,
+        "message_ref": "msg.final_ready",
+        "reason_for_difference": "Final readiness stays in the overlay handoff because it closes the governed generation path."
+      },
+      {
+        "presentation_id": "presentation.action.validate",
+        "semantic_intent": "Present Validate brief as the primary checking action before generation.",
+        "trigger_condition": "Draft can be checked for source completeness and expansion gaps.",
+        "scope": "Brief Intake action row",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "DETAIL_PANEL",
+        "recoverability": "Recoverable because failure returns to the same editing and overlay recovery path.",
+        "trace_refs": [
+          "brief.validate",
+          "reaction.brief.validate",
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": null,
+        "reason_for_difference": "Validate shares the primary action group but remains semantically a check action."
+      },
+      {
+        "presentation_id": "presentation.action.generate",
+        "semantic_intent": "Present Generate DRD as the governed production action after validation passes.",
+        "trigger_condition": "Required brief fields pass validation.",
+        "scope": "Brief Intake action row",
+        "information_lifecycle": "until resolved",
+        "presentation_mode": "DETAIL_PANEL",
+        "recoverability": "Recoverable because failure returns to retry or edit without draft loss.",
+        "trace_refs": [
+          "brief.generate",
+          "reaction.brief.generate",
+          "p2.tiny_brief.inference.async_failure_copy.001"
+        ],
+        "user_decision_need": true,
+        "sustained_processing_required": false,
+        "message_ref": null,
+        "reason_for_difference": "Generate shares the primary action group but has stricter enabled conditions and production semantics."
+      }
+    ]
+  }
+}

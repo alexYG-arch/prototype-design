@@ -1,0 +1,42 @@
+{
+  "decision_id": "P2-IMPL-04-REVIEW-001",
+  "subject": "P2-IMPL-04",
+  "subject_hash": "30f0a087746b6074604721f332fa5a15768b80ef3c232faf893fe4fefe99cd36",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-25",
+  "basis": "User said pass after the P2-IMPL-04 check/fix loop reached NO_FINDINGS. This approval covers DRD-05 compiler input, semantic unit inventory, conservation report, and FINAL_DRD artifacts for the Tiny Brief Intake fixture only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P2-IMPL-04",
+    "test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+    "test_result": "293 passed",
+    "p2_targeted_test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_compiler.py repository/tests/p2/test_tiny_brief_final_drd.py -q",
+    "p2_targeted_test_result": "21 passed",
+    "compiler_test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/compiler -q",
+    "compiler_test_result": "20 passed",
+    "p2_suite_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2 -q",
+    "p2_suite_result": "77 passed",
+    "candidate_check_subject_hash": "30f0a087746b6074604721f332fa5a15768b80ef3c232faf893fe4fefe99cd36",
+    "spec_lock": "control/locks/P2_SPEC_LOCK.json",
+    "spec_lock_sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+    "p2_impl_03_review_decision": "build_program/phases/P2/candidates/P2-IMPL-03/REVIEW_DECISION.json",
+    "p2_impl_03_review_decision_sha256": "d5fcbf908211eabae6415817a3fadc8343669ef4badc2643bb72474f6e4ed960"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "not_p2_build_lock": true,
+  "remaining_followups": [
+    "P2_BUILD_LOCK is not created.",
+    "P2-IMPL-05 still requires explicit continuation before execution.",
+    "Final review metadata artifacts remain outside P2-IMPL-04 and must not be treated as approved by this decision."
+  ]
+}

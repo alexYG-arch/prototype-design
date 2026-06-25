@@ -1,0 +1,582 @@
+{
+  "matrix_id": "P2-SPEC-03-TEST-OBLIGATION-MATRIX-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-03",
+  "source_validation_matrix": "build_program/phases/P2/candidates/P2-SPEC-02/P2_FIXTURE_VALIDATION_MATRIX.json",
+  "source_implementation_index": "P2_IMPLEMENTATION_WORKPACK_INDEX.json",
+  "obligation_count": 10,
+  "obligations": [
+    {
+      "obligation_id": "P2-OBL-01",
+      "validation_id": "P2-VAL-SOURCE-HASH",
+      "stage_id": "DRD-00-SOURCE-FREEZE",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-01"
+      ],
+      "assertion": "source snapshot manifest names source_prd.md and binds its sha256",
+      "required_artifacts": [
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ],
+      "validator_ref": "repository/src/drd_harness/stages/source_snapshot.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.source_prd",
+          "p2.tiny_brief.source_snapshot_manifest"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+        "repository/fixtures/p2/tiny_brief_intake/source/**",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "owning_workpack_dependencies": [],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-02",
+      "validation_id": "P2-VAL-PRD-INVENTORY-COVERAGE",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-01"
+      ],
+      "assertion": "PRD element inventory covers every element_id from P2_PRD_ELEMENT_INVENTORY.json",
+      "required_artifacts": [
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.prd_element_inventory",
+          "p2.tiny_brief.derived_element_decisions",
+          "p2.tiny_brief.product_expansion_gaps"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+        "repository/fixtures/p2/tiny_brief_intake/source/**",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "owning_workpack_dependencies": [],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-03",
+      "validation_id": "P2-VAL-NO-PRODUCT-EXPANSION",
+      "stage_id": "DRD-01-PRD-ELEMENTS",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-01"
+      ],
+      "assertion": "new page, new primary task, secondary page, multi-user workflow, and live product output are rejected or routed to human review",
+      "required_artifacts": [
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.product_expansion_gaps"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+        "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+        "repository/fixtures/p2/tiny_brief_intake/source/**",
+        "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+        "repository/src/drd_harness/stages/source_snapshot.py",
+        "repository/src/drd_harness/validators/prd_adoption.py",
+        "repository/tests/p2/test_tiny_brief_prd_elements.py",
+        "repository/tests/p2/test_tiny_brief_source_snapshot.py"
+      ],
+      "owning_workpack_dependencies": [],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-04",
+      "validation_id": "P2-VAL-DEDUCTION-TRACE",
+      "stage_id": "DRD-02-REASONING",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-02"
+      ],
+      "assertion": "every derived element has source premise, locked rule, conclusion, and non-expansion decision",
+      "required_artifacts": [
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.inference_records",
+          "p2.tiny_brief.structural_completion_review"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-05",
+      "validation_id": "P2-VAL-CLICKABLE-CLOSURE",
+      "stage_id": "DRD-03-INTERACTION",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-02"
+      ],
+      "assertion": "every clickable from P2_INTERACTION_EDGE_TABLE.json appears in clickable_inventory and has an interaction_graph edge",
+      "required_artifacts": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.clickable_inventory"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.interaction_graph",
+          "p2.tiny_brief.clickable_inventory"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-06",
+      "validation_id": "P2-VAL-ASYNC-FAILURE-COPY",
+      "stage_id": "DRD-03-INTERACTION",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-02"
+      ],
+      "assertion": "loading, disabled, failure, retry, exit, and recoverable failure states have user-facing copy or explicit no-copy decision",
+      "required_artifacts": [
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/interaction_closure.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.async_behavior",
+          "p2.tiny_brief.failure_recovery",
+          "p2.tiny_brief.interaction_messages"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
+        "repository/fixtures/p2/tiny_brief_intake/clickable_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/failure_recovery.json",
+        "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json",
+        "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json",
+        "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json",
+        "repository/src/drd_harness/validators/interaction_closure.py",
+        "repository/src/drd_harness/validators/reasoning.py",
+        "repository/tests/p2/test_tiny_brief_interaction.py",
+        "repository/tests/p2/test_tiny_brief_reasoning.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-07",
+      "validation_id": "P2-VAL-PRESENTATION-PATTERN",
+      "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-03"
+      ],
+      "assertion": "validate and generate action presentation decision is recorded with evidence",
+      "required_artifacts": [
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.shared_component_registry"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.information_presentation_registry",
+          "p2.tiny_brief.shared_component_registry"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_layout.py",
+        "repository/tests/p2/test_tiny_brief_presentation.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/validators/layout_completeness.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+        "repository/src/drd_harness/validators/layout_completeness.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/tests/p2/test_tiny_brief_layout.py",
+        "repository/tests/p2/test_tiny_brief_presentation.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01",
+        "P2-IMPL-02"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-08",
+      "validation_id": "P2-VAL-LAYOUT-CARRIERS",
+      "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-03"
+      ],
+      "assertion": "desktop, tablet, mobile iOS, and mobile Material layout records bind width, scroll, containment, and z-axis behavior",
+      "required_artifacts": [
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.natural_language_layout",
+          "p2.tiny_brief.carrier_adaptation_profile",
+          "p2.tiny_brief.containment_hierarchy",
+          "p2.tiny_brief.z_axis_layering"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_layout.py",
+        "repository/tests/p2/test_tiny_brief_presentation.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/validators/layout_completeness.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+        "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+        "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+        "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+        "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+        "repository/src/drd_harness/validators/layout_completeness.py",
+        "repository/src/drd_harness/validators/presentation_consistency.py",
+        "repository/tests/p2/test_tiny_brief_layout.py",
+        "repository/tests/p2/test_tiny_brief_presentation.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01",
+        "P2-IMPL-02"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-09",
+      "validation_id": "P2-VAL-COMPILER-CONSERVATION",
+      "stage_id": "DRD-05-COMPILATION",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-04"
+      ],
+      "assertion": "compiler conservation report shows FINAL_DRD.md contains only approved semantic units",
+      "required_artifacts": [
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.final_drd"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.compiler_input_bundle",
+          "p2.tiny_brief.compiler_semantic_unit_inventory",
+          "p2.tiny_brief.compiler_conservation_report",
+          "p2.tiny_brief.final_drd"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+        "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md"
+      ],
+      "minimum_code_targets_after_lock": [
+        "repository/src/drd_harness/compiler/final_drd.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+        "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+        "repository/src/drd_harness/compiler/final_drd.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/tests/p2/test_tiny_brief_compiler.py",
+        "repository/tests/p2/test_tiny_brief_final_drd.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01",
+        "P2-IMPL-02",
+        "P2-IMPL-03"
+      ],
+      "path_coverage_status": "PASS"
+    },
+    {
+      "obligation_id": "P2-OBL-10",
+      "validation_id": "P2-VAL-FINAL-REVIEW-BINDING",
+      "stage_id": "DRD-06-FINAL-REVIEW",
+      "owning_implementation_workpacks": [
+        "P2-IMPL-05"
+      ],
+      "assertion": "final review decision binds final subject hash and has no open blockers",
+      "required_artifacts": [
+        "p2.tiny_brief.final_drd_manifest",
+        "p2.tiny_brief.final_drd_hash_index",
+        "p2.tiny_brief.final_drd_reference_index",
+        "p2.tiny_brief.final_review_target",
+        "p2.tiny_brief.final_review_decision"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/spec_validator.py",
+      "expected_evidence": {
+        "command_required": true,
+        "exit_code_required": 0,
+        "result_hash_required": true,
+        "checked_artifact_ids": [
+          "p2.tiny_brief.final_drd_manifest",
+          "p2.tiny_brief.final_drd_hash_index",
+          "p2.tiny_brief.final_drd_reference_index",
+          "p2.tiny_brief.final_review_target",
+          "p2.tiny_brief.final_review_decision"
+        ],
+        "checked_subject_hash_required": true
+      },
+      "minimum_test_targets_after_lock": [
+        "repository/tests/p2/test_tiny_brief_end_to_end.py"
+      ],
+      "must_block_p2_build_lock_until_pass": true,
+      "human_exception_rule": "Only an approved review decision may waive or defer this obligation, and the exception must name the affected validation_id and artifact_id.",
+      "required_artifact_paths": [
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json"
+      ],
+      "minimum_code_targets_after_lock": [
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS",
+        "repository/tests/p2/test_tiny_brief_end_to_end.py"
+      ],
+      "owning_workpack_allowed_write_paths_after_lock": [
+        "build_program/phases/P2/candidates/P2-BUILD-LOCK-CREATION-RESULT/**",
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS/**",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+        "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+        "repository/tests/p2/test_tiny_brief_end_to_end.py"
+      ],
+      "owning_workpack_dependencies": [
+        "P2-IMPL-01",
+        "P2-IMPL-02",
+        "P2-IMPL-03",
+        "P2-IMPL-04"
+      ],
+      "path_coverage_status": "PASS"
+    }
+  ],
+  "evidence_rules": {
+    "command_required": true,
+    "exit_code_required": 0,
+    "result_hash_required": true,
+    "checked_subject_hash_required": true,
+    "checked_artifact_ids_required": true,
+    "path_coverage_status_required": "PASS",
+    "owning_workpack_dependencies_required": true
+  },
+  "coverage_status": "COMPLETE_FOR_APPROVED_P2_SPEC_CANDIDATES_AND_EXECUTABLE_PATHS",
+  "path_coverage_required": true,
+  "dependency_coverage_required": true
+}

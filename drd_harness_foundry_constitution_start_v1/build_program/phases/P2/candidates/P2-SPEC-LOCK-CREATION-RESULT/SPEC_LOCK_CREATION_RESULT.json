@@ -1,0 +1,72 @@
+{
+  "result_id": "P2-SPEC-LOCK-CREATION-RESULT-001",
+  "phase": "P2",
+  "status": "SPEC_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P2_SPEC_LOCK.json",
+    "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+    "lock_id": "P2-SPEC-LOCK-001",
+    "root_sha256": "93eddcc641eaceb0d9793b2fb6eaa833a1526e4dc9d90345e2b018cc5beb1580",
+    "review_decision_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1",
+    "review_decision_file_root_sha256": "be11efe1ee5313854168eb7f2ebc76b6c6294cedaee24facfaa00605acf03b13",
+    "file_entry_count": 3,
+    "covered_spec_parts": [
+      "P2-SPEC-01",
+      "P2-SPEC-02",
+      "P2-SPEC-03"
+    ]
+  },
+  "creation_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "runtime_kind": "python",
+    "runtime_version": "3.9.6"
+  },
+  "input_bundle": {
+    "path": "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "462a3100a8219abf0d4a81c31ce9b046508028c0f02329401d2a7e6a369bd54e",
+    "lock_recorded_sha256": "462a3100a8219abf0d4a81c31ce9b046508028c0f02329401d2a7e6a369bd54e"
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "lock_recorded_sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "authorized_by_review": {
+    "path": "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/REVIEW_DECISION.json",
+    "sha256": "fec22f7fc50d7c8791c6acbe7358f0effa1594075e48853833f0b99197243a05",
+    "review_id": "P2-SPEC-LOCK-CREATION-READINESS-REVIEW-001",
+    "subject_hash": "f04bc94a9183913936ebba12965ef4ba35efb7f2a24427b34309d4aeaac5225a"
+  },
+  "not_a_build_lock": true,
+  "not_an_implementation_authorization": true,
+  "verification_bindings": {
+    "lock_file_sha256_matches_current_file": true,
+    "input_bundle_sha256_matches_current_file_and_lock_record": true,
+    "schema_sha256_matches_current_file_and_lock_record": true,
+    "tool_sha256_matches_current_file_and_lock_record": true,
+    "authorized_review_sha256_matches_current_file": true,
+    "authorized_review_subject_hash_matches_current_file": true,
+    "lock_generated_output_hashes_match_current_files": true,
+    "lock_review_decision_hashes_match_current_files": true
+  },
+  "immutability_check": {
+    "output_path": "control/locks/P2_SPEC_LOCK.json",
+    "overwrite_attempt_expected_to_fail": true,
+    "tool_write_new_file_only": true,
+    "lock_sha256_before_overwrite_guard": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+  },
+  "next_authorization_required": {
+    "p2_implementation_requires_explicit_authorization": true,
+    "p2_build_lock_requires_explicit_authorization": true,
+    "root_phase_file_update_requires_explicit_authorization": true
+  },
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision": "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "result_approval_boundary": {
+    "approves_created_spec_lock_result": true,
+    "creates_build_lock": false,
+    "authorizes_implementation": false,
+    "updates_root_phase_files": false
+  }
+}

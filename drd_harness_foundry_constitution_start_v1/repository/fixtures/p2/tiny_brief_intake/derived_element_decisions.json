@@ -1,0 +1,63 @@
+{
+  "artifact_id": "p2.tiny_brief.derived_element_decisions",
+  "stage_id": "DRD-01-PRD-ELEMENTS",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+  "schema_ref": "repository/schemas/reasoning/derived_element_decision.schema.json",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+  "review_gate": "EXPANSION_GAP_ONLY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_PRD_ELEMENT_INVENTORY.json"
+  ],
+  "records": [
+    {
+      "derived_element_id": "copy.failure.transient",
+      "derived_surface_type": "message",
+      "derivation_source": "Failure Recovery requires same-task feedback for recoverable runtime failures and missing required information.",
+      "obligation_refs": [
+        "P2_VERTICAL_SLICE_PRD.md#Failure Recovery",
+        "DERIVE-RULE-008",
+        "DERIVE-RULE-009"
+      ],
+      "inference_refs": [
+        "p2.tiny_brief.inference.failure_recovery_copy.001"
+      ],
+      "derivation_strategy": "DEDUCTIVE_PRIMARY",
+      "structural_completion_review": null,
+      "canonical_eligibility": "ELIGIBLE",
+      "blocked_by": []
+    },
+    {
+      "derived_element_id": "copy.failure.missing_required",
+      "derived_surface_type": "message",
+      "derivation_source": "Failure Recovery requires same-task feedback for recoverable runtime failures and missing required information.",
+      "obligation_refs": [
+        "P2_VERTICAL_SLICE_PRD.md#Failure Recovery",
+        "DERIVE-RULE-008",
+        "DERIVE-RULE-009"
+      ],
+      "inference_refs": [
+        "p2.tiny_brief.inference.failure_recovery_copy.002"
+      ],
+      "derivation_strategy": "DEDUCTIVE_PRIMARY",
+      "structural_completion_review": null,
+      "canonical_eligibility": "ELIGIBLE",
+      "blocked_by": []
+    }
+  ],
+  "schema_payload_key": "records"
+}

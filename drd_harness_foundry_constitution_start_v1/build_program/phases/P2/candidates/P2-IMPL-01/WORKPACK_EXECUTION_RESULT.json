@@ -1,0 +1,111 @@
+{
+  "result_id": "P2-IMPL-01-RESULT-001",
+  "phase": "P2",
+  "workpack_id": "P2-IMPL-01",
+  "status": "IMPLEMENTATION_CANDIDATE_COMPLETE_REPAIRED",
+  "authorized_by": {
+    "basis": "user_authorized_p2_implementation_after_P2_SPEC_LOCK",
+    "source_lock": "control/locks/P2_SPEC_LOCK.json",
+    "source_lock_sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+    "lock_id": "P2-SPEC-LOCK-001",
+    "root_sha256": "93eddcc641eaceb0d9793b2fb6eaa833a1526e4dc9d90345e2b018cc5beb1580"
+  },
+  "objective": "Create the Tiny Brief Intake fixture source snapshot and PRD element inventory path.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md",
+      "sha256": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+      "sha256": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+      "sha256": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+      "sha256": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+      "sha256": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6"
+    },
+    {
+      "path": "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+      "sha256": "44e5141713cb3c4ef80356e2e107d89d5c4a50d77ee6d1e59458a3e34ca1222e"
+    },
+    {
+      "path": "repository/tests/p2/test_tiny_brief_prd_elements.py",
+      "sha256": "d63b5d271224ffda0a6340add5419af55d3146c8b1b3557e96f10664e38c9946"
+    }
+  ],
+  "implemented_capabilities": [
+    "Exact byte-for-byte source PRD snapshot copied from the approved P2 vertical slice PRD.",
+    "Source snapshot manifest validation that reports malformed payloads, missing paths, drift, hash format, hash mismatch, and byte-size mismatch.",
+    "Artifact wrapper metadata for schema payload keys, source refs, upstream artifact refs, upstream hashes, validator refs, promotion state, and invalidation inputs.",
+    "PRD element inventory records covering the approved P2 element universe with source-section hash bindings.",
+    "Deductive derived-element records for required failure and missing-input copy without adding product capability.",
+    "Inductive auxiliary derived elements are blocked from canonical eligibility without Human Gate approval.",
+    "Open product expansion gap records for secondary page, multi-user workflow, and generated live product candidates, all blocked behind Human Gate.",
+    "Product expansion gap validation now rejects malformed gap type, status, source_refs, blocked_artifacts, and missing resolved decision refs.",
+    "P2 tests for source hash binding, inventory coverage, deductive completion, no product expansion, malformed payloads, malformed product gaps, and upstream hash conservation."
+  ],
+  "repair_findings_fixed": [
+    {
+      "severity": "P1",
+      "gap": "Scope report listed repository/tests/p2/conftest.py even though P2-IMPL-01 did not authorize that write path.",
+      "fix": "Deleted the conftest file and removed it from implemented/scope records; tests rely on explicit PYTHONPATH."
+    },
+    {
+      "severity": "P1",
+      "gap": "Product expansion gap validator allowed unknown gap_type/status and empty source_refs, weakening no-expansion verification.",
+      "fix": "Added enum, source_refs, blocked_artifacts, and resolved decision_ref checks with negative tests."
+    },
+    {
+      "severity": "P2",
+      "gap": "Source snapshot validator could receive non-manifest objects and had weak hash-format diagnostics.",
+      "fix": "Added malformed object handling, required field checks, hash-format checks, and negative tests."
+    }
+  ],
+  "required_stage_ids": [
+    "DRD-00-SOURCE-FREEZE",
+    "DRD-01-PRD-ELEMENTS"
+  ],
+  "required_validation_ids": [
+    "P2-VAL-SOURCE-HASH",
+    "P2-VAL-PRD-INVENTORY-COVERAGE",
+    "P2-VAL-NO-PRODUCT-EXPANSION"
+  ],
+  "required_artifact_ids": [
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest"
+  ],
+  "artifact_record_counts": {
+    "prd_element_inventory": 23,
+    "derived_element_decisions": 2,
+    "product_expansion_gaps": 3,
+    "approved_spec_elements": 23,
+    "approved_rejected_expansion_candidates": 3
+  },
+  "deferred_due_scope": [
+    {
+      "item": "Inference record artifact existence for derived failure-copy decisions",
+      "reason": "P2-IMPL-01 is limited to source freeze and PRD element inventory path. P2-IMPL-02 owns inference_records.json and should bind the reserved inference_refs before downstream canonical compilation consumes them."
+    }
+  ],
+  "not_a_build_lock": true,
+  "not_a_review_decision": true
+}

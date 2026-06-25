@@ -1,0 +1,53 @@
+{
+  "workpack_id": "P2-IMPL-03",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-IMPL-03",
+  "upstream_spec_lock": "control/locks/P2_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+  "upstream_spec_lock_id": "P2-SPEC-LOCK-001",
+  "depends_on_workpacks": [
+    "P2-IMPL-01",
+    "P2-IMPL-02"
+  ],
+  "depends_on_review_decisions": [
+    "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json",
+    "build_program/phases/P2/candidates/P2-IMPL-02/REVIEW_DECISION.json"
+  ],
+  "owned_workpack": "P2-IMPL-03",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "CANDIDATE_PENDING_HUMAN_REVIEW",
+  "review_decision": null,
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+    "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+    "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+    "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
+    "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json",
+    "repository/tests/p2/test_tiny_brief_presentation.py",
+    "repository/tests/p2/test_tiny_brief_layout.py",
+    "repository/src/drd_harness/validators/presentation_consistency.py",
+    "repository/src/drd_harness/validators/layout_completeness.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review may approve or request repair for P2-IMPL-03. P2-IMPL-04 should not start until this candidate is approved."
+}

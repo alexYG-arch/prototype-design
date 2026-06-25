@@ -1,0 +1,61 @@
+{
+  "report_id": "P2-IMPL-01-SCOPE-REPORT-001",
+  "phase": "P2",
+  "workpack_id": "P2-IMPL-01",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/source/**",
+    "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+    "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+    "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+    "repository/tests/p2/test_tiny_brief_prd_elements.py",
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P2/candidates/P2-IMPL-01/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/fixtures/p2/tiny_brief_intake/source/source_prd.md",
+    "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+    "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+    "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json",
+    "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+    "repository/tests/p2/test_tiny_brief_prd_elements.py"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P2/candidates/P2-IMPL-01/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-01/SCOPE_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-01/TEST_REPORT.json",
+    "build_program/phases/P2/candidates/P2-IMPL-01/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P2/candidates/P2-IMPL-01/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P2/candidates/P2-IMPL-01/PART_SELF_CHECK.md",
+    "build_program/phases/P2/candidates/P2-IMPL-01/HANDOFF.md"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p2_spec_lock_path": "control/locks/P2_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false
+  },
+  "p1_paths_modified": false,
+  "p2_spec_candidate_paths_modified": false,
+  "build_lock_created": false,
+  "review_decision_created": false,
+  "removed_out_of_scope_write": "repository/tests/p2/conftest.py",
+  "scope_notes": [
+    "P2 tests run with explicit PYTHONPATH=repository/src, so no p2 conftest write is required.",
+    "P2_SPEC_LOCK is consumed as input only; implementation did not create or rewrite control locks.",
+    "Artifact schemas are applied to the nested schema_payload_key values because fixture JSON files include artifact wrapper metadata."
+  ]
+}

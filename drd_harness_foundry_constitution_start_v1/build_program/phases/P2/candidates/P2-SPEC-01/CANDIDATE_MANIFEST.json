@@ -1,0 +1,74 @@
+{
+  "workpack_id": "P2-SPEC-01",
+  "phase": "P2",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-SPEC-01",
+  "upstream_transition": {
+    "from": "P1_BUILD_LOCK",
+    "to": "P2_SPEC",
+    "required_gate": "P1_BUILD_GATE_APPROVED",
+    "gate_review_decision": "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/REVIEW_DECISION.json",
+    "gate_review_decision_hash": "eca3206136a35a0fac60600e0bb14499bb2960fb70875d9d1d137d7e26a7968b",
+    "gate_review_subject_hash": "5e1b66ae3847bf766fee0e48b9764447bea4e91acb9717cc09c77fad2180d66e"
+  },
+  "upstream_build_lock": {
+    "path": "control/locks/P1_BUILD_LOCK.json",
+    "sha256": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2",
+    "root_sha256": "163dee6ac68384c6dc605a946a79702694b8fc9992c1ade02f3e7080acd1df3c"
+  },
+  "phase_inputs": {
+    "phase_manifest": {
+      "path": "build_program/phases/P2/PHASE_MANIFEST.json",
+      "sha256": "0ae4ee8e319d8f4223b92b3aa3c20cb779a1a2f43a8e3f6bfcdf0e5d1294e12a",
+      "status_note": "File still says WAITING_UPSTREAM_LOCK and is not mutated by this candidate."
+    },
+    "vertical_slice_scope": {
+      "path": "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
+      "sha256": "050d9b108dae47c733bfb09797cefaf8f4dbc7e66cd1b5b605f1a1fa94fc0c85"
+    }
+  },
+  "generated_outputs": [
+    "P2_VERTICAL_SLICE_PRD.md",
+    "P2_VERTICAL_SLICE_CONTRACT.md",
+    "P2_STAGE_PATH_SPEC.md",
+    "P2_SCOPE_COVERAGE_MATRIX.json",
+    "P2_PRD_ELEMENT_INVENTORY.json",
+    "P2_INTERACTION_EDGE_TABLE.json",
+    "P2_PHASE_TRANSITION_EVIDENCE.json",
+    "P2_ARTIFACT_INVENTORY.json",
+    "P2_LAYOUT_VALIDATION_PARAMETERS.json",
+    "P2_SPEC_PART_PLAN.json",
+    "P2_IMPLEMENTATION_WORKPACK_MAP.json",
+    "P2_ACCEPTANCE_MATRIX.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "allowed_write_paths": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/**"
+  ],
+  "forbidden_write_paths": [
+    "constitution/**",
+    "control/**",
+    ".agents/skills/**",
+    "references/**",
+    "tooling/**",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE.md",
+    "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Generate P2-SPEC-02 stage artifact contracts from the structured coverage, inventory, interaction, artifact, layout, and transition evidence files if the user explicitly asks to continue; do not implement repository code or create P2_SPEC_LOCK from this candidate alone."
+}

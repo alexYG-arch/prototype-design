@@ -1,0 +1,52 @@
+{
+  "plan_id": "P2-SPEC-PART-PLAN-001",
+  "phase": "P2",
+  "upstream_gate": "P1_BUILD_GATE_APPROVED",
+  "spec_parts": [
+    {
+      "workpack_id": "P2-SPEC-01",
+      "name": "Vertical slice source and boundary",
+      "status": "APPROVED_BY_HUMAN",
+      "purpose": "Freeze the Tiny Brief Intake PRD fixture, the no-product-expansion boundary, the stage path, and the acceptance matrix.",
+      "must_produce": [
+        "P2_VERTICAL_SLICE_PRD.md",
+        "P2_VERTICAL_SLICE_CONTRACT.md",
+        "P2_STAGE_PATH_SPEC.md",
+        "P2_SCOPE_COVERAGE_MATRIX.json",
+        "P2_PRD_ELEMENT_INVENTORY.json",
+        "P2_INTERACTION_EDGE_TABLE.json",
+        "P2_PHASE_TRANSITION_EVIDENCE.json",
+        "P2_ARTIFACT_INVENTORY.json",
+        "P2_LAYOUT_VALIDATION_PARAMETERS.json",
+        "P2_ACCEPTANCE_MATRIX.json"
+      ]
+    },
+    {
+      "workpack_id": "P2-SPEC-02",
+      "name": "Stage artifact contracts for the vertical slice",
+      "status": "PENDING",
+      "purpose": "Define exact P2 stage artifacts, schemas, review targets, fixture hashes, and validator obligations from Source Freeze through Final Review.",
+      "must_produce": [
+        "source snapshot contract",
+        "element inventory fixture contract",
+        "reasoning and interaction fixture contracts",
+        "presentation and layout fixture contracts",
+        "compiler and final review fixture contracts"
+      ]
+    },
+    {
+      "workpack_id": "P2-SPEC-03",
+      "name": "P2 lock and implementation readiness",
+      "status": "PENDING",
+      "purpose": "Prepare P2_SPEC_LOCK inputs, final implementation workpack map, test obligations, and lock readiness criteria.",
+      "must_produce": [
+        "P2_SPEC_LOCK input bundle",
+        "implementation workpack index",
+        "test obligation matrix",
+        "lock readiness report"
+      ]
+    }
+  ],
+  "ordering_rule": "P2-SPEC-02 may start after P2-SPEC-01 review approval is recorded. P2-SPEC-03 must not start until P2-SPEC-02 is human-reviewed.",
+  "phase_manifest_note": "build_program/phases/P2/PHASE_MANIFEST.json still says WAITING_UPSTREAM_LOCK; P2_PHASE_TRANSITION_EVIDENCE.json records the effective P2_SPEC activation for this candidate without mutating the phase manifest."
+}

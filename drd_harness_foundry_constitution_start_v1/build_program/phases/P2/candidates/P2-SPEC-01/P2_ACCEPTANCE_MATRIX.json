@@ -1,0 +1,97 @@
+{
+  "matrix_id": "P2-SPEC-01-ACCEPTANCE-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "candidate_acceptance": [
+    {
+      "check": "UPSTREAM_P1_BUILD_GATE_APPROVED",
+      "status": "PASS",
+      "evidence": "build_program/phases/P1/candidates/P1-BUILD-GATE-READINESS/REVIEW_DECISION.json"
+    },
+    {
+      "check": "P1_BUILD_LOCK_VALIDATES",
+      "status": "PASS",
+      "evidence": "control/locks/P1_BUILD_LOCK.json"
+    },
+    {
+      "check": "VERTICAL_SLICE_SCOPE_COVERED",
+      "status": "PASS",
+      "evidence": "P2_SCOPE_COVERAGE_MATRIX.json",
+      "required_rows": 10
+    },
+    {
+      "check": "NO_PRODUCT_CAPABILITY_EXPANSION",
+      "status": "PASS",
+      "evidence": "P2_PRD_ELEMENT_INVENTORY.json",
+      "required_rule": "all rejected expansion candidates require human review"
+    },
+    {
+      "check": "PRD_ELEMENT_INVENTORY_ATOMIC",
+      "status": "PASS",
+      "evidence": "P2_PRD_ELEMENT_INVENTORY.json"
+    },
+    {
+      "check": "INTERACTION_EDGES_COVER_CLICKABLES",
+      "status": "PASS",
+      "evidence": "P2_INTERACTION_EDGE_TABLE.json"
+    },
+    {
+      "check": "PHASE_TRANSITION_RECONCILED",
+      "status": "PASS",
+      "evidence": "P2_PHASE_TRANSITION_EVIDENCE.json"
+    },
+    {
+      "check": "ARTIFACT_INVENTORY_SKELETON_RECORDED",
+      "status": "PASS",
+      "evidence": "P2_ARTIFACT_INVENTORY.json"
+    },
+    {
+      "check": "LAYOUT_VALIDATION_PARAMETERS_RECORDED",
+      "status": "PASS",
+      "evidence": "P2_LAYOUT_VALIDATION_PARAMETERS.json"
+    },
+    {
+      "check": "P2_IMPLEMENTATION_NOT_STARTED",
+      "status": "PASS",
+      "evidence": "SCOPE_REPORT.json"
+    },
+    {
+      "check": "VALIDATION_EVIDENCE_RECORDED",
+      "status": "PASS",
+      "evidence": "VALIDATION_EVIDENCE.json"
+    }
+  ],
+  "future_vertical_slice_acceptance": [
+    {
+      "check": "SOURCE_TO_FINAL_DRD_PATH_COMPLETE",
+      "required_by": "P2_BUILD_LOCK",
+      "expected_evidence": "FINAL_DRD.md plus final manifest, hash index, reference index, and compiler conservation report"
+    },
+    {
+      "check": "ALL_CLICKABLE_ELEMENTS_CLOSED",
+      "required_by": "P2_BUILD_LOCK",
+      "expected_evidence": "clickable inventory and interaction graph contain every clickable element from the PRD fixture"
+    },
+    {
+      "check": "FAILURE_RECOVERY_VERIFIED",
+      "required_by": "P2_BUILD_LOCK",
+      "expected_evidence": "recoverable failure state, retry path, edit path, and user-facing failure copy"
+    },
+    {
+      "check": "LAYOUT_CARRIER_COVERAGE_VERIFIED",
+      "required_by": "P2_BUILD_LOCK",
+      "expected_evidence": "desktop, tablet, mobile iOS, and mobile Material layout records"
+    },
+    {
+      "check": "COMPILER_CONSERVATION_VERIFIED",
+      "required_by": "P2_BUILD_LOCK",
+      "expected_evidence": "conservation report shows no unapproved semantic additions"
+    }
+  ],
+  "candidate_validation_commands": [
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-01",
+    "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-01'); coverage=json.loads((root/'P2_SCOPE_COVERAGE_MATRIX.json').read_text()); inventory=json.loads((root/'P2_PRD_ELEMENT_INVENTORY.json').read_text()); edges=json.loads((root/'P2_INTERACTION_EDGE_TABLE.json').read_text()); phase=json.loads((root/'P2_PHASE_TRANSITION_EVIDENCE.json').read_text()); artifacts=json.loads((root/'P2_ARTIFACT_INVENTORY.json').read_text()); layout=json.loads((root/'P2_LAYOUT_VALIDATION_PARAMETERS.json').read_text()); assert len(coverage['coverage_rows'])==10; assert all(r['status']=='PASS' for r in coverage['coverage_rows']); clickable={e['element_id'] for e in inventory['elements'] if e['category']=='clickable'}; triggers={e['trigger_element'] for e in edges['edges']}; assert clickable <= triggers; assert phase['effective_state_for_this_candidate']['status']=='P2_SPEC_ACTIVE_BY_COMMITTED_P1_BUILD_GATE'; assert len(artifacts['stages'])==7; assert len(layout['carriers'])==4; print('PASS')\"",
+    "PYTHONPATH=repository/src python3 -c \"import json; from pathlib import Path; from drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness; lock=json.loads(Path('control/locks/P1_BUILD_LOCK.json').read_text()); assert lock['root_sha256']==canonical_lock_root(lock); assert not validate_build_lock_readiness(lock); print('PASS')\"",
+    "git diff --check"
+  ]
+}

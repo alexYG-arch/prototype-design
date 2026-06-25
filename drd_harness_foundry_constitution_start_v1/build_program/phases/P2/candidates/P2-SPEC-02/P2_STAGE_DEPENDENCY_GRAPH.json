@@ -1,0 +1,190 @@
+{
+  "graph_id": "P2-SPEC-02-STAGE-DEPENDENCY-GRAPH-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-02",
+  "fixture_id": "tiny_brief_intake",
+  "nodes": [
+    "DRD-00-SOURCE-FREEZE",
+    "DRD-01-PRD-ELEMENTS",
+    "DRD-02-REASONING",
+    "DRD-03-INTERACTION",
+    "DRD-04-PRESENTATION-LAYOUT",
+    "DRD-05-COMPILATION",
+    "DRD-06-FINAL-REVIEW"
+  ],
+  "edges": [
+    {
+      "from": "DRD-00-SOURCE-FREEZE",
+      "to": "DRD-01-PRD-ELEMENTS",
+      "required_bindings": [
+        "p2.tiny_brief.source_prd.sha256",
+        "p2.tiny_brief.source_snapshot_manifest.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.source_prd",
+        "p2.tiny_brief.source_snapshot_manifest"
+      ]
+    },
+    {
+      "from": "DRD-01-PRD-ELEMENTS",
+      "to": "DRD-02-REASONING",
+      "required_bindings": [
+        "p2.tiny_brief.prd_element_inventory.sha256",
+        "p2.tiny_brief.derived_element_decisions.sha256",
+        "p2.tiny_brief.product_expansion_gaps.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.product_expansion_gaps"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.prd_element_inventory",
+        "p2.tiny_brief.derived_element_decisions",
+        "p2.tiny_brief.product_expansion_gaps"
+      ]
+    },
+    {
+      "from": "DRD-02-REASONING",
+      "to": "DRD-03-INTERACTION",
+      "required_bindings": [
+        "p2.tiny_brief.inference_records.sha256",
+        "p2.tiny_brief.structural_completion_review.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.structural_completion_review"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.inference_records",
+        "p2.tiny_brief.structural_completion_review"
+      ]
+    },
+    {
+      "from": "DRD-03-INTERACTION",
+      "to": "DRD-04-PRESENTATION-LAYOUT",
+      "required_bindings": [
+        "p2.tiny_brief.interaction_graph.sha256",
+        "p2.tiny_brief.clickable_inventory.sha256",
+        "p2.tiny_brief.async_behavior.sha256",
+        "p2.tiny_brief.failure_recovery.sha256",
+        "p2.tiny_brief.interaction_messages.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.shared_component_registry",
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.interaction_graph",
+        "p2.tiny_brief.clickable_inventory",
+        "p2.tiny_brief.async_behavior",
+        "p2.tiny_brief.failure_recovery",
+        "p2.tiny_brief.interaction_messages"
+      ]
+    },
+    {
+      "from": "DRD-04-PRESENTATION-LAYOUT",
+      "to": "DRD-05-COMPILATION",
+      "required_bindings": [
+        "p2.tiny_brief.information_presentation_registry.sha256",
+        "p2.tiny_brief.shared_component_registry.sha256",
+        "p2.tiny_brief.natural_language_layout.sha256",
+        "p2.tiny_brief.carrier_adaptation_profile.sha256",
+        "p2.tiny_brief.containment_hierarchy.sha256",
+        "p2.tiny_brief.z_axis_layering.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.shared_component_registry",
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.z_axis_layering"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.final_drd"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.information_presentation_registry",
+        "p2.tiny_brief.shared_component_registry",
+        "p2.tiny_brief.natural_language_layout",
+        "p2.tiny_brief.carrier_adaptation_profile",
+        "p2.tiny_brief.containment_hierarchy",
+        "p2.tiny_brief.z_axis_layering"
+      ]
+    },
+    {
+      "from": "DRD-05-COMPILATION",
+      "to": "DRD-06-FINAL-REVIEW",
+      "required_bindings": [
+        "p2.tiny_brief.compiler_input_bundle.sha256",
+        "p2.tiny_brief.compiler_semantic_unit_inventory.sha256",
+        "p2.tiny_brief.compiler_conservation_report.sha256",
+        "p2.tiny_brief.final_drd.sha256"
+      ],
+      "from_artifact_ids": [
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.final_drd"
+      ],
+      "to_artifact_ids": [
+        "p2.tiny_brief.final_drd_manifest",
+        "p2.tiny_brief.final_drd_hash_index",
+        "p2.tiny_brief.final_drd_reference_index",
+        "p2.tiny_brief.final_review_target",
+        "p2.tiny_brief.final_review_decision"
+      ],
+      "required_binding_artifact_ids": [
+        "p2.tiny_brief.compiler_input_bundle",
+        "p2.tiny_brief.compiler_semantic_unit_inventory",
+        "p2.tiny_brief.compiler_conservation_report",
+        "p2.tiny_brief.final_drd"
+      ]
+    }
+  ],
+  "dependency_rule": "A downstream artifact may not cite a stage unless the required upstream bindings are present and validator evidence is passing.",
+  "stage_order": [
+    "DRD-00-SOURCE-FREEZE",
+    "DRD-01-PRD-ELEMENTS",
+    "DRD-02-REASONING",
+    "DRD-03-INTERACTION",
+    "DRD-04-PRESENTATION-LAYOUT",
+    "DRD-05-COMPILATION",
+    "DRD-06-FINAL-REVIEW"
+  ]
+}

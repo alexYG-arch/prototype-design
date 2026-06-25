@@ -1,0 +1,139 @@
+{
+  "artifact_id": "p2.tiny_brief.carrier_adaptation_profile",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/carrier_adaptation_profile.json",
+  "schema_ref": "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+  "schema_payload_key": "profile",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "profile": {
+    "carrier_profile_id": "p2.tiny_brief.carrier_profile.001",
+    "required_carriers": [
+      "DESKTOP",
+      "TABLET",
+      "MOBILE",
+      "MOBILE_IOS",
+      "MOBILE_MATERIAL"
+    ],
+    "carrier_rules": {
+      "DESKTOP": {
+        "arrangement": "Desktop web uses a two column main container with header, field group, action group, and overlay host.",
+        "width_behavior": "Minimum width 1024px; content wraps inside readable columns and horizontal scroll is not used for primary fields or actions.",
+        "height_scroll_behavior": "Required information may exceed viewport height only through vertical page scroll.",
+        "navigation_placement": "Page identity and primary actions remain in header and action region without adding navigation.",
+        "safe_area_or_system_bars": "Browser chrome is respected; no content depends on unsafe viewport edges.",
+        "input_keyboard_behavior": "Desktop input focus keeps Save draft, Validate brief, and Generate DRD reachable by scroll.",
+        "platform_constraints": [
+          "full page hierarchy",
+          "visible primary action",
+          "validation overlay z-axis",
+          "long content scroll behavior"
+        ]
+      },
+      "TABLET": {
+        "arrangement": "Tablet reflows to a single readable column with preserved section order.",
+        "width_behavior": "Width 768-1023px stacks secondary content below primary fields and wraps long copy.",
+        "height_scroll_behavior": "Required information may exceed viewport height only through vertical scroll.",
+        "navigation_placement": "Actions remain after the field group with optional sticky placement when height is limited.",
+        "safe_area_or_system_bars": "Tablet browser or app chrome is respected with internal padding.",
+        "input_keyboard_behavior": "Keyboard does not hide the focused field or recovery controls; vertical scroll recovers obscured content.",
+        "platform_constraints": [
+          "reflowed hierarchy",
+          "preserved ordering",
+          "no hidden required information"
+        ]
+      },
+      "MOBILE": {
+        "arrangement": "Mobile stacks header, field group, action group, state messages, and overlay in one column.",
+        "width_behavior": "Mobile width wraps labels and actions; no primary field, action, review copy, navigation, or overlay control requires horizontal scroll.",
+        "height_scroll_behavior": "Required information may exceed viewport height only through vertical scroll or anchored actions.",
+        "navigation_placement": "Primary actions can anchor near the bottom but remain part of the same page task.",
+        "safe_area_or_system_bars": "Generic mobile safe areas and system bars are respected.",
+        "input_keyboard_behavior": "Keyboard inset moves focused fields and does not cover Generate DRD or recovery actions permanently.",
+        "platform_constraints": [
+          "single column stack",
+          "bottom-action ergonomics",
+          "vertical scroll recovery"
+        ]
+      },
+      "MOBILE_IOS": {
+        "arrangement": "iOS mobile uses the mobile stack with iOS-style select and text controls.",
+        "width_behavior": "Minimum width 375px; content wraps inside safe area with no horizontal scroll for primary task content.",
+        "height_scroll_behavior": "Short height uses vertical scroll and anchored actions without hiding fields or recovery copy.",
+        "navigation_placement": "iOS navigation stack expectations are respected without creating a second page.",
+        "safe_area_or_system_bars": "Safe area insets, home indicator, and status bar are respected.",
+        "input_keyboard_behavior": "Keyboard avoidance keeps focused input, validation controls, and overlay recovery actions reachable.",
+        "platform_constraints": [
+          "safe area awareness",
+          "bottom-action ergonomics",
+          "modal overlay layering",
+          "iOS-style control expectations"
+        ]
+      },
+      "MOBILE_MATERIAL": {
+        "arrangement": "Material mobile uses the mobile stack with Material text fields, select, action grouping, and dialog overlay behavior.",
+        "width_behavior": "Minimum width 360px; fields and actions wrap inside the Material content column with no horizontal scroll.",
+        "height_scroll_behavior": "Short height uses vertical scroll or anchored actions; required copy remains available.",
+        "navigation_placement": "Material app bar and action placement expectations are respected without adding navigation scope.",
+        "safe_area_or_system_bars": "System bars and edge-to-edge insets are respected.",
+        "input_keyboard_behavior": "Keyboard inset and IME behavior keep inputs and overlay recovery actions reachable.",
+        "platform_constraints": [
+          "Material-style control expectations",
+          "elevation-aware overlay behavior",
+          "snackbar versus dialog distinction when applicable",
+          "bottom-action ergonomics"
+        ]
+      }
+    },
+    "unsupported_carriers": {}
+  }
+}

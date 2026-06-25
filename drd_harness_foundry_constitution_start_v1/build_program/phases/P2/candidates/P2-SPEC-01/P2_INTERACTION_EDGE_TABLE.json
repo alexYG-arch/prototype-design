@@ -1,0 +1,124 @@
+{
+  "edge_table_id": "P2-TINY-BRIEF-INTERACTION-EDGES-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "source_prd": "P2_VERTICAL_SLICE_PRD.md",
+  "edges": [
+    {
+      "edge_id": "edge.empty.field_input.to_editing",
+      "from_state": "state.empty",
+      "trigger_element": "brief.field.project_name",
+      "trigger_type": "field_input",
+      "to_state": "state.editing",
+      "overlay": null,
+      "copy_obligation": "none",
+      "failure_path": null,
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.empty.page_type_select.to_editing",
+      "from_state": "state.empty",
+      "trigger_element": "brief.page_type.select",
+      "trigger_type": "select_change",
+      "to_state": "state.editing",
+      "overlay": null,
+      "copy_obligation": "none",
+      "failure_path": null,
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.editing.save_draft.stays_editing",
+      "from_state": "state.editing",
+      "trigger_element": "brief.save_draft",
+      "trigger_type": "click",
+      "to_state": "state.editing",
+      "overlay": null,
+      "copy_obligation": "draft_saved_confirmation_or_explicit_no_copy_decision",
+      "failure_path": "recoverable_save_failure_must_preserve_draft",
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.editing.validate.to_validating",
+      "from_state": "state.editing",
+      "trigger_element": "brief.validate",
+      "trigger_type": "click",
+      "to_state": "state.validating",
+      "overlay": "overlay.validation",
+      "copy_obligation": "validation_progress_copy",
+      "failure_path": "missing_required_or_transient_failure_to_recoverable_failure",
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.editing.generate.to_validating",
+      "from_state": "state.editing",
+      "trigger_element": "brief.generate",
+      "trigger_type": "click",
+      "to_state": "state.validating",
+      "overlay": "overlay.validation",
+      "copy_obligation": "generation_progress_copy",
+      "failure_path": "missing_required_or_transient_failure_to_recoverable_failure",
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.validating.success.to_final_ready",
+      "from_state": "state.validating",
+      "trigger_element": "system.validation_success",
+      "trigger_type": "system_result",
+      "to_state": "state.final_ready",
+      "overlay": "overlay.validation",
+      "copy_obligation": "final_ready_copy",
+      "failure_path": null,
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.validating.failure.to_recoverable_failure",
+      "from_state": "state.validating",
+      "trigger_element": "system.validation_or_generation_failure",
+      "trigger_type": "system_result",
+      "to_state": "state.recoverable_failure",
+      "overlay": "overlay.validation",
+      "copy_obligation": "copy.failure.transient_or_copy.failure.missing_required",
+      "failure_path": "retry_or_edit_brief_required",
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.recoverable_failure.retry.to_validating",
+      "from_state": "state.recoverable_failure",
+      "trigger_element": "overlay.retry",
+      "trigger_type": "click",
+      "to_state": "state.validating",
+      "overlay": "overlay.validation",
+      "copy_obligation": "retry_progress_copy",
+      "failure_path": "failure_can_return_to_recoverable_failure",
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.recoverable_failure.edit.to_editing",
+      "from_state": "state.recoverable_failure",
+      "trigger_element": "overlay.edit_brief",
+      "trigger_type": "click",
+      "to_state": "state.editing",
+      "overlay": null,
+      "copy_obligation": "none",
+      "failure_path": null,
+      "product_expansion_allowed": false
+    },
+    {
+      "edge_id": "edge.recoverable_failure.close.to_editing",
+      "from_state": "state.recoverable_failure",
+      "trigger_element": "overlay.close",
+      "trigger_type": "click",
+      "to_state": "state.editing",
+      "overlay": null,
+      "copy_obligation": "none",
+      "failure_path": null,
+      "product_expansion_allowed": false
+    }
+  ],
+  "closure_rules": [
+    "Every clickable element in P2_PRD_ELEMENT_INVENTORY.json must appear as trigger_element in at least one edge unless it has an explicit no-edge decision.",
+    "Every edge must name a from_state and to_state from the state inventory.",
+    "Every async or failure edge must name a copy_obligation or explicit no-copy decision.",
+    "No edge may set product_expansion_allowed to true in P2-SPEC-01."
+  ]
+}

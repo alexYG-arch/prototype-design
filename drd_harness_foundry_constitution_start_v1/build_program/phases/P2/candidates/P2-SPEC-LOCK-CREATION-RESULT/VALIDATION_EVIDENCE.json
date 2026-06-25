@@ -1,0 +1,95 @@
+{
+  "evidence_id": "P2-SPEC-LOCK-CREATION-RESULT-VALIDATION-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P2_SPEC_LOCK_RESULT_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings after human approval metadata is applied",
+      "status": "PASS",
+      "result_hash": "a70b43a5ffd14127628f5201988d313b87026b1544fff9badfa2dfaa2016ef4a",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_RESULT_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT --review-decision build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "review decision binds the approved P2 lock creation result subject hash with zero findings",
+      "status": "PASS",
+      "result_hash": "1ddfc91efafb342e933a0298824aafe238d528c3c51b938ad15b990769fd261d",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_CONTENT_BINDING",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nlock=json.loads(Path('control/locks/P2_SPEC_LOCK.json').read_text())\nassert lock['lock_id']=='P2-SPEC-LOCK-001'\nassert lock['phase']=='P2'\nrows=[f\"{e['spec_part']}\\0{e['subject_hash']}\" for e in lock['files']]\nassert hashlib.sha256('\\n'.join(rows).encode()).hexdigest()==lock['root_sha256']\nreview_rows=[f\"{e['spec_part']}\\0{e['review_decision']['sha256']}\" for e in lock['files']]\nassert hashlib.sha256('\\n'.join(review_rows).encode()).hexdigest()==lock['review_decision_file_root_sha256']\nassert lock['validation']['schema_minimum']=='PASS'\nfor entry in lock['files']:\n    assert Path(entry['candidate_path']).is_dir(), entry['spec_part']\n    assert Path(entry['review_decision']['path']).is_file(), entry['spec_part']\n    for output in entry['generated_outputs']:\n        assert Path(output['path']).is_file(), output['path']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "created lock has expected id, phase, recomputed root hash, recomputed review file root, schema_minimum PASS, and existing listed files",
+      "status": "PASS",
+      "result_hash": "943d5d9eae48fbeb4aafdfb67795a56b8b15559722c573190e2730a0a6c87f82",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_DRY_RUN_MATCH",
+      "command": "python3 tooling/create_spec_lock.py --phase P2 --input-bundle build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --dry-run >/tmp/p2_spec_lock_result_dry_run.json && python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nactual=json.loads(Path('control/locks/P2_SPEC_LOCK.json').read_text())\ndry=json.loads(Path('/tmp/p2_spec_lock_result_dry_run.json').read_text())\nfor key in ('lock_id','phase','root_sha256','review_decision_hash','review_decision_file_root_sha256'):\n    assert actual[key]==dry[key]\nassert actual['files']==dry['files']\nassert actual['schema']==dry['schema']\nassert actual['created_by_tool']==dry['created_by_tool']\nassert actual['input_bundle']==dry['input_bundle']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "created lock core fields, files, schema, tool identity, and input bundle match a fresh dry-run from the approved input bundle",
+      "status": "PASS",
+      "result_hash": "e936d93434a22b95bf2c8ffbc2d80a2de8090ae9aa9b820e4ab3b62d43598727",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_EXTERNAL_HASH_BINDINGS",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nroot=Path('build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT')\nresult=json.loads((root/'SPEC_LOCK_CREATION_RESULT.json').read_text())\nlock=json.loads(Path('control/locks/P2_SPEC_LOCK.json').read_text())\ndef sha(path):\n    h=hashlib.sha256(); h.update(Path(path).read_bytes()); return h.hexdigest()\nassert sha(result['created_lock']['path'])==result['created_lock']['sha256']\nassert sha(result['input_bundle']['path'])==result['input_bundle']['sha256']==lock['input_bundle']['sha256']\nassert sha(result['schema']['path'])==result['schema']['sha256']==lock['schema']['sha256']\nassert sha(result['creation_tool']['path'])==result['creation_tool']['sha256']==lock['created_by_tool']['sha256']\nassert sha(result['authorized_by_review']['path'])==result['authorized_by_review']['sha256']\nreview=json.loads(Path(result['authorized_by_review']['path']).read_text())\nassert review['review_id']==result['authorized_by_review']['review_id']\nassert review['subject_hash']==result['authorized_by_review']['subject_hash']\nassert all(result['verification_bindings'].values())\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "result records current lock, input bundle, schema, tool, and authorization review hashes and subject bindings",
+      "status": "PASS",
+      "result_hash": "9317b9896e68049dc0206f109a63e0e0fb516c4f0f2eeb08972a2a4e6c1fa69c",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_PER_FILE_ENTRY_BINDINGS",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nlock=json.loads(Path('control/locks/P2_SPEC_LOCK.json').read_text())\ndef sha(path):\n    h=hashlib.sha256(); h.update(Path(path).read_bytes()); return h.hexdigest()\nfor entry in lock['files']:\n    assert sha(entry['review_decision']['path'])==entry['review_decision']['sha256'], entry['spec_part']\n    for output in entry['generated_outputs']:\n        assert sha(output['path'])==output['sha256'], output['path']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "every generated output and review decision file recorded inside the lock hashes to the current file value",
+      "status": "PASS",
+      "result_hash": "9ee6503a4359b20da4c942fec8d3a1ea13815c13dc10c654b778e7e4b9e9ecfa",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_NO_OVERWRITE_GUARD",
+      "command": "python3 - <<'PY2'\nimport hashlib, subprocess\nfrom pathlib import Path\nlock_path=Path('control/locks/P2_SPEC_LOCK.json')\ndef sha(path):\n    h=hashlib.sha256(); h.update(path.read_bytes()); return h.hexdigest()\nbefore=sha(lock_path)\nproc=subprocess.run('python3 tooling/create_spec_lock.py --phase P2 --input-bundle build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --output control/locks/P2_SPEC_LOCK.json', shell=True, text=True, capture_output=True)\nassert proc.returncode != 0\nassert 'output already exists' in proc.stderr\nafter=sha(lock_path)\nassert before==after\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "a second write to control/locks/P2_SPEC_LOCK.json fails and leaves the existing lock hash unchanged",
+      "status": "PASS",
+      "result_hash": "8d1f88b1b511820ce6fed2bceeab4e3551d64bd0213277b43358ef1d1e3ecb38",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_RESULT_AUTHORIZATION_BOUNDARY",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT')\nresult=json.loads((root/'SPEC_LOCK_CREATION_RESULT.json').read_text())\nmanifest=json.loads((root/'CANDIDATE_MANIFEST.json').read_text())\nscope=json.loads((root/'SCOPE_REPORT.json').read_text())\nassert result['not_a_build_lock'] is True\nassert result['not_an_implementation_authorization'] is True\nassert result['human_review_status']=='APPROVED_BY_HUMAN'\nassert manifest['approval_state']=='APPROVED_BY_HUMAN'\nassert manifest['review_decision']=='REVIEW_DECISION.json'\nassert scope['repository_files_modified'] is False\nassert scope['p2_phase_manifest_modified'] is False\nassert scope['build_lock_created'] is False\nassert scope['implementation_authorized'] is False\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "approved result remains not a BUILD_LOCK, not an implementation authorization, and has no repository or P2 phase file modification",
+      "status": "PASS",
+      "result_hash": "031e9db0e33a3d7c4f79493591503466dbd94635bbdc8fc5930f60ff28eb547e",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_SPEC_LOCK_RESULT_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-RESULT'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert Path(scope['created_control_lock']).is_file(); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert scope['control_files_modified'] is True; assert scope['repository_files_modified'] is False; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "scope report records the authorized control lock write and no repository implementation writes",
+      "status": "PASS",
+      "result_hash": "0c3318fbc8184397f6b5224df74ccdc8a1b651781e3dc57325b093f9042c26ec",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "tooling/create_spec_lock.py",
+    "control/schemas/spec_lock.schema.json",
+    "control/locks/P2_SPEC_LOCK.json"
+  ]
+}

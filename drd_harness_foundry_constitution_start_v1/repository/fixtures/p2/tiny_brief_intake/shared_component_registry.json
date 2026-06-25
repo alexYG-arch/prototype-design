@@ -1,0 +1,215 @@
+{
+  "artifact_id": "p2.tiny_brief.shared_component_registry",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json",
+  "schema_ref": "repository/schemas/presentation/shared_component_registry.schema.json",
+  "schema_payload_key": "registry",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "registry": {
+    "registry_id": "p2.tiny_brief.shared_component_registry.001",
+    "patterns": [
+      {
+        "pattern_id": "pattern.primary_action_group",
+        "pattern_kind": "COMPONENT",
+        "semantic_role": "Grouped primary task actions for validating and generating the same one-page brief.",
+        "data_structure": [
+          "action_id",
+          "label",
+          "enabled_conditions",
+          "failure_behavior",
+          "trace_refs"
+        ],
+        "operation_set": [
+          "validate brief",
+          "generate DRD",
+          "save draft"
+        ],
+        "state_model": [
+          "editing",
+          "disabled until required fields pass validation",
+          "processing overlay",
+          "recoverable failure"
+        ],
+        "information_hierarchy": [
+          "save draft secondary action",
+          "validate checking action",
+          "generate governed production action",
+          "disabled reason"
+        ],
+        "interaction_model": [
+          "click starts immediate save or non-immediate overlay process",
+          "failure returns to same recovery surface"
+        ],
+        "surface_constraints": [
+          "must remain on Brief Intake page",
+          "must not create secondary page or new task",
+          "mobile actions may anchor but content remains scroll-accessible"
+        ],
+        "reuse_scope": [
+          "brief.save_draft",
+          "brief.validate",
+          "brief.generate"
+        ],
+        "trace_refs": [
+          "brief.save_draft",
+          "brief.validate",
+          "brief.generate",
+          "P2_VERTICAL_SLICE_PRD.md#Shared Component Or Presentation Pattern"
+        ],
+        "reuse_reason": "The actions share task context, state model, failure recovery, and information hierarchy with semantic evidence from the interaction graph.",
+        "non_reuse_reason": null
+      },
+      {
+        "pattern_id": "pattern.overlay_status_panel",
+        "pattern_kind": "PRESENTATION_PATTERN",
+        "semantic_role": "Validation overlay panel for processing, recoverable failure, and final-ready messages.",
+        "data_structure": [
+          "message_id",
+          "message_type",
+          "required_user_next_step",
+          "recovery_targets"
+        ],
+        "operation_set": [
+          "show processing",
+          "show failure",
+          "retry",
+          "edit brief",
+          "close",
+          "show final ready"
+        ],
+        "state_model": [
+          "validating",
+          "recoverable_failure",
+          "final_ready"
+        ],
+        "information_hierarchy": [
+          "status message",
+          "failure or success detail",
+          "recovery actions"
+        ],
+        "interaction_model": [
+          "overlay blocks lower layers during system handoff and restores focus after close or edit"
+        ],
+        "surface_constraints": [
+          "z-axis overlay layer",
+          "preserve background context",
+          "no draft loss"
+        ],
+        "reuse_scope": [
+          "msg.validation_progress",
+          "msg.generation_progress",
+          "msg.retry_progress",
+          "msg.failure.transient",
+          "msg.final_ready"
+        ],
+        "trace_refs": [
+          "overlay.validation",
+          "state.validating",
+          "state.recoverable_failure",
+          "state.final_ready"
+        ],
+        "reuse_reason": "Processing, failure, and final-ready states share overlay containment, recovery structure, and focus restoration.",
+        "non_reuse_reason": null
+      },
+      {
+        "pattern_id": "pattern.brief_field_stack",
+        "pattern_kind": "LAYOUT_PATTERN",
+        "semantic_role": "Single-page brief field group containing the minimum required inputs.",
+        "data_structure": [
+          "project_name",
+          "audience",
+          "page_type",
+          "primary_user_goal",
+          "business_constraint"
+        ],
+        "operation_set": [
+          "edit text",
+          "select page type",
+          "validate completeness"
+        ],
+        "state_model": [
+          "empty",
+          "editing",
+          "disabled generate while missing required input"
+        ],
+        "information_hierarchy": [
+          "project identity",
+          "audience",
+          "page category",
+          "goal",
+          "constraint"
+        ],
+        "interaction_model": [
+          "text input and select change move from empty to editing without adding a page"
+        ],
+        "surface_constraints": [
+          "single Brief Intake page",
+          "fields wrap and stack under width constraints"
+        ],
+        "reuse_scope": [
+          "brief.field.project_name",
+          "brief.field.audience",
+          "brief.field.page_type",
+          "brief.field.primary_user_goal",
+          "brief.field.business_constraint"
+        ],
+        "trace_refs": [
+          "P2_VERTICAL_SLICE_PRD.md#Real Page",
+          "brief.page"
+        ],
+        "reuse_reason": "Fields share the same form data structure, completeness validation, and single-page scope.",
+        "non_reuse_reason": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "bundle_id": "P2-SPEC-LOCK-INPUT-BUNDLE-001",
+  "phase": "P2",
+  "status": "APPROVED_BY_HUMAN_AWAITING_EXPLICIT_LOCK_CREATION_REQUEST",
+  "not_a_spec_lock": true,
+  "source_candidate": "build_program/phases/P2/candidates/P2-SPEC-03",
+  "source_candidate_review_decision": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+  "phase_readiness_subject_hash": "1b2a2145ec44c7f9a523166c635c22b7b26fe54108c58545ff36254ba386c2a7",
+  "phase_review_decision_file_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1",
+  "canonical_spec_lock_schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "required_fields": [
+      "lock_id",
+      "phase",
+      "root_sha256",
+      "files",
+      "review_decision_hash"
+    ]
+  },
+  "proposed_canonical_lock_fields": {
+    "lock_id": "P2-SPEC-LOCK-001",
+    "phase": "P2",
+    "root_sha256": "93eddcc641eaceb0d9793b2fb6eaa833a1526e4dc9d90345e2b018cc5beb1580",
+    "review_decision_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1",
+    "review_decision_file_root_sha256": "be11efe1ee5313854168eb7f2ebc76b6c6294cedaee24facfaa00605acf03b13",
+    "created_by_runtime": "python",
+    "source_candidate_review_decision_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1"
+  },
+  "approved_spec_inputs": [
+    {
+      "spec_part": "P2-SPEC-01",
+      "generated_output_count": 17,
+      "subject_hash": "ce3c5f5fdd9afca9e7fbcfb08a5ad7afc83b5e3e8823f6058b98223a3b840a0e",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P2/candidates/P2-SPEC-01/REVIEW_DECISION.json",
+      "review_decision_file_hash": "ca6356eb90a410915bdbf670bb79d69d7d08cc10152a664bb8085f06a8be1f03",
+      "review_id": "P2-SPEC-01-REVIEW-001",
+      "review_decision_id_omitted_reason": "P2 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P2-SPEC-02",
+      "generated_output_count": 14,
+      "subject_hash": "e23bf8b412a6fddb1520fd3f3529ec528972e8fc9fe8c4ca0cada2fbf80dc8be",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P2/candidates/P2-SPEC-02/REVIEW_DECISION.json",
+      "review_decision_file_hash": "b60e09e095753f9b474233dd8ef1c1da04328ad483b6d5375ed21754f96fcb88",
+      "review_id": "P2-SPEC-02-REVIEW-001",
+      "review_decision_id_omitted_reason": "P2 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P2-SPEC-03",
+      "generated_output_count": 11,
+      "subject_hash": "1b2a2145ec44c7f9a523166c635c22b7b26fe54108c58545ff36254ba386c2a7",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P2/candidates/P2-SPEC-03/REVIEW_DECISION.json",
+      "review_decision_file_hash": "3ff4b137cb489b188eff2bf0b4f726c622c77dbea993a3386196b26b1f4812b1",
+      "review_id": "P2-SPEC-03-REVIEW-001",
+      "review_decision_id_omitted_reason": "P2 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    }
+  ],
+  "creation_preconditions": [
+    "Human reviewer accepts this P2 lock creation readiness Candidate.",
+    "User explicitly requests P2_SPEC_LOCK creation after review.",
+    "Python tool re-reads every approved P2 Candidate manifest and REVIEW_DECISION.json.",
+    "Python tool recomputes each subject hash over generated outputs only.",
+    "Python tool validates the source readiness review decision hash.",
+    "Python tool validates the output against control/schemas/spec_lock.schema.json.",
+    "Python tool writes a new immutable lock artifact only after all checks pass.",
+    "Python tool output path must not already exist before real lock creation.",
+    "Readiness evidence must parse dry-run output and validate root hash, review file root, schema, source candidate, and review IDs before human review."
+  ],
+  "forbidden_shortcuts": [
+    "Do not copy P2-SPEC-03/P2_SPEC_LOCK_INPUT_BUNDLE.json into control/locks.",
+    "Do not hand-write control/locks/P2_SPEC_LOCK.json.",
+    "Do not start P2 implementation until canonical P2_SPEC_LOCK exists.",
+    "Do not preserve candidate-only pending hash rows in a final lock."
+  ],
+  "real_lock_output": {
+    "path": "control/locks/P2_SPEC_LOCK.json",
+    "must_not_exist_before_write": true,
+    "exists_at_readiness_time": false,
+    "preflight_status": "PASS_OUTPUT_PATH_AVAILABLE",
+    "write_allowed_only_after_explicit_user_request": true,
+    "exists_at_approval_time": false,
+    "approval_preflight_status": "PASS_OUTPUT_PATH_AVAILABLE"
+  },
+  "human_review": {
+    "status": "APPROVED_BY_HUMAN",
+    "review_decision": "build_program/phases/P2/candidates/P2-SPEC-LOCK-CREATION-READINESS/REVIEW_DECISION.json",
+    "review_decision_sha256": null,
+    "subject_hash_source": "REVIEW_DECISION.json after final subject computation",
+    "does_not_create_lock": true
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "inventory_id": "P2-TINY-BRIEF-PRD-ELEMENT-INVENTORY-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-01",
+  "source_prd": "P2_VERTICAL_SLICE_PRD.md",
+  "semantic_source_model": {
+    "primary_semantics": "natural_language_prd",
+    "inventory_role": "index_and_verification_skeleton",
+    "rule": "Natural language remains the semantic source; inventory rows make coverage, validation, and downstream conservation checkable."
+  },
+  "elements": [
+    {
+      "element_id": "brief.task.submit_one_page_design_brief",
+      "category": "user_task",
+      "label": "Submit one-page design brief",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#User Task",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must remain the only primary user task"
+    },
+    {
+      "element_id": "brief.page",
+      "category": "page",
+      "label": "Brief Intake",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must remain the only real page unless human review approves a product expansion gap"
+    },
+    {
+      "element_id": "brief.field.project_name",
+      "category": "field",
+      "label": "Project name",
+      "field_type": "text",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "missing value blocks generation and returns missing-field copy"
+    },
+    {
+      "element_id": "brief.field.audience",
+      "category": "field",
+      "label": "Audience",
+      "field_type": "textarea",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "missing value blocks generation and returns missing-field copy"
+    },
+    {
+      "element_id": "brief.field.page_type",
+      "category": "field",
+      "label": "Page type",
+      "field_type": "select",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "selected value must stay within the single page fixture"
+    },
+    {
+      "element_id": "brief.field.primary_user_goal",
+      "category": "field",
+      "label": "Primary user goal",
+      "field_type": "textarea",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "missing value blocks generation and returns missing-field copy"
+    },
+    {
+      "element_id": "brief.field.business_constraint",
+      "category": "field",
+      "label": "Business constraint",
+      "field_type": "textarea",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Real Page",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "missing value blocks generation and returns missing-field copy"
+    },
+    {
+      "element_id": "brief.page_type.select",
+      "category": "clickable",
+      "label": "Page type",
+      "clickable_type": "select",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must have an interaction edge and must not create a second page"
+    },
+    {
+      "element_id": "brief.save_draft",
+      "category": "clickable",
+      "label": "Save draft",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must preserve draft without starting validation"
+    },
+    {
+      "element_id": "brief.validate",
+      "category": "clickable",
+      "label": "Validate brief",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must open validation overlay"
+    },
+    {
+      "element_id": "brief.generate",
+      "category": "clickable",
+      "label": "Generate DRD",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must start governed generation only after required input passes validation"
+    },
+    {
+      "element_id": "overlay.retry",
+      "category": "clickable",
+      "label": "Retry",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must retry validation or generation after recoverable failure"
+    },
+    {
+      "element_id": "overlay.edit_brief",
+      "category": "clickable",
+      "label": "Edit brief",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must return focus to editable brief fields without losing draft"
+    },
+    {
+      "element_id": "overlay.close",
+      "category": "clickable",
+      "label": "Close",
+      "clickable_type": "button",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Clickable Inventory",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must close overlay without deleting draft content"
+    },
+    {
+      "element_id": "state.empty",
+      "category": "state",
+      "label": "Empty draft",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#States",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "generate unavailable while required fields are blank"
+    },
+    {
+      "element_id": "state.editing",
+      "category": "state",
+      "label": "Editing draft",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#States",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "save draft is available after at least one field is entered"
+    },
+    {
+      "element_id": "state.validating",
+      "category": "state",
+      "label": "Validation overlay",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#States",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "overlay checks source completeness and possible expansion gaps"
+    },
+    {
+      "element_id": "state.recoverable_failure",
+      "category": "state",
+      "label": "Recoverable failure",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#States",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "retry and edit paths must be available"
+    },
+    {
+      "element_id": "state.final_ready",
+      "category": "state",
+      "label": "Final DRD ready",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#States",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "FINAL_DRD.md and review evidence must exist before entering this state"
+    },
+    {
+      "element_id": "overlay.validation",
+      "category": "overlay",
+      "label": "Validation overlay",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Handoff Or Overlay",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must act as the only system handoff for validation and generation progress"
+    },
+    {
+      "element_id": "copy.failure.transient",
+      "category": "copy",
+      "label": "Transient failure message",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Failure Recovery",
+      "adoption": "deduced_required",
+      "required": true,
+      "validation_rule": "must be plain language, same task scoped, and paired with retry and edit actions"
+    },
+    {
+      "element_id": "copy.failure.missing_required",
+      "category": "copy",
+      "label": "Missing required field message",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Failure Recovery",
+      "adoption": "deduced_required",
+      "required": true,
+      "validation_rule": "must identify missing fields without inventing a new page or capability"
+    },
+    {
+      "element_id": "final.output.final_drd",
+      "category": "final_output",
+      "label": "FINAL_DRD.md",
+      "source_anchor": "P2_VERTICAL_SLICE_PRD.md#Required Final Output",
+      "adoption": "explicit",
+      "required": true,
+      "validation_rule": "must be source-backed and hash-indexed"
+    }
+  ],
+  "rejected_expansion_candidates": [
+    {
+      "candidate_id": "expansion.secondary_page",
+      "reason": "A secondary page would exceed the one real page scope.",
+      "required_review": true
+    },
+    {
+      "candidate_id": "expansion.multi_user_workflow",
+      "reason": "A multi-user workflow would add a new user task.",
+      "required_review": true
+    },
+    {
+      "candidate_id": "expansion.generated_live_product",
+      "reason": "Generating a live product page is outside the DRD harness fixture.",
+      "required_review": true
+    }
+  ],
+  "human_review_required_gap_rule": "If a missing element cannot be deduced from the stated task, page, state, overlay, failure path, or locked P1 rule, it must be recorded as a human-review-required gap."
+}

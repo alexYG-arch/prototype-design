@@ -1,0 +1,44 @@
+{
+  "workpack_id": "P2-IMPL-01",
+  "phase": "P2",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P2/candidates/P2-IMPL-01",
+  "upstream_spec_lock": "control/locks/P2_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
+  "upstream_spec_lock_id": "P2-SPEC-LOCK-001",
+  "owned_workpack": "P2-IMPL-01",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/fixtures/p2/tiny_brief_intake/source/**",
+    "repository/fixtures/p2/tiny_brief_intake/source_snapshot_manifest.json",
+    "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
+    "repository/fixtures/p2/tiny_brief_intake/derived_element_decisions.json",
+    "repository/tests/p2/test_tiny_brief_source_snapshot.py",
+    "repository/tests/p2/test_tiny_brief_prd_elements.py",
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/candidates/P2-SPEC-*/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P2-IMPL-01 is approved by Human Gate. P2-IMPL-02 may start only on explicit continuation; P2_BUILD_LOCK remains a separate lock step."
+}

@@ -1,0 +1,354 @@
+{
+  "artifact_id": "p2.tiny_brief.natural_language_layout",
+  "stage_id": "DRD-04-PRESENTATION-LAYOUT",
+  "fixture_id": "tiny_brief_intake",
+  "path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
+  "schema_ref": "repository/schemas/layout/natural_language_layout.schema.json",
+  "schema_payload_key": "layout",
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/layout_completeness.py",
+  "review_gate": "REVIEW_B_IF_DISPUTED",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+  ],
+  "layout": {
+    "layout_id": "p2.tiny_brief.natural_language_layout.001",
+    "surface_id": "brief.page",
+    "layout_body_ref": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json#layout.layout_text",
+    "layout_text": "Natural language layout is the canonical layout authority for the Brief Intake page; inventory records are only an index and validation skeleton. For the desktop carrier the page uses a two column main region inside a full page container: a header region, primary field section, secondary action section, and overlay host. For tablet the same hierarchy reflows to a wider single column with the action group after the required fields. For mobile, mobile iOS, and mobile Material carriers the sections stack vertically with the primary group before secondary recovery copy; iOS respects safe area, system bar, navigation stack, and keyboard constraints, while Material uses app bar, system bar, keyboard inset, and elevation rules. The containment hierarchy has a parent page, child header, child main, nested field group, nested action group, nested state message group, and validation overlay surface. Ordering is explicit: project name before audience, page type before primary user goal, business constraint before validate and generate, recovery actions below failure copy, and final ready below processing results. Sizing states width, height, minimum and maximum readable density constraints; narrow width wraps fields and buttons before any overflow. Height is never used to hide required information: the page uses vertical scroll, sticky action placement when needed, and overflow recovery by expansion. Empty, loading, error, disabled, permission, success, recovery, validation, and final-ready states have placements in the state placement index. Long content growth can wrap, overflow into scroll, truncate only with recovery, expand inside the same page, or paginate only future evidence lists. The z-axis layering uses base, sticky, overlay, modal, loading, toast, and snackbar concepts; overlay.validation blocks lower layers while preserving background context and restoring focus.",
+    "semantic_authority": "Natural language layout prose is the canonical semantic authority.",
+    "inventory_role": "Inventory records are index and validation skeleton only.",
+    "carrier_profile_refs": [
+      "p2.tiny_brief.carrier_profile.001"
+    ],
+    "section_index": [
+      "brief.page",
+      "layout.header",
+      "layout.main",
+      "layout.field_group",
+      "layout.action_group",
+      "layout.state_messages",
+      "overlay.validation"
+    ],
+    "containment_tree_ref": "p2.tiny_brief.containment_hierarchy.001",
+    "pattern_refs": [
+      "pattern.primary_action_group",
+      "pattern.overlay_status_panel",
+      "pattern.brief_field_stack"
+    ],
+    "state_variants": [
+      "p2.tiny_brief.state_placement_index.001",
+      "state.empty",
+      "state.editing",
+      "state.validating",
+      "state.recoverable_failure",
+      "state.final_ready"
+    ],
+    "content_growth_refs": [
+      "p2.tiny_brief.growth.fields_and_copy.001",
+      "p2.tiny_brief.growth.overlay_messages.001"
+    ],
+    "z_axis_refs": [
+      "p2.tiny_brief.z_axis_layering.001"
+    ],
+    "information_completeness_refs": [
+      "p2.tiny_brief.info_completeness.required_fields.001",
+      "p2.tiny_brief.info_completeness.overlay_copy.001"
+    ],
+    "figma_metadata_ref": "p2.tiny_brief.figma_reconstruction.001",
+    "trace_refs": [
+      "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md",
+      "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+    ]
+  },
+  "content_growth_rules": [
+    {
+      "growth_rule_id": "p2.tiny_brief.growth.fields_and_copy.001",
+      "target_ref": "layout.field_group",
+      "variable_content": [
+        "brief.field.project_name",
+        "brief.field.audience",
+        "brief.field.primary_user_goal",
+        "brief.field.business_constraint",
+        "msg.generate_disabled"
+      ],
+      "wrapping": "Long labels and textareas wrap inside the field group before truncation.",
+      "overflow": "Overflow stays inside the page main section and does not cover primary actions.",
+      "scroll": "The page scrolls vertically when field content exceeds viewport height.",
+      "collapse": null,
+      "truncation": "Field labels may truncate only after two lines on narrow mobile widths.",
+      "truncation_recovery": "Full label and entered content remain available by focus expansion and vertical scroll.",
+      "expansion": "Textareas expand within the same page container up to the scroll region.",
+      "pagination": null,
+      "empty_behavior": "Empty draft shows fields and disabled generate copy rather than hiding required inputs.",
+      "trace_refs": [
+        "brief.field.project_name",
+        "brief.field.audience",
+        "msg.generate_disabled"
+      ]
+    },
+    {
+      "growth_rule_id": "p2.tiny_brief.growth.overlay_messages.001",
+      "target_ref": "overlay.validation",
+      "variable_content": [
+        "msg.validation_progress",
+        "msg.generation_progress",
+        "msg.retry_progress",
+        "msg.failure.transient",
+        "msg.failure.missing_required",
+        "msg.final_ready"
+      ],
+      "wrapping": "Overlay status and recovery copy wraps inside the panel on every carrier.",
+      "overflow": "Long failure details overflow into the overlay body without covering Retry, Edit brief, or Close.",
+      "scroll": "Overlay body scrolls vertically while the recovery action row remains reachable.",
+      "collapse": null,
+      "truncation": null,
+      "truncation_recovery": null,
+      "expansion": "Failure detail can expand inside the same overlay panel.",
+      "pagination": null,
+      "empty_behavior": "Processing and final-ready states show explicit status copy rather than an empty panel.",
+      "trace_refs": [
+        "overlay.validation",
+        "state.recoverable_failure",
+        "msg.final_ready"
+      ]
+    }
+  ],
+  "information_completeness_rules": [
+    {
+      "completeness_id": "p2.tiny_brief.info_completeness.required_fields.001",
+      "required_information_refs": [
+        "brief.field.project_name",
+        "brief.field.audience",
+        "brief.field.page_type",
+        "brief.field.primary_user_goal",
+        "brief.field.business_constraint",
+        "brief.validate",
+        "brief.generate"
+      ],
+      "height_behavior": "Limited height uses vertical scroll and sticky action placement; no required field or primary action is hidden or omitted.",
+      "width_behavior": "Narrow width stacks and wraps fields and actions; primary form fields, review copy, navigation, and overlay controls do not use horizontal scroll.",
+      "information_access_path": "All required fields and actions remain available by vertical scroll, focus expansion, and same-page disclosure.",
+      "trace_refs": [
+        "P2_LAYOUT_VALIDATION_PARAMETERS.json#carriers",
+        "brief.page"
+      ],
+      "horizontal_scroll_exception": null
+    },
+    {
+      "completeness_id": "p2.tiny_brief.info_completeness.overlay_copy.001",
+      "required_information_refs": [
+        "msg.validation_progress",
+        "msg.generation_progress",
+        "msg.retry_progress",
+        "msg.failure.transient",
+        "msg.failure.missing_required",
+        "msg.recovery_instruction",
+        "msg.final_ready"
+      ],
+      "height_behavior": "Short overlay height scrolls the overlay body and keeps recovery actions reachable.",
+      "width_behavior": "Overlay copy wraps inside the panel on mobile iOS and mobile Material; no required recovery control is clipped.",
+      "information_access_path": "Processing, failure, recovery, and final-ready copy remain available by overlay scroll and same-panel expansion.",
+      "trace_refs": [
+        "overlay.validation",
+        "P2_LAYOUT_VALIDATION_PARAMETERS.json#z_axis_layers"
+      ],
+      "horizontal_scroll_exception": null
+    }
+  ],
+  "state_placement_index": {
+    "index_id": "p2.tiny_brief.state_placement_index.001",
+    "placements": [
+      {
+        "message_id": "msg.generate_disabled",
+        "state_type": "disabled",
+        "presentation_mode": "INLINE_MESSAGE",
+        "layout_placement": "layout.action_group below Generate DRD control",
+        "surface_id": "brief.page",
+        "trace_refs": [
+          "msg.generate_disabled"
+        ]
+      },
+      {
+        "message_id": "msg.draft_saved",
+        "state_type": "success",
+        "presentation_mode": "STATUS_BADGE",
+        "layout_placement": "layout.action_group near Save draft",
+        "surface_id": "brief.page",
+        "trace_refs": [
+          "msg.draft_saved"
+        ]
+      },
+      {
+        "message_id": "msg.validation_progress",
+        "state_type": "loading",
+        "presentation_mode": "MODAL_DIALOG",
+        "layout_placement": "overlay.validation body",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.validation_progress"
+        ]
+      },
+      {
+        "message_id": "msg.generation_progress",
+        "state_type": "loading",
+        "presentation_mode": "MODAL_DIALOG",
+        "layout_placement": "overlay.validation body",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.generation_progress"
+        ]
+      },
+      {
+        "message_id": "msg.retry_progress",
+        "state_type": "loading",
+        "presentation_mode": "MODAL_DIALOG",
+        "layout_placement": "overlay.validation body",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.retry_progress"
+        ]
+      },
+      {
+        "message_id": "msg.failure.transient",
+        "state_type": "error",
+        "presentation_mode": "ERROR_SUMMARY",
+        "layout_placement": "overlay.validation error summary",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.failure.transient"
+        ]
+      },
+      {
+        "message_id": "msg.failure.missing_required",
+        "state_type": "error",
+        "presentation_mode": "ERROR_SUMMARY",
+        "layout_placement": "overlay.validation error summary",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.failure.missing_required"
+        ]
+      },
+      {
+        "message_id": "msg.recovery_instruction",
+        "state_type": "recovery",
+        "presentation_mode": "INLINE_MESSAGE",
+        "layout_placement": "overlay.validation recovery action group",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.recovery_instruction"
+        ]
+      },
+      {
+        "message_id": "msg.final_ready",
+        "state_type": "success",
+        "presentation_mode": "MODAL_DIALOG",
+        "layout_placement": "overlay.validation final ready state",
+        "surface_id": "overlay.validation",
+        "trace_refs": [
+          "msg.final_ready"
+        ]
+      }
+    ]
+  },
+  "figma_metadata": {
+    "figma_metadata_id": "p2.tiny_brief.figma_reconstruction.001",
+    "layout_id": "p2.tiny_brief.natural_language_layout.001",
+    "frame_hierarchy": [
+      "brief.page",
+      "layout.header",
+      "layout.main",
+      "layout.field_group",
+      "layout.action_group",
+      "layout.state_messages",
+      "overlay.validation"
+    ],
+    "selection_box_hierarchy": [
+      "pattern.brief_field_stack",
+      "pattern.primary_action_group",
+      "pattern.overlay_status_panel"
+    ],
+    "auto_layout_guidance": "Desktop uses horizontal main regions; tablet and mobile carriers stack vertically with wrap, vertical scroll, safe area, keyboard inset, and overlay layer constraints.",
+    "component_instances": [
+      "pattern.primary_action_group",
+      "pattern.overlay_status_panel",
+      "pattern.brief_field_stack"
+    ],
+    "state_variants": [
+      "p2.tiny_brief.state_placement_index.001",
+      "state.empty",
+      "state.editing",
+      "state.validating",
+      "state.recoverable_failure",
+      "state.final_ready"
+    ],
+    "carrier_variants": [
+      "p2.tiny_brief.carrier_profile.001"
+    ],
+    "z_axis_layers": [
+      "p2.tiny_brief.z_axis_layering.001"
+    ],
+    "scroll_frames": [
+      "brief.page vertical scroll",
+      "overlay.validation body scroll"
+    ],
+    "constraints": [
+      "No horizontal scroll for primary form fields",
+      "Overlay controls remain inside panel width",
+      "Mobile iOS safe area respected",
+      "Material elevation maps to overlay layers"
+    ],
+    "non_goals": [
+      "No Figma API call",
+      "No renderer implementation",
+      "No file write"
+    ],
+    "trace_refs": [
+      "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+    ]
+  }
+}

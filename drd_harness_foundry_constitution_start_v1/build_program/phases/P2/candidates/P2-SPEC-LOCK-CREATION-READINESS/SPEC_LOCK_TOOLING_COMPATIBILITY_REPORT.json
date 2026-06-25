@@ -1,0 +1,35 @@
+{
+  "report_id": "P2-SPEC-LOCK-TOOLING-COMPATIBILITY-001",
+  "phase": "P2",
+  "workpack_id": "P2-SPEC-LOCK-CREATION-READINESS",
+  "status": "APPROVED_COMPATIBLE_WITH_EXISTING_TOOL_AND_CUSTOM_REVIEW_ID_CHECKS",
+  "tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "supports_phase": "P2",
+    "required_bundle_shape": "canonical SPEC_LOCK_INPUT_BUNDLE with approved_spec_inputs and proposed_canonical_lock_fields"
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "compatibility_notes": [
+    "P2-SPEC-03 readiness bundle is not itself accepted by tooling/create_spec_lock.py because it is a candidate readiness bundle, not the canonical tool input bundle.",
+    "This Candidate provides SPEC_LOCK_INPUT_BUNDLE.json in the canonical shape accepted by tooling/create_spec_lock.py.",
+    "P2 review decisions expose review_id rather than decision_id; review_decision_id is omitted from approved_spec_inputs so the tool validates APPROVED state and subject_hash binding only."
+  ],
+  "remaining_blocker_before_real_lock_write": "Explicit user request to create P2_SPEC_LOCK is still required; output path must remain absent.",
+  "custom_compensating_checks": [
+    {
+      "check_id": "P2-LOCK-COMP-001",
+      "reason": "P2 review decisions use review_id while create_spec_lock.py only optionally checks decision_id.",
+      "coverage": "VALIDATION_EVIDENCE includes P2_SPEC_LOCK_REVIEW_ID_BINDING to assert review_id, review file hash, and subject hash for each approved input."
+    },
+    {
+      "check_id": "P2-LOCK-COMP-002",
+      "reason": "A successful dry-run exit code alone is too thin for review.",
+      "coverage": "VALIDATION_EVIDENCE includes P2_SPEC_LOCK_DRY_RUN_OBJECT_BINDING to parse dry-run JSON and assert root, review file root, schema, source candidate, and output path preflight."
+    }
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}
