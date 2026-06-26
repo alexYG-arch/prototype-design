@@ -1,0 +1,46 @@
+{
+  "artifact_id": "p3.assurance.implementation_workpack_index",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/implementation_workpack_index.json",
+  "schema_ref": "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+  "schema_payload_key": "index",
+  "source_refs": [
+    "p3.assurance.trace_row_set"
+  ],
+  "upstream_artifact_refs": [
+    "future P3 implementation workpacks"
+  ],
+  "upstream_hashes": {
+    "trace_row_set": "dc41347bd80482c7edf5cff92ce2010c3eefb4bfb936438634ec3ad2b655dd42"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/workpack_scope.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "index": {
+    "index_id": "P3-ASSURANCE-WORKPACK-INDEX-001",
+    "generated_at": "P3-ASSURANCE-RUN-001",
+    "workpacks": [
+      {
+        "workpack_id": "P3-IMPL-ASSURANCE",
+        "status": "READY",
+        "traceability_rows": [
+          "P3ASSURE-TRACE-001",
+          "P3ASSURE-TRACE-002",
+          "P3ASSURE-TRACE-003",
+          "P3ASSURE-TRACE-004",
+          "P3ASSURE-TRACE-005",
+          "P3ASSURE-TRACE-006",
+          "P3ASSURE-TRACE-007"
+        ]
+      }
+    ]
+  }
+}

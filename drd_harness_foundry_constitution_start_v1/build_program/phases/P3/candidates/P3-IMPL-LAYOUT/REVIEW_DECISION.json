@@ -1,0 +1,42 @@
+{
+  "decision_id": "P3-IMPL-LAYOUT-REVIEW-001",
+  "subject": "P3-IMPL-LAYOUT",
+  "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-26",
+  "basis": "User said pass after the P3-IMPL-LAYOUT review/fix loop reached NO_FINDINGS. This approval covers the P3 natural-language layout implementation candidate only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P3-IMPL-LAYOUT",
+    "targeted_test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_natural_language_layout.py -q",
+    "targeted_test_result": "20 passed",
+    "layout_and_p3_regression_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/layout repository/tests/p3 -q",
+    "layout_and_p3_regression_result": "111 passed",
+    "full_regression_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+    "full_regression_result": "382 passed",
+    "spec_lock": "control/locks/P3_SPEC_LOCK.json",
+    "spec_lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "upstream_spec_layout_review_decision": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/REVIEW_DECISION.json",
+    "upstream_spec_layout_review_decision_sha256": "46a9b20fd3b05510036f64024389487be3d90e4c2fb68731514fc93cb577881a",
+    "upstream_impl_patterns_review_decision": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "upstream_impl_patterns_review_decision_sha256": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
+    "candidate_check_subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "not_p3_build_lock": true,
+  "remaining_followups": [
+    "P3_BUILD_LOCK is not created.",
+    "P3-IMPL-COMPILER requires explicit continuation before execution.",
+    "Root P3 phase files are not updated by this review decision."
+  ]
+}

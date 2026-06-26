@@ -1,0 +1,35 @@
+{
+  "artifact_id": "p3.source_intake.source_snapshot_manifests",
+  "schema_ref": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+  "schema_payload_key": "snapshots[].manifest",
+  "snapshots": [
+    {
+      "source_item_id": "p3-src-brief",
+      "manifest": {
+        "source_prd_snapshot_id": "p3.source_intake.brief.snapshot.001",
+        "source_path": "repository/fixtures/p3/source_intake/source/product_brief.md",
+        "snapshot_path": "repository/fixtures/p3/source_intake/snapshots/product_brief.md",
+        "snapshot_hash": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800",
+        "created_at": "2026-06-26T00:00:00Z",
+        "byte_size": 595,
+        "content_type": "text/markdown",
+        "normalization_method": "none",
+        "source_identity": "product_brief.md"
+      }
+    },
+    {
+      "source_item_id": "p3-src-screenshot",
+      "manifest": {
+        "source_prd_snapshot_id": "p3.source_intake.screenshot.snapshot.001",
+        "source_path": "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png",
+        "snapshot_path": "repository/fixtures/p3/source_intake/snapshots/dashboard_screenshot.png",
+        "snapshot_hash": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141",
+        "created_at": "2026-06-26T00:00:00Z",
+        "byte_size": 110,
+        "content_type": "image/png",
+        "normalization_method": "none",
+        "source_identity": "dashboard_screenshot.png"
+      }
+    }
+  ]
+}

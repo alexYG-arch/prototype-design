@@ -1,0 +1,161 @@
+{
+  "observation_id": "P3-IMPL-CLOSURE-REPLAY-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-CLOSURE",
+  "status": "PASS",
+  "supporting_output_only": true,
+  "excluded_from_review_subject_hash": true,
+  "review_subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e",
+  "review_target_path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_TARGET.json",
+  "review_target_sha256": "9023c2620b1a26ac6f83ba65e67dbfbc25d2061960d09143f36cb479e7b20f1d",
+  "review_decision_path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+  "review_decision_sha256": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
+  "generated_subject_files": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "generated_subject_file_hashes": [
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "9f53b4ac5a35c53d2dfacc2cf296c6f0dda956fc2fa013bddb177a3392771b59"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/SCOPE_REPORT.json",
+      "sha256": "9bb12bbf50713d27c10ea88b49c7d58ff59a28340734e15df4519d409bb4d1f7"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/TEST_REPORT.json",
+      "sha256": "37150feb1a30188225f0a3e7ce7d861f31d3956790966a4cfb36511bd32d6eaf"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json",
+      "sha256": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/CANDIDATE_MANIFEST.json",
+      "sha256": "46101a77adab16f0f413fc70fbfaa894040cd6cf922c517b2eb01d54cbdf609e"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/PART_SELF_CHECK.md",
+      "sha256": "d462837d2436013040c4a4f43600efd21db6ec55234a3d0856d0772ff17c5fd2"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/HANDOFF.md",
+      "sha256": "dbf1ead4758c5acfd4d59d1d8b7f201be991dc5ac52c951fcd10760e667bbdbb"
+    }
+  ],
+  "observations": [
+    {
+      "check": "candidate_check_with_review_decision",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-CLOSURE --review-decision build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c10c32ad1745f9f8df8caffb4b4910b851c54af6245c2ce26ad62267c0541511",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p3_closure_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_interaction_closure.py -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c90552887b15f0dd338283c6b09a470ebacdbd4677c68174867fe21155a8b633",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "............                                                             [100%]\n12 passed in 0.03s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "interaction_and_p3_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/interaction repository/tests/p3 -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "a51231201896be1b16e8b2477462909a9de921f08019fb717dd066bc9f48f8b5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................                 [100%]\n56 passed in 0.07s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "full_repository_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "636c53b0404ea0a3f1f3df9afbd8d73c30474c51546b855cdf5746a9a31ed5ff",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 21%]\n........................................................................ [ 43%]\n........................................................................ [ 65%]\n........................................................................ [ 87%]\n.........................................                                [100%]\n329 passed in 0.33s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "runtime_boundary_check",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "fb82fe879b3a89294c36444ea62532f936a6cf7cf21cf4afa829cc0d4e522b0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"runtime-boundary-check\", \"findings\": [], \"status\": \"PASS\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p2_locked_interaction_hash_guard",
+      "command": "python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\npath=Path('repository/src/drd_harness/validators/interaction_closure.py')\nmatrix=json.loads(Path('build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json').read_text())\nexpected=next(entry['sha256'] for entry in matrix['lock_file_candidates'] if entry['path']==str(path))\nactual=hashlib.sha256(path.read_bytes()).hexdigest()\nassert actual == expected\nprint(actual)\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "78102b056987e5edc9f9f337c688ea7886b3634a292218b0292ed139aa20c963",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "616c57ef6ad172ea6fd5ce22c239a8c930305e0e62b63cc29f5b587b1899b2c9\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "review_target_subject_binding",
+      "command": "python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-CLOSURE')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\ntarget=json.loads((candidate/'REVIEW_TARGET.json').read_text())\ndecision=json.loads((candidate/'REVIEW_DECISION.json').read_text())\nrows=[]\nfor rel in manifest['generated_outputs']:\n    rows.append(f\"{rel}\\0{hashlib.sha256((candidate/rel).read_bytes()).hexdigest()}\")\nsubject=hashlib.sha256('\\n'.join(rows).encode()).hexdigest()\nassert subject == target['review_subject_hash'] == decision['subject_hash']\nprint(subject)\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "4c758db377ea13930b8b8cfd7cc731d318f54ee9173fd028e00b7d1bf691a425",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "review_decision_binding",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-CLOSURE')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\ntarget=json.loads((candidate/'REVIEW_TARGET.json').read_text())\ndecision=json.loads((candidate/'REVIEW_DECISION.json').read_text())\nassert manifest['approval_state'] == 'APPROVED_BY_HUMAN'\nassert manifest['review_decision'] == 'REVIEW_DECISION.json'\nassert target['review_decision'] == 'REVIEW_DECISION.json'\nassert decision['decision'] == 'APPROVED'\nassert decision['not_a_build_lock'] is True\nassert decision['not_p3_build_lock'] is True\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "text_guard",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-CLOSURE')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\npaths=[candidate / rel for rel in manifest['generated_outputs']]\npaths.extend(candidate / rel for rel in manifest.get('supporting_outputs', []))\npaths.extend(Path('repository/fixtures/p3/closure').glob('*.json'))\npaths.append(Path('repository/src/drd_harness/validators/p3_interaction_closure.py'))\npaths.append(Path('repository/tests/p3/test_interaction_closure.py'))\nmarkers=('T'+'BD','TO'+'DO','FIX'+'ME','PLACE'+'HOLDER','TO_BE'+'_FILLED')\nfor path in paths:\n    if not path.exists():\n        continue\n    text=path.read_text(encoding='utf-8')\n    if path.suffix=='.json':\n        json.loads(text)\n    upper=text.upper()\n    assert not any(marker in upper for marker in markers), path\n    for idx,line in enumerate(text.splitlines(), 1):\n        assert line == line.rstrip(' \\t'), f'{path}:{idx}'\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    }
+  ],
+  "self_reference_boundary": {
+    "why_supporting_only": "The replay file records final command outputs after generated outputs and Human Gate decision are stable. Keeping it outside generated_outputs prevents subject hash recursion.",
+    "manifest_declares_supporting_output": true,
+    "not_used_to_create_build_lock": true,
+    "not_a_review_decision": true,
+    "not_a_next_workpack_authorization": true
+  }
+}

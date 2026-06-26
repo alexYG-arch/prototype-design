@@ -1,0 +1,69 @@
+{
+  "report_id": "P3-IMPL-SOURCE-SCOPE-REPORT-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-SOURCE",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/source_intake.py",
+    "repository/schemas/stages/source_snapshot_manifest.schema.json",
+    "repository/fixtures/p3/source_intake/**",
+    "repository/tests/p3/test_source_intake.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md",
+    "repository/src/drd_harness/stages/source_snapshot.py when its hash differs from the P2 build-readiness matrix"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/validators/source_intake.py",
+    "repository/tests/p3/test_source_intake.py",
+    "repository/fixtures/p3/source_intake/downstream_handoff_manifest.json",
+    "repository/fixtures/p3/source_intake/input_register.json",
+    "repository/fixtures/p3/source_intake/intake_decisions.json",
+    "repository/fixtures/p3/source_intake/redaction_and_exclusion_log.json",
+    "repository/fixtures/p3/source_intake/snapshots/dashboard_screenshot.png",
+    "repository/fixtures/p3/source_intake/snapshots/product_brief.md",
+    "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png",
+    "repository/fixtures/p3/source_intake/source/product_brief.md",
+    "repository/fixtures/p3/source_intake/source_authority_index.json",
+    "repository/fixtures/p3/source_intake/source_snapshot_manifests.json"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/SCOPE_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/TEST_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/PART_SELF_CHECK.md",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/HANDOFF.md",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p3_spec_lock_path": "control/locks/P3_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false,
+    "p3_build_lock_created": false
+  },
+  "p1_paths_modified": false,
+  "p2_paths_modified": false,
+  "p3_spec_candidate_paths_modified": false,
+  "p3_phase_manifest_modified": false,
+  "scope_notes": [
+    "source_snapshot.py is reused and explicitly verified against the P2 build-readiness hash instead of being modified.",
+    "The P3 source intake fixture and validator are additive to P3 and do not rewrite prior P1/P2/P3 spec candidates.",
+    "No control lock is created or rewritten by this implementation candidate.",
+    "P3-IMPL-SOURCE human review decision is recorded as supporting output and excluded from generated subject hashing."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

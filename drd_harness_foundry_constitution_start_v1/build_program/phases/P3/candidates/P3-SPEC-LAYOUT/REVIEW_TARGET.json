@@ -1,0 +1,34 @@
+{
+  "target_id": "P3-SPEC-LAYOUT-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT",
+  "review_subject_hash": "191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_LAYOUT_CONTRACT.md",
+    "P3_LAYOUT_MODEL.md",
+    "P3_LAYOUT_ARTIFACT_CONTRACTS.json",
+    "P3_LAYOUT_PIPELINE_RULES.json",
+    "P3_LAYOUT_VALIDATION_MATRIX.json",
+    "P3_LAYOUT_TRACEABILITY_MAP.json",
+    "P3_LAYOUT_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the candidate declare natural language layout prose as canonical authority and structured records as index and validation skeleton only?",
+    "Does carrier adaptation cover desktop, tablet, mobile, iOS, and Material with platform-specific constraints?",
+    "Does containment require multi-level parent-child order, arrangement, sizing, scroll, width, entry, and return placement?",
+    "Do height and width rules preserve required information, with horizontal scroll only as a declared exception?",
+    "Does z-axis layering include ordered layers, Material elevation, blocking behavior, background context, and focus restoration?",
+    "Does the candidate avoid locks, repository code, Figma output, P1/P2 mutation, earlier P3 candidate mutation, and root P3 phase-file mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

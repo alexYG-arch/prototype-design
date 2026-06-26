@@ -1,0 +1,149 @@
+{
+  "traceability_id": "P3-SPEC-ASSURANCE-TRACEABILITY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "traceability_rows": [
+    {
+      "source": "P3-SPEC-COMPILER REVIEW_DECISION",
+      "target_artifacts": [
+        "all p3.assurance artifacts"
+      ],
+      "trace_rule": "approved compiler subject hash is the direct upstream assurance boundary",
+      "test_obligation": "candidate-check with P3-SPEC-COMPILER review decision passes"
+    },
+    {
+      "source": "compiler output package",
+      "target_artifacts": [
+        "assurance_input_index",
+        "final_review_packet",
+        "final_assurance_report"
+      ],
+      "trace_rule": "compiler conservation, manifest, hash index, and QA boundary refs must be listed before final assurance",
+      "test_obligation": "missing compiler output ref is rejected"
+    },
+    {
+      "source": "DRD-06 read-only QA boundary",
+      "target_artifacts": [
+        "read_only_qa_boundary",
+        "final_assurance_report"
+      ],
+      "trace_rule": "QA can report findings but cannot mutate compiled artifacts",
+      "test_obligation": "forbidden QA write or mutation is rejected"
+    },
+    {
+      "source": "code target trace rows",
+      "target_artifacts": [
+        "trace_row_set",
+        "implementation_workpack_template"
+      ],
+      "trace_rule": "each implementation duty binds one clause, rule, projection, code target, validator, test, command, and invalidation policy",
+      "test_obligation": "broad or incomplete trace rows are rejected"
+    },
+    {
+      "source": "test obligation matrix",
+      "target_artifacts": [
+        "test_obligation_matrix",
+        "final_assurance_report"
+      ],
+      "trace_rule": "every trace row has matching positive and negative test obligations",
+      "test_obligation": "missing negative case or mismatched validator check is rejected"
+    },
+    {
+      "source": "allowed and forbidden write paths",
+      "target_artifacts": [
+        "trace_row_set",
+        "implementation_workpack_template"
+      ],
+      "trace_rule": "code targets must stay inside allowed paths and outside forbidden paths",
+      "test_obligation": "orphan or forbidden code targets are rejected"
+    },
+    {
+      "source": "implementation workpack index",
+      "target_artifacts": [
+        "implementation_workpack_index",
+        "implementation_workpack_template"
+      ],
+      "trace_rule": "future workpacks reference trace rows and cannot broaden scope beyond their envelope",
+      "test_obligation": "workpack with missing trace rows or incomplete policies is rejected"
+    },
+    {
+      "source": "deterministic generation metadata",
+      "target_artifacts": [
+        "implementation_workpack_index",
+        "final_assurance_report"
+      ],
+      "trace_rule": "generated_at values used in reviewed indexes come from reviewed release identity, assurance run id, or input-bundle-derived generation id rather than wall-clock or machine-local values",
+      "test_obligation": "nondeterministic generated_at is rejected"
+    },
+    {
+      "source": "skill binding manifest",
+      "target_artifacts": [
+        "skill_binding_manifest",
+        "final_assurance_report"
+      ],
+      "trace_rule": "skills constrain execution but cannot become source, validator, review, lock, or promotion authority",
+      "test_obligation": "second-authority skill text is rejected"
+    },
+    {
+      "source": "traceability exception ledger",
+      "target_artifacts": [
+        "traceability_exception_ledger",
+        "final_review_packet"
+      ],
+      "trace_rule": "exceptions require affected row ids, scope delta, reason, requested workpack, and human gate decision",
+      "test_obligation": "unreviewed exception is rejected"
+    },
+    {
+      "source": "dependency edge invalidation",
+      "target_artifacts": [
+        "trace_row_set",
+        "final_assurance_report"
+      ],
+      "trace_rule": "SPEC_LOCK, BUILD_LOCK, validator, test, workpack, skill, and release dependency drift invalidates affected rows",
+      "test_obligation": "invalidated row blocks final assurance"
+    },
+    {
+      "source": "final review packet",
+      "target_artifacts": [
+        "final_review_packet",
+        "final_assurance_report"
+      ],
+      "trace_rule": "human gate sees compiler readiness, QA status, traceability status, exceptions, and explicit lock readiness",
+      "test_obligation": "packet lacking lock readiness or unresolved findings is rejected"
+    },
+    {
+      "source": "lock readiness boundary",
+      "target_artifacts": [
+        "final_assurance_report",
+        "HANDOFF.md"
+      ],
+      "trace_rule": "assurance may report readiness but cannot create locks without a separate explicit request",
+      "test_obligation": "spec candidate lock creation is rejected"
+    },
+    {
+      "source": "P3 implementation downstream",
+      "target_artifacts": [
+        "P3_ASSURANCE_IMPLEMENTATION_HANDOFF.json"
+      ],
+      "trace_rule": "future P3-IMPL-ASSURANCE derives allowed paths, validators, tests, and commands from approved assurance spec and lock",
+      "test_obligation": "implementation handoff remains blocked until approved review and lock"
+    }
+  ],
+  "schema_refs": [
+    "repository/schemas/workpacks/code_target_map.schema.json",
+    "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+    "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+    "repository/schemas/workpacks/implementation_workpack.schema.json",
+    "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+    "repository/schemas/workpacks/traceability_exception.schema.json",
+    "repository/schemas/compiler/read_only_qa_boundary.schema.json"
+  ],
+  "validator_refs": [
+    "repository/src/drd_harness/validators/traceability.py",
+    "repository/src/drd_harness/validators/workpack_scope.py",
+    "repository/src/drd_harness/validators/compiler_conservation.py",
+    "repository/src/drd_harness/stages/read_only_qa.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ],
+  "open_blockers": []
+}

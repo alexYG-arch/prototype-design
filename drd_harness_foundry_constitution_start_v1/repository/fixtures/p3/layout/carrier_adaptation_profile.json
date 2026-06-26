@@ -1,0 +1,122 @@
+{
+  "artifact_id": "p3.layout.carrier_adaptation_profile",
+  "stage_id": "DRD-05-LAYOUT",
+  "fixture_id": "p3_layout_fixture",
+  "path": "repository/fixtures/p3/layout/carrier_adaptation_profile.json",
+  "schema_ref": "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+  "schema_payload_key": "profile",
+  "source_refs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.elements.prd_element_inventory",
+    "p3.closure.interaction_messages",
+    "p3.patterns.shared_component_registry",
+    "p3.patterns.information_presentation_registry",
+    "p3.impl.patterns.review_decision"
+  ],
+  "upstream_hashes": {
+    "p3.elements.prd_element_inventory": "f1bf73dbc34294c28e2d6b39329e9a404ac90ab0ca9a51d9fe388b7ca4288c5b",
+    "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "p3.patterns.shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+    "p3.patterns.information_presentation_registry": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb",
+    "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_layout.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_LAYOUT_DISPUTE",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "profile": {
+    "carrier_profile_id": "p3-layout-carrier-profile",
+    "required_carriers": [
+      "DESKTOP",
+      "TABLET",
+      "MOBILE",
+      "MOBILE_IOS",
+      "MOBILE_MATERIAL"
+    ],
+    "carrier_rules": {
+      "DESKTOP": {
+        "arrangement": "Desktop uses a readable header region above a main container with state groups in scan order.",
+        "width_behavior": "Wide width may use denser rows, while required information still wraps before minimum readable width.",
+        "height_scroll_behavior": "Short height keeps all state and message information reachable through vertical scroll.",
+        "navigation_placement": "Navigation and return affordance remain in the header region.",
+        "safe_area_or_system_bars": "Desktop window chrome and system bars are respected without hiding content.",
+        "input_keyboard_behavior": "Keyboard focus does not cover required status or blocked message content.",
+        "platform_constraints": [
+          "desktop responsive density",
+          "minimum readable width",
+          "vertical scroll recovery"
+        ]
+      },
+      "TABLET": {
+        "arrangement": "Tablet reduces columns and stacks state groups while preserving semantic order.",
+        "width_behavior": "Tablet width stacks and wraps state content before clipping.",
+        "height_scroll_behavior": "Tablet height uses vertical scroll and sticky access to the current state.",
+        "navigation_placement": "Navigation remains in a top region or carrier-appropriate side rail.",
+        "safe_area_or_system_bars": "Tablet system bars and split view inset are respected.",
+        "input_keyboard_behavior": "Keyboard inset keeps the blocked message and recovery text reachable.",
+        "platform_constraints": [
+          "tablet split view",
+          "responsive stack",
+          "keyboard inset"
+        ]
+      },
+      "MOBILE": {
+        "arrangement": "Generic mobile uses a single-column stack with ready, blocked, and human review waiting states in order.",
+        "width_behavior": "Mobile width wraps labels and stacks metadata; horizontal scroll is not the default.",
+        "height_scroll_behavior": "Mobile height uses vertical scroll, expansion, and same-surface disclosure.",
+        "navigation_placement": "Navigation remains in a top or bottom carrier-appropriate region.",
+        "safe_area_or_system_bars": "Mobile system bars and edge insets are reserved.",
+        "input_keyboard_behavior": "Keyboard inset keeps required state and message content accessible.",
+        "platform_constraints": [
+          "generic mobile stack",
+          "edge inset",
+          "vertical scroll"
+        ]
+      },
+      "MOBILE_IOS": {
+        "arrangement": "iOS mobile keeps the single-column stack inside a navigation stack.",
+        "width_behavior": "iOS width wraps content inside safe area before any truncation.",
+        "height_scroll_behavior": "iOS short height uses vertical scroll and same-surface disclosure.",
+        "navigation_placement": "iOS navigation stack keeps return placement above the state content.",
+        "safe_area_or_system_bars": "iOS safe area reserves status bar and home indicator space.",
+        "input_keyboard_behavior": "iOS keyboard avoidance keeps the blocked message reachable.",
+        "platform_constraints": [
+          "iOS safe area",
+          "iOS status bar",
+          "iOS home indicator",
+          "iOS navigation stack",
+          "iOS keyboard avoidance"
+        ]
+      },
+      "MOBILE_MATERIAL": {
+        "arrangement": "Material mobile uses a single-column stack under an app bar with bottom action space.",
+        "width_behavior": "Material width wraps and stacks content before truncation.",
+        "height_scroll_behavior": "Material short height uses vertical scroll, snackbar recovery, and disclosure.",
+        "navigation_placement": "Material app bar and bottom action placement preserve return context.",
+        "safe_area_or_system_bars": "Material system bar and edge inset are reserved.",
+        "input_keyboard_behavior": "Material keyboard inset keeps dialog, snackbar, and blocked message content reachable.",
+        "platform_constraints": [
+          "Material app bar",
+          "Material system bar",
+          "Material keyboard inset",
+          "Material elevation",
+          "Material dialog",
+          "Material snackbar",
+          "Material bottom action"
+        ]
+      }
+    }
+  }
+}

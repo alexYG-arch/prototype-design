@@ -1,0 +1,21 @@
+{
+  "artifact_id": "p3.distill.structural_completion_review",
+  "records": [
+    {
+      "review_id": "p3-structural-review-missing-product-details",
+      "required_page_or_flow": "Operations console missing product detail handling",
+      "missing_surface_summary": [
+        "The source says missing product details stay review gaps but does not define a new workflow."
+      ],
+      "deductive_obligations": [
+        "p3-obligation-missing-product-details"
+      ],
+      "candidate_options": [
+        "Keep as blocker until Human Gate resolves product details."
+      ],
+      "product_expansion_risk": "PRESENT",
+      "canonical_eligibility": "BLOCKED_PENDING_HUMAN",
+      "gap_ref": "p3-gap-missing-product-details"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "rules_id": "P3-SPEC-COMPILER-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-COMPILER",
+  "module": "drd_compiler",
+  "ordered_steps": [
+    {
+      "step": 1,
+      "name": "verify_upstream_review_decisions",
+      "required_input": "P3-SPEC-SOURCE through P3-SPEC-LAYOUT REVIEW_DECISION files",
+      "output": "approved upstream decision set"
+    },
+    {
+      "step": 2,
+      "name": "collect_closed_inputs",
+      "required_input": "approved semantic artifacts, operational indexes, validator results, schemas, and review decisions",
+      "output": "compiler_input_bundle"
+    },
+    {
+      "step": 3,
+      "name": "reject_forbidden_inputs",
+      "required_input": "compiler_input_bundle input records",
+      "output": "input closure finding set"
+    },
+    {
+      "step": 4,
+      "name": "resolve_stage_and_section_order",
+      "required_input": "explicit stage_order and section_order",
+      "output": "deterministic ordered sections"
+    },
+    {
+      "step": 5,
+      "name": "bind_sections_to_semantic_units",
+      "required_input": "ordered approved sections and atomic semantic units",
+      "output": "section semantic unit reference map"
+    },
+    {
+      "step": 6,
+      "name": "render_final_drd_mechanically",
+      "required_input": "ordered approved sections and allowed mechanical templates",
+      "output": "FINAL_DRD.md"
+    },
+    {
+      "step": 7,
+      "name": "build_indexes_and_manifest",
+      "required_input": "FINAL_DRD.md, ordered sections, input bundle, schemas, compiler identity",
+      "output": "toc, reference index, hash index, final manifest"
+    },
+    {
+      "step": 8,
+      "name": "run_conservation",
+      "required_input": "approved semantic units, compiled semantic units, current hashes",
+      "output": "compiler_conservation_report"
+    },
+    {
+      "step": 9,
+      "name": "enforce_read_only_qa_boundary",
+      "required_input": "DRD-06 QA boundary record",
+      "output": "read_only_qa_boundary"
+    },
+    {
+      "step": 10,
+      "name": "gate_compiler_package",
+      "required_input": "all compiler outputs and conservation report",
+      "output": "pass or blocking findings"
+    }
+  ],
+  "compiler_rules": [
+    "The compiler may consume only approved and hashed input records from the closed input bundle.",
+    "Every approved semantic artifact must carry an approval, review decision, or lock reference.",
+    "Review decisions must bind exact subject hashes for their approved candidates.",
+    "Closed input hash must be computed from sorted closed input records, stage order, and section order.",
+    "Semantic content hash must be computed from sections, semantic units, and compiled semantic units.",
+    "Natural-language section bodies are semantic authority and must be preserved without semantic rewrite.",
+    "Structured inventories and indexes are validation skeletons and cannot replace approved prose.",
+    "Stage order must be DRD-01, DRD-02, DRD-03, DRD-03B, DRD-04.",
+    "Section order must use explicit numeric slots, not filesystem, modified time, locale, random, git status, or JSON object iteration.",
+    "Every compiled section must reference known semantic_unit_ids and no semantic_unit_id may be compiled by multiple sections.",
+    "Mechanical wrapper text is limited to title, table of contents, section attribution, separators, reference index, hash index, and conservation report.",
+    "Final manifest counts must agree with conservation report blocking counts.",
+    "PASS conservation cannot contain added units, omitted units, hash drift, unapproved inputs, non-atomic units, ordering findings, or nondeterminism findings.",
+    "Read-only QA may write only READ_ONLY_QA_REPORT.md and qa_finding_index.json and must not mutate compiled artifacts.",
+    "Any semantic addition, semantic omission, hash drift, unapproved input, non-atomic unit, nondeterministic output, or QA mutation blocks promotion."
+  ],
+  "forbidden_behaviors": [
+    "compile from unapproved candidates",
+    "read direct source PRD semantics outside the closed input bundle",
+    "use local drafts or manual final fragments",
+    "rewrite approved natural-language bodies",
+    "invent missing product semantics",
+    "add missing pages, states, elements, patterns, layout rules, copy, async paths, failure paths, or validation rules",
+    "repair upstream gaps inside the compiler",
+    "treat structured inventory as the primary semantic source",
+    "ignore hash drift or superseded review decisions",
+    "use nondeterministic ordering sources",
+    "allow PASS conservation with blocking counts",
+    "create P3_SPEC_LOCK or P3_BUILD_LOCK",
+    "modify repository implementation code in this spec workpack",
+    "modify P3-SPEC-LAYOUT or earlier approved candidate contents"
+  ],
+  "open_blockers": []
+}

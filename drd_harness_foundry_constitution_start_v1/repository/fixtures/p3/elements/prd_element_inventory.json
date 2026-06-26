@@ -1,0 +1,96 @@
+{
+  "artifact_id": "p3.elements.prd_element_inventory",
+  "stage_id": "DRD-03-PAGE-ELEMENTS",
+  "fixture_id": "p3_elements_fixture",
+  "path": "repository/fixtures/p3/elements/prd_element_inventory.json",
+  "schema_ref": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/closure/interaction_nodes.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/prd_element_inventory.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.closure.interaction_nodes",
+    "p3.closure.interaction_messages",
+    "p3.closure.closure_handoff_manifest",
+    "p3.distill.prd_element_inventory",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.closure.interaction_nodes": "ee645567824e745dffc73759aad8aff189817659e160e44e222ac7a188dad11b",
+    "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "p3.closure.closure_handoff_manifest": "43e379a9968ceeee87c3045f80e3839e201c57bf00fa9de748ef415165a0d655",
+    "p3.distill.prd_element_inventory": "deb1958557688e1c192215c015e03fae631f1c104a76f9403216a678227447b7",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_PRODUCT_EXPANSION_ONLY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/closure/interaction_nodes.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/prd_element_inventory.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": [
+    {
+      "element_id": "p3-el-operations-console",
+      "element_type": "PAGE",
+      "source_refs": [
+        "p3-node-operations-console"
+      ],
+      "source_text_hash": "37548679632e95289ea92023b4bebafe79f5612e4d318d676c301820c20e1703",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-el-case-ready-state",
+      "element_type": "STATE",
+      "source_refs": [
+        "p3-node-case-ready-state"
+      ],
+      "source_text_hash": "f766df9812826f2dc174f15803bedb0f27c58b8386a692b65cbe42ccbca9989c",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-el-case-blocked-state",
+      "element_type": "STATE",
+      "source_refs": [
+        "p3-node-case-blocked-state"
+      ],
+      "source_text_hash": "a524dabe8b1af534d9e3f08824c2bf1eaf836c60fdefc439f7cfa9e70b6162f7",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-el-human-review-waiting-state",
+      "element_type": "STATE",
+      "source_refs": [
+        "p3-node-human-review-waiting-state"
+      ],
+      "source_text_hash": "6a01cfbf2fd0eeb897d8de402cc841883e3f515a4a8f3233b85ff8c3a74747c4",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-el-review-gap-blocked-message",
+      "element_type": "MESSAGE",
+      "source_refs": [
+        "p3-msg-review-gap-blocked"
+      ],
+      "source_text_hash": "d6d925c6d0dbacfd1de0efd20769bdf6a88f7ec01f624d23f54d9554ee94a561",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory"
+    }
+  ],
+  "semantic_source_model": {
+    "primary_semantics": "natural_language_source_and_approved_closure",
+    "inventory_role": "index_and_verification_skeleton",
+    "rule": "Natural language and approved closure remain authoritative; rows index coverage and conservation only."
+  }
+}

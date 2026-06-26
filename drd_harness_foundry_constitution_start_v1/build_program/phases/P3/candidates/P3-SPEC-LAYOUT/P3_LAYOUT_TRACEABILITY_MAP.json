@@ -1,0 +1,123 @@
+{
+  "traceability_id": "P3-SPEC-LAYOUT-TRACEABILITY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "traceability_rows": [
+    {
+      "source": "P3-SPEC-PATTERNS REVIEW_DECISION",
+      "target_artifacts": [
+        "all p3.layout artifacts"
+      ],
+      "trace_rule": "approved pattern subject hash is the direct upstream layout boundary",
+      "test_obligation": "candidate-check with P3-SPEC-PATTERNS review decision passes"
+    },
+    {
+      "source": "P3-SPEC-ELEMENTS canonical_projection_rule",
+      "target_artifacts": [
+        "natural_language_layout",
+        "information_completeness_rules",
+        "containment_hierarchy"
+      ],
+      "trace_rule": "layout may reference only canonical element ids or approved gap decisions",
+      "test_obligation": "unknown information refs are rejected"
+    },
+    {
+      "source": "P3-SPEC-CLOSURE interaction_messages",
+      "target_artifacts": [
+        "state_placement_index",
+        "information_completeness_rules"
+      ],
+      "trace_rule": "approved messages must have layout placement and information access path",
+      "test_obligation": "missing or unknown message placement is rejected"
+    },
+    {
+      "source": "P3-SPEC-PATTERNS shared_component_registry",
+      "target_artifacts": [
+        "natural_language_layout.pattern_refs",
+        "figma_reconstruction_metadata.component_instances"
+      ],
+      "trace_rule": "layout pattern refs resolve to approved pattern registry",
+      "test_obligation": "missing pattern_ref is rejected"
+    },
+    {
+      "source": "carrier adaptation",
+      "target_artifacts": [
+        "carrier_adaptation_profile",
+        "natural_language_layout"
+      ],
+      "trace_rule": "desktop, tablet, mobile, iOS, and Material constraints are explicit and preserve information access",
+      "test_obligation": "missing carrier rule is rejected"
+    },
+    {
+      "source": "containment hierarchy",
+      "target_artifacts": [
+        "containment_hierarchy",
+        "layout_composition_index"
+      ],
+      "trace_rule": "parent, child, order, arrangement, sizing, scroll, width, entry, and return refs compose into one tree",
+      "test_obligation": "flat or contradictory containment is rejected"
+    },
+    {
+      "source": "content growth and information completeness",
+      "target_artifacts": [
+        "content_growth_rules",
+        "information_completeness_rules"
+      ],
+      "trace_rule": "height uses access paths; width uses wrap, stack, density, or declared horizontal scroll exception",
+      "test_obligation": "height loss and undeclared horizontal overflow are rejected"
+    },
+    {
+      "source": "z-axis and Material elevation",
+      "target_artifacts": [
+        "z_axis_layering",
+        "figma_reconstruction_metadata"
+      ],
+      "trace_rule": "ordered layers, blocking behavior, Material elevation, background context, and focus restoration are explicit",
+      "test_obligation": "duplicate, unordered, non-blocking modal, or missing Material intent is rejected"
+    },
+    {
+      "source": "Figma reconstruction boundary",
+      "target_artifacts": [
+        "figma_reconstruction_metadata"
+      ],
+      "trace_rule": "metadata is non-authoritative and cannot write, render, or introduce refs absent from layout authority",
+      "test_obligation": "Figma write authority or drift refs are rejected"
+    },
+    {
+      "source": "P3-required optional layout bindings",
+      "target_artifacts": [
+        "natural_language_layout",
+        "layout_composition_index",
+        "z_axis_layering",
+        "figma_reconstruction_metadata"
+      ],
+      "trace_rule": "schema-optional refs become mandatory in P3 when they bind mandatory pattern, state placement, z-axis, and Figma metadata artifacts",
+      "test_obligation": "missing pattern_refs, state_variants, z_axis_refs, figma_metadata_ref, or composition z_axis_refs is rejected"
+    },
+    {
+      "source": "P3-SPEC-COMPILER downstream",
+      "target_artifacts": [
+        "implementation handoff"
+      ],
+      "trace_rule": "compiler consumes layout refs and cannot invent layout package refs",
+      "test_obligation": "unresolved composition refs are rejected"
+    }
+  ],
+  "schema_refs": [
+    "repository/schemas/layout/natural_language_layout.schema.json",
+    "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+    "repository/schemas/layout/containment_hierarchy.schema.json",
+    "repository/schemas/layout/content_growth_rule.schema.json",
+    "repository/schemas/layout/information_completeness_rule.schema.json",
+    "repository/schemas/layout/state_placement_index.schema.json",
+    "repository/schemas/layout/z_axis_layering.schema.json",
+    "repository/schemas/layout/layout_composition_index.schema.json",
+    "repository/schemas/layout/figma_reconstruction_metadata.schema.json"
+  ],
+  "validator_refs": [
+    "repository/src/drd_harness/validators/layout_completeness.py",
+    "repository/src/drd_harness/rules/layout.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ],
+  "open_blockers": []
+}

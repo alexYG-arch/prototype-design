@@ -1,0 +1,132 @@
+{
+  "map_id": "P3-SPEC-CLOSURE-TRACEABILITY-MAP-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-CLOSURE",
+  "upstream_candidate": "build_program/phases/P3/candidates/P3-SPEC-DISTILL",
+  "upstream_review_decision": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/REVIEW_DECISION.json",
+  "upstream_review_decision_sha256": "5c078b9509d48b8eccf863c9cf074b55d355c9bde28ff13a21446f093150e902",
+  "upstream_review_subject_hash": "9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+  "schema_bindings": [
+    {
+      "path": "repository/schemas/interaction/interaction_graph.schema.json",
+      "sha256": "303b988ef19bf7a707955b4d6449dd9bb5eddb00618ba6e4cda63bf8c9dba712"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_node.schema.json",
+      "sha256": "06e088646760c7cfef1b96137ca72a2dc9ee8941c3b0c3737c930aa238a71dde"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_edge.schema.json",
+      "sha256": "53682c74c4f610785722c585af4a0d65f71147fc4018d5d7197cd8b0896d5555"
+    },
+    {
+      "path": "repository/schemas/interaction/clickable_inventory.schema.json",
+      "sha256": "c5142adfb2ff3f5460053ca0da4a8700bd4441a03b9d31ebd9f97397f785606e"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_record.schema.json",
+      "sha256": "189202ed1f57c0bb2d90d88f7e77e768f3051fa33ec6038b42c78b1088318a51"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_applicability.schema.json",
+      "sha256": "b31e897ae073975aa84227a2f9e2284ae9cfcfcfb4437e252de541be830bdcce"
+    },
+    {
+      "path": "repository/schemas/interaction/async_behavior.schema.json",
+      "sha256": "d0b9e3c72989613020a350a5e3e20f2b1892118a7470da177500b3ac4d3f0d42"
+    },
+    {
+      "path": "repository/schemas/interaction/handoff_behavior.schema.json",
+      "sha256": "501837a91b08fd7dca35156596b465bb8a31f1107c5a2087505150c5526087da"
+    },
+    {
+      "path": "repository/schemas/interaction/failure_recovery.schema.json",
+      "sha256": "29b6847125e85b45fcb39159bc66c39236ba61c4e3ed4f43e9fa904469528cb4"
+    },
+    {
+      "path": "repository/schemas/interaction/overlay_closure.schema.json",
+      "sha256": "63a2a53efdd936e6f5aa9dd5cad33998734b518b8887c7dd28907a246dd5ad05"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_message.schema.json",
+      "sha256": "a60f978bb0e0f8ebc7633118581004adbc1336bc9d26a92bce46de6b531f7460"
+    },
+    {
+      "path": "repository/schemas/interaction/message_coverage_index.schema.json",
+      "sha256": "db90472abf1c5c412a7a79452c61151b73a83220e1dfa99bdb87450093e2fdbb"
+    }
+  ],
+  "runtime_bindings": [
+    {
+      "path": "repository/src/drd_harness/validators/interaction_closure.py",
+      "sha256": "616c57ef6ad172ea6fd5ce22c239a8c930305e0e62b63cc29f5b587b1899b2c9"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/interaction.py",
+      "sha256": "7bdcf2a51b9acc57535023c07e7d52d08b4dbc307de6247e4f32486a2c4ddb53"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    }
+  ],
+  "downstream_workpack": "P3-IMPL-CLOSURE",
+  "next_spec_workpack": "P3-SPEC-ELEMENTS",
+  "traceability_rows": [
+    {
+      "clause": "graph closure",
+      "artifact": "interaction_graph",
+      "implementation_target": "interaction graph builder",
+      "test_obligation": "validate_interaction_graph returns no findings"
+    },
+    {
+      "clause": "clickable reaction coverage",
+      "artifact": "clickable_inventory and reaction_records",
+      "implementation_target": "clickable reaction binder",
+      "test_obligation": "every clickable has exactly one reaction and each reaction resolves"
+    },
+    {
+      "clause": "async behavior",
+      "artifact": "async_behavior",
+      "implementation_target": "async behavior binder",
+      "test_obligation": "non-immediate reactions require duplicate trigger and timeout handling"
+    },
+    {
+      "clause": "failure recovery",
+      "artifact": "failure_recovery",
+      "implementation_target": "failure recovery binder",
+      "test_obligation": "failure-prone paths require failure node and recovery targets"
+    },
+    {
+      "clause": "handoff behavior",
+      "artifact": "handoff_behavior",
+      "implementation_target": "external handoff binder",
+      "test_obligation": "success, cancel, failure, and no-return terminal behavior are explicit"
+    },
+    {
+      "clause": "overlay closure",
+      "artifact": "overlay_closure",
+      "implementation_target": "overlay closure binder",
+      "test_obligation": "overlays have closure targets, return context, or trap justification"
+    },
+    {
+      "clause": "message coverage",
+      "artifact": "interaction_messages and message_coverage_index",
+      "implementation_target": "message coverage validator",
+      "test_obligation": "async, disabled, failure, recovery, success, cancel, and terminal copy obligations are covered"
+    },
+    {
+      "clause": "artifact envelope provenance",
+      "artifact": "all closure artifacts",
+      "implementation_target": "closure artifact writer",
+      "test_obligation": "envelope fields, payload keys, and map keys for schema records without intrinsic ids are present before payloads are consumed"
+    },
+    {
+      "clause": "page model handoff",
+      "artifact": "closure_handoff_manifest",
+      "implementation_target": "closure-to-elements handoff builder",
+      "test_obligation": "only eligible graph units and explicit blockers are exported"
+    }
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,36 @@
+{
+  "artifact_id": "p3.source_intake.input_register",
+  "run_id": "p3.source_intake.fixture.001",
+  "sources": [
+    {
+      "source_item_id": "p3-src-brief",
+      "source_path": "repository/fixtures/p3/source_intake/source/product_brief.md",
+      "media_kind": "prd_markdown",
+      "origin": "local P3 source intake fixture",
+      "submitted_at": "2026-06-26T00:00:00Z",
+      "source_role": "primary_semantic",
+      "access_boundary": "local_snapshot_allowed",
+      "permission_boundary": "run-local"
+    },
+    {
+      "source_item_id": "p3-src-screenshot",
+      "source_path": "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png",
+      "media_kind": "screenshot",
+      "origin": "local P3 visual reference fixture",
+      "submitted_at": "2026-06-26T00:00:00Z",
+      "source_role": "visual_reference",
+      "access_boundary": "local_snapshot_allowed",
+      "permission_boundary": "run-local"
+    },
+    {
+      "source_item_id": "p3-src-link",
+      "source_path": "https://example.invalid/unretrieved-product-note",
+      "media_kind": "external_link",
+      "origin": "unretrieved external link metadata only",
+      "submitted_at": "2026-06-26T00:00:00Z",
+      "source_role": "external_reference",
+      "access_boundary": "metadata_only_no_local_snapshot",
+      "permission_boundary": "not-snapshotted"
+    }
+  ]
+}

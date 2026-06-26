@@ -1,0 +1,33 @@
+{
+  "target_id": "P3-SPEC-PATTERNS-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS",
+  "review_subject_hash": "f70abec15e06d121de485dac91b3efad19367a3eada31ee31133354112a683be",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_PATTERNS_CONTRACT.md",
+    "P3_PATTERNS_MODEL.md",
+    "P3_PATTERNS_ARTIFACT_CONTRACTS.json",
+    "P3_PATTERNS_PIPELINE_RULES.json",
+    "P3_PATTERNS_VALIDATION_MATRIX.json",
+    "P3_PATTERNS_TRACEABILITY_MAP.json",
+    "P3_PATTERNS_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does reuse depend on semantic role, data, operations, state, hierarchy, interaction, constraints, and trace refs rather than visual similarity?",
+    "Do reuse_scope and downstream pattern refs consume only canonical element ids, approved interaction messages, or approved exceptions?",
+    "Does information presentation cover every approved interaction message and reject unknown message refs?",
+    "Are equivalent information mode differences blocked unless an approved consistency exception covers the allowed modes?",
+    "Does the candidate avoid layout carrier, containment, ordering, width, height, scroll, z-axis, locks, repository code, and prior candidate mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

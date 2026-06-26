@@ -1,0 +1,86 @@
+{
+  "contract_id": "P3-SPEC-SOURCE-ARTIFACT-CONTRACTS-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-SOURCE",
+  "module": "source_intake",
+  "required_artifacts": [
+    {
+      "artifact_id": "p3.source_intake.input_register",
+      "path_pattern": "repository/fixtures/p3/source_intake/input_register.json",
+      "purpose": "list every submitted source item before acceptance or rejection",
+      "minimum_fields": [
+        "source_item_id",
+        "declared_kind",
+        "declared_origin",
+        "local_path_or_locator",
+        "submitted_role"
+      ],
+      "downstream_consumable": false
+    },
+    {
+      "artifact_id": "p3.source_intake.source_snapshot_manifest",
+      "path_pattern": "repository/fixtures/p3/source_intake/source_snapshot_manifest.json",
+      "schema_ref": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "schema_sha256": "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96",
+      "purpose": "freeze accepted source files with stable hashes and provenance",
+      "minimum_fields": [
+        "source_prd_snapshot_id",
+        "source_path",
+        "snapshot_path",
+        "snapshot_hash",
+        "created_at",
+        "byte_size",
+        "content_type",
+        "normalization_method",
+        "source_identity"
+      ],
+      "downstream_consumable": true,
+      "schema_alignment_note": "These fields match repository/schemas/stages/source_snapshot_manifest.schema.json and repository/src/drd_harness/stages/source_snapshot.py. Multi-source grouping metadata stays in input_register and source_authority_index."
+    },
+    {
+      "artifact_id": "p3.source_intake.source_authority_index",
+      "path_pattern": "repository/fixtures/p3/source_intake/source_authority_index.json",
+      "purpose": "declare which frozen sources are authoritative, reference-only, comparative, historical, or rejected",
+      "minimum_fields": [
+        "source_item_id",
+        "authority_role",
+        "authority_reason",
+        "conflict_policy"
+      ],
+      "downstream_consumable": true
+    },
+    {
+      "artifact_id": "p3.source_intake.redaction_and_exclusion_log",
+      "path_pattern": "repository/fixtures/p3/source_intake/redaction_and_exclusion_log.json",
+      "purpose": "record secret, privacy, license, scope, and unsupported-type exclusions without losing auditability",
+      "minimum_fields": [
+        "source_item_id",
+        "decision",
+        "reason_code",
+        "review_required"
+      ],
+      "downstream_consumable": false
+    },
+    {
+      "artifact_id": "p3.source_intake.downstream_handoff_manifest",
+      "path_pattern": "repository/fixtures/p3/source_intake/downstream_handoff_manifest.json",
+      "schema_ref": "repository/schemas/stages/dependency_manifest.schema.json",
+      "schema_sha256": "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746",
+      "purpose": "declare exactly which source items may feed P3-SPEC-DISTILL and later modules",
+      "minimum_fields": [
+        "stage_id",
+        "run_id",
+        "input_artifacts",
+        "input_hashes",
+        "source_prd_snapshot_hash",
+        "output_artifacts",
+        "output_hashes",
+        "validator_result_hash"
+      ],
+      "downstream_consumable": true,
+      "schema_alignment_note": "These fields match repository/schemas/stages/dependency_manifest.schema.json. Eligible and blocked source item detail stays in source_authority_index and redaction_and_exclusion_log, then is referenced by input_artifacts and output_artifacts."
+    }
+  ],
+  "artifact_rule": "Every downstream source claim must cite an artifact_id, local path, source_item_id when applicable, and hash. Artifacts with schema_ref must use that schema required-field shape exactly; P3-specific grouping metadata belongs in adjacent source intake artifacts instead of changing the bound schema.",
+  "open_blockers": []
+}

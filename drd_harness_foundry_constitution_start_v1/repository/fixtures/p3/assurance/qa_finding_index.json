@@ -1,0 +1,6 @@
+{
+  "index_id": "P3-ASSURANCE-QA-FINDING-INDEX-001",
+  "status": "PASS",
+  "findings": [],
+  "boundary_ref": "repository/fixtures/p3/assurance/read_only_qa_boundary.json"
+}

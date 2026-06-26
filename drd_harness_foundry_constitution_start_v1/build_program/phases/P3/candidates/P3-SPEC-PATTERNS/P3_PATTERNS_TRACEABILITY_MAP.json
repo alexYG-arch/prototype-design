@@ -1,0 +1,92 @@
+{
+  "traceability_id": "P3-SPEC-PATTERNS-TRACEABILITY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "traceability_rows": [
+    {
+      "source": "P3-SPEC-ELEMENTS REVIEW_DECISION",
+      "target_artifacts": [
+        "all p3.patterns artifacts"
+      ],
+      "trace_rule": "approved element subject hash is the upstream canonical element boundary",
+      "test_obligation": "candidate-check with review decision must pass"
+    },
+    {
+      "source": "P3-SPEC-ELEMENTS canonical_projection_rule",
+      "target_artifacts": [
+        "p3.patterns.shared_component_registry"
+      ],
+      "trace_rule": "reuse_scope may consume only included projection ids or approved message ids",
+      "test_obligation": "projection-excluded ids are rejected from reuse_scope"
+    },
+    {
+      "source": "P3-SPEC-CLOSURE REVIEW_DECISION and interaction_messages",
+      "target_artifacts": [
+        "p3.patterns.information_presentation_registry"
+      ],
+      "trace_rule": "P3-SPEC-CLOSURE review hash is directly bound before every approved message is used for presentation coverage",
+      "test_obligation": "candidate-check with P3-SPEC-CLOSURE review decision passes and missing or unknown message_ref is rejected"
+    },
+    {
+      "source": "semantic reuse basis",
+      "target_artifacts": [
+        "p3.patterns.shared_component_registry"
+      ],
+      "trace_rule": "reuse requires semantic role, data, operation, state, hierarchy, interaction, constraint, scope, and trace evidence",
+      "test_obligation": "visual-only reuse is rejected"
+    },
+    {
+      "source": "information consistency key",
+      "target_artifacts": [
+        "p3.patterns.information_presentation_registry",
+        "p3.patterns.presentation_consistency_exceptions"
+      ],
+      "trace_rule": "equivalent semantic_intent, trigger_condition, scope, and lifecycle use one mode unless exception exists",
+      "test_obligation": "different modes without exception are rejected"
+    },
+    {
+      "source": "presentation lifecycle and recoverability",
+      "target_artifacts": [
+        "p3.patterns.information_presentation_registry"
+      ],
+      "trace_rule": "sustained or decision-critical information remains recoverable and discoverable",
+      "test_obligation": "unrecoverable TOAST-only sustained information is rejected"
+    },
+    {
+      "source": "layout boundary",
+      "target_artifacts": [
+        "shared_component_registry LAYOUT_PATTERN rows",
+        "implementation handoff"
+      ],
+      "trace_rule": "pattern rows may constrain semantics but cannot decide carrier-specific layout behavior",
+      "test_obligation": "layout-placement terms in P3-SPEC-PATTERNS are rejected"
+    },
+    {
+      "source": "P3-SPEC-LAYOUT downstream",
+      "target_artifacts": [
+        "implementation handoff"
+      ],
+      "trace_rule": "layout consumes pattern ids and presentation ids, then owns carrier, containment, ordering, width, height, and z-axis rules",
+      "test_obligation": "missing downstream pattern_ref is rejected"
+    },
+    {
+      "source": "product capability boundary",
+      "target_artifacts": [
+        "all p3.patterns artifacts"
+      ],
+      "trace_rule": "patterns cannot add product capability or new elements",
+      "test_obligation": "new element or capability refs are routed to product gap review outside this workpack"
+    }
+  ],
+  "schema_refs": [
+    "repository/schemas/presentation/shared_component_registry.schema.json",
+    "repository/schemas/presentation/information_presentation_registry.schema.json",
+    "repository/schemas/presentation/presentation_consistency_exception.schema.json"
+  ],
+  "validator_refs": [
+    "repository/src/drd_harness/validators/presentation_consistency.py",
+    "repository/src/drd_harness/rules/presentation.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ],
+  "open_blockers": []
+}

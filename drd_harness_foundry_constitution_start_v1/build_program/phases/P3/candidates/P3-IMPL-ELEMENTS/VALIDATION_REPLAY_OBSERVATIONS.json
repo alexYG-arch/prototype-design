@@ -1,0 +1,151 @@
+{
+  "observation_id": "P3-IMPL-ELEMENTS-REPLAY-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-ELEMENTS",
+  "status": "PASS",
+  "supporting_output_only": true,
+  "excluded_from_review_subject_hash": true,
+  "review_subject_hash": "57b9b7849de3948abd1b7513ec8a3820f7df6aaed1983bf2bc7a4c8d7990e633",
+  "review_target_path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_TARGET.json",
+  "review_target_sha256": "7d64c15d8780d2214ff6746678dd89132fbf6b75352b142821e6b56e0f5331bb",
+  "review_decision_path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+  "review_decision_sha256": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
+  "generated_subject_files": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "generated_subject_file_hashes": [
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "7299a32e8086102e6a4e63c3aaabe57910799bfaf2a7b111fbb206729303baf7"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/SCOPE_REPORT.json",
+      "sha256": "4f9dc9ccbe4c3be2537d563c1cd7f0ebcdc7a93cd38c886f554327f97d46ae2e"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/TEST_REPORT.json",
+      "sha256": "6ab5a98da674e4bea0a87a801e59bd096e40ba5f86d4e23a66cf1b2537518550"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
+      "sha256": "3d30173b4f7b8325ed95aeab510b69caadefc6f106a9c39b2f164ef74585dfcd"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/CANDIDATE_MANIFEST.json",
+      "sha256": "fe3d4d3e9c0241f5d1225119e80bef3880eeac67f11d58893f942dd45c741b97"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/PART_SELF_CHECK.md",
+      "sha256": "60689990645108db4d842b3a43080c55dbbd8727fd1f629143762db4876da69e"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/HANDOFF.md",
+      "sha256": "1831b8201dc69a9dd7796bf136dbf9e42294d64db2f4a51f48820571256d0704"
+    }
+  ],
+  "observations": [
+    {
+      "check": "candidate_check_with_review_decision",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-ELEMENTS --review-decision build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c8208752ef019114e2db74b8141279447ddf640c25bd28cbd7bc7b533db09504",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"57b9b7849de3948abd1b7513ec8a3820f7df6aaed1983bf2bc7a4c8d7990e633\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p3_elements_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_page_element_model.py -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "d7bdabb3e3edbfb67ad5bec5f31715a2491c085d687c3885395e58b8c2dc44be",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "................                                                         [100%]\n16 passed in 0.04s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "reasoning_and_p3_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/reasoning repository/tests/p3 -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "27f1774cf16a64b20d5e4b8777ae2212b512ad46c26e7319136dd65434c5848c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "...............................................................          [100%]\n63 passed in 0.10s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "full_repository_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "40903626e3532d5e449c3b659c565380ae05ff7f54ec36fd9ce7d8d9e1db0796",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 20%]\n........................................................................ [ 41%]\n........................................................................ [ 62%]\n........................................................................ [ 83%]\n.........................................................                [100%]\n345 passed in 0.36s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "runtime_boundary_check",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "fb82fe879b3a89294c36444ea62532f936a6cf7cf21cf4afa829cc0d4e522b0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"runtime-boundary-check\", \"findings\": [], \"status\": \"PASS\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "upstream_closure_review_binding",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-CLOSURE --review-decision build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c10c32ad1745f9f8df8caffb4b4910b851c54af6245c2ce26ad62267c0541511",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p2_locked_hash_guard",
+      "command": "python3 - <<'PY2'\nimport hashlib,json\nfrom pathlib import Path\nmatrix=json.loads(Path('build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json').read_text())\nfor entry in matrix['lock_file_candidates']:\n    path=Path(entry['path'])\n    if path.exists():\n        actual=hashlib.sha256(path.read_bytes()).hexdigest()\n        assert actual == entry['sha256'], (entry['path'], entry['sha256'], actual)\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "text_guard",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-ELEMENTS')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\npaths=[candidate / rel for rel in manifest['generated_outputs']]\npaths.extend(candidate / rel for rel in manifest.get('supporting_outputs', []))\npaths.extend(Path('repository/fixtures/p3/elements').glob('*.json'))\npaths.append(Path('repository/src/drd_harness/validators/p3_page_elements.py'))\npaths.append(Path('repository/tests/p3/test_page_element_model.py'))\nmarkers=('T'+'BD','TO'+'DO','FIX'+'ME','PLACE'+'HOLDER','TO_BE'+'_FILLED')\nfor path in paths:\n    if not path.exists():\n        continue\n    text=path.read_text(encoding='utf-8')\n    if path.suffix=='.json':\n        json.loads(text)\n    upper=text.upper()\n    assert not any(marker in upper for marker in markers), path\n    for idx,line in enumerate(text.splitlines(), 1):\n        assert line == line.rstrip(' \\t'), f'{path}:{idx}'\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    }
+  ],
+  "self_reference_boundary": {
+    "why_supporting_only": "The replay file records final command outputs after generated outputs and Human Gate decision are stable. Keeping it outside generated_outputs prevents subject hash recursion.",
+    "manifest_declares_supporting_output": true,
+    "not_used_to_create_build_lock": true,
+    "not_a_review_decision": true,
+    "not_a_next_workpack_authorization": true
+  }
+}

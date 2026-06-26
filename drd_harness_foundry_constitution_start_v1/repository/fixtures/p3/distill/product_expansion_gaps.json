@@ -1,0 +1,22 @@
+{
+  "artifact_id": "p3.distill.product_expansion_gaps",
+  "records": [
+    {
+      "gap_id": "p3-gap-missing-product-details",
+      "gap_type": "MISSING_PRODUCT_DECISION",
+      "status": "OPEN",
+      "source_refs": [
+        "p3-src-brief",
+        "p3-unit-review-gap-message"
+      ],
+      "candidate_options": [
+        "Human reviewer supplies missing product details or rejects the expansion request."
+      ],
+      "blocked_artifacts": [
+        "P3-SPEC-CLOSURE closure_handoff eligible expansion path"
+      ],
+      "required_decision": "Human review must decide the missing product details before any new capability is adopted.",
+      "decision_ref": null
+    }
+  ]
+}

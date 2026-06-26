@@ -1,0 +1,161 @@
+{
+  "artifact_id": "p3.elements.inference_records",
+  "stage_id": "DRD-03-PAGE-ELEMENTS",
+  "fixture_id": "p3_elements_fixture",
+  "path": "repository/fixtures/p3/elements/inference_records.json",
+  "schema_ref": "repository/schemas/reasoning/inference_record.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/closure/interaction_nodes.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/prd_element_inventory.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.closure.interaction_nodes",
+    "p3.closure.interaction_messages",
+    "p3.closure.closure_handoff_manifest",
+    "p3.distill.prd_element_inventory",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.closure.interaction_nodes": "ee645567824e745dffc73759aad8aff189817659e160e44e222ac7a188dad11b",
+    "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "p3.closure.closure_handoff_manifest": "43e379a9968ceeee87c3045f80e3839e201c57bf00fa9de748ef415165a0d655",
+    "p3.distill.prd_element_inventory": "deb1958557688e1c192215c015e03fae631f1c104a76f9403216a678227447b7",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/reasoning.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_PRODUCT_EXPANSION_ONLY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/closure/interaction_nodes.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/prd_element_inventory.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": [
+    {
+      "inference_id": "p3-inf-operations-console",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory",
+      "source_refs": [
+        "p3-node-operations-console",
+        "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+      ],
+      "premises": [
+        "Approved closure exposes p3-node-operations-console as an eligible element-bearing unit."
+      ],
+      "applied_rules": [
+        "P3-ELEMENTS-NATURAL-LANGUAGE-PRIMARY",
+        "P3-ELEMENTS-ATOMIC-INVENTORY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "p3-el-operations-console is canonical because it directly indexes an approved closure unit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p3.elements.canonical_projection"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-case-ready-state",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory",
+      "source_refs": [
+        "p3-node-case-ready-state",
+        "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+      ],
+      "premises": [
+        "Approved closure exposes p3-node-case-ready-state as an eligible element-bearing unit."
+      ],
+      "applied_rules": [
+        "P3-ELEMENTS-NATURAL-LANGUAGE-PRIMARY",
+        "P3-ELEMENTS-ATOMIC-INVENTORY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "p3-el-case-ready-state is canonical because it directly indexes an approved closure unit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p3.elements.canonical_projection"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-case-blocked-state",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory",
+      "source_refs": [
+        "p3-node-case-blocked-state",
+        "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+      ],
+      "premises": [
+        "Approved closure exposes p3-node-case-blocked-state as an eligible element-bearing unit."
+      ],
+      "applied_rules": [
+        "P3-ELEMENTS-NATURAL-LANGUAGE-PRIMARY",
+        "P3-ELEMENTS-ATOMIC-INVENTORY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "p3-el-case-blocked-state is canonical because it directly indexes an approved closure unit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p3.elements.canonical_projection"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-human-review-waiting-state",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory",
+      "source_refs": [
+        "p3-node-human-review-waiting-state",
+        "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+      ],
+      "premises": [
+        "Approved closure exposes p3-node-human-review-waiting-state as an eligible element-bearing unit."
+      ],
+      "applied_rules": [
+        "P3-ELEMENTS-NATURAL-LANGUAGE-PRIMARY",
+        "P3-ELEMENTS-ATOMIC-INVENTORY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "p3-el-human-review-waiting-state is canonical because it directly indexes an approved closure unit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p3.elements.canonical_projection"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-review-gap-blocked-message",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-03-PAGE-ELEMENTS",
+      "artifact_id": "p3.elements.prd_element_inventory",
+      "source_refs": [
+        "p3-msg-review-gap-blocked",
+        "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+      ],
+      "premises": [
+        "Approved closure exposes p3-msg-review-gap-blocked as an eligible element-bearing unit."
+      ],
+      "applied_rules": [
+        "P3-ELEMENTS-NATURAL-LANGUAGE-PRIMARY",
+        "P3-ELEMENTS-ATOMIC-INVENTORY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "p3-el-review-gap-blocked-message is canonical because it directly indexes an approved closure unit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "p3.elements.canonical_projection"
+      ]
+    }
+  ]
+}

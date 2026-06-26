@@ -1,0 +1,165 @@
+{
+  "contract_id": "P3-SPEC-PATTERNS-ARTIFACT-CONTRACTS-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "module": "shared_component_and_information_patterns",
+  "upstream_canonical_projection_ref": "P3-SPEC-ELEMENTS/P3_ELEMENTS_ARTIFACT_CONTRACTS.json#canonical_projection_rule",
+  "required_artifacts": [
+    {
+      "artifact_id": "p3.patterns.shared_component_registry",
+      "path_pattern": "repository/fixtures/p3/patterns/shared_component_registry.json",
+      "purpose": "semantic shared component and pattern registry consuming only canonical element ids or approved message ids",
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "schema_payload_key": "registry",
+      "payload_shape": "single_registry_object",
+      "registry_record_key": "patterns",
+      "downstream_consumable": true,
+      "schema_ref": "repository/schemas/presentation/shared_component_registry.schema.json",
+      "schema_sha256": "ba27b28986941dcaa4263de2831049c82b9811e9146d38cd517104a3ab3a1b73",
+      "minimum_fields": [
+        "registry_id",
+        "patterns"
+      ],
+      "record_minimum_fields": [
+        "pattern_id",
+        "pattern_kind",
+        "semantic_role",
+        "data_structure",
+        "operation_set",
+        "state_model",
+        "information_hierarchy",
+        "interaction_model",
+        "surface_constraints",
+        "reuse_scope",
+        "trace_refs"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "review_gate": "HUMAN_REQUIRED_FOR_DISPUTED_REUSE_OR_NON_REUSE",
+      "reuse_basis_rule": "reuse requires semantic role, data structure, operation set, state model, information hierarchy, interaction model, surface constraints, reuse scope, and trace refs; visual-only reuse is rejected",
+      "layout_boundary_rule": "LAYOUT_PATTERN rows are semantic pre-layout groupings only and cannot define carrier, breakpoint, containment, ordering, scroll, or z-axis behavior"
+    },
+    {
+      "artifact_id": "p3.patterns.information_presentation_registry",
+      "path_pattern": "repository/fixtures/p3/patterns/information_presentation_registry.json",
+      "purpose": "presentation mode decisions for messages, actions, status, errors, empty states, and decision-critical information",
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "schema_payload_key": "registry",
+      "payload_shape": "single_registry_object",
+      "registry_record_key": "decisions",
+      "downstream_consumable": true,
+      "schema_ref": "repository/schemas/presentation/information_presentation_registry.schema.json",
+      "schema_sha256": "65d2320b6095ec214cad160b7bba521ed1d8bc39a88b2aa0bbed246d523b3149",
+      "minimum_fields": [
+        "registry_id",
+        "decisions"
+      ],
+      "record_minimum_fields": [
+        "presentation_id",
+        "semantic_intent",
+        "trigger_condition",
+        "scope",
+        "information_lifecycle",
+        "presentation_mode",
+        "recoverability",
+        "trace_refs"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "review_gate": "HUMAN_REQUIRED_FOR_UNRESOLVED_PRESENTATION_CONFLICT",
+      "message_coverage_rule": "every approved closure interaction message has at least one presentation decision and no decision references an unknown message",
+      "transient_boundary_rule": "TOAST is not allowed as the only unrecoverable surface for sustained, persistent, session, audit, or user-decision information"
+    },
+    {
+      "artifact_id": "p3.patterns.presentation_consistency_exceptions",
+      "path_pattern": "repository/fixtures/p3/patterns/presentation_consistency_exceptions.json",
+      "purpose": "approved exceptions allowing equivalent information to use different presentation modes",
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "registry_record_key": null,
+      "downstream_consumable": true,
+      "schema_ref": "repository/schemas/presentation/presentation_consistency_exception.schema.json",
+      "schema_sha256": "418012bacb3492952edaa92474475fd2df10508926fbbf86ea6c6b16e8184f9e",
+      "minimum_fields": [
+        "exception_id",
+        "semantic_intent",
+        "trigger_condition",
+        "scope",
+        "information_lifecycle",
+        "allowed_modes",
+        "reason",
+        "trace_refs"
+      ],
+      "record_minimum_fields": [
+        "exception_id",
+        "semantic_intent",
+        "trigger_condition",
+        "scope",
+        "information_lifecycle",
+        "allowed_modes",
+        "reason",
+        "trace_refs"
+      ],
+      "validator_ref": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "review_gate": "HUMAN_REQUIRED_IF_NON_EMPTY",
+      "exception_key_rule": "exception key is semantic_intent, trigger_condition, scope, and information_lifecycle; allowed_modes must cover every intentional mode difference"
+    }
+  ],
+  "pattern_resolution_rule": "Every reuse_scope and downstream pattern_ref must resolve to a canonical P3 element id, approved interaction message id, or approved exception ref; blocked or projection-excluded elements cannot be consumed.",
+  "presentation_consistency_rule": "Equivalent semantic_intent, trigger_condition, scope, and information_lifecycle must use one mode unless covered by an approved presentation consistency exception.",
+  "product_boundary_rule": "Patterns and presentation decisions cannot introduce new elements, pages, tasks, product capabilities, data scope, integrations, roles, permissions, or layout behavior.",
+  "open_blockers": [],
+  "upstream_message_authority_ref": {
+    "candidate": "P3-SPEC-CLOSURE",
+    "review_decision_ref": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+    "subject_hash": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+    "required_for": [
+      "p3.patterns.information_presentation_registry",
+      "p3.patterns.shared_component_registry"
+    ]
+  }
+}

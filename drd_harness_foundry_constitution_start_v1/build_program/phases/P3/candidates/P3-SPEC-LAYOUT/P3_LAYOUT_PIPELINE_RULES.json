@@ -1,0 +1,80 @@
+{
+  "ruleset_id": "P3-SPEC-LAYOUT-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "ordered_steps": [
+    {
+      "step_id": "layout.consume_patterns_review",
+      "name": "Load approved P3-SPEC-PATTERNS review, pattern ids, presentation decisions, and exceptions",
+      "required_input": "P3-SPEC-PATTERNS REVIEW_DECISION"
+    },
+    {
+      "step_id": "layout.bind_element_and_message_authority",
+      "name": "Bind canonical element projection and approved interaction message authority",
+      "required_input": "P3-SPEC-ELEMENTS and P3-SPEC-CLOSURE review decisions"
+    },
+    {
+      "step_id": "layout.write_natural_language_authority",
+      "name": "Write canonical layout prose covering all layout coverage groups",
+      "required_output": "natural_language_layout"
+    },
+    {
+      "step_id": "layout.define_carriers",
+      "name": "Define desktop, tablet, mobile, iOS, and Material carrier adaptation rules",
+      "required_output": "carrier_adaptation_profile"
+    },
+    {
+      "step_id": "layout.define_containment",
+      "name": "Define multi-level containment hierarchy with order and reflow coupling",
+      "required_output": "containment_hierarchy"
+    },
+    {
+      "step_id": "layout.define_growth_and_completeness",
+      "name": "Define content growth and information completeness rules for height, width, and horizontal scroll exceptions",
+      "required_output": "content_growth_rules and information_completeness_rules"
+    },
+    {
+      "step_id": "layout.place_states_and_layers",
+      "name": "Define state placement and z-axis layering with Material elevation intent",
+      "required_output": "state_placement_index and z_axis_layering"
+    },
+    {
+      "step_id": "layout.compose_and_figma_handoff",
+      "name": "Bind layout package through composition index and non-authoritative Figma reconstruction metadata",
+      "required_output": "layout_composition_index and figma_reconstruction_metadata"
+    },
+    {
+      "step_id": "layout.validate_and_handoff",
+      "name": "Validate schema alignment, reference integrity, carrier coverage, information completeness, and scope",
+      "required_output": "validation evidence and handoff"
+    }
+  ],
+  "layout_rules": [
+    "Natural language layout prose is canonical semantic authority; structured records are index and validation skeleton only.",
+    "Carrier profile must include DESKTOP, TABLET, MOBILE, MOBILE_IOS, and MOBILE_MATERIAL.",
+    "MOBILE_IOS must include safe area, system bars, navigation stack, and keyboard avoidance constraints.",
+    "MOBILE_MATERIAL must include system bars, app bar or navigation expectations, keyboard inset, dialog or snackbar distinction, and Material elevation intent.",
+    "Containment must be multi-level and child order must preserve semantic sequence under carrier reflow.",
+    "Child width and scroll behavior cannot contradict parent constraints.",
+    "Height limits cannot hide, omit, remove, or drop required information; vertical access or recovery path is mandatory.",
+    "Width limits must wrap, stack, adapt density, or declare a horizontal scroll exception for wide structures.",
+    "Every approved interaction message requiring layout must have a state placement record.",
+    "Z-axis layers must be ordered, unique, and blocking behavior must be explicit for interactive layers.",
+    "Figma metadata is reconstruction guidance only and cannot introduce write authority or semantic drift.",
+    "Generic schema optional refs become P3-required bindings for pattern_refs, state_variants, z_axis_refs, figma_metadata_ref, and composition z_axis_refs.",
+    "Layout cannot create product capability or element scope beyond approved upstream decisions."
+  ],
+  "forbidden_behaviors": [
+    "make inventory or Figma metadata the canonical layout authority",
+    "omit iOS or Material mobile constraints when mobile is supported",
+    "flatten containment into a single page node when nested surfaces exist",
+    "hide or drop required information because viewport height is short",
+    "ignore width or clip required information without recovery",
+    "allow offscreen overflow without a declared horizontal scroll exception",
+    "use Material overlay or modal behavior without material elevation intent",
+    "place unknown interaction messages or unknown surfaces",
+    "omit P3-required optional refs such as pattern_refs, state_variants, z_axis_refs, figma_metadata_ref, or composition z_axis_refs",
+    "write repository implementation code during this spec workpack"
+  ],
+  "open_blockers": []
+}

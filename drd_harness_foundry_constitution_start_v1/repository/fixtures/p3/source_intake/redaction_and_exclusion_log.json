@@ -1,0 +1,17 @@
+{
+  "artifact_id": "p3.source_intake.redaction_and_exclusion_log",
+  "records": [
+    {
+      "source_item_id": "p3-src-screenshot",
+      "action": "semantic_adoption_blocked",
+      "reason": "visual source lacks extraction evidence",
+      "downstream_effect": "may preserve blocker only"
+    },
+    {
+      "source_item_id": "p3-src-link",
+      "action": "source_rejected",
+      "reason": "external link content was not locally snapshotted",
+      "downstream_effect": "cannot act as semantic authority"
+    }
+  ]
+}

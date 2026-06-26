@@ -1,0 +1,33 @@
+{
+  "target_id": "P3-SPEC-ELEMENTS-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-ELEMENTS",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS",
+  "review_subject_hash": "d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_ELEMENTS_CONTRACT.md",
+    "P3_ELEMENTS_MODEL.md",
+    "P3_ELEMENTS_ARTIFACT_CONTRACTS.json",
+    "P3_ELEMENTS_PIPELINE_RULES.json",
+    "P3_ELEMENTS_VALIDATION_MATRIX.json",
+    "P3_ELEMENTS_TRACEABILITY_MAP.json",
+    "P3_ELEMENTS_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the candidate preserve natural language as the primary semantic authority while using inventory only as verification skeleton?",
+    "Are element rows atomic and broad enough to cover pages, states, commands, inputs, navigation, messages, roles, permissions, overlays, and other UI elements?",
+    "Are missing elements completed by deductive strategy first and blocked when completion would add product capability?",
+    "Are page-only or flow-only missing child surfaces routed through structural completion review and product expansion gaps when required?",
+    "Does the candidate avoid locks, repository code, P1/P2 mutation, earlier P3 candidate mutation, and root P3 phase-file mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

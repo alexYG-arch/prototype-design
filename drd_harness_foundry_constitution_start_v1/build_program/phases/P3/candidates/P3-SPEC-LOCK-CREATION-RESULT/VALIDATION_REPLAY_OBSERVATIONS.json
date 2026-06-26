@@ -1,0 +1,135 @@
+{
+  "observation_id": "P3-SPEC-LOCK-CREATION-RESULT-REPLAY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "supporting_output_only": true,
+  "excluded_from_review_subject_hash": true,
+  "review_subject_hash": "63fc9935d2780c233ead1b36be0275bba213dd5c586c0d794d3f02d8a341cd19",
+  "review_target_path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/REVIEW_TARGET.json",
+  "review_target_sha256": "e7fe9bb7c9f2f573851b3670c7d8e087eb19cd2cbbc2dc738976597d17d5a49b",
+  "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "review_decision_sha256": "7964efb113ddd333aeb93415516094aa11f37ebbfe41004d75951a2cab7f7893",
+  "generated_subject_files": [
+    "SPEC_LOCK_INPUT_BUNDLE.json",
+    "SPEC_LOCK_CREATION_RESULT.json",
+    "SPEC_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "generated_subject_file_hashes": [
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_INPUT_BUNDLE.json",
+      "sha256": "027ebe57121ffea360000daedbd5838033aed1f81f789aba97e0954e0401afda"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_CREATION_RESULT.json",
+      "sha256": "8961a7ae6c27074dfc1a4e0133344792a16dea2ce30e5ad866fee31bdb904c92"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_VALIDATION_REPORT.json",
+      "sha256": "eda7b3d02a05d94cdc49c8a628263d01559c46cab91816c9e8f6f149ecea3481"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/VALIDATION_EVIDENCE.json",
+      "sha256": "490dad6e7123be9f24be9bd8087a08c54ed3add8ba6a9c74b26b05b227fc26fe"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SCOPE_REPORT.json",
+      "sha256": "802fc4b0408f8ee68c4aab04cc83a13fef3a29bd6cdc1be992107f9b235b1b25"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/CANDIDATE_MANIFEST.json",
+      "sha256": "7787e8d98a8042f29f7cfb3324b5c0ee98d7c7afc23c803a8832e03dcea97658"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/PART_SELF_CHECK.md",
+      "sha256": "6b7ddffdc13d354e5c4f8a736abe6bda7d0a81044a96688ff21fbc565d199f41"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/HANDOFF.md",
+      "sha256": "bc639e5496c4dab73062e8970e4084c90876dc8cd2a748984341a9b76170461f"
+    }
+  ],
+  "observations": [
+    {
+      "check": "candidate_check_final_subject",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "661d16a9968761bdc9d3b9422e6e06f5c7cd9c210e252a616f4daf772a8f3ee7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"63fc9935d2780c233ead1b36be0275bba213dd5c586c0d794d3f02d8a341cd19\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "review_binding_final_subject",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT --review-decision build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "661d16a9968761bdc9d3b9422e6e06f5c7cd9c210e252a616f4daf772a8f3ee7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"63fc9935d2780c233ead1b36be0275bba213dd5c586c0d794d3f02d8a341cd19\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "review_target_subject_binding",
+      "command": "python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\nroot=Path('build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT')\nmanifest=json.loads((root/'CANDIDATE_MANIFEST.json').read_text())\nreview=json.loads((root/'REVIEW_TARGET.json').read_text())\ndecision=json.loads((root/'REVIEW_DECISION.json').read_text())\nrows=[]\nfor rel in manifest['generated_outputs']:\n    rows.append(f\"{rel}\\0{hashlib.sha256((root/rel).read_bytes()).hexdigest()}\")\nsubject=hashlib.sha256('\\n'.join(rows).encode()).hexdigest()\nassert subject == review['review_subject_hash'] == decision['subject_hash']\nassert 'REVIEW_DECISION.json' in manifest.get('supporting_outputs', [])\nassert 'REVIEW_DECISION.json' not in manifest['generated_outputs']\nassert 'VALIDATION_REPLAY_OBSERVATIONS.json' in manifest.get('supporting_outputs', [])\nassert 'VALIDATION_REPLAY_OBSERVATIONS.json' not in manifest['generated_outputs']\nprint(subject)\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c7407442ecd81ae474918e73c638290b04ad02f148a191bf226e049931c7fa2d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "63fc9935d2780c233ead1b36be0275bba213dd5c586c0d794d3f02d8a341cd19\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "lock_binding_replay",
+      "command": "python3 - <<'PY2'\nimport hashlib, json, subprocess\nfrom pathlib import Path\nlock_path=Path('control/locks/P3_SPEC_LOCK.json')\nlock=json.loads(lock_path.read_text())\ndef sha(path):\n    return hashlib.sha256(Path(path).read_bytes()).hexdigest()\nrows=[f\"{e['spec_part']}\\0{e['subject_hash']}\" for e in lock['files']]\nreview_rows=[f\"{e['spec_part']}\\0{e['review_decision']['sha256']}\" for e in lock['files']]\nassert hashlib.sha256('\\n'.join(rows).encode()).hexdigest()==lock['root_sha256']\nassert hashlib.sha256('\\n'.join(review_rows).encode()).hexdigest()==lock['review_decision_file_root_sha256']\nfor entry in lock['files']:\n    assert sha(entry['review_decision']['path']) == entry['review_decision']['sha256']\n    for output in entry['generated_outputs']:\n        assert sha(output['path']) == output['sha256']\nproc=subprocess.run('python3 tooling/create_spec_lock.py --phase P3 --input-bundle build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_INPUT_BUNDLE.json --output control/locks/P3_SPEC_LOCK.json', shell=True, text=True, capture_output=True)\nassert proc.returncode != 0\nassert 'output already exists' in proc.stderr\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "result_text_guard_including_supporting",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\npaths=[Path('control/locks/P3_SPEC_LOCK.json')]\nroot=Path('build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT')\nmanifest=json.loads((root/'CANDIDATE_MANIFEST.json').read_text())\npaths.extend(root / rel for rel in manifest['generated_outputs'])\npaths.extend(root / rel for rel in manifest.get('supporting_outputs', []))\nmarkers=('T'+'BD','TO'+'DO','FIX'+'ME','PLACE'+'HOLDER','TO_BE'+'_FILLED')\nfor path in paths:\n    text=path.read_text(encoding='utf-8')\n    if path.suffix=='.json':\n        json.loads(text)\n    upper=text.upper()\n    assert not any(marker in upper for marker in markers), path\n    for idx,line in enumerate(text.splitlines(), 1):\n        assert line == line.rstrip(' \\t'), f'{path}:{idx}'\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "repository_tests_final",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "4a8bec8a8fdc5a78209c5ba9e18352d0ea8ebc3ee3906671b0212b6cf47cb702",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 23%]\n........................................................................ [ 47%]\n........................................................................ [ 71%]\n........................................................................ [ 95%]\n.............                                                            [100%]\n301 passed in 0.27s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "git_diff_check_final",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    }
+  ],
+  "self_reference_boundary": {
+    "why_supporting_only": "The replay and review decision files record final command outputs after generated outputs are stable. Keeping them outside generated_outputs prevents subject hash recursion.",
+    "manifest_declares_supporting_output": true,
+    "not_used_to_create_build_lock": true,
+    "not_an_implementation_authorization": true
+  }
+}

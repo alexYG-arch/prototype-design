@@ -1,0 +1,106 @@
+{
+  "artifact_id": "p3.assurance.test_obligation_matrix",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/test_obligation_matrix.json",
+  "schema_ref": "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "p3.assurance.trace_row_set"
+  ],
+  "upstream_artifact_refs": [
+    "traceability rows"
+  ],
+  "upstream_hashes": {
+    "trace_row_set": "dc41347bd80482c7edf5cff92ce2010c3eefb4bfb936438634ec3ad2b655dd42"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "records": [
+    {
+      "trace_row_id": "P3ASSURE-TRACE-001",
+      "implementation_duty": "bind_compiler_gate",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-002"
+      ],
+      "test": "repository/tests/p3/test_assurance_traceability.py",
+      "positive_case": "bind_compiler_gate accepts complete governed evidence",
+      "negative_case": "bind_compiler_gate rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_assurance_traceability.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-002",
+      "implementation_duty": "check_qa_boundary",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-003"
+      ],
+      "test": "repository/tests/stages/test_read_only_qa_boundary.py",
+      "positive_case": "check_qa_boundary accepts complete governed evidence",
+      "negative_case": "check_qa_boundary rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/stages/test_read_only_qa_boundary.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-003",
+      "implementation_duty": "validate_trace_rows",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-004"
+      ],
+      "test": "repository/tests/workpacks/test_code_target_map.py",
+      "positive_case": "validate_trace_rows accepts complete governed evidence",
+      "negative_case": "validate_trace_rows rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_code_target_map.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-004",
+      "implementation_duty": "bind_test_matrix",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-006"
+      ],
+      "test": "repository/tests/workpacks/test_test_obligation_matrix.py",
+      "positive_case": "bind_test_matrix accepts complete governed evidence",
+      "negative_case": "bind_test_matrix rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_test_obligation_matrix.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-005",
+      "implementation_duty": "check_workpack_scope",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-008"
+      ],
+      "test": "repository/tests/workpacks/test_workpack_generation.py",
+      "positive_case": "check_workpack_scope accepts complete governed evidence",
+      "negative_case": "check_workpack_scope rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_workpack_generation.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-006",
+      "implementation_duty": "verify_skill_binding",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-011"
+      ],
+      "test": "repository/tests/workpacks/test_skill_version_binding.py",
+      "positive_case": "verify_skill_binding accepts complete governed evidence",
+      "negative_case": "verify_skill_binding rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_skill_version_binding.py -q"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-007",
+      "implementation_duty": "gate_final_report",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-013"
+      ],
+      "test": "repository/tests/orchestrator/test_promotion_lock_state.py",
+      "positive_case": "gate_final_report accepts complete governed evidence",
+      "negative_case": "gate_final_report rejects drift, missing evidence, mutation, or overbroad scope",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/orchestrator/test_promotion_lock_state.py -q"
+    }
+  ]
+}

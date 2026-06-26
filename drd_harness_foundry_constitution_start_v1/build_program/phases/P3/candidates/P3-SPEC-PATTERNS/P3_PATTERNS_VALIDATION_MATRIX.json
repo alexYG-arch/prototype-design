@@ -1,0 +1,91 @@
+{
+  "matrix_id": "P3-SPEC-PATTERNS-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "validation_rows": [
+    {
+      "rule_id": "P3PATTERNS-VAL-001",
+      "requirement": "P3-SPEC-ELEMENTS review is approved and subject-bound",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-ELEMENTS",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-002A",
+      "requirement": "P3-SPEC-CLOSURE review is approved and subject-bound for interaction message authority consumed by patterns",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-CLOSURE",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-002",
+      "requirement": "schema-bound pattern artifacts use current root and record required fields exactly",
+      "evidence": "P3_PATTERNS_ARTIFACT_CONTRACTS.json",
+      "validator": "schema alignment check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-003",
+      "requirement": "all pattern artifacts declare the standard envelope and correct registry or records payload contract",
+      "evidence": "P3_PATTERNS_ARTIFACT_CONTRACTS.json",
+      "validator": "artifact envelope contract check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-004",
+      "requirement": "shared component reuse is semantic and rejects visual-only reuse",
+      "evidence": "p3.patterns.shared_component_registry",
+      "validator": "validate_shared_component_registry",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-005",
+      "requirement": "reuse_scope and downstream pattern refs resolve only to canonical element ids, approved messages, or approved exceptions",
+      "evidence": "shared_component_registry and P3-SPEC-ELEMENTS canonical projection",
+      "validator": "pattern resolution validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-006",
+      "requirement": "every approved interaction message has presentation coverage and no presentation decision references unknown messages",
+      "evidence": "information_presentation_registry and closure messages",
+      "validator": "validate_interaction_message_presentation_mapping",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-007",
+      "requirement": "equivalent information uses one presentation mode unless an approved consistency exception allows all used modes",
+      "evidence": "information_presentation_registry and presentation_consistency_exceptions",
+      "validator": "validate_presentation_consistency",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-008",
+      "requirement": "transient-only modes cannot carry sustained, persistent, audit, session, processing, or user-decision information as an unrecoverable surface",
+      "evidence": "information_presentation_registry",
+      "validator": "presentation transient boundary check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3PATTERNS-VAL-009",
+      "requirement": "candidate scope stays inside P3-SPEC-PATTERNS and does not create locks, layout decisions, or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "visual-only reuse with missing semantic fields is rejected",
+    "duplicate pattern_id is rejected",
+    "reuse_scope referencing projection-excluded element id is rejected",
+    "layout pattern row defining carrier, breakpoint, scroll, width, height, ordering, or z-axis behavior is rejected",
+    "approved interaction message without presentation decision is rejected",
+    "presentation decision referencing unknown message_ref is rejected",
+    "equivalent information using different modes without approved exception is rejected",
+    "exception whose allowed_modes do not cover all used modes is rejected",
+    "sustained unrecoverable user-decision information using TOAST only is rejected",
+    "downstream layout pattern_ref missing from shared_component_registry is rejected",
+    "P3-SPEC-CLOSURE review binding is checked directly before consuming interaction message ids"
+  ],
+  "open_blockers": []
+}

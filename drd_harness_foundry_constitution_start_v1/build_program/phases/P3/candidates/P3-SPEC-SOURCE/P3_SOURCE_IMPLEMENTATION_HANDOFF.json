@@ -1,0 +1,30 @@
+{
+  "handoff_id": "P3-SPEC-SOURCE-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P3",
+  "source_spec_workpack": "P3-SPEC-SOURCE",
+  "implementation_workpack": "P3-IMPL-SOURCE",
+  "blocked_until": [
+    "P3-SPEC-SOURCE human review decision is approved for exact subject hash",
+    "P3_SPEC_LOCK exists and includes P3-SPEC-SOURCE",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P3_SPEC_LOCK"
+  ],
+  "allowed_future_implementation_targets": [
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/source_intake.py",
+    "repository/schemas/stages/source_snapshot_manifest.schema.json",
+    "repository/fixtures/p3/source_intake/**",
+    "repository/tests/p3/test_source_intake.py"
+  ],
+  "forbidden_now": [
+    "creating P3_SPEC_LOCK from this candidate alone",
+    "creating P3_BUILD_LOCK",
+    "modifying repository implementation code in this spec workpack",
+    "starting P3-IMPL-SOURCE before spec lock and implementation authorization"
+  ],
+  "acceptance_commands_for_future_implementation": [
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_source_intake.py -q",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/stages repository/tests/p3 -q",
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-SOURCE"
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,151 @@
+{
+  "observation_id": "P3-IMPL-DISTILL-REPLAY-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-DISTILL",
+  "status": "PASS",
+  "supporting_output_only": true,
+  "excluded_from_review_subject_hash": true,
+  "review_subject_hash": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1",
+  "review_target_path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_TARGET.json",
+  "review_target_sha256": "c543f13a77e2e099505022c6ece0e99acfd8b095827059d5b5667ff61554b889",
+  "review_decision_path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+  "review_decision_sha256": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
+  "generated_subject_files": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "generated_subject_file_hashes": [
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "2c48aab4f78897a1894248751c6a9fa6bb3c824f37b9ddc752829c81441b67e4"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/SCOPE_REPORT.json",
+      "sha256": "7c443887e87a4ca9361d0ac55ca86936a5baf12f2b45a4e1f7da803917c1f98b"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/TEST_REPORT.json",
+      "sha256": "b2fe24f284cdffb897dd53f03e3ca570425e5185f2462141619ab1000c563615"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
+      "sha256": "aec31cbf736d5bac79b16e5646f2d38a3980d3f43dbd5c94251bcf6550750149"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/CANDIDATE_MANIFEST.json",
+      "sha256": "4dac0e6a745c1da871223ab2d12f3323c951c6daccc86143a098fb5e036484b7"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/PART_SELF_CHECK.md",
+      "sha256": "6721c20b4e19d4d4f3646ed4f70d9114363f14d572f7aade5ae8d75011ea1d07"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/HANDOFF.md",
+      "sha256": "7324f01bcf38629376b33a74fb31c02eaf29595e1a66ce5634022ca89e48d374"
+    }
+  ],
+  "observations": [
+    {
+      "check": "candidate_check_final_subject",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-DISTILL --review-decision build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "ba6df97142b7fb0d057c514da43a532d87c84a0e3198a49de3f3c1b8ff582d43",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p3_distill_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_experience_distillation.py -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "4c78d91fecebd9ff2601366b209fedef5a34c74b72f29aadd727b0d4e4957970",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "..........                                                               [100%]\n10 passed in 0.02s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "reasoning_and_p3_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/reasoning repository/tests/p3 -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "0c8c24548519e80db2daf8b48db9351cdaee35cd0da59d142266b91fd0a3c89f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "...................................                                      [100%]\n35 passed in 0.04s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "full_repository_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "f6bd5f5d01b6508f46acde2e092f2e628c216e4f086430137a6cbdfa9fd127d6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 22%]\n........................................................................ [ 45%]\n........................................................................ [ 68%]\n........................................................................ [ 90%]\n.............................                                            [100%]\n317 passed in 0.31s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "runtime_boundary_check",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "fb82fe879b3a89294c36444ea62532f936a6cf7cf21cf4afa829cc0d4e522b0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"runtime-boundary-check\", \"findings\": [], \"status\": \"PASS\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p2_locked_reused_hash_guard",
+      "command": "python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\nmatrix=json.loads(Path('build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json').read_text())\ntracked={entry['path']: entry['sha256'] for entry in matrix['lock_file_candidates']}\nfor path in ['repository/src/drd_harness/validators/prd_adoption.py','repository/src/drd_harness/validators/reasoning.py','repository/src/drd_harness/stages/source_snapshot.py']:\n    expected=tracked[path]\n    actual=hashlib.sha256(Path(path).read_bytes()).hexdigest()\n    assert actual == expected, (path, actual, expected)\n    print(actual, path)\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e5d287db3cbec3567f6f25fb5144eefe6429a1ef6b85150f74ddce985352a064",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01 repository/src/drd_harness/validators/prd_adoption.py\n8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24 repository/src/drd_harness/validators/reasoning.py\n1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567 repository/src/drd_harness/stages/source_snapshot.py\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "review_support_boundary",
+      "command": "python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-DISTILL')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\ntarget=json.loads((candidate/'REVIEW_TARGET.json').read_text())\ndecision=json.loads((candidate/'REVIEW_DECISION.json').read_text())\nrows=[]\nfor rel in manifest['generated_outputs']:\n    rows.append(f\"{rel}\\0{hashlib.sha256((candidate/rel).read_bytes()).hexdigest()}\")\nsubject=hashlib.sha256('\\n'.join(rows).encode()).hexdigest()\nassert subject == target['review_subject_hash'] == decision['subject_hash']\nassert 'REVIEW_DECISION.json' in manifest['supporting_outputs']\nassert 'REVIEW_DECISION.json' not in manifest['generated_outputs']\nprint(subject)\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "a599d69cab7683a774e6edd27e7c596231e1353d2ebce2bb0685a419b7764aae",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "text_guard",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P3/candidates/P3-IMPL-DISTILL')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\npaths=[candidate / rel for rel in manifest['generated_outputs']]\npaths.extend(candidate / rel for rel in manifest.get('supporting_outputs', []))\npaths.extend(Path('repository/fixtures/p3/distill').glob('*.json'))\npaths.append(Path('repository/src/drd_harness/stages/experience_distillation.py'))\npaths.append(Path('repository/tests/p3/test_experience_distillation.py'))\nmarkers=('T'+'BD','TO'+'DO','FIX'+'ME','PLACE'+'HOLDER','TO_BE'+'_FILLED')\nfor path in paths:\n    text=path.read_text(encoding='utf-8')\n    if path.suffix=='.json':\n        json.loads(text)\n    upper=text.upper()\n    assert not any(marker in upper for marker in markers), path\n    for idx,line in enumerate(text.splitlines(), 1):\n        assert line == line.rstrip(' \\t'), f'{path}:{idx}'\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    }
+  ],
+  "self_reference_boundary": {
+    "why_supporting_only": "The replay and review decision files record final command outputs after generated outputs are stable. Keeping them outside generated_outputs prevents subject hash recursion.",
+    "manifest_declares_supporting_output": true,
+    "review_decision_supporting_only": true,
+    "not_used_to_create_build_lock": true,
+    "not_an_authorization_for_next_workpack": true
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "artifact_id": "p3.assurance.skill_binding_manifest",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/skill_binding_manifest.json",
+  "schema_ref": "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+  "schema_payload_key": "manifest",
+  "source_refs": [
+    "p3.assurance.trace_row_set"
+  ],
+  "upstream_artifact_refs": [
+    "bound spec locks",
+    "allowed commands"
+  ],
+  "upstream_hashes": {
+    "skill_source": "6d3b7426ce3bedcc4f9a8cf8230771173692d324309648bbebf0da0089a76ffa",
+    "P3_SPEC_LOCK": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "manifest": {
+    "skill_id": "P3-ASSURANCE-EXECUTION-HELPER",
+    "skill_version": "1.0.0",
+    "skill_source_path": "repository/fixtures/p3/assurance/assurance_skill_binding_source.md",
+    "skill_source_hash": "6d3b7426ce3bedcc4f9a8cf8230771173692d324309648bbebf0da0089a76ffa",
+    "bound_spec_locks": [
+      {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      }
+    ],
+    "allowed_workpack_types": [
+      "IMPLEMENTATION"
+    ],
+    "allowed_write_paths": [
+      "repository/src/drd_harness/validators/traceability.py",
+      "repository/src/drd_harness/validators/workpack_scope.py",
+      "repository/src/drd_harness/validators/compiler_conservation.py",
+      "repository/src/drd_harness/stages/read_only_qa.py",
+      "repository/src/drd_harness/validators/phase_gate.py",
+      "repository/schemas/workpacks/**",
+      "repository/fixtures/p3/assurance/**",
+      "repository/tests/workpacks/**",
+      "repository/tests/stages/test_read_only_qa_boundary.py",
+      "repository/tests/p3/test_assurance_traceability.py"
+    ],
+    "forbidden_write_paths": [
+      "control/**",
+      "build_program/phases/P3/candidates/P3-SPEC-*/**",
+      "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+      "repository/fixtures/p3/compiler/**",
+      "repository/fixtures/p3/source_intake/**",
+      "repository/fixtures/p3/distill/**",
+      "repository/fixtures/p3/closure/**",
+      "repository/fixtures/p3/patterns/**",
+      "repository/fixtures/p3/layout/**"
+    ],
+    "allowed_commands": [
+      "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks repository/tests/stages/test_read_only_qa_boundary.py -q",
+      "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_assurance_traceability.py -q",
+      "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-ASSURANCE"
+    ],
+    "traceability_rows": [
+      "P3ASSURE-TRACE-001",
+      "P3ASSURE-TRACE-002",
+      "P3ASSURE-TRACE-003",
+      "P3ASSURE-TRACE-004",
+      "P3ASSURE-TRACE-005",
+      "P3ASSURE-TRACE-006",
+      "P3ASSURE-TRACE-007"
+    ],
+    "validator_refs": [
+      "repository/src/drd_harness/validators/traceability.py",
+      "repository/src/drd_harness/validators/workpack_scope.py",
+      "repository/src/drd_harness/validators/compiler_conservation.py",
+      "repository/src/drd_harness/stages/read_only_qa.py",
+      "repository/src/drd_harness/validators/phase_gate.py"
+    ],
+    "test_refs": [
+      "repository/tests/p3/test_assurance_traceability.py",
+      "repository/tests/workpacks",
+      "repository/tests/stages/test_read_only_qa_boundary.py"
+    ],
+    "human_gate_required": true,
+    "invalidation_dependencies": [
+      "SPEC_LOCK_DEPENDENCY",
+      "SKILL_DEPENDENCY",
+      "VALIDATOR_DEPENDENCY"
+    ]
+  }
+}

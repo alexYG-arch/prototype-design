@@ -1,0 +1,36 @@
+{
+  "decision_id": "P3-IMPL-SOURCE-REVIEW-001",
+  "subject": "P3-IMPL-SOURCE",
+  "subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-26",
+  "basis": "User said pass after reviewing the P3-IMPL-SOURCE candidate. This approval covers the P3 source intake implementation candidate only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_implementation_scope": {
+    "workpack_id": "P3-IMPL-SOURCE",
+    "test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+    "test_result": "307 passed",
+    "p3_targeted_test_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_source_intake.py -q",
+    "p3_targeted_test_result": "6 passed",
+    "spec_lock": "control/locks/P3_SPEC_LOCK.json",
+    "spec_lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "candidate_check_subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9"
+  },
+  "open_blockers": [],
+  "not_a_build_lock": true,
+  "not_p3_build_lock": true,
+  "remaining_followups": [
+    "P3_BUILD_LOCK is not created.",
+    "P3-IMPL-DISTILL still requires explicit continuation before execution.",
+    "Root P3 phase files are not updated by this review decision."
+  ]
+}

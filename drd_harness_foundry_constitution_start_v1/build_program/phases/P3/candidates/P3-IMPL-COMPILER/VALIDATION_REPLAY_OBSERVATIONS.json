@@ -1,0 +1,161 @@
+{
+  "observation_id": "P3-IMPL-COMPILER-REPLAY-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-COMPILER",
+  "status": "PASS",
+  "supporting_output_only": true,
+  "excluded_from_review_subject_hash": true,
+  "review_subject_hash": "05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834",
+  "review_target_path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/REVIEW_TARGET.json",
+  "review_target_sha256": "8a84bfecba7d32bb6de30af733ed70bb4f4a8790711c16d4347f85c6eb735e9b",
+  "review_decision_path": null,
+  "review_decision_sha256": null,
+  "generated_subject_files": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "generated_subject_file_hashes": [
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/WORKPACK_EXECUTION_RESULT.json",
+      "sha256": "090b4ffb9ea4210a4796d86c1a250683ce9e9d80188825b7d2a9efe9ed6add0a"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/SCOPE_REPORT.json",
+      "sha256": "86d04963780286d831170d50e63c62bb07fd56fee1a11f28a3754f03c287859d"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/TEST_REPORT.json",
+      "sha256": "9bc223abcb0665c1d2457270702ee66a43d44bdb1d22684cead7cf432de8eaa7"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/VALIDATION_EVIDENCE.json",
+      "sha256": "b505b1e777352b8ac1e9b2b442e5ccb2b26001bda06a7f83aea70f02d39db4eb"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/CANDIDATE_MANIFEST.json",
+      "sha256": "3105b089d78a9d8c38e2f141dcf677e70ac5bcacb901881e524927e08e568149"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/PART_SELF_CHECK.md",
+      "sha256": "f84f8edf128c89458d80b48585000f16080de680e8f73bf605f7f97786105c57"
+    },
+    {
+      "path": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/HANDOFF.md",
+      "sha256": "94badb002a4c0b9c7f69270ef59a8267459812abc816095a65424850e81d3798"
+    }
+  ],
+  "observations": [
+    {
+      "check": "candidate_check",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-COMPILER",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "3853003a474e83607e5fd29274eefc7a3ab56cfe79e6d6d0fbcf5e2eb77f43bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p3_compiler_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_p3_compiler_conservation.py -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "9b11cb2f3356aba2b6bea79c5002067b83ed8c2e96bb42b301fec1fe49fd2c79",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "...........                                                              [100%]\n11 passed in 0.05s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "compiler_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/compiler -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "2293f65e6203b27ee8d501e60813d051cf5d7fbe19140591e2efd2379942a9b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "....................                                                     [100%]\n20 passed in 0.02s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p3_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3 -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e09e864607326979d54cefdf91fc2fbbbaa236b586586b1abeb4c3253de154d8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 78%]\n....................                                                     [100%]\n92 passed in 0.24s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "full_repository_tests",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "b5f8938da796a39f61f688a6d16d995a335352653e4f2b8a4b26c7e1fdc1961e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "........................................................................ [ 18%]\n........................................................................ [ 36%]\n........................................................................ [ 54%]\n........................................................................ [ 73%]\n........................................................................ [ 91%]\n.................................                                        [100%]\n393 passed in 0.48s\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "py_compile",
+      "command": "python3 -m py_compile repository/src/drd_harness/validators/p3_compiler.py repository/tests/p3/test_p3_compiler_conservation.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "runtime_boundary_check",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "fb82fe879b3a89294c36444ea62532f936a6cf7cf21cf4afa829cc0d4e522b0c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"runtime-boundary-check\", \"findings\": [], \"status\": \"PASS\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "upstream_layout_review_binding",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-LAYOUT --review-decision build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "af41273aa0949ce2c06933621f0a5e5c4c762b1f496b961a2e9fba303a52349f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651\"}\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "p2_locked_compiler_hash_guard",
+      "command": "python3 hash check against P2 BUILD_LOCK_INPUT_MATRIX for compiler core",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "PASS\n",
+      "stderr_excerpt": ""
+    },
+    {
+      "check": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_excerpt": "",
+      "stderr_excerpt": ""
+    }
+  ],
+  "self_reference_boundary": {
+    "why_supporting_only": "The replay file records final command outputs after generated outputs are stable. Keeping it outside generated_outputs prevents subject hash recursion.",
+    "manifest_declares_supporting_output": true,
+    "not_used_to_create_build_lock": true,
+    "not_a_review_decision": true,
+    "not_a_next_workpack_authorization": true
+  }
+}

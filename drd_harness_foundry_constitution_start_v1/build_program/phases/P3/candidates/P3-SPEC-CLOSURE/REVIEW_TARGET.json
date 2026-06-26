@@ -1,0 +1,33 @@
+{
+  "target_id": "P3-SPEC-CLOSURE-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-CLOSURE",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE",
+  "review_subject_hash": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_CLOSURE_CONTRACT.md",
+    "P3_CLOSURE_GRAPH_MODEL.md",
+    "P3_CLOSURE_ARTIFACT_CONTRACTS.json",
+    "P3_CLOSURE_PIPELINE_RULES.json",
+    "P3_CLOSURE_VALIDATION_MATRIX.json",
+    "P3_CLOSURE_TRACEABILITY_MAP.json",
+    "P3_CLOSURE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does interaction closure prove every eligible distilled action, state, overlay, async operation, handoff, failure path, recovery target, and message?",
+    "Do schema-bound closure artifacts align to current schema required fields and payload keys?",
+    "Are split artifacts required to match the canonical interaction graph payload?",
+    "Are async, handoff, failure, overlay, disabled, terminal, and recovery copy obligations explicit and same-task scoped?",
+    "Does the candidate avoid locks, repository code, P1/P2 mutation, distill-candidate mutation, and root P3 phase-file mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

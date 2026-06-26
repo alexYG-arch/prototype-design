@@ -1,0 +1,72 @@
+{
+  "artifact_id": "p3.layout.information_completeness_rules",
+  "stage_id": "DRD-05-LAYOUT",
+  "fixture_id": "p3_layout_fixture",
+  "path": "repository/fixtures/p3/layout/information_completeness_rules.json",
+  "schema_ref": "repository/schemas/layout/information_completeness_rule.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.elements.prd_element_inventory",
+    "p3.closure.interaction_messages",
+    "p3.patterns.shared_component_registry",
+    "p3.patterns.information_presentation_registry",
+    "p3.impl.patterns.review_decision"
+  ],
+  "upstream_hashes": {
+    "p3.elements.prd_element_inventory": "f1bf73dbc34294c28e2d6b39329e9a404ac90ab0ca9a51d9fe388b7ca4288c5b",
+    "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "p3.patterns.shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+    "p3.patterns.information_presentation_registry": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb",
+    "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_layout.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_LAYOUT_DISPUTE",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "records": [
+    {
+      "completeness_id": "p3-layout-info-case-status",
+      "required_information_refs": [
+        "p3-presentation-case-ready-state-status",
+        "p3-presentation-case-blocked-state-status",
+        "p3-presentation-human-review-waiting-state-status"
+      ],
+      "height_behavior": "Short height uses vertical scroll and same-surface disclosure.",
+      "width_behavior": "Narrow width stacks and wraps status content before truncation.",
+      "information_access_path": "All state status information remains reachable by vertical scroll and expansion.",
+      "trace_refs": [
+        "p3-pattern-case-state-status"
+      ],
+      "horizontal_scroll_exception": null
+    },
+    {
+      "completeness_id": "p3-layout-info-review-message",
+      "required_information_refs": [
+        "p3-presentation-review-gap-blocked",
+        "p3-msg-review-gap-blocked",
+        "p3-el-review-gap-blocked-message"
+      ],
+      "height_behavior": "Short height keeps the blocked message reachable by vertical scroll.",
+      "width_behavior": "Narrow width wraps blocked-message text and stacks reason before next step.",
+      "information_access_path": "The full blocked message is recoverable by scroll and same-surface expansion.",
+      "trace_refs": [
+        "p3-pattern-review-gap-message",
+        "p3-msg-review-gap-blocked"
+      ],
+      "horizontal_scroll_exception": null
+    }
+  ]
+}

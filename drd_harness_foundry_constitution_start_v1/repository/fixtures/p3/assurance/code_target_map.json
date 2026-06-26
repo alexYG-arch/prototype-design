@@ -1,0 +1,394 @@
+{
+  "artifact_id": "p3.assurance.trace_row_set",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/code_target_map.json",
+  "schema_ref": "repository/schemas/workpacks/code_target_map.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "P3_SPEC_LOCK",
+    "P3-SPEC-ASSURANCE"
+  ],
+  "upstream_artifact_refs": [
+    "P3 assurance contract clauses"
+  ],
+  "upstream_hashes": {
+    "P3_SPEC_LOCK": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "records": [
+    {
+      "trace_row_id": "P3ASSURE-TRACE-001",
+      "implementation_duty": "bind_compiler_gate",
+      "contract_clause_id": "P3ASSURE-VAL-001",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Upstream Boundary",
+      "rule_id": "verify_compiler_review_decision",
+      "projection_id": "assurance_input_index",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/traceability.py",
+      "class_or_function": "validate_p3_assurance_artifacts",
+      "validator": "repository/src/drd_harness/validators/traceability.py",
+      "test": "repository/tests/p3/test_assurance_traceability.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_assurance_traceability.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-002"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "REVIEW_DEPENDENCY",
+          "subject": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/REVIEW_DECISION.json"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_compiler_review_or_output_hash_drift"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-002",
+      "implementation_duty": "check_qa_boundary",
+      "contract_clause_id": "P3ASSURE-VAL-003",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Read-Only QA Rule",
+      "rule_id": "validate_read_only_qa_boundary",
+      "projection_id": "read_only_qa_boundary",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/stages/read_only_qa.py",
+      "class_or_function": "require_read_only_qa_outputs",
+      "validator": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "test": "repository/tests/stages/test_read_only_qa_boundary.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/stages/test_read_only_qa_boundary.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-003"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "SOURCE_DEPENDENCY",
+          "subject": "repository/fixtures/p3/compiler/read_only_qa_boundary.json"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_qa_boundary_mutation_or_forbidden_write"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-003",
+      "implementation_duty": "validate_trace_rows",
+      "contract_clause_id": "P3ASSURE-VAL-004",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Trace Row Rule",
+      "rule_id": "validate_trace_rows",
+      "projection_id": "trace_row_set",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/traceability.py",
+      "class_or_function": "validate_code_target_map",
+      "validator": "repository/src/drd_harness/validators/traceability.py",
+      "test": "repository/tests/workpacks/test_code_target_map.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_code_target_map.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-004"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "SPEC_LOCK_DEPENDENCY",
+          "subject": "control/locks/P3_SPEC_LOCK.json"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_trace_row_or_spec_lock_drift"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-004",
+      "implementation_duty": "bind_test_matrix",
+      "contract_clause_id": "P3ASSURE-VAL-006",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Test Obligation Rule",
+      "rule_id": "validate_test_obligations",
+      "projection_id": "test_obligation_matrix",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/traceability.py",
+      "class_or_function": "validate_trace_row_to_test_matrix",
+      "validator": "repository/src/drd_harness/validators/traceability.py",
+      "test": "repository/tests/workpacks/test_test_obligation_matrix.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_test_obligation_matrix.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-006"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "TEST_EVIDENCE_DEPENDENCY",
+          "subject": "repository/tests/p3/test_assurance_traceability.py"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_test_obligation_or_acceptance_command_drift"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-005",
+      "implementation_duty": "check_workpack_scope",
+      "contract_clause_id": "P3ASSURE-VAL-008",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Workpack Handoff Rule",
+      "rule_id": "validate_implementation_workpack_scope",
+      "projection_id": "implementation_workpack_index",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/workpack_scope.py",
+      "class_or_function": "validate_workpack_readiness",
+      "validator": "repository/src/drd_harness/validators/workpack_scope.py",
+      "test": "repository/tests/workpacks/test_workpack_generation.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_workpack_generation.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-008"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "WORKPACK_DEPENDENCY",
+          "subject": "P3-IMPL-ASSURANCE"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_workpack_scope_or_generated_at_drift"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-006",
+      "implementation_duty": "verify_skill_binding",
+      "contract_clause_id": "P3ASSURE-VAL-011",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Skill Binding Rule",
+      "rule_id": "validate_skill_binding_subordination",
+      "projection_id": "skill_binding_manifest",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/traceability.py",
+      "class_or_function": "validate_skill_text_no_second_authority",
+      "validator": "repository/src/drd_harness/validators/traceability.py",
+      "test": "repository/tests/workpacks/test_skill_version_binding.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks/test_skill_version_binding.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-011"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "SKILL_DEPENDENCY",
+          "subject": "repository/fixtures/p3/assurance/assurance_skill_binding_source.md"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_skill_source_or_spec_lock_drift"
+    },
+    {
+      "trace_row_id": "P3ASSURE-TRACE-007",
+      "implementation_duty": "gate_final_report",
+      "contract_clause_id": "P3ASSURE-VAL-013",
+      "source_spec_part": "P3-SPEC-ASSURANCE",
+      "spec_lock_ref": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "contract_section_id": "Final Gate Rule",
+      "rule_id": "compute_final_assurance_report",
+      "projection_id": "final_assurance_report",
+      "implementation_workpack_id": "P3-IMPL-ASSURANCE",
+      "code_target": "repository/src/drd_harness/validators/phase_gate.py",
+      "class_or_function": "validate_promotion_readiness",
+      "validator": "repository/src/drd_harness/validators/phase_gate.py",
+      "test": "repository/tests/orchestrator/test_promotion_lock_state.py",
+      "acceptance_command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/orchestrator/test_promotion_lock_state.py -q",
+      "validator_check_ids": [
+        "P3ASSURE-CHECK-013"
+      ],
+      "allowed_write_paths": [
+        "repository/src/drd_harness/validators/traceability.py",
+        "repository/src/drd_harness/validators/workpack_scope.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py",
+        "repository/src/drd_harness/stages/read_only_qa.py",
+        "repository/src/drd_harness/validators/phase_gate.py",
+        "repository/schemas/workpacks/**",
+        "repository/fixtures/p3/assurance/**",
+        "repository/tests/workpacks/**",
+        "repository/tests/stages/test_read_only_qa_boundary.py",
+        "repository/tests/p3/test_assurance_traceability.py"
+      ],
+      "forbidden_write_paths": [
+        "control/**",
+        "build_program/phases/P3/candidates/P3-SPEC-*/**",
+        "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+        "repository/fixtures/p3/compiler/**",
+        "repository/fixtures/p3/source_intake/**",
+        "repository/fixtures/p3/distill/**",
+        "repository/fixtures/p3/closure/**",
+        "repository/fixtures/p3/patterns/**",
+        "repository/fixtures/p3/layout/**"
+      ],
+      "dependency_edges": [
+        {
+          "edge_type": "BUILD_LOCK_DEPENDENCY",
+          "subject": "P3_BUILD_LOCK"
+        }
+      ],
+      "invalidation_policy": "invalidate_on_blocking_finding_or_lock_readiness_drift"
+    }
+  ]
+}

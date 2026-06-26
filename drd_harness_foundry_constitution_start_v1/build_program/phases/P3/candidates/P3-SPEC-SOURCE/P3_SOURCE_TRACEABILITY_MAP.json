@@ -1,0 +1,76 @@
+{
+  "map_id": "P3-SPEC-SOURCE-TRACEABILITY-MAP-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-SOURCE",
+  "upstream_locks": [
+    {
+      "path": "control/locks/P2_BUILD_LOCK.json",
+      "sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad",
+      "lock_id": "P2-BUILD-LOCK-001",
+      "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d"
+    },
+    {
+      "path": "control/locks/P2_SPEC_LOCK.json",
+      "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+    }
+  ],
+  "schema_bindings": [
+    {
+      "path": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "sha256": "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96"
+    },
+    {
+      "path": "repository/schemas/stages/dependency_manifest.schema.json",
+      "sha256": "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746"
+    },
+    {
+      "path": "repository/schemas/stages/stage_manifest.schema.json",
+      "sha256": "c874b11692908bb3892226f0452c655167c178220b1729d44706c5578f87288b"
+    }
+  ],
+  "runtime_bindings": [
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    }
+  ],
+  "downstream_workpack": "P3-IMPL-SOURCE",
+  "next_spec_workpack": "P3-SPEC-DISTILL",
+  "traceability_rows": [
+    {
+      "clause": "source identity",
+      "artifact": "input_register",
+      "implementation_target": "source intake register builder",
+      "test_obligation": "all submitted sources listed exactly once"
+    },
+    {
+      "clause": "immutable freeze",
+      "artifact": "source_snapshot_manifest",
+      "implementation_target": "source snapshot runtime",
+      "test_obligation": "source_prd_snapshot_id, source_path, snapshot_path, snapshot_hash, byte_size, content_type, normalization_method, and source_identity validate against current schema"
+    },
+    {
+      "clause": "authority boundary",
+      "artifact": "source_authority_index",
+      "implementation_target": "source authority validator",
+      "test_obligation": "review_required item cannot become semantic authority"
+    },
+    {
+      "clause": "risk exclusion",
+      "artifact": "redaction_and_exclusion_log",
+      "implementation_target": "source risk classifier hooks",
+      "test_obligation": "secret-bearing source is not handed downstream as eligible"
+    },
+    {
+      "clause": "handoff manifest",
+      "artifact": "downstream_handoff_manifest",
+      "implementation_target": "source-to-distill handoff builder",
+      "test_obligation": "dependency manifest fields validate and referenced source authority artifacts distinguish eligible from blocked items"
+    }
+  ],
+  "open_blockers": []
+}

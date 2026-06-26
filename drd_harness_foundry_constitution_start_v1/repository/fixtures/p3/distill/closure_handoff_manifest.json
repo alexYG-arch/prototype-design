@@ -1,0 +1,20 @@
+{
+  "artifact_id": "p3.distill.closure_handoff_manifest",
+  "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+  "run_id": "p3.distill.fixture.001",
+  "eligible_unit_refs": [
+    "p3-unit-console-surface",
+    "p3-unit-case-intake-state",
+    "p3-unit-review-gap-message"
+  ],
+  "blocked_unit_refs": [
+    "p3-unit-visual-blocker"
+  ],
+  "blocked_product_gap_refs": [
+    "p3-gap-missing-product-details"
+  ],
+  "source_intake_refs": [
+    "repository/fixtures/p3/source_intake/intake_decisions.json"
+  ],
+  "next_stage": "P3-SPEC-CLOSURE"
+}

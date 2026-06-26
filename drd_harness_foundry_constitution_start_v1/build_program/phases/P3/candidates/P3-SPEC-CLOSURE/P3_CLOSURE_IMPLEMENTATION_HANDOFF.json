@@ -1,0 +1,29 @@
+{
+  "handoff_id": "P3-SPEC-CLOSURE-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P3",
+  "source_spec_workpack": "P3-SPEC-CLOSURE",
+  "implementation_workpack": "P3-IMPL-CLOSURE",
+  "blocked_until": [
+    "P3-SPEC-CLOSURE human review decision is approved for exact subject hash",
+    "P3_SPEC_LOCK exists and includes P3-SPEC-CLOSURE",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P3_SPEC_LOCK"
+  ],
+  "allowed_future_implementation_targets": [
+    "repository/src/drd_harness/validators/interaction_closure.py",
+    "repository/src/drd_harness/rules/interaction.py",
+    "repository/fixtures/p3/closure/**",
+    "repository/tests/p3/test_interaction_closure.py"
+  ],
+  "forbidden_now": [
+    "creating P3_SPEC_LOCK from this candidate alone",
+    "creating P3_BUILD_LOCK",
+    "modifying repository implementation code in this spec workpack",
+    "starting P3-IMPL-CLOSURE before spec lock and implementation authorization"
+  ],
+  "acceptance_commands_for_future_implementation": [
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_interaction_closure.py -q",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/interaction repository/tests/p3 -q",
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-CLOSURE"
+  ],
+  "open_blockers": []
+}

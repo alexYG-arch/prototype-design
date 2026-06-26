@@ -1,0 +1,44 @@
+{
+  "artifact_id": "p3.closure.interaction_messages",
+  "stage_id": "DRD-02-INTERACTION-CLOSURE",
+  "fixture_id": "p3_closure_fixture",
+  "path": "repository/fixtures/p3/closure/interaction_messages.json",
+  "schema_ref": "repository/schemas/interaction/interaction_message.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.distill.closure_handoff_manifest",
+    "p3.distill.semantic_unit_map",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.distill.closure_handoff_manifest": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a",
+    "p3.distill.semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+  "review_gate": "HUMAN_GATE_BEFORE_ELEMENTS",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": [
+    {
+      "message_id": "p3-msg-review-gap-blocked",
+      "message_type": "PERMISSION_BLOCK_MESSAGE",
+      "node_id": "p3-node-human-review-waiting-state",
+      "reaction_id": null,
+      "trigger_condition": "Missing product details are unresolved.",
+      "user_visible_summary": "Missing product details remain blocked for human review.",
+      "required_user_next_step": "Wait for a human review decision before adding behavior.",
+      "recovery_targets": [],
+      "trace_refs": [
+        "p3-unit-review-gap-message"
+      ]
+    }
+  ]
+}

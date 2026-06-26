@@ -1,0 +1,49 @@
+{
+  "artifact_id": "p3.distill.prd_element_decisions",
+  "records": [
+    {
+      "element_id": "p3-elem-console-surface",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "element_type": "PAGE",
+      "outcome": "ADOPT_NORMALIZED",
+      "normalized_label": "Operations console",
+      "blocking_reason": null,
+      "input_obligations": [],
+      "inference_refs": [
+        "p3-inf-console-surface"
+      ]
+    },
+    {
+      "element_id": "p3-elem-case-intake-state",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "element_type": "STATE",
+      "outcome": "ADOPT_NORMALIZED",
+      "normalized_label": "Ready, blocked, or human review waiting states",
+      "blocking_reason": null,
+      "input_obligations": [],
+      "inference_refs": [
+        "p3-inf-case-intake-state"
+      ]
+    },
+    {
+      "element_id": "p3-elem-review-gap-message",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "element_type": "MESSAGE",
+      "outcome": "ADOPT_NORMALIZED",
+      "normalized_label": "Missing product details remain review gaps",
+      "blocking_reason": null,
+      "input_obligations": [
+        "p3-obligation-missing-product-details"
+      ],
+      "inference_refs": [
+        "p3-inf-review-gap-message"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "stage_id": "DRD-00",
+  "run_id": "p3.source_intake.fixture.001",
+  "input_artifacts": [
+    "repository/fixtures/p3/source_intake/source/product_brief.md",
+    "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png"
+  ],
+  "input_hashes": [
+    "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800",
+    "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141"
+  ],
+  "source_prd_snapshot_hash": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800",
+  "output_artifacts": [
+    "repository/fixtures/p3/source_intake/snapshots/product_brief.md",
+    "repository/fixtures/p3/source_intake/snapshots/dashboard_screenshot.png",
+    "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+    "repository/fixtures/p3/source_intake/intake_decisions.json",
+    "repository/fixtures/p3/source_intake/source_authority_index.json",
+    "repository/fixtures/p3/source_intake/redaction_and_exclusion_log.json"
+  ],
+  "output_hashes": [
+    "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800",
+    "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141",
+    "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+    "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+    "00e8eff7500a337d8f4ceae260fdf49edafc9c4549ff88000ac852f0d85270ed",
+    "36582ff690f76bee81e3c9e1dc31d04071866cf8744465086653a4ff7a6f0265"
+  ],
+  "validator_result_hash": "40357e0b6f5aa009498c3a258b3964b589ca8d942bb8edbeb21d2711b26f4ce2"
+}

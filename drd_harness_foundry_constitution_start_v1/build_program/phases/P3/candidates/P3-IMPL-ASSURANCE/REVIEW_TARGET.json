@@ -1,0 +1,32 @@
+{
+  "target_id": "P3-IMPL-ASSURANCE-REVIEW-TARGET-001",
+  "workpack_id": "P3-IMPL-ASSURANCE",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-IMPL-ASSURANCE",
+  "review_subject_hash": "fe0192379d858a4e2e9166a4ae619b3d05bfbe828e839fc3316f878f3924bc8c",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does assurance stay inside P3-IMPL-ASSURANCE and avoid product capability expansion?",
+    "Does it bind approved compiler review decision and current compiler package hashes?",
+    "Do trace rows, tests, workpack scope, skill binding, exceptions, QA boundary, and final report validate together?",
+    "Do targeted, workpack/stage, P3, and full regression tests pass?"
+  ],
+  "not_a_review_decision": true,
+  "resolved_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

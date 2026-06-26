@@ -1,0 +1,33 @@
+{
+  "target_id": "P3-SPEC-DISTILL-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-DISTILL",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-DISTILL",
+  "review_subject_hash": "9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_DISTILLATION_CONTRACT.md",
+    "P3_DISTILLATION_SEMANTIC_MODEL.md",
+    "P3_DISTILLATION_ARTIFACT_CONTRACTS.json",
+    "P3_DISTILLATION_PIPELINE_RULES.json",
+    "P3_DISTILLATION_VALIDATION_MATRIX.json",
+    "P3_DISTILLATION_TRACEABILITY_MAP.json",
+    "P3_DISTILLATION_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does distillation preserve natural source semantics as primary authority?",
+    "Are semantic units atomic and traceable enough for downstream interaction closure?",
+    "Do schema-bound artifacts align to current schema required fields and enums?",
+    "Are induction, conflict, missing input, and product expansion routes gated by human review?",
+    "Does the candidate avoid locks, repository code, P1/P2 mutation, source-candidate mutation, and root P3 phase-file mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

@@ -1,0 +1,125 @@
+{
+  "evidence_id": "P3-IMPL-SOURCE-VALIDATION-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-SOURCE",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P3-VAL-SOURCE-INTAKE-ARTIFACT-SET",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_source_intake.py -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "P3 source intake fixture validates multi-source registration, frozen local snapshots, authority index, exclusion log, and handoff boundary.",
+      "result_hash": "a452bc37ae4b1bf45d2dc571e45f29428f31b1573e7959ae8109ee4bd302a1e1",
+      "evidence_files": [
+        "repository/tests/p3/test_source_intake.py"
+      ]
+    },
+    {
+      "check": "P3-VAL-EXTERNAL-LINK-SNAPSHOT-BOUNDARY",
+      "status": "PASS",
+      "summary": "External link metadata cannot become eligible source content without a local snapshot.",
+      "evidence_files": [
+        "repository/tests/p3/test_source_intake.py",
+        "repository/src/drd_harness/validators/source_intake.py"
+      ]
+    },
+    {
+      "check": "P3-VAL-VISUAL-EXTRACTION-BOUNDARY",
+      "status": "PASS",
+      "summary": "Visual source files remain identity-frozen but not semantic authority until extraction evidence exists.",
+      "evidence_files": [
+        "repository/tests/p3/test_source_intake.py",
+        "repository/src/drd_harness/validators/source_intake.py"
+      ]
+    },
+    {
+      "check": "P3-VAL-PRODUCT-CAPABILITY-EXPANSION-REVIEW",
+      "status": "PASS",
+      "summary": "Sources requiring new product capability are blocked from eligible state and routed to human review.",
+      "evidence_files": [
+        "repository/tests/p3/test_source_intake.py",
+        "repository/src/drd_harness/validators/source_intake.py"
+      ]
+    },
+    {
+      "check": "P3-VAL-LOCKED-P2-HASH-GUARD",
+      "status": "PASS",
+      "summary": "source_snapshot.py remains byte-identical to the P2 build-readiness hash after P3 source intake implementation.",
+      "evidence_files": [
+        "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json"
+      ]
+    },
+    {
+      "check": "P3-IMPL-SOURCE-FULL-REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Full repository test suite passed with 307 tests.",
+      "result_hash": "4eb206469e10d8d971704be8eea50cdfcf9a03bd063426e0da58bdb774ecf8b4",
+      "evidence_files": [
+        "build_program/phases/P3/candidates/P3-IMPL-SOURCE/TEST_REPORT.json"
+      ]
+    },
+    {
+      "check": "P3-IMPL-SOURCE-REVIEW-BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-SOURCE --review-decision build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "review decision binds the approved P3-IMPL-SOURCE subject hash with zero findings",
+      "result_hash": "c5b79fe1cf6d36c37ad4b9d0d6f4a49719e7aa64e5ae7d6c9613f50abc12b293",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))",
+      "evidence_files": [
+        "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json"
+      ]
+    }
+  ],
+  "fixture_artifacts": [
+    {
+      "path": "repository/fixtures/p3/source_intake/downstream_handoff_manifest.json",
+      "sha256": "8499bec92e2a68dd5deb5c1a8a19afeceecb26ba866f3c043331850ac0434645"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/input_register.json",
+      "sha256": "bce31a15a34daa277cf3d7a1c12148d07efd251c37c6eb79492a9bb624404148"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+      "sha256": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/redaction_and_exclusion_log.json",
+      "sha256": "36582ff690f76bee81e3c9e1dc31d04071866cf8744465086653a4ff7a6f0265"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/snapshots/dashboard_screenshot.png",
+      "sha256": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/snapshots/product_brief.md",
+      "sha256": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png",
+      "sha256": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source/product_brief.md",
+      "sha256": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source_authority_index.json",
+      "sha256": "00e8eff7500a337d8f4ceae260fdf49edafc9c4549ff88000ac852f0d85270ed"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+      "sha256": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/source_intake.py",
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/schemas/stages/source_snapshot_manifest.schema.json"
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

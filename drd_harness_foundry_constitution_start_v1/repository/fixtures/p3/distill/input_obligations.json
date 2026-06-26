@@ -1,0 +1,12 @@
+{
+  "artifact_id": "p3.distill.input_obligations",
+  "records": [
+    {
+      "obligation_id": "p3-obligation-missing-product-details",
+      "required_input": "Missing product details needed before adopting any new workflow or capability.",
+      "task_ref": "p3-unit-review-gap-message",
+      "acquisition_path": null,
+      "gap_ref": "p3-gap-missing-product-details"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "artifact_id": "p3.compiler.read_only_qa_boundary",
+  "stage_id": "DRD-05-COMPILATION",
+  "fixture_id": "p3_compiler_fixture",
+  "path": "repository/fixtures/p3/compiler/read_only_qa_boundary.json",
+  "schema_ref": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+  "schema_payload_key": "boundary",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "upstream_artifact_refs": [
+    "FINAL_DRD.md",
+    "compiler output indexes"
+  ],
+  "upstream_hashes": {
+    "compiled_package": "24656eb68cb44c9bad12f422eab7760235d90a5146dad5d64be0de4dbd0fb773"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+    "repository/fixtures/p3/source_intake/intake_decisions.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/layout/natural_language_layout.json",
+    "repository/fixtures/p3/layout/layout_composition_index.json",
+    "repository/fixtures/p3/layout/state_placement_index.json"
+  ],
+  "boundary": {
+    "drd06_run_id": "p3.compiler.read_only_qa.001",
+    "qa_finding_id": "p3.compiler.qa.no-mutation",
+    "finding_type": "READ_ONLY_BOUNDARY_CONFIRMATION",
+    "read_paths": [
+      "repository/fixtures/p3/compiler/FINAL_DRD.md",
+      "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+      "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
+      "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+      "repository/fixtures/p3/compiler/final_drd_manifest.json",
+      "repository/fixtures/p3/compiler/final_drd_toc.json",
+      "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+      "repository/fixtures/p3/compiler/final_drd_hash_index.json"
+    ],
+    "written_paths": [
+      "READ_ONLY_QA_REPORT.md",
+      "qa_finding_index.json"
+    ],
+    "mutated_artifacts": [],
+    "mutation_claim": "NO_MUTATION"
+  }
+}

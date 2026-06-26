@@ -1,0 +1,47 @@
+{
+  "artifact_id": "p3.assurance.final_review_packet",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/final_review_packet.json",
+  "schema_ref": null,
+  "schema_payload_key": "packet",
+  "source_refs": [
+    "p3.assurance.input_index"
+  ],
+  "upstream_artifact_refs": [
+    "p3.assurance.final_assurance_report"
+  ],
+  "upstream_hashes": {
+    "compiler_review_subject_hash": "05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/phase_gate.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "packet": {
+    "packet_id": "P3-ASSURANCE-FINAL-REVIEW-PACKET-001",
+    "compiler_package_ref": "repository/fixtures/p3/compiler",
+    "assurance_input_index_ref": "repository/fixtures/p3/assurance/assurance_input_index.json",
+    "qa_boundary_ref": "repository/fixtures/p3/assurance/read_only_qa_boundary.json",
+    "traceability_summary": {
+      "trace_rows": 7,
+      "test_obligations": 7,
+      "workpacks": 1,
+      "status": "PASS"
+    },
+    "unresolved_findings": [],
+    "exception_summary": {
+      "status": "PASS",
+      "exception_count": 0
+    },
+    "human_gate_policy": "human_review_required_before_p3_build_lock",
+    "lock_readiness": "READY_FOR_SEPARATE_EXPLICIT_REQUEST",
+    "promotion_claim": "NOT_PROMOTED"
+  }
+}

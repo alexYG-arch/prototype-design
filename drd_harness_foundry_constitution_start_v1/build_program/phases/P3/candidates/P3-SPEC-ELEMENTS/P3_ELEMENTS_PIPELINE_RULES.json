@@ -1,0 +1,76 @@
+{
+  "ruleset_id": "P3-SPEC-ELEMENTS-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ELEMENTS",
+  "ordered_steps": [
+    {
+      "step_id": "elements.consume_closure_handoff",
+      "name": "Load approved interaction closure review, closure artifacts, and blocked closure units",
+      "required_input": "P3-SPEC-CLOSURE review decision and closure handoff"
+    },
+    {
+      "step_id": "elements.load_semantic_source",
+      "name": "Load source and distillation semantics as the primary meaning rail",
+      "required_input": "source and distillation artifacts"
+    },
+    {
+      "step_id": "elements.extract_explicit_inventory",
+      "name": "Create atomic explicit element inventory from source, distillation, and eligible closure objects",
+      "required_output": "prd_element_inventory"
+    },
+    {
+      "step_id": "elements.decide_adoption",
+      "name": "Create adoption decisions for every explicit inventory row",
+      "required_output": "prd_element_decisions"
+    },
+    {
+      "step_id": "elements.derive_missing_required",
+      "name": "Use deductive completion for required same-task missing elements only",
+      "required_output": "derived_element_decisions"
+    },
+    {
+      "step_id": "elements.route_inputs_and_gaps",
+      "name": "Create input obligations and product expansion gaps for unresolved acquisition or scope choices",
+      "required_output": "input_obligations and product_expansion_gaps"
+    },
+    {
+      "step_id": "elements.review_structural_completion",
+      "name": "Route missing child pages, lower-level surfaces, and ambiguous page structure through structural completion review",
+      "required_output": "structural_completion_review"
+    },
+    {
+      "step_id": "elements.record_inference",
+      "name": "Record inference evidence for every canonical, blocked, and rejected derived conclusion",
+      "required_output": "inference_records"
+    },
+    {
+      "step_id": "elements.validate_and_handoff",
+      "name": "Validate coverage, row atomicity, no product expansion, and downstream handoff readiness",
+      "required_output": "validation evidence and handoff"
+    }
+  ],
+  "element_rules": [
+    "Natural language and approved review decisions are the primary semantic authority; inventory rows are index and verification skeleton only.",
+    "Every inventory row must be atomic and describe exactly one element.",
+    "Every explicit inventory row must have exactly one adoption decision.",
+    "Canonical projection includes only ADOPT_AS_IS, ADOPT_NORMALIZED, eligible DEDUCTIVE_PRIMARY derived rows, and Human Gate resolved approved expansion rows.",
+    "Every canonical derived element must use DEDUCTIVE_PRIMARY and cite inference records.",
+    "INDUCTIVE_AUXILIARY may propose candidates but cannot make a canonical element without Human Gate approval.",
+    "Every eligible closure node, clickable, message, async behavior, failure recovery, overlay closure, and handoff surface must map to a canonical element or blocked gap.",
+    "A page or flow name alone does not authorize hidden child pages or lower-level surfaces.",
+    "Missing input must have an acquisition path or a product gap route.",
+    "Product expansion gaps block downstream consumption until resolved by Human Gate.",
+    "Pattern, layout, and compiler workpacks cannot invent elements absent from this element universe or a resolved gap decision."
+  ],
+  "forbidden_behaviors": [
+    "treat inventory rows as stronger authority than source language",
+    "bundle multiple semantic elements into one inventory row",
+    "adopt inductive candidates as canonical without Human Gate approval",
+    "consume REQUEST_CLARIFICATION, REJECT_CONFLICT, ROUTE_PRODUCT_GAP, open gap, rejected gap, superseded gap, structural review, or blocked derived rows as canonical elements",
+    "complete missing child pages by convention without structural completion review",
+    "create new product capability, integration, data scope, role, permission, workflow, or page family without a resolved product expansion gap",
+    "let downstream pattern or layout artifacts reference elements not present in the canonical element universe",
+    "write repository implementation code during this spec workpack"
+  ],
+  "open_blockers": []
+}

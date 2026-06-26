@@ -1,0 +1,57 @@
+{
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "phase": "P3",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS",
+  "upstream_candidate": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS",
+  "upstream_review_decision": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+  "upstream_review_decision_sha256": "ac1305c8213f46b9b72af928fbf24f216a7a87cd28eff4a50e3b693815256c57",
+  "upstream_review_decision_subject_hash": "d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+  "owned_module": "shared_component_and_information_patterns",
+  "owned_clauses": [
+    "P3-PATTERNS-SEMANTIC-REUSE",
+    "P3-PATTERNS-INFORMATION-PRESENTATION",
+    "P3-PATTERNS-CONSISTENCY-EXCEPTIONS",
+    "P3-PATTERNS-MESSAGE-COVERAGE",
+    "P3-PATTERNS-LAYOUT-BOUNDARY",
+    "P3-PATTERNS-DOWNSTREAM-RESOLUTION"
+  ],
+  "generated_outputs": [
+    "P3_PATTERNS_CONTRACT.md",
+    "P3_PATTERNS_MODEL.md",
+    "P3_PATTERNS_ARTIFACT_CONTRACTS.json",
+    "P3_PATTERNS_PIPELINE_RULES.json",
+    "P3_PATTERNS_VALIDATION_MATRIX.json",
+    "P3_PATTERNS_TRACEABILITY_MAP.json",
+    "P3_PATTERNS_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "NOT_CREATED",
+  "next_action": "Generate P3-SPEC-LAYOUT when the user explicitly asks to continue; do not implement repository code or create P3 locks from this candidate alone.",
+  "direct_dependency_review_decisions": [
+    {
+      "dependency": "P3-SPEC-CLOSURE interaction message authority",
+      "candidate": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE",
+      "review_decision": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "review_decision_sha256": "3f0a9eb31b0fe77b1ef29979b88d01ff13d83f5c2f8a0de1ed09c49e39c67422",
+      "review_decision_subject_hash": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+      "consumed_for": [
+        "interaction_messages",
+        "message_coverage_index",
+        "approved interaction message ids"
+      ]
+    }
+  ]
+}

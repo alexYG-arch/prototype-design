@@ -1,0 +1,73 @@
+{
+  "ruleset_id": "P3-SPEC-SOURCE-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-SOURCE",
+  "ordered_steps": [
+    {
+      "step_id": "source.submit",
+      "name": "Register submitted source item",
+      "allowed_mutation": "metadata record only",
+      "output": "input_register"
+    },
+    {
+      "step_id": "source.inspect",
+      "name": "Inspect accessibility, type, size, and risk boundary",
+      "allowed_mutation": "none to source bytes",
+      "output": "intake_decision"
+    },
+    {
+      "step_id": "source.freeze",
+      "name": "Copy or bind source into immutable local snapshot",
+      "allowed_mutation": "new immutable snapshot file only",
+      "output": "source_snapshot_manifest"
+    },
+    {
+      "step_id": "source.authority",
+      "name": "Assign authority role and conflict policy",
+      "allowed_mutation": "authority index row",
+      "output": "source_authority_index"
+    },
+    {
+      "step_id": "source.exclude_or_redact",
+      "name": "Record exclusions and derivative redactions separately",
+      "allowed_mutation": "redaction or exclusion log only",
+      "output": "redaction_and_exclusion_log"
+    },
+    {
+      "step_id": "source.handoff",
+      "name": "Create downstream handoff manifest",
+      "allowed_mutation": "handoff manifest only",
+      "output": "downstream_handoff_manifest"
+    }
+  ],
+  "state_model": [
+    {
+      "state": "registered",
+      "meaning": "source item exists in intake register but has not been accepted"
+    },
+    {
+      "state": "frozen",
+      "meaning": "source bytes or canonical content are locally hash-bound"
+    },
+    {
+      "state": "eligible",
+      "meaning": "source may be consumed by downstream semantic modules"
+    },
+    {
+      "state": "review_required",
+      "meaning": "source is preserved but cannot be adopted without human decision"
+    },
+    {
+      "state": "rejected",
+      "meaning": "source cannot act as semantic authority in this run"
+    }
+  ],
+  "forbidden_behaviors": [
+    "mutate frozen source bytes in place",
+    "treat external link metadata as source content without local snapshot",
+    "adopt semantic claims from images before extraction evidence exists",
+    "invent product requirements during source intake",
+    "discard rejected or redacted source influence without a reason record"
+  ],
+  "open_blockers": []
+}

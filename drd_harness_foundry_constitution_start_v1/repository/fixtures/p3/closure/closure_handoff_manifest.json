@@ -1,0 +1,55 @@
+{
+  "artifact_id": "p3.closure.closure_handoff_manifest",
+  "stage_id": "DRD-02-INTERACTION-CLOSURE",
+  "fixture_id": "p3_closure_fixture",
+  "path": "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+  "schema_ref": null,
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.distill.closure_handoff_manifest",
+    "p3.distill.semantic_unit_map",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.distill.closure_handoff_manifest": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a",
+    "p3.distill.semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+  "review_gate": "HUMAN_GATE_BEFORE_ELEMENTS",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": [
+    {
+      "handoff_id": "p3-closure-to-elements-001",
+      "eligible_graph_units": [
+        "p3-node-operations-console",
+        "p3-node-case-ready-state",
+        "p3-node-case-blocked-state",
+        "p3-node-human-review-waiting-state",
+        "p3-edge-console-to-ready-state",
+        "p3-edge-console-to-blocked-state",
+        "p3-edge-console-to-human-review-waiting-state",
+        "p3-msg-review-gap-blocked"
+      ],
+      "blocked_graph_units": [
+        "p3-unit-visual-blocker"
+      ],
+      "source_artifact_hashes": {
+        "p3.distill.closure_handoff_manifest": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a",
+        "p3.distill.semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+        "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+      },
+      "review_blockers": [
+        "p3-gap-missing-product-details"
+      ]
+    }
+  ]
+}

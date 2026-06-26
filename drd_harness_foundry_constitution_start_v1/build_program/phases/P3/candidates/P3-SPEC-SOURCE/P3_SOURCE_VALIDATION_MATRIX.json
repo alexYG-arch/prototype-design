@@ -1,0 +1,58 @@
+{
+  "matrix_id": "P3-SPEC-SOURCE-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-SOURCE",
+  "validation_rows": [
+    {
+      "rule_id": "P3SRC-VAL-001",
+      "requirement": "P2_BUILD_LOCK must validate before P3 source spec is actionable",
+      "evidence": "control/locks/P2_BUILD_LOCK.json",
+      "validator": "validate_build_lock_readiness",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3SRC-VAL-002",
+      "requirement": "every registered source item has identity, kind, role, and origin metadata",
+      "evidence": "p3.source_intake.input_register",
+      "validator": "future P3 source intake validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3SRC-VAL-003",
+      "requirement": "accepted source snapshot manifests use the existing schema fields and are immutable and hash-bound",
+      "evidence": "p3.source_intake.source_snapshot_manifest",
+      "validator": "repository/src/drd_harness/stages/source_snapshot.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3SRC-VAL-004",
+      "requirement": "review-required and rejected source items cannot become downstream semantic authority",
+      "evidence": "source_authority_index and redaction_and_exclusion_log",
+      "validator": "future P3 authority boundary validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3SRC-VAL-005",
+      "requirement": "downstream handoff uses dependency_manifest schema fields and references only eligible items or explicit blockers through artifact hashes",
+      "evidence": "downstream_handoff_manifest plus source_authority_index and redaction_and_exclusion_log",
+      "validator": "future P3 dependency handoff validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3SRC-VAL-006",
+      "requirement": "candidate scope stays inside P3-SPEC-SOURCE and does not create locks or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "fixture with one text PRD freezes and creates source_snapshot_manifest",
+    "external link without local snapshot routes to review_required",
+    "image source is frozen but semantic adoption is blocked until extraction evidence exists",
+    "secret-bearing input is excluded or redacted through separate derivative artifact",
+    "conflicting authority roles produce a human review blocker",
+    "downstream handoff rejects mutable or rejected sources"
+  ],
+  "open_blockers": []
+}

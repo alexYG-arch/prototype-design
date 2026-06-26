@@ -1,0 +1,576 @@
+{
+  "lock_id": "P3-SPEC-LOCK-001",
+  "phase": "P3",
+  "root_sha256": "311caf3063b75039a607c31fdec0318c7f7076483fca30507a7cedb385fc9522",
+  "files": [
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-SOURCE",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE",
+      "subject_hash": "d7468c8379b2860556146940734c0e61280811f72cef4c7b3cc1ed79513eb739",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "df6e0860e97a609efccbbdd67764e2dee44b0d36d086633e2f89dac232d7238e"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_INTAKE_CONTRACT.md",
+          "sha256": "acfa07ebf274d065e557871d1ead62c467e548780312d4ca46d7fd7e27aa756b"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_AUTHORITY_BOUNDARY.md",
+          "sha256": "bf78414ce8789f0698a45745ee22dcdd2d605e91b6f067e484868d758f799e87"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_ARTIFACT_CONTRACTS.json",
+          "sha256": "4cb5e5533fb7c4462563571411cf23e1c6650c34845538de94ab65ce38a0cd81"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_PIPELINE_RULES.json",
+          "sha256": "9ed915d3ec7bb4cda482eb8ed2de6f80ffec80080fa707650104e8984fc711e2"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_VALIDATION_MATRIX.json",
+          "sha256": "4ae03bea4d08b9a90ff0eb07bf4d112673f7bdee666c86dbf2162a9df59bdca8"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_TRACEABILITY_MAP.json",
+          "sha256": "02b1e4b901b362ea8a0aac6c3cb5f0496405f84c08bf8fad36b412f638ff510d"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "7150b6cc90a63e01322acd85e56894f80fcaa9f9867068c4c54070e8f9f0f949"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/VALIDATION_EVIDENCE.json",
+          "sha256": "68b1ac3860a198a9ac1d354827c09906f038500af179c8971f2f6424f5f4208c"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/SCOPE_REPORT.json",
+          "sha256": "61a76e81fa0c94a4ad0262d691b7aae550409096a012f2f81279bc9ea86b0250"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/CANDIDATE_MANIFEST.json",
+          "sha256": "9b42bbdb0f4ebd2762668a33627c08e147a8bf75b4dfe214ed4ae46a8529b617"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/PART_SELF_CHECK.md",
+          "sha256": "41a1e8b42ab492a7e8b8af56515486133dfe87a8299fdbbb83cffca95e314b4f"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/HANDOFF.md",
+          "sha256": "f113726a2131743880031d8dcfbb214ad0992f4b97c5e65ad590440118121b3b"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-DISTILL",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL",
+      "subject_hash": "9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "5c078b9509d48b8eccf863c9cf074b55d355c9bde28ff13a21446f093150e902"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_CONTRACT.md",
+          "sha256": "3d99183a981d484ea4b539b122c1a3c1ad47374f8ac3c63a3a6cae6dcb780b7e"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_SEMANTIC_MODEL.md",
+          "sha256": "c714157df91db9bed01c6db0a4ea021b51830b33ac0d6c70b494c089fe231990"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_ARTIFACT_CONTRACTS.json",
+          "sha256": "eda141d5ce3656377b696f2d5b2796542cee9a88b7c195c2cc0abc83b899fc12"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_PIPELINE_RULES.json",
+          "sha256": "1c6aeee237c4fc92e0946a6d19b334acbc49c3d83cab3d85fdd4021cd7c56392"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_VALIDATION_MATRIX.json",
+          "sha256": "11c97c27699a3817ed864142fee938886c30200a645aaf4cf0f8fc46ae8e04bd"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_TRACEABILITY_MAP.json",
+          "sha256": "07235ee01d827d3f2eb1817a6e8b20bb3e691b2e126882522f02499850adb570"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/P3_DISTILLATION_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "14153c19a2cdf6baf3ccf9fe83db6f3d852a55b001ed0915c1c62bf8d707fe0b"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/VALIDATION_EVIDENCE.json",
+          "sha256": "ec7fd5a4792cb76a076866e8c9103f89d68249eaf4006011e641a09fc93b6399"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/SCOPE_REPORT.json",
+          "sha256": "9feae1a124f0182afa990e7dbc6421572cf56decfc8587cfb3d75ed50eff4dae"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/CANDIDATE_MANIFEST.json",
+          "sha256": "799afcb3e362718b48c929a9885d16d3ae54122d5ceb3cf81e47ab5a406db335"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/PART_SELF_CHECK.md",
+          "sha256": "36a34bda4ac04f40c956e7ca83a5927648426e3cfa70efb2f5d9fec730e772d2"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/HANDOFF.md",
+          "sha256": "29181e09b0a1dbead71263b6e51e949df32d0b58c78b7e8379c010da2e0037de"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-CLOSURE",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE",
+      "subject_hash": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "3f0a9eb31b0fe77b1ef29979b88d01ff13d83f5c2f8a0de1ed09c49e39c67422"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_CONTRACT.md",
+          "sha256": "ba64c1132baef50e983e5224039b48a462c615d8170c586f9fc804c8fd0ef6c1"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_GRAPH_MODEL.md",
+          "sha256": "868063d2d0be5b8c602bf313f3a2c9be7e9abc6c9e516a6313743d25ec29920a"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_ARTIFACT_CONTRACTS.json",
+          "sha256": "2466e998b5c476fc5d5df061b078db29d424dd2bac7eaa7ef182e5638d58fdc0"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_PIPELINE_RULES.json",
+          "sha256": "bcbe0949537a90ec939dd722512ac30ad98e14972d4cf9e13b2aa238fb856711"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_VALIDATION_MATRIX.json",
+          "sha256": "f87ba838da9152fcd105cb4375e41b3876487989fea3a315a5badcf9bb174010"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_TRACEABILITY_MAP.json",
+          "sha256": "269889007589de15f71266f650c159b455e56b6d069c17b7ab196f1407a1f78b"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/P3_CLOSURE_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "d1f064c7de5aeb1d0d349243d8fede2c350a52fb91e9782ea7512b4e28ced962"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/VALIDATION_EVIDENCE.json",
+          "sha256": "c9dc4b620c8c145bd9bb6856b4f16126f7032d6313579fcc4ece1010cf5d6e66"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/SCOPE_REPORT.json",
+          "sha256": "eb220aeb66060009390b1e9e82d2b1f997f73bb9dff447054b8d5fed4f38d0f1"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/CANDIDATE_MANIFEST.json",
+          "sha256": "ba0a47068acdbfac38b335efad9279af1a2a7a0373135aa930efd60c5e74b426"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/PART_SELF_CHECK.md",
+          "sha256": "107b6c985e8fa03c7acd5e651f5157d9f4055bd1d5659686569139157accb5f2"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/HANDOFF.md",
+          "sha256": "43638f6aed94a494217fd63621dedb7712a13378d3e45582ee6d4e638b8dbc9f"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-ELEMENTS",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS",
+      "subject_hash": "d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "ac1305c8213f46b9b72af928fbf24f216a7a87cd28eff4a50e3b693815256c57"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_CONTRACT.md",
+          "sha256": "e6d4d34cb6e9b83b84bc732104375aef2998158484b3c23235a415c7014bdade"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_MODEL.md",
+          "sha256": "1698070231e4f1bc54803c5744ac9e31cc4055dea1d5a48a040009f9aa75096e"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_ARTIFACT_CONTRACTS.json",
+          "sha256": "8b2dd43ced92332f62e95c1385ddce8a74c8a0bb9256cef5001344871f101818"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_PIPELINE_RULES.json",
+          "sha256": "b1fa2bc82b88122135b9a666746f5a8199177e9241fbb4ea7c03e394774d5dc9"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_VALIDATION_MATRIX.json",
+          "sha256": "3bfba4c08d26f04b5a5a775c3f6a8e1db38942fd252f32a6add49dd4f297e342"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_TRACEABILITY_MAP.json",
+          "sha256": "b27eec3bb92bf8fbfaaf18de589942a9eae3697ec97b2aba67cf278779d90000"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/P3_ELEMENTS_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "261018a2f87e52d29af493792210c0ad848e4676cfc5176148db6e956793c655"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/VALIDATION_EVIDENCE.json",
+          "sha256": "5930ac4ee110ee8f3b9becfb0af2d8811e086b489295a4236df89e90bbab7dd6"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/SCOPE_REPORT.json",
+          "sha256": "362a1a2a42310a6164bf4ebc5b97259b881e7440a02f94dc47a46cf71523aca4"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/CANDIDATE_MANIFEST.json",
+          "sha256": "7e3c293a59a785603de581cc79b401f123622a64fb40dd6e2145516dda52642c"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/PART_SELF_CHECK.md",
+          "sha256": "139b306f20e935243345bffaa2d01f0fcdea4953f3a726c509cb687372bb4846"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/HANDOFF.md",
+          "sha256": "976639ca2368d744e6ccc9a9761b644ffdff18996932fe8110b95189e527dda4"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-PATTERNS",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS",
+      "subject_hash": "f70abec15e06d121de485dac91b3efad19367a3eada31ee31133354112a683be",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "cef82d8eeab608d7bed3c04d50dacfe0f2b36799c22fbb5bfa42f2146195df96"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_CONTRACT.md",
+          "sha256": "f6b60ccc22195553a891f17aee32cf890b6193d87eba4c7c706602602aea6483"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_MODEL.md",
+          "sha256": "609974fee6118f5123e7a5d03518499046376579ab94b6b7f62d5770c46917e1"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_ARTIFACT_CONTRACTS.json",
+          "sha256": "4a242295cc34808c771dd8e5eed242d7f683cbc8380208054c41449841844004"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_PIPELINE_RULES.json",
+          "sha256": "d0412ec7680230ab59220e83ba83b51dc1fc471400cfc66fb9a2c8f61ce6e25f"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_VALIDATION_MATRIX.json",
+          "sha256": "5db5326e9cb19589f564069a46bd4b162ac3898ab3601099e84effbf4fa747eb"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_TRACEABILITY_MAP.json",
+          "sha256": "bba7aba73eecdb0dbc7a07c79dfa9b95ffae5d854620e086f854a9548c6a42cc"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/P3_PATTERNS_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "76911bb63805958dad627851c12a957b086cd0c2b89fa264aaf0fc18f13796c8"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/VALIDATION_EVIDENCE.json",
+          "sha256": "2133ffab48fa48b481754ef588103c56c86c9e1e4fedf9166930cef9d991b455"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/SCOPE_REPORT.json",
+          "sha256": "99847b9939bcb298d43eae6e1079c9abcf2489f82f75d97691fc1c2a710641b2"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/CANDIDATE_MANIFEST.json",
+          "sha256": "a49b6cea9b6682ce037221392c09782d4a19fa846058c62da9c13a10b4f25b84"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/PART_SELF_CHECK.md",
+          "sha256": "78885e3e98ded0583a3ff306305939d5b5c100f531f80601233e7814d176d8e5"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/HANDOFF.md",
+          "sha256": "e443985524c2e1d164cb9336d3037a546b15f9b543900765d4dec7870a18804a"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-LAYOUT",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT",
+      "subject_hash": "191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "46a9b20fd3b05510036f64024389487be3d90e4c2fb68731514fc93cb577881a"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_CONTRACT.md",
+          "sha256": "68d52e36dd21283dbaac88bf10e0fcfc1b29cd4da98ed48d4bdb180b8a6866f0"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_MODEL.md",
+          "sha256": "a70286bae9f25b7a7c78b01c5b03e0e5f1b4df1491c59006951f26942fb2ccef"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_ARTIFACT_CONTRACTS.json",
+          "sha256": "60704b244f5670f81368761dc3cbbb68b077fce6736cd182f671367394ceed99"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_PIPELINE_RULES.json",
+          "sha256": "a8b0fb5e3f7437370de23eb1ba3ca2db9038475ade5a87809d54aa184b5d9829"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_VALIDATION_MATRIX.json",
+          "sha256": "4713f8f7349f153765c0aae1c3aa9f8b6ace7e6750fbe2916e47070b3cc37f96"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_TRACEABILITY_MAP.json",
+          "sha256": "8ee7f58561cc1d8e663603f4963935c6d478c4262460b75fa5248452b4c6d725"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "fb35d7397450f5cf685728bf92d78071510a461a028e4f3153b1328dcdedf975"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/VALIDATION_EVIDENCE.json",
+          "sha256": "651e291eee9a5362244c37903f691bda2e73768dbb6388eb136c35184fe5bae9"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/SCOPE_REPORT.json",
+          "sha256": "e337789db83fffe69e3382350101966ce41f5b11487d692c08eacc412f305287"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/CANDIDATE_MANIFEST.json",
+          "sha256": "6cf61f8f0fa5629d77bb2e5dd9e06535dcfddd082bd512acfb959c8a73391cd0"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/PART_SELF_CHECK.md",
+          "sha256": "92d15ba481b66bcaabfcf1ae2a13c90fc7fb5b0bee3c735361dc0c7bba584251"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/HANDOFF.md",
+          "sha256": "016cd154df858e739c2ea3c92122ea0da5982dae44b49ae7bad283ece8705dde"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-COMPILER",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER",
+      "subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_CONTRACT.md",
+          "sha256": "f032ad4a514786141055d2f526fb276ce858113e9c4ee4438d57ed7347078eb2"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_MODEL.md",
+          "sha256": "d624fe50d5c2931b68b64ee4234b33dd282364e5cba142c57f48e3d033d8b7f9"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_ARTIFACT_CONTRACTS.json",
+          "sha256": "6ea44172aec46a0912675352dcbf2413730502823713717a2d6b829abe747052"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_PIPELINE_RULES.json",
+          "sha256": "5b5961cc99de9bbcd39f72b98093f4d327189686f58e825606e342cec3dd854d"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_VALIDATION_MATRIX.json",
+          "sha256": "b4a3a41b76d117e4cefa51c89b6f0345dc48b8abe507ccf6ab55626fd4de6b10"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_TRACEABILITY_MAP.json",
+          "sha256": "6e9384e3af478922be210c8adcd64e9abfcd84f2f80a617846cd538931b579e6"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/P3_COMPILER_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "d2f52bcf3c081e579481dd316295609af0c057ad4904a84e61e084fac9ff2520"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/VALIDATION_EVIDENCE.json",
+          "sha256": "197f5bf4d3d8a1b72d7881aa9080fea946587c10d5d7f78d74ca231c75d090ff"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/SCOPE_REPORT.json",
+          "sha256": "bb480d82515bc16a36f179d7e9ee360a292d235a0bbc1760222762f61fd511ed"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/CANDIDATE_MANIFEST.json",
+          "sha256": "a7697e17ccbe2e64b9fef6bf8f1c4339e763bc74760117964cf9cd0be5b37a8a"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/PART_SELF_CHECK.md",
+          "sha256": "1be00c5759e6215bf32082f06c7d1e9338d6b3c3be1b93baf14f05c444c82267"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/HANDOFF.md",
+          "sha256": "4bef482c926f8365b7cd28a1e5b1ff3280469435846385eff65ed68520786f60"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P3-SPEC-ASSURANCE",
+      "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE",
+      "subject_hash": "efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+      "review_decision": {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/REVIEW_DECISION.json",
+        "decision_id": null,
+        "sha256": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_CONTRACT.md",
+          "sha256": "a0fb899f47ee1f7f37749c9fbaa306317b2cca63d3d15000f476712467062ef8"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_MODEL.md",
+          "sha256": "974b2d80c648dcd424026e710abfbd877707dbe89bb1b5e92e81adb5eb9ce8f9"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_ARTIFACT_CONTRACTS.json",
+          "sha256": "4cef71b3d78db5b9e539adcda96897dea7bbee28db659c0a7b9ebdb0875e787f"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_PIPELINE_RULES.json",
+          "sha256": "19c7a6a23a570b7b4c523699f3c74c2acb53eabc9cca3fcaefffbdcd5a43fe0f"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_VALIDATION_MATRIX.json",
+          "sha256": "8ec7f7c5245abe264c5d36733b92673c4129550e2510b1cf8eae25fcfcff0313"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_TRACEABILITY_MAP.json",
+          "sha256": "ee3fe39c67f580bbd5943eb1351adab9f1cae946ccbb9a24e95e39d343c3c05e"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "5b19110ab42fece4cf2b2a45ed816f5542ac61667d8547e793c1491bf76c9aa1"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/VALIDATION_EVIDENCE.json",
+          "sha256": "050dfc7eeeb2a775b78ad350a66476d4584099ac784bf550678628696d073e54"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/SCOPE_REPORT.json",
+          "sha256": "864631bbd8ef486c3eb6f3fe6fd8d592ddc20bef28546fc668d21779e952ad57"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/CANDIDATE_MANIFEST.json",
+          "sha256": "28003f1f40bca16e1197fad7b3a589c152f956eda051cc7c0af83b85a96d62eb"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/PART_SELF_CHECK.md",
+          "sha256": "fd5e9483fd58b6df275710f1d0ca1af1642e92ea95112b086827b4672a495157"
+        },
+        {
+          "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/HANDOFF.md",
+          "sha256": "8acfedc61fa4f34a615444eb0cd6e92609641f2aad871803fb627b46b21e27dd"
+        }
+      ]
+    }
+  ],
+  "review_decision_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+  "review_decision_file_root_sha256": "ad6a46f59d4ee8e8c2b08f352df965678ffff3788f1f42022819c4c7973dd03f",
+  "source_candidate": {
+    "candidate_path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE",
+    "subject_hash": "efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+    "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/REVIEW_DECISION.json",
+    "review_decision_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+    "generated_outputs": [
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_CONTRACT.md",
+        "sha256": "a0fb899f47ee1f7f37749c9fbaa306317b2cca63d3d15000f476712467062ef8"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_MODEL.md",
+        "sha256": "974b2d80c648dcd424026e710abfbd877707dbe89bb1b5e92e81adb5eb9ce8f9"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_ARTIFACT_CONTRACTS.json",
+        "sha256": "4cef71b3d78db5b9e539adcda96897dea7bbee28db659c0a7b9ebdb0875e787f"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_PIPELINE_RULES.json",
+        "sha256": "19c7a6a23a570b7b4c523699f3c74c2acb53eabc9cca3fcaefffbdcd5a43fe0f"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_VALIDATION_MATRIX.json",
+        "sha256": "8ec7f7c5245abe264c5d36733b92673c4129550e2510b1cf8eae25fcfcff0313"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_TRACEABILITY_MAP.json",
+        "sha256": "ee3fe39c67f580bbd5943eb1351adab9f1cae946ccbb9a24e95e39d343c3c05e"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/P3_ASSURANCE_IMPLEMENTATION_HANDOFF.json",
+        "sha256": "5b19110ab42fece4cf2b2a45ed816f5542ac61667d8547e793c1491bf76c9aa1"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/VALIDATION_EVIDENCE.json",
+        "sha256": "050dfc7eeeb2a775b78ad350a66476d4584099ac784bf550678628696d073e54"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/SCOPE_REPORT.json",
+        "sha256": "864631bbd8ef486c3eb6f3fe6fd8d592ddc20bef28546fc668d21779e952ad57"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/CANDIDATE_MANIFEST.json",
+        "sha256": "28003f1f40bca16e1197fad7b3a589c152f956eda051cc7c0af83b85a96d62eb"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/PART_SELF_CHECK.md",
+        "sha256": "fd5e9483fd58b6df275710f1d0ca1af1642e92ea95112b086827b4672a495157"
+      },
+      {
+        "path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/HANDOFF.md",
+        "sha256": "8acfedc61fa4f34a615444eb0cd6e92609641f2aad871803fb627b46b21e27dd"
+      }
+    ]
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "input_bundle": {
+    "path": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "027ebe57121ffea360000daedbd5838033aed1f81f789aba97e0954e0401afda"
+  },
+  "created_by_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "created_by_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+  },
+  "root_algorithm": "sha256(join_lines(spec_part + NUL + subject_hash))",
+  "review_file_root_algorithm": "sha256(join_lines(spec_part + NUL + review_decision_file_sha256))",
+  "validation": {
+    "candidate_subject_bindings": "PASS",
+    "phase_review_binding": "PASS",
+    "schema_minimum": "PASS"
+  }
+}

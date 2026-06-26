@@ -1,0 +1,131 @@
+{
+  "report_id": "P3-SPEC-LOCK-VALIDATION-REPORT-001",
+  "phase": "P3",
+  "status": "PASS",
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "schema_minimum_valid": true,
+    "file_entry_count": 8,
+    "root_sha256": "311caf3063b75039a607c31fdec0318c7f7076483fca30507a7cedb385fc9522",
+    "review_decision_file_root_sha256": "ad6a46f59d4ee8e8c2b08f352df965678ffff3788f1f42022819c4c7973dd03f",
+    "lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "input_bundle_sha256": "027ebe57121ffea360000daedbd5838033aed1f81f789aba97e0954e0401afda",
+    "schema_sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "tool_sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "phase_readiness_review_sha256": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+    "generated_output_hashes_verified": true,
+    "review_decision_hashes_verified": true,
+    "overwrite_guard_verified": true,
+    "lock_result_review_status": "APPROVED_BY_HUMAN",
+    "result_candidate_text_guard_verified": true,
+    "supporting_replay_observations_declared": true,
+    "human_review_decision_recorded": true
+  },
+  "checks": [
+    {
+      "check_id": "P3LOCK-RESULT-001",
+      "name": "Canonical lock file exists",
+      "status": "PASS",
+      "details": "control/locks/P3_SPEC_LOCK.json exists."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-002",
+      "name": "Lock identifier and phase",
+      "status": "PASS",
+      "details": "lock_id is P3-SPEC-LOCK-001 and phase is P3."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-003",
+      "name": "Approved spec root binding",
+      "status": "PASS",
+      "details": "root_sha256 equals the approved P3 spec input root."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-004",
+      "name": "Review decision file root binding",
+      "status": "PASS",
+      "details": "review_decision_file_root_sha256 equals the P3 review decision file root."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-005",
+      "name": "Phase review decision binding",
+      "status": "PASS",
+      "details": "review_decision_hash equals the approved P3 assurance review decision file hash."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-006",
+      "name": "Tool identity binding",
+      "status": "PASS",
+      "details": "created_by_tool.sha256 equals the current tooling/create_spec_lock.py hash."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-007",
+      "name": "Schema minimum validation",
+      "status": "PASS",
+      "details": "The generated lock contains lock_id, phase, root_sha256, files, and review_decision_hash."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-008",
+      "name": "Lock file hash binding",
+      "status": "PASS",
+      "details": "SPEC_LOCK_CREATION_RESULT.json created_lock.sha256 equals the current control/locks/P3_SPEC_LOCK.json sha256."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-009",
+      "name": "Input bundle, schema, and tool hash binding",
+      "status": "PASS",
+      "details": "Input bundle, schema, and tool hashes match current files and values recorded inside the lock."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-010",
+      "name": "Phase readiness review binding",
+      "status": "PASS",
+      "details": "The assurance review file hash and subject hash match the current approved review decision."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-011",
+      "name": "Per-file lock entry binding",
+      "status": "PASS",
+      "details": "Every generated output and review decision file listed inside the lock hashes to the value recorded by the lock."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-012",
+      "name": "No-overwrite guard",
+      "status": "PASS",
+      "details": "A second create_spec_lock.py write to the same output path is expected to fail and leave the existing lock hash unchanged."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-013",
+      "name": "No implementation authorization",
+      "status": "PASS",
+      "details": "The result remains not a BUILD_LOCK and not an implementation authorization."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-014",
+      "name": "Generated result file text guard",
+      "status": "PASS",
+      "details": "The created lock, review target, and generated result files parse cleanly and pass line-level text guard checks."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-015",
+      "name": "Replay observations subject boundary",
+      "status": "PASS",
+      "details": "Final command stdout, stderr, and subject hash are recorded in a supporting-only replay observation file so the generated review subject does not self-reference its own hash."
+    },
+    {
+      "check_id": "P3LOCK-RESULT-016",
+      "name": "Human review decision recorded",
+      "status": "PASS",
+      "details": "REVIEW_DECISION.json approves the P3 SPEC_LOCK creation result subject hash and remains outside generated_outputs."
+    }
+  ],
+  "blocking_findings": [],
+  "remaining_followups": [
+    "P3 BUILD_LOCK is not created.",
+    "P3 implementation workpacks still require explicit next-stage authorization.",
+    "Root P3 phase files are not updated by this result candidate.",
+    "P3 lock result is approved; next-stage work still requires explicit authorization."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

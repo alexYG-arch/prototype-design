@@ -1,0 +1,77 @@
+{
+  "artifact_id": "p3.distill.semantic_unit_map",
+  "records": [
+    {
+      "unit_id": "p3-unit-console-surface",
+      "semantic_family": "experience.surface",
+      "atomic_claim_count": 1,
+      "claim": "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions.",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "3d2f13497d80fa847a2e65549ea296962ea6a54811195e4d5f15fa5860d219e5",
+      "prd_element_type": "PAGE",
+      "inference_class": "SOURCE_EXPLICIT",
+      "canonical_eligibility": "ELIGIBLE",
+      "requires_product_capability_expansion": false,
+      "necessity_basis": null,
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "unit_id": "p3-unit-case-intake-state",
+      "semantic_family": "experience.state",
+      "atomic_claim_count": 1,
+      "claim": "Reviewers need to see whether a case is ready, blocked, or waiting for human review.",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "d7f24ab6c968245870de874e3ed9836a1e63e4fa676b6e7d98ad9fed2d7ed7dd",
+      "prd_element_type": "STATE",
+      "inference_class": "SOURCE_EXPLICIT",
+      "canonical_eligibility": "ELIGIBLE",
+      "requires_product_capability_expansion": false,
+      "necessity_basis": null,
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "unit_id": "p3-unit-review-gap-message",
+      "semantic_family": "experience.message",
+      "atomic_claim_count": 1,
+      "claim": "Missing product details must remain review gaps until explicitly approved.",
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "2210795684a508add55d3cccd5ac61b2282233e65483a8a6b3e33b3469b2267b",
+      "prd_element_type": "MESSAGE",
+      "inference_class": "SOURCE_EXPLICIT",
+      "canonical_eligibility": "ELIGIBLE",
+      "requires_product_capability_expansion": false,
+      "necessity_basis": null,
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "unit_id": "p3-unit-visual-blocker",
+      "semantic_family": "experience.open_question",
+      "atomic_claim_count": 1,
+      "claim": "Dashboard screenshot is frozen as identity evidence but lacks extraction evidence for semantic adoption.",
+      "source_refs": [
+        "p3-src-screenshot"
+      ],
+      "source_text_hash": "d9e1c70c350d7228dfea7b0b3b6bdd2d912155f3b3f3939450166643d6eca2b5",
+      "prd_element_type": null,
+      "inference_class": "INDUCTIVE_CANDIDATE",
+      "canonical_eligibility": "BLOCKED_PENDING_HUMAN",
+      "requires_product_capability_expansion": false,
+      "necessity_basis": null,
+      "downstream_use": [
+        "preserve_blocker_only"
+      ]
+    }
+  ]
+}

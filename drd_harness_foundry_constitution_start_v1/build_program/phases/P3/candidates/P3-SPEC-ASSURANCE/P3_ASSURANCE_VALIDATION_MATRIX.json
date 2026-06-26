@@ -1,0 +1,121 @@
+{
+  "matrix_id": "P3-SPEC-ASSURANCE-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "module": "assurance_traceability",
+  "validation_rows": [
+    {
+      "validation_id": "P3ASSURE-VAL-001",
+      "requirement": "direct upstream P3-SPEC-COMPILER review decision is approved and current",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+      "failure_mode": "assurance starts from stale or unapproved compiler authority",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-002",
+      "requirement": "assurance input index binds compiler review decision sha256, subject hash, compiler output refs, schema refs, validator refs, and invalidation inputs",
+      "evidence": "p3.assurance.input_index",
+      "failure_mode": "final gate cannot prove which compiler package and validators were reviewed",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-003",
+      "requirement": "read-only QA writes only READ_ONLY_QA_REPORT.md and qa_finding_index.json and mutates no compiled artifact",
+      "evidence": "p3.assurance.read_only_qa_boundary",
+      "failure_mode": "post-compile QA changes canonical final output or writes unauthorized files",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-004",
+      "requirement": "trace rows contain every required field, use one focused implementation duty, and have one validator check id per row",
+      "evidence": "p3.assurance.trace_row_set",
+      "failure_mode": "future implementation cannot be traced to a precise spec clause and validator",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-005",
+      "requirement": "code targets are inside allowed write paths and outside forbidden write paths",
+      "evidence": "validate_code_target_scope",
+      "failure_mode": "future implementation can write outside its authorized area",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-006",
+      "requirement": "test obligation matrix has exactly matching trace_row_id, implementation_duty, validator_check_ids, and acceptance_command for every trace row",
+      "evidence": "p3.assurance.test_obligation_matrix",
+      "failure_mode": "implementation duties have no executable proof obligation or mismatched validator checks",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-007",
+      "requirement": "every test obligation has both positive and negative cases",
+      "evidence": "validate_trace_row_to_test_matrix",
+      "failure_mode": "tests can show happy path but cannot prove invalid scope, missing refs, or mutation attempts are rejected",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-008",
+      "requirement": "implementation workpack index references existing trace rows and no orphan code targets",
+      "evidence": "p3.assurance.implementation_workpack_index",
+      "failure_mode": "future workpack scope cannot be maintained or reviewed",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-009",
+      "requirement": "implementation workpack template declares required specs, spec locks, trace rows, allowed paths, forbidden paths, validators, tests, commands, skill bindings, review policy, promotion policy, and invalidation policy",
+      "evidence": "p3.assurance.implementation_workpack_template",
+      "failure_mode": "future implementation package can run without complete governance envelope",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-010",
+      "requirement": "implementation workpack index generated_at is deterministic or explicitly excluded from reviewed semantic and lock-readiness hashes by an approved rule",
+      "evidence": "p3.assurance.implementation_workpack_index",
+      "failure_mode": "same assurance inputs produce different reviewed indexes because wall-clock or machine-local generation metadata changed",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-011",
+      "requirement": "skill binding manifest remains subordinate to specs, validators, locks, review gates, and source authority",
+      "evidence": "validate_skill_second_authority",
+      "failure_mode": "skill text can silently override governance or create new authority",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-012",
+      "requirement": "traceability exceptions name affected rows, scope delta, reason, requested workpack, and human gate decision",
+      "evidence": "p3.assurance.traceability_exception_ledger",
+      "failure_mode": "scope exceptions become unreviewed waivers",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-013",
+      "requirement": "final assurance report blocks on unresolved findings, invalidated rows, unreviewed exceptions, QA mutation, or lock readiness drift",
+      "evidence": "p3.assurance.final_assurance_report",
+      "failure_mode": "gate can pass despite broken verification or implementation scope",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3ASSURE-VAL-014",
+      "requirement": "candidate scope is limited to P3-SPEC-ASSURANCE candidate files and does not create locks, implementation code, compiler outputs, or prior candidate mutations",
+      "evidence": "SCOPE_REPORT.json",
+      "failure_mode": "spec candidate mutates repository code, locks, compiler outputs, prior approved candidates, root P3 files, or P1/P2 files",
+      "expected_result": "reject"
+    }
+  ],
+  "minimum_test_obligations": [
+    "candidate-check for P3-SPEC-ASSURANCE returns PASS with zero findings",
+    "candidate-check with P3-SPEC-COMPILER REVIEW_DECISION returns PASS",
+    "schema-bound assurance artifact minimum_fields match current schema required fields",
+    "assurance artifact envelope fields are declared for every artifact",
+    "trace row set requires single-action duties and one validator check id per row",
+    "test obligation matrix requires both positive and negative cases",
+    "implementation workpack template requires spec locks, trace rows, allowed paths, forbidden paths, validators, tests, commands, and policies",
+    "implementation workpack index generated_at is deterministic or explicitly excluded by an approved rule",
+    "skill binding manifest is checked for second-authority language",
+    "read-only QA boundary rejects final DRD mutation and extra outputs",
+    "final assurance report cannot pass with blocking findings or lock creation side effects",
+    "scope report actual writes exist and forbidden write violations are empty"
+  ],
+  "open_blockers": []
+}

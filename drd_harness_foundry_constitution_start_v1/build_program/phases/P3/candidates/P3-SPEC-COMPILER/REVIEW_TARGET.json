@@ -1,0 +1,35 @@
+{
+  "target_id": "P3-SPEC-COMPILER-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-COMPILER",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-COMPILER",
+  "review_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_COMPILER_CONTRACT.md",
+    "P3_COMPILER_MODEL.md",
+    "P3_COMPILER_ARTIFACT_CONTRACTS.json",
+    "P3_COMPILER_PIPELINE_RULES.json",
+    "P3_COMPILER_VALIDATION_MATRIX.json",
+    "P3_COMPILER_TRACEABILITY_MAP.json",
+    "P3_COMPILER_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the candidate allow compiler work only from closed approved and hashed P3 inputs?",
+    "Does it preserve approved natural-language sections as semantic authority while using inventory only as verification skeleton?",
+    "Does deterministic assembly reject filesystem, time, locale, random, git status, and JSON object iteration ordering?",
+    "Does semantic conservation block additions, omissions, hash drift, unapproved inputs, non-atomic units, ordering issues, and nondeterminism?",
+    "Do final manifest, toc, reference index, hash index, semantic inventory, conservation report, and FINAL_DRD text mutually bind each other?",
+    "Does read-only QA remain unable to mutate compiled artifacts?",
+    "Does the candidate avoid locks, repository code, compiler fixtures, prior P3 candidate mutation, and root P3 phase-file mutation?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

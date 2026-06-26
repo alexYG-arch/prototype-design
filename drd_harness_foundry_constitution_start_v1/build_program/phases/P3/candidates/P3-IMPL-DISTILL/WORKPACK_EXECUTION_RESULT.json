@@ -1,0 +1,166 @@
+{
+  "result_id": "P3-IMPL-DISTILL-RESULT-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-DISTILL",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "authorized_by": {
+    "basis": "user_continue_after_P3_IMPL_SOURCE_pass",
+    "source_lock": "control/locks/P3_SPEC_LOCK.json",
+    "source_lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "lock_id": "P3-SPEC-LOCK-001",
+    "root_sha256": "311caf3063b75039a607c31fdec0318c7f7076483fca30507a7cedb385fc9522",
+    "spec_lock_result_review_decision": "build_program/phases/P3/candidates/P3-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "spec_lock_result_review_decision_sha256": "7964efb113ddd333aeb93415516094aa11f37ebbfe41004d75951a2cab7f7893",
+    "upstream_impl_source_review_decision": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "upstream_impl_source_review_decision_sha256": "d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36",
+    "upstream_impl_source_subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9",
+    "upstream_impl_source_review_decision_id": "P3-IMPL-SOURCE-REVIEW-001"
+  },
+  "objective": "Implement P3 experience distillation validation for atomic semantic units, PRD inventory mapping, adoption decisions, reasoning records, input obligations, product expansion gaps, structural review, and closure handoff gating.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/stages/experience_distillation.py",
+      "sha256": "15afe8440207af2b9c4101dc0e45a1f5f2b58119c5a5aa093fe200c35e4917e2"
+    },
+    {
+      "path": "repository/tests/p3/test_experience_distillation.py",
+      "sha256": "44f1544a9b305d45a433247ed6113ead298904ca9b9fc108dbac44e9fd3e91cb"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+      "sha256": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/derived_element_decisions.json",
+      "sha256": "1b929c9d97152428e8c09e9130d5850bdbf20f753dba52cca99fb12df5079e81"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/inference_records.json",
+      "sha256": "18caf6571487e893f76d5fa331dab0784d6602249272de5c7ffca2da1c6b6472"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/input_obligations.json",
+      "sha256": "2789c8cfc0f6f8c2865de3368b94a11357ed5e0ce621e76fb29679340b633344"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/prd_element_decisions.json",
+      "sha256": "68ffa6e7025cf2398ca919607a414820f6e9557ed3b38375d23194988474b920"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/prd_element_inventory.json",
+      "sha256": "deb1958557688e1c192215c015e03fae631f1c104a76f9403216a678227447b7"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/product_expansion_gaps.json",
+      "sha256": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+      "sha256": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/structural_completion_review.json",
+      "sha256": "97ca81d841fa6d6626c9059b9ef2b44dd19b1f762bcb019d9939133eaf921a93"
+    }
+  ],
+  "verified_unchanged_locked_inputs": [
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01",
+      "locked_reference": "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+      "locked_sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01",
+      "status": "UNCHANGED_FROM_P2_BUILD_READINESS"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/reasoning.py",
+      "sha256": "8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24",
+      "locked_reference": "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+      "locked_sha256": "8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24",
+      "status": "UNCHANGED_FROM_P2_BUILD_READINESS"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567",
+      "locked_reference": "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+      "locked_sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567",
+      "status": "UNCHANGED_FROM_P2_BUILD_READINESS"
+    }
+  ],
+  "implemented_capabilities": [
+    "Experience distillation artifact-set validator checks source intake decisions, semantic unit maps, PRD inventory rows, adoption decisions, inference records, input obligations, derived decisions, product gaps, structural reviews, and closure handoff together.",
+    "Semantic units must be atomic, cite source refs, use allowed P3 semantic families, and map to existing PRD element enum values when inventory rows are created.",
+    "Eligible distilled units may consume only eligible source intake items; review-required source items can preserve blockers only and rejected source items cannot feed semantic authority.",
+    "Inductive candidates and product-expansion units cannot become canonical without Human Gate approval.",
+    "Input obligations must route to an acquisition path or product expansion gap, and product expansion gaps cannot flow into closure as eligible units.",
+    "The distill fixture consumes the approved P3 source intake fixture without changing source intake implementation artifacts.",
+    "Closure handoff must cover all eligible units, all blocked semantic units, and all open product gaps before downstream closure can consume the distillation package."
+  ],
+  "non_product_capability_boundary": {
+    "new_user_facing_product_capability_added": false,
+    "distillation_stage_infers_product_requirements": false,
+    "product_expansion_requires_human_review": true
+  },
+  "required_stage_ids": [
+    "DRD-01-EXPERIENCE-DISTILL"
+  ],
+  "required_validation_ids": [
+    "P3-VAL-DISTILL-ATOMIC-UNITS",
+    "P3-VAL-DISTILL-PRD-ELEMENT-ENUM-BOUNDARY",
+    "P3-VAL-DISTILL-SOURCE-ELIGIBILITY",
+    "P3-VAL-DISTILL-INDUCTIVE-LOCKOUT",
+    "P3-VAL-DISTILL-PRODUCT-GAP-HANDOFF-BLOCK"
+  ],
+  "required_artifact_ids": [
+    "p3.distill.semantic_unit_map",
+    "p3.distill.prd_element_inventory",
+    "p3.distill.prd_element_decisions",
+    "p3.distill.inference_records",
+    "p3.distill.input_obligations",
+    "p3.distill.derived_element_decisions",
+    "p3.distill.product_expansion_gaps",
+    "p3.distill.structural_completion_review",
+    "p3.distill.closure_handoff_manifest"
+  ],
+  "fixture_artifact_counts": {
+    "semantic_units": 4,
+    "prd_inventory_rows": 3,
+    "adoption_decisions": 3,
+    "inference_records": 4,
+    "input_obligations": 1,
+    "derived_decisions": 1,
+    "product_expansion_gaps": 1,
+    "structural_completion_reviews": 1,
+    "distill_negative_tests": 9
+  },
+  "not_a_build_lock": true,
+  "not_a_review_decision": true,
+  "repair_findings_fixed": [
+    {
+      "severity": "P1",
+      "gap": "Semantic units with unknown source_refs could pass when blocked, weakening source traceability.",
+      "fix": "All semantic unit source_refs must exist in source intake decisions; added negative test coverage."
+    },
+    {
+      "severity": "P1",
+      "gap": "Adoption decisions could reference nonexistent input obligations.",
+      "fix": "Adoption decision input_obligations now bind to known obligation ids; added negative test coverage."
+    },
+    {
+      "severity": "P1",
+      "gap": "Closure handoff validated listed refs but did not require all eligible units, blocked units, and open product gaps to be carried forward.",
+      "fix": "Closure handoff must cover every eligible semantic unit, every non-eligible unit as blocked, and every OPEN product gap as blocked; added negative test coverage."
+    }
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+  "approval_notes": [
+    "Approved by explicit user pass after P3-IMPL-DISTILL candidate review.",
+    "This approval covers the P3 experience distillation implementation candidate only.",
+    "This approval does not create P3_BUILD_LOCK, update root P3 phase files, or authorize P3-IMPL-CLOSURE."
+  ],
+  "next_authorization_required": {
+    "p3_impl_closure_requires_explicit_authorization": true,
+    "p3_build_lock_requires_explicit_authorization": true,
+    "root_phase_file_update_requires_explicit_authorization": true
+  }
+}

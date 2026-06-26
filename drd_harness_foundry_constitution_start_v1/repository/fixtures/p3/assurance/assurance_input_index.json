@@ -1,0 +1,101 @@
+{
+  "artifact_id": "p3.assurance.input_index",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/assurance_input_index.json",
+  "schema_ref": null,
+  "schema_payload_key": "index",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-COMPILER/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/REVIEW_DECISION.json"
+  ],
+  "upstream_artifact_refs": [
+    "repository/fixtures/p3/compiler/FINAL_DRD.md",
+    "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+    "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
+    "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+    "repository/fixtures/p3/compiler/final_drd_manifest.json",
+    "repository/fixtures/p3/compiler/final_drd_toc.json",
+    "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+    "repository/fixtures/p3/compiler/final_drd_hash_index.json",
+    "repository/fixtures/p3/compiler/read_only_qa_boundary.json"
+  ],
+  "upstream_hashes": {
+    "compiler_review_decision": "aec392fb4f90c76cdd82fd40c031ab31f9dc4032cbae50d4a55d239abd62ebf4",
+    "spec_assurance_review_decision": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "index": {
+    "index_id": "P3-ASSURANCE-INPUT-INDEX-001",
+    "compiler_review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-COMPILER/REVIEW_DECISION.json",
+    "compiler_review_subject_hash": "05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834",
+    "compiler_review_decision_sha256": "aec392fb4f90c76cdd82fd40c031ab31f9dc4032cbae50d4a55d239abd62ebf4",
+    "compiler_output_refs": {
+      "repository/fixtures/p3/compiler/FINAL_DRD.md": "24656eb68cb44c9bad12f422eab7760235d90a5146dad5d64be0de4dbd0fb773",
+      "repository/fixtures/p3/compiler/compiler_input_bundle.json": "c3ddab9a4a9acae7faa8e41652e2da86ea0f3fa9da30f6c23c2e04a7ecee1760",
+      "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json": "d2113307949d0b67c2c7696e9cb12c9c982f75cd4f54fd449e47a2ced00bc929",
+      "repository/fixtures/p3/compiler/compiler_conservation_report.json": "021b32498ee961f83267b208cfff132ffb97c85edb19af89a4a1b68530c6931a",
+      "repository/fixtures/p3/compiler/final_drd_manifest.json": "3b0cdbaca590ae39cba57d955133ea0e3a67eba5d918859f0ebaa5b960f01af2",
+      "repository/fixtures/p3/compiler/final_drd_toc.json": "848791a6116c1a8a428cbff79f246d09761eab208e7f70d737fec8c3a5e80a4a",
+      "repository/fixtures/p3/compiler/final_drd_reference_index.json": "afbe9898b4bd66e0af6e52cd1a144e44a0321f9fa6b6042fa223d62fbd10e0a6",
+      "repository/fixtures/p3/compiler/final_drd_hash_index.json": "8537314b9714b7ca437ec36a09912128facc53bb4a3633920a034967b710fa24",
+      "repository/fixtures/p3/compiler/read_only_qa_boundary.json": "d2cc0e49d8a45c0b653cec85167b60dc76b4ff8804f629cfc6ed95289e948cb3"
+    },
+    "traceability_refs": [
+      "repository/fixtures/p3/assurance/code_target_map.json",
+      "repository/fixtures/p3/assurance/test_obligation_matrix.json",
+      "repository/fixtures/p3/assurance/implementation_workpack_index.json",
+      "repository/fixtures/p3/assurance/implementation_workpack_template.json",
+      "repository/fixtures/p3/assurance/skill_binding_manifest.json",
+      "repository/fixtures/p3/assurance/traceability_exception_ledger.json"
+    ],
+    "validator_refs": [
+      "repository/src/drd_harness/validators/traceability.py",
+      "repository/src/drd_harness/validators/workpack_scope.py",
+      "repository/src/drd_harness/validators/compiler_conservation.py",
+      "repository/src/drd_harness/stages/read_only_qa.py",
+      "repository/src/drd_harness/validators/phase_gate.py"
+    ],
+    "schema_refs": [
+      "repository/schemas/workpacks/code_target_map.schema.json",
+      "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+      "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+      "repository/schemas/workpacks/implementation_workpack.schema.json",
+      "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+      "repository/schemas/workpacks/traceability_exception.schema.json",
+      "repository/schemas/compiler/read_only_qa_boundary.schema.json"
+    ],
+    "invalidation_inputs": [
+      "compiler review decision superseded",
+      "compiler output hash drift",
+      "schema hash drift",
+      "validator identity drift",
+      "read-only QA mutation"
+    ],
+    "schema_hashes": {
+      "repository/schemas/workpacks/code_target_map.schema.json": "9b15e6e1bc505f011fcc8b63fb5373974317534ba27b683825d6ab92daebbcef",
+      "repository/schemas/workpacks/test_obligation_matrix.schema.json": "751b727efe46803373ccef7c70889e258a0135b7f2dd431f3f8248de4e3f88b3",
+      "repository/schemas/workpacks/implementation_workpack_index.schema.json": "d5342206187295d0247738c11a7b886ea89567f42a9900d245a452eae560a235",
+      "repository/schemas/workpacks/implementation_workpack.schema.json": "2e566af91c6f8f02c9c64a3d9993a81ca13dfe35948b766ae7e295ccab76bdd4",
+      "repository/schemas/workpacks/skill_binding_manifest.schema.json": "16a64717e9b9702afcb1c2e4232e1a0d226daaaffe32521b4ac696e7a1bbffa4",
+      "repository/schemas/workpacks/traceability_exception.schema.json": "1abb61a8e8791721c8b9b6b48bd1b2e1608770c894ac91b0aa6aa0208a9f98f2",
+      "repository/schemas/compiler/read_only_qa_boundary.schema.json": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+    },
+    "validator_hashes": {
+      "repository/src/drd_harness/validators/traceability.py": "6741fbfd0529f69a94b3910102cbc4a91878931cf6951800530bcb8053630d14",
+      "repository/src/drd_harness/validators/workpack_scope.py": "40d85a107c6bd350d01d14c775cd61b5fe9987447e1c143823235b28a29a913a",
+      "repository/src/drd_harness/validators/compiler_conservation.py": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b",
+      "repository/src/drd_harness/stages/read_only_qa.py": "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837",
+      "repository/src/drd_harness/validators/phase_gate.py": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    }
+  }
+}

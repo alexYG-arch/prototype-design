@@ -1,0 +1,72 @@
+{
+  "ruleset_id": "P3-SPEC-CLOSURE-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-CLOSURE",
+  "ordered_steps": [
+    {
+      "step_id": "closure.consume_distill_handoff",
+      "name": "Load eligible distilled units and blocker records",
+      "required_input": "P3-SPEC-DISTILL closure handoff manifest"
+    },
+    {
+      "step_id": "closure.create_nodes",
+      "name": "Create page, state, overlay, processing, failure, success, external, and terminal nodes",
+      "required_output": "interaction_nodes"
+    },
+    {
+      "step_id": "closure.create_clickables",
+      "name": "Create clickable inventory from eligible actions and affordances",
+      "required_output": "clickable_inventory"
+    },
+    {
+      "step_id": "closure.create_reactions",
+      "name": "Create reaction records for each clickable",
+      "required_output": "reaction_records"
+    },
+    {
+      "step_id": "closure.create_edges",
+      "name": "Create graph edges and align them to reactions and targets",
+      "required_output": "interaction_edges"
+    },
+    {
+      "step_id": "closure.bind_async_handoff_failure_overlay",
+      "name": "Bind async, handoff, failure recovery, and overlay closure slices",
+      "required_output": "async, handoff, failure, and overlay artifacts"
+    },
+    {
+      "step_id": "closure.bind_messages",
+      "name": "Bind user-visible messages and message coverage index",
+      "required_output": "interaction_messages and message_coverage_index"
+    },
+    {
+      "step_id": "closure.validate_graph",
+      "name": "Run full graph closure and split-artifact drift checks",
+      "required_output": "validation evidence"
+    },
+    {
+      "step_id": "closure.handoff_page_model",
+      "name": "Create handoff for page element model with eligible and blocked graph units",
+      "required_output": "closure_handoff_manifest"
+    }
+  ],
+  "closure_rules": [
+    "Every clickable must have exactly one reaction record.",
+    "Every reaction target must resolve to a graph node, terminal target, or reviewed external handoff.",
+    "Every non-terminal node must have a continuation edge or trap justification.",
+    "Every non-immediate reaction must have async behavior and message coverage.",
+    "Every failure-prone reaction must have failure behavior, failure node, recovery target, and message coverage.",
+    "Every overlay must have closure targets and return context.",
+    "Split artifacts must exactly match the graph payload for their object family.",
+    "No edge, reaction, or message may introduce unapproved product capability."
+  ],
+  "forbidden_behaviors": [
+    "consume unresolved distillation product expansion gaps as eligible graph units",
+    "create untraced extra graph edges",
+    "create a clickable without a reaction",
+    "create an async reaction without duplicate-trigger and timeout behavior",
+    "create a failure node without recovery targets or terminal explanation",
+    "leave overlay traps unexplained",
+    "write product-scope expansion into user-visible copy"
+  ],
+  "open_blockers": []
+}

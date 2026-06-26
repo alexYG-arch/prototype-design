@@ -1,0 +1,37 @@
+{
+  "target_id": "P3-SPEC-ASSURANCE-REVIEW-TARGET-001",
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "phase": "P3",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE",
+  "review_subject_hash": "efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P3_ASSURANCE_CONTRACT.md",
+    "P3_ASSURANCE_MODEL.md",
+    "P3_ASSURANCE_ARTIFACT_CONTRACTS.json",
+    "P3_ASSURANCE_PIPELINE_RULES.json",
+    "P3_ASSURANCE_VALIDATION_MATRIX.json",
+    "P3_ASSURANCE_TRACEABILITY_MAP.json",
+    "P3_ASSURANCE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the candidate bind the approved P3-SPEC-COMPILER review decision as direct upstream authority?",
+    "Does assurance stay an evidence and traceability gate rather than a semantic authoring stage?",
+    "Does read-only QA remain unable to mutate compiled artifacts or write unauthorized outputs?",
+    "Does every implementation duty require a focused trace row, code target, validator, test, command, allowed paths, forbidden paths, and invalidation policy?",
+    "Does every trace row require a matching test obligation with positive and negative cases?",
+    "Does reviewed generated_at metadata avoid wall-clock, machine-local, branch, user, or filesystem-derived nondeterminism?",
+    "Do skills remain subordinate to specs, validators, locks, review gates, and source authority?",
+    "Are traceability exceptions forced through human gate with explicit scope delta?",
+    "Does the candidate report lock readiness without creating P3_SPEC_LOCK or P3_BUILD_LOCK?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

@@ -1,0 +1,74 @@
+{
+  "ruleset_id": "P3-SPEC-PATTERNS-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-PATTERNS",
+  "ordered_steps": [
+    {
+      "step_id": "patterns.consume_elements_review",
+      "name": "Load approved P3-SPEC-ELEMENTS review and canonical projection rule",
+      "required_input": "P3-SPEC-ELEMENTS REVIEW_DECISION and element contracts"
+    },
+    {
+      "step_id": "patterns.load_closure_messages",
+      "name": "Load approved interaction messages and closure message coverage",
+      "required_input": "P3-SPEC-CLOSURE message artifacts"
+    },
+    {
+      "step_id": "patterns.identify_reuse_candidates",
+      "name": "Identify semantic reuse candidates from canonical element ids and message ids",
+      "required_output": "candidate reuse groups"
+    },
+    {
+      "step_id": "patterns.validate_semantic_reuse",
+      "name": "Accept reuse only when semantic role, data, operations, state, hierarchy, interaction, constraints, and trace refs align",
+      "required_output": "shared_component_registry"
+    },
+    {
+      "step_id": "patterns.route_non_reuse",
+      "name": "Record non-reuse reasons when similar surfaces differ semantically",
+      "required_output": "shared_component_registry non_reuse_reason values"
+    },
+    {
+      "step_id": "patterns.assign_presentation_modes",
+      "name": "Assign presentation modes based on semantic intent, trigger, scope, lifecycle, recoverability, and decision need",
+      "required_output": "information_presentation_registry"
+    },
+    {
+      "step_id": "patterns.validate_message_coverage",
+      "name": "Ensure all approved interaction messages are covered and no unknown message ref is used",
+      "required_output": "presentation validation evidence"
+    },
+    {
+      "step_id": "patterns.resolve_consistency_exceptions",
+      "name": "Require approved consistency exceptions for equivalent information using different modes",
+      "required_output": "presentation_consistency_exceptions"
+    },
+    {
+      "step_id": "patterns.handoff_layout",
+      "name": "Create handoff for layout with pattern ids and presentation decisions but no layout placement decisions",
+      "required_output": "validation evidence and handoff"
+    }
+  ],
+  "pattern_rules": [
+    "Pattern reuse is semantic, not visual.",
+    "Every shared pattern must include semantic role, data structure, operation set, state model, information hierarchy, interaction model, surface constraints, reuse scope, and trace refs.",
+    "Every reuse_scope entry must resolve to a canonical P3 element id, approved interaction message id, or approved exception ref.",
+    "Blocked, open-gap, rejected, superseded, structural-review-only, and inductive-unapproved elements cannot be pattern consumers.",
+    "LAYOUT_PATTERN rows are semantic pre-layout groupings and cannot define carrier, breakpoint, containment, order, scroll, width, height, or z-axis behavior.",
+    "Every approved interaction message must have presentation coverage.",
+    "Presentation decisions with equivalent semantic intent, trigger condition, scope, and lifecycle must use one mode unless an approved exception allows the difference.",
+    "Sustained, persistent, audit, session, processing, or user-decision information cannot rely on transient-only unrecoverable presentation.",
+    "Patterns and presentation decisions cannot create new product capability or new elements.",
+    "Downstream layout may reference pattern ids but cannot invent ids outside the registry."
+  ],
+  "forbidden_behaviors": [
+    "reuse components because they look similar, share a color, share an icon, or share visual styling only",
+    "consume projection-excluded element ids as reusable pattern scope",
+    "reference unknown interaction messages from presentation decisions",
+    "use different presentation modes for equivalent information without an approved exception",
+    "hide sustained or decision-critical information in an unrecoverable toast-only surface",
+    "define carrier-specific layout, breakpoint behavior, containment hierarchy, ordering, scroll rules, width rules, height rules, or z-axis layering",
+    "create repository implementation code during this spec workpack"
+  ],
+  "open_blockers": []
+}

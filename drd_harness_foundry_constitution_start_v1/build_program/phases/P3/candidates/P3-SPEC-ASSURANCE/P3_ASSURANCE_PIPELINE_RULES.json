@@ -1,0 +1,104 @@
+{
+  "rules_id": "P3-SPEC-ASSURANCE-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "module": "assurance_traceability",
+  "ordered_steps": [
+    {
+      "step": 1,
+      "name": "verify_compiler_review_decision",
+      "required_input": "P3-SPEC-COMPILER REVIEW_DECISION",
+      "output": "approved compiler boundary"
+    },
+    {
+      "step": 2,
+      "name": "build_assurance_input_index",
+      "required_input": "compiler review decision, compiler output refs, schema refs, validator refs, QA refs, and trace refs",
+      "output": "assurance_input_index"
+    },
+    {
+      "step": 3,
+      "name": "validate_read_only_qa_boundary",
+      "required_input": "DRD-06 QA boundary record",
+      "output": "read-only QA findings"
+    },
+    {
+      "step": 4,
+      "name": "validate_trace_rows",
+      "required_input": "code target map trace rows",
+      "output": "traceability row findings"
+    },
+    {
+      "step": 5,
+      "name": "validate_test_obligations",
+      "required_input": "trace row set and test obligation matrix",
+      "output": "test obligation findings"
+    },
+    {
+      "step": 6,
+      "name": "validate_implementation_workpack_scope",
+      "required_input": "implementation workpack index and implementation workpack template",
+      "output": "workpack scope findings"
+    },
+    {
+      "step": 7,
+      "name": "validate_skill_binding_subordination",
+      "required_input": "skill binding manifest and skill source text",
+      "output": "skill authority findings"
+    },
+    {
+      "step": 8,
+      "name": "validate_traceability_exceptions",
+      "required_input": "traceability exception ledger and human gate decisions",
+      "output": "exception findings"
+    },
+    {
+      "step": 9,
+      "name": "compute_final_assurance_report",
+      "required_input": "all assurance findings",
+      "output": "final_assurance_report"
+    },
+    {
+      "step": 10,
+      "name": "prepare_final_review_packet",
+      "required_input": "final assurance report and assurance input index",
+      "output": "final_review_packet"
+    }
+  ],
+  "assurance_rules": [
+    "Assurance may inspect only approved compiler and traceability evidence.",
+    "Assurance cannot add product, interaction, presentation, layout, compiler, or copy semantics.",
+    "Every implementation duty must have one focused trace row.",
+    "A trace row must not bundle independent duties or multiple validator checks.",
+    "Every trace row must have a matching test obligation row.",
+    "Every test obligation row must include both positive and negative cases.",
+    "Code targets must be inside allowed write paths and outside forbidden write paths.",
+    "Dependency edges must use declared edge types and must drive invalidation.",
+    "Implementation workpacks cannot broaden scope beyond trace rows and allowed paths.",
+    "generated_at values in reviewed indexes must be deterministic from reviewed release identity, assurance run id, or input-bundle-derived generation id.",
+    "Skill bindings remain subordinate to specs, validators, locks, review gates, and source authority.",
+    "Traceability exceptions require a human gate decision and explicit scope delta.",
+    "Read-only QA may write only READ_ONLY_QA_REPORT.md and qa_finding_index.json.",
+    "Read-only QA must not mutate final DRD, manifests, indexes, review decisions, source snapshots, or locks.",
+    "Final assurance blocks promotion when any unresolved finding, invalidated row, unreviewed exception, or QA mutation exists.",
+    "Final assurance may report lock readiness but must not create P3_SPEC_LOCK or P3_BUILD_LOCK."
+  ],
+  "forbidden_behaviors": [
+    "create P3_SPEC_LOCK",
+    "create P3_BUILD_LOCK",
+    "promote P3 without a separate explicit user request",
+    "modify repository implementation code in this spec workpack",
+    "modify P3-SPEC-COMPILER or earlier approved candidate contents",
+    "generate or mutate compiler output fixtures",
+    "mutate FINAL_DRD.md or compiler sidecars",
+    "invent product semantics",
+    "repair upstream compiler or traceability gaps in place",
+    "treat skill text as source authority",
+    "allow positive-only test obligations",
+    "allow broad implementation duties",
+    "allow unreviewed traceability exceptions",
+    "ignore invalidation caused by dependency drift",
+    "use wall-clock time, local machine time, current user, current branch, or filesystem metadata for reviewed generated_at values"
+  ],
+  "open_blockers": []
+}

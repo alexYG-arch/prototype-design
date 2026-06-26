@@ -1,0 +1,44 @@
+{
+  "artifact_id": "p3.source_intake.intake_decisions",
+  "decisions": [
+    {
+      "source_item_id": "p3-src-brief",
+      "state": "eligible",
+      "downstream_eligibility": "eligible",
+      "decision_reasons": [
+        "local markdown brief is frozen and hash-bound"
+      ],
+      "snapshot_manifest_ref": "p3.source_intake.brief.snapshot.001",
+      "snapshot_hash": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800",
+      "risk_flags": [],
+      "requires_product_capability_expansion": false,
+      "extraction_evidence_refs": []
+    },
+    {
+      "source_item_id": "p3-src-screenshot",
+      "state": "review_required",
+      "downstream_eligibility": "review_required",
+      "decision_reasons": [
+        "visual source is frozen but requires separate extraction evidence before semantic adoption"
+      ],
+      "snapshot_manifest_ref": "p3.source_intake.screenshot.snapshot.001",
+      "snapshot_hash": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141",
+      "risk_flags": [],
+      "requires_product_capability_expansion": false,
+      "extraction_evidence_refs": []
+    },
+    {
+      "source_item_id": "p3-src-link",
+      "state": "rejected",
+      "downstream_eligibility": "rejected",
+      "decision_reasons": [
+        "external link has not been locally snapshotted and cannot act as evidence"
+      ],
+      "snapshot_manifest_ref": null,
+      "snapshot_hash": null,
+      "risk_flags": [],
+      "requires_product_capability_expansion": false,
+      "extraction_evidence_refs": []
+    }
+  ]
+}

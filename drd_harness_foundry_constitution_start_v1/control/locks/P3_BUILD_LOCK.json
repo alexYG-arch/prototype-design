@@ -1,0 +1,866 @@
+{
+  "lock_id": "P3-BUILD-LOCK-001",
+  "phase": "P3",
+  "git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+  "spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+  "files": [
+    {
+      "path": "repository/fixtures/p3/assurance/READ_ONLY_QA_REPORT.md",
+      "sha256": "b35132c96b6bcc9565649d85eaea7b071e54ea8cd1bac6c7939924ef626c73ed"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/assurance_input_index.json",
+      "sha256": "ddf51d5bf408df8ef68c30a302984d828adae795c1b8e6e4242a14164c35eacc"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/assurance_skill_binding_source.md",
+      "sha256": "6d3b7426ce3bedcc4f9a8cf8230771173692d324309648bbebf0da0089a76ffa"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/code_target_map.json",
+      "sha256": "d2182425cb8ee9b1f53bd0e6688a205a2cc6e6b5a0d6eb7799b79796a2464c56"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/final_assurance_report.json",
+      "sha256": "24a06890d65b243a8a12d642480bb5662ad37fc6c64873b195a79e40da24bd28"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/final_review_packet.json",
+      "sha256": "a44347ce366a8e99c0650fcf6ddc569b11e64b83ef459a33f1de8ad49cfcaade"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/implementation_workpack_index.json",
+      "sha256": "b6b854fd210c52dd318683f3a90ba10f70bbee81b0693216f541380f61f88124"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/implementation_workpack_template.json",
+      "sha256": "f3ae5fc8af86d2c9f5e24d8cb77b07dcddce591177b9c47fa52ec497ba4da416"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/qa_finding_index.json",
+      "sha256": "5c3afb2a42caeb69bd435ca07a75111b0df5da482be74d995a5097bd644f0241"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/read_only_qa_boundary.json",
+      "sha256": "4b08d34228827b42350ff2c05409f638c8e70856df3d6ed9169925435cc2bfd7"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/skill_binding_manifest.json",
+      "sha256": "d1981fcf6fd1d13b27d5bbd40d2e96764055dd9aea81f9605c8e6606a5bf0a34"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/test_obligation_matrix.json",
+      "sha256": "f3d6d4ae918abcd6fc56ae6656e68ae98744e1cab01919e221932ee835a0d017"
+    },
+    {
+      "path": "repository/fixtures/p3/assurance/traceability_exception_ledger.json",
+      "sha256": "faab20a2eee7be75596078a508d61e1ed7906c10d51e07d4d51344366c78604b"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/async_behavior.json",
+      "sha256": "23a2e06393b068b54328e568c1c9ebf84d59949799aaeb86514be4edbf793808"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/clickable_inventory.json",
+      "sha256": "a159233c5c61a9e6f369b66f424298cf784994836063aa4c30f55c44a7df4c76"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/closure_handoff_manifest.json",
+      "sha256": "43e379a9968ceeee87c3045f80e3839e201c57bf00fa9de748ef415165a0d655"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/failure_recovery.json",
+      "sha256": "9fc7328c231ce6f2e026a417bf2b9e02868161deb3a4820a18e3c8488fe10e7f"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/handoff_behavior.json",
+      "sha256": "5e455f3a1f9f632f4b73db4c72274e8e1efbf7641d8c15bf4fce5b03446121ad"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/interaction_edges.json",
+      "sha256": "3e1b4576efe21c3cc202bb8ede4d72b382829ec0bc0dc7df66cda00b2c75317b"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/interaction_graph.json",
+      "sha256": "655d3cb45cef2fccd819dd35b5bda5e8726999690cff22241155a13ad6b58e93"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/interaction_messages.json",
+      "sha256": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/interaction_nodes.json",
+      "sha256": "ee645567824e745dffc73759aad8aff189817659e160e44e222ac7a188dad11b"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/message_coverage_index.json",
+      "sha256": "3523ba9d34f20bacab7c9186448e7eae50471f2473f34e76c9f2cab5801d99b7"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/overlay_closure.json",
+      "sha256": "0d1bb14a8116875f3e0b8f8a23ce2d2f0a7497aeb78fbffcc0b1883303048c02"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/reaction_applicability.json",
+      "sha256": "c8c5800eec2a97c8bc47a52afecc12b9d824f2e73bf50aef07343a42fab072cf"
+    },
+    {
+      "path": "repository/fixtures/p3/closure/reaction_records.json",
+      "sha256": "2a29df6407ec2c762eab8850c8e8edc9d266e1df61f72f4ddcc89fe32b28b98c"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/FINAL_DRD.md",
+      "sha256": "24656eb68cb44c9bad12f422eab7760235d90a5146dad5d64be0de4dbd0fb773"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+      "sha256": "021b32498ee961f83267b208cfff132ffb97c85edb19af89a4a1b68530c6931a"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+      "sha256": "c3ddab9a4a9acae7faa8e41652e2da86ea0f3fa9da30f6c23c2e04a7ecee1760"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
+      "sha256": "d2113307949d0b67c2c7696e9cb12c9c982f75cd4f54fd449e47a2ced00bc929"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
+      "sha256": "8537314b9714b7ca437ec36a09912128facc53bb4a3633920a034967b710fa24"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_manifest.json",
+      "sha256": "3b0cdbaca590ae39cba57d955133ea0e3a67eba5d918859f0ebaa5b960f01af2"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+      "sha256": "afbe9898b4bd66e0af6e52cd1a144e44a0321f9fa6b6042fa223d62fbd10e0a6"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_toc.json",
+      "sha256": "848791a6116c1a8a428cbff79f246d09761eab208e7f70d737fec8c3a5e80a4a"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/read_only_qa_boundary.json",
+      "sha256": "d2cc0e49d8a45c0b653cec85167b60dc76b4ff8804f629cfc6ed95289e948cb3"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+      "sha256": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/derived_element_decisions.json",
+      "sha256": "1b929c9d97152428e8c09e9130d5850bdbf20f753dba52cca99fb12df5079e81"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/inference_records.json",
+      "sha256": "18caf6571487e893f76d5fa331dab0784d6602249272de5c7ffca2da1c6b6472"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/input_obligations.json",
+      "sha256": "2789c8cfc0f6f8c2865de3368b94a11357ed5e0ce621e76fb29679340b633344"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/prd_element_decisions.json",
+      "sha256": "68ffa6e7025cf2398ca919607a414820f6e9557ed3b38375d23194988474b920"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/prd_element_inventory.json",
+      "sha256": "deb1958557688e1c192215c015e03fae631f1c104a76f9403216a678227447b7"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/product_expansion_gaps.json",
+      "sha256": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+      "sha256": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9"
+    },
+    {
+      "path": "repository/fixtures/p3/distill/structural_completion_review.json",
+      "sha256": "97ca81d841fa6d6626c9059b9ef2b44dd19b1f762bcb019d9939133eaf921a93"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/derived_element_decisions.json",
+      "sha256": "82b494ce0e9d4f80100b874977eadcf3f821e163e14d1d34311f6e096a411f81"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/inference_records.json",
+      "sha256": "4cdfd2df1d1867b3d360a6b2e784f8386db81688a9e2f7f964b3634f8dfb31f8"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/input_obligations.json",
+      "sha256": "03e2ff4d40e0f9fe3e281987d506282c166eeb68a314f5318131b9bcbbb43ce2"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/prd_element_decisions.json",
+      "sha256": "c08e53408b800c8bb99f635681aeb7419abdc1a55ebdb27611212d54ff8f9ab3"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/prd_element_inventory.json",
+      "sha256": "f1bf73dbc34294c28e2d6b39329e9a404ac90ab0ca9a51d9fe388b7ca4288c5b"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/product_expansion_gaps.json",
+      "sha256": "cb9f611dc168f4d275faa2c0f992300f5ab1de3eef126610f43222f9eb636949"
+    },
+    {
+      "path": "repository/fixtures/p3/elements/structural_completion_review.json",
+      "sha256": "c3b6333f8b24eeb7231e7d89ccc2c853dfc1f0cdb7b326a923fd8b4c24397c6b"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/carrier_adaptation_profile.json",
+      "sha256": "96f66202f04d0c34d1b34899d7aa91271202e1bf93e230cc2ce041365acf1450"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/containment_hierarchy.json",
+      "sha256": "d1ee2b32220408bf18fe2e34e580f3eaa99f0b2f83aa4b41e3a0b5eaeb442a56"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/content_growth_rules.json",
+      "sha256": "44e0388c0387600522f0d9fd60958c7adb6e4214ff7a91ad19d55a4d3da911c2"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/figma_reconstruction_metadata.json",
+      "sha256": "17310ab2f0e1b33b38ca27dc63b6de6d654b85be4b1481ce6f8154b749c4bc64"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/information_completeness_rules.json",
+      "sha256": "8eb7c6bc4ddcd9176b7f08894587e3be9158172fd3b76e522e4f2820ad4381fd"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/layout_composition_index.json",
+      "sha256": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/natural_language_layout.json",
+      "sha256": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/state_placement_index.json",
+      "sha256": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418"
+    },
+    {
+      "path": "repository/fixtures/p3/layout/z_axis_layering.json",
+      "sha256": "ec355ebd7e5e01b2773b9d68822b7591531ebd0ad6d3b74631663bff011c9047"
+    },
+    {
+      "path": "repository/fixtures/p3/patterns/information_presentation_registry.json",
+      "sha256": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb"
+    },
+    {
+      "path": "repository/fixtures/p3/patterns/presentation_consistency_exceptions.json",
+      "sha256": "bc29a3c52dd337bae01c87e2e2711b5eeac4a9e0081bd3dbeff6b8e17e05a5e0"
+    },
+    {
+      "path": "repository/fixtures/p3/patterns/shared_component_registry.json",
+      "sha256": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/downstream_handoff_manifest.json",
+      "sha256": "8499bec92e2a68dd5deb5c1a8a19afeceecb26ba866f3c043331850ac0434645"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/input_register.json",
+      "sha256": "bce31a15a34daa277cf3d7a1c12148d07efd251c37c6eb79492a9bb624404148"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+      "sha256": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/redaction_and_exclusion_log.json",
+      "sha256": "36582ff690f76bee81e3c9e1dc31d04071866cf8744465086653a4ff7a6f0265"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/snapshots/dashboard_screenshot.png",
+      "sha256": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/snapshots/product_brief.md",
+      "sha256": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source/dashboard_screenshot.png",
+      "sha256": "a6e0ccbd4498f63c039154c462d3b6ef595bffeb1d04d32877fb3de10aac5141"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source/product_brief.md",
+      "sha256": "02158a51306a5a8548a2618f629adc63cd04efe9fba77f413fa12656c8888800"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source_authority_index.json",
+      "sha256": "00e8eff7500a337d8f4ceae260fdf49edafc9c4549ff88000ac852f0d85270ed"
+    },
+    {
+      "path": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+      "sha256": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6"
+    },
+    {
+      "path": "repository/schemas/README.md",
+      "sha256": "ad13761bfbbb578de396b513d4b971d16356792f924e0e034761e50abdda7b00"
+    },
+    {
+      "path": "repository/schemas/artifact_manifest.schema.json",
+      "sha256": "879a31daf306e4f445b9c3191231c6a70b079f780c24201648e212626b67cd70"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json",
+      "sha256": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+      "sha256": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+      "sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
+    },
+    {
+      "path": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+      "sha256": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+      "sha256": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_manifest.schema.json",
+      "sha256": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+      "sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a"
+    },
+    {
+      "path": "repository/schemas/compiler/final_drd_toc.schema.json",
+      "sha256": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08"
+    },
+    {
+      "path": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+      "sha256": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+    },
+    {
+      "path": "repository/schemas/interaction/async_behavior.schema.json",
+      "sha256": "d0b9e3c72989613020a350a5e3e20f2b1892118a7470da177500b3ac4d3f0d42"
+    },
+    {
+      "path": "repository/schemas/interaction/clickable_inventory.schema.json",
+      "sha256": "c5142adfb2ff3f5460053ca0da4a8700bd4441a03b9d31ebd9f97397f785606e"
+    },
+    {
+      "path": "repository/schemas/interaction/failure_recovery.schema.json",
+      "sha256": "29b6847125e85b45fcb39159bc66c39236ba61c4e3ed4f43e9fa904469528cb4"
+    },
+    {
+      "path": "repository/schemas/interaction/handoff_behavior.schema.json",
+      "sha256": "501837a91b08fd7dca35156596b465bb8a31f1107c5a2087505150c5526087da"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_edge.schema.json",
+      "sha256": "53682c74c4f610785722c585af4a0d65f71147fc4018d5d7197cd8b0896d5555"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_graph.schema.json",
+      "sha256": "303b988ef19bf7a707955b4d6449dd9bb5eddb00618ba6e4cda63bf8c9dba712"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_message.schema.json",
+      "sha256": "a60f978bb0e0f8ebc7633118581004adbc1336bc9d26a92bce46de6b531f7460"
+    },
+    {
+      "path": "repository/schemas/interaction/interaction_node.schema.json",
+      "sha256": "06e088646760c7cfef1b96137ca72a2dc9ee8941c3b0c3737c930aa238a71dde"
+    },
+    {
+      "path": "repository/schemas/interaction/message_coverage_index.schema.json",
+      "sha256": "db90472abf1c5c412a7a79452c61151b73a83220e1dfa99bdb87450093e2fdbb"
+    },
+    {
+      "path": "repository/schemas/interaction/overlay_closure.schema.json",
+      "sha256": "63a2a53efdd936e6f5aa9dd5cad33998734b518b8887c7dd28907a246dd5ad05"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_applicability.schema.json",
+      "sha256": "b31e897ae073975aa84227a2f9e2284ae9cfcfcfb4437e252de541be830bdcce"
+    },
+    {
+      "path": "repository/schemas/interaction/reaction_record.schema.json",
+      "sha256": "189202ed1f57c0bb2d90d88f7e77e768f3051fa33ec6038b42c78b1088318a51"
+    },
+    {
+      "path": "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+      "sha256": "3357cebb6c57b4af57f1d2b5e090b3aa94ed19a575a11f9fb27231b0e913a779"
+    },
+    {
+      "path": "repository/schemas/layout/containment_hierarchy.schema.json",
+      "sha256": "98cfe72f29f3aa21873162d51730208a0faba12c9593b83c247d659472759ae7"
+    },
+    {
+      "path": "repository/schemas/layout/content_growth_rule.schema.json",
+      "sha256": "79f57ce83dc131f82b2cd85c5ffb0ef4c0b9bc46d28dc5bc49d003b8191801bd"
+    },
+    {
+      "path": "repository/schemas/layout/figma_reconstruction_metadata.schema.json",
+      "sha256": "4e77c3b3401601f486b57b2b4e39f5d70656cbca6dde95e4462e7b4c5ab9e4a2"
+    },
+    {
+      "path": "repository/schemas/layout/information_completeness_rule.schema.json",
+      "sha256": "8030efdad6f255924ba7c2b3597065e54fde04f13deaabb793ce5402e90aec5b"
+    },
+    {
+      "path": "repository/schemas/layout/layout_composition_index.schema.json",
+      "sha256": "e0a4c5978fc0742a4f24244ef8dacd768e37d311d5f29733ea162bebeff0275f"
+    },
+    {
+      "path": "repository/schemas/layout/natural_language_layout.schema.json",
+      "sha256": "200db205fbf9d26d177d1508f3e48e5d223a266fc5b30e95a98c43f60bbb9808"
+    },
+    {
+      "path": "repository/schemas/layout/state_placement_index.schema.json",
+      "sha256": "1d54dc6754204a5c2c5c3b62a7e0485ff58d730840d3753e50a10585166d6b1b"
+    },
+    {
+      "path": "repository/schemas/layout/z_axis_layering.schema.json",
+      "sha256": "35c7b9c5bf111c0431624690463f9c76993706bc3dc0b21ba8d05bc652ba4730"
+    },
+    {
+      "path": "repository/schemas/locks/build_lock.schema.json",
+      "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_edge.schema.json",
+      "sha256": "4347aa1dcf6c6d97067e1504c88793f0368509732719a0f2f545702826cebd75"
+    },
+    {
+      "path": "repository/schemas/locks/dependency_graph.schema.json",
+      "sha256": "48a38a7b69e1f27538d613a82515ceab5fdc85dbfbd3cb0e8d5b721c89b63878"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_record.schema.json",
+      "sha256": "af035fd7e7a40fe3ae132044f3d4bddcd2ec48d9c2f91559272a335bcb53d2f4"
+    },
+    {
+      "path": "repository/schemas/locks/invalidation_recovery_plan.schema.json",
+      "sha256": "b6ce8595472df5077c491fb4a06da36431ca23fc64d3ea69676979cf73a83539"
+    },
+    {
+      "path": "repository/schemas/locks/lock_supersession.schema.json",
+      "sha256": "c7ab2ae7aef0a8a58d007914649bc09956d6462a9759f24f82cb4f34677ec494"
+    },
+    {
+      "path": "repository/schemas/locks/partial_unaffected_claim.schema.json",
+      "sha256": "53cc7554a93b4009098fd247baacdf06a52a933d525dbfb32b88f4d5338c9609"
+    },
+    {
+      "path": "repository/schemas/locks/promotion_audit.schema.json",
+      "sha256": "9773b061f587b717fed25df4d2becfd07c5e34bc799dc40340bc55955934789c"
+    },
+    {
+      "path": "repository/schemas/locks/review_lock.schema.json",
+      "sha256": "a0a6a69e09cd225b459b99d371bef3203a218e13db81859621e9d7f3180aa9b5"
+    },
+    {
+      "path": "repository/schemas/locks/spec_lock.schema.json",
+      "sha256": "72887b25b63af462f14f834e58b9ac31791a4d73a6a788c60b3be7c186ed0814"
+    },
+    {
+      "path": "repository/schemas/locks/validation_result.schema.json",
+      "sha256": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2"
+    },
+    {
+      "path": "repository/schemas/locks/validator_identity.schema.json",
+      "sha256": "b36ddbb624b84677e7f8000cf127e29149214af2b52030e5aa3ed94131900a55"
+    },
+    {
+      "path": "repository/schemas/presentation/information_presentation_registry.schema.json",
+      "sha256": "65d2320b6095ec214cad160b7bba521ed1d8bc39a88b2aa0bbed246d523b3149"
+    },
+    {
+      "path": "repository/schemas/presentation/presentation_consistency_exception.schema.json",
+      "sha256": "418012bacb3492952edaa92474475fd2df10508926fbbf86ea6c6b16e8184f9e"
+    },
+    {
+      "path": "repository/schemas/presentation/shared_component_registry.schema.json",
+      "sha256": "ba27b28986941dcaa4263de2831049c82b9811e9146d38cd517104a3ab3a1b73"
+    },
+    {
+      "path": "repository/schemas/reasoning/derived_element_decision.schema.json",
+      "sha256": "aa67d7409247b77d7b5c0a06629957a2b825cf27180e226aa09aac5bbea7a381"
+    },
+    {
+      "path": "repository/schemas/reasoning/inference_record.schema.json",
+      "sha256": "85dc112ac5bd9106b16281f054620f507de3142837895a8ec6a81abd073ef769"
+    },
+    {
+      "path": "repository/schemas/reasoning/input_obligation.schema.json",
+      "sha256": "54c9dd31e4a027b2d38ee1855bc362d76a13198b78338a21a6cbe61240304bda"
+    },
+    {
+      "path": "repository/schemas/reasoning/prd_element_decision.schema.json",
+      "sha256": "e2d90e34b247fdbaaa6c1d115b4cd19864410f472124e95c321b3e93bdaa82f3"
+    },
+    {
+      "path": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+      "sha256": "805573a899156b0885885cae1a526f3ce4c2f9d448f660ced61cfbf574abf44c"
+    },
+    {
+      "path": "repository/schemas/reasoning/product_expansion_gap.schema.json",
+      "sha256": "cad82ebb6a4958ee9330c26ab8b5cf0dd2a4fd9bbd20f5a2dd8eda827d3ac84e"
+    },
+    {
+      "path": "repository/schemas/reasoning/structural_completion_review.schema.json",
+      "sha256": "350d688a883ab05c31b624d46d11c82ff79df4865c5c7aa4fb02daa9c74271df"
+    },
+    {
+      "path": "repository/schemas/runtime_declaration.schema.json",
+      "sha256": "f6c55be67ecfea69db963cd795da539449569f59d92bee6192ca3b852a8bb771"
+    },
+    {
+      "path": "repository/schemas/stages/dependency_manifest.schema.json",
+      "sha256": "c4b837737587bcc2f13ca8a6148f316b97214e871f67926f13d3f16e0026c746"
+    },
+    {
+      "path": "repository/schemas/stages/source_snapshot_manifest.schema.json",
+      "sha256": "bdeb26dd7efb1601f3f3979d987181dc6da0a676094e1934f88f71c3f8942e96"
+    },
+    {
+      "path": "repository/schemas/stages/stage_manifest.schema.json",
+      "sha256": "c874b11692908bb3892226f0452c655167c178220b1729d44706c5578f87288b"
+    },
+    {
+      "path": "repository/schemas/workpacks/code_target_map.schema.json",
+      "sha256": "9b15e6e1bc505f011fcc8b63fb5373974317534ba27b683825d6ab92daebbcef"
+    },
+    {
+      "path": "repository/schemas/workpacks/implementation_workpack.schema.json",
+      "sha256": "2e566af91c6f8f02c9c64a3d9993a81ca13dfe35948b766ae7e295ccab76bdd4"
+    },
+    {
+      "path": "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+      "sha256": "d5342206187295d0247738c11a7b886ea89567f42a9900d245a452eae560a235"
+    },
+    {
+      "path": "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+      "sha256": "16a64717e9b9702afcb1c2e4232e1a0d226daaaffe32521b4ac696e7a1bbffa4"
+    },
+    {
+      "path": "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+      "sha256": "751b727efe46803373ccef7c70889e258a0135b7f2dd431f3f8248de4e3f88b3"
+    },
+    {
+      "path": "repository/schemas/workpacks/traceability_exception.schema.json",
+      "sha256": "1abb61a8e8791721c8b9b6b48bd1b2e1608770c894ac91b0aa6aa0208a9f98f2"
+    },
+    {
+      "path": "repository/schemas/workpacks/workpack_readiness_report.schema.json",
+      "sha256": "b2ff63f9e09b79042dd8012792c428c3c0e1d8780082115616366a970ac805ac"
+    },
+    {
+      "path": "repository/src/drd_harness/__init__.py",
+      "sha256": "4a15d00558f2892387c684094b606f346dfde56e0a65fa8cc59581011d0c66b1"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/__init__.py",
+      "sha256": "39d17e40b8f9c70517050d8144bc0dc40fc7fb972589393a1d6fbb3367f761f4"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/main.py",
+      "sha256": "a4d3889021dd8bea1a7d18705274d5172ce990a7beeb107d52823657c3b7bf7e"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/__init__.py",
+      "sha256": "f70ceb5c123bbec37d31266fa0cf64543228c6732706dc8afaf9607ffde923ab"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/conservation.py",
+      "sha256": "8074fe2dafd7e155a9f37e0da40548b85652e34f7ff7583f8e62ef7fe7f16d76"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/final_drd.py",
+      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/__init__.py",
+      "sha256": "8e8c130c70d85f1666cc8dfc62f9034dd8f7cf9910a4702f342759405629d0a0"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/artifacts.py",
+      "sha256": "d8289ea881c9bf3d036c48551d8768e95961db1110166681c71f7b56e9f3f349"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/authority.py",
+      "sha256": "a1a0e27c2b385d114b6671669cfdbd5c871e8ece6dfe6cab88580ee379ae5ad3"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/hashline.py",
+      "sha256": "6638c001c20fc7ea4ad4a501b140ee1f41158cc7d33162b8066478df5d8cc44e"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "sha256": "12f5527c13cfa6bf951e9f669ac19663a4ae1447fac173d117bf3a079d94e825"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/promoted_authority.py",
+      "sha256": "c2a58409cbfaafffe424f868e9c7c700d0b70fed0cfc95ef6c83a62d85058ee6"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/runtime.py",
+      "sha256": "ddfcf3123cd16695cb2c9e1790f1b75fcab7b4de05090bb5c05c5b7fc90074d5"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/__init__.py",
+      "sha256": "e93cc8a18f0386d27099d141d5c2dd4d9ceb68dabd169bc19fdce2c18bd47334"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/invalidation.py",
+      "sha256": "8effdc8ce72dda99e061f39587cfdb0b285db9e3bb471e3ae435b4351bb3b5e7"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/promotion.py",
+      "sha256": "fab0ddf9685694e7591a1daf3fe4829838f5017f98bc151b521049d2845503fe"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/traceability.py",
+      "sha256": "6acd61b5cbbc8cc431b05f401f52800191b0298d870d7fd56b3a58e141fb3ece"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/workpacks.py",
+      "sha256": "86f9bbcaf53a0ad07f117ead08571461a6836efd1e87d9106fb28d8ee8ec6034"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/__init__.py",
+      "sha256": "5df52d779a3017e1ac2d78bfa3a48164ba97ebc6531d207aa22681124ed60c30"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/interaction.py",
+      "sha256": "7bdcf2a51b9acc57535023c07e7d52d08b4dbc307de6247e4f32486a2c4ddb53"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/layout.py",
+      "sha256": "73134d144c00eaab3799f832f9c2bb922be57059ffcdeb0727385ff5bd13c157"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/prd_adoption.py",
+      "sha256": "e81f0233d904b68664b4db5c58f0b1023cf559d36ab2fa34d7f9c9bbb9b14200"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/presentation.py",
+      "sha256": "5bff002a9e8dbde3e11666c9c93c8d0aed0e3318fca367d04069616459a1c2bc"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/reasoning.py",
+      "sha256": "c3f3768be58fe017d0d6ab7bba5b1135b12b6514080f2e4c0a225bddab80a0d9"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/__init__.py",
+      "sha256": "fb88fb0a2066dabb5a7f68874fbc3b057d1229780a4093bb472e9cee6e7b97dd"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/contracts.py",
+      "sha256": "180f8301032e1fb1b363d0b6ff1c5d9379b1ece392872bc0ce761fa3d3a6ce87"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/experience_distillation.py",
+      "sha256": "15afe8440207af2b9c4101dc0e45a1f5f2b58119c5a5aa093fe200c35e4917e2"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/read_only_qa.py",
+      "sha256": "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/review_binding.py",
+      "sha256": "979899a92d65eb541d051fca4f49163c73d6701002546b20d7085038efa896aa"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/stage_order.py",
+      "sha256": "860174ca5eb68b57589773c63971377c9e509aee80b3e1a1ff120d04e686ef0b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/__init__.py",
+      "sha256": "b34f66575c065612d64019e92450db7cc359557276cc5a66dd143295df082060"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "sha256": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/interaction_closure.py",
+      "sha256": "616c57ef6ad172ea6fd5ce22c239a8c930305e0e62b63cc29f5b587b1899b2c9"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/layout_completeness.py",
+      "sha256": "395e8ce8c13b08e5bbf6d7c664c077f97fdbdaa24f82442a4db2aa48df74f768"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_compiler.py",
+      "sha256": "b3736d1a9a790f4bdbc356baa61dc5d88b6446c66e03e04b03062ef0582a2cdd"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+      "sha256": "ca26a98a42e721caab6dbe2ce7f6670ef3eba34310de9df22ccd0d6123ea6907"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_layout.py",
+      "sha256": "de11e9d546dfd2e4102e91be39bfa4b7c3e4adfc85b2de5735e25006885c2d92"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_page_elements.py",
+      "sha256": "50bf7b2cb1e51a850471a0791ceb166ff557df96921a85096bbba1a0017d5c6c"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_patterns.py",
+      "sha256": "e8a0d2fc33517ed214e97286cf07a50fa62dd00e6160c82d30e52067ac9267b9"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/postflight.py",
+      "sha256": "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "sha256": "fee746ca46fd29c34decb51453f3894ff3d3f6cee716ec4e5436c5cfb0305780"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/reasoning.py",
+      "sha256": "8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/source_intake.py",
+      "sha256": "9e4558593bf4ca5b4a84b15744a03638dd02279c4b006356353720b4bb232722"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/spec_validator.py",
+      "sha256": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/traceability.py",
+      "sha256": "6741fbfd0529f69a94b3910102cbc4a91878931cf6951800530bcb8053630d14"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/workpack_scope.py",
+      "sha256": "40d85a107c6bd350d01d14c775cd61b5fe9987447e1c143823235b28a29a913a"
+    },
+    {
+      "path": "repository/tests/p3/test_assurance_traceability.py",
+      "sha256": "9c6d76f933da345d65e9c70243ade2fe2f30ca077bcf060631af02b366afa2af"
+    },
+    {
+      "path": "repository/tests/p3/test_experience_distillation.py",
+      "sha256": "44f1544a9b305d45a433247ed6113ead298904ca9b9fc108dbac44e9fd3e91cb"
+    },
+    {
+      "path": "repository/tests/p3/test_interaction_closure.py",
+      "sha256": "182e6d23400d004e26e070ff1ebb0bded0568b4797dedd753404bc97209009c6"
+    },
+    {
+      "path": "repository/tests/p3/test_natural_language_layout.py",
+      "sha256": "321e3cc52ad72cd976131623ae33e213630735d3aca0003e90ca0f16f81d6aa2"
+    },
+    {
+      "path": "repository/tests/p3/test_p3_compiler_conservation.py",
+      "sha256": "40ac518902e146af1a0a989aa35837fc9c01a91c770252e097852b7b17a48ec3"
+    },
+    {
+      "path": "repository/tests/p3/test_page_element_model.py",
+      "sha256": "308816d881d54cabd664d57eae4bac17b8a442ef95fa51587e8eb8dce5f6b037"
+    },
+    {
+      "path": "repository/tests/p3/test_shared_component_and_information_patterns.py",
+      "sha256": "a93306c81b83fbd35d8d81b3952ea9c9b0b6e56972e908fa822308417e060da5"
+    },
+    {
+      "path": "repository/tests/p3/test_source_intake.py",
+      "sha256": "bf595bae0bb5b60067b93943fa3c68ea6631a2cd19071b4c5b33aa125ae6698b"
+    },
+    {
+      "path": "repository/tests/stages/test_read_only_qa_boundary.py",
+      "sha256": "d3d6414703a2fbd60bd4539c72f436cabb358b42b62c5ba5f279d5bd011d39d5"
+    },
+    {
+      "path": "repository/tests/workpacks/conftest.py",
+      "sha256": "3a1bc16331c01a977ab89b4424ff23425f8b1345cb4d722ac7c74319664a3fcd"
+    },
+    {
+      "path": "repository/tests/workpacks/test_code_target_map.py",
+      "sha256": "2bc68d95c0cbc96969eae382a8ae9675ca98d60011de9738539e98409f8c9127"
+    },
+    {
+      "path": "repository/tests/workpacks/test_skill_version_binding.py",
+      "sha256": "1949a75f0ab7b22705c9ee2336d399903185a986fcbec81183df428776af4ffa"
+    },
+    {
+      "path": "repository/tests/workpacks/test_test_obligation_matrix.py",
+      "sha256": "1bcc02404ac4960b28da4611196be5c8b6758ca01bf0a920437c85a5652144a9"
+    },
+    {
+      "path": "repository/tests/workpacks/test_workpack_generation.py",
+      "sha256": "38ba0370ed7af21c339c31484eea5964f2c817d452a5c97c1ec0a17a7229dcca"
+    },
+    {
+      "path": "repository/tests/workpacks/test_workpack_schemas.py",
+      "sha256": "79d0c6cc714846ae74eac68f36aadb4c2afc65dd79854b37876fe8bde4737e00"
+    }
+  ],
+  "test_results": [
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3 -q",
+      "exit_code": 0,
+      "result_hash": "2bcd322487c1463868219267b463fdaae0561be275d8f9460e3474de07b7485d"
+    },
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks repository/tests/stages/test_read_only_qa_boundary.py -q",
+      "exit_code": 0,
+      "result_hash": "8f5308a10738dc1f9be9c3fd4c7b9ba763da8db5ba8253ba3b3d0a9a52300488"
+    },
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "result_hash": "6037302108197dbc1f62ef99429fd4bc121c94cbdc98090990b31a5961e90a89"
+    },
+    {
+      "command": "P3 candidate review binding aggregate check",
+      "exit_code": 0,
+      "result_hash": "dbbc7f91694b2ee171a02ca5e5045ff9f7454d9d34667cf51d10976a1cb9b454"
+    }
+  ],
+  "validator_identity_hashes": [
+    "eee76052b32ffbc1d3fa1e2bc656205a9e842d1a9139b2c000ccb2f2b4c1a4ad"
+  ],
+  "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554",
+  "invalidates_on": [
+    "P3_SPEC_LOCK changes: d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "Any file entry in P3_BUILD_LOCK.files changes",
+    "Any P3 test result hash changes",
+    "Any P3 candidate review decision hash changes",
+    "Any P3 candidate review subject hash changes",
+    "P3-IMPL-ASSURANCE review_decision=46632b4402f3e329f063a53b0edead4e693e14845ef7d0929eea0b84d3967127 subject=fe0192379d858a4e2e9166a4ae619b3d05bfbe828e839fc3316f878f3924bc8c",
+    "P3-IMPL-CLOSURE review_decision=ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e subject=f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e",
+    "P3-IMPL-COMPILER review_decision=aec392fb4f90c76cdd82fd40c031ab31f9dc4032cbae50d4a55d239abd62ebf4 subject=05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834",
+    "P3-IMPL-DISTILL review_decision=f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c subject=eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1",
+    "P3-IMPL-ELEMENTS review_decision=14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf subject=57b9b7849de3948abd1b7513ec8a3820f7df6aaed1983bf2bc7a4c8d7990e633",
+    "P3-IMPL-LAYOUT review_decision=20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983 subject=df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651",
+    "P3-IMPL-PATTERNS review_decision=f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9 subject=4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8",
+    "P3-IMPL-SOURCE review_decision=d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36 subject=5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9",
+    "P3-SPEC-ASSURANCE review_decision=4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a subject=efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+    "P3-SPEC-CLOSURE review_decision=3f0a9eb31b0fe77b1ef29979b88d01ff13d83f5c2f8a0de1ed09c49e39c67422 subject=e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+    "P3-SPEC-COMPILER review_decision=1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f subject=3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+    "P3-SPEC-DISTILL review_decision=5c078b9509d48b8eccf863c9cf074b55d355c9bde28ff13a21446f093150e902 subject=9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+    "P3-SPEC-ELEMENTS review_decision=ac1305c8213f46b9b72af928fbf24f216a7a87cd28eff4a50e3b693815256c57 subject=d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+    "P3-SPEC-LAYOUT review_decision=46a9b20fd3b05510036f64024389487be3d90e4c2fb68731514fc93cb577881a subject=191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319",
+    "P3-SPEC-LOCK-CREATION-RESULT review_decision=7964efb113ddd333aeb93415516094aa11f37ebbfe41004d75951a2cab7f7893 subject=63fc9935d2780c233ead1b36be0275bba213dd5c586c0d794d3f02d8a341cd19",
+    "P3-SPEC-PATTERNS review_decision=cef82d8eeab608d7bed3c04d50dacfe0f2b36799c22fbb5bfa42f2146195df96 subject=f70abec15e06d121de485dac91b3efad19367a3eada31ee31133354112a683be",
+    "P3-SPEC-SOURCE review_decision=df6e0860e97a609efccbbdd67764e2dee44b0d36d086633e2f89dac232d7238e subject=d7468c8379b2860556146940734c0e61280811f72cef4c7b3cc1ed79513eb739"
+  ]
+}

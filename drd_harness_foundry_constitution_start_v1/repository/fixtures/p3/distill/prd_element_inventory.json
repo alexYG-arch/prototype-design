@@ -1,0 +1,44 @@
+{
+  "artifact_id": "p3.distill.prd_element_inventory",
+  "records": [
+    {
+      "element_id": "p3-elem-console-surface",
+      "element_type": "PAGE",
+      "source_unit_refs": [
+        "p3-unit-console-surface"
+      ],
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "3d2f13497d80fa847a2e65549ea296962ea6a54811195e4d5f15fa5860d219e5",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-elem-case-intake-state",
+      "element_type": "STATE",
+      "source_unit_refs": [
+        "p3-unit-case-intake-state"
+      ],
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "d7f24ab6c968245870de874e3ed9836a1e63e4fa676b6e7d98ad9fed2d7ed7dd",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.prd_element_inventory"
+    },
+    {
+      "element_id": "p3-elem-review-gap-message",
+      "element_type": "MESSAGE",
+      "source_unit_refs": [
+        "p3-unit-review-gap-message"
+      ],
+      "source_refs": [
+        "p3-src-brief"
+      ],
+      "source_text_hash": "2210795684a508add55d3cccd5ac61b2282233e65483a8a6b3e33b3469b2267b",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.prd_element_inventory"
+    }
+  ]
+}

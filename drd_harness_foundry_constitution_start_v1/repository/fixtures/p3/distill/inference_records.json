@@ -1,0 +1,102 @@
+{
+  "artifact_id": "p3.distill.inference_records",
+  "records": [
+    {
+      "inference_id": "p3-inf-console-surface",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.semantic_unit_map",
+      "source_refs": [
+        "p3-src-brief",
+        "p3-unit-console-surface"
+      ],
+      "premises": [
+        "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions."
+      ],
+      "applied_rules": [
+        "P3-DISTILL-PRIMARY-SEMANTICS",
+        "P3-DISTILL-ATOMIZE"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "Operations console is a source-explicit surface claim.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-case-intake-state",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.semantic_unit_map",
+      "source_refs": [
+        "p3-src-brief",
+        "p3-unit-case-intake-state"
+      ],
+      "premises": [
+        "Reviewers need to see whether a case is ready, blocked, or waiting for human review."
+      ],
+      "applied_rules": [
+        "P3-DISTILL-PRIMARY-SEMANTICS",
+        "P3-DISTILL-ATOMIZE"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "Case intake state visibility is source-explicit.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-review-gap-message",
+      "inference_class": "SOURCE_EXPLICIT",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.semantic_unit_map",
+      "source_refs": [
+        "p3-src-brief",
+        "p3-unit-review-gap-message"
+      ],
+      "premises": [
+        "Missing product details must remain review gaps until explicitly approved."
+      ],
+      "applied_rules": [
+        "P3-DISTILL-PRIMARY-SEMANTICS",
+        "P3-DISTILL-ATOMIZE"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [],
+      "conclusion": "Missing product details must stay review-gated.",
+      "canonical_eligibility": "ELIGIBLE",
+      "downstream_use": [
+        "closure_handoff"
+      ]
+    },
+    {
+      "inference_id": "p3-inf-visual-blocker",
+      "inference_class": "INDUCTIVE_CANDIDATE",
+      "stage_id": "DRD-01-EXPERIENCE-DISTILL",
+      "artifact_id": "p3.distill.semantic_unit_map",
+      "source_refs": [
+        "p3-src-screenshot",
+        "p3-unit-visual-blocker"
+      ],
+      "premises": [
+        "Dashboard screenshot is frozen as identity evidence but lacks extraction evidence for semantic adoption."
+      ],
+      "applied_rules": [
+        "P3-DISTILL-VISUAL-EXTRACTION-BOUNDARY"
+      ],
+      "necessity_basis": null,
+      "unresolved_product_choices": [
+        "visual semantics require extraction evidence"
+      ],
+      "conclusion": "Screenshot semantics are preserved only as a blocker.",
+      "canonical_eligibility": "BLOCKED_PENDING_HUMAN",
+      "downstream_use": [
+        "preserve_blocker_only"
+      ]
+    }
+  ]
+}

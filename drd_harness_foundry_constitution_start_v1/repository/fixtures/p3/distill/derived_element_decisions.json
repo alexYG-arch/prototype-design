@@ -1,0 +1,22 @@
+{
+  "artifact_id": "p3.distill.derived_element_decisions",
+  "records": [
+    {
+      "derived_element_id": "p3-derived-missing-product-review-gate",
+      "derived_surface_type": "review_gate",
+      "derivation_source": "p3-unit-review-gap-message",
+      "obligation_refs": [
+        "p3-obligation-missing-product-details"
+      ],
+      "inference_refs": [
+        "p3-inf-review-gap-message"
+      ],
+      "derivation_strategy": "DEDUCTIVE_PRIMARY",
+      "structural_completion_review": "p3-structural-review-missing-product-details",
+      "canonical_eligibility": "BLOCKED_PENDING_HUMAN",
+      "blocked_by": [
+        "p3-gap-missing-product-details"
+      ]
+    }
+  ]
+}

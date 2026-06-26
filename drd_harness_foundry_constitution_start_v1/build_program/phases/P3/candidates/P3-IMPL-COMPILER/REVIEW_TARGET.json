@@ -1,0 +1,32 @@
+{
+  "target_id": "P3-IMPL-COMPILER-REVIEW-TARGET-001",
+  "workpack_id": "P3-IMPL-COMPILER",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-IMPL-COMPILER",
+  "review_subject_hash": "05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does compiler stay inside P3-IMPL-COMPILER and avoid product capability expansion?",
+    "Does additive P3 wrapper preserve P2 locked compiler core behavior?",
+    "Are closed input records, review decisions, schema hashes, compiler code hash, deterministic sidecars, semantic conservation, and read-only QA boundary verifiable?",
+    "Do targeted, compiler, P3, and full regression tests pass?"
+  ],
+  "not_a_review_decision": true,
+  "resolved_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

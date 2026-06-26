@@ -1,0 +1,163 @@
+{
+  "bundle_id": "P3-SPEC-LOCK-INPUT-BUNDLE-001",
+  "phase": "P3",
+  "status": "EXPLICIT_LOCK_CREATION_REQUEST_RECEIVED",
+  "not_a_spec_lock": true,
+  "source_candidate": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE",
+  "source_candidate_review_decision": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/REVIEW_DECISION.json",
+  "phase_readiness_subject_hash": "efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+  "phase_review_decision_file_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+  "canonical_spec_lock_schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "required_fields": [
+      "lock_id",
+      "phase",
+      "root_sha256",
+      "files",
+      "review_decision_hash"
+    ]
+  },
+  "proposed_canonical_lock_fields": {
+    "lock_id": "P3-SPEC-LOCK-001",
+    "phase": "P3",
+    "root_sha256": "311caf3063b75039a607c31fdec0318c7f7076483fca30507a7cedb385fc9522",
+    "review_decision_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+    "review_decision_file_root_sha256": "ad6a46f59d4ee8e8c2b08f352df965678ffff3788f1f42022819c4c7973dd03f",
+    "created_by_runtime": "python",
+    "source_candidate_review_decision_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a"
+  },
+  "approved_spec_inputs": [
+    {
+      "spec_part": "P3-SPEC-SOURCE",
+      "generated_output_count": 12,
+      "subject_hash": "d7468c8379b2860556146940734c0e61280811f72cef4c7b3cc1ed79513eb739",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/REVIEW_DECISION.json",
+      "review_decision_file_hash": "df6e0860e97a609efccbbdd67764e2dee44b0d36d086633e2f89dac232d7238e",
+      "review_id": "P3-SPEC-SOURCE-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-DISTILL",
+      "generated_output_count": 12,
+      "subject_hash": "9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/REVIEW_DECISION.json",
+      "review_decision_file_hash": "5c078b9509d48b8eccf863c9cf074b55d355c9bde28ff13a21446f093150e902",
+      "review_id": "P3-SPEC-DISTILL-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-CLOSURE",
+      "generated_output_count": 12,
+      "subject_hash": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "review_decision_file_hash": "3f0a9eb31b0fe77b1ef29979b88d01ff13d83f5c2f8a0de1ed09c49e39c67422",
+      "review_id": "P3-SPEC-CLOSURE-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-ELEMENTS",
+      "generated_output_count": 12,
+      "subject_hash": "d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+      "review_decision_file_hash": "ac1305c8213f46b9b72af928fbf24f216a7a87cd28eff4a50e3b693815256c57",
+      "review_id": "P3-SPEC-ELEMENTS-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-PATTERNS",
+      "generated_output_count": 12,
+      "subject_hash": "f70abec15e06d121de485dac91b3efad19367a3eada31ee31133354112a683be",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+      "review_decision_file_hash": "cef82d8eeab608d7bed3c04d50dacfe0f2b36799c22fbb5bfa42f2146195df96",
+      "review_id": "P3-SPEC-PATTERNS-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-LAYOUT",
+      "generated_output_count": 12,
+      "subject_hash": "191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/REVIEW_DECISION.json",
+      "review_decision_file_hash": "46a9b20fd3b05510036f64024389487be3d90e4c2fb68731514fc93cb577881a",
+      "review_id": "P3-SPEC-LAYOUT-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-COMPILER",
+      "generated_output_count": 12,
+      "subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+      "review_decision_file_hash": "1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f",
+      "review_id": "P3-SPEC-COMPILER-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P3-SPEC-ASSURANCE",
+      "generated_output_count": 12,
+      "subject_hash": "efd2782c0906323a7513791dc55ba4707d32d7284dbeb393886bfc47942164d3",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE/REVIEW_DECISION.json",
+      "review_decision_file_hash": "4a89140263a1ef602fe39c938e2758622dbf27c9ef4afc3bc5534b9e5cfe036a",
+      "review_id": "P3-SPEC-ASSURANCE-REVIEW-001",
+      "review_decision_id_omitted_reason": "P3 review decisions use review_id; tooling/create_spec_lock.py only checks decision_id when the input bundle provides review_decision_id.",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    }
+  ],
+  "creation_preconditions": [
+    "User explicitly requested P3_SPEC_LOCK creation.",
+    "Python tool re-reads every approved P3 Candidate manifest and REVIEW_DECISION.json.",
+    "Python tool recomputes each subject hash over generated outputs only.",
+    "Python tool validates the source assurance review decision hash.",
+    "Python tool validates the output against control/schemas/spec_lock.schema.json.",
+    "Python tool writes a new immutable lock artifact only after all checks pass.",
+    "Python tool output path must not already exist before real lock creation."
+  ],
+  "forbidden_shortcuts": [
+    "Do not hand-write control/locks/P3_SPEC_LOCK.json.",
+    "Do not start P3 implementation from candidate files without canonical P3_SPEC_LOCK.",
+    "Do not create P3_BUILD_LOCK from this SPEC_LOCK creation step.",
+    "Do not update root P3 phase files from this SPEC_LOCK creation step."
+  ],
+  "real_lock_output": {
+    "path": "control/locks/P3_SPEC_LOCK.json",
+    "must_not_exist_before_write": true,
+    "exists_at_creation_time": false,
+    "write_allowed_by_explicit_user_request": true
+  },
+  "human_authorization": {
+    "status": "EXPLICIT_USER_REQUESTED_LOCK_CREATION",
+    "user_request": "\u521b\u5efa P3_SPEC_LOCK",
+    "does_not_create_build_lock": true,
+    "does_not_authorize_implementation_by_itself": true
+  }
+}

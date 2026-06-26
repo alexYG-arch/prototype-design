@@ -1,0 +1,104 @@
+{
+  "matrix_id": "P3-SPEC-COMPILER-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-COMPILER",
+  "module": "drd_compiler",
+  "validation_rows": [
+    {
+      "validation_id": "P3COMP-VAL-001",
+      "requirement": "direct upstream P3-SPEC-LAYOUT review decision is approved and current",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/REVIEW_DECISION.json",
+      "failure_mode": "compiler starts from stale or unapproved layout authority",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-002",
+      "requirement": "all previous P3 spec review decisions are bound by sha256 and subject hash",
+      "evidence": "CANDIDATE_MANIFEST.direct_dependency_review_decisions",
+      "failure_mode": "compiler input set cannot prove approved source, distillation, closure, element, pattern, and layout lineage",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-003",
+      "requirement": "compiler input bundle contains only allowed input types with path, sha256, and approval linkage",
+      "evidence": "repository/schemas/compiler/compiler_input_bundle.schema.json and compiler_conservation validator",
+      "failure_mode": "unapproved candidate, local draft, manual final fragment, direct source semantic read, unhashed file, or invalidated evidence enters compiler",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-004",
+      "requirement": "closed_input_hash matches the closed input records, source snapshot identity, stage order, and section order",
+      "evidence": "compute_closed_input_hash",
+      "failure_mode": "input bundle was changed after closure or hash was copied from a different bundle",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-005",
+      "requirement": "stage order is DRD-01, DRD-02, DRD-03, DRD-03B, DRD-04 and section order slots are explicit and unique",
+      "evidence": "validate_stage_order and validate_section_order",
+      "failure_mode": "final DRD is order-dependent on nondeterministic or contradictory sources",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-006",
+      "requirement": "each compiled section references known semantic_unit_ids and a semantic unit is not compiled into multiple sections",
+      "evidence": "validate_section_semantic_unit_refs",
+      "failure_mode": "compiled prose cannot be reconciled with approved semantic unit inventory",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-007",
+      "requirement": "atomic semantic unit inventory passes compiler atomicity rules",
+      "evidence": "compiler_atomic_semantic_unit schema and validate_atomic_inventory_for_compiler",
+      "failure_mode": "unit inventory is too coarse to prove omission, addition, or duplicate compilation",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-008",
+      "requirement": "natural-language bodies are preserved as semantic authority and inventory remains index and validation skeleton only",
+      "evidence": "semantic_authority_rule and final DRD conservation report",
+      "failure_mode": "compiler rewrites approved prose or treats canonical_value as a substitute authority",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-009",
+      "requirement": "semantic conservation has no added units, omitted units, hash drift, unapproved inputs, non-atomic units, ordering findings, or nondeterminism findings",
+      "evidence": "compiler_conservation_report",
+      "failure_mode": "compiled output is not semantically equal to approved input set",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-010",
+      "requirement": "final manifest, table of contents, reference index, hash index, semantic inventory, conservation report, and FINAL_DRD text are mutually consistent",
+      "evidence": "validate_compiler_output_package",
+      "failure_mode": "sidecar indexes cannot reproduce or validate the final DRD",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-011",
+      "requirement": "read-only QA writes only allowed QA outputs and never mutates compiled artifacts",
+      "evidence": "read_only_qa_boundary schema and validate_read_only_qa_boundary",
+      "failure_mode": "post-compile QA changes the compiled package or writes unauthorized files",
+      "expected_result": "reject"
+    },
+    {
+      "validation_id": "P3COMP-VAL-012",
+      "requirement": "candidate scope is limited to P3-SPEC-COMPILER candidate files and does not create locks or implementation files",
+      "evidence": "SCOPE_REPORT.json",
+      "failure_mode": "spec candidate mutates repository code, prior approved candidates, root P3 files, P1/P2 files, or control locks",
+      "expected_result": "reject"
+    }
+  ],
+  "minimum_test_obligations": [
+    "candidate-check for P3-SPEC-COMPILER returns PASS with zero findings",
+    "candidate-check with P3-SPEC-LAYOUT REVIEW_DECISION returns PASS",
+    "candidate-check for all prior P3 review decisions returns PASS",
+    "artifact contract schema-bound minimum_fields match current compiler schema required fields",
+    "compiler artifact envelope fields are declared for every structured artifact",
+    "P3-required compiler fields include semantic_content_hash, sections, semantic_units, current_hashes, prose_authority_refs, and explicit output hash bindings",
+    "compiler rules reject forbidden input types and direct source semantic reads outside the closed bundle",
+    "compiler rules reject semantic additions, omissions, hash drift, unapproved inputs, non-atomic units, nondeterministic ordering, and QA mutation",
+    "scope report actual writes exist and forbidden write violations are empty"
+  ],
+  "open_blockers": []
+}

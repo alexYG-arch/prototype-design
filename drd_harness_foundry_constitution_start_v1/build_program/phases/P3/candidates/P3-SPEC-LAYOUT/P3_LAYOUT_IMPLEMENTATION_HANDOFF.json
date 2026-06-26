@@ -1,0 +1,32 @@
+{
+  "handoff_id": "P3-SPEC-LAYOUT-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P3",
+  "source_spec_workpack": "P3-SPEC-LAYOUT",
+  "implementation_workpack": "P3-IMPL-LAYOUT",
+  "blocked_until": [
+    "P3-SPEC-LAYOUT human review decision is approved for exact subject hash",
+    "P3_SPEC_LOCK exists and includes P3-SPEC-LAYOUT",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P3_SPEC_LOCK"
+  ],
+  "allowed_future_implementation_targets": [
+    "repository/src/drd_harness/validators/layout_completeness.py",
+    "repository/src/drd_harness/rules/layout.py",
+    "repository/fixtures/p3/layout/**",
+    "repository/tests/p3/test_natural_language_layout.py",
+    "repository/tests/layout/**"
+  ],
+  "forbidden_now": [
+    "creating P3_SPEC_LOCK from this candidate alone",
+    "creating P3_BUILD_LOCK",
+    "modifying repository implementation code in this spec workpack",
+    "starting P3-IMPL-LAYOUT before spec lock and implementation authorization",
+    "modifying P3-SPEC-PATTERNS or earlier approved candidate contents",
+    "creating Figma files, renderer output, or canonical design files from this spec candidate"
+  ],
+  "acceptance_commands_for_future_implementation": [
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_natural_language_layout.py -q",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/layout repository/tests/p3 -q",
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-LAYOUT"
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,63 @@
+{
+  "evidence_id": "P3-IMPL-ELEMENTS-VALIDATION-EVIDENCE-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-ELEMENTS",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P3_IMPL_ELEMENTS_CANDIDATE_TESTS",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_page_element_model.py -q",
+      "status": "PASS",
+      "summary": "16 passed"
+    },
+    {
+      "check": "P3_IMPL_ELEMENTS_REASONING_AND_P3_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/reasoning repository/tests/p3 -q",
+      "status": "PASS",
+      "summary": "63 passed"
+    },
+    {
+      "check": "P3_IMPL_ELEMENTS_FULL_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "status": "PASS",
+      "summary": "345 passed"
+    },
+    {
+      "check": "P3_IMPL_CLOSURE_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-CLOSURE --review-decision build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+      "status": "PASS",
+      "summary": "subject_hash f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e"
+    },
+    {
+      "check": "P2_LOCKED_PRD_ADOPTION_HASH_GUARD",
+      "command": "python3 hash check against P2 BUILD_LOCK_INPUT_MATRIX",
+      "status": "PASS",
+      "summary": "No P2 locked file hash mismatches"
+    },
+    {
+      "check": "RUNTIME_BOUNDARY",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "status": "PASS",
+      "summary": "No forbidden runtime reads or imports"
+    },
+    {
+      "check": "GIT_DIFF_CHECK",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "validated_rules": [
+    "natural language primary semantic authority and inventory-as-index role",
+    "atomic inventory grain",
+    "one adoption decision per explicit inventory row",
+    "actual upstream file hashes match declared upstream_hashes",
+    "schema record keys reject missing required fields and off-schema fields",
+    "canonical source_refs resolve to approved closure units, approved distill authority refs, or blocked gaps",
+    "closure-like canonical source_refs resolve to approved closure units or blocked gaps",
+    "closure node/message coverage to canonical element or blocked gap",
+    "canonical projection excludes clarification, conflict, gap-routed, open-gap, structural-review, blocked, inductive rows, off-schema approved_element_id gap fields, and unknown source authority refs",
+    "open product expansion gaps block downstream consumption until Human Gate approval"
+  ],
+  "open_blockers": [],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

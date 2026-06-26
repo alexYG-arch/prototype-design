@@ -1,0 +1,62 @@
+{
+  "ruleset_id": "P3-SPEC-DISTILL-PIPELINE-RULES-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-DISTILL",
+  "ordered_steps": [
+    {
+      "step_id": "distill.consume_source_handoff",
+      "name": "Load eligible source intake handoff and blocker records",
+      "required_input": "P3-SPEC-SOURCE downstream handoff contract"
+    },
+    {
+      "step_id": "distill.segment_semantics",
+      "name": "Segment eligible source text or extracted evidence into atomic semantic units",
+      "required_output": "semantic_unit_map"
+    },
+    {
+      "step_id": "distill.classify_units",
+      "name": "Classify task, actor, surface, action, input, state, message, constraint, and gap candidates",
+      "required_output": "semantic families"
+    },
+    {
+      "step_id": "distill.map_schema_rows",
+      "name": "Map eligible units into current PRD inventory schema element types",
+      "required_output": "prd_element_inventory"
+    },
+    {
+      "step_id": "distill.decide_adoption",
+      "name": "Record adopt, normalize, clarify, reject conflict, or route product gap decisions",
+      "required_output": "prd_element_decisions"
+    },
+    {
+      "step_id": "distill.record_reasoning",
+      "name": "Record inference records, derived decisions, and input obligations",
+      "required_output": "reasoning artifacts"
+    },
+    {
+      "step_id": "distill.review_completion",
+      "name": "Run structural completion review and product expansion checks",
+      "required_output": "structural_completion_review and product_expansion_gaps"
+    },
+    {
+      "step_id": "distill.handoff_closure",
+      "name": "Create handoff for interaction closure with eligible and blocked units",
+      "required_output": "closure_handoff_manifest"
+    }
+  ],
+  "canonical_eligibility_rules": [
+    "SOURCE_EXPLICIT may be ELIGIBLE when source is eligible and row maps to a supported element type.",
+    "DEDUCTIVE_NECESSITY may be ELIGIBLE only when premises and necessity_basis are complete and no product expansion risk is present.",
+    "INDUCTIVE_CANDIDATE must be BLOCKED_PENDING_HUMAN unless a human decision resolves it.",
+    "Conflicting source claims must be REJECTED or BLOCKED_PENDING_HUMAN until resolved.",
+    "Rows that require new product capability must route to product_expansion_gaps."
+  ],
+  "forbidden_behaviors": [
+    "read unfrozen source content directly",
+    "merge multiple semantic claims into one inventory row",
+    "use P3 semantic family names as PRD element schema enum values",
+    "treat input obligations as product capability approval",
+    "let an unresolved product expansion gap feed interaction closure as eligible"
+  ],
+  "open_blockers": []
+}

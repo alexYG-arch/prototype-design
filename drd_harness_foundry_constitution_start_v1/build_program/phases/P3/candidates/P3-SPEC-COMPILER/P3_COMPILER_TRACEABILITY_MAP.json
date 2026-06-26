@@ -1,0 +1,143 @@
+{
+  "traceability_id": "P3-SPEC-COMPILER-TRACEABILITY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-COMPILER",
+  "traceability_rows": [
+    {
+      "source": "P3-SPEC-LAYOUT REVIEW_DECISION",
+      "target_artifacts": [
+        "all p3.compiler artifacts"
+      ],
+      "trace_rule": "approved layout subject hash is the direct upstream compiler boundary",
+      "test_obligation": "candidate-check with P3-SPEC-LAYOUT review decision passes"
+    },
+    {
+      "source": "P3-SPEC-SOURCE REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_input_bundle",
+        "final_drd_reference_index"
+      ],
+      "trace_rule": "source intake records must be frozen, hashed, and source-attributed before compilation",
+      "test_obligation": "source review decision sha256 and subject hash are bound"
+    },
+    {
+      "source": "P3-SPEC-DISTILL REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_input_bundle",
+        "FINAL_DRD.md"
+      ],
+      "trace_rule": "experience distillation sections may be assembled only from approved distillation authority",
+      "test_obligation": "distillation review decision sha256 and subject hash are bound"
+    },
+    {
+      "source": "P3-SPEC-CLOSURE REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_semantic_unit_inventory",
+        "compiler_conservation_report"
+      ],
+      "trace_rule": "interaction closure paths and messages must conserve approved closure semantic units",
+      "test_obligation": "unknown interaction semantic unit refs are rejected"
+    },
+    {
+      "source": "P3-SPEC-ELEMENTS REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_semantic_unit_inventory",
+        "compiler_conservation_report"
+      ],
+      "trace_rule": "page element and atomic inventory units must remain traceable to approved element authority",
+      "test_obligation": "non-atomic or missing element semantic units are rejected"
+    },
+    {
+      "source": "P3-SPEC-PATTERNS REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_input_bundle",
+        "final_drd_reference_index"
+      ],
+      "trace_rule": "pattern semantics and presentation decisions must be compiled through approved pattern refs only",
+      "test_obligation": "unapproved pattern refs are rejected"
+    },
+    {
+      "source": "P3-SPEC-LAYOUT REVIEW_DECISION",
+      "target_artifacts": [
+        "compiler_input_bundle",
+        "compiler_semantic_unit_inventory",
+        "FINAL_DRD.md"
+      ],
+      "trace_rule": "layout carrier, containment, information completeness, z-axis, and Figma metadata bindings must conserve approved layout semantics",
+      "test_obligation": "layout semantic addition or omission is rejected"
+    },
+    {
+      "source": "compiler_input_bundle",
+      "target_artifacts": [
+        "compiler_semantic_unit_inventory",
+        "final_drd_toc",
+        "final_drd_reference_index",
+        "final_drd_hash_index"
+      ],
+      "trace_rule": "closed input hash, stage order, section order, and schema identities drive every output sidecar",
+      "test_obligation": "closed_input_hash drift is rejected"
+    },
+    {
+      "source": "natural language authority and inventory skeleton dual rail",
+      "target_artifacts": [
+        "FINAL_DRD.md",
+        "compiler_semantic_unit_inventory",
+        "compiler_conservation_report"
+      ],
+      "trace_rule": "approved prose carries meaning while inventory proves coverage and conservation",
+      "test_obligation": "compiler prose rewrite and inventory-as-authority are rejected"
+    },
+    {
+      "source": "deterministic assembly",
+      "target_artifacts": [
+        "FINAL_DRD.md",
+        "final_drd_toc",
+        "final_drd_hash_index"
+      ],
+      "trace_rule": "stage and section order are explicit numeric records and output hashes reproduce",
+      "test_obligation": "nondeterministic ordering sources are rejected"
+    },
+    {
+      "source": "semantic conservation",
+      "target_artifacts": [
+        "compiler_conservation_report",
+        "final_drd_manifest"
+      ],
+      "trace_rule": "manifest blocking counts must match conservation findings and PASS cannot contain blockers",
+      "test_obligation": "PASS with blocking counts is rejected"
+    },
+    {
+      "source": "read-only QA boundary",
+      "target_artifacts": [
+        "read_only_qa_boundary",
+        "compiler_conservation_report"
+      ],
+      "trace_rule": "QA after compilation may report but must not mutate compiled artifacts",
+      "test_obligation": "forbidden QA writes or mutations are rejected"
+    },
+    {
+      "source": "P3-SPEC-ASSURANCE downstream",
+      "target_artifacts": [
+        "implementation handoff"
+      ],
+      "trace_rule": "assurance may inspect compiler outputs and QA findings but cannot use compiler to repair semantics",
+      "test_obligation": "assurance handoff remains read-only until authorized implementation gate"
+    }
+  ],
+  "schema_refs": [
+    "repository/schemas/compiler/compiler_input_bundle.schema.json",
+    "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+    "repository/schemas/compiler/compiler_conservation_report.schema.json",
+    "repository/schemas/compiler/final_drd_manifest.schema.json",
+    "repository/schemas/compiler/final_drd_toc.schema.json",
+    "repository/schemas/compiler/final_drd_reference_index.schema.json",
+    "repository/schemas/compiler/final_drd_hash_index.schema.json",
+    "repository/schemas/compiler/read_only_qa_boundary.schema.json"
+  ],
+  "validator_refs": [
+    "repository/src/drd_harness/validators/compiler_conservation.py",
+    "repository/src/drd_harness/compiler/final_drd.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ],
+  "open_blockers": []
+}

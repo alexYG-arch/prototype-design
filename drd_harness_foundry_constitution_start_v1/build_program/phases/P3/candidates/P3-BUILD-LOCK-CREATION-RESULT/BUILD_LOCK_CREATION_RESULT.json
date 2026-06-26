@@ -1,0 +1,54 @@
+{
+  "result_id": "P3-BUILD-LOCK-CREATION-RESULT-001",
+  "phase": "P3",
+  "status": "BUILD_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
+    "lock_id": "P3-BUILD-LOCK-001",
+    "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554",
+    "git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+    "git_commit_binding_note": "HEAD at lock creation; current P3 inputs are also bound by direct file hashes because the worktree contains uncommitted P3 artifacts.",
+    "spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "file_entry_count": 202,
+    "test_result_count": 4,
+    "validator_identity_hash_count": 1,
+    "invalidates_on_count": 22
+  },
+  "upstream_spec_lock": {
+    "path": "control/locks/P3_SPEC_LOCK.json",
+    "sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "lock_id": "P3-SPEC-LOCK-001"
+  },
+  "authorized_by_review": {
+    "latest_implementation_review_decision": "build_program/phases/P3/candidates/P3-IMPL-ASSURANCE/REVIEW_DECISION.json",
+    "latest_implementation_review_decision_sha256": "46632b4402f3e329f063a53b0edead4e693e14845ef7d0929eea0b84d3967127",
+    "latest_implementation_subject_hash": "fe0192379d858a4e2e9166a4ae619b3d05bfbe828e839fc3316f878f3924bc8c",
+    "all_p3_candidate_review_bindings": "PASS",
+    "bound_review_decision_count": 17
+  },
+  "schema": {
+    "path": "repository/schemas/locks/build_lock.schema.json",
+    "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+  },
+  "validator": {
+    "path": "repository/src/drd_harness/validators/phase_gate.py",
+    "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c",
+    "function": "validate_build_lock_readiness",
+    "validator_identity_hash": "eee76052b32ffbc1d3fa1e2bc656205a9e842d1a9139b2c000ccb2f2b4c1a4ad"
+  },
+  "creation_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "authorized_by_user_message": "2026-06-26 explicit authorization after P3_BUILD_LOCK boundary prompt: 授权",
+  "worktree_state_note": {
+    "head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+    "status_before_creation_count": 12,
+    "clean_commit_claimed": false,
+    "direct_file_hash_locking": true
+  },
+  "not_a_release_lock": true,
+  "not_a_spec_lock": true,
+  "not_a_promotion": true
+}

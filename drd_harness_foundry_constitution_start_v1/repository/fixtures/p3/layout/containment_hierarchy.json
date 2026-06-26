@@ -1,0 +1,95 @@
+{
+  "artifact_id": "p3.layout.containment_hierarchy",
+  "stage_id": "DRD-05-LAYOUT",
+  "fixture_id": "p3_layout_fixture",
+  "path": "repository/fixtures/p3/layout/containment_hierarchy.json",
+  "schema_ref": "repository/schemas/layout/containment_hierarchy.schema.json",
+  "schema_payload_key": "hierarchy",
+  "source_refs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.elements.prd_element_inventory",
+    "p3.closure.interaction_messages",
+    "p3.patterns.shared_component_registry",
+    "p3.patterns.information_presentation_registry",
+    "p3.impl.patterns.review_decision"
+  ],
+  "upstream_hashes": {
+    "p3.elements.prd_element_inventory": "f1bf73dbc34294c28e2d6b39329e9a404ac90ab0ca9a51d9fe388b7ca4288c5b",
+    "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "p3.patterns.shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+    "p3.patterns.information_presentation_registry": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb",
+    "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_layout.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_LAYOUT_DISPUTE",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/patterns/information_presentation_registry.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
+  ],
+  "hierarchy": {
+    "hierarchy_id": "p3-layout-containment-tree",
+    "surface_id": "p3-el-operations-console",
+    "nodes": [
+      {
+        "node_id": "p3-el-operations-console",
+        "surface_kind": "PAGE",
+        "parent_id": null,
+        "order": 0,
+        "arrangement": "Root page contains state containers in semantic sequence.",
+        "sizing": "Fills available carrier width with scrollable height.",
+        "scroll_behavior": "Owns vertical scroll without contradiction to child scrolling.",
+        "width_behavior": "Children wrap and stack inside parent width."
+      },
+      {
+        "node_id": "p3-el-case-ready-state",
+        "surface_kind": "STATE_CONTAINER",
+        "parent_id": "p3-el-operations-console",
+        "order": 0,
+        "arrangement": "Ready state appears before blocked state.",
+        "sizing": "Uses content height with readable minimum sizing.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps status content inside parent width."
+      },
+      {
+        "node_id": "p3-el-case-blocked-state",
+        "surface_kind": "STATE_CONTAINER",
+        "parent_id": "p3-el-operations-console",
+        "order": 1,
+        "arrangement": "Blocked state follows ready state.",
+        "sizing": "Uses content height with readable minimum sizing.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps status content inside parent width."
+      },
+      {
+        "node_id": "p3-el-human-review-waiting-state",
+        "surface_kind": "STATE_CONTAINER",
+        "parent_id": "p3-el-operations-console",
+        "order": 2,
+        "arrangement": "Human review waiting state contains the blocked review message.",
+        "sizing": "Uses content height and may expand for the message.",
+        "scroll_behavior": "Participates in parent scroll without contradiction.",
+        "width_behavior": "Wraps child message content inside parent width."
+      },
+      {
+        "node_id": "p3-el-review-gap-blocked-message",
+        "surface_kind": "GROUP",
+        "parent_id": "p3-el-human-review-waiting-state",
+        "order": 0,
+        "arrangement": "Message group places reason before required next step.",
+        "sizing": "Uses readable content height with expansion.",
+        "scroll_behavior": "Uses local expansion and parent scroll without contradiction.",
+        "width_behavior": "Wraps long text; does not clip required information."
+      }
+    ]
+  }
+}

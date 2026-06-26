@@ -1,0 +1,73 @@
+{
+  "matrix_id": "P3-SPEC-DISTILL-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-DISTILL",
+  "validation_rows": [
+    {
+      "rule_id": "P3DIST-VAL-001",
+      "requirement": "P3-SPEC-SOURCE review is approved and subject-bound",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-SOURCE",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3DIST-VAL-002",
+      "requirement": "schema-bound artifact contracts use current required fields exactly",
+      "evidence": "P3_DISTILLATION_ARTIFACT_CONTRACTS.json",
+      "validator": "schema alignment check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3DIST-VAL-003",
+      "requirement": "semantic unit map stays atomic and names source refs, source hash, eligibility, and downstream use",
+      "evidence": "p3.distill.semantic_unit_map",
+      "validator": "future semantic unit map validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3DIST-VAL-004",
+      "requirement": "PRD element inventory and decisions cover each other without orphan rows",
+      "evidence": "prd_element_inventory and prd_element_decisions",
+      "validator": "repository/src/drd_harness/validators/prd_adoption.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3DIST-VAL-005",
+      "requirement": "deductive and inductive derivations preserve canonical eligibility boundaries",
+      "evidence": "inference_records and derived_element_decisions",
+      "validator": "repository/src/drd_harness/validators/reasoning.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3DIST-VAL-006",
+      "requirement": "product expansion gaps block downstream handoff until human decision resolves them",
+      "evidence": "product_expansion_gaps and closure_handoff_manifest",
+      "validator": "repository/src/drd_harness/validators/prd_adoption.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3DIST-VAL-007",
+      "requirement": "candidate scope stays inside P3-SPEC-DISTILL and does not create locks or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3DIST-VAL-008",
+      "requirement": "every distillation output artifact declares the standard artifact envelope fields and records payload key",
+      "evidence": "P3_DISTILLATION_ARTIFACT_CONTRACTS.json",
+      "validator": "artifact envelope contract check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "explicit page, CTA, input, state, message, role, permission, and UI element source rows map to supported schema element types",
+    "inductive candidate remains blocked without human decision",
+    "conflicting source rows create conflict decision and product expansion gap when capability choice is required",
+    "missing input creates input obligation and does not create product capability",
+    "unresolved gap prevents affected row from appearing in closure handoff eligible list",
+    "inventory and decision coverage validator rejects orphan inventory or decision rows",
+    "artifact envelope fields are required for every output before records are validated"
+  ],
+  "open_blockers": []
+}

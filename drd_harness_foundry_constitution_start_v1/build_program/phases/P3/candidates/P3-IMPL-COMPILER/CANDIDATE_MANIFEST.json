@@ -1,0 +1,51 @@
+{
+  "workpack_id": "P3-IMPL-COMPILER",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-IMPL-COMPILER",
+  "upstream_spec_lock": "control/locks/P3_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+  "upstream_spec_lock_id": "P3-SPEC-LOCK-001",
+  "upstream_spec_compiler_review_decision": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+  "upstream_spec_compiler_review_decision_hash": "1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f",
+  "upstream_impl_layout_review_decision": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+  "upstream_impl_layout_review_decision_hash": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
+  "owned_workpack": "P3-IMPL-COMPILER",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "approval_state": "PENDING_HUMAN_REVIEW",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/p3_compiler.py",
+    "repository/fixtures/p3/compiler/**",
+    "repository/tests/p3/test_p3_compiler_conservation.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/** except read-only review input",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review P3-IMPL-COMPILER candidate. Do not create P3_BUILD_LOCK or start P3-IMPL-ASSURANCE without explicit authorization."
+}

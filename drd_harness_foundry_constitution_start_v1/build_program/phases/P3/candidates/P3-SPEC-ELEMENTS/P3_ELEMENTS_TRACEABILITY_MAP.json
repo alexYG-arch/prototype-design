@@ -1,0 +1,100 @@
+{
+  "traceability_id": "P3-SPEC-ELEMENTS-TRACEABILITY-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ELEMENTS",
+  "traceability_rows": [
+    {
+      "source": "P3-SPEC-CLOSURE REVIEW_DECISION",
+      "target_artifacts": [
+        "all p3.elements artifacts"
+      ],
+      "trace_rule": "approved closure subject hash is the upstream eligibility boundary",
+      "test_obligation": "candidate-check with review decision must pass"
+    },
+    {
+      "source": "source and distillation natural language",
+      "target_artifacts": [
+        "p3.elements.prd_element_inventory",
+        "p3.elements.prd_element_decisions"
+      ],
+      "trace_rule": "natural language is primary semantic rail",
+      "test_obligation": "inventory semantic_source_model must declare index_and_verification_skeleton role"
+    },
+    {
+      "source": "interaction graph nodes and terminal states",
+      "target_artifacts": [
+        "p3.elements.prd_element_inventory",
+        "p3.elements.derived_element_decisions"
+      ],
+      "trace_rule": "eligible nodes map to PAGE, STATE, UI_ELEMENT, or blocked gap",
+      "test_obligation": "no eligible closure node is unmapped"
+    },
+    {
+      "source": "clickable inventory and reactions",
+      "target_artifacts": [
+        "p3.elements.prd_element_inventory",
+        "p3.elements.inference_records"
+      ],
+      "trace_rule": "eligible clickables map to CTA, NAVIGATION, INPUT, or UI_ELEMENT and retain reaction refs",
+      "test_obligation": "no eligible clickable is unmapped"
+    },
+    {
+      "source": "async, failure, disabled, terminal, overlay, and handoff messages",
+      "target_artifacts": [
+        "p3.elements.derived_element_decisions",
+        "p3.elements.inference_records"
+      ],
+      "trace_rule": "required same-task messages and recovery surfaces are deductible only with inference evidence",
+      "test_obligation": "canonical derived message or recovery element uses DEDUCTIVE_PRIMARY"
+    },
+    {
+      "source": "missing input and acquisition needs",
+      "target_artifacts": [
+        "p3.elements.input_obligations",
+        "p3.elements.product_expansion_gaps"
+      ],
+      "trace_rule": "missing input has acquisition_path or gap_ref",
+      "test_obligation": "input obligation without path or gap is rejected"
+    },
+    {
+      "source": "missing child surface or page hierarchy ambiguity",
+      "target_artifacts": [
+        "p3.elements.structural_completion_review",
+        "p3.elements.product_expansion_gaps"
+      ],
+      "trace_rule": "page-only or flow-only source cannot silently create child surfaces",
+      "test_obligation": "structural review cannot become canonical before Human Gate approval"
+    },
+    {
+      "source": "product capability boundary",
+      "target_artifacts": [
+        "p3.elements.product_expansion_gaps"
+      ],
+      "trace_rule": "new capability, integration, data scope, role, permission, workflow, page family, or business promise blocks downstream consumption",
+      "test_obligation": "open gap names blocked downstream artifacts"
+    },
+    {
+      "source": "P3-SPEC-PATTERNS and P3-SPEC-LAYOUT downstream",
+      "target_artifacts": [
+        "implementation handoff"
+      ],
+      "trace_rule": "downstream workpacks consume only ids included by canonical_projection_rule and may not invent elements",
+      "test_obligation": "unknown or projection-excluded downstream element refs are rejected"
+    }
+  ],
+  "schema_refs": [
+    "repository/schemas/reasoning/prd_element_inventory.schema.json",
+    "repository/schemas/reasoning/prd_element_decision.schema.json",
+    "repository/schemas/reasoning/derived_element_decision.schema.json",
+    "repository/schemas/reasoning/inference_record.schema.json",
+    "repository/schemas/reasoning/input_obligation.schema.json",
+    "repository/schemas/reasoning/structural_completion_review.schema.json",
+    "repository/schemas/reasoning/product_expansion_gap.schema.json"
+  ],
+  "validator_refs": [
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/src/drd_harness/validators/phase_gate.py"
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,65 @@
+{
+  "evidence_id": "P3-IMPL-LAYOUT-VALIDATION-EVIDENCE-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-LAYOUT",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P3_IMPL_LAYOUT_CANDIDATE_TESTS",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_natural_language_layout.py -q",
+      "status": "PASS",
+      "summary": "20 passed"
+    },
+    {
+      "check": "P3_IMPL_LAYOUT_LAYOUT_AND_P3_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/layout repository/tests/p3 -q",
+      "status": "PASS",
+      "summary": "111 passed"
+    },
+    {
+      "check": "P3_IMPL_LAYOUT_FULL_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "status": "PASS",
+      "summary": "382 passed"
+    },
+    {
+      "check": "P3_IMPL_PATTERNS_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-PATTERNS --review-decision build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+      "status": "PASS",
+      "summary": "subject_hash 4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8"
+    },
+    {
+      "check": "P2_LOCKED_LAYOUT_HASH_GUARD",
+      "command": "python3 hash check against P2 BUILD_LOCK_INPUT_MATRIX",
+      "status": "PASS",
+      "summary": "No P2 locked file hash mismatches"
+    },
+    {
+      "check": "RUNTIME_BOUNDARY",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "status": "PASS",
+      "summary": "No forbidden runtime reads or imports"
+    },
+    {
+      "check": "GIT_DIFF_CHECK",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "validated_rules": [
+    "artifact schema refs bind to the exact contracted schema path and schema hash",
+    "source_refs remain replay-bound to invalidation inputs",
+    "natural language layout is canonical semantic authority and structured records are index and validation skeleton only",
+    "carrier profile covers DESKTOP, TABLET, MOBILE, MOBILE_IOS, and MOBILE_MATERIAL",
+    "iOS and Material mobile constraints are explicit",
+    "containment hierarchy is multi-level and parent-child references resolve",
+    "height constraints preserve required information through access paths",
+    "width constraints wrap or stack unless a declared horizontal scroll exception applies",
+    "state placement covers approved interaction messages and presentation modes match approved decisions",
+    "z-axis layering is ordered and Material elevation intent is declared",
+    "Figma reconstruction metadata remains non-authoritative and cannot introduce write authority",
+    "layout package refs and trace refs resolve to approved upstream or local layout authority"
+  ],
+  "open_blockers": [],
+  "human_review_status": "PENDING_HUMAN_REVIEW"
+}

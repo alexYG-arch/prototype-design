@@ -1,0 +1,666 @@
+{
+  "contract_id": "P3-SPEC-COMPILER-ARTIFACT-CONTRACTS-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-COMPILER",
+  "module": "drd_compiler",
+  "required_artifacts": [
+    {
+      "artifact_id": "p3.compiler.input_bundle",
+      "path_pattern": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+      "schema_ref": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+      "schema_payload_key": "bundle",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "bundle_id",
+        "bundle_version",
+        "compiler_stage_id",
+        "source_snapshot_identity",
+        "approved_semantic_artifacts",
+        "approved_operational_indexes",
+        "review_decisions",
+        "lock_refs",
+        "validator_results",
+        "control_indexes",
+        "schemas",
+        "stage_order",
+        "section_order",
+        "closed_input_hash"
+      ],
+      "record_minimum_fields": [
+        "bundle_id",
+        "bundle_version",
+        "compiler_stage_id",
+        "source_snapshot_identity",
+        "approved_semantic_artifacts",
+        "approved_operational_indexes",
+        "review_decisions",
+        "lock_refs",
+        "validator_results",
+        "control_indexes",
+        "schemas",
+        "stage_order",
+        "section_order",
+        "closed_input_hash"
+      ],
+      "p3_required_fields": [
+        "semantic_content_hash",
+        "sections",
+        "semantic_units",
+        "current_hashes"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "build_program/phases/P3/candidates/P3-SPEC-SOURCE/REVIEW_DECISION.json",
+        "build_program/phases/P3/candidates/P3-SPEC-DISTILL/REVIEW_DECISION.json",
+        "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+        "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+        "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+        "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/REVIEW_DECISION.json"
+      ],
+      "upstream_artifact_refs": [
+        "approved P3 semantic artifacts",
+        "approved P3 operational indexes",
+        "approved P3 review decisions",
+        "current schema identities"
+      ],
+      "upstream_hashes": {
+        "P3-SPEC-SOURCE": "d7468c8379b2860556146940734c0e61280811f72cef4c7b3cc1ed79513eb739",
+        "P3-SPEC-DISTILL": "9979320f18e0d0de86f4cafd2dffad64634631f6d71ed7bd7bce148220bd8d1c",
+        "P3-SPEC-CLOSURE": "e163a9a47f71860955b9df12d790d64b234780ea22eca9c48a1a5f26f538ee6d",
+        "P3-SPEC-ELEMENTS": "d326d4925b39299c9137d70968e7a749007460154942b1e197aa38c35937627c",
+        "P3-SPEC-PATTERNS": "f70abec15e06d121de485dac91b3efad19367a3eada31ee31133354112a683be",
+        "P3-SPEC-LAYOUT": "191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "review decision superseded",
+        "input file hash drift",
+        "schema hash drift",
+        "validator identity drift",
+        "upstream candidate mutation",
+        "lock supersession"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.semantic_unit_inventory",
+      "path_pattern": "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
+      "schema_ref": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+      "schema_payload_key": "inventory",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "inventory_id",
+        "inventory_version",
+        "source_artifact_ref",
+        "source_artifact_hash",
+        "validator_result_ref",
+        "semantic_units"
+      ],
+      "record_minimum_fields": [
+        "inventory_id",
+        "inventory_version",
+        "source_artifact_ref",
+        "source_artifact_hash",
+        "validator_result_ref",
+        "semantic_units"
+      ],
+      "p3_required_fields": [
+        "atomic_unit_validation",
+        "prose_authority_refs"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.compiler.input_bundle"
+      ],
+      "upstream_artifact_refs": [
+        "compiler_input_bundle.sections",
+        "compiler_input_bundle.semantic_units"
+      ],
+      "upstream_hashes": {
+        "semantic_content_hash": "from compiler_input_bundle.semantic_content_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "input bundle semantic_content_hash drift",
+        "non-atomic semantic unit",
+        "unknown source section"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.conservation_report",
+      "path_pattern": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+      "schema_ref": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+      "schema_payload_key": "report",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "status",
+        "approved_input_semantic_units",
+        "compiled_output_semantic_units",
+        "matched_semantic_units",
+        "added_semantic_units",
+        "omitted_semantic_units",
+        "non_atomic_semantic_units",
+        "hash_drift",
+        "unapproved_inputs",
+        "ordering_findings",
+        "nondeterminism_findings",
+        "read_only_qa_boundary_status",
+        "human_review_required"
+      ],
+      "record_minimum_fields": [
+        "status",
+        "approved_input_semantic_units",
+        "compiled_output_semantic_units",
+        "matched_semantic_units",
+        "added_semantic_units",
+        "omitted_semantic_units",
+        "non_atomic_semantic_units",
+        "hash_drift",
+        "unapproved_inputs",
+        "ordering_findings",
+        "nondeterminism_findings",
+        "read_only_qa_boundary_status",
+        "human_review_required"
+      ],
+      "p3_required_fields": [
+        "status_is_blocking_when_not_pass",
+        "manual_review_route_for_upstream_conflict_only"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.compiler.input_bundle",
+        "p3.compiler.semantic_unit_inventory"
+      ],
+      "upstream_artifact_refs": [
+        "approved semantic units",
+        "compiled semantic units",
+        "current input hashes"
+      ],
+      "upstream_hashes": {
+        "input_bundle_hash": "from final_drd_hash_index.input_bundle_hash",
+        "semantic_content_hash": "from compiler_input_bundle.semantic_content_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "semantic addition",
+        "semantic omission",
+        "hash drift",
+        "unapproved input",
+        "non-atomic unit",
+        "nondeterministic output"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.final_drd_manifest",
+      "path_pattern": "repository/fixtures/p3/compiler/final_drd_manifest.json",
+      "schema_ref": "repository/schemas/compiler/final_drd_manifest.schema.json",
+      "schema_payload_key": "manifest",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "final_drd_path",
+        "final_drd_hash",
+        "semantic_hash",
+        "mechanical_hash",
+        "input_bundle_hash",
+        "toc_hash",
+        "reference_index_hash",
+        "hash_index_hash",
+        "conservation_report_hash",
+        "approved_input_count",
+        "compiled_section_count",
+        "compiled_semantic_unit_count",
+        "omitted_semantic_unit_count",
+        "added_semantic_unit_count",
+        "hash_drift_count",
+        "unapproved_input_count",
+        "conservation_status",
+        "assembly_plan"
+      ],
+      "record_minimum_fields": [
+        "final_drd_path",
+        "final_drd_hash",
+        "semantic_hash",
+        "mechanical_hash",
+        "input_bundle_hash",
+        "toc_hash",
+        "reference_index_hash",
+        "hash_index_hash",
+        "conservation_report_hash",
+        "approved_input_count",
+        "compiled_section_count",
+        "compiled_semantic_unit_count",
+        "omitted_semantic_unit_count",
+        "added_semantic_unit_count",
+        "hash_drift_count",
+        "unapproved_input_count",
+        "conservation_status",
+        "assembly_plan"
+      ],
+      "p3_required_fields": [
+        "assembly_plan.output_files",
+        "assembly_plan.compiler_id",
+        "assembly_plan.compiler_code_hash"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.compiler.input_bundle",
+        "p3.compiler.conservation_report"
+      ],
+      "upstream_artifact_refs": [
+        "FINAL_DRD.md",
+        "final_drd_toc.json",
+        "final_drd_reference_index.json",
+        "final_drd_hash_index.json"
+      ],
+      "upstream_hashes": {
+        "conservation_status": "from compiler_conservation_report.status"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "hash mismatch",
+        "count mismatch",
+        "non-pass conservation status"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.final_drd_toc",
+      "path_pattern": "repository/fixtures/p3/compiler/final_drd_toc.json",
+      "schema_ref": "repository/schemas/compiler/final_drd_toc.schema.json",
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "minimum_fields": [
+        "toc_entry_id",
+        "stage_id",
+        "section_id",
+        "stage_order_index",
+        "section_order_index",
+        "heading_text",
+        "source_path",
+        "source_hash"
+      ],
+      "record_minimum_fields": [
+        "toc_entry_id",
+        "stage_id",
+        "section_id",
+        "stage_order_index",
+        "section_order_index",
+        "heading_text",
+        "source_path",
+        "source_hash"
+      ],
+      "p3_required_fields": [
+        "stage_order_index",
+        "section_order_index"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "compiler_input_bundle.sections"
+      ],
+      "upstream_artifact_refs": [
+        "approved section order"
+      ],
+      "upstream_hashes": {
+        "toc_hash": "from final_drd_hash_index.toc_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "duplicate order slot",
+        "nondeterministic order source",
+        "source hash drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.final_drd_reference_index",
+      "path_pattern": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+      "schema_ref": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "minimum_fields": [
+        "reference_id",
+        "compiled_section_id",
+        "source_stage_id",
+        "source_path",
+        "source_hash",
+        "approval_ref",
+        "lock_ref",
+        "validator_result_refs",
+        "source_snapshot_identity"
+      ],
+      "record_minimum_fields": [
+        "reference_id",
+        "compiled_section_id",
+        "source_stage_id",
+        "source_path",
+        "source_hash",
+        "approval_ref",
+        "lock_ref",
+        "validator_result_refs",
+        "source_snapshot_identity"
+      ],
+      "p3_required_fields": [
+        "approval_ref",
+        "source_snapshot_identity"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "compiler_input_bundle.sections",
+        "compiler_input_bundle.review_decisions"
+      ],
+      "upstream_artifact_refs": [
+        "approved section lineage",
+        "approved source snapshot identity"
+      ],
+      "upstream_hashes": {
+        "reference_index_hash": "from final_drd_hash_index.reference_index_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "approval ref missing",
+        "source hash drift",
+        "source snapshot mismatch"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.final_drd_hash_index",
+      "path_pattern": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
+      "schema_ref": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+      "schema_payload_key": "index",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "input_bundle_hash",
+        "semantic_hash",
+        "mechanical_hash",
+        "full_output_hash",
+        "toc_hash",
+        "reference_index_hash",
+        "conservation_report_hash",
+        "schema_hashes",
+        "compiler_code_hash"
+      ],
+      "record_minimum_fields": [
+        "input_bundle_hash",
+        "semantic_hash",
+        "mechanical_hash",
+        "full_output_hash",
+        "toc_hash",
+        "reference_index_hash",
+        "conservation_report_hash",
+        "schema_hashes",
+        "compiler_code_hash"
+      ],
+      "p3_required_fields": [
+        "schema_hashes",
+        "compiler_code_hash"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "all compiler output files"
+      ],
+      "upstream_artifact_refs": [
+        "compiler input bundle",
+        "semantic inventory",
+        "conservation report",
+        "final DRD text",
+        "toc",
+        "reference index"
+      ],
+      "upstream_hashes": {
+        "schema_hashes": "current compiler schema sha256 map"
+      },
+      "validator_ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "schema hash drift",
+        "compiler code hash drift",
+        "output hash mismatch"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.final_drd_text",
+      "path_pattern": "repository/fixtures/p3/compiler/FINAL_DRD.md",
+      "schema_ref": null,
+      "schema_absence_reason": "FINAL_DRD.md is a Markdown assembly target; structured validation is provided by final_drd_manifest, final_drd_toc, final_drd_reference_index, final_drd_hash_index, compiler_semantic_unit_inventory, and compiler_conservation_report.",
+      "schema_payload_key": "text",
+      "payload_shape": "markdown_text",
+      "minimum_fields": [
+        "title",
+        "table_of_contents",
+        "source_attributed_sections"
+      ],
+      "record_minimum_fields": [
+        "title",
+        "table_of_contents",
+        "source_attributed_sections"
+      ],
+      "p3_required_fields": [
+        "approved_body_preservation",
+        "source_attribution"
+      ],
+      "container_shape": "markdown_file_with_structured_sidecars",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "compiler_input_bundle.sections"
+      ],
+      "upstream_artifact_refs": [
+        "approved section bodies",
+        "mechanical templates"
+      ],
+      "upstream_hashes": {
+        "full_output_hash": "from final_drd_hash_index.full_output_hash",
+        "semantic_hash": "from final_drd_hash_index.semantic_hash",
+        "mechanical_hash": "from final_drd_hash_index.mechanical_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/compiler/final_drd.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "section body drift",
+        "manual semantic rewrite",
+        "mechanical template drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.compiler.read_only_qa_boundary",
+      "path_pattern": "repository/fixtures/p3/compiler/read_only_qa_boundary.json",
+      "schema_ref": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+      "schema_payload_key": "boundary",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "drd06_run_id",
+        "qa_finding_id",
+        "finding_type",
+        "read_paths",
+        "written_paths",
+        "mutated_artifacts",
+        "mutation_claim"
+      ],
+      "record_minimum_fields": [
+        "drd06_run_id",
+        "qa_finding_id",
+        "finding_type",
+        "read_paths",
+        "written_paths",
+        "mutated_artifacts",
+        "mutation_claim"
+      ],
+      "p3_required_fields": [
+        "mutation_claim",
+        "mutated_artifacts"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "DRD-06 read-only QA run"
+      ],
+      "upstream_artifact_refs": [
+        "FINAL_DRD.md",
+        "compiler output indexes"
+      ],
+      "upstream_hashes": {
+        "compiled_package": "from final_drd_hash_index.full_output_hash"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact compiler candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "QA wrote forbidden output",
+        "QA mutated compiled artifacts"
+      ]
+    }
+  ],
+  "semantic_authority_rule": {
+    "authority_role": "approved natural-language sections are canonical semantic authority",
+    "inventory_role": "index_and_validation_skeleton_only",
+    "compiler_role": "deterministic mechanical assembly and conservation checking only",
+    "forbidden_authority_transfer": [
+      "treating inventory canonical_value as a replacement for approved prose",
+      "rewriting approved prose to match inventory wording",
+      "adding semantic text from compiler heuristics"
+    ]
+  },
+  "p3_required_optional_field_rule": "Generic compiler schemas may allow additional fields, but P3 requires semantic_content_hash, sections, semantic_units, current_hashes, prose_authority_refs, and explicit output hash bindings so conservation can be verified end to end.",
+  "open_blockers": []
+}

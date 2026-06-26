@@ -1,0 +1,32 @@
+{
+  "artifact_id": "p3.source_intake.source_authority_index",
+  "sources": [
+    {
+      "source_item_id": "p3-src-brief",
+      "authority_role": "authoritative",
+      "source_role": "primary_semantic",
+      "semantic_authority": true,
+      "natural_language_primary": true,
+      "inventory_role": "index_verification_only",
+      "conflict_policy": "human_review_required_on_conflict"
+    },
+    {
+      "source_item_id": "p3-src-screenshot",
+      "authority_role": "visual_identity_only_until_extracted",
+      "source_role": "visual_reference",
+      "semantic_authority": false,
+      "natural_language_primary": false,
+      "inventory_role": "identity_hash_only",
+      "conflict_policy": "human_review_required_before_semantic_adoption"
+    },
+    {
+      "source_item_id": "p3-src-link",
+      "authority_role": "none_without_local_snapshot",
+      "source_role": "external_reference",
+      "semantic_authority": false,
+      "natural_language_primary": false,
+      "inventory_role": "metadata_only",
+      "conflict_policy": "cannot_resolve_without_local_snapshot"
+    }
+  ]
+}

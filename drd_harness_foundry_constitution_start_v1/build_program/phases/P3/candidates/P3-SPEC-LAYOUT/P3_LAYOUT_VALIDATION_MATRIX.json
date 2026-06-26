@@ -1,0 +1,106 @@
+{
+  "matrix_id": "P3-SPEC-LAYOUT-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "validation_rows": [
+    {
+      "rule_id": "P3LAYOUT-VAL-001",
+      "requirement": "P3-SPEC-PATTERNS review is approved and subject-bound",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-PATTERNS",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-002",
+      "requirement": "P3-SPEC-ELEMENTS review is directly bound for canonical element ids consumed by layout",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-ELEMENTS",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-003",
+      "requirement": "P3-SPEC-CLOSURE review is directly bound for interaction messages consumed by state placement",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-CLOSURE",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-004",
+      "requirement": "schema-bound layout artifacts use current required fields exactly",
+      "evidence": "P3_LAYOUT_ARTIFACT_CONTRACTS.json",
+      "validator": "schema alignment check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-005",
+      "requirement": "all layout artifacts declare the standard envelope, payload key, payload shape, and validator refs",
+      "evidence": "P3_LAYOUT_ARTIFACT_CONTRACTS.json",
+      "validator": "artifact envelope contract check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-006",
+      "requirement": "natural language layout declares canonical authority, inventory skeleton role, and all required coverage groups",
+      "evidence": "natural_language_layout",
+      "validator": "validate_natural_language_layout",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-007",
+      "requirement": "carrier adaptation covers desktop, tablet, mobile, iOS, and Material with required platform constraints",
+      "evidence": "carrier_adaptation_profile",
+      "validator": "validate_carrier_adaptation_profile",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-008",
+      "requirement": "containment hierarchy is multi-level, has one root, resolves parents, preserves order, and prevents child-parent contradictions",
+      "evidence": "containment_hierarchy",
+      "validator": "validate_containment_hierarchy and validate_nested_surface_layout",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-009",
+      "requirement": "content growth and information completeness preserve required information under height and width constraints, with horizontal scroll only as declared exception",
+      "evidence": "content_growth_rules and information_completeness_rules",
+      "validator": "validate_content_growth_rule and validate_information_completeness_rule",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-010",
+      "requirement": "state placement covers approved interaction messages and z-axis layering is ordered with Material elevation intent",
+      "evidence": "state_placement_index and z_axis_layering",
+      "validator": "validate_state_placement_index and validate_z_axis_layering",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-011",
+      "requirement": "composition index and Figma reconstruction metadata bind P3-required optional refs and do not introduce unresolved refs, write authority, or semantic drift",
+      "evidence": "layout_composition_index and figma_reconstruction_metadata",
+      "validator": "validate_layout_reference_integrity, validate_figma_metadata, and P3 required optional ref check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3LAYOUT-VAL-012",
+      "requirement": "candidate scope stays inside P3-SPEC-LAYOUT and does not create locks or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "thin layout prose missing carrier, hierarchy, containment, ordering, sizing, scrolling, state, growth, layering, or constraint coverage is rejected",
+    "carrier profile missing DESKTOP, TABLET, MOBILE, MOBILE_IOS, or MOBILE_MATERIAL is rejected",
+    "iOS or Material carrier without generic MOBILE context is rejected",
+    "flat containment hierarchy or unresolved parent_id is rejected",
+    "nested overlay, drawer, panel, or popover without entry_context and return_placement is rejected",
+    "truncation without recovery path is rejected",
+    "height behavior that hides or omits required information without access path is rejected",
+    "width overflow offscreen without declared horizontal scroll exception is rejected",
+    "state placement referencing unknown interaction message or unknown surface is rejected",
+    "Material z-axis without material_elevation_intent is rejected",
+    "Figma metadata with API, renderer, file write authority, or refs absent from layout authority is rejected",
+    "natural_language_layout missing pattern_refs, state_variants, z_axis_refs, figma_metadata_ref, or composition z_axis_refs is rejected"
+  ],
+  "open_blockers": []
+}

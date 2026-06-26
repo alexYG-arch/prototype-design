@@ -1,0 +1,92 @@
+{
+  "artifact_id": "p3.closure.interaction_nodes",
+  "stage_id": "DRD-02-INTERACTION-CLOSURE",
+  "fixture_id": "p3_closure_fixture",
+  "path": "repository/fixtures/p3/closure/interaction_nodes.json",
+  "schema_ref": "repository/schemas/interaction/interaction_node.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.distill.closure_handoff_manifest",
+    "p3.distill.semantic_unit_map",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.distill.closure_handoff_manifest": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a",
+    "p3.distill.semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+  "review_gate": "HUMAN_GATE_BEFORE_ELEMENTS",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": [
+    {
+      "node_id": "p3-node-operations-console",
+      "node_type": "PAGE",
+      "source_refs": [
+        "p3-unit-console-surface"
+      ],
+      "is_terminal": false,
+      "terminal_reason": null,
+      "message_refs": [],
+      "failure_reason": null,
+      "recovery_targets": [],
+      "resume_source": null,
+      "trap_justification": null
+    },
+    {
+      "node_id": "p3-node-case-ready-state",
+      "node_type": "STATE",
+      "source_refs": [
+        "p3-unit-case-intake-state"
+      ],
+      "is_terminal": true,
+      "terminal_reason": "Ready state is display-only in the approved source semantics.",
+      "message_refs": [],
+      "failure_reason": null,
+      "recovery_targets": [],
+      "resume_source": "p3-node-operations-console",
+      "trap_justification": null
+    },
+    {
+      "node_id": "p3-node-case-blocked-state",
+      "node_type": "STATE",
+      "source_refs": [
+        "p3-unit-case-intake-state"
+      ],
+      "is_terminal": true,
+      "terminal_reason": "Blocked state is display-only in the approved source semantics.",
+      "message_refs": [
+        "p3-msg-review-gap-blocked"
+      ],
+      "failure_reason": null,
+      "recovery_targets": [],
+      "resume_source": "p3-node-operations-console",
+      "trap_justification": null
+    },
+    {
+      "node_id": "p3-node-human-review-waiting-state",
+      "node_type": "STATE",
+      "source_refs": [
+        "p3-unit-case-intake-state",
+        "p3-unit-review-gap-message"
+      ],
+      "is_terminal": true,
+      "terminal_reason": "Human review waiting state has no approved downstream product behavior.",
+      "message_refs": [
+        "p3-msg-review-gap-blocked"
+      ],
+      "failure_reason": null,
+      "recovery_targets": [],
+      "resume_source": "p3-node-operations-console",
+      "trap_justification": null
+    }
+  ]
+}

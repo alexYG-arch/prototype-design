@@ -1,0 +1,83 @@
+{
+  "matrix_id": "P3-SPEC-ELEMENTS-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ELEMENTS",
+  "validation_rows": [
+    {
+      "rule_id": "P3ELEMENTS-VAL-001",
+      "requirement": "P3-SPEC-CLOSURE review is approved and subject-bound",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-CLOSURE",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-002",
+      "requirement": "schema-bound element artifacts use current required fields exactly",
+      "evidence": "P3_ELEMENTS_ARTIFACT_CONTRACTS.json",
+      "validator": "schema alignment check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-003",
+      "requirement": "all element artifacts declare the standard envelope, records payload, and validator refs",
+      "evidence": "P3_ELEMENTS_ARTIFACT_CONTRACTS.json",
+      "validator": "artifact envelope contract check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-004",
+      "requirement": "explicit inventory keeps natural language as semantic authority and inventory as index and verification skeleton",
+      "evidence": "p3.elements.prd_element_inventory",
+      "validator": "semantic source model check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-005",
+      "requirement": "every eligible closure node, clickable, message, failure recovery, async, overlay, and handoff object maps to canonical element or blocked gap",
+      "evidence": "closure artifacts and element artifacts",
+      "validator": "element coverage check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-006",
+      "requirement": "canonical projection includes only adopt-as-is, adopt-normalized, eligible deductive derived rows, and Human Gate resolved approved expansion rows; all clarification, conflict, gap-routed, open-gap, structural-review, blocked, and ineligible rows are excluded",
+      "evidence": "prd_element_decisions, derived_element_decisions, inference_records",
+      "validator": "adoption, reasoning, and canonical projection validators",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-007",
+      "requirement": "deductive completion can make canonical elements only when it does not add product capability; induction remains blocked until Human Gate approval",
+      "evidence": "derived_element_decisions and inference_records",
+      "validator": "deduction and induction boundary check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-008",
+      "requirement": "structural completion review routes missing child pages or ambiguous lower-level surfaces before adoption",
+      "evidence": "structural_completion_review and product_expansion_gaps",
+      "validator": "structural completion review validator",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3ELEMENTS-VAL-009",
+      "requirement": "candidate scope stays inside P3-SPEC-ELEMENTS and does not create locks or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "inventory row that bundles page, input, and CTA is rejected as non-atomic",
+    "explicit inventory row without adoption decision is rejected",
+    "eligible closure clickable without canonical element or blocked gap is rejected",
+    "canonical derived element with INDUCTIVE_AUXILIARY is rejected without Human Gate approval",
+    "deductive element that adds product capability is routed to product_expansion_gaps and blocked downstream",
+    "page-only source that implies missing child pages requires structural_completion_review before adoption",
+    "input obligation without acquisition_path or gap_ref is rejected",
+    "downstream pattern or layout reference to unknown element id is rejected",
+    "natural language conflict with inventory row blocks the row until corrected or reviewed",
+    "REQUEST_CLARIFICATION, REJECT_CONFLICT, ROUTE_PRODUCT_GAP, open-gap, structural-review, and blocked derived rows are excluded from canonical projection"
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,71 @@
+{
+  "report_id": "P3-IMPL-DISTILL-SCOPE-REPORT-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-DISTILL",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/stages/experience_distillation.py",
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/fixtures/p3/distill/**",
+    "repository/tests/p3/test_experience_distillation.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/** except read-only review input",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md",
+    "repository/src/drd_harness/validators/prd_adoption.py when its hash differs from the P2 build-readiness matrix",
+    "repository/src/drd_harness/validators/reasoning.py when its hash differs from the P2 build-readiness matrix"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/stages/experience_distillation.py",
+    "repository/tests/p3/test_experience_distillation.py",
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/derived_element_decisions.json",
+    "repository/fixtures/p3/distill/inference_records.json",
+    "repository/fixtures/p3/distill/input_obligations.json",
+    "repository/fixtures/p3/distill/prd_element_decisions.json",
+    "repository/fixtures/p3/distill/prd_element_inventory.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/distill/structural_completion_review.json"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/SCOPE_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/TEST_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/PART_SELF_CHECK.md",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/HANDOFF.md",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p3_spec_lock_path": "control/locks/P3_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false,
+    "p3_build_lock_created": false
+  },
+  "p1_paths_modified": false,
+  "p2_paths_modified": false,
+  "p3_spec_candidate_paths_modified": false,
+  "p3_impl_source_modified": false,
+  "p3_phase_manifest_modified": false,
+  "scope_notes": [
+    "P3-IMPL-DISTILL consumes P3-IMPL-SOURCE review output as read-only input.",
+    "P2 locked adoption and reasoning validators are reused but not modified.",
+    "No control lock is created or rewritten by this implementation candidate.",
+    "P3-IMPL-DISTILL human review decision is recorded as supporting output and excluded from generated subject hashing."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

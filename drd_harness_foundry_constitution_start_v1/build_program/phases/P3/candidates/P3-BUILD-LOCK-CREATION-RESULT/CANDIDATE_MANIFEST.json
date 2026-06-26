@@ -1,0 +1,37 @@
+{
+  "workpack_id": "P3-BUILD-LOCK-CREATION-RESULT",
+  "phase": "P3",
+  "lane": "BUILD_LOCK_RESULT",
+  "status": "CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT",
+  "upstream_candidate": "build_program/phases/P3/candidates/P3-IMPL-ASSURANCE",
+  "upstream_review_decision": "build_program/phases/P3/candidates/P3-IMPL-ASSURANCE/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "46632b4402f3e329f063a53b0edead4e693e14845ef7d0929eea0b84d3967127",
+  "upstream_review_decision_subject_hash": "fe0192379d858a4e2e9166a4ae619b3d05bfbe828e839fc3316f878f3924bc8c",
+  "upstream_spec_lock": "control/locks/P3_SPEC_LOCK.json",
+  "generated_outputs": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "review_decision": null,
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "BUILD_LOCK_CREATED_BY_PYTHON_RUNTIME",
+  "created_lock": "control/locks/P3_BUILD_LOCK.json",
+  "created_lock_sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
+  "authorized_write_basis": "user_explicit_p3_build_lock_authorization_2026-06-26",
+  "allowed_write_paths": [
+    "control/locks/P3_BUILD_LOCK.json",
+    "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review the P3 BUILD_LOCK creation result before any promotion, P4 work, commit, or push."
+}

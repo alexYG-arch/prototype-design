@@ -1,0 +1,75 @@
+{
+  "matrix_id": "P3-SPEC-CLOSURE-VALIDATION-MATRIX-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-CLOSURE",
+  "validation_rows": [
+    {
+      "rule_id": "P3CLOSURE-VAL-001",
+      "requirement": "P3-SPEC-DISTILL review is approved and subject-bound",
+      "evidence": "build_program/phases/P3/candidates/P3-SPEC-DISTILL/REVIEW_DECISION.json",
+      "validator": "candidate-check --review-decision P3-SPEC-DISTILL",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-002",
+      "requirement": "schema-bound closure artifacts use current required fields exactly",
+      "evidence": "P3_CLOSURE_ARTIFACT_CONTRACTS.json",
+      "validator": "schema alignment check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-003",
+      "requirement": "every closure output artifact declares the standard artifact envelope, payload key, and identity binding for schema records without intrinsic ids",
+      "evidence": "P3_CLOSURE_ARTIFACT_CONTRACTS.json",
+      "validator": "artifact envelope contract check",
+      "status": "PASS_READY"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-004",
+      "requirement": "interaction graph passes full closure validation",
+      "evidence": "p3.closure.interaction_graph",
+      "validator": "repository/src/drd_harness/validators/interaction_closure.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-005",
+      "requirement": "split artifacts match canonical graph payload without drift",
+      "evidence": "clickable, async, failure, message, edge, node, and reaction slices",
+      "validator": "repository/src/drd_harness/validators/interaction_closure.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-006",
+      "requirement": "async, handoff, failure, overlay, disabled, terminal, and recovery messages are covered and same-task scoped",
+      "evidence": "interaction_messages and message_coverage_index",
+      "validator": "repository/src/drd_harness/validators/interaction_closure.py",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-007",
+      "requirement": "unresolved product expansion gaps and blocked distilled units cannot become eligible graph units",
+      "evidence": "closure_handoff_manifest and upstream product expansion gaps",
+      "validator": "closure eligibility boundary check",
+      "status": "SPECIFIED"
+    },
+    {
+      "rule_id": "P3CLOSURE-VAL-008",
+      "requirement": "candidate scope stays inside P3-SPEC-CLOSURE and does not create locks or implementation code",
+      "evidence": "SCOPE_REPORT.json",
+      "validator": "candidate scope check",
+      "status": "PASS_READY"
+    }
+  ],
+  "minimum_test_obligations": [
+    "graph with missing clickable reaction is rejected",
+    "extra graph edge without reaction trace is rejected",
+    "async reaction without async_behavior record is rejected",
+    "failure node without recovery target or terminal reason is rejected",
+    "overlay without closure target or return context is rejected",
+    "message text with product-scope expansion is rejected",
+    "split clickable, message, async, or failure artifacts that drift from graph payload are rejected",
+    "blocked distilled units cannot appear in eligible closure handoff list",
+    "reaction_applicability uses reaction_id-keyed map values because its bound schema has no intrinsic reaction id"
+  ],
+  "open_blockers": []
+}

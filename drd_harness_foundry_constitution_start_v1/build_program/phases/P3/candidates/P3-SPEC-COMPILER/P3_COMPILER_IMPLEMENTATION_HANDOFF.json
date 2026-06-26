@@ -1,0 +1,46 @@
+{
+  "handoff_id": "P3-SPEC-COMPILER-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P3",
+  "source_spec_workpack": "P3-SPEC-COMPILER",
+  "implementation_workpack": "P3-IMPL-COMPILER",
+  "blocked_until": [
+    "P3-SPEC-COMPILER human review decision is approved for exact subject hash",
+    "P3_SPEC_LOCK exists and includes P3-SPEC-COMPILER",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P3_SPEC_LOCK"
+  ],
+  "allowed_future_implementation_targets": [
+    "repository/src/drd_harness/compiler/final_drd.py",
+    "repository/src/drd_harness/compiler/conservation.py",
+    "repository/src/drd_harness/validators/compiler_conservation.py",
+    "repository/schemas/compiler/**",
+    "repository/fixtures/p3/compiler/**",
+    "repository/tests/compiler/**",
+    "repository/tests/p3/test_compiler_conservation.py"
+  ],
+  "forbidden_now": [
+    "creating P3_SPEC_LOCK from this candidate alone",
+    "creating P3_BUILD_LOCK",
+    "modifying repository implementation code in this spec workpack",
+    "starting P3-IMPL-COMPILER before spec lock and implementation authorization",
+    "modifying P3-SPEC-LAYOUT or earlier approved candidate contents",
+    "generating FINAL_DRD.md or compiler fixture outputs from this spec candidate alone",
+    "using compiler implementation work to repair upstream spec gaps"
+  ],
+  "acceptance_commands_for_future_implementation": [
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/compiler -q",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_compiler_conservation.py -q",
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-COMPILER"
+  ],
+  "required_validator_behaviors": [
+    "reject forbidden input types",
+    "reject missing approval linkage",
+    "reject closed_input_hash drift",
+    "reject semantic_content_hash drift",
+    "reject nondeterministic stage or section order",
+    "reject unknown or duplicate semantic_unit_ids",
+    "reject semantic addition and omission",
+    "reject final manifest and hash index mismatch",
+    "reject read-only QA mutation"
+  ],
+  "open_blockers": []
+}

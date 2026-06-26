@@ -1,0 +1,44 @@
+{
+  "target_id": "P3-IMPL-CLOSURE-REVIEW-TARGET-001",
+  "workpack_id": "P3-IMPL-CLOSURE",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE",
+  "review_subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does closure stay inside P3-IMPL-CLOSURE and avoid product capability expansion?",
+    "Does additive P3 wrapper preserve P2 locked interaction_closure.py hash?",
+    "Do canonical graph and split artifacts remain drift-free?",
+    "Are message coverage, keyed reaction applicability, and closure handoff blockers verifiable?",
+    "Do tests and full regression pass?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json",
+  "resolved_decision": "P3-IMPL-CLOSURE approved by Human Gate; P3-IMPL-ELEMENTS remains separately gated by explicit continuation.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json",
+    "REVIEW_DECISION.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

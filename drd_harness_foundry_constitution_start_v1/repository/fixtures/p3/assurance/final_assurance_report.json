@@ -1,0 +1,47 @@
+{
+  "artifact_id": "p3.assurance.final_assurance_report",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/final_assurance_report.json",
+  "schema_ref": null,
+  "schema_payload_key": "report",
+  "source_refs": [
+    "p3.assurance.input_index",
+    "p3.assurance.final_review_packet"
+  ],
+  "upstream_artifact_refs": [
+    "trace row set",
+    "test obligation matrix",
+    "read-only QA boundary"
+  ],
+  "upstream_hashes": {
+    "compiler_review_subject_hash": "05f7887f0e335de244edaa3ecdadb955dc5f6fc3da08261bdadb9021c8163834"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/phase_gate.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "report": {
+    "report_id": "P3-ASSURANCE-FINAL-REPORT-001",
+    "status": "PASS",
+    "compiler_gate_status": "PASS",
+    "qa_boundary_status": "PASS",
+    "traceability_status": "PASS",
+    "test_obligation_status": "PASS",
+    "workpack_scope_status": "PASS",
+    "skill_binding_status": "PASS",
+    "exception_status": "PASS",
+    "invalidation_status": "PASS",
+    "blocking_findings": [],
+    "human_gate_required": true,
+    "lock_creation_allowed": false,
+    "lock_readiness": "READY_FOR_SEPARATE_EXPLICIT_REQUEST",
+    "non_promotion_claim": "ASSURANCE_REPORT_ONLY"
+  }
+}

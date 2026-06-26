@@ -1,0 +1,50 @@
+{
+  "workpack_id": "P3-IMPL-PATTERNS",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS",
+  "upstream_spec_lock": "control/locks/P3_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+  "upstream_spec_lock_id": "P3-SPEC-LOCK-001",
+  "upstream_spec_patterns_review_decision": "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+  "upstream_spec_patterns_review_decision_hash": "cef82d8eeab608d7bed3c04d50dacfe0f2b36799c22fbb5bfa42f2146195df96",
+  "upstream_impl_elements_review_decision": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+  "upstream_impl_elements_review_decision_hash": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
+  "owned_workpack": "P3-IMPL-PATTERNS",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "approval_state": "PENDING_HUMAN_REVIEW",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/p3_patterns.py",
+    "repository/fixtures/p3/patterns/**",
+    "repository/tests/p3/test_shared_component_and_information_patterns.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/** except read-only review input",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md",
+    "repository/src/drd_harness/validators/presentation_consistency.py when its hash differs from the P2 build-readiness matrix"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review P3-IMPL-PATTERNS candidate. Do not create P3_BUILD_LOCK or start P3-IMPL-LAYOUT without explicit authorization."
+}

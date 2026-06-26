@@ -1,0 +1,30 @@
+{
+  "artifact_id": "p3.closure.async_behavior",
+  "stage_id": "DRD-02-INTERACTION-CLOSURE",
+  "fixture_id": "p3_closure_fixture",
+  "path": "repository/fixtures/p3/closure/async_behavior.json",
+  "schema_ref": "repository/schemas/interaction/async_behavior.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.distill.closure_handoff_manifest",
+    "p3.distill.semantic_unit_map",
+    "p3.distill.product_expansion_gaps"
+  ],
+  "upstream_hashes": {
+    "p3.distill.closure_handoff_manifest": "8182c09967dcfa1f08871171f32288ba03401fdf987567fdff940b45a0256d7a",
+    "p3.distill.semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+    "p3.distill.product_expansion_gaps": "f81229cd260c4c2ad36ef35741d7a3390cb3aab0a7dd25b8739337c4016bace0"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+  "review_gate": "HUMAN_GATE_BEFORE_ELEMENTS",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/distill/closure_handoff_manifest.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/distill/product_expansion_gaps.json"
+  ],
+  "records": []
+}

@@ -1,0 +1,80 @@
+{
+  "report_id": "P3-IMPL-ELEMENTS-SCOPE-REPORT-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-ELEMENTS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/p3_page_elements.py",
+    "repository/fixtures/p3/elements/**",
+    "repository/tests/p3/test_page_element_model.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/**"
+  ],
+  "spec_handoff_named_targets_preserved_as_locked_inputs": [
+    "repository/src/drd_harness/validators/prd_adoption.py",
+    "repository/src/drd_harness/validators/reasoning.py",
+    "repository/src/drd_harness/rules/prd_adoption.py",
+    "repository/src/drd_harness/rules/reasoning.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/** except read-only review input",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md",
+    "repository/src/drd_harness/validators/prd_adoption.py when its hash differs from the P2 build-readiness matrix"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/validators/p3_page_elements.py",
+    "repository/tests/p3/test_page_element_model.py",
+    "repository/fixtures/p3/elements/derived_element_decisions.json",
+    "repository/fixtures/p3/elements/inference_records.json",
+    "repository/fixtures/p3/elements/input_obligations.json",
+    "repository/fixtures/p3/elements/prd_element_decisions.json",
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/elements/product_expansion_gaps.json",
+    "repository/fixtures/p3/elements/structural_completion_review.json"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/SCOPE_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/TEST_REPORT.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/PART_SELF_CHECK.md",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/HANDOFF.md",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_TARGET.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_REPLAY_OBSERVATIONS.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p3_spec_lock_path": "control/locks/P3_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false,
+    "p3_build_lock_created": false
+  },
+  "p1_paths_modified": false,
+  "p2_paths_modified": false,
+  "p3_spec_candidate_paths_modified": false,
+  "p3_impl_source_modified": false,
+  "p3_impl_distill_modified": false,
+  "p3_impl_closure_modified": false,
+  "p3_phase_manifest_modified": false,
+  "scope_notes": [
+    "P3-IMPL-ELEMENTS consumes P3-IMPL-CLOSURE review output as read-only input.",
+    "The P3 spec handoff named prd_adoption.py and reasoning.py, but prd_adoption.py is locked by P2 build-readiness; P3 aggregation is additive in p3_page_elements.py to preserve P2 verification.",
+    "No control lock is created or rewritten by this implementation candidate.",
+    "The candidate does not approve itself and does not advance P3-IMPL-PATTERNS.",
+    "Upstream hashes are checked against actual invalidation input files, not only sha256 string shape.",
+    "Schema record keys are checked so off-schema fields cannot enter element artifacts silently.",
+    "P3-IMPL-ELEMENTS human review decision is recorded as supporting output and excluded from generated subject hashing."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

@@ -1,0 +1,60 @@
+{
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "phase": "P3",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-SPEC-ASSURANCE",
+  "upstream_candidate": "build_program/phases/P3/candidates/P3-SPEC-COMPILER",
+  "upstream_review_decision": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+  "upstream_review_decision_sha256": "1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f",
+  "upstream_review_decision_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+  "owned_module": "assurance_traceability",
+  "owned_clauses": [
+    "P3-ASSURANCE-COMPILER-GATE",
+    "P3-ASSURANCE-READ-ONLY-QA",
+    "P3-ASSURANCE-TRACE-ROWS",
+    "P3-ASSURANCE-TEST-OBLIGATIONS",
+    "P3-ASSURANCE-WORKPACK-HANDOFF",
+    "P3-ASSURANCE-SKILL-BINDING",
+    "P3-ASSURANCE-EXCEPTIONS-AND-INVALIDATION",
+    "P3-ASSURANCE-LOCK-READINESS-BOUNDARY"
+  ],
+  "generated_outputs": [
+    "P3_ASSURANCE_CONTRACT.md",
+    "P3_ASSURANCE_MODEL.md",
+    "P3_ASSURANCE_ARTIFACT_CONTRACTS.json",
+    "P3_ASSURANCE_PIPELINE_RULES.json",
+    "P3_ASSURANCE_VALIDATION_MATRIX.json",
+    "P3_ASSURANCE_TRACEABILITY_MAP.json",
+    "P3_ASSURANCE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "NOT_CREATED",
+  "next_action": "P3 spec candidates are complete; lock creation remains separate explicit work and must not be inferred from this approval.",
+  "direct_dependency_review_decisions": [
+    {
+      "dependency": "P3-SPEC-COMPILER deterministic compiler authority",
+      "candidate": "build_program/phases/P3/candidates/P3-SPEC-COMPILER",
+      "review_decision": "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json",
+      "review_decision_sha256": "1b9c2a9d7e115f8230bee406cdafb83b5315722dfef138de7a410f50c594b71f",
+      "review_decision_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce",
+      "consumed_for": [
+        "compiler output readiness",
+        "read-only QA boundary",
+        "final assurance gate",
+        "lock readiness evidence"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "report_id": "P3-BUILD-LOCK-CREATION-VALIDATION-001",
+  "phase": "P3",
+  "status": "PASS",
+  "validated_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
+    "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554"
+  },
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "build_lock_readiness_valid": true,
+    "file_entry_count": 202,
+    "test_result_count": 4,
+    "validator_identity_hash_count": 1,
+    "invalidates_on_count": 22,
+    "bound_git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+    "spec_lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "latest_review_decision_sha256": "46632b4402f3e329f063a53b0edead4e693e14845ef7d0929eea0b84d3967127",
+    "review_binding_count": 17
+  },
+  "checks": [
+    {
+      "check": "git_worktree_state_before_creation",
+      "status": "INFO_UNCOMMITTED_INPUTS_BOUND_BY_FILE_HASH",
+      "head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+      "status_short_count": 12
+    },
+    {
+      "check": "all_p3_candidate_review_bindings",
+      "status": "PASS",
+      "count": 17
+    },
+    {
+      "check": "spec_lock_hash_matches_current_file",
+      "status": "PASS",
+      "sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+    },
+    {
+      "check": "lock_file_hashes_match_current_files",
+      "status": "PASS",
+      "count": 202
+    },
+    {
+      "check": "test_results_lock_schema_shape",
+      "status": "PASS",
+      "count": 4
+    },
+    {
+      "check": "validator_identity_hashes_present",
+      "status": "PASS",
+      "count": 1
+    },
+    {
+      "check": "invalidates_on_present",
+      "status": "PASS",
+      "count": 22
+    },
+    {
+      "check": "validate_build_lock_readiness",
+      "status": "PASS",
+      "finding_count": 0
+    },
+    {
+      "check": "strict_build_lock_key_shape",
+      "status": "PASS"
+    }
+  ],
+  "blocking_findings": []
+}

@@ -1,0 +1,68 @@
+{
+  "evidence_id": "P3-IMPL-COMPILER-VALIDATION-EVIDENCE-001",
+  "phase": "P3",
+  "workpack_id": "P3-IMPL-COMPILER",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P3_IMPL_COMPILER_PACKAGE_TESTS",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_p3_compiler_conservation.py -q",
+      "status": "PASS",
+      "summary": "11 passed"
+    },
+    {
+      "check": "P3_IMPL_COMPILER_CORE_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/compiler -q",
+      "status": "PASS",
+      "summary": "20 passed"
+    },
+    {
+      "check": "P3_IMPL_COMPILER_P3_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3 -q",
+      "status": "PASS",
+      "summary": "92 passed"
+    },
+    {
+      "check": "P3_IMPL_COMPILER_FULL_REGRESSION",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "status": "PASS",
+      "summary": "393 passed"
+    },
+    {
+      "check": "P3_IMPL_LAYOUT_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-LAYOUT --review-decision build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+      "status": "PASS",
+      "summary": "subject_hash df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
+    },
+    {
+      "check": "P2_LOCKED_COMPILER_HASH_GUARD",
+      "command": "python3 hash check against P2 BUILD_LOCK_INPUT_MATRIX for compiler core",
+      "status": "PASS",
+      "summary": "No P2 locked compiler file hash mismatches"
+    },
+    {
+      "check": "RUNTIME_BOUNDARY",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "status": "PASS",
+      "summary": "No forbidden runtime reads or imports"
+    },
+    {
+      "check": "GIT_DIFF_CHECK",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "validated_rules": [
+    "closed compiler input bundle contains only allowed input groups and matching input types with path, sha256, approval linkage, and current invalidation state",
+    "P3 implementation review decisions are present, approved, subject-bound, and hash-current",
+    "closed_input_hash and semantic_content_hash are recomputed from the bundle",
+    "stage order is explicit and deterministic across DRD-01, DRD-02, DRD-03, DRD-03B, and DRD-04",
+    "compiled sections reference known atomic semantic_unit_ids without duplicate compilation",
+    "FINAL_DRD.md is deterministic mechanical assembly of approved section bodies",
+    "semantic conservation has no additions, omissions, hash drift, unapproved inputs, non-atomic units, ordering findings, or nondeterminism findings",
+    "manifest, toc, reference index, hash index, semantic inventory, conservation report, and final text match deterministic compiler output",
+    "read-only QA reports inspect all compiler package outputs without mutating compiled artifacts"
+  ],
+  "open_blockers": [],
+  "human_review_status": "PENDING_HUMAN_REVIEW"
+}

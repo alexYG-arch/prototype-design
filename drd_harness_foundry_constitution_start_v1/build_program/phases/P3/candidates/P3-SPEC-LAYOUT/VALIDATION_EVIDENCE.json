@@ -1,0 +1,97 @@
+{
+  "evidence_id": "P3-SPEC-LAYOUT-VALIDATION-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P3_SPEC_LAYOUT_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-LAYOUT",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings",
+      "status": "PASS",
+      "result_hash": "b276839391c23bca23f7cfde63d9e57fe6a6226a87239e7daeb4de8e15246346",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_PATTERNS_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-PATTERNS --review-decision build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "P3-SPEC-PATTERNS review binding remains approved and current",
+      "status": "PASS",
+      "result_hash": "91a720cdd3104479ea900e0aa324f4b440a43d97a605461b2ae4e835dd97783c",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_ELEMENTS_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-ELEMENTS --review-decision build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "P3-SPEC-ELEMENTS review binding remains approved and current for canonical element authority consumed by layout",
+      "status": "PASS",
+      "result_hash": "324a7f9b90c16edcd4d1904201076bb503318cc43c2ba020359765417e79a993",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_CLOSURE_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-CLOSURE --review-decision build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "P3-SPEC-CLOSURE review binding remains approved and current for interaction message authority consumed by layout",
+      "status": "PASS",
+      "result_hash": "342610c4b5fbf61cb1f5eaf2e14f4a3b33f066095d58b4154fdd072cb2315bfd",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_LAYOUT_SCHEMA_ALIGNMENT",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P3/candidates/P3-SPEC-LAYOUT')\ncontracts=json.loads((root/'P3_LAYOUT_ARTIFACT_CONTRACTS.json').read_text(encoding='utf-8'))\nfor artifact in contracts['required_artifacts']:\n    schema=json.loads(Path(artifact['schema_ref']).read_text(encoding='utf-8'))\n    assert artifact['minimum_fields'] == schema['required'], artifact['artifact_id']\n    assert artifact['record_minimum_fields'] == schema['required'], artifact['artifact_id']\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "schema-bound layout artifact minimum_fields match current required schema fields",
+      "status": "PASS",
+      "result_hash": "95a271c8a2082fea3fe495c732ade4413a621aa0e99d6ce2cb2ef6828069bb12",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_LAYOUT_ARTIFACT_ENVELOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\ncontracts=json.loads(Path('build_program/phases/P3/candidates/P3-SPEC-LAYOUT/P3_LAYOUT_ARTIFACT_CONTRACTS.json').read_text(encoding='utf-8'))\nrequired={'artifact_id','stage_id','fixture_id','path','schema_ref','schema_payload_key','source_refs','upstream_artifact_refs','upstream_hashes','validator_ref','review_gate','promotion_state','invalidation_inputs'}\nallowed_keys={'layout','profile','hierarchy','records','index','layering','metadata'}\nallowed_shapes={'single_object','records_array'}\nby_id={a['artifact_id']:a for a in contracts['required_artifacts']}\nfor artifact in contracts['required_artifacts']:\n    assert artifact['container_shape'] == 'artifact_envelope_with_payload', artifact['artifact_id']\n    assert set(artifact['artifact_envelope_fields']) == required, artifact['artifact_id']\n    assert artifact['schema_payload_key'] in allowed_keys, artifact['artifact_id']\n    assert artifact['payload_shape'] in allowed_shapes, artifact['artifact_id']\n    assert artifact['record_minimum_fields'] == artifact['minimum_fields'], artifact['artifact_id']\nassert contracts['semantic_authority_rule']['inventory_role'] == 'index_and_validation_skeleton_only'\nassert 'horizontal_scroll_exception' in contracts['horizontal_scroll_exception_rule']\nassert {'pattern_refs','state_variants','z_axis_refs','figma_metadata_ref'} <= set(by_id['p3.layout.natural_language_layout']['p3_required_fields'])\nassert 'z_axis_refs' in by_id['p3.layout.layout_composition_index']['p3_required_fields']\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "all layout artifacts declare envelope fields, payload keys, payload shapes, semantic authority rule, horizontal scroll exception rule, and P3-required optional bindings",
+      "status": "PASS",
+      "result_hash": "418dac1c0fb45b659759cea7e7eac353b3f0dcd167f9e10499c223109142b113",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_LAYOUT_STRUCTURE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P3/candidates/P3-SPEC-LAYOUT')\nartifacts=json.loads((root/'P3_LAYOUT_ARTIFACT_CONTRACTS.json').read_text(encoding='utf-8'))\nrules=json.loads((root/'P3_LAYOUT_PIPELINE_RULES.json').read_text(encoding='utf-8'))\nvalidation=json.loads((root/'P3_LAYOUT_VALIDATION_MATRIX.json').read_text(encoding='utf-8'))\ntrace=json.loads((root/'P3_LAYOUT_TRACEABILITY_MAP.json').read_text(encoding='utf-8'))\nassert len(artifacts['required_artifacts']) == 9\nassert len(rules['ordered_steps']) == 9\nassert len(rules['layout_rules']) == 13\nassert len(validation['validation_rows']) == 12\nassert len(trace['traceability_rows']) == 11\nassert all(not obj.get('open_blockers') for obj in [artifacts, rules, validation, trace])\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "artifact contracts, pipeline rules, validation rows, and traceability rows are structurally complete",
+      "status": "PASS",
+      "result_hash": "2ca8c5eaea0d4ab3e754cc29ce82afb447240019f2181d0f2ffea6b9e4b5525d",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_LAYOUT_SCOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P3/candidates/P3-SPEC-LAYOUT')\nscope=json.loads((root/'SCOPE_REPORT.json').read_text(encoding='utf-8'))\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['repository_files_modified'] is False\nassert scope['control_locks_modified'] is False\nassert scope['p3_patterns_candidate_modified'] is False\nassert scope['not_a_spec_lock'] is True\nassert scope['not_a_build_lock'] is True\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "scope report actual writes exist and no forbidden repository, lock, P1, P2, prior P3 candidate, or root P3 phase files changed",
+      "status": "PASS",
+      "result_hash": "4671faf8773360a96f57f9dd5f91ab866a5f4fe15cf0e0512a629a8c268c1106",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/layout_completeness.py",
+    "repository/src/drd_harness/rules/layout.py",
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/schemas/layout/natural_language_layout.schema.json",
+    "repository/schemas/layout/carrier_adaptation_profile.schema.json",
+    "repository/schemas/layout/containment_hierarchy.schema.json",
+    "repository/schemas/layout/content_growth_rule.schema.json",
+    "repository/schemas/layout/information_completeness_rule.schema.json",
+    "repository/schemas/layout/state_placement_index.schema.json",
+    "repository/schemas/layout/z_axis_layering.schema.json",
+    "repository/schemas/layout/layout_composition_index.schema.json",
+    "repository/schemas/layout/figma_reconstruction_metadata.schema.json",
+    "build_program/phases/P3/candidates/P3-SPEC-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-SPEC-CLOSURE/REVIEW_DECISION.json"
+  ]
+}

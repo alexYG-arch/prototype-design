@@ -1,0 +1,40 @@
+{
+  "evidence_id": "P3-BUILD-LOCK-CREATION-RESULT-VALIDATION-001",
+  "phase": "P3",
+  "workpack_id": "P3-BUILD-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P3_BUILD_LOCK_READINESS_VALIDATION",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nfrom drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness\nlock = json.loads(Path('control/locks/P3_BUILD_LOCK.json').read_text(encoding='utf-8'))\nfindings = validate_build_lock_readiness(lock)\nassert findings == [], findings\nassert lock['root_sha256'] == canonical_lock_root(lock)\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "validate_build_lock_readiness returns PASS with zero findings for control/locks/P3_BUILD_LOCK.json",
+      "status": "PASS",
+      "result_hash": "d0c1117fc18bc16b180854c1ff9e411d89f220f315f1dd5a9419decdc7ac7613",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_BUILD_LOCK_BOUND_FILE_HASHES",
+      "command": "python3 - <<'PY2'\nimport hashlib\nimport json\nfrom pathlib import Path\nlock = json.loads(Path('control/locks/P3_BUILD_LOCK.json').read_text(encoding='utf-8'))\nfor entry in lock['files']:\n    assert hashlib.sha256(Path(entry['path']).read_bytes()).hexdigest() == entry['sha256'], entry['path']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "all 202 file entries listed in P3_BUILD_LOCK hash to current file values",
+      "status": "PASS",
+      "result_hash": "bd2928f9318c5374327417f2bb65e71d247dacb33a32f88fc8aab7f10a35d5bf",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_BUILD_LOCK_RESULT_SCOPE",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nroot = Path('build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT')\nscope = json.loads((root / 'SCOPE_REPORT.json').read_text(encoding='utf-8'))\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['created_control_lock'] == 'control/locks/P3_BUILD_LOCK.json'\nassert scope['p1_files_modified_by_lock_creation'] is False\nassert scope['p2_files_modified_by_lock_creation'] is False\nassert scope['p3_phase_manifest_modified_by_lock_creation'] is False\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "scope report records only the authorized P3_BUILD_LOCK and result candidate writes",
+      "status": "PASS",
+      "result_hash": "b1fb0143b4901d8b74e69210724193224d33988c4b0f7ef85e780ce7c63dbe48",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/schemas/locks/build_lock.schema.json",
+    "control/locks/P3_BUILD_LOCK.json"
+  ]
+}

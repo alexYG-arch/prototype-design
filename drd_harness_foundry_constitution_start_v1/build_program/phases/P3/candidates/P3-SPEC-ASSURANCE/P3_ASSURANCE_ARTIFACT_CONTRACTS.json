@@ -1,0 +1,764 @@
+{
+  "contract_id": "P3-SPEC-ASSURANCE-ARTIFACT-CONTRACTS-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-ASSURANCE",
+  "module": "assurance_traceability",
+  "required_artifacts": [
+    {
+      "artifact_id": "p3.assurance.input_index",
+      "path_pattern": "repository/fixtures/p3/assurance/assurance_input_index.json",
+      "schema_ref": null,
+      "schema_absence_reason": "assurance_input_index is a P3 orchestration index whose fields are specified by this workpack until a future schema is authorized",
+      "schema_payload_key": "index",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "index_id",
+        "compiler_review_decision_ref",
+        "compiler_review_subject_hash",
+        "compiler_review_decision_sha256",
+        "compiler_output_refs",
+        "traceability_refs",
+        "validator_refs",
+        "schema_refs",
+        "invalidation_inputs"
+      ],
+      "record_minimum_fields": [
+        "index_id",
+        "compiler_review_decision_ref",
+        "compiler_review_subject_hash",
+        "compiler_review_decision_sha256",
+        "compiler_output_refs",
+        "traceability_refs",
+        "validator_refs",
+        "schema_refs",
+        "invalidation_inputs"
+      ],
+      "p3_required_fields": [
+        "compiler_review_decision_ref",
+        "compiler_review_subject_hash",
+        "compiler_review_decision_sha256"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "build_program/phases/P3/candidates/P3-SPEC-COMPILER/REVIEW_DECISION.json"
+      ],
+      "upstream_artifact_refs": [
+        "p3.compiler.input_bundle",
+        "p3.compiler.conservation_report",
+        "p3.compiler.final_drd_manifest",
+        "p3.compiler.final_drd_hash_index",
+        "p3.compiler.read_only_qa_boundary"
+      ],
+      "upstream_hashes": {
+        "P3-SPEC-COMPILER": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "compiler review decision superseded",
+        "compiler output hash drift",
+        "schema hash drift",
+        "validator identity drift",
+        "read-only QA mutation"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.final_review_packet",
+      "path_pattern": "repository/fixtures/p3/assurance/final_review_packet.json",
+      "schema_ref": null,
+      "schema_absence_reason": "final_review_packet is a P3 human gate packet defined by this candidate until a future schema is authorized",
+      "schema_payload_key": "packet",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "packet_id",
+        "compiler_package_ref",
+        "assurance_input_index_ref",
+        "qa_boundary_ref",
+        "traceability_summary",
+        "unresolved_findings",
+        "exception_summary",
+        "human_gate_policy",
+        "lock_readiness",
+        "promotion_claim"
+      ],
+      "record_minimum_fields": [
+        "packet_id",
+        "compiler_package_ref",
+        "assurance_input_index_ref",
+        "qa_boundary_ref",
+        "traceability_summary",
+        "unresolved_findings",
+        "exception_summary",
+        "human_gate_policy",
+        "lock_readiness",
+        "promotion_claim"
+      ],
+      "p3_required_fields": [
+        "lock_readiness",
+        "promotion_claim"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.input_index"
+      ],
+      "upstream_artifact_refs": [
+        "compiler package refs",
+        "trace row set",
+        "test obligation matrix",
+        "read-only QA boundary",
+        "traceability exception ledger"
+      ],
+      "upstream_hashes": {
+        "compiler_review_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/phase_gate.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "unresolved finding",
+        "unreviewed exception",
+        "invalidated trace row",
+        "promotion claim drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.trace_row_set",
+      "path_pattern": "repository/fixtures/p3/assurance/code_target_map.json",
+      "schema_ref": "repository/schemas/workpacks/code_target_map.schema.json",
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "minimum_fields": [
+        "trace_row_id",
+        "implementation_duty",
+        "contract_clause_id",
+        "source_spec_part",
+        "spec_lock_ref",
+        "contract_section_id",
+        "rule_id",
+        "projection_id",
+        "implementation_workpack_id",
+        "code_target",
+        "class_or_function",
+        "validator",
+        "test",
+        "acceptance_command",
+        "validator_check_ids",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "dependency_edges",
+        "invalidation_policy"
+      ],
+      "record_minimum_fields": [
+        "trace_row_id",
+        "implementation_duty",
+        "contract_clause_id",
+        "source_spec_part",
+        "spec_lock_ref",
+        "contract_section_id",
+        "rule_id",
+        "projection_id",
+        "implementation_workpack_id",
+        "code_target",
+        "class_or_function",
+        "validator",
+        "test",
+        "acceptance_command",
+        "validator_check_ids",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "dependency_edges",
+        "invalidation_policy"
+      ],
+      "p3_required_fields": [
+        "single_action_duty",
+        "one_validator_check_id_per_row",
+        "code_target_scope"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "P3_SPEC_LOCK when explicitly created",
+        "approved P3 spec candidates"
+      ],
+      "upstream_artifact_refs": [
+        "P3 assurance contract clauses",
+        "future implementation workpack duties"
+      ],
+      "upstream_hashes": {
+        "compiler_review_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "spec lock drift",
+        "validator dependency drift",
+        "test evidence drift",
+        "workpack dependency drift",
+        "skill dependency drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.test_obligation_matrix",
+      "path_pattern": "repository/fixtures/p3/assurance/test_obligation_matrix.json",
+      "schema_ref": "repository/schemas/workpacks/test_obligation_matrix.schema.json",
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "minimum_fields": [
+        "trace_row_id",
+        "implementation_duty",
+        "validator_check_ids",
+        "test",
+        "positive_case",
+        "negative_case",
+        "acceptance_command"
+      ],
+      "record_minimum_fields": [
+        "trace_row_id",
+        "implementation_duty",
+        "validator_check_ids",
+        "test",
+        "positive_case",
+        "negative_case",
+        "acceptance_command"
+      ],
+      "p3_required_fields": [
+        "positive_case",
+        "negative_case",
+        "matching_trace_row_id",
+        "matching_validator_check_ids"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.trace_row_set"
+      ],
+      "upstream_artifact_refs": [
+        "traceability rows",
+        "validator check ids",
+        "acceptance commands"
+      ],
+      "upstream_hashes": {
+        "trace_row_set": "from assurance input index"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "trace row drift",
+        "validator check drift",
+        "test path drift",
+        "acceptance command drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.implementation_workpack_index",
+      "path_pattern": "repository/fixtures/p3/assurance/implementation_workpack_index.json",
+      "schema_ref": "repository/schemas/workpacks/implementation_workpack_index.schema.json",
+      "schema_payload_key": "index",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "index_id",
+        "generated_at",
+        "workpacks"
+      ],
+      "record_minimum_fields": [
+        "index_id",
+        "generated_at",
+        "workpacks"
+      ],
+      "p3_required_fields": [
+        "workpacks",
+        "traceability_rows",
+        "deterministic_generated_at"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.trace_row_set"
+      ],
+      "upstream_artifact_refs": [
+        "future P3 implementation workpacks",
+        "traceability rows"
+      ],
+      "upstream_hashes": {
+        "trace_row_set": "from assurance input index"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/workpack_scope.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "orphan workpack",
+        "missing traceability row",
+        "workpack status drift"
+        ,
+        "nondeterministic generated_at"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.implementation_workpack_template",
+      "path_pattern": "repository/fixtures/p3/assurance/implementation_workpack_template.json",
+      "schema_ref": "repository/schemas/workpacks/implementation_workpack.schema.json",
+      "schema_payload_key": "workpack",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "workpack_id",
+        "phase",
+        "lane",
+        "objective",
+        "required_specs",
+        "required_spec_locks",
+        "traceability_rows",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "code_targets",
+        "validators",
+        "tests",
+        "acceptance_commands",
+        "skill_bindings",
+        "dependency_edges",
+        "status",
+        "review_policy",
+        "promotion_policy",
+        "invalidation_policy"
+      ],
+      "record_minimum_fields": [
+        "workpack_id",
+        "phase",
+        "lane",
+        "objective",
+        "required_specs",
+        "required_spec_locks",
+        "traceability_rows",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "code_targets",
+        "validators",
+        "tests",
+        "acceptance_commands",
+        "skill_bindings",
+        "dependency_edges",
+        "status",
+        "review_policy",
+        "promotion_policy",
+        "invalidation_policy"
+      ],
+      "p3_required_fields": [
+        "required_spec_locks",
+        "traceability_rows",
+        "allowed_write_paths",
+        "forbidden_write_paths"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.trace_row_set",
+        "p3.assurance.test_obligation_matrix"
+      ],
+      "upstream_artifact_refs": [
+        "P3_SPEC_LOCK when explicitly created",
+        "implementation workpack index"
+      ],
+      "upstream_hashes": {
+        "trace_row_set": "from assurance input index"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/workpack_scope.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "required spec lock drift",
+        "allowed path drift",
+        "forbidden path drift",
+        "scope dispute"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.skill_binding_manifest",
+      "path_pattern": "repository/fixtures/p3/assurance/skill_binding_manifest.json",
+      "schema_ref": "repository/schemas/workpacks/skill_binding_manifest.schema.json",
+      "schema_payload_key": "manifest",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "skill_id",
+        "skill_version",
+        "skill_source_path",
+        "skill_source_hash",
+        "bound_spec_locks",
+        "allowed_workpack_types",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "allowed_commands",
+        "traceability_rows",
+        "validator_refs",
+        "test_refs",
+        "human_gate_required",
+        "invalidation_dependencies"
+      ],
+      "record_minimum_fields": [
+        "skill_id",
+        "skill_version",
+        "skill_source_path",
+        "skill_source_hash",
+        "bound_spec_locks",
+        "allowed_workpack_types",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "allowed_commands",
+        "traceability_rows",
+        "validator_refs",
+        "test_refs",
+        "human_gate_required",
+        "invalidation_dependencies"
+      ],
+      "p3_required_fields": [
+        "human_gate_required",
+        "invalidation_dependencies",
+        "skill_is_not_authority"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.trace_row_set"
+      ],
+      "upstream_artifact_refs": [
+        "bound spec locks",
+        "allowed commands",
+        "validator refs",
+        "test refs"
+      ],
+      "upstream_hashes": {
+        "trace_row_set": "from assurance input index"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "skill source hash drift",
+        "spec lock drift",
+        "skill dependency drift",
+        "validator dependency drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.traceability_exception_ledger",
+      "path_pattern": "repository/fixtures/p3/assurance/traceability_exception_ledger.json",
+      "schema_ref": "repository/schemas/workpacks/traceability_exception.schema.json",
+      "schema_payload_key": "records",
+      "payload_shape": "records_array",
+      "minimum_fields": [
+        "exception_id",
+        "requested_by_workpack",
+        "trace_row_ids",
+        "scope_delta",
+        "reason",
+        "human_gate_decision_ref"
+      ],
+      "record_minimum_fields": [
+        "exception_id",
+        "requested_by_workpack",
+        "trace_row_ids",
+        "scope_delta",
+        "reason",
+        "human_gate_decision_ref"
+      ],
+      "p3_required_fields": [
+        "human_gate_decision_ref",
+        "scope_delta"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.trace_row_set",
+        "human gate decision"
+      ],
+      "upstream_artifact_refs": [
+        "traceability rows",
+        "workpack scope delta"
+      ],
+      "upstream_hashes": {
+        "human_gate_decision": "explicit human review decision hash"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "human gate decision superseded",
+        "scope delta drift",
+        "trace row drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.read_only_qa_boundary",
+      "path_pattern": "repository/fixtures/p3/assurance/read_only_qa_boundary.json",
+      "schema_ref": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+      "schema_payload_key": "boundary",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "drd06_run_id",
+        "qa_finding_id",
+        "finding_type",
+        "read_paths",
+        "written_paths",
+        "mutated_artifacts",
+        "mutation_claim"
+      ],
+      "record_minimum_fields": [
+        "drd06_run_id",
+        "qa_finding_id",
+        "finding_type",
+        "read_paths",
+        "written_paths",
+        "mutated_artifacts",
+        "mutation_claim"
+      ],
+      "p3_required_fields": [
+        "written_paths",
+        "mutated_artifacts",
+        "mutation_claim"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.compiler.read_only_qa_boundary"
+      ],
+      "upstream_artifact_refs": [
+        "FINAL_DRD.md",
+        "compiler output indexes",
+        "READ_ONLY_QA_REPORT.md",
+        "qa_finding_index.json"
+      ],
+      "upstream_hashes": {
+        "compiler_review_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "QA wrote forbidden output",
+        "QA mutated compiled artifact",
+        "compiler output hash drift"
+      ]
+    },
+    {
+      "artifact_id": "p3.assurance.final_assurance_report",
+      "path_pattern": "repository/fixtures/p3/assurance/final_assurance_report.json",
+      "schema_ref": null,
+      "schema_absence_reason": "final_assurance_report is a P3 gate aggregation artifact defined by this candidate until a future schema is authorized",
+      "schema_payload_key": "report",
+      "payload_shape": "single_object",
+      "minimum_fields": [
+        "report_id",
+        "status",
+        "compiler_gate_status",
+        "qa_boundary_status",
+        "traceability_status",
+        "test_obligation_status",
+        "workpack_scope_status",
+        "skill_binding_status",
+        "exception_status",
+        "invalidation_status",
+        "blocking_findings",
+        "human_gate_required",
+        "lock_creation_allowed"
+      ],
+      "record_minimum_fields": [
+        "report_id",
+        "status",
+        "compiler_gate_status",
+        "qa_boundary_status",
+        "traceability_status",
+        "test_obligation_status",
+        "workpack_scope_status",
+        "skill_binding_status",
+        "exception_status",
+        "invalidation_status",
+        "blocking_findings",
+        "human_gate_required",
+        "lock_creation_allowed"
+      ],
+      "p3_required_fields": [
+        "blocking_findings",
+        "human_gate_required",
+        "lock_creation_allowed"
+      ],
+      "container_shape": "artifact_envelope_with_payload",
+      "artifact_envelope_fields": [
+        "artifact_id",
+        "stage_id",
+        "fixture_id",
+        "path",
+        "schema_ref",
+        "schema_payload_key",
+        "source_refs",
+        "upstream_artifact_refs",
+        "upstream_hashes",
+        "validator_ref",
+        "review_gate",
+        "promotion_state",
+        "invalidation_inputs"
+      ],
+      "source_refs": [
+        "p3.assurance.input_index",
+        "p3.assurance.final_review_packet"
+      ],
+      "upstream_artifact_refs": [
+        "trace row set",
+        "test obligation matrix",
+        "implementation workpack index",
+        "skill binding manifest",
+        "traceability exception ledger",
+        "read-only QA boundary"
+      ],
+      "upstream_hashes": {
+        "compiler_review_subject_hash": "3e6c8cb04f4572d9182f5df3974d5094193f9a2708dfcf09b14993cfa50b71ce"
+      },
+      "validator_ref": "repository/src/drd_harness/validators/phase_gate.py",
+      "review_gate": "human review decision binds exact assurance candidate subject hash before lock creation",
+      "promotion_state": "candidate_only",
+      "invalidation_inputs": [
+        "blocking finding",
+        "unreviewed exception",
+        "invalidated trace row",
+        "read-only QA mutation",
+        "lock readiness drift"
+      ]
+    }
+  ],
+  "assurance_authority_rule": {
+    "authority_role": "evidence and traceability gate only",
+    "semantic_role": "no product, interaction, presentation, layout, compiler, or copy semantics may be added",
+    "lock_rule": "lock readiness may be reported, but lock creation requires a separate explicit user request",
+    "generation_metadata_rule": "generated_at values used in reviewed assurance indexes must be deterministic from reviewed release identity, assurance run id, or input-bundle-derived generation id; wall-clock or machine-local generated_at values are invalid when included in reviewed hashes or lock-readiness evidence",
+    "skill_role": "skills are execution helpers and cannot override specs, validators, locks, review gates, or source authority"
+  },
+  "open_blockers": []
+}

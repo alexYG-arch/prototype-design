@@ -1,0 +1,51 @@
+{
+  "workpack_id": "P3-IMPL-ELEMENTS",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS",
+  "upstream_spec_lock": "control/locks/P3_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+  "upstream_spec_lock_id": "P3-SPEC-LOCK-001",
+  "upstream_spec_elements_review_decision": "build_program/phases/P3/candidates/P3-SPEC-ELEMENTS/REVIEW_DECISION.json",
+  "upstream_spec_elements_review_decision_hash": "ac1305c8213f46b9b72af928fbf24f216a7a87cd28eff4a50e3b693815256c57",
+  "upstream_impl_closure_review_decision": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+  "upstream_impl_closure_review_decision_hash": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
+  "owned_workpack": "P3-IMPL-ELEMENTS",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/validators/p3_page_elements.py",
+    "repository/fixtures/p3/elements/**",
+    "repository/tests/p3/test_page_element_model.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/candidates/P3-SPEC-*/**",
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/** except read-only review input",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/** except read-only review input",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE.md",
+    "repository/src/drd_harness/validators/prd_adoption.py when its hash differs from the P2 build-readiness matrix"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P3-IMPL-ELEMENTS is approved by Human Gate. P3-IMPL-PATTERNS may start only on explicit continuation; P3_BUILD_LOCK remains a separate lock step.",
+  "review_decision": "REVIEW_DECISION.json"
+}

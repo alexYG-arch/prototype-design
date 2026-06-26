@@ -1,0 +1,60 @@
+{
+  "evidence_id": "P3-SPEC-SOURCE-VALIDATION-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-SOURCE",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P3_SPEC_SOURCE_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-SPEC-SOURCE",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings",
+      "status": "PASS",
+      "result_hash": "3dcd1316e8952fab6abc72aeb0f12cea0f860b209e15511ad20b4dc3397c2c43",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_SOURCE_STRUCTURE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot = Path('build_program/phases/P3/candidates/P3-SPEC-SOURCE')\nartifacts = json.loads((root / 'P3_SOURCE_ARTIFACT_CONTRACTS.json').read_text(encoding='utf-8'))\nrules = json.loads((root / 'P3_SOURCE_PIPELINE_RULES.json').read_text(encoding='utf-8'))\nvalidation = json.loads((root / 'P3_SOURCE_VALIDATION_MATRIX.json').read_text(encoding='utf-8'))\ntrace = json.loads((root / 'P3_SOURCE_TRACEABILITY_MAP.json').read_text(encoding='utf-8'))\nassert len(artifacts['required_artifacts']) == 5\nassert len(rules['ordered_steps']) == 6\nassert len(rules['state_model']) == 5\nassert len(validation['validation_rows']) == 6\nassert len(trace['traceability_rows']) == 5\nassert all(not row.get('open_blockers') for row in [artifacts, rules, validation, trace])\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "artifact contracts, pipeline rules, validation rows, and traceability rows are structurally complete",
+      "status": "PASS",
+      "result_hash": "3e7d5faf328ccc723d3045782a57919e2e304dab4495aefade99c6944ce7c09f",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P2_BUILD_LOCK_VALIDATES",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfrom drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness\nlock = json.loads(Path('control/locks/P2_BUILD_LOCK.json').read_text(encoding='utf-8'))\nassert lock['root_sha256'] == canonical_lock_root(lock)\nassert validate_build_lock_readiness(lock) == []\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "P2_BUILD_LOCK validates and root hash matches canonical lock content",
+      "status": "PASS",
+      "result_hash": "edd019cd9af211204a413839aaec39d2b04a080a5e637816d855537b36027e08",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_SOURCE_SCOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot = Path('build_program/phases/P3/candidates/P3-SPEC-SOURCE')\nscope = json.loads((root / 'SCOPE_REPORT.json').read_text(encoding='utf-8'))\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['repository_files_modified'] is False\nassert scope['control_locks_modified'] is False\nassert scope['not_a_spec_lock'] is True\nassert scope['not_a_build_lock'] is True\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "scope report actual writes exist and no forbidden repository, lock, P1, P2, or root P3 phase files changed",
+      "status": "PASS",
+      "result_hash": "cf9a6d8feda44b5aefa335d111750461ea3e5da6cd4857c5252a7af97aa83db8",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P3_SPEC_SOURCE_SCHEMA_ALIGNMENT",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\ncontracts=json.loads(Path('build_program/phases/P3/candidates/P3-SPEC-SOURCE/P3_SOURCE_ARTIFACT_CONTRACTS.json').read_text())\nsource_schema=json.loads(Path('repository/schemas/stages/source_snapshot_manifest.schema.json').read_text())\ndep_schema=json.loads(Path('repository/schemas/stages/dependency_manifest.schema.json').read_text())\nby_id={a['artifact_id']:a for a in contracts['required_artifacts']}\nassert by_id['p3.source_intake.source_snapshot_manifest']['minimum_fields'] == source_schema['required']\nassert by_id['p3.source_intake.downstream_handoff_manifest']['minimum_fields'] == dep_schema['required']\nprint('PASS')\nPY",
+      "exit_code": 0,
+      "summary": "source_snapshot_manifest and downstream_handoff_manifest minimum_fields match the currently bound schema required fields",
+      "status": "PASS",
+      "result_hash": "be8f8d15c68803a0b21e953c243ac429023e875f1d64667a9bb699359c2a58da",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/stages/source_snapshot.py",
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/schemas/stages/source_snapshot_manifest.schema.json",
+    "repository/schemas/stages/dependency_manifest.schema.json",
+    "repository/schemas/stages/stage_manifest.schema.json"
+  ]
+}

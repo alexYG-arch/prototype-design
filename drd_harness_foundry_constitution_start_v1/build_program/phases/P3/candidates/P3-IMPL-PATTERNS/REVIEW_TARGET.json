@@ -1,0 +1,32 @@
+{
+  "target_id": "P3-IMPL-PATTERNS-REVIEW-TARGET-001",
+  "workpack_id": "P3-IMPL-PATTERNS",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS",
+  "review_subject_hash": "4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does patterns stay inside P3-IMPL-PATTERNS and avoid product capability expansion?",
+    "Does additive P3 wrapper preserve P2 locked presentation_consistency.py?",
+    "Are schema binding, source replay binding, semantic reuse, canonical reuse scope, trace refs, message/state coverage, consistency exceptions, transient boundary, and layout boundary verifiable?",
+    "Do tests and full regression pass?"
+  ],
+  "not_a_review_decision": true,
+  "resolved_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

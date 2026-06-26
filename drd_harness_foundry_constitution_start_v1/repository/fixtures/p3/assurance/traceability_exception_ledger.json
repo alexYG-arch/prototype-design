@@ -1,0 +1,28 @@
+{
+  "artifact_id": "p3.assurance.traceability_exception_ledger",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/traceability_exception_ledger.json",
+  "schema_ref": "repository/schemas/workpacks/traceability_exception.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "p3.assurance.trace_row_set"
+  ],
+  "upstream_artifact_refs": [
+    "human gate decision"
+  ],
+  "upstream_hashes": {
+    "compiler_review_decision": "aec392fb4f90c76cdd82fd40c031ab31f9dc4032cbae50d4a55d239abd62ebf4"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/traceability.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "records": []
+}

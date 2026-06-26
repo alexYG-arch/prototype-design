@@ -1,0 +1,100 @@
+{
+  "map_id": "P3-SPEC-DISTILL-TRACEABILITY-MAP-001",
+  "phase": "P3",
+  "workpack_id": "P3-SPEC-DISTILL",
+  "upstream_candidate": "build_program/phases/P3/candidates/P3-SPEC-SOURCE",
+  "upstream_review_decision": "build_program/phases/P3/candidates/P3-SPEC-SOURCE/REVIEW_DECISION.json",
+  "upstream_review_decision_sha256": "df6e0860e97a609efccbbdd67764e2dee44b0d36d086633e2f89dac232d7238e",
+  "upstream_review_subject_hash": "d7468c8379b2860556146940734c0e61280811f72cef4c7b3cc1ed79513eb739",
+  "schema_bindings": [
+    {
+      "path": "repository/schemas/reasoning/prd_element_inventory.schema.json",
+      "sha256": "805573a899156b0885885cae1a526f3ce4c2f9d448f660ced61cfbf574abf44c"
+    },
+    {
+      "path": "repository/schemas/reasoning/prd_element_decision.schema.json",
+      "sha256": "e2d90e34b247fdbaaa6c1d115b4cd19864410f472124e95c321b3e93bdaa82f3"
+    },
+    {
+      "path": "repository/schemas/reasoning/input_obligation.schema.json",
+      "sha256": "54c9dd31e4a027b2d38ee1855bc362d76a13198b78338a21a6cbe61240304bda"
+    },
+    {
+      "path": "repository/schemas/reasoning/inference_record.schema.json",
+      "sha256": "85dc112ac5bd9106b16281f054620f507de3142837895a8ec6a81abd073ef769"
+    },
+    {
+      "path": "repository/schemas/reasoning/derived_element_decision.schema.json",
+      "sha256": "aa67d7409247b77d7b5c0a06629957a2b825cf27180e226aa09aac5bbea7a381"
+    },
+    {
+      "path": "repository/schemas/reasoning/product_expansion_gap.schema.json",
+      "sha256": "cad82ebb6a4958ee9330c26ab8b5cf0dd2a4fd9bbd20f5a2dd8eda827d3ac84e"
+    },
+    {
+      "path": "repository/schemas/reasoning/structural_completion_review.schema.json",
+      "sha256": "350d688a883ab05c31b624d46d11c82ff79df4865c5c7aa4fb02daa9c74271df"
+    }
+  ],
+  "runtime_bindings": [
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/reasoning.py",
+      "sha256": "8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    }
+  ],
+  "downstream_workpack": "P3-IMPL-DISTILL",
+  "next_spec_workpack": "P3-SPEC-CLOSURE",
+  "traceability_rows": [
+    {
+      "clause": "atomic semantic units",
+      "artifact": "semantic_unit_map",
+      "implementation_target": "experience semantic segmenter",
+      "test_obligation": "compound semantic rows are rejected"
+    },
+    {
+      "clause": "schema element mapping",
+      "artifact": "prd_element_inventory",
+      "implementation_target": "PRD inventory mapper",
+      "test_obligation": "schema enum values remain supported"
+    },
+    {
+      "clause": "adoption decision integrity",
+      "artifact": "prd_element_decisions",
+      "implementation_target": "adoption decision validator",
+      "test_obligation": "inventory rows and decisions cover each other"
+    },
+    {
+      "clause": "deductive first reasoning",
+      "artifact": "inference_records",
+      "implementation_target": "distillation inference recorder",
+      "test_obligation": "inductive candidates cannot become canonical without review"
+    },
+    {
+      "clause": "product expansion routing",
+      "artifact": "product_expansion_gaps",
+      "implementation_target": "product gap router",
+      "test_obligation": "new capability requests are blocked from closure handoff"
+    },
+    {
+      "clause": "closure handoff",
+      "artifact": "closure_handoff_manifest",
+      "implementation_target": "distill-to-closure handoff builder",
+      "test_obligation": "only eligible rows and explicit blockers are exported"
+    },
+    {
+      "clause": "artifact envelope provenance",
+      "artifact": "all distillation artifacts",
+      "implementation_target": "distillation artifact writer",
+      "test_obligation": "artifact_id, stage_id, fixture_id, path, schema_ref, schema_payload_key, source refs, upstream hashes, review gate, promotion state, and invalidation inputs are present before records are consumed"
+    }
+  ],
+  "open_blockers": []
+}

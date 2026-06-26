@@ -1,0 +1,36 @@
+{
+  "review_id": "P3-SPEC-LAYOUT-REVIEW-001",
+  "workpack_id": "P3-SPEC-LAYOUT",
+  "phase": "P3",
+  "lane": "SPEC",
+  "subject_hash": "191b22af853d316b1e447fd32c649bcc744f18878b2e0c0a0cb800b76499a319",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "approved_sections": [
+    "P3_LAYOUT_CONTRACT.md",
+    "P3_LAYOUT_MODEL.md",
+    "P3_LAYOUT_ARTIFACT_CONTRACTS.json",
+    "P3_LAYOUT_PIPELINE_RULES.json",
+    "P3_LAYOUT_VALIDATION_MATRIX.json",
+    "P3_LAYOUT_TRACEABILITY_MAP.json",
+    "P3_LAYOUT_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P3/candidates/P3-SPEC-LAYOUT/**"
+  ],
+  "next_authorized_workpack": "P3-SPEC-COMPILER",
+  "patterns_candidate_mutations": [],
+  "elements_candidate_mutations": [],
+  "closure_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P3-SPEC-LAYOUT review.",
+    "This approval authorizes generation of P3-SPEC-COMPILER when the user explicitly asks to continue.",
+    "This approval does not modify repository implementation, create P3_SPEC_LOCK, create P3_BUILD_LOCK, or update root P3 phase files."
+  ]
+}

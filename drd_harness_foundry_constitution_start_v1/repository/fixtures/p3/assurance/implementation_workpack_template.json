@@ -1,0 +1,110 @@
+{
+  "artifact_id": "p3.assurance.implementation_workpack_template",
+  "stage_id": "DRD-06-ASSURANCE",
+  "fixture_id": "p3_assurance",
+  "path": "repository/fixtures/p3/assurance/implementation_workpack_template.json",
+  "schema_ref": "repository/schemas/workpacks/implementation_workpack.schema.json",
+  "schema_payload_key": "workpack",
+  "source_refs": [
+    "p3.assurance.trace_row_set",
+    "p3.assurance.test_obligation_matrix"
+  ],
+  "upstream_artifact_refs": [
+    "P3_SPEC_LOCK"
+  ],
+  "upstream_hashes": {
+    "P3_SPEC_LOCK": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/workpack_scope.py",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "promotion_state": "candidate_only",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "workpack": {
+    "workpack_id": "P3-IMPL-ASSURANCE",
+    "phase": "P3",
+    "lane": "IMPLEMENTATION",
+    "objective": "Implement final assurance traceability gate without creating locks or product semantics.",
+    "required_specs": [
+      "P3-SPEC-ASSURANCE"
+    ],
+    "required_spec_locks": [
+      {
+        "spec_part": "P3-SPEC-ASSURANCE",
+        "lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      }
+    ],
+    "traceability_rows": [
+      "P3ASSURE-TRACE-001",
+      "P3ASSURE-TRACE-002",
+      "P3ASSURE-TRACE-003",
+      "P3ASSURE-TRACE-004",
+      "P3ASSURE-TRACE-005",
+      "P3ASSURE-TRACE-006",
+      "P3ASSURE-TRACE-007"
+    ],
+    "allowed_write_paths": [
+      "repository/src/drd_harness/validators/traceability.py",
+      "repository/src/drd_harness/validators/workpack_scope.py",
+      "repository/src/drd_harness/validators/compiler_conservation.py",
+      "repository/src/drd_harness/stages/read_only_qa.py",
+      "repository/src/drd_harness/validators/phase_gate.py",
+      "repository/schemas/workpacks/**",
+      "repository/fixtures/p3/assurance/**",
+      "repository/tests/workpacks/**",
+      "repository/tests/stages/test_read_only_qa_boundary.py",
+      "repository/tests/p3/test_assurance_traceability.py"
+    ],
+    "forbidden_write_paths": [
+      "control/**",
+      "build_program/phases/P3/candidates/P3-SPEC-*/**",
+      "build_program/phases/P3/candidates/P3-IMPL-COMPILER/**",
+      "repository/fixtures/p3/compiler/**",
+      "repository/fixtures/p3/source_intake/**",
+      "repository/fixtures/p3/distill/**",
+      "repository/fixtures/p3/closure/**",
+      "repository/fixtures/p3/patterns/**",
+      "repository/fixtures/p3/layout/**"
+    ],
+    "code_targets": [
+      "repository/src/drd_harness/stages/read_only_qa.py",
+      "repository/src/drd_harness/validators/phase_gate.py",
+      "repository/src/drd_harness/validators/traceability.py",
+      "repository/src/drd_harness/validators/workpack_scope.py"
+    ],
+    "validators": [
+      "drd_harness.validators.traceability.validate_p3_assurance_artifacts",
+      "drd_harness.validators.workpack_scope.validate_workpack_readiness"
+    ],
+    "tests": [
+      "repository/tests/p3/test_assurance_traceability.py",
+      "repository/tests/workpacks",
+      "repository/tests/stages/test_read_only_qa_boundary.py"
+    ],
+    "acceptance_commands": [
+      "PYTHONPATH=repository/src python3 -m pytest repository/tests/workpacks repository/tests/stages/test_read_only_qa_boundary.py -q",
+      "PYTHONPATH=repository/src python3 -m pytest repository/tests/p3/test_assurance_traceability.py -q",
+      "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P3/candidates/P3-IMPL-ASSURANCE"
+    ],
+    "skill_bindings": [
+      "repository/fixtures/p3/assurance/skill_binding_manifest.json"
+    ],
+    "dependency_edges": [
+      "SPEC_LOCK_DEPENDENCY",
+      "REVIEW_DEPENDENCY",
+      "VALIDATOR_DEPENDENCY",
+      "TEST_EVIDENCE_DEPENDENCY",
+      "WORKPACK_DEPENDENCY",
+      "SKILL_DEPENDENCY"
+    ],
+    "status": "READY",
+    "review_policy": "human_review_required_before_p3_build_lock",
+    "promotion_policy": "promotion_requires_approved_review_decision_and_separate_build_lock_request",
+    "invalidation_policy": "invalidate_on_spec_lock_compiler_output_validator_test_workpack_or_skill_drift"
+  }
+}

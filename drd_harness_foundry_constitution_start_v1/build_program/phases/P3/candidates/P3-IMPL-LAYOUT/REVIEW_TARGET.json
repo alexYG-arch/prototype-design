@@ -1,0 +1,32 @@
+{
+  "target_id": "P3-IMPL-LAYOUT-REVIEW-TARGET-001",
+  "workpack_id": "P3-IMPL-LAYOUT",
+  "phase": "P3",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT",
+  "review_subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does layout stay inside P3-IMPL-LAYOUT and avoid product capability expansion?",
+    "Does additive P3 wrapper preserve P2 locked layout_completeness.py?",
+    "Are natural-language authority, carrier constraints, containment hierarchy, information completeness, horizontal scroll exceptions, state placement, z-axis layering, Figma boundary, and reference integrity verifiable?",
+    "Do tests and full regression pass?"
+  ],
+  "not_a_review_decision": true,
+  "resolved_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "VALIDATION_REPLAY_OBSERVATIONS.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}
