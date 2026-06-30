@@ -40,11 +40,11 @@
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "d17be59a5224c090431fe4d39fd41df0ed56c2c4c7a8fc17226bdf4faa18763f"
+      "sha256": "a2b370763d301b0bce9ba5962ca225660886e8f8778c1147a73df1744ee397ee"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "9e98c4baa7b5d20ba3eec2a04bd18bccf19fd595fdc674f85ca8f2e59958e2cd"
+      "sha256": "32a9244536e54ce4261b05902cb4de35b1bd123284da16e6fe7e4b4b0e135d15"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
@@ -99,6 +99,18 @@
       "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
     }
   ],
+  "external_prd_run_guardrails": {
+    "execution_package_phase_label_is_internal": true,
+    "external_prd_outputs_allowed_prefix": "current_capsule/outputs/**",
+    "external_prd_outputs_forbidden_prefixes": [
+      "build_program/**",
+      "constitution/**",
+      "control/**",
+      "repository/**",
+      "tooling/**"
+    ],
+    "p4_label_does_not_assign_external_prd_to_p4": true
+  },
   "required_outputs": [],
   "required_skills": [],
   "status": "COMPLETE_READY_FOR_HARNESS_RUN",
