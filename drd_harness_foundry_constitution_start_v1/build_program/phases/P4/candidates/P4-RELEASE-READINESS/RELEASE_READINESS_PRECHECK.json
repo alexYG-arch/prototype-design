@@ -1,0 +1,41 @@
+{
+  "precheck_id": "P4-RELEASE-READINESS-PRECHECK-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-READINESS",
+  "status": "PASS",
+  "purpose": "Cycle-free release readiness evidence for the release suite before the final readiness packet binds the release suite report hash.",
+  "p4_spec_lock_ref": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "approved_build_decision": {
+    "path": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "sha256": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+    "subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "decision": "APPROVED",
+    "open_blockers": []
+  },
+  "golden_suite_report_hash": "b6c691ee773480eb084b7728d85c5c6ab88dbde91c8f53915f355a02601aaf13",
+  "integration_suite_report_hash": "efa62d8754248e29a948af918913d6c9f4b7052e2a42455514290bc16b4adbd9",
+  "package_manifest_hash": "2dbd4d84e452540dd41bb2c3f26d2ad93e40a8bf4c7671fc6bd4a09d25ed74ff",
+  "package_dry_run_report_hash": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b",
+  "example_project_manifest_hash": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+  "example_project_smoke_report_hash": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f",
+  "migration_coverage_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+  "source_git_commit_ref": "cb9921c8e2073c50349bbf42173377e1f75e992d",
+  "source_git_commit_hash": "2bf73ee026a1dbe01013068c15bf9f766fc2e4f66ba57f2a3f619df2afa02d33",
+  "dirty_state_policy": "CLEAN",
+  "dirty_state_records": [],
+  "missing_gate_list": [],
+  "will_create_release_lock": false,
+  "will_publish_package": false,
+  "precheck_hash": "060ee83823a6a4f2a5c7312cab8524ddc129fd7c6338ed1050d6ec3dd29e33e0"
+}

@@ -4,11 +4,12 @@
   "phase": "P4",
   "lane": "RELEASE_READINESS",
   "candidate_dir": "build_program/phases/P4/candidates/P4-RELEASE-READINESS",
-  "review_subject_hash": "f68b5d60d877cc9836a6fc3fa7449dca1ae9b780170167a982bff64ba1f83786",
+  "review_subject_hash": "c13e69d31746c7665f7b308b8ffb5257ae7e38febb5b8afb7f7d5980e3e4b5bf",
   "review_subject_hash_excludes_this_file": true,
   "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
   "review_sections": [
     "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PRECHECK.json",
     "RELEASE_READINESS_PACKET.json",
     "RELEASE_EVIDENCE_INDEX.json",
     "RELEASE_GATE_BLOCKERS.json",
@@ -25,12 +26,51 @@
     "PART_SELF_CHECK.md",
     "HANDOFF.md"
   ],
-  "proposed_human_decision_if_accepted": "APPROVED_BLOCKED_READINESS_ASSESSMENT",
-  "resolved_decision": null,
-  "review_decision": null,
+  "proposed_human_decision_if_accepted": "APPROVED",
+  "resolved_decision": "P4 release readiness is approved by human gate; release lock input bundle creation, release lock creation, publishing, commit, and push remain separately authorized.",
+  "review_decision": "REVIEW_DECISION.json",
   "not_a_review_decision": true,
   "supporting_sections": [
-    "REVIEW_TARGET.json"
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
   ],
-  "supporting_sections_excluded_from_review_subject_hash": true
+  "supporting_sections_excluded_from_review_subject_hash": true,
+  "approved_sections_after_human_pass": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PRECHECK.json",
+    "RELEASE_READINESS_PACKET.json",
+    "RELEASE_EVIDENCE_INDEX.json",
+    "RELEASE_GATE_BLOCKERS.json",
+    "MIGRATION_COVERAGE_REPORT.json",
+    "PACKAGE_MANIFEST.json",
+    "PACKAGE_DRY_RUN_REPORT.json",
+    "EXAMPLE_PROJECT_MANIFEST.json",
+    "EXAMPLE_PROJECT_SMOKE_REPORT.json",
+    "SUITE_REPORTS.json",
+    "RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PRECHECK.json",
+    "RELEASE_READINESS_PACKET.json",
+    "RELEASE_EVIDENCE_INDEX.json",
+    "RELEASE_GATE_BLOCKERS.json",
+    "MIGRATION_COVERAGE_REPORT.json",
+    "PACKAGE_MANIFEST.json",
+    "PACKAGE_DRY_RUN_REPORT.json",
+    "EXAMPLE_PROJECT_MANIFEST.json",
+    "EXAMPLE_PROJECT_SMOKE_REPORT.json",
+    "SUITE_REPORTS.json",
+    "RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
 }

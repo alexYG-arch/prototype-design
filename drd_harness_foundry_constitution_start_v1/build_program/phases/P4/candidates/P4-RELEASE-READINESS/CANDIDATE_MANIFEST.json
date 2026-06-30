@@ -3,7 +3,7 @@
   "candidate_id": "P4-RELEASE-READINESS",
   "phase": "P4",
   "lane": "RELEASE_READINESS",
-  "status": "BLOCKED_DIRTY_READY_FOR_HUMAN_REVIEW",
+  "status": "APPROVED_BY_HUMAN",
   "candidate_directory": "build_program/phases/P4/candidates/P4-RELEASE-READINESS",
   "upstream_candidate": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT",
   "upstream_review_decision": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
@@ -13,6 +13,7 @@
   "upstream_build_lock": "control/locks/P4_BUILD_LOCK.json",
   "generated_outputs": [
     "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PRECHECK.json",
     "RELEASE_READINESS_PACKET.json",
     "RELEASE_EVIDENCE_INDEX.json",
     "RELEASE_GATE_BLOCKERS.json",
@@ -30,14 +31,16 @@
     "HANDOFF.md"
   ],
   "supporting_outputs": [
-    "REVIEW_TARGET.json"
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
   ],
-  "approval_state": "NOT_APPROVED",
-  "review_decision": null,
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
   "seal_state": "NOT_SEALED",
   "release_lock_state": "NOT_CREATED",
   "release_lock_created": false,
   "package_published": false,
+  "release_lock_input_bundle_created": false,
   "allowed_write_paths": [
     "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**"
   ],
@@ -57,5 +60,5 @@
     "build_program/phases/P4/RELEASE_SCOPE.md"
   ],
   "actual_write_scope_status": "PASS",
-  "next_action": "Commit and push P4 build lock files only after explicit authorization, then replay release readiness for a clean PASS packet."
+  "next_action": "P4 release readiness is approved. Release lock input bundle creation, release lock creation, publishing, commit, and push still require separate explicit authorization."
 }

@@ -1,12 +1,12 @@
 # P4 Release Readiness Handoff
 
-This candidate materializes P4 release readiness evidence after the P4 build-lock creation result was approved.
+This candidate replays P4 release readiness after the P4 build-lock files were committed and pushed.
 
 Review focus:
-1. Confirm the blocker is real: `P4_BUILD_LOCK.json` and the approved build-lock review decision are release inputs but are not committed or pushed after creation.
+1. Confirm `RELEASE_READINESS_PACKET.json` has `status=PASS`, empty `missing_gate_list`, and `dirty_state_policy=CLEAN`.
 2. Confirm no release lock was created and no package was published.
-3. Confirm package, example, migration, golden, and integration evidence are hash-bound.
-4. Confirm the release suite remains blocked until clean committed release inputs can be replayed.
-5. Confirm the release lock input bundle is only a preview and remains blocked by human authorization.
+3. Confirm package, example, migration, golden, integration, and release evidence are hash-bound.
+4. Confirm `RELEASE_READINESS_PRECHECK.json` is used only to prevent a hash cycle between the release suite and final readiness packet.
+5. Confirm `RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json` is only a preview and remains blocked by human authorization.
 
-Next action after acceptance: explicitly authorize commit and push of the P4 build-lock files, then replay release readiness.
+Human gate accepted this readiness candidate by explicit `pass`. The next action remains a separately authorized release lock input bundle or release lock creation step.

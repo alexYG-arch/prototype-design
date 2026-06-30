@@ -1,5 +1,5 @@
 {
-  "expected_bundle_id": "release-lock-inputs-191a043f20052108",
+  "expected_bundle_id": "release-lock-inputs-2025872a68b3d3c0",
   "required_input_kinds": [
     "p4_spec_lock_ref",
     "p4_build_lock_ref",
@@ -13,13 +13,9 @@
     "source_git_commit",
     "required_human_authorization"
   ],
-  "missing_input_kinds": [
-    "p4_build_lock_creation_result_review_decision_not_committed_or_pushed",
-    "p4_build_lock_file_not_committed_or_pushed_after_creation",
-    "release_suite_status_not_pass_pending_clean_release_input_replay"
-  ],
+  "missing_input_kinds": [],
   "blocked_until_human_authorization": true,
-  "preview_status": "BLOCKED_PENDING_CLEAN_COMMITTED_RELEASE_INPUTS",
+  "preview_status": "ELIGIBLE_FOR_INPUT_BUNDLE_PENDING_HUMAN_AUTHORIZATION",
   "will_create_release_lock": false,
   "will_publish_package": false,
   "p4_build_lock_ref": {

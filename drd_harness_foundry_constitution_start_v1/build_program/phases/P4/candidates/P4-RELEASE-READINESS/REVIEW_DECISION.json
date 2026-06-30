@@ -1,0 +1,63 @@
+{
+  "decision_id": "P4-RELEASE-READINESS-REVIEW-001",
+  "subject": "P4-RELEASE-READINESS",
+  "subject_hash": "c13e69d31746c7665f7b308b8ffb5257ae7e38febb5b8afb7f7d5980e3e4b5bf",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the clean P4 release readiness candidate. This approval covers release readiness evidence only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PRECHECK.json",
+    "RELEASE_READINESS_PACKET.json",
+    "RELEASE_EVIDENCE_INDEX.json",
+    "RELEASE_GATE_BLOCKERS.json",
+    "MIGRATION_COVERAGE_REPORT.json",
+    "PACKAGE_MANIFEST.json",
+    "PACKAGE_DRY_RUN_REPORT.json",
+    "EXAMPLE_PROJECT_MANIFEST.json",
+    "EXAMPLE_PROJECT_SMOKE_REPORT.json",
+    "SUITE_REPORTS.json",
+    "RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**"
+  ],
+  "approved_readiness_packet": {
+    "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PACKET.json",
+    "readiness_packet_hash": "3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f",
+    "status": "PASS",
+    "release_lock_eligibility_state": "ELIGIBLE_FOR_INPUT_BUNDLE",
+    "source_git_commit_ref": "cb9921c8e2073c50349bbf42173377e1f75e992d",
+    "source_git_commit_hash": "2bf73ee026a1dbe01013068c15bf9f766fc2e4f66ba57f2a3f619df2afa02d33"
+  },
+  "validation_summary": {
+    "candidate_check_subject_hash": "c13e69d31746c7665f7b308b8ffb5257ae7e38febb5b8afb7f7d5980e3e4b5bf",
+    "release_readiness_packet": "PASS",
+    "release_readiness_findings": 0,
+    "suite_statuses": {
+      "GOLDEN": "PASS",
+      "INTEGRATION": "PASS",
+      "RELEASE": "PASS"
+    },
+    "package_manifest": "PASS",
+    "example_project_manifest": "PASS",
+    "migration_coverage": "PASS",
+    "json_and_diff_checks": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_release_lock": true,
+  "not_a_promotion": true,
+  "not_a_publish_authorization": true,
+  "remaining_followups": [
+    "Release lock input bundle creation requires separate explicit authorization.",
+    "DRD_HARNESS_RELEASE_LOCK creation requires separate explicit authorization.",
+    "Package publishing requires separate explicit authorization.",
+    "This approval does not commit or push the P4 release readiness replay files."
+  ]
+}

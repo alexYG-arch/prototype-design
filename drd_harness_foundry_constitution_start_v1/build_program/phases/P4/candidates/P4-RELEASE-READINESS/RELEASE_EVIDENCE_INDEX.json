@@ -2,7 +2,7 @@
   "evidence_id": "P4-RELEASE-READINESS-EVIDENCE-INDEX-001",
   "phase": "P4",
   "workpack_id": "P4-RELEASE-READINESS",
-  "status": "BLOCKED_DIRTY_WITH_HASHED_EVIDENCE",
+  "status": "PASS_WITH_HASHED_EVIDENCE",
   "p4_spec_lock_ref": {
     "path": "control/locks/P4_SPEC_LOCK.json",
     "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
@@ -46,23 +46,26 @@
     "open_blockers": []
   },
   "suite_report_hashes": {
-    "GOLDEN": "2f9c6d9e2fa09210ee81dc8c8400b34e607d857926110b2e8c26bd69835b0cb5",
-    "INTEGRATION": "cb1d1c07ba3bcdfdcfbeef4568f83a1b599f0f9963a544c9f4ac209928705e63",
-    "RELEASE": "b7c215b0bdc524a8a112e589fd4b2c2ace418d17dcdad0b40013aeae184be6f4"
+    "GOLDEN": "b6c691ee773480eb084b7728d85c5c6ab88dbde91c8f53915f355a02601aaf13",
+    "INTEGRATION": "efa62d8754248e29a948af918913d6c9f4b7052e2a42455514290bc16b4adbd9",
+    "RELEASE": "ff413549595a31fc3fd35d7a1c51f3d0c7eaa0b431c6f4afeb6cebb502dfd7ea"
   },
-  "package_manifest_hash": "d233aaa7dd2f93008130626e127b8ed13d74e650d29e8c7a236dff6a2bd6dfae",
+  "package_manifest_hash": "2dbd4d84e452540dd41bb2c3f26d2ad93e40a8bf4c7671fc6bd4a09d25ed74ff",
   "package_dry_run_report_hash": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b",
   "example_project_manifest_hash": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
   "example_project_smoke_report_hash": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f",
   "migration_coverage_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
-  "release_readiness_packet_hash": "56411bcf0375e30ab2a411825c266d888d054b3f4d100baca1efaf39289549a2",
-  "source_git_commit_ref": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
-  "source_git_commit_hash": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46",
+  "release_readiness_precheck_hash": "060ee83823a6a4f2a5c7312cab8524ddc129fd7c6338ed1050d6ec3dd29e33e0",
+  "release_readiness_packet_hash": "3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f",
+  "source_git_commit_ref": "cb9921c8e2073c50349bbf42173377e1f75e992d",
+  "source_git_commit_hash": "2bf73ee026a1dbe01013068c15bf9f766fc2e4f66ba57f2a3f619df2afa02d33",
   "hash_basis": {
     "suite_report_hashes": "report.report_hash from release.suites",
+    "release_readiness_precheck_hash": "canonical_json_sha256(RELEASE_READINESS_PRECHECK.json content)",
+    "release_readiness_packet_hash": "RELEASE_READINESS_PACKET.readiness_packet_hash excluding itself",
     "package_manifest_hash": "canonical_json_sha256(PACKAGE_MANIFEST.json content)",
     "example_project_manifest_hash": "canonical_json_sha256(EXAMPLE_PROJECT_MANIFEST.json content)",
-    "migration_coverage_hash": "MIGRATION_COVERAGE_REPORT.report_hash",
-    "release_readiness_packet_hash": "RELEASE_READINESS_PACKET.readiness_packet_hash excluding itself"
-  }
+    "migration_coverage_hash": "MIGRATION_COVERAGE_REPORT.report_hash"
+  },
+  "cycle_prevention_note": "The RELEASE suite binds the precheck hash; the final readiness packet binds all suite report hashes after the release suite report exists."
 }

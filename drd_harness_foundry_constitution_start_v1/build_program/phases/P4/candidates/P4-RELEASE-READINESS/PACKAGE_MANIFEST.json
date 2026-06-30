@@ -1,9 +1,9 @@
 {
   "package_name": "drd-harness",
   "package_version": "0.0.0-p4-readiness",
-  "source_git_commit": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46",
-  "source_git_commit_ref": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
-  "source_dirty_state": "DOCUMENTED_DIRTY",
+  "source_git_commit": "2bf73ee026a1dbe01013068c15bf9f766fc2e4f66ba57f2a3f619df2afa02d33",
+  "source_git_commit_ref": "cb9921c8e2073c50349bbf42173377e1f75e992d",
+  "source_dirty_state": "CLEAN",
   "included_files": [
     {
       "path": "repository/README.md",

@@ -8,6 +8,7 @@
   ],
   "actual_writes": [
     "build_program/phases/P4/candidates/P4-RELEASE-READINESS/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PRECHECK.json",
     "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PACKET.json",
     "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_EVIDENCE_INDEX.json",
     "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_GATE_BLOCKERS.json",
@@ -44,8 +45,5 @@
   "control_lock_files_modified_by_this_candidate": false,
   "release_lock_created": false,
   "package_published": false,
-  "pre_existing_dirty_state_snapshot": [
-    "?? build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/",
-    "?? control/locks/P4_BUILD_LOCK.json"
-  ]
+  "pre_replay_dirty_state_snapshot": []
 }
