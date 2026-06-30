@@ -1,0 +1,41 @@
+{
+  "scope_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-LOCK-INPUT-BUNDLE",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_BUNDLE.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_VALIDATION_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_EVIDENCE_INDEX.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/HANDOFF.md"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "control/locks/P4_BUILD_LOCK.json",
+    "control/locks/P4_SPEC_LOCK.json",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-BUILD-*/**",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "forbidden_write_violations": [],
+  "repository_files_modified": false,
+  "control_lock_files_modified": false,
+  "release_lock_created": false,
+  "package_published": false
+}

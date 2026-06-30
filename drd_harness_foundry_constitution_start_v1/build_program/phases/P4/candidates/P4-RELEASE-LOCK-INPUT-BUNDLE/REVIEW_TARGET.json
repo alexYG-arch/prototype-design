@@ -1,0 +1,52 @@
+{
+  "target_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-REVIEW-TARGET-001",
+  "workpack_id": "P4-RELEASE-LOCK-INPUT-BUNDLE",
+  "phase": "P4",
+  "lane": "RELEASE_LOCK_INPUT_BUNDLE",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE",
+  "review_subject_hash": "adfb8e98f9611ae5f6dd8c0dfcdddf498e38808a42767e2356400df60190be6c",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_LOCK_INPUT_BUNDLE.json",
+    "RELEASE_LOCK_INPUT_VALIDATION_REPORT.json",
+    "RELEASE_LOCK_INPUT_EVIDENCE_INDEX.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "proposed_human_decision_if_accepted": "APPROVED",
+  "resolved_decision": "P4 release lock input bundle is approved by human gate; DRD_HARNESS_RELEASE_LOCK creation, package publishing, commit, and push remain separately authorized.",
+  "review_decision": "REVIEW_DECISION.json",
+  "not_a_review_decision": true,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true,
+  "approved_sections_after_human_pass": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_LOCK_INPUT_BUNDLE.json",
+    "RELEASE_LOCK_INPUT_VALIDATION_REPORT.json",
+    "RELEASE_LOCK_INPUT_EVIDENCE_INDEX.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_LOCK_INPUT_BUNDLE.json",
+    "RELEASE_LOCK_INPUT_VALIDATION_REPORT.json",
+    "RELEASE_LOCK_INPUT_EVIDENCE_INDEX.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

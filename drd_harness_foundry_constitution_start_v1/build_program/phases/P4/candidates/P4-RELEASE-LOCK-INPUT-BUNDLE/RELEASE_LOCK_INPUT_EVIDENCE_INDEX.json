@@ -1,0 +1,72 @@
+{
+  "evidence_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-EVIDENCE-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-LOCK-INPUT-BUNDLE",
+  "status": "PASS",
+  "p4_spec_lock_ref": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "approved_spec_decisions": [
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+      "sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+      "decision": "APPROVED",
+      "open_blockers": []
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+      "sha256": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+      "subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+      "decision": "APPROVED",
+      "open_blockers": []
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+      "sha256": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+      "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+      "decision": "APPROVED",
+      "open_blockers": []
+    }
+  ],
+  "approved_build_decision": {
+    "path": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "sha256": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+    "subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "decision": "APPROVED",
+    "open_blockers": []
+  },
+  "approved_release_readiness_decision": {
+    "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/REVIEW_DECISION.json",
+    "sha256": "49622a9a649960e5feb51c8a9d28e7065f905c9921817f61f0f7a4e72882cb30",
+    "subject_hash": "c13e69d31746c7665f7b308b8ffb5257ae7e38febb5b8afb7f7d5980e3e4b5bf",
+    "decision": "APPROVED",
+    "open_blockers": []
+  },
+  "suite_report_hashes": {
+    "GOLDEN": "b6c691ee773480eb084b7728d85c5c6ab88dbde91c8f53915f355a02601aaf13",
+    "INTEGRATION": "efa62d8754248e29a948af918913d6c9f4b7052e2a42455514290bc16b4adbd9",
+    "RELEASE": "ff413549595a31fc3fd35d7a1c51f3d0c7eaa0b431c6f4afeb6cebb502dfd7ea"
+  },
+  "package_manifest_hash": "2dbd4d84e452540dd41bb2c3f26d2ad93e40a8bf4c7671fc6bd4a09d25ed74ff",
+  "example_project_manifest_hash": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+  "migration_coverage_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+  "release_readiness_packet_hash": "3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f",
+  "source_git_commit_ref": "456819de5da732c9a0f2e0ca73b2df54e89a94a9",
+  "source_git_commit_hash": "c2f7939784142d3757edd57509b370052c93ef8cf7793d41351a89426b58ac82",
+  "bundle_hash": "584ce48ba9179f5915acc0220582fd6c4db6150f183b482e6a3a362b322287d0",
+  "hash_basis": {
+    "bundle_hash": "compute_release_lock_input_bundle_hash excluding bundle_hash",
+    "source_git_commit_hash": "sha256(git commit id string)",
+    "release_readiness_packet_hash": "approved readiness packet self hash"
+  }
+}
