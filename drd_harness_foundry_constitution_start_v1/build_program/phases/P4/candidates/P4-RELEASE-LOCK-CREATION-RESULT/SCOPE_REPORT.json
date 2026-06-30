@@ -1,0 +1,46 @@
+{
+  "scope_report_id": "P4-RELEASE-LOCK-CREATION-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-LOCK-CREATION-RESULT",
+  "authorized_write_basis": "USER_AUTHORIZATION_2026-06-30_RELEASE_LOCK",
+  "allowed_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/**"
+  ],
+  "actual_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/RELEASE_LOCK_CREATION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/RELEASE_LOCK_VALIDATION_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/P1_SPEC_LOCK.json",
+    "control/locks/P1_BUILD_LOCK.json",
+    "control/locks/P2_SPEC_LOCK.json",
+    "control/locks/P2_BUILD_LOCK.json",
+    "control/locks/P3_SPEC_LOCK.json",
+    "control/locks/P3_BUILD_LOCK.json",
+    "control/locks/P4_SPEC_LOCK.json",
+    "control/locks/P4_BUILD_LOCK.json",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-BUILD-*/**",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "package_published": false,
+  "commit_or_push_performed": false
+}

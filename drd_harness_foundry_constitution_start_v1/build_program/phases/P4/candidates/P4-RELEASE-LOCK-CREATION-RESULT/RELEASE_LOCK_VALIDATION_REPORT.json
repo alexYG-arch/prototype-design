@@ -1,0 +1,52 @@
+{
+  "report_id": "P4-RELEASE-LOCK-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validated_lock": {
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3",
+    "root_hash_algorithm": "canonical_lock_root(lock, root_field='root_sha256')"
+  },
+  "checks": [
+    {
+      "check": "RELEASE_LOCK_FILE_EXISTS",
+      "status": "PASS",
+      "summary": "control/locks/DRD_HARNESS_RELEASE_LOCK.json exists"
+    },
+    {
+      "check": "RELEASE_LOCK_ROOT_HASH",
+      "status": "PASS",
+      "expected": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3",
+      "actual": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3"
+    },
+    {
+      "check": "RELEASE_LOCK_INPUT_BUNDLE_REVIEW_APPROVED",
+      "status": "PASS",
+      "summary": "input bundle review decision is APPROVED and has no open blockers"
+    },
+    {
+      "check": "RELEASE_LOCK_INPUT_BUNDLE_VALIDATES",
+      "status": "PASS",
+      "finding_count": 0
+    },
+    {
+      "check": "RELEASE_READINESS_PACKET_PASS",
+      "status": "PASS",
+      "readiness_packet_hash": "3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f"
+    },
+    {
+      "check": "PACKAGE_NOT_PUBLISHED",
+      "status": "PASS",
+      "published": false
+    },
+    {
+      "check": "AUTHORIZED_WRITE_SCOPE",
+      "status": "PASS",
+      "summary": "writes are limited to DRD_HARNESS_RELEASE_LOCK and the P4 release lock creation result candidate"
+    }
+  ],
+  "findings": [],
+  "open_blockers": []
+}

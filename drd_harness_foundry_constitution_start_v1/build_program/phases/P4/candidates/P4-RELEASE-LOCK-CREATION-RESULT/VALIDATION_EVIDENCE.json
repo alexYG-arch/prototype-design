@@ -1,0 +1,38 @@
+{
+  "evidence_id": "P4-RELEASE-LOCK-CREATION-VALIDATION-EVIDENCE-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-LOCK-CREATION-RESULT",
+  "checks": [
+    {
+      "check": "RELEASE_LOCK_EXISTS",
+      "command": "test -e control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+      "status": "PASS",
+      "summary": "release lock file exists after authorized lock creation"
+    },
+    {
+      "check": "RELEASE_LOCK_ROOT_HASH",
+      "command": "canonical_lock_root(DRD_HARNESS_RELEASE_LOCK.json)",
+      "status": "PASS",
+      "summary": "root_sha256 matches canonical release lock content excluding root_sha256"
+    },
+    {
+      "check": "RELEASE_LOCK_INPUT_BUNDLE_VALIDATES",
+      "command": "validate_release_lock_input_bundle(RELEASE_LOCK_INPUT_BUNDLE.json)",
+      "status": "PASS",
+      "summary": "approved release lock input bundle validates with zero findings"
+    },
+    {
+      "check": "PACKAGE_NOT_PUBLISHED",
+      "command": "read DRD_HARNESS_RELEASE_LOCK.package_publish_status.published",
+      "status": "PASS",
+      "summary": "release lock creation did not publish a package"
+    },
+    {
+      "check": "CANDIDATE_CHECK",
+      "command": "drd_harness candidate-check build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT",
+      "status": "PASS",
+      "summary": "candidate manifest and generated outputs validate"
+    }
+  ],
+  "open_blockers": []
+}

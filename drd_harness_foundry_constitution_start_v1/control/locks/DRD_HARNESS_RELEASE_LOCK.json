@@ -1,0 +1,147 @@
+{
+  "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+  "lock_kind": "RELEASE_LOCK",
+  "phase": "P4",
+  "release_candidate_id": "P4-RELEASE-READINESS-001",
+  "created_by_runtime": "python",
+  "authorized_by_user_request": {
+    "request_text": "授权",
+    "request_interpretation": "create control/locks/DRD_HARNESS_RELEASE_LOCK.json from the approved P4 release lock input bundle after the bundle approval was committed and pushed",
+    "request_date": "2026-06-30"
+  },
+  "source_git_commit": {
+    "ref": "05d4a795e17489dd79c3212ea2c4d1192bdac66a",
+    "sha256": "9a7f32d5421035a07766bb8af1565549bbeda3ed09f750c6e97dbdeecfffe25f",
+    "basis": "sha256(git commit id string)",
+    "binding_note": "The approved release lock input bundle is present at this pushed main commit before release lock creation."
+  },
+  "p4_spec_lock_ref": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c"
+  },
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "approved_release_lock_input_bundle": {
+    "path": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_BUNDLE.json",
+    "sha256": "2a01ccb0c908a04a087cfb454b33ec41107ce4f236ad2f72ca2b8b8999bb6220",
+    "bundle_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-001",
+    "bundle_hash": "584ce48ba9179f5915acc0220582fd6c4db6150f183b482e6a3a362b322287d0",
+    "review_decision": {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/REVIEW_DECISION.json",
+      "sha256": "f12dbdf2e031cb28cc45340994c1c4e47f90f161f4d31b562ba36fb419e8c23f",
+      "decision_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-REVIEW-001",
+      "subject_hash": "adfb8e98f9611ae5f6dd8c0dfcdddf498e38808a42767e2356400df60190be6c",
+      "decision": "APPROVED"
+    }
+  },
+  "approved_release_readiness": {
+    "packet_path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PACKET.json",
+    "packet_sha256": "72f829333ded6bf5a663344ea02222615dd134de43a4171f7f0d6871bd530895",
+    "readiness_packet_hash": "3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f",
+    "status": "PASS",
+    "release_lock_eligibility_state": "ELIGIBLE_FOR_INPUT_BUNDLE",
+    "missing_gate_list": [],
+    "dirty_state_policy": "CLEAN",
+    "review_decision": {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/REVIEW_DECISION.json",
+      "sha256": "49622a9a649960e5feb51c8a9d28e7065f905c9921817f61f0f7a4e72882cb30",
+      "decision_id": "P4-RELEASE-READINESS-REVIEW-001",
+      "subject_hash": "c13e69d31746c7665f7b308b8ffb5257ae7e38febb5b8afb7f7d5980e3e4b5bf",
+      "decision": "APPROVED"
+    }
+  },
+  "release_evidence": {
+    "suite_report_hashes": {
+      "GOLDEN": "b6c691ee773480eb084b7728d85c5c6ab88dbde91c8f53915f355a02601aaf13",
+      "INTEGRATION": "efa62d8754248e29a948af918913d6c9f4b7052e2a42455514290bc16b4adbd9",
+      "RELEASE": "ff413549595a31fc3fd35d7a1c51f3d0c7eaa0b431c6f4afeb6cebb502dfd7ea"
+    },
+    "package_manifest_hash": "2dbd4d84e452540dd41bb2c3f26d2ad93e40a8bf4c7671fc6bd4a09d25ed74ff",
+    "example_project_manifest_hash": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+    "migration_coverage_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+    "input_bundle_source_git_commit_hash": "c2f7939784142d3757edd57509b370052c93ef8cf7793d41351a89426b58ac82"
+  },
+  "files": [
+    {
+      "path": "control/locks/P4_SPEC_LOCK.json",
+      "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7"
+    },
+    {
+      "path": "control/locks/P4_BUILD_LOCK.json",
+      "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_BUNDLE.json",
+      "sha256": "2a01ccb0c908a04a087cfb454b33ec41107ce4f236ad2f72ca2b8b8999bb6220"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/REVIEW_DECISION.json",
+      "sha256": "f12dbdf2e031cb28cc45340994c1c4e47f90f161f4d31b562ba36fb419e8c23f"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PACKET.json",
+      "sha256": "72f829333ded6bf5a663344ea02222615dd134de43a4171f7f0d6871bd530895"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/REVIEW_DECISION.json",
+      "sha256": "49622a9a649960e5feb51c8a9d28e7065f905c9921817f61f0f7a4e72882cb30"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/PACKAGE_MANIFEST.json",
+      "sha256": "6ee048b4e0502574dcc5e32b1a3676fcde9ece1a19a590308f8af05b0654e3be"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/PACKAGE_DRY_RUN_REPORT.json",
+      "sha256": "b7b1bd084f9bf8c4c68cc6b1d51b978530ee343fe7c1f03464085ace6640238f"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/EXAMPLE_PROJECT_MANIFEST.json",
+      "sha256": "2b430d09faefb0962f60e8b91767e15f9f910a88c9a35ca7ee9d24ce499398cf"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/EXAMPLE_PROJECT_SMOKE_REPORT.json",
+      "sha256": "9d6e463de1538e3ee6883b3bd613e99c26f063ac22ffe8473b93eeacaadde312"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/MIGRATION_COVERAGE_REPORT.json",
+      "sha256": "7e3282ab8e3799f0eb73f57f1f1bac14acc220f289974f0fedd6708e8fb2d0b3"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-RELEASE-READINESS/SUITE_REPORTS.json",
+      "sha256": "cafd4b682bae13fc6bb09228204a0d2f711835d41a75e8aac61b62fef3843dda"
+    }
+  ],
+  "release_gate_status": {
+    "release_readiness_status": "PASS",
+    "release_lock_input_bundle_validation": "PASS",
+    "release_lock_input_bundle_findings": 0,
+    "missing_gate_list": [],
+    "dirty_state_policy": "CLEAN"
+  },
+  "package_publish_status": {
+    "published": false,
+    "authorization_required_for_publish": true,
+    "reason": "release lock creation only; package publishing requires separate explicit authorization"
+  },
+  "invalidates_on": [
+    "P4_SPEC_LOCK changes: 716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "P4_BUILD_LOCK changes: ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "Release lock input bundle file changes: 2a01ccb0c908a04a087cfb454b33ec41107ce4f236ad2f72ca2b8b8999bb6220",
+    "Release lock input bundle subject hash changes: adfb8e98f9611ae5f6dd8c0dfcdddf498e38808a42767e2356400df60190be6c",
+    "Release lock input bundle hash changes: 584ce48ba9179f5915acc0220582fd6c4db6150f183b482e6a3a362b322287d0",
+    "Release readiness packet hash changes: 3b50a8343fdb4c815db9b42d45535ccfc9daf0deae9bda20498174467fa8e43f",
+    "Any release suite report hash changes",
+    "Package manifest hash changes: 2dbd4d84e452540dd41bb2c3f26d2ad93e40a8bf4c7671fc6bd4a09d25ed74ff",
+    "Example project manifest hash changes: 635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+    "Migration coverage hash changes: 5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+    "Package publish status changes from published=false"
+  ],
+  "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3"
+}

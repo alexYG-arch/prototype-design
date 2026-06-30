@@ -1,0 +1,54 @@
+{
+  "decision_id": "P4-RELEASE-LOCK-CREATION-RESULT-REVIEW-001",
+  "subject": "P4-RELEASE-LOCK-CREATION-RESULT",
+  "subject_hash": "7e0c0a02576b85e9ded03dd90bb249700f1d542b0aaf944176284fbd9b64f969",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the P4 DRD_HARNESS_RELEASE_LOCK creation result. This approval covers the release lock creation result only.",
+  "approved_sections": [
+    "RELEASE_LOCK_CREATION_RESULT.json",
+    "RELEASE_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/**"
+  ],
+  "approved_created_lock": {
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa",
+    "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3"
+  },
+  "approved_input_bundle": {
+    "path": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/RELEASE_LOCK_INPUT_BUNDLE.json",
+    "bundle_id": "P4-RELEASE-LOCK-INPUT-BUNDLE-001",
+    "bundle_hash": "584ce48ba9179f5915acc0220582fd6c4db6150f183b482e6a3a362b322287d0",
+    "review_decision": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-INPUT-BUNDLE/REVIEW_DECISION.json",
+    "review_decision_sha256": "f12dbdf2e031cb28cc45340994c1c4e47f90f161f4d31b562ba36fb419e8c23f",
+    "subject_hash": "adfb8e98f9611ae5f6dd8c0dfcdddf498e38808a42767e2356400df60190be6c"
+  },
+  "validation_summary": {
+    "candidate_check_subject_hash": "7e0c0a02576b85e9ded03dd90bb249700f1d542b0aaf944176284fbd9b64f969",
+    "release_lock_file_hash": "PASS",
+    "release_lock_root_hash": "PASS",
+    "release_lock_input_bundle_validation": "PASS",
+    "release_lock_input_bundle_findings": 0,
+    "release_lock_boundary_tests": "5 passed",
+    "package_published": false,
+    "diff_check": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_package_publish": true,
+  "not_a_promotion": true,
+  "remaining_followups": [
+    "Commit and push of the release lock and creation result require separate explicit authorization.",
+    "Package publishing requires separate explicit authorization.",
+    "Program closure requires separate explicit authorization."
+  ]
+}

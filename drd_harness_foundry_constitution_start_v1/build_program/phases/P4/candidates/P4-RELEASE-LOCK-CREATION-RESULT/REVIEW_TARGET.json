@@ -1,0 +1,51 @@
+{
+  "target_id": "P4-RELEASE-LOCK-CREATION-RESULT-REVIEW-TARGET-001",
+  "workpack_id": "P4-RELEASE-LOCK-CREATION-RESULT",
+  "phase": "P4",
+  "lane": "RELEASE_LOCK_RESULT",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT",
+  "review_subject_hash": "7e0c0a02576b85e9ded03dd90bb249700f1d542b0aaf944176284fbd9b64f969",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "RELEASE_LOCK_CREATION_RESULT.json",
+    "RELEASE_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "proposed_human_decision_if_accepted": "APPROVED",
+  "resolved_decision": "P4 DRD_HARNESS_RELEASE_LOCK creation result is approved by human gate; commit, push, package publishing, and program closure remain separately authorized.",
+  "review_decision": "REVIEW_DECISION.json",
+  "not_a_review_decision": true,
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true,
+  "approved_sections_after_human_pass": [
+    "RELEASE_LOCK_CREATION_RESULT.json",
+    "RELEASE_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_sections": [
+    "RELEASE_LOCK_CREATION_RESULT.json",
+    "RELEASE_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "created_lock_under_review": {
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3"
+  }
+}
