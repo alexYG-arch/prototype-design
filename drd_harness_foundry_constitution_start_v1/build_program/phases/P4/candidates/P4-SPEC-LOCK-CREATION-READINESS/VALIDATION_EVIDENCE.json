@@ -1,0 +1,27 @@
+{
+  "evidence_id": "P4-SPEC-LOCK-CREATION-READINESS-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-READINESS",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P4_SPEC_LOCK_READINESS_DRY_RUN",
+      "command": "python3 tooling/create_spec_lock.py --phase P4 --input-bundle build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --dry-run",
+      "status": "PASS",
+      "summary": "dry-run produces a P4 spec lock payload and writes no control lock"
+    },
+    {
+      "check": "P4_SPEC_LOCK_INPUT_BINDINGS",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nfrom drd_harness.validators.spec_validator import compute_candidate_subject_hash\nroot = Path('.')\nbundle_path = root / 'build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json'\nbundle = json.loads(bundle_path.read_text(encoding='utf-8'))\nfor item in bundle['approved_spec_inputs']:\n    spec_part = item['spec_part']\n    candidate_dir = root / 'build_program' / 'phases' / 'P4' / 'candidates' / spec_part\n    manifest = json.loads((candidate_dir / 'CANDIDATE_MANIFEST.json').read_text(encoding='utf-8'))\n    subject_hash = compute_candidate_subject_hash(candidate_dir, manifest['generated_outputs'])\n    assert subject_hash == item['subject_hash'], (spec_part, subject_hash, item['subject_hash'])\n    assert manifest['approval_state'] == 'APPROVED_BY_HUMAN', spec_part\n    review_path = candidate_dir / manifest['review_decision']\n    review_bytes = review_path.read_bytes()\n    review_hash = hashlib.sha256(review_bytes).hexdigest()\n    review = json.loads(review_bytes)\n    assert review_hash == item['review_decision_file_hash'], (spec_part, review_hash, item['review_decision_file_hash'])\n    assert review['decision'] == 'APPROVED', spec_part\n    assert review['subject_hash'] == subject_hash, spec_part\n    assert review['decision_id'] == item['review_decision_id'], spec_part\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "approved P4 spec input subject hashes and review decision hashes are bound in SPEC_LOCK_INPUT_BUNDLE.json"
+    },
+    {
+      "check": "P4_SPEC_LOCK_OUTPUT_PATH_PREFLIGHT",
+      "command": "python3 - <<'PY'\nfrom pathlib import Path\npath = Path('control/locks/P4_SPEC_LOCK.json')\nassert not path.exists(), f'{path} already exists'\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "canonical P4 spec lock output path is available and is not written by readiness"
+    }
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,170 @@
+{
+  "contract_id": "P4-SPEC-01-CLI-ADAPTER-CONTRACTS-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "module": "integration_entry",
+  "upstream_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+  },
+  "commands": [
+    {
+      "command_id": "drdctl.run",
+      "name": "run",
+      "purpose": "Create or continue a governed harness run from declared input sources.",
+      "required_inputs": [
+        "work_dir",
+        "adapter_id",
+        "source_ref",
+        "output_dir"
+      ],
+      "optional_inputs": [
+        "target_phase",
+        "target_workpack",
+        "dry_run",
+        "json_output"
+      ],
+      "required_outputs": [
+        "run_id",
+        "adapter_result_manifest",
+        "program_dag_snapshot",
+        "stage_execution_plan",
+        "command_status_payload"
+      ],
+      "must_stop_before": [
+        "lock_creation",
+        "unreviewed_candidate_promotion",
+        "release_packaging"
+      ]
+    },
+    {
+      "command_id": "drdctl.review",
+      "name": "review",
+      "purpose": "Inspect a candidate review target and optionally bind a supplied review decision.",
+      "required_inputs": [
+        "candidate_dir"
+      ],
+      "optional_inputs": [
+        "review_target_path",
+        "review_decision_path",
+        "json_output"
+      ],
+      "required_outputs": [
+        "candidate_subject_hash",
+        "review_sections",
+        "review_target_status",
+        "review_decision_binding_status",
+        "findings"
+      ],
+      "must_stop_before": [
+        "writing_review_decision",
+        "promotion",
+        "lock_creation"
+      ]
+    },
+    {
+      "command_id": "drdctl.resume",
+      "name": "resume",
+      "purpose": "Resume a previous governed run from explicit state.",
+      "required_inputs": [
+        "run_state_ref",
+        "requested_resume_node"
+      ],
+      "optional_inputs": [
+        "dry_run",
+        "json_output"
+      ],
+      "required_outputs": [
+        "resume_eligibility",
+        "invalidation_state",
+        "skipped_nodes",
+        "replayed_nodes",
+        "next_command_plan"
+      ],
+      "must_stop_before": [
+        "unresolved_invalidation",
+        "lock_rebuild",
+        "release_packaging"
+      ]
+    },
+    {
+      "command_id": "drdctl.release",
+      "name": "release",
+      "purpose": "Request release readiness evaluation without creating a release lock.",
+      "required_inputs": [
+        "build_lock_refs",
+        "release_scope_ref",
+        "evidence_bundle_ref"
+      ],
+      "optional_inputs": [
+        "package_target",
+        "dry_run",
+        "json_output"
+      ],
+      "required_outputs": [
+        "release_readiness_packet",
+        "missing_gate_list",
+        "release_lock_eligibility_state"
+      ],
+      "must_stop_before": [
+        "release_lock_creation",
+        "package_publish",
+        "phase_promotion"
+      ]
+    }
+  ],
+  "adapters": [
+    {
+      "adapter_id": "prd_harness_adapter",
+      "input_kind": "structured_harness_bundle",
+      "required_inputs": [
+        "bundle_manifest",
+        "source_files",
+        "source_hashes"
+      ],
+      "required_outputs": [
+        "source_ref_records",
+        "normalization_report",
+        "unsupported_content_report",
+        "handoff_manifest"
+      ],
+      "forbidden_outputs": [
+        "product_requirements",
+        "page_elements",
+        "layout_rules",
+        "business_contracts"
+      ]
+    },
+    {
+      "adapter_id": "markdown_prd_adapter",
+      "input_kind": "markdown_prd",
+      "required_inputs": [
+        "markdown_path",
+        "markdown_sha256"
+      ],
+      "required_outputs": [
+        "source_section_records",
+        "heading_index",
+        "normalization_report",
+        "handoff_manifest"
+      ],
+      "forbidden_outputs": [
+        "deduced_product_requirements",
+        "page_elements",
+        "layout_rules",
+        "business_contracts"
+      ]
+    }
+  ],
+  "status_payload_required_fields": [
+    "command",
+    "status",
+    "run_id",
+    "written_paths",
+    "findings",
+    "exit_code"
+  ],
+  "open_blockers": []
+}

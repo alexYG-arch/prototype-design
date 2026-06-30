@@ -1,0 +1,101 @@
+{
+  "matrix_id": "P4-SPEC-03-RELEASE-VALIDATION-MATRIX-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "validation_rows": [
+    {
+      "validation_id": "P4REL-VAL-001",
+      "subject": "upstream_spec_binding",
+      "requirement": "P4-SPEC-03 binds approved P4-SPEC-02, approved P4-SPEC-01, and current P3_BUILD_LOCK.",
+      "evidence": "sha256 checks in VALIDATION_EVIDENCE.json",
+      "negative_case": "upstream review decision or P3_BUILD_LOCK hash drift must fail"
+    },
+    {
+      "validation_id": "P4REL-VAL-002",
+      "subject": "golden_suite_determinism",
+      "requirement": "Golden suite verifies expected output hashes and cannot rewrite expected outputs during release checks.",
+      "evidence": "future golden regression tests assert no golden update in release mode",
+      "negative_case": "golden expected output is rewritten while test passes"
+    },
+    {
+      "validation_id": "P4REL-VAL-003",
+      "subject": "integration_gate_coverage",
+      "requirement": "Integration suite covers CLI, adapters, program driver, recovery, Human Gate, lock gates, and write scope.",
+      "evidence": "future integration tests assert gate stop reports",
+      "negative_case": "end-to-end run bypasses review or lock boundary"
+    },
+    {
+      "validation_id": "P4REL-VAL-004",
+      "subject": "release_suite_evidence",
+      "requirement": "Release suite includes package dry-run, example project smoke, migration coverage, canonical report hash policy, and readiness packet verification.",
+      "evidence": "future release tests assert all report hashes",
+      "negative_case": "readiness passes without package or example smoke evidence"
+    },
+    {
+      "validation_id": "P4REL-VAL-004A",
+      "subject": "release_hash_cycle_prevention",
+      "requirement": "Readiness packet may include only release_lock_input_bundle_preview, while release_lock_input_bundle separately references release_readiness_packet_hash without embedding the readiness packet.",
+      "evidence": "future release readiness tests assert no circular packet/bundle embedding",
+      "negative_case": "readiness packet embeds bundle and bundle hashes readiness packet"
+    },
+    {
+      "validation_id": "P4REL-VAL-005",
+      "subject": "migration_coverage_rows",
+      "requirement": "Every v3.1 capability row has supported status, target evidence, rationale, and review flag.",
+      "evidence": "future migration coverage tests validate row contract",
+      "negative_case": "legacy capability omitted or blocked row ignored"
+    },
+    {
+      "validation_id": "P4REL-VAL-006",
+      "subject": "package_manifest_safety",
+      "requirement": "Package manifest excludes secrets, git internals, review decisions, release locks, and untracked release inputs.",
+      "evidence": "future packaging tests validate included and excluded paths",
+      "negative_case": "package includes credentials, .git data, or generated review decisions"
+    },
+    {
+      "validation_id": "P4REL-VAL-007",
+      "subject": "release_lock_input_boundary",
+      "requirement": "Release lock input bundle reports eligibility but cannot create, rewrite, or delete DRD_HARNESS_RELEASE_LOCK.",
+      "evidence": "future release lock tests assert control/locks unchanged",
+      "negative_case": "release readiness writes release lock"
+    },
+    {
+      "validation_id": "P4REL-VAL-008",
+      "subject": "dirty_state_policy",
+      "requirement": "Release readiness classifies clean, documented dirty, and blocked dirty states with dirty_state_records showing path, git status, release input impact, classification, reason, and required action.",
+      "evidence": "future release readiness tests inject dirty states",
+      "negative_case": "dirty release inputs are silently accepted"
+    },
+    {
+      "validation_id": "P4REL-VAL-008A",
+      "subject": "implementation_workpack_partition",
+      "requirement": "P4-SPEC-03 handoff partitions P4-IMPL-03, P4-IMPL-04, and P4-IMPL-05 ownership so future implementation scopes are not mixed.",
+      "evidence": "P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+      "negative_case": "all release targets are assigned to multiple implementation workpacks without ownership boundaries"
+    },
+    {
+      "validation_id": "P4REL-VAL-009",
+      "subject": "semantic_boundary",
+      "requirement": "P4 release, migration, package, and example specs cannot add product requirements, page elements, layout rules, or business contracts.",
+      "evidence": "future negative tests reject forbidden output keys",
+      "negative_case": "example project or migration map fills missing product semantics"
+    },
+    {
+      "validation_id": "P4REL-VAL-010",
+      "subject": "candidate_scope",
+      "requirement": "P4-SPEC-03 candidate only writes its own candidate directory.",
+      "evidence": "SCOPE_REPORT.json",
+      "negative_case": "candidate mutates repository code, locks, prior phases, or root P4 files"
+    }
+  ],
+  "required_future_test_files": [
+    "repository/tests/p4/test_golden_regression.py",
+    "repository/tests/p4/test_integration_end_to_end.py",
+    "repository/tests/p4/test_release_readiness.py",
+    "repository/tests/p4/test_packaging_manifest.py",
+    "repository/tests/p4/test_example_project_smoke.py",
+    "repository/tests/p4/test_migration_coverage.py",
+    "repository/tests/p4/test_release_lock_boundary.py"
+  ],
+  "open_blockers": []
+}

@@ -1,0 +1,78 @@
+{
+  "decision_id": "P4-SPEC-03-REVIEW-001",
+  "subject": "P4-SPEC-03",
+  "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-29",
+  "basis": "User said pass after reviewing the P4-SPEC-03 release readiness, test suite, migration coverage, packaging, example project, and release lock input boundary spec candidate. This approval covers the P4-SPEC-03 specification candidate only.",
+  "approved_sections": [
+    "P4_RELEASE_READINESS_CONTRACT.md",
+    "P4_TEST_SUITE_CONTRACTS.json",
+    "P4_PACKAGING_RELEASE_MODEL.md",
+    "P4_RELEASE_ARTIFACT_CONTRACTS.json",
+    "P4_RELEASE_PIPELINE_RULES.json",
+    "P4_MIGRATION_COVERAGE_MAP.json",
+    "P4_RELEASE_VALIDATION_MATRIX.json",
+    "P4_RELEASE_TRACEABILITY_MAP.json",
+    "P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P4/candidates/P4-SPEC-03/**"
+  ],
+  "approved_upstream": {
+    "p4_spec_02_candidate": "build_program/phases/P4/candidates/P4-SPEC-02",
+    "p4_spec_02_review_decision": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+    "p4_spec_02_review_decision_sha256": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+    "p4_spec_02_subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+    "p4_spec_01_candidate": "build_program/phases/P4/candidates/P4-SPEC-01",
+    "p4_spec_01_review_decision": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+    "p4_spec_01_review_decision_sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+    "p4_spec_01_subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+    "p3_build_lock": "control/locks/P3_BUILD_LOCK.json",
+    "p3_build_lock_sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "p3_build_lock_root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "p3_build_lock_git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+  },
+  "approved_spec_surface": [
+    "golden, integration, and release suite contracts",
+    "v3.1 migration coverage map rules",
+    "package manifest and example project manifest rules",
+    "release readiness packet rules",
+    "release lock input bundle and eligibility boundaries",
+    "canonical hash self-exclusion and cycle-prevention policy",
+    "dirty state records",
+    "P4-IMPL-03, P4-IMPL-04, and P4-IMPL-05 ownership partition"
+  ],
+  "validation_summary": {
+    "candidate_check_subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+    "upstream_binding": "PASS",
+    "scope_assertion": "PASS",
+    "artifact_shape": "PASS",
+    "coverage_assertion": "PASS",
+    "rf_loop_result": "NO_FINDINGS",
+    "full_repository_tests": "410 passed",
+    "git_diff_check": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_spec_lock": true,
+  "not_a_build_lock": true,
+  "not_a_release_lock": true,
+  "not_an_implementation": true,
+  "remaining_followups": [
+    "P4_SPEC_LOCK requires a separate explicit lock creation authorization.",
+    "P4 implementation work remains blocked until P4_SPEC_LOCK and explicit implementation authorization.",
+    "P4_BUILD_LOCK and DRD_HARNESS_RELEASE_LOCK remain separate later lock steps.",
+    "No commit or push is performed by this approval."
+  ],
+  "approval_metadata_binding": {
+    "candidate_manifest_approval_state": "APPROVED_BY_HUMAN",
+    "candidate_manifest_review_decision": "REVIEW_DECISION.json",
+    "included_in_review_subject_hash": true
+  }
+}

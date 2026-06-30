@@ -1,0 +1,56 @@
+{
+  "workpack_id": "P4-IMPL-03",
+  "phase": "P4",
+  "lane": "IMPLEMENTATION",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-IMPL-03",
+  "upstream_spec_lock": "control/locks/P4_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+  "upstream_spec_lock_id": "P4-SPEC-LOCK-001",
+  "upstream_spec_lock_result_review_decision": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "upstream_spec_lock_result_review_decision_hash": "30b08c8e8093fcc56b771b0cef3f7a3aa0aaf751c7f4b7fa5e24cbcc3b1f62ef",
+  "upstream_impl_review_decision": "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_DECISION.json",
+  "upstream_impl_review_decision_hash": "0c53e0f05b977c6893f4bb481b641c6716960e868ee445bf242c8f67a3ca9420",
+  "owned_workpack": "P4-IMPL-03",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_lock_state": "NOT_LOCKED",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/release/suites.py",
+    "repository/tests/p4/test_golden_regression.py",
+    "repository/tests/p4/test_integration_end_to_end.py",
+    "repository/tests/p4/test_release_readiness.py"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-01/**",
+    "build_program/phases/P4/candidates/P4-IMPL-02/**",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/RELEASE_SCOPE.md",
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "repository/src/drd_harness/release/readiness.py",
+    "repository/src/drd_harness/release/lock_inputs.py",
+    "repository/examples/p4_release_smoke/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P4-IMPL-03 is approved by Human Gate. P4-IMPL-04 may start only by explicit continuation; P4-IMPL-05, P4_BUILD_LOCK, and release lock remain separate gated steps."
+}

@@ -1,0 +1,29 @@
+{
+  "target_id": "P4-SPEC-LOCK-CREATION-READINESS-REVIEW-TARGET-001",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-READINESS",
+  "phase": "P4",
+  "lane": "SPEC_LOCK_READINESS",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS",
+  "review_subject_hash": "ad706dc94682f52ca5f763b545754387f1e14db0f803e7cefbba5f3ae0a0442b",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "SPEC_LOCK_INPUT_BUNDLE.json",
+    "SPEC_LOCK_CREATION_READINESS.md",
+    "SPEC_LOCK_DRY_RUN_VALIDATION_REPORT.json",
+    "SPEC_LOCK_TOOLING_COMPATIBILITY_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the input bundle include approved P4-SPEC-01, P4-SPEC-02, and P4-SPEC-03 with current subject and review hashes?",
+    "Does the dry-run validation prove create_spec_lock.py can build the canonical P4 spec lock payload?",
+    "Does this readiness package avoid writing control/locks/P4_SPEC_LOCK.json?",
+    "Does this package avoid authorizing P4 implementation, P4_BUILD_LOCK, or DRD_HARNESS_RELEASE_LOCK?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null
+}

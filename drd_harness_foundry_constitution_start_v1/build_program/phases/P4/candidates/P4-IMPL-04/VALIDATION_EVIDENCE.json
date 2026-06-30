@@ -1,0 +1,79 @@
+{
+  "evidence_id": "P4-IMPL-04-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-04",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4REL-VAL-006-PACKAGE-MANIFEST-SAFETY",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_packaging_manifest.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Package manifest validation rejects forbidden paths, path escapes, untracked release inputs, unsupported dirty states, invalid hashes, and semantic payloads while dry-run refuses publishing and lock creation.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/packaging.py",
+        "repository/tests/p4/test_packaging_manifest.py"
+      ],
+      "result_hash": "7bc6c3c1bb8768e0c60e7d8ab6fb70cfe5e4f802eaa9808285c8eb5c315ebf53",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REL-VAL-004-EXAMPLE-PROJECT-SMOKE",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_example_project_smoke.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Example project smoke validates fixture metadata, output hash comparison, path containment, status/hash shape, and semantic boundary without creating product semantics, packages, or locks.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/packaging.py",
+        "repository/examples/p4_release_smoke/example_manifest.json",
+        "repository/tests/p4/test_example_project_smoke.py"
+      ],
+      "result_hash": "2e0bf505dbe43065267afb8a57d7d7d374bdff15f454d4feaddbdc6b6c7dcbe2",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REL-VAL-005-MIGRATION-COVERAGE-ROWS",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_migration_coverage.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Migration coverage validates row contract, summary counts, blocked Human Gate rows, report hash, duplicate ids, stale summaries, unsupported statuses, and semantic boundary.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/migration.py",
+        "repository/tests/p4/test_migration_coverage.py"
+      ],
+      "result_hash": "60cc11cdc7749578c61d77059e49165262317239ddd9d68f85fb4500531f09f5",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-04-RUNTIME-BOUNDARY",
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Runtime source has no construction authority imports or direct construction authority path reads.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/packaging.py",
+        "repository/src/drd_harness/release/migration.py"
+      ],
+      "result_hash": "331952b72f311594e8b7d42d7b8dbdd56e0dedfb008a441c9d0c85895fa88acf",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-04-FULL-REGRESSION",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Full repository test suite passed with 471 tests.",
+      "evidence_files": [
+        "build_program/phases/P4/candidates/P4-IMPL-04/TEST_REPORT.json"
+      ],
+      "result_hash": "f5bf153fdb5cc169ae100278aa0ead605f21c730290e33819d8dbe0a99f54a01",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "control/locks/P4_SPEC_LOCK.json"
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

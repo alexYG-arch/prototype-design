@@ -1,0 +1,195 @@
+{
+  "contract_id": "P4-SPEC-03-RELEASE-ARTIFACT-CONTRACTS-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "upstream": {
+    "p4_spec_02_review_decision": {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+      "sha256": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+      "subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34"
+    },
+    "p4_spec_01_review_decision": {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+      "sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975"
+    },
+    "p3_build_lock": {
+      "path": "control/locks/P3_BUILD_LOCK.json",
+      "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e"
+    }
+  },
+  "hash_policy": {
+    "algorithm": "sha256",
+    "canonicalization": "canonical JSON with UTF-8 bytes, sorted object keys, and compact separators",
+    "self_hash_field_exclusions": {
+      "migration_coverage_report": [
+        "report_hash"
+      ],
+      "release_readiness_packet": [
+        "readiness_packet_hash"
+      ],
+      "release_lock_input_bundle": [
+        "bundle_hash"
+      ]
+    },
+    "cross_artifact_hash_rule": "A cross-artifact hash references the target artifact after applying that target artifact's own self hash exclusions.",
+    "cycle_prevention_rule": "release_readiness_packet may contain only release_lock_input_bundle_preview; release_lock_input_bundle may reference release_readiness_packet_hash but must not be embedded in the readiness packet."
+  },
+  "artifacts": [
+    {
+      "artifact_type": "migration_coverage_report",
+      "required_fields": [
+        "coverage_id",
+        "source_version",
+        "target_version",
+        "capability_rows",
+        "coverage_summary",
+        "blocked_rows",
+        "human_review_required",
+        "report_hash"
+      ],
+      "row_required_fields": [
+        "legacy_capability_id",
+        "legacy_capability_name",
+        "target_status",
+        "target_evidence_ref",
+        "rationale",
+        "review_required"
+      ],
+      "allowed_target_status": [
+        "MIGRATED",
+        "REPLACED_BY_LOCKED_CAPABILITY",
+        "DROPPED_WITH_RATIONALE",
+        "BLOCKED_REQUIRES_HUMAN_REVIEW"
+      ]
+    },
+    {
+      "artifact_type": "package_manifest",
+      "required_fields": [
+        "package_name",
+        "package_version",
+        "source_git_commit",
+        "source_dirty_state",
+        "included_files",
+        "excluded_files",
+        "entrypoints",
+        "dependency_lock_hash",
+        "build_command",
+        "package_artifact_hash",
+        "dry_run_report_hash"
+      ],
+      "forbidden_included_paths": [
+        ".env",
+        "*.pem",
+        "*.key",
+        ".git/**",
+        "build_program/phases/**/REVIEW_DECISION.json",
+        "control/locks/DRD_HARNESS_RELEASE_LOCK.json"
+      ]
+    },
+    {
+      "artifact_type": "example_project_manifest",
+      "required_fields": [
+        "example_id",
+        "example_path",
+        "source_input_refs",
+        "expected_commands",
+        "expected_outputs",
+        "smoke_command",
+        "smoke_status",
+        "smoke_report_hash",
+        "cleanup_policy"
+      ],
+      "allowed_smoke_status": [
+        "PASS",
+        "FAIL",
+        "BLOCKED_HUMAN_REVIEW"
+      ]
+    },
+    {
+      "artifact_type": "release_readiness_packet",
+      "required_fields": [
+        "release_candidate_id",
+        "p4_spec_lock_ref",
+        "p4_build_lock_ref",
+        "test_suite_reports",
+        "migration_coverage_report",
+        "package_manifest",
+        "example_project_manifest",
+        "missing_gate_list",
+        "dirty_state_policy",
+        "dirty_state_records",
+        "release_lock_input_bundle_preview",
+        "human_authorization_required",
+        "readiness_packet_hash"
+      ],
+      "allowed_dirty_state_policy": [
+        "CLEAN",
+        "DOCUMENTED_DIRTY",
+        "BLOCKED_DIRTY"
+      ],
+      "record_shapes": {
+        "dirty_state_record": {
+          "required_fields": [
+            "path",
+            "git_status",
+            "is_release_input",
+            "classification",
+            "reason",
+            "required_action"
+          ],
+          "allowed_classification": [
+            "EXCLUDED_FROM_RELEASE_INPUTS",
+            "AFFECTS_RELEASE_INPUTS",
+            "UNCLASSIFIED"
+          ],
+          "release_blocking_when": [
+            "classification=AFFECTS_RELEASE_INPUTS",
+            "classification=UNCLASSIFIED"
+          ]
+        },
+        "release_lock_input_bundle_preview": {
+          "required_fields": [
+            "expected_bundle_id",
+            "required_input_kinds",
+            "missing_input_kinds",
+            "blocked_until_human_authorization"
+          ],
+          "must_not_include_fields": [
+            "release_readiness_packet_hash",
+            "bundle_hash"
+          ]
+        }
+      }
+    },
+    {
+      "artifact_type": "release_lock_input_bundle",
+      "required_fields": [
+        "bundle_id",
+        "p4_spec_lock_ref",
+        "p4_build_lock_ref",
+        "approved_spec_decisions",
+        "approved_build_decision",
+        "suite_report_hashes",
+        "package_manifest_hash",
+        "example_project_manifest_hash",
+        "migration_coverage_hash",
+        "release_readiness_packet_hash",
+        "source_git_commit",
+        "required_human_authorization",
+        "bundle_hash"
+      ],
+      "forbidden_actions": [
+        "create_release_lock",
+        "rewrite_release_lock",
+        "publish_package"
+      ],
+      "embedding_rules": [
+        "must reference release_readiness_packet_hash",
+        "must not embed release_readiness_packet",
+        "must not be embedded in release_readiness_packet"
+      ]
+    }
+  ],
+  "open_blockers": []
+}

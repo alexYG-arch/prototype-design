@@ -1,0 +1,46 @@
+{
+  "scope_report_id": "P4-SPEC-01-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-SPEC-01/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_ENTRY_CONTRACT.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_PROGRAM_DRIVER_MODEL.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_CLI_ADAPTER_CONTRACTS.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_PIPELINE_RULES.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_VALIDATION_MATRIX.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_TRACEABILITY_MAP.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_IMPLEMENTATION_HANDOFF.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-SPEC-01/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_paths": [
+    "repository/**",
+    "control/locks/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "forbidden_write_violations": [],
+  "repository_files_modified": false,
+  "control_locks_modified": false,
+  "p1_files_modified": false,
+  "p2_files_modified": false,
+  "p3_files_modified_by_this_candidate": false,
+  "root_p4_phase_files_modified": false,
+  "preexisting_uncommitted_p3_lock_metadata": true,
+  "not_a_spec_lock": true,
+  "not_a_build_lock": true,
+  "not_a_release_lock": true,
+  "not_an_implementation": true
+}

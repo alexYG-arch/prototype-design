@@ -1,0 +1,32 @@
+{
+  "target_id": "P4-IMPL-03-REVIEW-TARGET-001",
+  "workpack_id": "P4-IMPL-03",
+  "phase": "P4",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-IMPL-03",
+  "review_subject_hash": "c1302c6d4da02abcb4f2b240fb4b5ff23d64e4db2ee08d2f428dcd5df50b6301",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the implementation stay inside P4-IMPL-03 and the P4-SPEC-03 suite-runner intent?",
+    "Does the golden suite prevent expected-output rewrites during release checks?",
+    "Does the integration suite verify Human Gate, lock gate, and write-scope coverage instead of bypassing them?",
+    "Does the release suite remain report-shape-only without publishing, packaging, or lock creation?",
+    "Do targeted tests, P4 tests, full regression, runtime-boundary-check, py_compile, and git diff check pass?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

@@ -1,0 +1,120 @@
+{
+  "evidence_id": "P4-IMPL-02-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-02",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4REC-VAL-002-RUN-STATE-REQUIRED-FIELDS",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_recovery_state_model.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Run state validation requires all P4 recovery evidence fields and blocks unsafe incomplete state.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/recovery.py",
+        "repository/tests/p4/test_recovery_state_model.py"
+      ],
+      "result_hash": "274c3b3b62047e9d5fea7574448ee1917d8c07a515064f0ba5e77f2c89baca67",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REC-VAL-003-004-RESUME-DECISIONS",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_resume_decisions.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Resume decisions skip only on matching hashes, replay only declared output drift, route upstream lock drift to Human Gate, and block input drift, lock boundary, and unsafe state.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/recovery.py",
+        "repository/src/drd_harness/orchestrator/program_driver.py",
+        "repository/tests/p4/test_resume_decisions.py"
+      ],
+      "result_hash": "fb90d13a14583c7437e18cbed69ce749066c64c53c62432e433556bfea05c8ad",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REC-VAL-005-007A-REVIEW-RECOVERY",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_review_recovery.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Review recovery detects matching, missing, stale, and hash-changed review bindings without writing approvals.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/review_recovery.py",
+        "repository/tests/p4/test_review_recovery.py"
+      ],
+      "result_hash": "86c16ad15cab0935a73a194936fc902031334c0de1ea08ace7a1325c3c4a0de4",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REC-VAL-006-LOCK-REBUILD-REQUEST-ONLY",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_lock_rebuild_requests.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Lock rebuild produces sorted request packets and dry-run evidence only, requires an existing source lock hash, and creates no requested lock file.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+        "repository/tests/p4/test_lock_rebuild_requests.py"
+      ],
+      "result_hash": "149b41d5e9e2b2554d726c22767f9fbbbb65262108e104e8c0afcb838dbac2ab",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REC-VAL-007-INVALIDATION-REASON-CODES",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_recovery_invalidation.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Invalidation records use stable reason codes and required structured fields sorted by reason code, node, and path.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/recovery.py",
+        "repository/tests/p4/test_recovery_invalidation.py"
+      ],
+      "result_hash": "b9ca211ce075d5d0cffa33cfd63f4ffd2d002a470b18280398b2e26f93ca831b",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REC-VAL-008-SEMANTIC-BOUNDARY",
+      "status": "PASS",
+      "summary": "Recovery rejects product semantic fill fields and never emits product requirements, page elements, layout rules, or business contracts.",
+      "evidence_files": [
+        "repository/tests/p4/test_recovery_state_model.py",
+        "repository/src/drd_harness/orchestrator/recovery.py"
+      ],
+      "result_hash": "30aa8cc39f71757304406262ad6521068a7a0831f93215d021e635588a3243f4",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-02-RUNTIME-BOUNDARY",
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Runtime source has no construction authority imports or direct construction authority path reads.",
+      "evidence_files": [
+        "repository/src/drd_harness/orchestrator/recovery.py",
+        "repository/src/drd_harness/orchestrator/review_recovery.py",
+        "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+        "repository/src/drd_harness/orchestrator/program_driver.py"
+      ],
+      "result_hash": "048a5e3a84d5600979ca527f145e031dae464cde82d010341e49bf4d264e8931",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-02-FULL-REGRESSION",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Full repository test suite passed with 442 tests.",
+      "evidence_files": [
+        "build_program/phases/P4/candidates/P4-IMPL-02/TEST_REPORT.json"
+      ],
+      "result_hash": "4d2b3f0a2e41c2bb42e1148361f2f14eca05549f9c812b04ea9bf3097b8702ec",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/orchestrator/recovery.py",
+    "repository/src/drd_harness/orchestrator/review_recovery.py",
+    "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+    "repository/src/drd_harness/orchestrator/program_driver.py",
+    "control/locks/P4_SPEC_LOCK.json"
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

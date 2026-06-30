@@ -1,0 +1,32 @@
+{
+  "target_id": "P4-IMPL-04-REVIEW-TARGET-001",
+  "workpack_id": "P4-IMPL-04",
+  "phase": "P4",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-IMPL-04",
+  "review_subject_hash": "94372f08489f687e0e6d8ffa804262381711b20bcdff7bff6344202d405bb1dd",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the implementation stay inside P4-IMPL-04 and the P4-SPEC-03 package/example/migration intent?",
+    "Does package manifest validation reject forbidden paths, untracked release inputs, dirty-state/hash issues, and semantic payloads?",
+    "Does example smoke validation stay in the fixture path and compare expected hashes without creating product semantics?",
+    "Does migration coverage validate every row, blocked Human Gate status, summary consistency, and report hash?",
+    "Do targeted tests, P4 tests, full regression, runtime-boundary-check, py_compile, and git diff check pass?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

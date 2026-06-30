@@ -1,0 +1,72 @@
+{
+  "workpack_id": "P4-SPEC-03",
+  "phase": "P4",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-SPEC-03",
+  "upstream_spec": {
+    "p4_spec_02_candidate": "build_program/phases/P4/candidates/P4-SPEC-02",
+    "p4_spec_02_review_decision": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+    "p4_spec_02_review_decision_hash": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+    "p4_spec_02_subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+    "p4_spec_01_candidate": "build_program/phases/P4/candidates/P4-SPEC-01",
+    "p4_spec_01_review_decision": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+    "p4_spec_01_review_decision_hash": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+    "p4_spec_01_subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975"
+  },
+  "upstream_build_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+  },
+  "owned_module": "release_readiness_packaging_migration",
+  "owned_clauses": [
+    "P4-GOLDEN-INTEGRATION-RELEASE-SUITES",
+    "P4-V31-MIGRATION-COVERAGE",
+    "P4-PACKAGE-AND-EXAMPLE-READINESS",
+    "P4-RELEASE-READINESS-PACKET",
+    "P4-RELEASE-LOCK-INPUT-BOUNDARY"
+  ],
+  "generated_outputs": [
+    "P4_RELEASE_READINESS_CONTRACT.md",
+    "P4_TEST_SUITE_CONTRACTS.json",
+    "P4_PACKAGING_RELEASE_MODEL.md",
+    "P4_RELEASE_ARTIFACT_CONTRACTS.json",
+    "P4_RELEASE_PIPELINE_RULES.json",
+    "P4_MIGRATION_COVERAGE_MAP.json",
+    "P4_RELEASE_VALIDATION_MATRIX.json",
+    "P4_RELEASE_TRACEABILITY_MAP.json",
+    "P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "NOT_CREATED",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-SPEC-03/**"
+  ],
+  "forbidden_write_paths": [
+    "repository/**",
+    "control/locks/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/**",
+    "build_program/phases/P4/candidates/P4-SPEC-02/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P4-SPEC-03 approved and approval metadata bound. P4_SPEC_LOCK readiness may be prepared; P4_SPEC_LOCK creation requires separate explicit lock creation authorization."
+}

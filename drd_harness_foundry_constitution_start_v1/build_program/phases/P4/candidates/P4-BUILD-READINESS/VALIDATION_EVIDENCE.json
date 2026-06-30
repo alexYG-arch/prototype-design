@@ -1,0 +1,97 @@
+{
+  "evidence_id": "P4-BUILD-READINESS-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-BUILD-READINESS",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4-BUILD-READY-SPEC-LOCK-BOUND",
+      "command": "sha256 control/locks/P4_SPEC_LOCK.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "P4_SPEC_LOCK exists and is hash-bound as build lock upstream input.",
+      "evidence_files": [
+        "control/locks/P4_SPEC_LOCK.json"
+      ],
+      "result_hash": "0a5d476bedf967ef565e6f42d31aa98f8e22e4c0bcef24f0b009fbb797cda5da",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-IMPL-REVIEWS-BOUND",
+      "command": "candidate-check P4-IMPL-01..05 --review-decision",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "All P4 implementation candidates bind APPROVED review decisions to current subject hashes.",
+      "evidence_files": [
+        "build_program/phases/P4/candidates/P4-IMPL-01/REVIEW_DECISION.json",
+        "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_DECISION.json",
+        "build_program/phases/P4/candidates/P4-IMPL-03/REVIEW_DECISION.json",
+        "build_program/phases/P4/candidates/P4-IMPL-04/REVIEW_DECISION.json",
+        "build_program/phases/P4/candidates/P4-IMPL-05/REVIEW_DECISION.json"
+      ],
+      "result_hash": "e208d2824ed5e397fd9daa36aa722bb3ad1ba4c7f90af4848dbb7edd860f6dd2",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-P4-TESTS",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "P4 test suite passed with 70 tests.",
+      "evidence_files": [
+        "repository/tests/p4"
+      ],
+      "result_hash": "33fb611c9db3d6a985db3241e9f405c8824ead53743e7514fb4b1898034d7c0e",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-FULL-REGRESSION",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Full repository test suite passed with 480 tests.",
+      "evidence_files": [
+        "repository/tests"
+      ],
+      "result_hash": "1beef049db463fbd59903bb45c832c53786315e464176bb429e7d08572a179e3",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-RUNTIME-BOUNDARY",
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Runtime source has no construction authority imports or direct construction authority path reads.",
+      "evidence_files": [
+        "repository/src"
+      ],
+      "result_hash": "d10ee825ad77cff0bdfd56d6c7900a95e3cf4b6d561b558ebd02b21126505524",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-NO-LOCK-WRITE",
+      "command": "test ! -e control/locks/P4_BUILD_LOCK.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "P4_BUILD_LOCK does not exist and was not written by readiness generation.",
+      "evidence_files": [
+        "build_program/phases/P4/candidates/P4-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json"
+      ],
+      "result_hash": "51e86daf41e30e5e2adb70e8d8cc720b33d55b684b2f32ed973f8f7c22a55b94",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    },
+    {
+      "check": "P4-BUILD-READY-DIFF-CHECK",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Diff whitespace check passed.",
+      "evidence_files": [
+        "git diff --check"
+      ],
+      "result_hash": "e787066fe2ce67ecb1a28f27613980f5ac368a2dee9cb3ef7f0e5b8a111c9769",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status})) unless sourced from test result"
+    }
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

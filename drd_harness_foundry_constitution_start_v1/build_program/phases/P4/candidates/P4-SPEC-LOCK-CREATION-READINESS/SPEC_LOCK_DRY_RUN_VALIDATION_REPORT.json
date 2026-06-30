@@ -1,0 +1,57 @@
+{
+  "report_id": "P4-SPEC-LOCK-DRY-RUN-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-READINESS",
+  "status": "PASS",
+  "dry_run_command": "python3 tooling/create_spec_lock.py --phase P4 --input-bundle build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --dry-run",
+  "dry_run_output_path": "/tmp/p4_spec_lock_readiness_dry_run.json",
+  "checks": [
+    {
+      "check": "dry_run_exit_code",
+      "status": "PASS",
+      "details": "create_spec_lock.py --dry-run exited 0"
+    },
+    {
+      "check": "lock_id",
+      "status": "PASS",
+      "details": "P4-SPEC-LOCK-001"
+    },
+    {
+      "check": "phase",
+      "status": "PASS",
+      "details": "P4"
+    },
+    {
+      "check": "root_sha256",
+      "status": "PASS",
+      "details": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c"
+    },
+    {
+      "check": "review_decision_file_root_sha256",
+      "status": "PASS",
+      "details": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165"
+    },
+    {
+      "check": "schema_minimum",
+      "status": "PASS",
+      "details": {
+        "candidate_subject_bindings": "PASS",
+        "phase_review_binding": "PASS",
+        "schema_minimum": "PASS"
+      }
+    },
+    {
+      "check": "file_count",
+      "status": "PASS",
+      "details": 3
+    },
+    {
+      "check": "output_path_available",
+      "status": "PASS",
+      "details": "control/locks/P4_SPEC_LOCK.json"
+    }
+  ],
+  "does_not_create_lock": true,
+  "created_lock_path": null,
+  "open_blockers": []
+}

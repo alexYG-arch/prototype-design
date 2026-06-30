@@ -1,0 +1,39 @@
+{
+  "evidence_id": "P4-SPEC-02-VALIDATION-EVIDENCE-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P4_SPEC_02_UPSTREAM_BINDING",
+      "command": "python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nmanifest=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-02/CANDIDATE_MANIFEST.json').read_text())\nreview=Path(manifest['upstream_spec']['p4_spec_01_review_decision'])\nassert hashlib.sha256(review.read_bytes()).hexdigest() == manifest['upstream_spec']['p4_spec_01_review_decision_hash']\nreview_data=json.loads(review.read_text())\nassert review_data['decision'] == 'APPROVED'\nassert review_data['subject_hash'] == manifest['upstream_spec']['p4_spec_01_subject_hash']\nassert hashlib.sha256(Path('control/locks/P3_BUILD_LOCK.json').read_bytes()).hexdigest() == manifest['upstream_build_lock']['sha256']\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "P4-SPEC-01 approval and P3_BUILD_LOCK hashes are bound"
+    },
+    {
+      "check": "P4_SPEC_02_SCOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nscope=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-02/SCOPE_REPORT.json').read_text())\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['repository_files_modified'] is False\nassert scope['control_locks_modified'] is False\nassert scope['root_p4_phase_files_modified'] is False\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "candidate writes are limited to build_program/phases/P4/candidates/P4-SPEC-02"
+    },
+    {
+      "check": "P4_SPEC_02_ARTIFACT_SHAPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P4/candidates/P4-SPEC-02')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\nfor rel in manifest['generated_outputs']:\n    path=candidate/rel\n    assert path.is_file() and path.stat().st_size > 0, rel\n    if path.suffix == '.json':\n        json.loads(path.read_text(encoding='utf-8'))\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "generated outputs are non-empty and JSON outputs parse"
+    },
+    {
+      "check": "P4_SPEC_02_COVERAGE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-02')\nartifacts=json.loads((root/'P4_RECOVERY_ARTIFACT_CONTRACTS.json').read_text())\nrules=json.loads((root/'P4_RECOVERY_PIPELINE_RULES.json').read_text())\ntrace=json.loads((root/'P4_RECOVERY_TRACEABILITY_MAP.json').read_text())\nvalidation=json.loads((root/'P4_RECOVERY_VALIDATION_MATRIX.json').read_text())\nby_type={row['artifact_type']: row for row in artifacts['artifacts']}\nassert {'run_state_record','resume_decision_report','review_recovery_packet','lock_rebuild_request_packet'} <= set(by_type)\nassert 'invalidation_record' in by_type['resume_decision_report']['record_shapes']\nassert {'reason_code','affected_node_id','affected_path','prior_value','current_value','required_stop_rule','human_gate_required'} <= set(by_type['resume_decision_report']['record_shapes']['invalidation_record']['required_fields'])\nassert by_type['review_recovery_packet']['nullable_fields']['review_decision_path']['allowed_when'] == ['review_decision_status=MISSING']\nassert 'create_P4_SPEC_LOCK' in rules['forbidden_actions']\nassert len(trace['rows']) >= 7\nassert len(validation['validation_rows']) >= 10\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "recovery, resume, invalidation record shape, review recovery missing-decision shape, and lock rebuild request boundaries are covered"
+    }
+  ],
+  "validated_rules": [
+    "P4-SPEC-02 consumes P4-SPEC-01 approval and P3_BUILD_LOCK as upstream authority",
+    "P4-SPEC-02 does not mutate repository code, locks, prior phases, or root P4 files",
+    "Recovery and resume are evidence-driven and fail closed on missing state",
+    "Review recovery cannot create approval and lock rebuild cannot write locks"
+  ],
+  "open_blockers": []
+}

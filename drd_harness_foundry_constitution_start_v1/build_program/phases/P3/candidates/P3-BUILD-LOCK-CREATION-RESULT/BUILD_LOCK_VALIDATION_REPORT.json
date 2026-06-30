@@ -4,8 +4,8 @@
   "status": "PASS",
   "validated_lock": {
     "path": "control/locks/P3_BUILD_LOCK.json",
-    "sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
-    "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554"
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f"
   },
   "summary": {
     "lock_exists": true,
@@ -15,17 +15,18 @@
     "test_result_count": 4,
     "validator_identity_hash_count": 1,
     "invalidates_on_count": 22,
-    "bound_git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+    "bound_git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
     "spec_lock_sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
     "latest_review_decision_sha256": "46632b4402f3e329f063a53b0edead4e693e14845ef7d0929eea0b84d3967127",
     "review_binding_count": 17
   },
   "checks": [
     {
-      "check": "git_worktree_state_before_creation",
-      "status": "INFO_UNCOMMITTED_INPUTS_BOUND_BY_FILE_HASH",
-      "head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
-      "status_short_count": 12
+      "check": "locked_input_commit_contains_bound_p3_files",
+      "status": "PASS",
+      "head": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
+      "previous_creation_head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+      "sample_bound_file": "repository/fixtures/p3/compiler/FINAL_DRD.md"
     },
     {
       "check": "all_p3_candidate_review_bindings",

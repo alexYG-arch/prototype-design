@@ -4,11 +4,11 @@
   "status": "BUILD_LOCK_CREATED",
   "created_lock": {
     "path": "control/locks/P3_BUILD_LOCK.json",
-    "sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
     "lock_id": "P3-BUILD-LOCK-001",
-    "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554",
-    "git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
-    "git_commit_binding_note": "HEAD at lock creation; current P3 inputs are also bound by direct file hashes because the worktree contains uncommitted P3 artifacts.",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
+    "git_commit_binding_note": "P3 locked runtime inputs are present at this pushed commit; every locked file remains directly hash-bound.",
     "spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
     "file_entry_count": 202,
     "test_result_count": 4,
@@ -43,10 +43,12 @@
   },
   "authorized_by_user_message": "2026-06-26 explicit authorization after P3_BUILD_LOCK boundary prompt: 授权",
   "worktree_state_note": {
-    "head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
-    "status_before_creation_count": 12,
-    "clean_commit_claimed": false,
-    "direct_file_hash_locking": true
+    "locked_input_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
+    "previous_creation_head": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+    "locked_input_commit_contains_p3_files": true,
+    "clean_committed_input_claimed": true,
+    "direct_file_hash_locking": true,
+    "lock_metadata_fix_excluded_from_runtime_file_entries": true
   },
   "not_a_release_lock": true,
   "not_a_spec_lock": true,

@@ -1,0 +1,46 @@
+{
+  "report_id": "P4-BUILD-READINESS-SCOPE-REPORT-001",
+  "phase": "P4",
+  "workpack_id": "P4-BUILD-READINESS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "repository/src/**",
+    "repository/tests/**",
+    "repository/examples/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/TEST_REPORT.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/REVIEW_TARGET.json",
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p4_spec_lock_path": "control/locks/P4_SPEC_LOCK.json",
+    "used_as_input": true,
+    "p4_build_lock_path": "control/locks/P4_BUILD_LOCK.json",
+    "p4_build_lock_created": false,
+    "release_lock_created": false
+  },
+  "actual_write_scope_status": "PASS",
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

@@ -1,0 +1,193 @@
+{
+  "contract_id": "P4-SPEC-02-RECOVERY-ARTIFACT-CONTRACTS-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "module": "recovery_resume_lock_rebuild",
+  "upstream": {
+    "p4_spec_01_review_decision": {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+      "sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975"
+    },
+    "p3_build_lock": {
+      "path": "control/locks/P3_BUILD_LOCK.json",
+      "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+      "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+      "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+    }
+  },
+  "artifacts": [
+    {
+      "artifact_type": "run_state_record",
+      "required_fields": [
+        "run_id",
+        "program_id",
+        "driver_version",
+        "original_command",
+        "adapter_id",
+        "source_refs",
+        "input_hashes",
+        "upstream_lock_refs",
+        "candidate_subject_hashes",
+        "review_decision_hashes",
+        "dag_snapshot_hash",
+        "execution_plan_hash",
+        "node_states",
+        "written_paths",
+        "output_hashes",
+        "gate_states",
+        "failure_records",
+        "recovery_history"
+      ],
+      "forbidden_fields": [
+        "approved_by_recovery",
+        "created_lock_path",
+        "inferred_product_requirement",
+        "business_contract_added"
+      ]
+    },
+    {
+      "artifact_type": "resume_decision_report",
+      "required_fields": [
+        "run_id",
+        "requested_resume_node",
+        "prior_run_state_hash",
+        "decision",
+        "node_decisions",
+        "invalidation_records",
+        "skipped_nodes",
+        "replayed_nodes",
+        "blocked_nodes",
+        "next_allowed_actions"
+      ],
+      "allowed_decisions": [
+        "SKIP",
+        "REPLAY",
+        "BLOCK_HUMAN_GATE",
+        "BLOCK_INVALIDATION",
+        "BLOCK_LOCK_BOUNDARY",
+        "BLOCK_UNSAFE_STATE"
+      ],
+      "record_shapes": {
+        "node_decision": {
+          "required_fields": [
+            "node_id",
+            "decision",
+            "dependency_hash_status",
+            "output_hash_status",
+            "write_scope_status",
+            "gate_status",
+            "reason_codes"
+          ],
+          "decision_values": [
+            "SKIP",
+            "REPLAY",
+            "BLOCK_HUMAN_GATE",
+            "BLOCK_INVALIDATION",
+            "BLOCK_LOCK_BOUNDARY",
+            "BLOCK_UNSAFE_STATE"
+          ]
+        },
+        "invalidation_record": {
+          "required_fields": [
+            "reason_code",
+            "affected_node_id",
+            "affected_path",
+            "prior_value",
+            "current_value",
+            "required_stop_rule",
+            "human_gate_required"
+          ],
+          "reason_code_source": "reason_codes",
+          "sorting_rule": "reason_code_then_affected_node_id_then_affected_path"
+        }
+      }
+    },
+    {
+      "artifact_type": "review_recovery_packet",
+      "required_fields": [
+        "candidate_dir",
+        "current_subject_hash",
+        "review_target_path",
+        "review_target_status",
+        "review_decision_path",
+        "review_decision_status",
+        "findings",
+        "human_gate_required"
+      ],
+      "status_values": {
+        "review_target_status": [
+          "MATCHES_CURRENT_SUBJECT",
+          "MISSING",
+          "STALE",
+          "INVALID"
+        ],
+        "review_decision_status": [
+          "APPROVES_CURRENT_SUBJECT",
+          "MISSING",
+          "STALE",
+          "HASH_CHANGED",
+          "DECISION_NOT_APPROVED",
+          "INVALID"
+        ]
+      },
+      "nullable_fields": {
+        "review_decision_path": {
+          "allowed_when": [
+            "review_decision_status=MISSING"
+          ],
+          "required_explanation": "findings must include missing review decision evidence and human_gate_required must be true"
+        }
+      },
+      "forbidden_actions": [
+        "write_review_decision",
+        "edit_review_decision",
+        "approve_candidate",
+        "promote_candidate"
+      ]
+    },
+    {
+      "artifact_type": "lock_rebuild_request_packet",
+      "required_fields": [
+        "request_id",
+        "lock_kind",
+        "source_lock_path",
+        "source_lock_sha256",
+        "requested_lock_path",
+        "candidate_inputs",
+        "review_decision_inputs",
+        "drift_report",
+        "dry_run_result",
+        "required_human_authorization",
+        "forbidden_without_authorization"
+      ],
+      "allowed_lock_kinds": [
+        "SPEC_LOCK",
+        "BUILD_LOCK",
+        "RELEASE_LOCK"
+      ],
+      "forbidden_actions": [
+        "create_lock",
+        "rewrite_lock",
+        "delete_lock",
+        "publish_package"
+      ]
+    }
+  ],
+  "reason_codes": [
+    "INPUT_HASH_CHANGED",
+    "INPUT_SOURCE_MISSING",
+    "ADAPTER_NORMALIZATION_CHANGED",
+    "UPSTREAM_LOCK_HASH_CHANGED",
+    "CANDIDATE_SUBJECT_HASH_CHANGED",
+    "REVIEW_DECISION_HASH_CHANGED",
+    "DAG_SNAPSHOT_CHANGED",
+    "EXECUTION_PLAN_CHANGED",
+    "OUTPUT_HASH_CHANGED",
+    "OUTPUT_MISSING",
+    "WRITE_SCOPE_CHANGED",
+    "FAILURE_RECORD_INCOMPLETE",
+    "REQUESTED_NODE_NOT_IN_DAG"
+  ],
+  "open_blockers": []
+}

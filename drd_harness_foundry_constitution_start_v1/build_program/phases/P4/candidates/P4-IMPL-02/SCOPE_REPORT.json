@@ -1,0 +1,68 @@
+{
+  "report_id": "P4-IMPL-02-SCOPE-REPORT-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-02",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/orchestrator/recovery.py",
+    "repository/src/drd_harness/orchestrator/review_recovery.py",
+    "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+    "repository/src/drd_harness/orchestrator/program_driver.py",
+    "repository/tests/p4/test_recovery_state_model.py",
+    "repository/tests/p4/test_resume_decisions.py",
+    "repository/tests/p4/test_review_recovery.py",
+    "repository/tests/p4/test_lock_rebuild_requests.py",
+    "repository/tests/p4/test_recovery_invalidation.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P4/candidates/P4-IMPL-02/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-01/**",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/RELEASE_SCOPE.md",
+    "repository/src/drd_harness/release/**"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/orchestrator/recovery.py",
+    "repository/src/drd_harness/orchestrator/review_recovery.py",
+    "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+    "repository/src/drd_harness/orchestrator/program_driver.py",
+    "repository/tests/p4/test_recovery_state_model.py",
+    "repository/tests/p4/test_resume_decisions.py",
+    "repository/tests/p4/test_review_recovery.py",
+    "repository/tests/p4/test_lock_rebuild_requests.py",
+    "repository/tests/p4/test_recovery_invalidation.py"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P4/candidates/P4-IMPL-02/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/TEST_REPORT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-IMPL-02/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p4_spec_lock_path": "control/locks/P4_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false,
+    "p4_build_lock_created": false,
+    "release_lock_created": false
+  },
+  "scope_notes": [
+    "program_driver.py is touched only for recovery integration declared by P4-SPEC-02 and cwd-independent default P3 lock binding; Program Driver DAG ownership remains with P4-IMPL-01.",
+    "No control lock, P4 spec candidate, P4 prior implementation candidate, root P4 phase file, or release module was modified by P4-IMPL-02.",
+    "Lock rebuild code emits request packets only and does not create or rewrite locks."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

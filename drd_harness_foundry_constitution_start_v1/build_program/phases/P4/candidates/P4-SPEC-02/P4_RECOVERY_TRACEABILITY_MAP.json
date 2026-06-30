@@ -1,0 +1,84 @@
+{
+  "traceability_id": "P4-SPEC-02-RECOVERY-TRACEABILITY-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "rows": [
+    {
+      "trace_id": "P4REC-TRACE-001",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Review recovery",
+      "spec_output": "P4_RECOVERY_RESUME_CONTRACT.md",
+      "implementation_target": "repository/src/drd_harness/orchestrator/review_recovery.py",
+      "test_obligation": "repository/tests/p4/test_review_recovery.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-002",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "run resume",
+      "spec_output": "P4_RECOVERY_STATE_MODEL.md",
+      "implementation_target": "repository/src/drd_harness/orchestrator/recovery.py",
+      "test_obligation": "repository/tests/p4/test_resume_decisions.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-003",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Lock rebuild",
+      "spec_output": "P4_RECOVERY_ARTIFACT_CONTRACTS.json",
+      "implementation_target": "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+      "test_obligation": "repository/tests/p4/test_lock_rebuild_requests.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-004",
+      "source": "build_program/phases/P4/candidates/P4-SPEC-01/P4_PROGRAM_DRIVER_MODEL.md",
+      "source_clause": "Resume Envelope",
+      "spec_output": "P4_RECOVERY_STATE_MODEL.md",
+      "implementation_target": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "implementation_boundary": "resume hook integration only; Program Driver DAG ownership remains with P4-SPEC-01",
+      "test_obligation": "repository/tests/p4/test_recovery_state_model.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-005",
+      "source": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_PIPELINE_RULES.json",
+      "source_clause": "Commands stop at review, lock, release, and unresolved invalidation gates",
+      "spec_output": "P4_RECOVERY_PIPELINE_RULES.json",
+      "implementation_target": "repository/src/drd_harness/orchestrator/recovery.py",
+      "test_obligation": "repository/tests/p4/test_recovery_invalidation.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-006",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "integration layer cannot supplement business Contract",
+      "spec_output": "P4_RECOVERY_PIPELINE_RULES.json",
+      "implementation_target": "repository/src/drd_harness/orchestrator/recovery.py",
+      "test_obligation": "semantic boundary negative tests"
+    },
+    {
+      "trace_id": "P4REC-TRACE-007",
+      "source": "control/locks/P3_BUILD_LOCK.json",
+      "source_clause": "approved P3 build lock input",
+      "spec_output": "P4_RECOVERY_RESUME_CONTRACT.md",
+      "implementation_target": "P4 recovery upstream lock binding",
+      "test_obligation": "P4 recovery rejects P3 build lock hash drift"
+    }
+  ],
+  "coverage_summary": {
+    "release_scope_items_owned_here": [
+      "Review recovery",
+      "run resume",
+      "Lock rebuild request boundary",
+      "unresolved invalidation stop rules"
+    ],
+    "release_scope_items_deferred": [
+      "golden, integration, and release suites",
+      "v3.1 migration coverage",
+      "installation package and example project",
+      "release lock schema and creation"
+    ],
+    "implementation_ownership_notes": [
+      "P4-SPEC-02 owns recovery and resume contracts.",
+      "P4-SPEC-02 does not re-own the full Program Driver DAG contract from P4-SPEC-01.",
+      "Any future touch of program_driver.py by P4-IMPL-02 is limited to declared recovery hook integration."
+    ]
+  },
+  "open_blockers": []
+}

@@ -1,0 +1,33 @@
+{
+  "target_id": "P4-BUILD-READINESS-REVIEW-TARGET-001",
+  "workpack_id": "P4-BUILD-READINESS",
+  "phase": "P4",
+  "lane": "BUILD_LOCK_READINESS",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-BUILD-READINESS",
+  "review_subject_hash": "ce2b8829dfbad56086e67246ae6b28201e7aa5a3d55dfc33ed31b04c5ebe1d93",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "BUILD_LOCK_INPUT_MATRIX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the readiness matrix bind current P4 implementation files and tests by sha256?",
+    "Are P4-IMPL-01 through P4-IMPL-05 review decisions approved and subject-hash bound?",
+    "Do P4 tests, full regression, runtime-boundary-check, review binding aggregate, and git diff checks pass?",
+    "Does the dirty worktree policy correctly block actual P4_BUILD_LOCK creation until clean committed inputs exist?",
+    "Does this candidate avoid creating P4_BUILD_LOCK, DRD_HARNESS_RELEASE_LOCK, package publishing, or implementation mutations?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

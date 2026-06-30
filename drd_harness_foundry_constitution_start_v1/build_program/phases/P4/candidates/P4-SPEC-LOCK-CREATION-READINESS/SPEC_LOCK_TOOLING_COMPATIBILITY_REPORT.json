@@ -1,0 +1,30 @@
+{
+  "report_id": "P4-SPEC-LOCK-TOOLING-COMPATIBILITY-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-READINESS",
+  "status": "PASS",
+  "tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "supported_phase": "P4",
+  "tool_guards": [
+    "requires approved candidate manifests",
+    "requires approved review decisions matching current subject hashes",
+    "requires schema hash match",
+    "recomputes phase root and review decision file root",
+    "refuses to overwrite an existing output lock path"
+  ],
+  "output_path_preflight": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "must_not_exist_before_write": true,
+    "exists_at_readiness_time": false,
+    "preflight_status": "PASS_OUTPUT_PATH_AVAILABLE",
+    "write_allowed_only_after_explicit_user_request": true
+  },
+  "open_blockers": []
+}

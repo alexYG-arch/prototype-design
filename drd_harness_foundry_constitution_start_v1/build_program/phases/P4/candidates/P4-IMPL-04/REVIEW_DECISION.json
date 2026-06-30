@@ -1,0 +1,46 @@
+{
+  "decision_id": "P4-IMPL-04-REVIEW-001",
+  "subject": "P4-IMPL-04",
+  "subject_hash": "94372f08489f687e0e6d8ffa804262381711b20bcdff7bff6344202d405bb1dd",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the P4-IMPL-04 package manifest, example smoke, and migration coverage validation candidate. This approval covers P4-IMPL-04 only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "repository/examples/p4_release_smoke/README.md",
+    "repository/examples/p4_release_smoke/source_prd.md",
+    "repository/examples/p4_release_smoke/example_manifest.json",
+    "repository/tests/p4/test_packaging_manifest.py",
+    "repository/tests/p4/test_example_project_smoke.py",
+    "repository/tests/p4/test_migration_coverage.py",
+    "build_program/phases/P4/candidates/P4-IMPL-04/**"
+  ],
+  "approved_lock_input": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "upstream_impl_review_decision": {
+    "path": "build_program/phases/P4/candidates/P4-IMPL-03/REVIEW_DECISION.json",
+    "sha256": "339674ec59240677a31a7319214509cccacba37bfaf68c1c55c71cf15a3ebe40"
+  },
+  "next_authorized_workpack": "P4-IMPL-05_AFTER_EXPLICIT_CONTINUE_ONLY",
+  "source_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P4-IMPL-04 candidate review.",
+    "This approval validates package manifest safety, example project smoke validation, and v3.1 migration coverage validation evidence.",
+    "This approval does not create P4_BUILD_LOCK, create DRD_HARNESS_RELEASE_LOCK, publish packages, update root P4 phase files, or start P4-IMPL-05."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "decision_id": "P4-BUILD-READINESS-REVIEW-001",
+  "subject": "P4-BUILD-READINESS",
+  "subject_hash": "ce2b8829dfbad56086e67246ae6b28201e7aa5a3d55dfc33ed31b04c5ebe1d93",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the P4-BUILD-READINESS candidate. This approval covers readiness evidence only and does not authorize lock creation.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "BUILD_LOCK_INPUT_MATRIX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/**"
+  ],
+  "approved_lock_input": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "approved_implementation_review_decisions": [
+    {
+      "path": "build_program/phases/P4/candidates/P4-IMPL-01/REVIEW_DECISION.json",
+      "sha256": "98942b547340ee93f310b34e424b247240b1df0c0545bada506e3986e9316a94",
+      "subject": "P4-IMPL-01",
+      "subject_hash": "0e8d1a6d5b79d8ac869e51b64b0efa1660d4fe327413523c4b7e0d721c85a1e2"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_DECISION.json",
+      "sha256": "0c53e0f05b977c6893f4bb481b641c6716960e868ee445bf242c8f67a3ca9420",
+      "subject": "P4-IMPL-02",
+      "subject_hash": "d9ef35121dbc10153653df62877f9d146bf40feceec93c37d523e552934dacb5"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-IMPL-03/REVIEW_DECISION.json",
+      "sha256": "339674ec59240677a31a7319214509cccacba37bfaf68c1c55c71cf15a3ebe40",
+      "subject": "P4-IMPL-03",
+      "subject_hash": "c1302c6d4da02abcb4f2b240fb4b5ff23d64e4db2ee08d2f428dcd5df50b6301"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-IMPL-04/REVIEW_DECISION.json",
+      "sha256": "1889cbd48b5b94cefc734e44fccf63b7d5c34976bf92cbb3549167e46585c537",
+      "subject": "P4-IMPL-04",
+      "subject_hash": "94372f08489f687e0e6d8ffa804262381711b20bcdff7bff6344202d405bb1dd"
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-IMPL-05/REVIEW_DECISION.json",
+      "sha256": "98b8eb68ef11a81c96bc5e7faceda66a5f73d6670995556eb6b24c8b4d513227",
+      "subject": "P4-IMPL-05",
+      "subject_hash": "c52a7022f7a14d7f4b5d086a0eb682d00cd1d649d8bcc0e9df01db558281db7c"
+    }
+  ],
+  "next_authorized_workpack": "P4_BUILD_LOCK_CREATION_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION_AND_CLEAN_COMMIT",
+  "source_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P4-BUILD-READINESS candidate review.",
+    "The reviewed subject binds P4 implementation file candidates, P4 implementation review decisions, P4/full test evidence, runtime-boundary evidence, and no-lock-write evidence.",
+    "Actual P4_BUILD_LOCK creation remains blocked by missing explicit lock authorization and dirty worktree policy.",
+    "This approval does not create P4_BUILD_LOCK, create DRD_HARNESS_RELEASE_LOCK, publish packages, update root P4 phase files, or write any control/locks file."
+  ]
+}

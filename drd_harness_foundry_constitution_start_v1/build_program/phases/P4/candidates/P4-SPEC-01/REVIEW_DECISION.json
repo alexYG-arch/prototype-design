@@ -1,0 +1,67 @@
+{
+  "decision_id": "P4-SPEC-01-REVIEW-001",
+  "subject": "P4-SPEC-01",
+  "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-29",
+  "basis": "User said pass after reviewing the P4-SPEC-01 integration entry spec candidate. This approval covers the P4 integration entry specification candidate only.",
+  "approved_sections": [
+    "P4_INTEGRATION_ENTRY_CONTRACT.md",
+    "P4_PROGRAM_DRIVER_MODEL.md",
+    "P4_CLI_ADAPTER_CONTRACTS.json",
+    "P4_INTEGRATION_PIPELINE_RULES.json",
+    "P4_INTEGRATION_VALIDATION_MATRIX.json",
+    "P4_INTEGRATION_TRACEABILITY_MAP.json",
+    "P4_INTEGRATION_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/phases/P4/candidates/P4-SPEC-01/**"
+  ],
+  "approved_upstream": {
+    "p3_build_lock": "control/locks/P3_BUILD_LOCK.json",
+    "p3_build_lock_sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "p3_build_lock_root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "p3_build_lock_git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
+    "p3_build_lock_review_decision": "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "p3_build_lock_review_decision_sha256": "4dd59a16355e5dc5c549de47e5abd77c8ec39343e6592f0bc258c4269330d291"
+  },
+  "approved_spec_surface": [
+    "program DAG and program driver",
+    "drdctl run/review/resume/release command envelope",
+    "PRD Harness Adapter",
+    "Markdown PRD Adapter",
+    "integration layer no-business-contract boundary"
+  ],
+  "validation_summary": {
+    "candidate_check_subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+    "upstream_lock_binding": "PASS",
+    "scope_assertion": "PASS",
+    "artifact_shape": "PASS",
+    "coverage_assertion": "PASS",
+    "p3_build_lock_readiness": "PASS",
+    "full_repository_tests": "410 passed",
+    "git_diff_check": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_spec_lock": true,
+  "not_a_build_lock": true,
+  "not_a_release_lock": true,
+  "not_an_implementation": true,
+  "remaining_followups": [
+    "P4-SPEC-02 requires a separate explicit continuation.",
+    "P4_SPEC_LOCK is not created by this approval.",
+    "P4 implementation work remains blocked until P4 spec lock and explicit implementation authorization.",
+    "No commit or push is performed by this approval."
+  ],
+  "approval_metadata_binding": {
+    "candidate_manifest_approval_state": "APPROVED_BY_HUMAN",
+    "candidate_manifest_review_decision": "REVIEW_DECISION.json",
+    "included_in_review_subject_hash": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "map_id": "P4-SPEC-03-MIGRATION-COVERAGE-MAP-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "source_version": "v3.1",
+  "target": "DRD Harness release candidate",
+  "coverage_row_contract": {
+    "required_fields": [
+      "legacy_capability_id",
+      "legacy_capability_name",
+      "legacy_source_ref",
+      "target_status",
+      "target_evidence_ref",
+      "rationale",
+      "review_required"
+    ],
+    "allowed_target_status": [
+      "MIGRATED",
+      "REPLACED_BY_LOCKED_CAPABILITY",
+      "DROPPED_WITH_RATIONALE",
+      "BLOCKED_REQUIRES_HUMAN_REVIEW"
+    ],
+    "blocked_rule": "Any BLOCKED_REQUIRES_HUMAN_REVIEW row blocks release readiness until reviewed."
+  },
+  "coverage_summary_contract": {
+    "required_fields": [
+      "total_legacy_capabilities",
+      "migrated_count",
+      "replaced_count",
+      "dropped_count",
+      "blocked_count",
+      "unmapped_count",
+      "release_blocking"
+    ],
+    "release_blocking_when": [
+      "blocked_count > 0",
+      "unmapped_count > 0",
+      "any row lacks target_evidence_ref",
+      "any dropped row lacks rationale"
+    ]
+  },
+  "semantic_boundary": {
+    "migration_map_may": [
+      "classify existing legacy capabilities",
+      "point to locked harness capabilities",
+      "require Human Gate for blocked rows"
+    ],
+    "migration_map_must_not": [
+      "invent product requirements",
+      "create page elements",
+      "create layout rules",
+      "add business contracts"
+    ]
+  },
+  "open_blockers": []
+}

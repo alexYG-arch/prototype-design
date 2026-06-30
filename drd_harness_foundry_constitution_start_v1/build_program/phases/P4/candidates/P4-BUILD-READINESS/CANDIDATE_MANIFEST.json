@@ -1,0 +1,61 @@
+{
+  "workpack_id": "P4-BUILD-READINESS",
+  "candidate_id": "P4-BUILD-READINESS",
+  "phase": "P4",
+  "lane": "BUILD_LOCK_READINESS",
+  "status": "BUILD_LOCK_READINESS_APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-BUILD-READINESS",
+  "upstream_spec_lock": "control/locks/P4_SPEC_LOCK.json",
+  "upstream_spec_lock_hash": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+  "depends_on_workpacks": [
+    "P4-IMPL-01",
+    "P4-IMPL-02",
+    "P4-IMPL-03",
+    "P4-IMPL-04",
+    "P4-IMPL-05"
+  ],
+  "depends_on_review_decisions": [
+    "build_program/phases/P4/candidates/P4-IMPL-01/REVIEW_DECISION.json",
+    "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_DECISION.json",
+    "build_program/phases/P4/candidates/P4-IMPL-03/REVIEW_DECISION.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/REVIEW_DECISION.json",
+    "build_program/phases/P4/candidates/P4-IMPL-05/REVIEW_DECISION.json"
+  ],
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "BUILD_LOCK_INPUT_MATRIX.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "build_lock_state": "NOT_LOCKED",
+  "build_lock_created": false,
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-BUILD-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "repository/src/**",
+    "repository/tests/**",
+    "repository/examples/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P4-BUILD-READINESS is approved by Human Gate. Actual P4_BUILD_LOCK creation still requires explicit authorization and clean committed input state."
+}

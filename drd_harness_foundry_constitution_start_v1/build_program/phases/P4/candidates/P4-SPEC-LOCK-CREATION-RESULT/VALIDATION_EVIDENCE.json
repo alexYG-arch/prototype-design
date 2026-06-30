@@ -1,0 +1,131 @@
+{
+  "evidence_id": "P4-SPEC-LOCK-CREATION-RESULT-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4_SPEC_LOCK_JSON_VALID",
+      "command": "python3 -m json.tool control/locks/P4_SPEC_LOCK.json >/tmp/p4_spec_lock.pretty.json",
+      "exit_code": 0,
+      "summary": "created lock parses as valid JSON",
+      "status": "PASS",
+      "result_hash": "7e8809b1127c13b414240e44778896b08625aa02dd43fa0cd74e5ba7f807da84",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_CONTENT_BINDING",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nlock=json.loads(Path('control/locks/P4_SPEC_LOCK.json').read_text())\nassert lock['lock_id']=='P4-SPEC-LOCK-001'\nassert lock['phase']=='P4'\nrows=[f\"{e['spec_part']}\\0{e['subject_hash']}\" for e in lock['files']]\nassert hashlib.sha256('\\n'.join(rows).encode()).hexdigest()==lock['root_sha256']\nreview_rows=[f\"{e['spec_part']}\\0{e['review_decision']['sha256']}\" for e in lock['files']]\nassert hashlib.sha256('\\n'.join(review_rows).encode()).hexdigest()==lock['review_decision_file_root_sha256']\nassert lock['validation']['schema_minimum']=='PASS'\nfor entry in lock['files']:\n    assert Path(entry['candidate_path']).is_dir(), entry['spec_part']\n    assert Path(entry['review_decision']['path']).is_file(), entry['spec_part']\n    for output in entry['generated_outputs']:\n        assert Path(output['path']).is_file(), output['path']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "created lock has expected id, phase, recomputed root hash, recomputed review file root, schema_minimum PASS, and existing listed files",
+      "status": "PASS",
+      "result_hash": "86c3954eee5104725d8a43d1480e2bf45c8fb2c76884b1a8d5fa99bd29602486",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_DRY_RUN_MATCH",
+      "command": "python3 tooling/create_spec_lock.py --phase P4 --input-bundle build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --dry-run >/tmp/p4_spec_lock_result_dry_run.json && python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nactual=json.loads(Path('control/locks/P4_SPEC_LOCK.json').read_text())\ndry=json.loads(Path('/tmp/p4_spec_lock_result_dry_run.json').read_text())\nfor key in ('lock_id','phase','root_sha256','review_decision_hash','review_decision_file_root_sha256'):\n    assert actual[key]==dry[key]\nassert actual['files']==dry['files']\nassert actual['schema']==dry['schema']\nassert actual['created_by_tool']==dry['created_by_tool']\nassert actual['input_bundle']==dry['input_bundle']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "created lock core fields, files, schema, tool identity, and input bundle match a fresh dry-run from the readiness input bundle",
+      "status": "PASS",
+      "result_hash": "c39221b302317826901742e9014914ae7a2da23d3d5eb010a6d223f8082134c6",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_EXTERNAL_HASH_BINDINGS",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT')\nresult=json.loads((root/'SPEC_LOCK_CREATION_RESULT.json').read_text())\nlock=json.loads(Path('control/locks/P4_SPEC_LOCK.json').read_text())\ndef sha(path):\n    h=hashlib.sha256(); h.update(Path(path).read_bytes()); return h.hexdigest()\nassert sha(result['created_lock']['path'])==result['created_lock']['sha256']\nassert sha(result['source_input_bundle']['path'])==result['source_input_bundle']['sha256']==lock['input_bundle']['sha256']\nassert sha(result['schema']['path'])==result['schema']['sha256']==lock['schema']['sha256']\nassert sha(result['creation_tool']['path'])==result['creation_tool']['sha256']==lock['created_by_tool']['sha256']\nassert sha(result['phase_readiness_review']['path'])==result['phase_readiness_review']['sha256']\nreview=json.loads(Path(result['phase_readiness_review']['path']).read_text())\nassert (review.get('review_id') or review.get('decision_id'))==result['phase_readiness_review']['review_id']\nassert review['subject_hash']==result['phase_readiness_review']['subject_hash']\nassert all(result['verification_bindings'].values())\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "result records current lock, source input bundle, schema, tool, and phase readiness review hashes and subject bindings",
+      "status": "PASS",
+      "result_hash": "3bda405e908f2321670810248cec1bc11688f48fb6a3a471438571c87631bfd2",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_PER_FILE_ENTRY_BINDINGS",
+      "command": "python3 - <<'PY2'\nimport json, hashlib\nfrom pathlib import Path\nlock=json.loads(Path('control/locks/P4_SPEC_LOCK.json').read_text())\ndef sha(path):\n    h=hashlib.sha256(); h.update(Path(path).read_bytes()); return h.hexdigest()\nfor entry in lock['files']:\n    assert sha(entry['review_decision']['path'])==entry['review_decision']['sha256'], entry['spec_part']\n    for output in entry['generated_outputs']:\n        assert sha(output['path'])==output['sha256'], output['path']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "every generated output and review decision file recorded inside the lock hashes to the current file value",
+      "status": "PASS",
+      "result_hash": "b3776a08313eb769bec595888c5a9881482202744afbea8fb130eb6ef155c831",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_NO_OVERWRITE_GUARD",
+      "command": "python3 - <<'PY2'\nimport hashlib, subprocess\nfrom pathlib import Path\nlock_path=Path('control/locks/P4_SPEC_LOCK.json')\ndef sha(path):\n    h=hashlib.sha256(); h.update(path.read_bytes()); return h.hexdigest()\nbefore=sha(lock_path)\nproc=subprocess.run('python3 tooling/create_spec_lock.py --phase P4 --input-bundle build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --output control/locks/P4_SPEC_LOCK.json', shell=True, text=True, capture_output=True)\nassert proc.returncode != 0\nassert 'output already exists' in proc.stderr\nafter=sha(lock_path)\nassert before==after\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "a second write to control/locks/P4_SPEC_LOCK.json fails and leaves the existing lock hash unchanged",
+      "status": "PASS",
+      "result_hash": "47785dce0629ba3fe633d2ecc4ed58e341ceb9f48fff7dab405b6a0eb75fb572",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_RESULT_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert Path(scope['created_control_lock']).is_file(); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert scope['control_files_modified'] is True; assert scope['repository_files_modified'] is False; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "scope report records the authorized control lock write and no repository implementation writes",
+      "status": "PASS",
+      "result_hash": "6defc32c5192ec8358104b37231435bc2a56349035d7a1cf005c1ca44b7db3f2",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_RESULT_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings for the P4 lock creation result candidate",
+      "status": "PASS",
+      "result_hash": "0a9ff9c2751afcd27793ddee43b3693a25c3622a2c44dd2a98bc7bdccc98b5c2",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_REPOSITORY_TESTS",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "summary": "repository test suite returns PASS after P4 lock creation",
+      "status": "PASS",
+      "result_hash": "927a8e9cb3fa949f8ae4b9efea925c37062af2edb2dabf73701affd45d3ab15b",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_DIFF_CHECK",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "summary": "git diff whitespace check returns PASS",
+      "status": "PASS",
+      "result_hash": "37d64e7ba3c55b3719e911211697321f32131a546f7acf27d56b1e2148989131",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_RESULT_FILE_TEXT_GUARD",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\npaths=[Path('control/locks/P4_SPEC_LOCK.json')]\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT')\nmanifest=json.loads((root/'CANDIDATE_MANIFEST.json').read_text())\npaths.extend(root / rel for rel in manifest['generated_outputs'])\npaths.extend(root / rel for rel in manifest.get('supporting_outputs', []))\nmarkers=('T'+'BD','TO'+'DO','FIX'+'ME','PLACE'+'HOLDER','TO_BE'+'_FILLED')\nfor path in paths:\n    text=path.read_text(encoding='utf-8')\n    if path.suffix=='.json':\n        json.loads(text)\n    upper=text.upper()\n    assert not any(marker in upper for marker in markers), path\n    for idx,line in enumerate(text.splitlines(), 1):\n        assert line == line.rstrip(' \\t'), f'{path}:{idx}'\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "created lock, generated result files, and supporting review files parse cleanly and pass text guard checks",
+      "status": "PASS",
+      "result_hash": "976be09888bdf75b3ff1acaa3a4712b4cccf109d69d7c4866c0f82399c03191b",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SUPPORTING_REPLAY_OBSERVATION_BOUNDARY",
+      "command": "python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT')\nmanifest=json.loads((root/'CANDIDATE_MANIFEST.json').read_text())\nassert 'VALIDATION_REPLAY_OBSERVATIONS.json' in manifest.get('supporting_outputs', [])\nassert 'VALIDATION_REPLAY_OBSERVATIONS.json' not in manifest['generated_outputs']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "replay observations are declared as supporting output and excluded from generated review subject files",
+      "status": "PASS",
+      "result_hash": "323af4b26488825c42bb79b1c502c838bd662644cd9de69858117f0a87fe8331",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_SPEC_LOCK_RESULT_REVIEW_BINDING",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT --review-decision build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+      "exit_code": 0,
+      "summary": "review decision binds the approved P4 lock creation result subject hash with zero findings",
+      "status": "PASS",
+      "result_hash": "a8b16ac504834a77a93d79bf0e9a0804d905eee4cea323c3d8ef927cb63a568f",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "tooling/create_spec_lock.py",
+    "control/schemas/spec_lock.schema.json",
+    "control/locks/P4_SPEC_LOCK.json"
+  ]
+}

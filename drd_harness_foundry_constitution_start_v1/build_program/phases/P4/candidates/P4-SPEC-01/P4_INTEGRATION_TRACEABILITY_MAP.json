@@ -1,0 +1,71 @@
+{
+  "traceability_id": "P4-SPEC-01-TRACEABILITY-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "rows": [
+    {
+      "trace_id": "P4INT-TRACE-001",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "complete DAG and Program Driver",
+      "spec_output": "P4_PROGRAM_DRIVER_MODEL.md",
+      "implementation_target": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "test_obligation": "repository/tests/p4/test_program_driver.py"
+    },
+    {
+      "trace_id": "P4INT-TRACE-002",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "drdctl run/review/resume/release",
+      "spec_output": "P4_INTEGRATION_ENTRY_CONTRACT.md",
+      "implementation_target": "repository/src/drd_harness/cli/main.py",
+      "test_obligation": "repository/tests/p4/test_cli_contracts.py"
+    },
+    {
+      "trace_id": "P4INT-TRACE-003",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "PRD Harness Adapter",
+      "spec_output": "P4_CLI_ADAPTER_CONTRACTS.json",
+      "implementation_target": "repository/src/drd_harness/adapters/prd_harness.py",
+      "test_obligation": "repository/tests/p4/test_input_adapters.py"
+    },
+    {
+      "trace_id": "P4INT-TRACE-004",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Markdown PRD Adapter",
+      "spec_output": "P4_CLI_ADAPTER_CONTRACTS.json",
+      "implementation_target": "repository/src/drd_harness/adapters/markdown_prd.py",
+      "test_obligation": "repository/tests/p4/test_input_adapters.py"
+    },
+    {
+      "trace_id": "P4INT-TRACE-005",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "integration layer cannot supplement business Contract",
+      "spec_output": "P4_INTEGRATION_PIPELINE_RULES.json",
+      "implementation_target": "repository/src/drd_harness/adapters/*",
+      "test_obligation": "adapter semantic boundary negative tests"
+    },
+    {
+      "trace_id": "P4INT-TRACE-006",
+      "source": "control/locks/P3_BUILD_LOCK.json",
+      "source_clause": "approved P3 build lock input",
+      "spec_output": "P4_INTEGRATION_ENTRY_CONTRACT.md",
+      "implementation_target": "P4 upstream lock binding",
+      "test_obligation": "P4 upstream lock hash drift rejects execution"
+    }
+  ],
+  "coverage_summary": {
+    "release_scope_items_owned_here": [
+      "DAG and Program Driver",
+      "drdctl command surface",
+      "PRD Harness Adapter",
+      "Markdown PRD Adapter",
+      "no business Contract supplementation"
+    ],
+    "release_scope_items_deferred": [
+      "review recovery and lock rebuild internals",
+      "golden, integration, and release suites",
+      "installation package and example project",
+      "release lock creation"
+    ]
+  },
+  "open_blockers": []
+}

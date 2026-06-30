@@ -1,0 +1,45 @@
+{
+  "workpack_id": "P4-SPEC-LOCK-CREATION-READINESS",
+  "phase": "P4",
+  "lane": "SPEC_LOCK_READINESS",
+  "status": "CANDIDATE_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS",
+  "upstream_candidate": "build_program/phases/P4/candidates/P4-SPEC-03",
+  "upstream_review_decision": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+  "upstream_review_decision_subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+  "generated_outputs": [
+    "SPEC_LOCK_INPUT_BUNDLE.json",
+    "SPEC_LOCK_CREATION_READINESS.md",
+    "SPEC_LOCK_DRY_RUN_VALIDATION_REPORT.json",
+    "SPEC_LOCK_TOOLING_COMPATIBILITY_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "PENDING_HUMAN_REVIEW",
+  "review_decision": null,
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "NOT_CREATED_READINESS_ONLY",
+  "created_lock": null,
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/**",
+    "repository/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md",
+    "build_program/phases/P4/candidates/P4-SPEC-01/**",
+    "build_program/phases/P4/candidates/P4-SPEC-02/**",
+    "build_program/phases/P4/candidates/P4-SPEC-03/**"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Human review P4-SPEC-LOCK-CREATION-READINESS. Do not create P4_SPEC_LOCK until the user explicitly requests lock creation."
+}

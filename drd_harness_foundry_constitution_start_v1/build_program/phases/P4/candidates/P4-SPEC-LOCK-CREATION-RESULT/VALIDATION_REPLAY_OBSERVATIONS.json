@@ -1,0 +1,23 @@
+{
+  "observation_id": "P4-SPEC-LOCK-CREATION-RESULT-REPLAY-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-LOCK-CREATION-RESULT",
+  "status": "RECORDED_SUPPORTING_ONLY",
+  "subject_hash_after_generation": "9578f2e8775cb06d77f00b33ae4d5d701bdcf3f7c27ecc4efe2b2fa6e4dd0a3b",
+  "supporting_only": true,
+  "excluded_from_generated_outputs": true,
+  "observations": [
+    {
+      "command": "python3 tooling/create_spec_lock.py --phase P4 --input-bundle build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json --output control/locks/P4_SPEC_LOCK.json",
+      "exit_code": 0,
+      "stdout_excerpt": "SPEC_LOCK CREATED: control/locks/P4_SPEC_LOCK.json",
+      "stderr_excerpt": ""
+    },
+    {
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT",
+      "exit_code": 0,
+      "stdout_excerpt": "{\"command\": \"candidate-check\", \"findings\": [], \"status\": \"PASS\", \"subject_hash\": \"9578f2e8775cb06d77f00b33ae4d5d701bdcf3f7c27ecc4efe2b2fa6e4dd0a3b\"}",
+      "stderr_excerpt": ""
+    }
+  ]
+}

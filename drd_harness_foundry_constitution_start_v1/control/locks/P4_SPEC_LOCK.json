@@ -1,0 +1,287 @@
+{
+  "lock_id": "P4-SPEC-LOCK-001",
+  "phase": "P4",
+  "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+  "files": [
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P4-SPEC-01",
+      "candidate_path": "build_program/phases/P4/candidates/P4-SPEC-01",
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+      "review_decision": {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+        "decision_id": "P4-SPEC-01-REVIEW-001",
+        "sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_ENTRY_CONTRACT.md",
+          "sha256": "86e77b36a41e0cc142cf80da12c1d9718e7d8f80ff90ac2d605e7ef6c14f57b1"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_PROGRAM_DRIVER_MODEL.md",
+          "sha256": "a44c3ff058025d9cc877c579c8646a8bf9b89afb5e6305a24248d239c3137182"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_CLI_ADAPTER_CONTRACTS.json",
+          "sha256": "f77dd55c48b5a82cb9db460f430d2e81d076fc274f1e631911f8934e046e2bf8"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_PIPELINE_RULES.json",
+          "sha256": "425a5cbead4b1d624bd200583c9a13552622eb2d3a9142eb14dca5388276ca46"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_VALIDATION_MATRIX.json",
+          "sha256": "673c7ed9f983154aed1757a265e311da410cb9dd4cf91c5a74dc6919b5f51ce4"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_TRACEABILITY_MAP.json",
+          "sha256": "a7d383d1de303ddcd2430ed1689cbee2adf3afbf94ae03769959d775e06450fd"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/P4_INTEGRATION_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "8de0fe90408d670230c5a0d3fdba94dc3287e64688dbee66862ec7a040fbc2c5"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/VALIDATION_EVIDENCE.json",
+          "sha256": "682ffb0fb73162aaf5a58900766d5203a538fde468a82d49c78cf5460284335c"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/SCOPE_REPORT.json",
+          "sha256": "ad6a17f68642268eb93600d0cd03d4220d1823ef86416f970f33d2719341c2d3"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/CANDIDATE_MANIFEST.json",
+          "sha256": "080924febcf5cca1a8047f5064c8121a2c1c7f3da3f7a571595870ee6afe1925"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/PART_SELF_CHECK.md",
+          "sha256": "535e4507c34312a401976791560d5342391cfc68bc9223df1e2ca74697d6d761"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-01/HANDOFF.md",
+          "sha256": "02eee862aeb372808d1abff1ce2ae4ecdc44459ae92b7c6f8dd3f7b7ae0bff23"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P4-SPEC-02",
+      "candidate_path": "build_program/phases/P4/candidates/P4-SPEC-02",
+      "subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+      "review_decision": {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+        "decision_id": "P4-SPEC-02-REVIEW-001",
+        "sha256": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_RESUME_CONTRACT.md",
+          "sha256": "87aaffdbd2123f252e4d7c35d26220723bde93b9b7b5de6a0effb41d9cf2c4ad"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_STATE_MODEL.md",
+          "sha256": "8cffc09e0255800f96149c6858c52dbc42f7c78aff4fc5b64daf92da11598609"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_ARTIFACT_CONTRACTS.json",
+          "sha256": "4f8fecffc808d6c68241e47fa0c430a255ff9c949ee97ad57115e45d1f177ad9"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_PIPELINE_RULES.json",
+          "sha256": "0ad31bd59d582945ef1025736e83b734e91f849b0ab7f967f091ed073fbf16ce"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_VALIDATION_MATRIX.json",
+          "sha256": "4fe7914bb79fe6618ad654776059e6d7947bf01bc17630a3da9743e267f2a6d0"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_TRACEABILITY_MAP.json",
+          "sha256": "dc34f01b8b006c3ce8c5e958e6b6a59a033bddcb05d939f4212366b0d3315a29"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/P4_RECOVERY_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "cee9276024be99f821abef0c527925a0ca54424a536ed6b00af9487119954799"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/VALIDATION_EVIDENCE.json",
+          "sha256": "8b83aee19e7d7997e53650354c70a9d2d4e817f89deb8c24e033b1439cd48fed"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/SCOPE_REPORT.json",
+          "sha256": "47acffea20cce67f264241d3fe2146d5801f31e553fefaaf78bd474b3fa3be7e"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/CANDIDATE_MANIFEST.json",
+          "sha256": "6405a1f63e212e9238c213dd075616e310c3fd2a5779cd69a8ec14cc23dc17ab"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/PART_SELF_CHECK.md",
+          "sha256": "91a3c240079b01b8336201d98d00c2ee95cf340c08ed2c42cb282cdecec3d121"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-02/HANDOFF.md",
+          "sha256": "835964c886f1f4e1be0a68bb68c0a9cfc284d040bdc4c545d8f683c29512b8f3"
+        }
+      ]
+    },
+    {
+      "entry_type": "approved_spec_candidate",
+      "spec_part": "P4-SPEC-03",
+      "candidate_path": "build_program/phases/P4/candidates/P4-SPEC-03",
+      "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+      "review_decision": {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+        "decision_id": "P4-SPEC-03-REVIEW-001",
+        "sha256": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164"
+      },
+      "generated_outputs": [
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_READINESS_CONTRACT.md",
+          "sha256": "55f4440cf04b8aa84130aef074a7af64184e220647a29084eb5d79b2bce92798"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_TEST_SUITE_CONTRACTS.json",
+          "sha256": "e992235c88df5ceaf8468fb5566681d8f452f952b0157c1484583dcaeabdc4d2"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_PACKAGING_RELEASE_MODEL.md",
+          "sha256": "0eaf90f228c1102bc9a4e950a45f852ab53718a186922aafa99436570e8534c6"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_ARTIFACT_CONTRACTS.json",
+          "sha256": "3e6a18e16b235afa4dd78e34d2513ef0d84ba71f99df0571d37475de683cf407"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_PIPELINE_RULES.json",
+          "sha256": "45b6d49c9b8e5975e85669976b00b2a301e26d38b5f0ffa87a9ea0a45bf047a3"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_MIGRATION_COVERAGE_MAP.json",
+          "sha256": "d80467465fdfa5f22c88d98b282134f70e897d910ffb441b057cdd60fdb8d090"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_VALIDATION_MATRIX.json",
+          "sha256": "000f2fa84087ba54f5370753cba5838fdbbc212474d5901570f6960fc6df6970"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_TRACEABILITY_MAP.json",
+          "sha256": "39e1f6f595dc9da54907c3b25711791228459d6255656270dc4545d2d3fad7b2"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+          "sha256": "b2ac5cdc643758ff021f04a5a5c7f55295b8092aff5d2c668f3ea5b83dca90dc"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/VALIDATION_EVIDENCE.json",
+          "sha256": "b034e0ee797cde48f4eeb2b6c73b4cbaced2f6931e78455c0cc82eef72d1af96"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/SCOPE_REPORT.json",
+          "sha256": "e52408d83b13c5d9c453bf03913d23bc814ef7c329ac726a55f227ac57d71206"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/CANDIDATE_MANIFEST.json",
+          "sha256": "0809672a2304ec49180f53f33865b0bb14e2fd4ad8c52c16a45f2543c802a659"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/PART_SELF_CHECK.md",
+          "sha256": "a04977679402b6190d4cbfd1f8d099766009d700de266631a196ac682d7e89fb"
+        },
+        {
+          "path": "build_program/phases/P4/candidates/P4-SPEC-03/HANDOFF.md",
+          "sha256": "9999abb1a9b75b2bf2c41fcc084cac553dedc70562aba3b73000862416fa9adb"
+        }
+      ]
+    }
+  ],
+  "review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+  "review_decision_file_root_sha256": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165",
+  "source_candidate": {
+    "candidate_path": "build_program/phases/P4/candidates/P4-SPEC-03",
+    "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+    "review_decision_path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+    "review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+    "generated_outputs": [
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_READINESS_CONTRACT.md",
+        "sha256": "55f4440cf04b8aa84130aef074a7af64184e220647a29084eb5d79b2bce92798"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_TEST_SUITE_CONTRACTS.json",
+        "sha256": "e992235c88df5ceaf8468fb5566681d8f452f952b0157c1484583dcaeabdc4d2"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_PACKAGING_RELEASE_MODEL.md",
+        "sha256": "0eaf90f228c1102bc9a4e950a45f852ab53718a186922aafa99436570e8534c6"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_ARTIFACT_CONTRACTS.json",
+        "sha256": "3e6a18e16b235afa4dd78e34d2513ef0d84ba71f99df0571d37475de683cf407"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_PIPELINE_RULES.json",
+        "sha256": "45b6d49c9b8e5975e85669976b00b2a301e26d38b5f0ffa87a9ea0a45bf047a3"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_MIGRATION_COVERAGE_MAP.json",
+        "sha256": "d80467465fdfa5f22c88d98b282134f70e897d910ffb441b057cdd60fdb8d090"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_VALIDATION_MATRIX.json",
+        "sha256": "000f2fa84087ba54f5370753cba5838fdbbc212474d5901570f6960fc6df6970"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_TRACEABILITY_MAP.json",
+        "sha256": "39e1f6f595dc9da54907c3b25711791228459d6255656270dc4545d2d3fad7b2"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+        "sha256": "b2ac5cdc643758ff021f04a5a5c7f55295b8092aff5d2c668f3ea5b83dca90dc"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/VALIDATION_EVIDENCE.json",
+        "sha256": "b034e0ee797cde48f4eeb2b6c73b4cbaced2f6931e78455c0cc82eef72d1af96"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/SCOPE_REPORT.json",
+        "sha256": "e52408d83b13c5d9c453bf03913d23bc814ef7c329ac726a55f227ac57d71206"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/CANDIDATE_MANIFEST.json",
+        "sha256": "0809672a2304ec49180f53f33865b0bb14e2fd4ad8c52c16a45f2543c802a659"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/PART_SELF_CHECK.md",
+        "sha256": "a04977679402b6190d4cbfd1f8d099766009d700de266631a196ac682d7e89fb"
+      },
+      {
+        "path": "build_program/phases/P4/candidates/P4-SPEC-03/HANDOFF.md",
+        "sha256": "9999abb1a9b75b2bf2c41fcc084cac553dedc70562aba3b73000862416fa9adb"
+      }
+    ]
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "input_bundle": {
+    "path": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "293adadd91b104315dcab991947246121a0bdc5f237a756f280abe3149335efe"
+  },
+  "created_by_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "created_by_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a"
+  },
+  "root_algorithm": "sha256(join_lines(spec_part + NUL + subject_hash))",
+  "review_file_root_algorithm": "sha256(join_lines(spec_part + NUL + review_decision_file_sha256))",
+  "validation": {
+    "candidate_subject_bindings": "PASS",
+    "phase_review_binding": "PASS",
+    "schema_minimum": "PASS"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "result_id": "P4-SPEC-LOCK-CREATION-RESULT-001",
+  "phase": "P4",
+  "status": "SPEC_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+    "review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+    "review_decision_file_root_sha256": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165",
+    "file_entry_count": 3,
+    "covered_spec_parts": [
+      "P4-SPEC-01",
+      "P4-SPEC-02",
+      "P4-SPEC-03"
+    ]
+  },
+  "creation_tool": {
+    "path": "tooling/create_spec_lock.py",
+    "sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "lock_recorded_sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "runtime_kind": "python",
+    "runtime_version": "3.9.6"
+  },
+  "source_input_bundle": {
+    "path": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "sha256": "293adadd91b104315dcab991947246121a0bdc5f237a756f280abe3149335efe",
+    "lock_recorded_path": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS/SPEC_LOCK_INPUT_BUNDLE.json",
+    "lock_recorded_sha256": "293adadd91b104315dcab991947246121a0bdc5f237a756f280abe3149335efe",
+    "source_readiness_candidate": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-READINESS"
+  },
+  "schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "lock_recorded_sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec"
+  },
+  "phase_readiness_review": {
+    "path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+    "sha256": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+    "review_id": "P4-SPEC-03-REVIEW-001",
+    "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+    "decision": "APPROVED"
+  },
+  "authorized_by_user_request": {
+    "request_text": "lock, continue",
+    "request_interpretation": "explicit authorization to create control/locks/P4_SPEC_LOCK.json from the P4 lock readiness bundle",
+    "request_recorded_in_input_bundle": false
+  },
+  "not_a_build_lock": true,
+  "not_an_implementation_authorization": true,
+  "verification_bindings": {
+    "lock_file_sha256_matches_current_file": true,
+    "input_bundle_sha256_matches_current_file_and_lock_record": true,
+    "schema_sha256_matches_current_file_and_lock_record": true,
+    "tool_sha256_matches_current_file_and_lock_record": true,
+    "phase_readiness_review_sha256_matches_current_file": true,
+    "phase_readiness_review_subject_hash_matches_current_file": true,
+    "lock_generated_output_hashes_match_current_files": true,
+    "lock_review_decision_hashes_match_current_files": true,
+    "result_candidate_text_guard_checked": true,
+    "supporting_replay_observations_declared": true
+  },
+  "immutability_check": {
+    "output_path": "control/locks/P4_SPEC_LOCK.json",
+    "overwrite_attempt_expected_to_fail": true,
+    "tool_write_new_file_only": true,
+    "lock_sha256_before_overwrite_guard": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7"
+  },
+  "next_authorization_required": {
+    "p4_lock_result_human_review_requires_explicit_decision": false,
+    "p4_implementation_requires_explicit_authorization": true,
+    "p4_build_lock_requires_explicit_authorization": true,
+    "release_lock_requires_explicit_authorization": true,
+    "root_phase_file_update_requires_explicit_authorization": true
+  },
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "result_approval_boundary": {
+    "approves_created_spec_lock_result": true,
+    "creates_build_lock": false,
+    "authorizes_implementation": false,
+    "updates_root_phase_files": false
+  },
+  "replay_observations": {
+    "path": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/VALIDATION_REPLAY_OBSERVATIONS.json",
+    "supporting_output_only": true,
+    "excluded_from_review_subject_hash": true,
+    "reason": "Command stdout, stderr, and final subject hash are recorded outside generated_outputs to avoid self-referential subject hash churn."
+  },
+  "approval_notes": [
+    "Approved by explicit user pass after P4 SPEC_LOCK creation result review.",
+    "This approval validates that control/locks/P4_SPEC_LOCK.json was created by the approved Python lock creation tool and is independently hash-bound.",
+    "This approval does not create P4_BUILD_LOCK, implement repository code, update root P4 phase files, or create DRD_HARNESS_RELEASE_LOCK."
+  ]
+}

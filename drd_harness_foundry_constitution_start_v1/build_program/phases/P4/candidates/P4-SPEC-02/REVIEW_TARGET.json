@@ -1,0 +1,34 @@
+{
+  "target_id": "P4-SPEC-02-REVIEW-TARGET-001",
+  "workpack_id": "P4-SPEC-02",
+  "phase": "P4",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-SPEC-02",
+  "review_subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P4_RECOVERY_RESUME_CONTRACT.md",
+    "P4_RECOVERY_STATE_MODEL.md",
+    "P4_RECOVERY_ARTIFACT_CONTRACTS.json",
+    "P4_RECOVERY_PIPELINE_RULES.json",
+    "P4_RECOVERY_VALIDATION_MATRIX.json",
+    "P4_RECOVERY_TRACEABILITY_MAP.json",
+    "P4_RECOVERY_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does P4-SPEC-02 bind approved P4-SPEC-01 and current P3_BUILD_LOCK as upstream authority?",
+    "Does recovery fail closed when run state, review binding, lock hash, or write scope evidence is missing or changed?",
+    "Does resume distinguish skip, replay, Human Gate, invalidation block, lock boundary block, and unsafe state block?",
+    "Does review recovery detect stale or missing review bindings without creating approval?",
+    "Does lock rebuild remain request-only and dry-run-only without writing locks?",
+    "Does this candidate avoid repository implementation, P4 locks, release lock creation, P4-SPEC-01 mutation, root P4 file mutation, commit, and push?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

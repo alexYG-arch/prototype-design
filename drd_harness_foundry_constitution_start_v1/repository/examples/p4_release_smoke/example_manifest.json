@@ -1,0 +1,23 @@
+{
+  "example_id": "p4-release-smoke",
+  "example_path": "repository/examples/p4_release_smoke",
+  "source_input_refs": [
+    {
+      "path": "repository/examples/p4_release_smoke/source_prd.md",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "expected_commands": [
+    "drd-harness run --dry-run"
+  ],
+  "expected_outputs": [
+    {
+      "path": "repository/examples/p4_release_smoke/expected/status_payload.json",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "smoke_command": "drd-harness run --dry-run",
+  "smoke_status": "PASS",
+  "smoke_report_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "cleanup_policy": "remove_generated_outputs"
+}

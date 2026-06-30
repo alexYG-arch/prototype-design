@@ -1,0 +1,126 @@
+{
+  "report_id": "P4-SPEC-LOCK-VALIDATION-REPORT-001",
+  "phase": "P4",
+  "status": "PASS",
+  "summary": {
+    "lock_exists": true,
+    "lock_json_valid": true,
+    "schema_minimum_valid": true,
+    "file_entry_count": 3,
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+    "review_decision_file_root_sha256": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165",
+    "lock_sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "input_bundle_sha256": "293adadd91b104315dcab991947246121a0bdc5f237a756f280abe3149335efe",
+    "schema_sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "tool_sha256": "053ea4c3cd333e38f33ee91f7cc1f4e26202786e3f1e567d2f425f20b058a58a",
+    "phase_readiness_review_sha256": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+    "generated_output_hashes_verified": true,
+    "review_decision_hashes_verified": true,
+    "overwrite_guard_verified": true,
+    "lock_result_review_status": "APPROVED_BY_HUMAN",
+    "result_candidate_text_guard_verified": true,
+    "supporting_replay_observations_declared": true,
+    "human_review_decision_recorded": true
+  },
+  "checks": [
+    {
+      "check_id": "P4LOCK-RESULT-001",
+      "name": "Canonical lock file exists",
+      "status": "PASS",
+      "details": "control/locks/P4_SPEC_LOCK.json exists."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-002",
+      "name": "Lock identifier and phase",
+      "status": "PASS",
+      "details": "lock_id is P4-SPEC-LOCK-001 and phase is P4."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-003",
+      "name": "Approved spec root binding",
+      "status": "PASS",
+      "details": "root_sha256 equals the approved P4 spec input root."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-004",
+      "name": "Review decision file root binding",
+      "status": "PASS",
+      "details": "review_decision_file_root_sha256 equals the P4 review decision file root."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-005",
+      "name": "Phase review decision binding",
+      "status": "PASS",
+      "details": "review_decision_hash equals the approved P4 release readiness review decision file hash."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-006",
+      "name": "Tool identity binding",
+      "status": "PASS",
+      "details": "created_by_tool.sha256 equals the current tooling/create_spec_lock.py hash."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-007",
+      "name": "Schema minimum validation",
+      "status": "PASS",
+      "details": "The generated lock contains lock_id, phase, root_sha256, files, and review_decision_hash."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-008",
+      "name": "Lock file hash binding",
+      "status": "PASS",
+      "details": "SPEC_LOCK_CREATION_RESULT.json created_lock.sha256 equals the current control/locks/P4_SPEC_LOCK.json sha256."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-009",
+      "name": "Input bundle, schema, and tool hash binding",
+      "status": "PASS",
+      "details": "Input bundle, schema, and tool hashes match current files and values recorded inside the lock."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-010",
+      "name": "Phase readiness review binding",
+      "status": "PASS",
+      "details": "The P4-SPEC-03 review file hash and subject hash match the current approved review decision."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-011",
+      "name": "Per-file lock entry binding",
+      "status": "PASS",
+      "details": "Every generated output and review decision file listed inside the lock hashes to the value recorded by the lock."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-012",
+      "name": "No-overwrite guard",
+      "status": "PASS",
+      "details": "A second create_spec_lock.py write to the same output path is expected to fail and leave the existing lock hash unchanged."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-013",
+      "name": "No implementation authorization",
+      "status": "PASS",
+      "details": "The result remains not a BUILD_LOCK and not an implementation authorization."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-014",
+      "name": "Generated result file text guard",
+      "status": "PASS",
+      "details": "The created lock, review target, and generated result files parse cleanly and pass line-level text guard checks."
+    },
+    {
+      "check_id": "P4LOCK-RESULT-015",
+      "name": "Replay observations subject boundary",
+      "status": "PASS",
+      "details": "Final command stdout, stderr, and subject hash are recorded in a supporting-only replay observation file so the generated review subject does not self-reference its own hash."
+    }
+  ],
+  "blocking_findings": [],
+  "remaining_followups": [
+    "P4 BUILD_LOCK is not created.",
+    "P4 implementation workpacks still require explicit next-stage authorization.",
+    "DRD_HARNESS_RELEASE_LOCK is not created.",
+    "Root P4 phase files are not updated by this result candidate.",
+    "P4 lock creation result is approved; next-stage work still requires explicit authorization."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

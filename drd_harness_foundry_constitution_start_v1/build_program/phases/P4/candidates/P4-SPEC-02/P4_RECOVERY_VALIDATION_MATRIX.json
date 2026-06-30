@@ -1,0 +1,85 @@
+{
+  "matrix_id": "P4-SPEC-02-RECOVERY-VALIDATION-MATRIX-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "validation_rows": [
+    {
+      "validation_id": "P4REC-VAL-001",
+      "subject": "upstream_review_and_lock_binding",
+      "requirement": "P4-SPEC-02 binds the approved P4-SPEC-01 review decision and current P3_BUILD_LOCK.",
+      "evidence": "sha256 checks in VALIDATION_EVIDENCE.json",
+      "negative_case": "P4-SPEC-01 review decision or P3_BUILD_LOCK hash drift must fail"
+    },
+    {
+      "validation_id": "P4REC-VAL-002",
+      "subject": "run_state_required_fields",
+      "requirement": "Resume fails closed when required run state evidence is missing.",
+      "evidence": "future recovery state tests remove each required field",
+      "negative_case": "resume proceeds from incomplete state"
+    },
+    {
+      "validation_id": "P4REC-VAL-003",
+      "subject": "skip_requires_hash_match",
+      "requirement": "Skip is allowed only when inputs, locks, DAG, plan, outputs, and write scope match recorded evidence.",
+      "evidence": "future resume tests compare prior and current hashes",
+      "negative_case": "node is skipped after output or dependency drift"
+    },
+    {
+      "validation_id": "P4REC-VAL-004",
+      "subject": "replay_scope_boundary",
+      "requirement": "Replay writes only to declared output paths and stops on undeclared writes.",
+      "evidence": "future resume tests inject an out-of-scope write",
+      "negative_case": "replay mutates prior run evidence or root phase files"
+    },
+    {
+      "validation_id": "P4REC-VAL-005",
+      "subject": "review_recovery_gate",
+      "requirement": "Missing, stale, or mismatched review decisions produce Human Gate packets rather than approval.",
+      "evidence": "future review recovery tests alter reviewed subject hash",
+      "negative_case": "recovery creates or edits REVIEW_DECISION.json"
+    },
+    {
+      "validation_id": "P4REC-VAL-006",
+      "subject": "lock_rebuild_request_only",
+      "requirement": "Lock rebuild produces request and dry-run evidence only; no lock file is written.",
+      "evidence": "future lock rebuild tests assert control/locks is unchanged",
+      "negative_case": "recovery writes P4_SPEC_LOCK, P4_BUILD_LOCK, or release lock"
+    },
+    {
+      "validation_id": "P4REC-VAL-007",
+      "subject": "invalidation_reason_codes",
+      "requirement": "Every drift report uses the declared invalidation_record shape with a stable reason code, prior value, current value, affected node, affected path, stop rule, and Human Gate flag.",
+      "evidence": "future invalidation tests assert structured records",
+      "negative_case": "drift is emitted only as prose"
+    },
+    {
+      "validation_id": "P4REC-VAL-007A",
+      "subject": "review_recovery_missing_decision_shape",
+      "requirement": "Missing review decisions use review_decision_status=MISSING with nullable review_decision_path, findings evidence, and human_gate_required=true.",
+      "evidence": "future review recovery tests assert missing decision packet shape",
+      "negative_case": "missing review decision is encoded as empty string, fake path, or omitted field"
+    },
+    {
+      "validation_id": "P4REC-VAL-008",
+      "subject": "semantic_boundary",
+      "requirement": "Recovery cannot create product requirements, page elements, layout rules, or business contracts.",
+      "evidence": "future negative tests reject forbidden output keys",
+      "negative_case": "resume fills missing product meaning to keep running"
+    },
+    {
+      "validation_id": "P4REC-VAL-009",
+      "subject": "candidate_scope",
+      "requirement": "P4-SPEC-02 candidate only writes its own candidate directory.",
+      "evidence": "SCOPE_REPORT.json",
+      "negative_case": "candidate mutates repository code, locks, prior phases, or root P4 files"
+    }
+  ],
+  "required_future_test_files": [
+    "repository/tests/p4/test_recovery_state_model.py",
+    "repository/tests/p4/test_resume_decisions.py",
+    "repository/tests/p4/test_review_recovery.py",
+    "repository/tests/p4/test_lock_rebuild_requests.py",
+    "repository/tests/p4/test_recovery_invalidation.py"
+  ],
+  "open_blockers": []
+}

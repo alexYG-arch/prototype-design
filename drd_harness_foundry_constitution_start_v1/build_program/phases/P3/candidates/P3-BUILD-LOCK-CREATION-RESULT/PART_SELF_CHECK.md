@@ -9,9 +9,9 @@
 
 ## Result
 
-- BUILD_LOCK file hash: `917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27`
-- BUILD_LOCK root hash: `a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554`
-- Bound git HEAD: `d7a35b47009b80df18bdec109c1133f038a66c4c`
+- BUILD_LOCK file hash: `52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e`
+- BUILD_LOCK root hash: `0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f`
+- Bound git commit: `f966182b4670520d2ba69e6f69eecca0bbc1d9b3`
 - SPEC_LOCK file hash: `d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1`
 - File entries bound: 202
 - Test result records bound: 4
@@ -24,6 +24,7 @@
 - Strict BUILD_LOCK key shape: PASS
 - Current file hashes match lock entries: PASS
 - P3 candidate review binding aggregate: PASS
+- Bound git commit contains locked P3 runtime inputs: PASS
 
 ## Boundary
 

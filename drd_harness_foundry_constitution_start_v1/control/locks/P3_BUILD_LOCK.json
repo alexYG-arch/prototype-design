@@ -1,7 +1,7 @@
 {
   "lock_id": "P3-BUILD-LOCK-001",
   "phase": "P3",
-  "git_commit": "d7a35b47009b80df18bdec109c1133f038a66c4c",
+  "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3",
   "spec_lock_hash": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
   "files": [
     {
@@ -838,7 +838,7 @@
   "validator_identity_hashes": [
     "eee76052b32ffbc1d3fa1e2bc656205a9e842d1a9139b2c000ccb2f2b4c1a4ad"
   ],
-  "root_sha256": "a92e42275b4cd7613a1fefdf3e927948b3be77b326d44c14691fa901d5e07554",
+  "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
   "invalidates_on": [
     "P3_SPEC_LOCK changes: d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
     "Any file entry in P3_BUILD_LOCK.files changes",

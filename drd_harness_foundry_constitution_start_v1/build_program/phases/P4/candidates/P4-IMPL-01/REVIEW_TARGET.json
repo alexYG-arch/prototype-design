@@ -1,0 +1,43 @@
+{
+  "target_id": "P4-IMPL-01-REVIEW-TARGET-001",
+  "workpack_id": "P4-IMPL-01",
+  "phase": "P4",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-IMPL-01",
+  "review_subject_hash": "0e8d1a6d5b79d8ac869e51b64b0efa1660d4fe327413523c4b7e0d721c85a1e2",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the implementation stay inside P4-IMPL-01 and the P4-SPEC-01 integration entry intent?",
+    "Does the CLI remain thin and avoid review decision, lock, promotion, package, or semantic creation?",
+    "Do adapters preserve source hashes and avoid product semantic outputs?",
+    "Does the driver stop at Human Gate, lock gate, release lock, output scope, and resume policy boundaries?",
+    "Do targeted tests, full regression, runtime-boundary-check, and git diff check pass?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json",
+  "supporting_sections": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true,
+  "resolved_decision": "P4-IMPL-01 approved by Human Gate; P4-IMPL-02 remains separately bounded to recovery/resume intent.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ]
+}

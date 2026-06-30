@@ -1,0 +1,38 @@
+{
+  "decision_id": "P4-SPEC-LOCK-CREATION-RESULT-REVIEW-001",
+  "subject": "P4-SPEC-LOCK-CREATION-RESULT",
+  "subject_hash": "82edce48780bebe4a80ed470a1a38f4198d2394ffb5e4f9099ac1c1328549dac",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-29",
+  "basis": "User said pass after reviewing the P4 SPEC_LOCK creation result candidate. This approval covers the created P4 SPEC_LOCK result only.",
+  "approved_sections": [
+    "SPEC_LOCK_CREATION_RESULT.json",
+    "SPEC_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "control/locks/P4_SPEC_LOCK.json",
+    "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/**"
+  ],
+  "approved_lock": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+    "review_decision_file_root_sha256": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165"
+  },
+  "next_authorized_workpack": "P4_IMPLEMENTATION_OR_BUILD_LOCK_AFTER_EXPLICIT_USER_REQUEST",
+  "source_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P4 SPEC_LOCK creation result review.",
+    "This approval validates that control/locks/P4_SPEC_LOCK.json was created by the approved Python lock creation tool and is independently hash-bound.",
+    "This approval does not create P4_BUILD_LOCK, implement repository code, update root P4 phase files, or create DRD_HARNESS_RELEASE_LOCK.",
+    "Any P4 implementation, build-lock, or release-lock work still requires explicit next-stage authorization."
+  ]
+}

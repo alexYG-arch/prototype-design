@@ -1,0 +1,113 @@
+{
+  "rules_id": "P4-SPEC-01-PIPELINE-RULES-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "ordered_steps": [
+    {
+      "step": 1,
+      "name": "bind_upstream_p3_build_lock",
+      "required_inputs": [
+        "control/locks/P3_BUILD_LOCK.json",
+        "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json"
+      ],
+      "stop_condition": "missing_or_unapproved_p3_build_lock"
+    },
+    {
+      "step": 2,
+      "name": "select_adapter",
+      "required_inputs": [
+        "adapter_id",
+        "source_ref"
+      ],
+      "stop_condition": "unknown_adapter_or_unreadable_source"
+    },
+    {
+      "step": 3,
+      "name": "normalize_source_evidence",
+      "required_outputs": [
+        "source_hash",
+        "normalization_report",
+        "unsupported_content_report"
+      ],
+      "stop_condition": "adapter_would_infer_product_semantics"
+    },
+    {
+      "step": 4,
+      "name": "build_program_dag",
+      "required_outputs": [
+        "dag_nodes",
+        "dag_edges",
+        "execution_plan"
+      ],
+      "stop_condition": "dag_has_cycle_or_unbound_input"
+    },
+    {
+      "step": 5,
+      "name": "dispatch_through_cli",
+      "required_outputs": [
+        "command_status_payload",
+        "written_paths"
+      ],
+      "stop_condition": "write_path_outside_declared_output"
+    },
+    {
+      "step": 6,
+      "name": "emit_review_or_lock_gate",
+      "required_outputs": [
+        "review_gate_refs",
+        "lock_gate_refs",
+        "findings"
+      ],
+      "stop_condition": "human_gate_or_lock_gate_required"
+    }
+  ],
+  "canonical_rules": [
+    {
+      "rule_id": "P4INT-RULE-001",
+      "requirement": "CLI code remains thin and delegates validation or orchestration to typed modules.",
+      "failure_mode": "command handler performs product inference or lock mutation directly"
+    },
+    {
+      "rule_id": "P4INT-RULE-002",
+      "requirement": "Adapters preserve source hashes and emit normalization evidence.",
+      "failure_mode": "adapter emits downstream product semantics without source intake"
+    },
+    {
+      "rule_id": "P4INT-RULE-003",
+      "requirement": "Program DAG nodes and edges are deterministic and acyclic.",
+      "failure_mode": "replay produces different node ids or execution order"
+    },
+    {
+      "rule_id": "P4INT-RULE-004",
+      "requirement": "Commands stop at review, lock, release, and unresolved invalidation gates.",
+      "failure_mode": "command silently creates a decision, lock, promotion, package, or release"
+    },
+    {
+      "rule_id": "P4INT-RULE-005",
+      "requirement": "Every command emits structured status with exit code and findings.",
+      "failure_mode": "command only writes human text or hides failure evidence"
+    },
+    {
+      "rule_id": "P4INT-RULE-006",
+      "requirement": "Integration layer cannot add business contracts absent from source and locked stage evidence.",
+      "failure_mode": "adapter or driver creates product capability from formatting or CLI flags"
+    }
+  ],
+  "human_gate_triggers": [
+    "ambiguous_source_normalization",
+    "missing_upstream_lock",
+    "lock_creation_request",
+    "release_lock_request",
+    "write_path_outside_declared_output",
+    "adapter_requires_product_inference"
+  ],
+  "forbidden_actions": [
+    "create_P4_SPEC_LOCK",
+    "create_P4_BUILD_LOCK",
+    "create_DRD_HARNESS_RELEASE_LOCK",
+    "update_root_P4_phase_files",
+    "modify_P3_locks_or_candidates",
+    "implement_repository_code_from_this_spec_candidate"
+  ],
+  "open_blockers": []
+}

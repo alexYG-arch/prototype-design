@@ -1,0 +1,76 @@
+{
+  "evidence_id": "P4-IMPL-03-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-03",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4REL-VAL-002-GOLDEN-DETERMINISM",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_golden_regression.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Golden suite reports are deterministic, self-hash-valid, detect output drift, block update requests without rewriting expected outputs, and reject invalid hash shapes.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/suites.py",
+        "repository/tests/p4/test_golden_regression.py"
+      ],
+      "result_hash": "68cd588e0ac28c514668c9b79ce725ebeb1d0645d002f30cb381dbe9f7e4b97f",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REL-VAL-003-INTEGRATION-GATE-COVERAGE",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_integration_end_to_end.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Integration suite requires CLI, adapters, program driver, recovery, Human Gate, lock gate, and write scope evidence, blocks bypasses, and rejects non-machine-readable payload shapes.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/suites.py",
+        "repository/tests/p4/test_integration_end_to_end.py"
+      ],
+      "result_hash": "50b808b68b6c9b137ddd6301897f2f40b051463226f328bad4f4f67fc8d8b79b",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4REL-VAL-004-RELEASE-SUITE-REPORT-SHAPE",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4/test_release_readiness.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Release suite report shape requires package dry-run, example smoke, migration coverage, and release readiness evidence hashes while refusing publish, release-lock, and invalid evidence hash actions.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/suites.py",
+        "repository/tests/p4/test_release_readiness.py"
+      ],
+      "result_hash": "2d0c630ff7ef621656ce69e166254b89aa6dfbd1c8dd69ae623ec8f027b7fed0",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-03-RUNTIME-BOUNDARY",
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Runtime source has no construction authority imports or direct construction authority path reads.",
+      "evidence_files": [
+        "repository/src/drd_harness/release/suites.py"
+      ],
+      "result_hash": "f34cd51e57b22f7949af7af0e1fb723cf4c0b310b663a039108b78871ad06874",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4-IMPL-03-FULL-REGRESSION",
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Full repository test suite passed with 456 tests.",
+      "evidence_files": [
+        "build_program/phases/P4/candidates/P4-IMPL-03/TEST_REPORT.json"
+      ],
+      "result_hash": "4fbe263f1e2af6d5904a877e8480135177ee96dbb252350503c09066d9abfd58",
+      "result_hash_basis": "sha256(canonical_json({check, command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/release/suites.py",
+    "control/locks/P4_SPEC_LOCK.json"
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN"
+}

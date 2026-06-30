@@ -7,9 +7,17 @@ from json import JSONDecodeError
 from pathlib import Path
 from typing import Iterable, Optional
 
+from drd_harness.adapters.markdown_prd import adapt_markdown_prd
+from drd_harness.adapters.prd_harness import adapt_prd_harness_bundle
 from drd_harness.kernel.import_boundaries import (
     find_forbidden_imports,
     find_forbidden_runtime_reads,
+)
+from drd_harness.orchestrator.program_driver import (
+    build_status_payload,
+    plan_release_request,
+    plan_resume,
+    plan_run,
 )
 from drd_harness.orchestrator.workpacks import compute_workpack_readiness_state
 from drd_harness.validators.spec_validator import (
@@ -37,6 +45,36 @@ def build_parser() -> argparse.ArgumentParser:
     workpack = subparsers.add_parser("workpack-readiness")
     workpack.add_argument("workpack_json")
     workpack.set_defaults(func=_run_workpack_readiness)
+
+    run = subparsers.add_parser("run")
+    run.add_argument("--work-dir", required=True)
+    run.add_argument("--adapter-id", required=True, choices=["markdown_prd_adapter", "prd_harness_adapter"])
+    run.add_argument("--source-ref", required=True)
+    run.add_argument("--output-dir", required=True)
+    run.add_argument("--target-phase")
+    run.add_argument("--target-workpack")
+    run.add_argument("--dry-run", action="store_true")
+    run.set_defaults(func=_run_p4_run)
+
+    review = subparsers.add_parser("review")
+    review.add_argument("candidate_dir")
+    review.add_argument("--review-target")
+    review.add_argument("--review-decision")
+    review.set_defaults(func=_run_p4_review)
+
+    resume = subparsers.add_parser("resume")
+    resume.add_argument("--run-state-ref", required=True)
+    resume.add_argument("--requested-resume-node", required=True)
+    resume.add_argument("--dry-run", action="store_true")
+    resume.set_defaults(func=_run_p4_resume)
+
+    release = subparsers.add_parser("release")
+    release.add_argument("--lock-ref", action="append", default=[])
+    release.add_argument("--release-scope-ref", required=True)
+    release.add_argument("--evidence-bundle-ref", required=True)
+    release.add_argument("--package-target")
+    release.add_argument("--dry-run", action="store_true")
+    release.set_defaults(func=_run_p4_release)
     return parser
 
 
@@ -113,8 +151,108 @@ def _run_workpack_readiness(args) -> int:
     return 0 if not findings else 1
 
 
+def _run_p4_run(args) -> int:
+    try:
+        adapter_result = _adapt_source(args.adapter_id, Path(args.source_ref))
+        payload = plan_run(
+            work_dir=Path(args.work_dir),
+            adapter_result_manifest=adapter_result,
+            output_dir=Path(args.output_dir),
+            target_phase=args.target_phase,
+            target_workpack=args.target_workpack,
+            dry_run=args.dry_run,
+        )
+    except (OSError, UnicodeDecodeError, JSONDecodeError) as exc:
+        payload = build_status_payload(
+            command="run",
+            status="FAIL",
+            run_id="",
+            findings=[_finding("CLI-INPUT", str(args.source_ref), str(exc))],
+            exit_code=1,
+        )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_p4_review(args) -> int:
+    candidate_dir = Path(args.candidate_dir)
+    findings = []
+    try:
+        manifest = _read_json(candidate_dir / "CANDIDATE_MANIFEST.json")
+        outputs = manifest.get("generated_outputs", [])
+        subject_hash = compute_candidate_subject_hash(candidate_dir, outputs)
+    except (OSError, JSONDecodeError, ValueError) as exc:
+        payload = build_status_payload(
+            command="review",
+            status="FAIL",
+            run_id="",
+            findings=[_finding("CLI-INPUT", str(candidate_dir), str(exc))],
+            exit_code=1,
+        )
+        _emit(payload)
+        return 1
+
+    review_target_status = "NOT_SUPPLIED"
+    if args.review_target:
+        try:
+            _read_json(Path(args.review_target))
+            review_target_status = "PRESENT"
+        except (OSError, JSONDecodeError) as exc:
+            findings.append(_finding("CLI-INPUT", str(args.review_target), str(exc)))
+            review_target_status = "INVALID"
+
+    review_decision_binding_status = "NOT_SUPPLIED"
+    if args.review_decision:
+        try:
+            review_decision = _read_json(Path(args.review_decision))
+            binding_findings = validate_review_binding(candidate_dir, manifest, review_decision)
+            findings.extend(binding_findings)
+            review_decision_binding_status = "PASS" if not binding_findings else "FAIL"
+        except (OSError, JSONDecodeError) as exc:
+            findings.append(_finding("CLI-INPUT", str(args.review_decision), str(exc)))
+            review_decision_binding_status = "INVALID"
+
+    payload = build_status_payload(
+        command="review",
+        status="PASS" if not findings else "FAIL",
+        run_id=f"review-{subject_hash[:16]}",
+        findings=findings,
+        exit_code=0 if not findings else 1,
+        candidate_subject_hash=subject_hash,
+        review_sections=outputs,
+        review_target_status=review_target_status,
+        review_decision_binding_status=review_decision_binding_status,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_p4_resume(args) -> int:
+    payload = plan_resume(
+        args.run_state_ref,
+        args.requested_resume_node,
+        dry_run=args.dry_run,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_p4_release(args) -> int:
+    payload = plan_release_request(args.lock_ref, args.release_scope_ref, args.evidence_bundle_ref)
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
 def _read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _adapt_source(adapter_id: str, source_ref: Path) -> dict:
+    if adapter_id == "markdown_prd_adapter":
+        return adapt_markdown_prd(source_ref)
+    if adapter_id == "prd_harness_adapter":
+        return adapt_prd_harness_bundle(source_ref)
+    raise ValueError(f"unknown adapter_id: {adapter_id}")
 
 
 def _emit(payload: dict) -> None:

@@ -1,0 +1,38 @@
+{
+  "handoff_id": "P4-SPEC-01-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "implementation_workpack": "P4-IMPL-01",
+  "prerequisites": [
+    "P4-SPEC-01 approved by Human Gate",
+    "P4_SPEC_LOCK exists and includes P4-SPEC-01",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P4_SPEC_LOCK"
+  ],
+  "allowed_future_code_targets": [
+    "repository/src/drd_harness/orchestrator/program_driver.py",
+    "repository/src/drd_harness/adapters/prd_harness.py",
+    "repository/src/drd_harness/adapters/markdown_prd.py",
+    "repository/src/drd_harness/cli/main.py",
+    "repository/tests/p4/test_program_driver.py",
+    "repository/tests/p4/test_cli_contracts.py",
+    "repository/tests/p4/test_input_adapters.py",
+    "repository/tests/p4/test_integration_gate_stops.py"
+  ],
+  "forbidden_future_actions": [
+    "implementing before P4_SPEC_LOCK and explicit implementation authorization",
+    "creating P4_SPEC_LOCK from P4-SPEC-01 alone",
+    "creating P4_BUILD_LOCK",
+    "creating DRD_HARNESS_RELEASE_LOCK",
+    "modifying P3 locks or P3 candidates",
+    "adding product semantics in adapters or CLI"
+  ],
+  "minimum_implementation_tests": [
+    "program DAG determinism",
+    "CLI command status payload shape",
+    "adapter source hash preservation",
+    "adapter forbidden product semantic outputs",
+    "review, lock, release, and invalidation gate stop behavior"
+  ],
+  "candidate_check_command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-01",
+  "open_blockers": []
+}

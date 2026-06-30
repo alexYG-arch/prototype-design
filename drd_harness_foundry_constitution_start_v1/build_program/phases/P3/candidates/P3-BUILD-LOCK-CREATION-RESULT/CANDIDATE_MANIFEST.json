@@ -26,7 +26,7 @@
   "seal_state": "NOT_SEALED",
   "lock_creation_status": "BUILD_LOCK_CREATED_BY_PYTHON_RUNTIME",
   "created_lock": "control/locks/P3_BUILD_LOCK.json",
-  "created_lock_sha256": "917bac1f06fe702e441a3983c322da98754074dc0ddef78963462329868eed27",
+  "created_lock_sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
   "authorized_write_basis": "user_explicit_p3_build_lock_authorization_2026-06-26",
   "allowed_write_paths": [
     "control/locks/P3_BUILD_LOCK.json",

@@ -1,0 +1,71 @@
+{
+  "report_id": "P4-IMPL-04-SCOPE-REPORT-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-04",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "repository/examples/p4_release_smoke/README.md",
+    "repository/examples/p4_release_smoke/source_prd.md",
+    "repository/examples/p4_release_smoke/example_manifest.json",
+    "repository/tests/p4/test_packaging_manifest.py",
+    "repository/tests/p4/test_example_project_smoke.py",
+    "repository/tests/p4/test_migration_coverage.py"
+  ],
+  "allowed_supporting_paths": [
+    "build_program/phases/P4/candidates/P4-IMPL-04/**"
+  ],
+  "forbidden_write_paths": [
+    "control/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-01/**",
+    "build_program/phases/P4/candidates/P4-IMPL-02/**",
+    "build_program/phases/P4/candidates/P4-IMPL-03/**",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/RELEASE_SCOPE.md",
+    "repository/src/drd_harness/release/readiness.py",
+    "repository/src/drd_harness/release/lock_inputs.py",
+    "repository/src/drd_harness/release/suites.py"
+  ],
+  "actual_implementation_writes": [
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "repository/examples/p4_release_smoke/README.md",
+    "repository/examples/p4_release_smoke/source_prd.md",
+    "repository/examples/p4_release_smoke/example_manifest.json",
+    "repository/tests/p4/test_packaging_manifest.py",
+    "repository/tests/p4/test_example_project_smoke.py",
+    "repository/tests/p4/test_migration_coverage.py"
+  ],
+  "actual_supporting_writes": [
+    "build_program/phases/P4/candidates/P4-IMPL-04/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/TEST_REPORT.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-IMPL-04/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-IMPL-04/REVIEW_TARGET.json",
+    "build_program/phases/P4/candidates/P4-IMPL-04/REVIEW_DECISION.json"
+  ],
+  "forbidden_write_violations": [],
+  "control_lock_status": {
+    "p4_spec_lock_path": "control/locks/P4_SPEC_LOCK.json",
+    "used_as_input": true,
+    "modified_by_this_workpack": false,
+    "p4_build_lock_created": false,
+    "release_lock_created": false
+  },
+  "scope_notes": [
+    "P4-IMPL-04 owns only packaging.py, migration.py, the p4_release_smoke example fixture, and their three P4 tests.",
+    "No release readiness packet builder, release lock input bundle, release lock, package publishing, suite runner ownership, or root P4 phase file was modified.",
+    "Package and example functions emit validation or dry-run smoke reports only; they do not publish packages or create locks."
+  ],
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision_created": true
+}

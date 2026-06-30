@@ -1,0 +1,122 @@
+{
+  "contract_id": "P4-SPEC-03-TEST-SUITE-CONTRACTS-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "suite_families": [
+    {
+      "suite_id": "GOLDEN",
+      "purpose": "Verify deterministic canonical outputs for locked fixtures and stable program driver status payloads.",
+      "required_inputs": [
+        "approved_fixture_manifest",
+        "upstream_lock_refs",
+        "expected_output_hashes",
+        "golden_update_policy"
+      ],
+      "required_outputs": [
+        "golden_suite_report",
+        "fixture_hash_report",
+        "output_hash_comparison",
+        "unexpected_diff_report"
+      ],
+      "must_fail_when": [
+        "expected_output_missing",
+        "expected_output_changed_without_review",
+        "nondeterministic_status_payload",
+        "fixture_input_hash_drift"
+      ],
+      "forbidden_actions": [
+        "rewrite_expected_outputs_during_release_check",
+        "approve_golden_update",
+        "create_product_semantics"
+      ]
+    },
+    {
+      "suite_id": "INTEGRATION",
+      "purpose": "Verify CLI, adapters, program driver, recovery, review gates, lock gates, and declared write scopes work together.",
+      "required_inputs": [
+        "p4_spec_lock_ref",
+        "p4_build_lock_ref",
+        "adapter_fixture_bundle",
+        "review_fixture_bundle",
+        "recovery_fixture_bundle"
+      ],
+      "required_outputs": [
+        "integration_suite_report",
+        "command_status_payloads",
+        "gate_stop_report",
+        "write_scope_report"
+      ],
+      "must_fail_when": [
+        "cli_outputs_text_only_status",
+        "adapter_drops_source_hash",
+        "program_driver_bypasses_human_gate",
+        "recovery_replays_unbound_drift",
+        "lock_gate_is_bypassed"
+      ],
+      "forbidden_actions": [
+        "write_review_decision",
+        "create_or_rewrite_lock",
+        "publish_package",
+        "mutate_prior_phase_candidates"
+      ]
+    },
+    {
+      "suite_id": "RELEASE",
+      "purpose": "Verify package dry-run, example project smoke, migration coverage, and release readiness packet completeness.",
+      "required_inputs": [
+        "p4_build_lock_ref",
+        "package_manifest",
+        "example_project_manifest",
+        "migration_coverage_report",
+        "release_readiness_packet"
+      ],
+      "required_outputs": [
+        "release_suite_report",
+        "package_dry_run_report",
+        "example_project_smoke_report",
+        "release_readiness_verification"
+      ],
+      "must_fail_when": [
+        "package_manifest_missing_hash",
+        "example_project_smoke_fails",
+        "migration_coverage_has_unreviewed_blocker",
+        "release_readiness_packet_missing_gate",
+        "dirty_state_policy_violated"
+      ],
+      "forbidden_actions": [
+        "publish_package",
+        "create_DRD_HARNESS_RELEASE_LOCK",
+        "upload_artifacts_to_external_registry"
+      ]
+    }
+  ],
+  "shared_report_required_fields": [
+    "suite_id",
+    "run_id",
+    "command",
+    "input_hashes",
+    "upstream_lock_refs",
+    "status",
+    "findings",
+    "exit_code",
+    "started_at",
+    "finished_at",
+    "report_hash"
+  ],
+  "report_hash_policy": {
+    "algorithm": "sha256",
+    "canonicalization": "canonical JSON with UTF-8 bytes, sorted object keys, and compact separators",
+    "excluded_self_fields": [
+      "report_hash"
+    ],
+    "cross_report_rule": "A report hash must hash only the report being identified after excluding its own report_hash field."
+  },
+  "allowed_status_values": [
+    "PASS",
+    "FAIL",
+    "BLOCKED_HUMAN_REVIEW",
+    "BLOCKED_LOCK_BOUNDARY",
+    "BLOCKED_UNSAFE_STATE"
+  ],
+  "open_blockers": []
+}

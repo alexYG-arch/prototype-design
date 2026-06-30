@@ -1,0 +1,36 @@
+{
+  "target_id": "P4-SPEC-03-REVIEW-TARGET-001",
+  "workpack_id": "P4-SPEC-03",
+  "phase": "P4",
+  "lane": "SPEC",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-SPEC-03",
+  "review_subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "P4_RELEASE_READINESS_CONTRACT.md",
+    "P4_TEST_SUITE_CONTRACTS.json",
+    "P4_PACKAGING_RELEASE_MODEL.md",
+    "P4_RELEASE_ARTIFACT_CONTRACTS.json",
+    "P4_RELEASE_PIPELINE_RULES.json",
+    "P4_MIGRATION_COVERAGE_MAP.json",
+    "P4_RELEASE_VALIDATION_MATRIX.json",
+    "P4_RELEASE_TRACEABILITY_MAP.json",
+    "P4_RELEASE_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does P4-SPEC-03 bind approved P4-SPEC-02, approved P4-SPEC-01, and current P3_BUILD_LOCK as upstream authority?",
+    "Do golden, integration, and release suite contracts cover deterministic output, gate stops, package dry-run, example smoke, and readiness evidence?",
+    "Does v3.1 migration coverage force every legacy capability into a supported status with evidence and rationale?",
+    "Do package and example manifests have enough fields to validate path safety and smoke behavior?",
+    "Does release readiness distinguish eligibility from DRD_HARNESS_RELEASE_LOCK creation?",
+    "Does this candidate avoid repository implementation, lock creation, package publishing, prior candidate mutation, root P4 file mutation, commit, and push?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": "REVIEW_DECISION.json"
+}

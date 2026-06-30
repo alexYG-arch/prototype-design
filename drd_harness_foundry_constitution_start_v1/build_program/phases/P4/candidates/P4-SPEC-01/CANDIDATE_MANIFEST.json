@@ -1,0 +1,64 @@
+{
+  "workpack_id": "P4-SPEC-01",
+  "phase": "P4",
+  "lane": "SPEC",
+  "status": "APPROVED_BY_HUMAN",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-SPEC-01",
+  "upstream_transition": {
+    "from": "P3_BUILD_LOCK",
+    "to": "P4_SPEC",
+    "required_gate": "P3_BUILD_LOCK_CREATION_RESULT_APPROVED",
+    "gate_review_decision": "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "gate_review_decision_hash": "4dd59a16355e5dc5c549de47e5abd77c8ec39343e6592f0bc258c4269330d291",
+    "gate_review_subject_hash": "7df8777f54b17fd49f7c93078c92aa608d9ad5653dcbba29b7920e53e5282d01"
+  },
+  "upstream_build_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+  },
+  "owned_module": "integration_entry",
+  "owned_clauses": [
+    "P4-PROGRAM-DAG",
+    "P4-CLI-COMMAND-SURFACE",
+    "P4-INPUT-ADAPTERS"
+  ],
+  "generated_outputs": [
+    "P4_INTEGRATION_ENTRY_CONTRACT.md",
+    "P4_PROGRAM_DRIVER_MODEL.md",
+    "P4_CLI_ADAPTER_CONTRACTS.json",
+    "P4_INTEGRATION_PIPELINE_RULES.json",
+    "P4_INTEGRATION_VALIDATION_MATRIX.json",
+    "P4_INTEGRATION_TRACEABILITY_MAP.json",
+    "P4_INTEGRATION_IMPLEMENTATION_HANDOFF.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json",
+    "REVIEW_DECISION.json"
+  ],
+  "approval_state": "APPROVED_BY_HUMAN",
+  "review_decision": "REVIEW_DECISION.json",
+  "seal_state": "NOT_SEALED",
+  "lock_creation_status": "NOT_CREATED",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-SPEC-01/**"
+  ],
+  "forbidden_write_paths": [
+    "repository/**",
+    "control/locks/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "P4-SPEC-01 approved and approval metadata bound. P4-SPEC-02 and later P4 work remain separate approvals; P4_SPEC_LOCK requires separate explicit lock creation authorization."
+}

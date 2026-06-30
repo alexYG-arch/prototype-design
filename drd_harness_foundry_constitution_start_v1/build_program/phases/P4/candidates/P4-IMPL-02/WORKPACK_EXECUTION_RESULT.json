@@ -1,0 +1,135 @@
+{
+  "result_id": "P4-IMPL-02-RESULT-001",
+  "phase": "P4",
+  "workpack_id": "P4-IMPL-02",
+  "status": "IMPLEMENTATION_CANDIDATE_APPROVED_BY_HUMAN",
+  "authorized_by": {
+    "basis": "user_pass_continue_after_P4_IMPL_01_review",
+    "source_lock": "control/locks/P4_SPEC_LOCK.json",
+    "source_lock_sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+    "spec_lock_result_review_decision": "build_program/phases/P4/candidates/P4-SPEC-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "spec_lock_result_review_decision_sha256": "30b08c8e8093fcc56b771b0cef3f7a3aa0aaf751c7f4b7fa5e24cbcc3b1f62ef",
+    "spec_lock_result_review_subject_hash": "82edce48780bebe4a80ed470a1a38f4198d2394ffb5e4f9099ac1c1328549dac",
+    "prior_impl_review_decision": "build_program/phases/P4/candidates/P4-IMPL-01/REVIEW_DECISION.json",
+    "prior_impl_review_decision_sha256": "98942b547340ee93f310b34e424b247240b1df0c0545bada506e3986e9316a94",
+    "prior_impl_subject_hash": "0e8d1a6d5b79d8ac869e51b64b0efa1660d4fe327413523c4b7e0d721c85a1e2"
+  },
+  "objective": "Implement P4 recovery and resume behavior: evidence-driven run state validation, skip/replay/block decisions, review recovery packets, invalidation reason records, and lock rebuild request-only packets.",
+  "implemented_files": [
+    {
+      "path": "repository/src/drd_harness/orchestrator/recovery.py",
+      "sha256": "bb768df8b20a94ef0cdf73f919a611772133c359bc7938fe723df8c1d729df95"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/review_recovery.py",
+      "sha256": "2df041bc308f607e55400ba708c249734162c3c025a4cf05509b964dbf4ba062"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+      "sha256": "818fc0a5c2b8f8ffc6d0b08b28f463d60325bdb1b5759a9659319fd5578466c1"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "sha256": "fd8bd349e378f5761802ec42ba3b670d2df932cefdbeaf3c90d5cfab3844ebef"
+    },
+    {
+      "path": "repository/tests/p4/test_recovery_state_model.py",
+      "sha256": "f17dc2f4527703b395d1e8955339e568ddf101acc6beed0ca65959891498963a"
+    },
+    {
+      "path": "repository/tests/p4/test_resume_decisions.py",
+      "sha256": "07613362f0260cd420a58e79b699ac8c84f6647782c4885bd94bef11144ed0a4"
+    },
+    {
+      "path": "repository/tests/p4/test_review_recovery.py",
+      "sha256": "4a29222412d16883eb2a0a5b36c70147c2ff594de9dabb07dd56dcb038a2ef1c"
+    },
+    {
+      "path": "repository/tests/p4/test_lock_rebuild_requests.py",
+      "sha256": "186b32a05e462997c6cea2de98d148550b3c96bf7ac62af6dd1c4bf670293009"
+    },
+    {
+      "path": "repository/tests/p4/test_recovery_invalidation.py",
+      "sha256": "6766276de91f27b22419f3d5702bbe90878249385c8d9fda19948333b7b10ad4"
+    }
+  ],
+  "implemented_capabilities": [
+    "Run state shape validation fails closed when required recovery evidence is missing.",
+    "Resume decisions resolve to SKIP, REPLAY, BLOCK_HUMAN_GATE, BLOCK_INVALIDATION, BLOCK_LOCK_BOUNDARY, or BLOCK_UNSAFE_STATE.",
+    "Invalidation records use stable reason codes with affected node, path, prior value, current value, stop rule, and Human Gate flag.",
+    "Review recovery recomputes candidate subject hashes and detects missing, stale, invalid, hash-changed, or non-approved review decisions without writing approvals.",
+    "Lock rebuild behavior produces sorted request packets and dry-run evidence only; it never creates, rewrites, deletes, or publishes locks.",
+    "Program driver resume hook delegates to recovery when a declared run state file exists while preserving safe stop behavior for missing state refs.",
+    "Upstream lock hash drift routes to Human Gate rather than ordinary replay invalidation.",
+    "Lock rebuild request packets require an existing source lock so source_lock_sha256 is a real file hash, not a sentinel value.",
+    "Program driver default upstream P3 build lock binding resolves from the start package root while preserving the canonical relative DAG read ref."
+  ],
+  "non_product_capability_boundary": {
+    "new_user_facing_product_capability_added": false,
+    "recovery_infers_product_requirements": false,
+    "review_recovery_creates_review_decisions": false,
+    "lock_rebuild_writes_locks": false
+  },
+  "required_validation_ids": [
+    "P4REC-VAL-002",
+    "P4REC-VAL-003",
+    "P4REC-VAL-004",
+    "P4REC-VAL-005",
+    "P4REC-VAL-006",
+    "P4REC-VAL-007",
+    "P4REC-VAL-007A",
+    "P4REC-VAL-008"
+  ],
+  "traceability": [
+    {
+      "trace_id": "P4REC-TRACE-001",
+      "implementation_target": "repository/src/drd_harness/orchestrator/review_recovery.py",
+      "test_obligation": "repository/tests/p4/test_review_recovery.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-002",
+      "implementation_target": "repository/src/drd_harness/orchestrator/recovery.py",
+      "test_obligation": "repository/tests/p4/test_resume_decisions.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-003",
+      "implementation_target": "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+      "test_obligation": "repository/tests/p4/test_lock_rebuild_requests.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-004",
+      "implementation_target": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "implementation_boundary": "resume hook integration only",
+      "test_obligation": "repository/tests/p4/test_recovery_state_model.py"
+    },
+    {
+      "trace_id": "P4REC-TRACE-005",
+      "implementation_target": "repository/src/drd_harness/orchestrator/recovery.py",
+      "test_obligation": "repository/tests/p4/test_recovery_invalidation.py"
+    }
+  ],
+  "shared_file_update_boundary": {
+    "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+    "prior_owner": "P4-IMPL-01 integration entry",
+    "p4_impl_02_change": "resume hook delegates to recovery only when a declared run state file exists; default P3 build lock binding resolves from the start package root while keeping the canonical DAG ref relative",
+    "does_not_redefine_program_dag_ownership": true
+  },
+  "not_a_build_lock": true,
+  "not_a_review_decision": true,
+  "not_a_release_lock": true,
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision": "build_program/phases/P4/candidates/P4-IMPL-02/REVIEW_DECISION.json",
+  "next_authorization_required": {
+    "p4_impl_03_requires_explicit_authorization": false,
+    "p4_build_lock_requires_explicit_authorization": true,
+    "release_lock_requires_explicit_authorization": true,
+    "root_phase_file_update_requires_explicit_authorization": true
+  },
+  "approval_notes": [
+    "Approved by explicit user pass after P4-IMPL-02 candidate review.",
+    "This approval covers the P4 recovery and resume implementation candidate only.",
+    "This approval does not create P4_BUILD_LOCK, create DRD_HARNESS_RELEASE_LOCK, update root P4 phase files, or authorize release publication."
+  ]
+}

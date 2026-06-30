@@ -1,0 +1,128 @@
+{
+  "rules_id": "P4-SPEC-02-RECOVERY-PIPELINE-RULES-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "ordered_steps": [
+    {
+      "step": 1,
+      "name": "bind_upstream_authority",
+      "required_inputs": [
+        "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+        "control/locks/P3_BUILD_LOCK.json"
+      ],
+      "stop_condition": "missing_or_hash_mismatched_upstream_authority"
+    },
+    {
+      "step": 2,
+      "name": "load_declared_run_state",
+      "required_inputs": [
+        "run_state_ref",
+        "prior_command_status_payload"
+      ],
+      "stop_condition": "missing_required_run_state_field"
+    },
+    {
+      "step": 3,
+      "name": "recompute_declared_evidence",
+      "required_outputs": [
+        "current_input_hashes",
+        "current_lock_hashes",
+        "current_candidate_subject_hashes",
+        "current_output_hashes"
+      ],
+      "stop_condition": "undeclared_path_or_unreadable_declared_ref"
+    },
+    {
+      "step": 4,
+      "name": "classify_invalidation",
+      "required_outputs": [
+        "invalidation_records",
+        "blocked_reason_codes"
+      ],
+      "stop_condition": "unclassified_evidence_drift"
+    },
+    {
+      "step": 5,
+      "name": "resolve_node_resume_decisions",
+      "required_outputs": [
+        "node_decisions",
+        "skipped_nodes",
+        "replayed_nodes",
+        "blocked_nodes"
+      ],
+      "stop_condition": "human_gate_or_lock_boundary_required"
+    },
+    {
+      "step": 6,
+      "name": "emit_recovery_packet",
+      "required_outputs": [
+        "resume_decision_report",
+        "review_recovery_packet",
+        "lock_rebuild_request_packet_when_requested"
+      ],
+      "stop_condition": "packet_would_create_review_decision_or_lock"
+    }
+  ],
+  "canonical_rules": [
+    {
+      "rule_id": "P4REC-RULE-001",
+      "requirement": "Resume decisions must use declared run state, declared refs, and hashes rather than directory discovery.",
+      "failure_mode": "resume silently picks up undeclared files"
+    },
+    {
+      "rule_id": "P4REC-RULE-002",
+      "requirement": "Skip requires matching inputs, locks, DAG, plan, output hashes, and write scope.",
+      "failure_mode": "resume skips a node after dependency drift"
+    },
+    {
+      "rule_id": "P4REC-RULE-003",
+      "requirement": "Replay is limited to declared output paths and valid upstream dependencies.",
+      "failure_mode": "replay writes outside declared scope or uses invalidated inputs"
+    },
+    {
+      "rule_id": "P4REC-RULE-004",
+      "requirement": "Review recovery detects missing, stale, or mismatched bindings but cannot approve or edit review decisions.",
+      "failure_mode": "recovery creates a review decision or treats stale approval as current"
+    },
+    {
+      "rule_id": "P4REC-RULE-005",
+      "requirement": "Lock rebuild behavior is limited to request packets and dry-run evidence in this workpack.",
+      "failure_mode": "recovery creates, rewrites, or deletes a lock"
+    },
+    {
+      "rule_id": "P4REC-RULE-006",
+      "requirement": "Every invalidation must use a stable reason code and cite prior and current values.",
+      "failure_mode": "drift is reported as free text without a verifiable reason code"
+    },
+    {
+      "rule_id": "P4REC-RULE-007",
+      "requirement": "Recovery cannot add business Contract, product requirement, page element, or layout semantics.",
+      "failure_mode": "resume fills missing product meaning to continue a run"
+    }
+  ],
+  "human_gate_triggers": [
+    "missing_required_run_state_field",
+    "stale_review_decision",
+    "changed_reviewed_subject",
+    "changed_upstream_lock_hash",
+    "write_scope_changed",
+    "lock_creation_requested",
+    "lock_rebuild_input_set_changed",
+    "product_semantic_inference_required"
+  ],
+  "forbidden_actions": [
+    "create_review_decision",
+    "edit_review_decision",
+    "approve_candidate",
+    "promote_candidate",
+    "create_P4_SPEC_LOCK",
+    "create_P4_BUILD_LOCK",
+    "create_DRD_HARNESS_RELEASE_LOCK",
+    "rewrite_any_lock",
+    "modify_prior_run_evidence",
+    "modify_P3_locks_or_candidates",
+    "update_root_P4_phase_files",
+    "implement_repository_code_from_this_spec_candidate"
+  ],
+  "open_blockers": []
+}

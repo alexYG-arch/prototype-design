@@ -1,0 +1,47 @@
+{
+  "decision_id": "P4-IMPL-02-REVIEW-001",
+  "subject": "P4-IMPL-02",
+  "subject_hash": "d9ef35121dbc10153653df62877f9d146bf40feceec93c37d523e552934dacb5",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-29",
+  "basis": "User said pass after reviewing the P4-IMPL-02 recovery and resume implementation candidate. This approval covers P4-IMPL-02 only.",
+  "approved_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "repository/src/drd_harness/orchestrator/recovery.py",
+    "repository/src/drd_harness/orchestrator/review_recovery.py",
+    "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+    "repository/src/drd_harness/orchestrator/program_driver.py",
+    "repository/tests/p4/test_recovery_state_model.py",
+    "repository/tests/p4/test_resume_decisions.py",
+    "repository/tests/p4/test_review_recovery.py",
+    "repository/tests/p4/test_lock_rebuild_requests.py",
+    "repository/tests/p4/test_recovery_invalidation.py",
+    "build_program/phases/P4/candidates/P4-IMPL-02/**"
+  ],
+  "approved_lock_input": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "upstream_impl_review_decision": {
+    "path": "build_program/phases/P4/candidates/P4-IMPL-01/REVIEW_DECISION.json",
+    "sha256": "98942b547340ee93f310b34e424b247240b1df0c0545bada506e3986e9316a94"
+  },
+  "next_authorized_workpack": "P4-IMPL-03_AFTER_EXPLICIT_CONTINUE_ONLY",
+  "source_candidate_mutations": [],
+  "open_blockers": [],
+  "notes": [
+    "Approved by explicit user pass after P4-IMPL-02 candidate review.",
+    "This approval validates the P4 recovery, resume, review recovery, invalidation, and lock rebuild request-only implementation evidence.",
+    "This approval does not create P4_BUILD_LOCK, create DRD_HARNESS_RELEASE_LOCK, publish packages, or update root P4 phase files."
+  ]
+}

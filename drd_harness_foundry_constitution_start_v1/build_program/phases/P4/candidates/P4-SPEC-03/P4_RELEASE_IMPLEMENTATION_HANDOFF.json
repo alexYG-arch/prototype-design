@@ -1,0 +1,126 @@
+{
+  "handoff_id": "P4-SPEC-03-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "implementation_workpacks": [
+    "P4-IMPL-03",
+    "P4-IMPL-04",
+    "P4-IMPL-05"
+  ],
+  "required_preconditions": [
+    "P4-SPEC-01 approved by Human Gate",
+    "P4-SPEC-02 approved by Human Gate",
+    "P4-SPEC-03 approved by Human Gate",
+    "P4_SPEC_LOCK exists and includes all approved P4 spec candidates",
+    "implementation workpacks have allowed paths, forbidden paths, validators, and tests derived from P4_SPEC_LOCK"
+  ],
+  "expected_code_targets": [
+    "repository/src/drd_harness/release/suites.py",
+    "repository/src/drd_harness/release/readiness.py",
+    "repository/src/drd_harness/release/packaging.py",
+    "repository/src/drd_harness/release/migration.py",
+    "repository/src/drd_harness/release/lock_inputs.py",
+    "repository/examples/p4_release_smoke/**"
+  ],
+  "expected_test_targets": [
+    "repository/tests/p4/test_golden_regression.py",
+    "repository/tests/p4/test_integration_end_to_end.py",
+    "repository/tests/p4/test_release_readiness.py",
+    "repository/tests/p4/test_packaging_manifest.py",
+    "repository/tests/p4/test_example_project_smoke.py",
+    "repository/tests/p4/test_migration_coverage.py",
+    "repository/tests/p4/test_release_lock_boundary.py"
+  ],
+  "implementation_workpack_partition": [
+    {
+      "workpack_id": "P4-IMPL-03",
+      "owned_surface": [
+        "golden suite runner contracts",
+        "integration suite runner contracts",
+        "release suite report shape"
+      ],
+      "expected_code_targets": [
+        "repository/src/drd_harness/release/suites.py"
+      ],
+      "expected_test_targets": [
+        "repository/tests/p4/test_golden_regression.py",
+        "repository/tests/p4/test_integration_end_to_end.py",
+        "repository/tests/p4/test_release_readiness.py"
+      ],
+      "must_not_own": [
+        "package publishing",
+        "example project fixture creation outside declared paths",
+        "release lock input bundle construction"
+      ]
+    },
+    {
+      "workpack_id": "P4-IMPL-04",
+      "owned_surface": [
+        "package manifest validation",
+        "example project smoke validation",
+        "v3.1 migration coverage validation"
+      ],
+      "expected_code_targets": [
+        "repository/src/drd_harness/release/packaging.py",
+        "repository/src/drd_harness/release/migration.py",
+        "repository/examples/p4_release_smoke/**"
+      ],
+      "expected_test_targets": [
+        "repository/tests/p4/test_packaging_manifest.py",
+        "repository/tests/p4/test_example_project_smoke.py",
+        "repository/tests/p4/test_migration_coverage.py"
+      ],
+      "must_not_own": [
+        "release lock creation",
+        "package publishing",
+        "P4_SPEC_LOCK or P4_BUILD_LOCK creation"
+      ]
+    },
+    {
+      "workpack_id": "P4-IMPL-05",
+      "owned_surface": [
+        "release readiness packet validation",
+        "dirty state record validation",
+        "release lock input bundle construction without lock writes"
+      ],
+      "expected_code_targets": [
+        "repository/src/drd_harness/release/readiness.py",
+        "repository/src/drd_harness/release/lock_inputs.py"
+      ],
+      "expected_test_targets": [
+        "repository/tests/p4/test_release_readiness.py",
+        "repository/tests/p4/test_release_lock_boundary.py"
+      ],
+      "must_not_own": [
+        "DRD_HARNESS_RELEASE_LOCK creation",
+        "package publishing",
+        "golden output update approval"
+      ]
+    }
+  ],
+  "must_not_implement_before": [
+    "P4_SPEC_LOCK creation and approval",
+    "explicit implementation authorization",
+    "workpack readiness for the relevant P4 implementation workpack"
+  ],
+  "implementation_must_not": [
+    "create P4_SPEC_LOCK",
+    "create P4_BUILD_LOCK",
+    "create DRD_HARNESS_RELEASE_LOCK",
+    "publish package",
+    "upload artifacts to an external registry",
+    "create product semantics",
+    "add business contracts"
+  ],
+  "minimum_test_obligations": [
+    "golden deterministic output and no-update release mode",
+    "integration gate stop behavior across CLI, adapters, driver, recovery, and lock boundaries",
+    "release readiness packet completeness",
+    "package manifest path safety",
+    "example project smoke behavior",
+    "v3.1 migration coverage row contract",
+    "release lock input bundle without lock writes"
+  ],
+  "candidate_check_command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-03",
+  "open_blockers": []
+}

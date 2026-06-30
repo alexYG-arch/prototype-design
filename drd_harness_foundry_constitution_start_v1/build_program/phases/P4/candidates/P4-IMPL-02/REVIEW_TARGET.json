@@ -1,0 +1,32 @@
+{
+  "target_id": "P4-IMPL-02-REVIEW-TARGET-001",
+  "workpack_id": "P4-IMPL-02",
+  "phase": "P4",
+  "lane": "IMPLEMENTATION",
+  "candidate_dir": "build_program/phases/P4/candidates/P4-IMPL-02",
+  "review_subject_hash": "d9ef35121dbc10153653df62877f9d146bf40feceec93c37d523e552934dacb5",
+  "review_subject_hash_excludes_this_file": true,
+  "review_subject_hash_algorithm": "compute_candidate_subject_hash(candidate_dir, CANDIDATE_MANIFEST.generated_outputs)",
+  "review_sections": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "SCOPE_REPORT.json",
+    "TEST_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "review_questions": [
+    "Does the implementation stay inside P4-IMPL-02 and the P4-SPEC-02 recovery/resume intent?",
+    "Do resume decisions fail closed on missing evidence, drift, Human Gate, and lock boundary conditions?",
+    "Does review recovery avoid creating or editing REVIEW_DECISION.json?",
+    "Does lock rebuild remain request-only without writing locks?",
+    "Do targeted tests, full regression, runtime-boundary-check, and git diff check pass?"
+  ],
+  "not_a_review_decision": true,
+  "review_decision": null,
+  "supporting_sections": [
+    "REVIEW_TARGET.json"
+  ],
+  "supporting_sections_excluded_from_review_subject_hash": true
+}

@@ -1,0 +1,58 @@
+{
+  "handoff_id": "P4-SPEC-02-IMPLEMENTATION-HANDOFF-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-02",
+  "implementation_workpack": "P4-IMPL-02",
+  "required_preconditions": [
+    "P4-SPEC-01 approved by Human Gate",
+    "P4-SPEC-02 approved by Human Gate",
+    "P4_SPEC_LOCK exists and includes P4-SPEC-01 and P4-SPEC-02",
+    "implementation workpack has allowed paths, forbidden paths, validators, and tests derived from P4_SPEC_LOCK"
+  ],
+  "expected_code_targets": [
+    "repository/src/drd_harness/orchestrator/recovery.py",
+    "repository/src/drd_harness/orchestrator/review_recovery.py",
+    "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+    "repository/src/drd_harness/orchestrator/program_driver.py"
+  ],
+  "target_ownership_notes": [
+    {
+      "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "p4_spec_02_boundary": "recovery and resume hook wiring only",
+      "primary_owner": "P4-SPEC-01 / P4-IMPL-01 program driver contract",
+      "implementation_rule": "P4-IMPL-02 may integrate recovery hooks through declared interfaces but must not redefine Program Driver DAG ownership from P4-SPEC-01"
+    }
+  ],
+  "expected_test_targets": [
+    "repository/tests/p4/test_recovery_state_model.py",
+    "repository/tests/p4/test_resume_decisions.py",
+    "repository/tests/p4/test_review_recovery.py",
+    "repository/tests/p4/test_lock_rebuild_requests.py",
+    "repository/tests/p4/test_recovery_invalidation.py"
+  ],
+  "must_not_implement_before": [
+    "P4_SPEC_LOCK creation and approval",
+    "explicit implementation authorization",
+    "workpack readiness for P4-IMPL-02"
+  ],
+  "implementation_must_not": [
+    "create review decisions",
+    "approve candidates",
+    "create or rewrite locks",
+    "mutate prior run evidence",
+    "create product semantics",
+    "add business contracts",
+    "publish release packages"
+  ],
+  "minimum_test_obligations": [
+    "resume skip and replay decisions",
+    "run state required field failures",
+    "review recovery missing, stale, and mismatched bindings",
+    "lock rebuild request dry-run without lock writes",
+    "invalidation reason code coverage",
+    "write scope boundary failures",
+    "semantic boundary negative cases"
+  ],
+  "candidate_check_command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-SPEC-02",
+  "open_blockers": []
+}

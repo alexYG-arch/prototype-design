@@ -1,0 +1,39 @@
+{
+  "evidence_id": "P4-SPEC-01-VALIDATION-EVIDENCE-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P4_SPEC_01_UPSTREAM_LOCK_BINDING",
+      "command": "python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nmanifest=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-01/CANDIDATE_MANIFEST.json').read_text())\nassert hashlib.sha256(Path('control/locks/P3_BUILD_LOCK.json').read_bytes()).hexdigest() == manifest['upstream_build_lock']['sha256']\nreview=Path(manifest['upstream_transition']['gate_review_decision'])\nassert hashlib.sha256(review.read_bytes()).hexdigest() == manifest['upstream_transition']['gate_review_decision_hash']\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "P3_BUILD_LOCK and P3 build lock review decision hashes are bound in this candidate"
+    },
+    {
+      "check": "P4_SPEC_01_SCOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nscope=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-01/SCOPE_REPORT.json').read_text())\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['repository_files_modified'] is False\nassert scope['control_locks_modified'] is False\nassert scope['root_p4_phase_files_modified'] is False\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "candidate writes are limited to build_program/phases/P4/candidates/P4-SPEC-01"
+    },
+    {
+      "check": "P4_SPEC_01_ARTIFACT_SHAPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P4/candidates/P4-SPEC-01')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\nfor rel in manifest['generated_outputs']:\n    path=candidate/rel\n    assert path.is_file() and path.stat().st_size > 0, rel\n    if path.suffix == '.json':\n        json.loads(path.read_text(encoding='utf-8'))\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "generated outputs are non-empty and JSON outputs parse"
+    },
+    {
+      "check": "P4_SPEC_01_COVERAGE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-01')\ncontracts=json.loads((root/'P4_CLI_ADAPTER_CONTRACTS.json').read_text())\ncommands={row['command_id'] for row in contracts['commands']}\nadapters={row['adapter_id'] for row in contracts['adapters']}\ntrace=json.loads((root/'P4_INTEGRATION_TRACEABILITY_MAP.json').read_text())\nassert {'drdctl.run','drdctl.review','drdctl.resume','drdctl.release'} <= commands\nassert {'prd_harness_adapter','markdown_prd_adapter'} <= adapters\nassert len(trace['rows']) >= 6\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "DAG, driver, drdctl command surface, PRD Harness Adapter, Markdown PRD Adapter, and no-business-contract boundary are covered"
+    }
+  ],
+  "validated_rules": [
+    "P4-SPEC-01 consumes P3_BUILD_LOCK and approved P3 build lock result as upstream authority",
+    "P4-SPEC-01 does not mutate repository code, P3 locks, P3 candidates, root P4 files, or control locks",
+    "P4-SPEC-01 reserves release command envelope without creating a release lock",
+    "Adapters are source normalizers and cannot create product semantics"
+  ],
+  "open_blockers": []
+}

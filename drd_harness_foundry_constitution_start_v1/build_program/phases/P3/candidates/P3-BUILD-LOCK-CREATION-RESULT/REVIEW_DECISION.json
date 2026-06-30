@@ -1,0 +1,46 @@
+{
+  "decision_id": "P3-BUILD-LOCK-CREATION-RESULT-REVIEW-001",
+  "subject": "P3-BUILD-LOCK-CREATION-RESULT",
+  "subject_hash": "7df8777f54b17fd49f7c93078c92aa608d9ad5653dcbba29b7920e53e5282d01",
+  "decision": "APPROVED",
+  "reviewer": "human-user",
+  "reviewed_at": "2026-06-26",
+  "basis": "User said pass after the P3 BUILD_LOCK creation result was repaired to bind the pushed P3 input commit and the review/check loop reached NO_FINDINGS. This approval covers the P3 BUILD_LOCK creation result candidate only.",
+  "approved_sections": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "control/locks/P3_BUILD_LOCK.json",
+    "build_program/phases/P3/candidates/P3-BUILD-LOCK-CREATION-RESULT/**"
+  ],
+  "approved_lock": {
+    "path": "control/locks/P3_BUILD_LOCK.json",
+    "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e",
+    "lock_id": "P3-BUILD-LOCK-001",
+    "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+    "git_commit": "f966182b4670520d2ba69e6f69eecca0bbc1d9b3"
+  },
+  "validation_summary": {
+    "candidate_check_subject_hash": "7df8777f54b17fd49f7c93078c92aa608d9ad5653dcbba29b7920e53e5282d01",
+    "build_lock_readiness": "PASS",
+    "bound_file_hashes": "202 passed",
+    "full_repository_tests": "410 passed",
+    "json_and_diff_checks": "PASS",
+    "bound_git_commit_contains_p3_inputs": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_release_lock": true,
+  "not_a_promotion": true,
+  "not_p4_authorization": true,
+  "remaining_followups": [
+    "P4 work requires a separate explicit continuation after this approval.",
+    "This approval does not create P4_SPEC_LOCK, P4_BUILD_LOCK, or DRD_HARNESS_RELEASE_LOCK.",
+    "This approval does not commit or push the post-push P3 lock metadata repair."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "matrix_id": "P4-SPEC-01-VALIDATION-MATRIX-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-01",
+  "validation_rows": [
+    {
+      "validation_id": "P4INT-VAL-001",
+      "subject": "upstream_lock_binding",
+      "requirement": "P4-SPEC-01 binds current P3_BUILD_LOCK and its approved review decision.",
+      "evidence": "sha256 checks in VALIDATION_EVIDENCE.json",
+      "negative_case": "P3_BUILD_LOCK sha drift or missing review decision must fail"
+    },
+    {
+      "validation_id": "P4INT-VAL-002",
+      "subject": "cli_thinness",
+      "requirement": "drdctl handlers parse, dispatch, report, and do not own product inference.",
+      "evidence": "future tests inspect CLI command handlers and module delegation",
+      "negative_case": "CLI handler mutates locks or infers product semantics directly"
+    },
+    {
+      "validation_id": "P4INT-VAL-003",
+      "subject": "program_dag_determinism",
+      "requirement": "program DAG nodes, edges, and execution order are stable for same inputs.",
+      "evidence": "future driver tests compare replayed DAG snapshots",
+      "negative_case": "filesystem order or nondeterministic ids change replay output"
+    },
+    {
+      "validation_id": "P4INT-VAL-004",
+      "subject": "adapter_source_preservation",
+      "requirement": "adapters preserve input hashes and normalization reports.",
+      "evidence": "future adapter tests assert source byte hash and section records",
+      "negative_case": "adapter changes source bytes or drops unsupported content evidence"
+    },
+    {
+      "validation_id": "P4INT-VAL-005",
+      "subject": "adapter_semantic_boundary",
+      "requirement": "adapters do not emit product requirements, page elements, layout rules, or business contracts.",
+      "evidence": "future adapter tests reject forbidden output keys",
+      "negative_case": "adapter creates downstream product capability from markdown formatting"
+    },
+    {
+      "validation_id": "P4INT-VAL-006",
+      "subject": "command_status_payload",
+      "requirement": "each command emits machine-readable status, findings, written paths, and exit code.",
+      "evidence": "future CLI smoke tests validate JSON status shape",
+      "negative_case": "command emits text only or omits written paths"
+    },
+    {
+      "validation_id": "P4INT-VAL-007",
+      "subject": "gate_stop_rules",
+      "requirement": "commands stop before Human Gate, lock creation, release lock creation, and unresolved invalidation.",
+      "evidence": "future integration tests trigger each gate",
+      "negative_case": "command proceeds through gate without explicit review or lock authorization"
+    },
+    {
+      "validation_id": "P4INT-VAL-008",
+      "subject": "scope_boundary",
+      "requirement": "P4-SPEC-01 candidate only writes its candidate directory.",
+      "evidence": "SCOPE_REPORT.json",
+      "negative_case": "candidate mutates repository code, locks, or root phase files"
+    }
+  ],
+  "required_future_test_files": [
+    "repository/tests/p4/test_program_driver.py",
+    "repository/tests/p4/test_cli_contracts.py",
+    "repository/tests/p4/test_input_adapters.py",
+    "repository/tests/p4/test_integration_gate_stops.py"
+  ],
+  "open_blockers": []
+}

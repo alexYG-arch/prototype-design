@@ -28,7 +28,6 @@ def test_cli_module_has_no_graph_compiler_promotion_or_review_constructors():
         "compare_semantic_units",
         "build_review_lock",
         "build_promotion_record",
-        "build_lock",
         "approve_candidate",
     ]
 
@@ -54,7 +53,10 @@ def test_cli_module_imports_only_delegation_targets():
         "json",
         "pathlib",
         "typing",
+        "drd_harness.adapters.markdown_prd",
+        "drd_harness.adapters.prd_harness",
         "drd_harness.kernel.import_boundaries",
+        "drd_harness.orchestrator.program_driver",
         "drd_harness.orchestrator.workpacks",
         "drd_harness.validators.spec_validator",
         "drd_harness.validators.workpack_scope",

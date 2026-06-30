@@ -1,0 +1,99 @@
+{
+  "bundle_id": "P4-SPEC-LOCK-INPUT-BUNDLE-001",
+  "phase": "P4",
+  "status": "READY_FOR_HUMAN_REVIEW_AWAITING_EXPLICIT_LOCK_CREATION_REQUEST",
+  "not_a_spec_lock": true,
+  "source_candidate": "build_program/phases/P4/candidates/P4-SPEC-03",
+  "source_candidate_review_decision": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+  "phase_readiness_subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+  "phase_review_decision_file_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+  "canonical_spec_lock_schema": {
+    "path": "control/schemas/spec_lock.schema.json",
+    "sha256": "52542478b091d780e88d2ee6aeedfe5b1319ea4bcf6605f0329d94c8fc25acec",
+    "required_fields": [
+      "lock_id",
+      "phase",
+      "root_sha256",
+      "files",
+      "review_decision_hash"
+    ]
+  },
+  "proposed_canonical_lock_fields": {
+    "lock_id": "P4-SPEC-LOCK-001",
+    "phase": "P4",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+    "review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+    "review_decision_file_root_sha256": "63347e8f0cf18d87323476ee5a10561d87023ca2d692c0acc6a0bbd1ba419165",
+    "created_by_runtime": "python",
+    "source_candidate_review_decision_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164"
+  },
+  "approved_spec_inputs": [
+    {
+      "spec_part": "P4-SPEC-01",
+      "generated_output_count": 12,
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+      "review_decision_file_hash": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+      "review_decision_id": "P4-SPEC-01-REVIEW-001",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P4-SPEC-02",
+      "generated_output_count": 12,
+      "subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+      "review_decision_file_hash": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+      "review_decision_id": "P4-SPEC-02-REVIEW-001",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    },
+    {
+      "spec_part": "P4-SPEC-03",
+      "generated_output_count": 14,
+      "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+      "review_binding_status": "PASS",
+      "review_decision_path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+      "review_decision_file_hash": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+      "review_decision_id": "P4-SPEC-03-REVIEW-001",
+      "review_id_binding_required": true,
+      "review_file_hash_binding_required": true,
+      "review_subject_hash_binding_required": true
+    }
+  ],
+  "creation_preconditions": [
+    "Human reviewer accepts this P4 lock creation readiness Candidate.",
+    "User explicitly requests P4_SPEC_LOCK creation after review.",
+    "Python tool re-reads every approved P4 Candidate manifest and REVIEW_DECISION.json.",
+    "Python tool recomputes each subject hash over generated outputs only.",
+    "Python tool validates the source P4-SPEC-03 review decision hash.",
+    "Python tool validates the output against control/schemas/spec_lock.schema.json.",
+    "Python tool writes a new immutable lock artifact only after all checks pass.",
+    "Python tool output path must not already exist before real lock creation.",
+    "Readiness evidence must parse dry-run output and validate root hash, review file root, schema, source candidate, and review decision IDs before human review."
+  ],
+  "forbidden_shortcuts": [
+    "Do not copy this SPEC_LOCK_INPUT_BUNDLE.json into control/locks.",
+    "Do not hand-write control/locks/P4_SPEC_LOCK.json.",
+    "Do not start P4 implementation until canonical P4_SPEC_LOCK exists.",
+    "Do not create P4_BUILD_LOCK from this SPEC_LOCK creation readiness step.",
+    "Do not create DRD_HARNESS_RELEASE_LOCK from this SPEC_LOCK creation readiness step."
+  ],
+  "real_lock_output": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "must_not_exist_before_write": true,
+    "exists_at_readiness_time": false,
+    "preflight_status": "PASS_OUTPUT_PATH_AVAILABLE",
+    "write_allowed_only_after_explicit_user_request": true
+  },
+  "human_review": {
+    "status": "PENDING_HUMAN_REVIEW",
+    "review_decision": null,
+    "does_not_create_lock": true,
+    "does_not_authorize_implementation_by_itself": true
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "traceability_id": "P4-SPEC-03-RELEASE-TRACEABILITY-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "rows": [
+    {
+      "trace_id": "P4REL-TRACE-001",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Golden, Integration and Release Test Suites",
+      "spec_output": "P4_TEST_SUITE_CONTRACTS.json",
+      "implementation_target": "repository/tests/p4/test_golden_regression.py",
+      "test_obligation": "golden suite deterministic hash checks"
+    },
+    {
+      "trace_id": "P4REL-TRACE-002",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Golden, Integration and Release Test Suites",
+      "spec_output": "P4_TEST_SUITE_CONTRACTS.json",
+      "implementation_target": "repository/tests/p4/test_integration_end_to_end.py",
+      "test_obligation": "P4 end-to-end CLI, adapter, driver, recovery, and gate tests"
+    },
+    {
+      "trace_id": "P4REL-TRACE-003",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Golden, Integration and Release Test Suites",
+      "spec_output": "P4_TEST_SUITE_CONTRACTS.json",
+      "implementation_target": "repository/tests/p4/test_release_readiness.py",
+      "test_obligation": "release suite verifies readiness packet and missing gate list"
+    },
+    {
+      "trace_id": "P4REL-TRACE-004",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "v3.1 capability migration comparison",
+      "spec_output": "P4_MIGRATION_COVERAGE_MAP.json",
+      "implementation_target": "repository/src/drd_harness/release/migration.py",
+      "test_obligation": "repository/tests/p4/test_migration_coverage.py"
+    },
+    {
+      "trace_id": "P4REL-TRACE-005",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "installation package and example project",
+      "spec_output": "P4_PACKAGING_RELEASE_MODEL.md",
+      "implementation_target": "repository/src/drd_harness/release/packaging.py",
+      "test_obligation": "repository/tests/p4/test_packaging_manifest.py"
+    },
+    {
+      "trace_id": "P4REL-TRACE-006",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "installation package and example project",
+      "spec_output": "P4_PACKAGING_RELEASE_MODEL.md",
+      "implementation_target": "repository/examples/p4_release_smoke/**",
+      "test_obligation": "repository/tests/p4/test_example_project_smoke.py"
+    },
+    {
+      "trace_id": "P4REL-TRACE-007",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "Release Lock",
+      "spec_output": "P4_RELEASE_ARTIFACT_CONTRACTS.json",
+      "implementation_target": "release lock input bundle only",
+      "test_obligation": "repository/tests/p4/test_release_lock_boundary.py"
+    },
+    {
+      "trace_id": "P4REL-TRACE-008",
+      "source": "build_program/phases/P4/RELEASE_SCOPE.md",
+      "source_clause": "integration layer cannot supplement business Contract",
+      "spec_output": "P4_RELEASE_PIPELINE_RULES.json",
+      "implementation_target": "release and migration semantic boundary checks",
+      "test_obligation": "semantic boundary negative tests"
+    }
+  ],
+  "coverage_summary": {
+    "release_scope_items_owned_here": [
+      "Golden, Integration, and Release Test Suites",
+      "v3.1 capability migration comparison",
+      "installation package",
+      "example project",
+      "release readiness",
+      "release lock input boundary"
+    ],
+    "release_scope_items_deferred_to_lock_or_implementation_steps": [
+      "P4_SPEC_LOCK creation",
+      "P4_BUILD_LOCK creation",
+      "DRD_HARNESS_RELEASE_LOCK creation",
+      "package publishing"
+    ]
+  },
+  "open_blockers": []
+}

@@ -1,0 +1,117 @@
+{
+  "rules_id": "P4-SPEC-03-RELEASE-PIPELINE-RULES-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "ordered_steps": [
+    {
+      "step": 1,
+      "name": "bind_p4_spec_inputs",
+      "required_inputs": [
+        "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+        "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+        "control/locks/P3_BUILD_LOCK.json"
+      ],
+      "stop_condition": "missing_or_hash_mismatched_upstream_spec_input"
+    },
+    {
+      "step": 2,
+      "name": "define_suite_obligations",
+      "required_outputs": [
+        "golden_suite_contract",
+        "integration_suite_contract",
+        "release_suite_contract"
+      ],
+      "stop_condition": "suite_missing_required_gate"
+    },
+    {
+      "step": 3,
+      "name": "define_migration_coverage",
+      "required_outputs": [
+        "migration_coverage_report_contract",
+        "blocked_capability_review_rule"
+      ],
+      "stop_condition": "legacy_capability_without_status"
+    },
+    {
+      "step": 4,
+      "name": "define_package_and_example_evidence",
+      "required_outputs": [
+        "package_manifest_contract",
+        "example_project_manifest_contract",
+        "package_dry_run_rule",
+        "example_smoke_rule"
+      ],
+      "stop_condition": "package_or_example_evidence_unhashable"
+    },
+    {
+      "step": 5,
+      "name": "define_release_readiness_packet",
+      "required_outputs": [
+        "release_readiness_packet_contract",
+        "missing_gate_list",
+        "dirty_state_policy"
+      ],
+      "stop_condition": "readiness_packet_missing_required_gate"
+    },
+    {
+      "step": 6,
+      "name": "define_release_lock_input_bundle",
+      "required_outputs": [
+        "release_lock_input_bundle_contract",
+        "release_lock_eligibility_rules"
+      ],
+      "stop_condition": "action_would_create_or_rewrite_release_lock"
+    }
+  ],
+  "canonical_rules": [
+    {
+      "rule_id": "P4REL-RULE-001",
+      "requirement": "Golden suite checks must be deterministic and cannot update expected outputs during release checks.",
+      "failure_mode": "golden check rewrites expected output while reporting pass"
+    },
+    {
+      "rule_id": "P4REL-RULE-002",
+      "requirement": "Integration suite checks must cover CLI, adapters, program driver, recovery, review gates, lock gates, and write scopes.",
+      "failure_mode": "release readiness passes without gate-stop integration coverage"
+    },
+    {
+      "rule_id": "P4REL-RULE-003",
+      "requirement": "Release suite checks must include package dry-run, example project smoke, migration coverage, and release readiness packet verification.",
+      "failure_mode": "package or example readiness is assumed from unit tests"
+    },
+    {
+      "rule_id": "P4REL-RULE-004",
+      "requirement": "Every v3.1 capability row must have a supported migration status, evidence reference, and rationale.",
+      "failure_mode": "legacy capability is silently omitted"
+    },
+    {
+      "rule_id": "P4REL-RULE-005",
+      "requirement": "Release lock eligibility requires P4_SPEC_LOCK, P4_BUILD_LOCK, passing release evidence, package evidence, migration evidence, and explicit human authorization.",
+      "failure_mode": "release lock is eligible from spec approval alone"
+    },
+    {
+      "rule_id": "P4REL-RULE-006",
+      "requirement": "P4-SPEC-03 cannot add product requirements, page elements, layout rules, or business contracts.",
+      "failure_mode": "migration or example project fills missing product semantics"
+    }
+  ],
+  "forbidden_actions": [
+    "create_P4_SPEC_LOCK",
+    "create_P4_BUILD_LOCK",
+    "create_DRD_HARNESS_RELEASE_LOCK",
+    "publish_package",
+    "upload_artifacts_to_external_registry",
+    "modify_repository_implementation",
+    "modify_prior_phase_candidates",
+    "modify_root_P4_phase_files"
+  ],
+  "human_gate_triggers": [
+    "legacy_capability_blocked",
+    "golden_output_update_requested",
+    "documented_dirty_release_state_requested",
+    "release_lock_creation_requested",
+    "package_publish_requested",
+    "missing_release_gate"
+  ],
+  "open_blockers": []
+}

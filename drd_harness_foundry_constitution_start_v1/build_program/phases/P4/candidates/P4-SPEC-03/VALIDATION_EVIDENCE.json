@@ -1,0 +1,39 @@
+{
+  "evidence_id": "P4-SPEC-03-VALIDATION-EVIDENCE-001",
+  "phase": "P4",
+  "workpack_id": "P4-SPEC-03",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "P4_SPEC_03_UPSTREAM_BINDING",
+      "command": "python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nmanifest=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-03/CANDIDATE_MANIFEST.json').read_text())\nfor key in ('p4_spec_02_review_decision','p4_spec_01_review_decision'):\n    review=Path(manifest['upstream_spec'][key])\n    expected=manifest['upstream_spec'][key + '_hash']\n    assert hashlib.sha256(review.read_bytes()).hexdigest() == expected\n    assert json.loads(review.read_text())['decision'] == 'APPROVED'\nassert hashlib.sha256(Path('control/locks/P3_BUILD_LOCK.json').read_bytes()).hexdigest() == manifest['upstream_build_lock']['sha256']\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "P4-SPEC-02 approval, P4-SPEC-01 approval, and P3_BUILD_LOCK hashes are bound"
+    },
+    {
+      "check": "P4_SPEC_03_SCOPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nscope=json.loads(Path('build_program/phases/P4/candidates/P4-SPEC-03/SCOPE_REPORT.json').read_text())\nfor path in scope['actual_writes']:\n    assert Path(path).is_file(), path\nassert scope['forbidden_write_violations'] == []\nassert scope['repository_files_modified'] is False\nassert scope['control_locks_modified'] is False\nassert scope['root_p4_phase_files_modified'] is False\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "candidate writes are limited to build_program/phases/P4/candidates/P4-SPEC-03"
+    },
+    {
+      "check": "P4_SPEC_03_ARTIFACT_SHAPE",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\ncandidate=Path('build_program/phases/P4/candidates/P4-SPEC-03')\nmanifest=json.loads((candidate/'CANDIDATE_MANIFEST.json').read_text())\nfor rel in manifest['generated_outputs']:\n    path=candidate/rel\n    assert path.is_file() and path.stat().st_size > 0, rel\n    if path.suffix == '.json':\n        json.loads(path.read_text(encoding='utf-8'))\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "generated outputs are non-empty and JSON outputs parse"
+    },
+    {
+      "check": "P4_SPEC_03_COVERAGE",
+      "command": "python3 - <<'PY'\nimport json\nfrom collections import defaultdict\nfrom pathlib import Path\nroot=Path('build_program/phases/P4/candidates/P4-SPEC-03')\ntests=json.loads((root/'P4_TEST_SUITE_CONTRACTS.json').read_text())\nartifacts=json.loads((root/'P4_RELEASE_ARTIFACT_CONTRACTS.json').read_text())\nrules=json.loads((root/'P4_RELEASE_PIPELINE_RULES.json').read_text())\ntrace=json.loads((root/'P4_RELEASE_TRACEABILITY_MAP.json').read_text())\nvalidation=json.loads((root/'P4_RELEASE_VALIDATION_MATRIX.json').read_text())\nhandoff=json.loads((root/'P4_RELEASE_IMPLEMENTATION_HANDOFF.json').read_text())\nsuites={row['suite_id'] for row in tests['suite_families']}\nartifact_types={row['artifact_type']: row for row in artifacts['artifacts']}\nassert {'GOLDEN','INTEGRATION','RELEASE'} <= suites\nassert tests['report_hash_policy']['excluded_self_fields'] == ['report_hash']\nassert {'migration_coverage_report','package_manifest','example_project_manifest','release_readiness_packet','release_lock_input_bundle'} <= set(artifact_types)\nreadiness=artifact_types['release_readiness_packet']\nbundle=artifact_types['release_lock_input_bundle']\nassert 'release_lock_input_bundle_preview' in readiness['required_fields']\nassert 'release_lock_input_bundle' not in readiness['required_fields']\nassert 'dirty_state_records' in readiness['required_fields']\nassert 'readiness_packet_hash' in readiness['required_fields']\nassert 'release_readiness_packet_hash' in bundle['required_fields']\nassert 'must not embed release_readiness_packet' in bundle['embedding_rules']\nassert artifacts['hash_policy']['cycle_prevention_rule']\nassert 'create_DRD_HARNESS_RELEASE_LOCK' in rules['forbidden_actions']\npartition=handoff['implementation_workpack_partition']\nassert {row['workpack_id'] for row in partition} == {'P4-IMPL-03','P4-IMPL-04','P4-IMPL-05'}\nowners=defaultdict(list)\nfor row in partition:\n    for path in row['expected_code_targets']:\n        owners[path].append(row['workpack_id'])\nassert all(len(ids) == 1 for ids in owners.values()), dict(owners)\nassert len(trace['rows']) >= 8\nassert len(validation['validation_rows']) >= 12\nprint('PASS')\nPY",
+      "status": "PASS",
+      "summary": "golden, integration, release, migration, package, example, readiness hash policy, dirty state records, implementation partition, and release lock input boundaries are covered"
+    }
+  ],
+  "validated_rules": [
+    "P4-SPEC-03 consumes P4-SPEC-02 approval, P4-SPEC-01 approval, and P3_BUILD_LOCK as upstream authority",
+    "P4-SPEC-03 does not mutate repository code, locks, prior phases, or root P4 files",
+    "Release readiness requires suite, migration, package, example, and missing-gate evidence",
+    "Release lock input bundle cannot write DRD_HARNESS_RELEASE_LOCK"
+  ],
+  "open_blockers": []
+}
