@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from drd_harness.cli.main import main
+from drd_harness.kernel.hashline import sha256_file
 from drd_harness.orchestrator.recovery import resolve_resume_decision
 
 
@@ -86,9 +87,30 @@ def test_resume_blocks_lock_boundary_gate():
     assert report["next_allowed_actions"] == ["REQUEST_EXPLICIT_LOCK_AUTHORIZATION"]
 
 
+def test_resume_repairs_output_drift_before_lock_boundary():
+    state = valid_run_state()
+    state["gate_states"] = {"node-1": {"gate_type": "LOCK_GATE", "lock_requested": True}}
+
+    report = resolve_resume_decision(
+        state,
+        "node-1",
+        current_evidence={"output_hashes": {"out/result.json": "MISSING"}},
+    )
+
+    assert report["decision"] == "REPLAY"
+    assert report["next_allowed_actions"] == ["REPLAY_DECLARED_NODE_OUTPUTS"]
+    assert report["invalidation_records"][0]["reason_code"] == "OUTPUT_MISSING"
+
+
 def test_cli_resume_uses_recovery_when_run_state_file_exists(tmp_path: Path, capsys):
+    output = tmp_path / "out" / "result.json"
+    output.parent.mkdir()
+    output.write_text('{"ok": true}\n', encoding="utf-8")
+    state = valid_run_state()
+    state["written_paths"] = [str(output)]
+    state["output_hashes"] = {str(output): sha256_file(output)}
     state_path = tmp_path / "run_state.json"
-    state_path.write_text(json.dumps(valid_run_state()), encoding="utf-8")
+    state_path.write_text(json.dumps(state), encoding="utf-8")
 
     exit_code = main(["resume", "--run-state-ref", str(state_path), "--requested-resume-node", "node-1"])
     payload = json.loads(capsys.readouterr().out)
@@ -96,3 +118,19 @@ def test_cli_resume_uses_recovery_when_run_state_file_exists(tmp_path: Path, cap
     assert exit_code == 0
     assert payload["resume_eligibility"] == "SKIP"
     assert payload["resume_decision_report"]["decision"] == "SKIP"
+
+
+def test_cli_resume_rechecks_declared_output_files(tmp_path: Path, capsys):
+    output = tmp_path / "out" / "result.json"
+    state = valid_run_state()
+    state["written_paths"] = [str(output)]
+    state["output_hashes"] = {str(output): "1" * 64}
+    state_path = tmp_path / "run_state.json"
+    state_path.write_text(json.dumps(state), encoding="utf-8")
+
+    exit_code = main(["resume", "--run-state-ref", str(state_path), "--requested-resume-node", "node-1"])
+    payload = json.loads(capsys.readouterr().out)
+
+    assert exit_code == 0
+    assert payload["resume_eligibility"] == "REPLAY"
+    assert payload["resume_decision_report"]["invalidation_records"][0]["reason_code"] == "OUTPUT_MISSING"

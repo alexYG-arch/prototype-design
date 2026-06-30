@@ -118,10 +118,6 @@ def resolve_resume_decision(
     invalidations.extend(failure_findings)
     invalidations = _sort_invalidations(invalidations)
 
-    gate_decision = _gate_decision(run_state, requested_resume_node)
-    if gate_decision:
-        return _report(run_state, requested_resume_node, prior_hash, gate_decision, invalidations, [])
-
     if any(record.reason_code in HUMAN_GATE_REASONS for record in invalidations):
         return _report(run_state, requested_resume_node, prior_hash, "BLOCK_HUMAN_GATE", invalidations, [])
     if any(record.reason_code == "WRITE_SCOPE_CHANGED" for record in invalidations):
@@ -132,6 +128,10 @@ def resolve_resume_decision(
         return _report(run_state, requested_resume_node, prior_hash, "BLOCK_UNSAFE_STATE", invalidations, [])
     if invalidations and all(record.reason_code in REPLAYABLE_OUTPUT_REASONS for record in invalidations):
         return _report(run_state, requested_resume_node, prior_hash, "REPLAY", invalidations, [requested_resume_node])
+
+    gate_decision = _gate_decision(run_state, requested_resume_node)
+    if gate_decision:
+        return _report(run_state, requested_resume_node, prior_hash, gate_decision, invalidations, [])
     return _report(run_state, requested_resume_node, prior_hash, "SKIP", [], [])
 
 

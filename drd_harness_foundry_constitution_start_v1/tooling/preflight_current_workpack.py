@@ -10,7 +10,7 @@ for f in ctx['required_files']:
  elif sha256(path)!=f['sha256']: errors.append(f'hash mismatch: {f["path"]}')
 if not ctx['acceptance_commands']: errors.append('acceptance commands empty')
 if args.post:
- out=ROOT/'build_program/phases/P1/candidates/P1-SPEC-00'
+ out=ROOT/ctx.get('candidate_dir', f'build_program/phases/{ctx.get("phase", "")}/candidates/{ctx["workpack_id"]}')
  for rel in ctx['required_outputs']:
   if not (out/rel).exists(): errors.append(f'missing candidate output: {rel}')
 if errors: print('\n'.join(errors)); sys.exit(1)

@@ -1,69 +1,76 @@
 # DRD Harness Foundry Constitution Start v1
 
-这是交给 Codex 的**完整宪章启动包**。它用于从锁定宪章开始，依次生成 P1–P4 的规范执行包和实施 Workpack，并在同一 `repository/` 中逐步编码出独立 DRD Harness。
+这是 DRD Harness 的宪章启动包，也是当前已经推进到 P4 完成态的本地 harness 包。
 
-## 包内已冻结的内容
+## 当前状态
 
-- DRD Harness 的目标、边界、推理原则与所有权；
-- 演绎推理为主、归纳推理为辅；
-- PRD 已有元素先校验后采纳；
-- 用户任务与所有可点击元素的交互闭包；
-- 共用组件和信息呈现模式一致性；
-- 以自然语言描述布局并兼容 Figma 手工或 Agent 还原；
-- DRD-00 至 DRD-06 的 Stage 与 Runtime 分工；
-- P1-SPEC/P1-IMPLEMENT 至 P4-SPEC/P4-IMPLEMENT 的建设链；
-- Spec→Code 映射、Validator、Review、Promotion、Invalidation 与 Lock；
-- Foundry 通用 Skills；
-- 当前激活 Workpack：`P1-SPEC-00`。
+- 宪章与 Foundry skills 已锁定；
+- P1 至 P4 的 Spec / Build locks 已生成；
+- `DRD_HARNESS_RELEASE_LOCK` 已存在；
+- Program State 停在 `P4-PROGRAM-CLOSURE-STATUS-SYNC`；
+- 当前用途是运行已安装的 `drd-harness`，对输入 PRD 做隔离 run、review、resume 和锁边界检查。
 
-## 第一次使用
-
-在 Codex 中打开**解压后的本目录**，先运行：
-
-```bash
-python tooling/verify_start_package.py
-python tooling/validate_constitution.py
-python tooling/validate_program.py
-python tooling/validate_skills.py
-python tooling/preflight_current_workpack.py
-```
-
-全部通过后，把 `CODEX_START_PROMPT.md` 的完整内容提交给 Codex。
-
-也可以使用：
-
-```bash
-bash tooling/run_codex_current.sh
-```
-
-该脚本使用 `codex exec`，只执行当前 Capsule。
-
-## 当前执行范围
-
-当前只允许生成 P1 的首个规范规划 Candidate：
+权威状态以这些文件为准：
 
 ```text
-P1-SPEC-00
+build_program/program/PROGRAM_STATE.json
+build_program/program/PROGRAM_MANIFEST.json
+control/locks/DRD_HARNESS_RELEASE_LOCK.json
+current_capsule/context_manifest.json
 ```
 
-它会建立 P1 的 Clause ownership、Spec 分片计划、Implementation Workpack 地图和验收矩阵。它**不会直接修改锁定宪章，也不会开始 Harness 业务代码实现**。
+## 包级检查
 
-后续由 Program Driver 根据 Gate、SPEC_LOCK 与 BUILD_LOCK 推进：
-
-```text
-P1-SPEC → P1-IMPLEMENT
-→ P2-SPEC → P2-IMPLEMENT
-→ P3-SPEC → P3-IMPLEMENT
-→ P4-SPEC → P4-IMPLEMENT
-→ RELEASE_LOCK
-```
-
-## v3.1 参照
-
-本包不重复携带 2MB 以上的旧源码，以避免下载超时。`references/v3_1/` 已锁定预期 ZIP 的 SHA-256，并提供安全安装脚本。P1 盘点或后续迁移 Workpack 需要旧代码时执行：
+在本目录运行：
 
 ```bash
-python tooling/install_v31_baseline.py --archive "/path/to/prd_subharness_v3_1(1).zip"
+python3 tooling/verify_start_package.py
+python3 tooling/validate_constitution.py
+python3 tooling/validate_program.py
+python3 tooling/validate_skills.py
+python3 tooling/preflight_current_workpack.py
 ```
 
-旧源码只作为只读参照，不得被 V4 代码 import。
+`verify_start_package.py` 和 `validate_program.py` 会自动识别当前是完成态包。`--mode start` 只用于原始未推进启动包；当前完成态包的标准校验是默认 `auto` 或显式 `--mode complete`。
+
+## 标准 harness run
+
+推荐先安装或确认本地 venv 已指向 `repository/`：
+
+```bash
+uv pip install --python ../.venv/bin/python -e repository
+```
+
+然后运行 PRD：
+
+```bash
+../.venv/bin/drd-harness run \
+  --work-dir current_capsule/outputs/<run_dir> \
+  --adapter-id markdown_prd_adapter \
+  --source-ref /path/to/input_prd.md \
+  --output-dir current_capsule/outputs/<run_dir>/out \
+  --target-workpack P4-IMPL-01
+```
+
+标准 run 会写出：
+
+```text
+adapter_result_manifest.json
+source_intake_plan.json
+stage_execution_plan.json
+validation_report.json
+harness_run_result.json
+```
+
+其中 `harness_run_result.json` 是 resume 的标准 run-state 引用；它不计入业务 `written_paths`，避免 run-state 自引用 hash。
+
+继续到锁边界检查：
+
+```bash
+../.venv/bin/drd-harness resume \
+  --run-state-ref current_capsule/outputs/<run_dir>/out/harness_run_result.json \
+  --requested-resume-node <lock_gate_node_id> \
+  --dry-run
+```
+
+如果证据未漂移，预期结果是 `BLOCK_LOCK_BOUNDARY`，下一步只能请求显式锁授权。

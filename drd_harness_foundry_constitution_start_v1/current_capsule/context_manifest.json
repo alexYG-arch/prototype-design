@@ -1,12 +1,15 @@
 {
   "acceptance_commands": [
-    "python tooling/validate_p1_spec00_candidate.py",
-    "python tooling/preflight_current_workpack.py --post"
+    "python3 tooling/verify_start_package.py",
+    "python3 tooling/validate_constitution.py",
+    "python3 tooling/validate_program.py",
+    "python3 tooling/validate_skills.py",
+    "python3 tooling/preflight_current_workpack.py"
   ],
   "allowed_write_paths": [
-    "build_program/phases/P1/candidates/P1-SPEC-00/**",
     "current_capsule/outputs/**"
   ],
+  "candidate_dir": "current_capsule/outputs",
   "forbidden_write_paths": [
     "constitution/**",
     "control/**",
@@ -16,114 +19,88 @@
     "references/**",
     "tooling/**"
   ],
-  "lane": "SPEC",
-  "phase": "P1",
+  "lane": "PROGRAM_CLOSURE",
+  "phase": "P4",
   "required_files": [
     {
       "path": "AGENTS.md",
       "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec"
     },
     {
-      "path": "constitution/DRD_HARNESS_CHARTER.md",
-      "sha256": "934e859bbb2fb7520b81a3533b0f7cd1d4942658dc1ec0a3f7baa9277f272d48"
+      "path": "START_HERE.md",
+      "sha256": "4b0fd28186fae192e8c737b5e4135a081411cb4a17d8a524558e4b0d93975128"
     },
     {
-      "path": "constitution/REASONING_DOCTRINE.md",
-      "sha256": "ae52f0437d4da0e39fed3f025fa91bed713b317a9f25d7e0205024ccbe8be1db"
+      "path": "CODEX_START_PROMPT.md",
+      "sha256": "686c5e1c92c9afbb14b76bfe0f6b7023aecf3099d8dd2a6965e9dfeb53281719"
     },
     {
-      "path": "constitution/AUTHORITY_MODEL.md",
-      "sha256": "1169f114391d04b9634a9090919850b8b18387989723b30e9a5fc384863c0f87"
+      "path": "current_capsule/AGENTS.md",
+      "sha256": "24bb7836e2fe39f8074a2a8240b5dea2a1686a7008b7355b33931dd326c22ff1"
     },
     {
-      "path": "constitution/STAGE_DEPENDENCY_AND_RUNTIME_MODEL.md",
-      "sha256": "6c79b3b501d66784d97305cf4855e871a05d3a55974dd20cfd40932d81052a89"
-    },
-    {
-      "path": "constitution/INTERACTION_CLOSURE_POLICY.md",
-      "sha256": "551837e9c0eb2088a4f20ad5457c6d7c1aacb7f7c693b98604710f4dbc9f81b8"
-    },
-    {
-      "path": "constitution/PRD_ELEMENT_ADOPTION_POLICY.md",
-      "sha256": "a44315069483b7fb414064a6b491b103e23a0a5ca35542e82bce883338c8a288"
-    },
-    {
-      "path": "constitution/INFORMATION_PRESENTATION_CONSISTENCY.md",
-      "sha256": "dd1a58bb4485cbb8c2580bd9fa74f0b6f951cfac27d4a3ff2a2ce8b76cb7e966"
-    },
-    {
-      "path": "constitution/SHARED_COMPONENT_POLICY.md",
-      "sha256": "94eb4d6fff46915432a16d1f662930d020683f8d71288bb1021c2553862a8e34"
-    },
-    {
-      "path": "constitution/NATURAL_LANGUAGE_LAYOUT_POLICY.md",
-      "sha256": "c2378219e44f3d997e37af73f943c8d9192a2ce8a44dd73361308778e6460976"
-    },
-    {
-      "path": "constitution/FIGMA_COMPATIBILITY_POLICY.md",
-      "sha256": "637d8155f7760e35b69720d4f475e0a5bfcc3becca111dba64ce78475e8cac3e"
-    },
-    {
-      "path": "constitution/VALIDATION_MODEL.md",
-      "sha256": "abb79e6e9199136d83b7b4061e8cd81840b52426b7d977215905f9f87a925dc5"
-    },
-    {
-      "path": "constitution/SPEC_TO_CODE_POLICY.md",
-      "sha256": "df9a0627e2688c84de09480451865a5b44ec26adf169eeb7bf72a1d2d29f8c8d"
-    },
-    {
-      "path": "constitution/SKILL_POLICY.md",
-      "sha256": "152e914e0f7fe30f045bf117242f8d9be205d817d6c86300508505a76b32fc00"
-    },
-    {
-      "path": "control/CLAUSE_INVENTORY.json",
-      "sha256": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8"
-    },
-    {
-      "path": "control/DECISION_CATALOG.json",
-      "sha256": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb"
-    },
-    {
-      "path": "build_program/program/PROGRAM_MANIFEST.json",
-      "sha256": "c53643af8bf6c8d8fd5db4692d21619f637216275d6f5c40c3130ca74b4c2526"
-    },
-    {
-      "path": "build_program/program/PROGRAM_STATE.json",
-      "sha256": "083b34a07ebe854cd1f79fd53e2947d906c4404a17ee7f2d23363ea5cb36a288"
-    },
-    {
-      "path": "build_program/phases/P1/PHASE_MANIFEST.json",
-      "sha256": "b31a8aeccb695a5a75d81868e92fe159593b65111eb10bbc681461faae512ec9"
-    },
-    {
-      "path": "build_program/phases/P1/P1_SPEC_SEED.md",
-      "sha256": "66c70e15bb46a39c4cb72a41095ee85682b5c708fa271dc651b0001897a3b8bb"
+      "path": "current_capsule/PROMPT.md",
+      "sha256": "d17be59a5224c090431fe4d39fd41df0ed56c2c4c7a8fc17226bdf4faa18763f"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "88fe4af2b0df5efc92702b62b77c0f962823816ed749236c33da992ee58372e8"
+      "sha256": "9e98c4baa7b5d20ba3eec2a04bd18bccf19fd595fdc674f85ca8f2e59958e2cd"
+    },
+    {
+      "path": "build_program/program/PROGRAM_MANIFEST.json",
+      "sha256": "12109eadaf52398cb47ab48b1fb43f1002e1072fbafe8c5955ef981ceae016a4"
+    },
+    {
+      "path": "build_program/program/PROGRAM_STATE.json",
+      "sha256": "069837ee6a3b5b2d88c3a363fd5266c41b45eebc12b84d995c90638e75f0a330"
     },
     {
       "path": "control/CONSTITUTION_LOCK.json",
       "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779"
+    },
+    {
+      "path": "control/locks/P3_BUILD_LOCK.json",
+      "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e"
+    },
+    {
+      "path": "control/locks/P4_BUILD_LOCK.json",
+      "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
+    },
+    {
+      "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+      "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+    },
+    {
+      "path": "repository/pyproject.toml",
+      "sha256": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/main.py",
+      "sha256": "f4ed7de2951643b0ac02f1bea56320d663113bab0dafcd02f80b0bd2d3e1625e"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "sha256": "8d5b0ac70b4befcafbe98bf07d6c3b994738b9274c065c8da20fa87afffd36f4"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/recovery.py",
+      "sha256": "c60c442436fabf517bb171fc02a3e39320823f4ad98ed2dda8df9b90582589e6"
+    },
+    {
+      "path": "tooling/verify_start_package.py",
+      "sha256": "26efbe31ccbafbde366f5ee49ab03cc80ce4c6fc199ed159f0b69df1984957d2"
+    },
+    {
+      "path": "tooling/validate_program.py",
+      "sha256": "7af697c088b5fde0bcbf019f41e6ff70506a9382ec8a3ce75e8a5c95b006f2e8"
+    },
+    {
+      "path": "tooling/preflight_current_workpack.py",
+      "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
     }
   ],
-  "required_outputs": [
-    "P1_PHASE_PLAN.md",
-    "P1_CLAUSE_OWNERSHIP.json",
-    "P1_SPEC_PART_MAP.json",
-    "P1_IMPLEMENTATION_WORKPACK_MAP.json",
-    "P1_ACCEPTANCE_MATRIX.json",
-    "P1_ASSEMBLY_SEED.json",
-    "CANDIDATE_MANIFEST.json",
-    "PART_SELF_CHECK.md",
-    "HANDOFF.md"
-  ],
-  "required_skills": [
-    "foundry-read-locks",
-    "foundry-generate-spec-part",
-    "foundry-validate-spec-part"
-  ],
-  "status": "READY",
-  "workpack_id": "P1-SPEC-00"
+  "required_outputs": [],
+  "required_skills": [],
+  "status": "COMPLETE_READY_FOR_HARNESS_RUN",
+  "workpack_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC"
 }

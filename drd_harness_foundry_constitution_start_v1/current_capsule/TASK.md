@@ -1,49 +1,40 @@
-# P1-SPEC-00 — Generate P1 Phase Plan and Spec-to-Code Ownership
+# P4-PROGRAM-CLOSURE-STATUS-SYNC — Harness Run Standard
 
 ## Objective
 
-依据锁定宪章，生成可供后续 P1 Spec 分片和 P1 Implementation Workpack 使用的完整阶段计划。
+使用已完成的 DRD Harness，对输入 PRD 执行隔离 run，并产出可 review、可 resume、可锁边界检查的证据包。
 
-## Required outputs
+## Required run outputs
 
-仅写入：
+运行目录由调用方指定，必须位于：
 
 ```text
-build_program/phases/P1/candidates/P1-SPEC-00/
+current_capsule/outputs/
 ```
 
-必须生成：
+每次标准 run 至少产出：
 
-1. `P1_PHASE_PLAN.md`
-2. `P1_CLAUSE_OWNERSHIP.json`
-3. `P1_SPEC_PART_MAP.json`
-4. `P1_IMPLEMENTATION_WORKPACK_MAP.json`
-5. `P1_ACCEPTANCE_MATRIX.json`
-6. `P1_ASSEMBLY_SEED.json`
-7. `CANDIDATE_MANIFEST.json`
-8. `PART_SELF_CHECK.md`
-9. `HANDOFF.md`
+1. `adapter_result_manifest.json`
+2. `source_intake_plan.json`
+3. `stage_execution_plan.json`
+4. `validation_report.json`
+5. `harness_run_result.json`
 
-## Required content
+## Required behavior
 
-- 覆盖 `control/CLAUSE_INVENTORY.json` 中的全部锁定 Clause；
-- 每个 Clause 有唯一 Spec owner；
-- P1 Spec 必须同时产出 Contract、Rule、Projection、Validator Spec、Examples 和 Implementation Blueprint；
-- P1 Implementation 必须映射到 `repository/` 的真实代码、Validator 和测试路径；
-- 显式区分 Python Runtime、Codex Runtime 和 Human Gate；
-- 包含 Spec→Code 的 Contract→Rule→Code→Validator→Test 链；
-- 不得出现 `TBD`、`TODO`、“后续定义”或无 owner 条目。
-
-## Forbidden
-
-- 不得实现 Harness 代码；
-- 不得修改锁定宪章；
-- 不得生成 P2–P4 Candidate；
-- 不得 Seal 或批准本 Candidate。
+- `harness_run_result.json` 必须可直接作为 `drd-harness resume --run-state-ref` 的输入；
+- `output_hashes` 必须绑定实际落盘的 4 个声明输出；
+- `input_hashes` 必须绑定源 PRD 与 section refs；
+- 到 lock gate 时必须停止在 `BLOCK_LOCK_BOUNDARY`；
+- 如果声明输出丢失或 hash 漂移，必须先返回 `REPLAY`，不得直接请求锁授权；
+- run 不得新增 PRD 产品能力，只能做输入适配、计划、验证和边界判断。
 
 ## Acceptance commands
 
 ```bash
-python tooling/validate_p1_spec00_candidate.py
-python tooling/preflight_current_workpack.py --post
+python3 tooling/verify_start_package.py
+python3 tooling/validate_constitution.py
+python3 tooling/validate_program.py
+python3 tooling/validate_skills.py
+python3 tooling/preflight_current_workpack.py
 ```

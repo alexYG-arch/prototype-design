@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 
 from drd_harness.cli.main import main
+from drd_harness.kernel.hashline import sha256_file
+from drd_harness.orchestrator.recovery import validate_run_state_shape
 
 
 def test_p4_run_command_emits_status_payload(tmp_path: Path, capsys):
@@ -77,6 +79,28 @@ def test_p4_run_command_materializes_declared_written_paths(tmp_path: Path, caps
     assert json.loads(written_paths["source_intake_plan.json"].read_text(encoding="utf-8"))["source_section_count"] == 1
     assert json.loads(written_paths["stage_execution_plan.json"].read_text(encoding="utf-8"))["execution_plan"] == payload["stage_execution_plan"]
     assert json.loads(written_paths["validation_report.json"].read_text(encoding="utf-8"))["status"] == "PASS"
+    assert validate_run_state_shape(payload) == []
+    assert payload["output_hashes"] == {str(path): sha256_file(path) for path in sorted(written_paths.values())}
+
+    state_path = output / "harness_run_result.json"
+    assert payload["run_state_path"] == state_path.as_posix()
+    assert json.loads(state_path.read_text(encoding="utf-8")) == payload
+    lock_gate = payload["program_dag_snapshot"]["lock_gate_refs"][0]
+    resume_exit = main(
+        [
+            "resume",
+            "--run-state-ref",
+            str(state_path),
+            "--requested-resume-node",
+            lock_gate,
+            "--dry-run",
+        ]
+    )
+    resume_payload = json.loads(capsys.readouterr().out)
+
+    assert resume_exit == 1
+    assert resume_payload["resume_eligibility"] == "BLOCK_LOCK_BOUNDARY"
+    assert resume_payload["next_command_plan"] == ["REQUEST_EXPLICIT_LOCK_AUTHORIZATION"]
 
 
 def test_p4_review_command_reports_decision_binding(tmp_path: Path, capsys):

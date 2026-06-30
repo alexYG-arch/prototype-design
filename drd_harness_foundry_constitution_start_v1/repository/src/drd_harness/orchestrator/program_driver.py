@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Iterable, List, Mapping, Optional, Union
 
 from drd_harness.kernel.hashline import sha256_file, sha256_text
-from drd_harness.orchestrator.recovery import load_run_state, resolve_resume_decision
+from drd_harness.orchestrator.recovery import current_hashes_for_paths, load_run_state, resolve_resume_decision
 
 
 START_PACKAGE_ROOT = Path(__file__).resolve().parents[4]
@@ -214,6 +214,11 @@ def plan_run(
         planned_written_paths=planned_paths,
         evidence_paths=planned_paths,
         dry_run=dry_run,
+        **_run_state_fields(
+            adapter_result_manifest=adapter_result_manifest,
+            dag=dag,
+            dry_run=dry_run,
+        ),
     )
 
 
@@ -221,7 +226,11 @@ def plan_resume(run_state_ref: str, requested_resume_node: str, *, dry_run: bool
     run_state_path = Path(run_state_ref)
     if run_state_path.is_file():
         run_state = load_run_state(run_state_path)
-        report = resolve_resume_decision(run_state, requested_resume_node)
+        current_evidence = {
+            "written_paths": run_state.get("written_paths", []),
+            "output_hashes": current_hashes_for_paths(run_state.get("written_paths", [])),
+        }
+        report = resolve_resume_decision(run_state, requested_resume_node, current_evidence=current_evidence)
         decision = report["decision"]
         return build_status_payload(
             command="resume",
@@ -256,6 +265,13 @@ def plan_resume(run_state_ref: str, requested_resume_node: str, *, dry_run: bool
         next_command_plan=[],
         dry_run=dry_run,
     )
+
+
+def output_hashes_for_written_paths(payload: Mapping[str, Any]) -> dict:
+    return {
+        str(path): sha256_file(Path(path))
+        for path in sorted(str(path) for path in payload.get("written_paths", []))
+    }
 
 
 def plan_release_request(build_lock_refs: Iterable[str], release_scope_ref: str, evidence_bundle_ref: str) -> dict:
@@ -344,6 +360,89 @@ def _source_refs(adapter_result_manifest: Mapping[str, Any]) -> List[str]:
         else:
             refs.append(str(record))
     return sorted(refs)
+
+
+def _run_state_fields(*, adapter_result_manifest: Mapping[str, Any], dag: Mapping[str, Any], dry_run: bool) -> dict:
+    return {
+        "program_id": dag.get("program_id", ""),
+        "driver_version": dag.get("driver_version", DRIVER_VERSION),
+        "original_command": "run",
+        "adapter_id": str(adapter_result_manifest.get("adapter_id", "")),
+        "source_refs": _source_refs(adapter_result_manifest),
+        "input_hashes": _source_hashes(adapter_result_manifest),
+        "upstream_lock_refs": {str(P3_BUILD_LOCK_PATH): P3_BUILD_LOCK_SHA256},
+        "candidate_subject_hashes": {},
+        "review_decision_hashes": {},
+        "dag_snapshot_hash": _canonical_hash(dag),
+        "execution_plan_hash": _canonical_hash(dag.get("execution_plan", [])),
+        "node_states": _node_states(dag, dry_run=dry_run),
+        "output_hashes": {},
+        "gate_states": _gate_states(dag),
+        "failure_records": {},
+        "recovery_history": [],
+    }
+
+
+def _source_hashes(adapter_result_manifest: Mapping[str, Any]) -> dict:
+    hashes = {}
+    for record in adapter_result_manifest.get("source_section_records", []):
+        if not isinstance(record, Mapping):
+            continue
+        key = record.get("section_id") or record.get("source_ref") or record.get("source_path")
+        digest = record.get("content_sha256") or record.get("source_sha256")
+        if key and digest:
+            hashes[str(key)] = str(digest)
+    for record in adapter_result_manifest.get("source_ref_records", []):
+        if not isinstance(record, Mapping):
+            continue
+        key = record.get("source_ref") or record.get("section_id") or record.get("source_path")
+        digest = record.get("content_sha256") or record.get("source_sha256")
+        if key and digest and str(key) not in hashes:
+            hashes[str(key)] = str(digest)
+    handoff = adapter_result_manifest.get("handoff_manifest", {})
+    if isinstance(handoff, Mapping) and handoff.get("source_path") and handoff.get("source_sha256"):
+        hashes[str(handoff["source_path"])] = str(handoff["source_sha256"])
+    return dict(sorted(hashes.items()))
+
+
+def _node_states(dag: Mapping[str, Any], *, dry_run: bool) -> dict:
+    states = {}
+    for node in dag.get("dag_nodes", []):
+        if not isinstance(node, Mapping) or not node.get("node_id"):
+            continue
+        node_type = str(node.get("node_type", ""))
+        if dry_run:
+            state = "NODE_PLANNED"
+        elif node_type == "HUMAN_REVIEW_GATE":
+            state = "NODE_BLOCKED_HUMAN_REVIEW"
+        elif node_type == "LOCK_GATE":
+            state = "NODE_BLOCKED_LOCK_BOUNDARY"
+        else:
+            state = "NODE_COMPLETED"
+        states[str(node["node_id"])] = {
+            "state": state,
+            "node_type": node_type,
+            "label": str(node.get("label", "")),
+        }
+    return states
+
+
+def _gate_states(dag: Mapping[str, Any]) -> dict:
+    states = {}
+    for node in dag.get("dag_nodes", []):
+        if not isinstance(node, Mapping) or not node.get("node_id") or not node.get("gate"):
+            continue
+        node_type = str(node.get("node_type", ""))
+        states[str(node["node_id"])] = {
+            "gate_type": node_type,
+            "human_gate_required": node_type == "HUMAN_REVIEW_GATE",
+            "lock_requested": node_type == "LOCK_GATE",
+        }
+    return states
+
+
+def _canonical_hash(value: Any) -> str:
+    return sha256_text(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
 
 
 def _planned_path(output_root: str, name: str) -> List[str]:

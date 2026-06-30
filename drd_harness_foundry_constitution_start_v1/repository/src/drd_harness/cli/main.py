@@ -15,6 +15,7 @@ from drd_harness.kernel.import_boundaries import (
 )
 from drd_harness.orchestrator.program_driver import (
     build_status_payload,
+    output_hashes_for_written_paths,
     plan_release_request,
     plan_resume,
     plan_run,
@@ -165,6 +166,9 @@ def _run_p4_run(args) -> int:
         if _should_materialize_run_outputs(payload):
             try:
                 _materialize_run_outputs(payload)
+                payload["output_hashes"] = output_hashes_for_written_paths(payload)
+                payload["run_state_path"] = _default_run_state_path(payload)
+                _materialize_run_state(payload)
             except OSError as exc:
                 payload = build_status_payload(
                     command="run",
@@ -282,6 +286,19 @@ def _materialize_run_outputs(payload: dict) -> None:
         path = paths_by_name[name]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(artifact, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _default_run_state_path(payload: dict) -> str:
+    planned = payload.get("planned_written_paths", [])
+    if not planned:
+        return "harness_run_result.json"
+    return (Path(str(planned[0])).parent / "harness_run_result.json").as_posix()
+
+
+def _materialize_run_state(payload: dict) -> None:
+    path = Path(str(payload["run_state_path"]))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def _run_output_artifacts(payload: dict) -> dict:
