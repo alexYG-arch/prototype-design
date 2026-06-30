@@ -18,6 +18,6 @@
     "P4-SPEC-02",
     "P4-SPEC-03"
   ],
-  "status": "WAITING_UPSTREAM_LOCK",
+  "status": "COMPLETE",
   "title": "Integration and release"
 }

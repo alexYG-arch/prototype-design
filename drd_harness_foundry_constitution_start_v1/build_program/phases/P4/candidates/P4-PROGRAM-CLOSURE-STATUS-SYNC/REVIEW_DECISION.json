@@ -1,0 +1,57 @@
+{
+  "decision_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC-REVIEW-001",
+  "subject": "P4-PROGRAM-CLOSURE-STATUS-SYNC",
+  "subject_hash": "5b4ca15ccaf3525474fd867541dd367cb9dba6ce168c9f1ff5fa16aa16c5b9b1",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the P4 program closure status sync candidate. This approval covers final program and phase status synchronization only.",
+  "approved_sections": [
+    "PROGRAM_CLOSURE_STATUS_SYNC_RESULT.json",
+    "ROOT_STATUS_FILE_HASHES.json",
+    "PROGRAM_CLOSURE_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "build_program/program/PROGRAM_STATE.json",
+    "build_program/program/PROGRAM_MANIFEST.json",
+    "build_program/phases/P1/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/**"
+  ],
+  "approved_program_state": {
+    "program_state": "COMPLETE",
+    "target_lock_state": "CREATED_APPROVED_COMMITTED_AND_PUSHED",
+    "package_publish_state": "NOT_PUBLISHED",
+    "current_workpack": "P4-PROGRAM-CLOSURE-STATUS-SYNC"
+  },
+  "approved_final_release_lock": {
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa",
+    "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3"
+  },
+  "validation_summary": {
+    "candidate_check_subject_hash": "5b4ca15ccaf3525474fd867541dd367cb9dba6ce168c9f1ff5fa16aa16c5b9b1",
+    "program_state_complete": "PASS",
+    "phase_manifests_complete": "PASS",
+    "root_status_hash_index": "PASS",
+    "release_lock_hash_stable": "PASS",
+    "package_published": false,
+    "diff_check": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_lock_rewrite": true,
+  "not_a_package_publish": true,
+  "not_a_repository_source_change": true,
+  "remaining_followups": [
+    "Commit and push of the approved program closure status sync require separate explicit authorization.",
+    "Package publishing remains separately authorized and was not performed."
+  ]
+}

@@ -25,6 +25,6 @@
     "P3-SPEC-COMPILER",
     "P3-SPEC-ASSURANCE"
   ],
-  "status": "WAITING_UPSTREAM_LOCK",
+  "status": "COMPLETE",
   "title": "Full capability expansion"
 }

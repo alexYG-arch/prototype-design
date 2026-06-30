@@ -1,23 +1,96 @@
 {
   "automatic_phase_advance": false,
-  "current_lane": "SPEC",
-  "current_phase": "P1",
-  "current_workpack": "P1-SPEC-00",
+  "current_lane": "PROGRAM_CLOSURE",
+  "current_phase": "P4",
+  "current_workpack": "P4-PROGRAM-CLOSURE-STATUS-SYNC",
+  "last_synced_git_commit": "0ac582cb0ae95d4bb6ef7bcba98677963c98aaaa",
+  "last_synced_git_commit_sha256": "eabb964f554a573a90284b912848c94988253a349e2a56c1a48a00abd49768c6",
+  "package_publish_state": "NOT_PUBLISHED",
   "phases": {
     "P1": {
-      "status": "ACTIVE"
+      "build_lock": {
+        "lock_id": "P1-BUILD-LOCK-001",
+        "path": "control/locks/P1_BUILD_LOCK.json",
+        "root_sha256": "163dee6ac68384c6dc605a946a79702694b8fc9992c1ade02f3e7080acd1df3c",
+        "sha256": "c57528ba0736eab4cece6c14c0c1d13956e97b45cdfa7ae1fad956d0b58cceb2"
+      },
+      "spec_lock": {
+        "lock_id": "P1-SPEC-LOCK-001",
+        "path": "control/locks/P1_SPEC_LOCK.json",
+        "root_sha256": "6fabf51bb2990aa630cffedc07c8aa5100b4e177e3a6890e3a31cae386850be1",
+        "sha256": "ce311e07011987b6016abd15a0a3239a61e4ef653fc1d4b54fd330c475771b17"
+      },
+      "status": "COMPLETE"
     },
     "P2": {
-      "status": "WAITING_UPSTREAM_LOCK"
+      "build_lock": {
+        "lock_id": "P2-BUILD-LOCK-001",
+        "path": "control/locks/P2_BUILD_LOCK.json",
+        "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d",
+        "sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad"
+      },
+      "spec_lock": {
+        "lock_id": "P2-SPEC-LOCK-001",
+        "path": "control/locks/P2_SPEC_LOCK.json",
+        "root_sha256": "93eddcc641eaceb0d9793b2fb6eaa833a1526e4dc9d90345e2b018cc5beb1580",
+        "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+      },
+      "status": "COMPLETE"
     },
     "P3": {
-      "status": "WAITING_UPSTREAM_LOCK"
+      "build_lock": {
+        "lock_id": "P3-BUILD-LOCK-001",
+        "path": "control/locks/P3_BUILD_LOCK.json",
+        "root_sha256": "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f",
+        "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e"
+      },
+      "spec_lock": {
+        "lock_id": "P3-SPEC-LOCK-001",
+        "path": "control/locks/P3_SPEC_LOCK.json",
+        "root_sha256": "311caf3063b75039a607c31fdec0318c7f7076483fca30507a7cedb385fc9522",
+        "sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      },
+      "status": "COMPLETE"
     },
     "P4": {
-      "status": "WAITING_UPSTREAM_LOCK"
+      "build_lock": {
+        "lock_id": "P4-BUILD-LOCK-001",
+        "path": "control/locks/P4_BUILD_LOCK.json",
+        "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+        "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
+      },
+      "release_lock": {
+        "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+        "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+        "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3",
+        "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+      },
+      "spec_lock": {
+        "lock_id": "P4-SPEC-LOCK-001",
+        "path": "control/locks/P4_SPEC_LOCK.json",
+        "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c",
+        "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7"
+      },
+      "status": "COMPLETE"
     }
   },
   "program_id": "DRD-HARNESS-FOUNDRY-V1",
+  "program_state": "COMPLETE",
+  "release_lock": {
+    "creation_result_review_decision": "build_program/phases/P4/candidates/P4-RELEASE-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "creation_result_review_decision_sha256": "726ecad97566f99e19e35fba150c8196b5222eee20ca7dc68774d66388168a30",
+    "creation_result_subject_hash": "7e0c0a02576b85e9ded03dd90bb249700f1d542b0aaf944176284fbd9b64f969",
+    "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+  },
+  "status_sync_authorization": {
+    "request_date": "2026-06-30",
+    "request_interpretation": "sync final program and phase status after DRD_HARNESS_RELEASE_LOCK was created, approved, committed, and pushed",
+    "request_text": "授权"
+  },
   "stop_at_human_gate": true,
-  "target": "DRD_HARNESS_RELEASE_LOCK"
+  "target": "DRD_HARNESS_RELEASE_LOCK",
+  "target_lock_state": "CREATED_APPROVED_COMMITTED_AND_PUSHED"
 }

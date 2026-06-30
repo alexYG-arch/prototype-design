@@ -17,6 +17,6 @@
     "P2-SPEC-02",
     "P2-SPEC-03"
   ],
-  "status": "WAITING_UPSTREAM_LOCK",
+  "status": "COMPLETE",
   "title": "Minimum vertical slice"
 }

@@ -1,5 +1,11 @@
 {
-  "current_workpack": "P1-SPEC-00",
+  "current_workpack": "P4-PROGRAM-CLOSURE-STATUS-SYNC",
+  "final_release_lock": {
+    "lock_id": "DRD-HARNESS-RELEASE-LOCK-001",
+    "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "root_sha256": "214546ff2b3e3d5ba4e14ef910f75fa80359f50df7827034f0079d916a6f4db3",
+    "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+  },
   "phases": [
     {
       "id": "P1",
@@ -8,7 +14,8 @@
         "P1_SPEC_LOCK",
         "P1_BUILD_LOCK"
       ],
-      "requires": []
+      "requires": [],
+      "status": "COMPLETE"
     },
     {
       "id": "P2",
@@ -20,7 +27,8 @@
       "requires": [
         "P1_SPEC_LOCK",
         "P1_BUILD_LOCK"
-      ]
+      ],
+      "status": "COMPLETE"
     },
     {
       "id": "P3",
@@ -32,7 +40,8 @@
       "requires": [
         "P2_SPEC_LOCK",
         "P2_BUILD_LOCK"
-      ]
+      ],
+      "status": "COMPLETE"
     },
     {
       "id": "P4",
@@ -45,9 +54,11 @@
       "requires": [
         "P3_SPEC_LOCK",
         "P3_BUILD_LOCK"
-      ]
+      ],
+      "status": "COMPLETE"
     }
   ],
   "program_id": "DRD-HARNESS-FOUNDRY-V1",
+  "status": "COMPLETE",
   "target": "DRD_HARNESS_RELEASE_LOCK"
 }

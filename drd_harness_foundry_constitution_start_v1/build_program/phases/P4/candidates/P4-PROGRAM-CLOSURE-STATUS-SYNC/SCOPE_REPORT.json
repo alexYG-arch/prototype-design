@@ -1,0 +1,48 @@
+{
+  "scope_report_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC",
+  "authorized_write_basis": "USER_AUTHORIZATION_2026-06-30_PROGRAM_PHASE_CLOSURE_STATUS_SYNC",
+  "allowed_write_paths": [
+    "build_program/program/PROGRAM_STATE.json",
+    "build_program/program/PROGRAM_MANIFEST.json",
+    "build_program/phases/P1/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/**"
+  ],
+  "actual_write_paths": [
+    "build_program/program/PROGRAM_STATE.json",
+    "build_program/program/PROGRAM_MANIFEST.json",
+    "build_program/phases/P1/PHASE_MANIFEST.json",
+    "build_program/phases/P2/PHASE_MANIFEST.json",
+    "build_program/phases/P3/PHASE_MANIFEST.json",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/PROGRAM_CLOSURE_STATUS_SYNC_RESULT.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/ROOT_STATUS_FILE_HASHES.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/PROGRAM_CLOSURE_VALIDATION_REPORT.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/HANDOFF.md",
+    "build_program/phases/P4/candidates/P4-PROGRAM-CLOSURE-STATUS-SYNC/REVIEW_TARGET.json"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/**",
+    "repository/**",
+    "build_program/phases/P1/candidates/**",
+    "build_program/phases/P2/candidates/**",
+    "build_program/phases/P3/candidates/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-BUILD-*/**",
+    "build_program/phases/P4/candidates/P4-RELEASE-*/** except P4-PROGRAM-CLOSURE-STATUS-SYNC"
+  ],
+  "actual_write_scope_status": "PASS",
+  "locks_modified": false,
+  "repository_files_modified": false,
+  "package_published": false,
+  "commit_or_push_performed": false
+}
