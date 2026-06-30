@@ -162,6 +162,19 @@ def _run_p4_run(args) -> int:
             target_workpack=args.target_workpack,
             dry_run=args.dry_run,
         )
+        if _should_materialize_run_outputs(payload):
+            try:
+                _materialize_run_outputs(payload)
+            except OSError as exc:
+                payload = build_status_payload(
+                    command="run",
+                    status="FAIL",
+                    run_id=str(payload.get("run_id", "")),
+                    findings=[_finding("CLI-OUTPUT", str(args.output_dir), str(exc))],
+                    exit_code=1,
+                    planned_written_paths=payload.get("planned_written_paths", []),
+                    dry_run=args.dry_run,
+                )
     except (OSError, UnicodeDecodeError, JSONDecodeError) as exc:
         payload = build_status_payload(
             command="run",
@@ -253,6 +266,73 @@ def _adapt_source(adapter_id: str, source_ref: Path) -> dict:
     if adapter_id == "prd_harness_adapter":
         return adapt_prd_harness_bundle(source_ref)
     raise ValueError(f"unknown adapter_id: {adapter_id}")
+
+
+def _should_materialize_run_outputs(payload: dict) -> bool:
+    return payload.get("command") == "run" and payload.get("status") == "PLANNED" and not payload.get("dry_run")
+
+
+def _materialize_run_outputs(payload: dict) -> None:
+    paths_by_name = {Path(path).name: Path(path) for path in payload.get("planned_written_paths", [])}
+    artifacts = _run_output_artifacts(payload)
+    missing = sorted(set(artifacts) - set(paths_by_name))
+    if missing:
+        raise OSError(f"missing planned output path(s): {', '.join(missing)}")
+    for name, artifact in artifacts.items():
+        path = paths_by_name[name]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(artifact, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _run_output_artifacts(payload: dict) -> dict:
+    adapter_manifest = payload.get("adapter_result_manifest", {})
+    dag = payload.get("program_dag_snapshot", {})
+    handoff = adapter_manifest.get("handoff_manifest", {})
+    source_ref_records = adapter_manifest.get("source_ref_records", [])
+    source_section_records = adapter_manifest.get("source_section_records", [])
+    planned_written_paths = payload.get("planned_written_paths", [])
+    findings = payload.get("findings", [])
+    return {
+        "adapter_result_manifest.json": adapter_manifest,
+        "source_intake_plan.json": {
+            "artifact": "source_intake_plan",
+            "command": payload.get("command"),
+            "findings": adapter_manifest.get("findings", []),
+            "normalization_report": adapter_manifest.get("normalization_report", {}),
+            "run_id": payload.get("run_id"),
+            "source_path": adapter_manifest.get("source_path") or handoff.get("source_path"),
+            "source_ref_count": len(source_ref_records),
+            "source_ref_records": source_ref_records,
+            "source_section_count": len(source_section_records),
+            "source_section_records": source_section_records,
+            "source_sha256": adapter_manifest.get("source_sha256") or handoff.get("source_sha256"),
+            "status": payload.get("status"),
+            "unsupported_content_report": adapter_manifest.get("unsupported_content_report", []),
+        },
+        "stage_execution_plan.json": {
+            "artifact": "stage_execution_plan",
+            "command": payload.get("command"),
+            "execution_plan": payload.get("stage_execution_plan", []),
+            "lock_gate_refs": dag.get("lock_gate_refs", []),
+            "planned_written_paths": planned_written_paths,
+            "program_dag_snapshot": dag,
+            "review_gate_refs": dag.get("review_gate_refs", []),
+            "run_id": payload.get("run_id"),
+            "status": payload.get("status"),
+        },
+        "validation_report.json": {
+            "artifact": "validation_report",
+            "command": payload.get("command"),
+            "dry_run": payload.get("dry_run", False),
+            "findings": findings,
+            "human_review_gate_required": bool(dag.get("review_gate_refs")),
+            "lock_gate_required": bool(dag.get("lock_gate_refs")),
+            "run_id": payload.get("run_id"),
+            "status": "PASS" if not findings else "FAIL",
+            "validated_written_paths": planned_written_paths,
+            "validation_scope": "harness_execution_plan_only",
+        },
+    }
 
 
 def _emit(payload: dict) -> None:

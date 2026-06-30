@@ -39,6 +39,46 @@ def test_p4_run_command_emits_status_payload(tmp_path: Path, capsys):
     assert payload["stage_execution_plan"]
 
 
+def test_p4_run_command_materializes_declared_written_paths(tmp_path: Path, capsys):
+    source = tmp_path / "prd.md"
+    source.write_text("# PRD\nContent\n", encoding="utf-8")
+    output = tmp_path / "out"
+
+    exit_code = main(
+        [
+            "run",
+            "--work-dir",
+            str(tmp_path),
+            "--adapter-id",
+            "markdown_prd_adapter",
+            "--source-ref",
+            str(source),
+            "--output-dir",
+            str(output),
+            "--target-workpack",
+            "P4-IMPL-01",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+    written_paths = {Path(path).name: Path(path) for path in payload["written_paths"]}
+
+    assert exit_code == 0
+    assert payload["status"] == "PLANNED"
+    assert set(written_paths) == {
+        "adapter_result_manifest.json",
+        "source_intake_plan.json",
+        "stage_execution_plan.json",
+        "validation_report.json",
+    }
+    for path in written_paths.values():
+        assert path.is_file()
+        json.loads(path.read_text(encoding="utf-8"))
+    assert json.loads(written_paths["adapter_result_manifest.json"].read_text(encoding="utf-8")) == payload["adapter_result_manifest"]
+    assert json.loads(written_paths["source_intake_plan.json"].read_text(encoding="utf-8"))["source_section_count"] == 1
+    assert json.loads(written_paths["stage_execution_plan.json"].read_text(encoding="utf-8"))["execution_plan"] == payload["stage_execution_plan"]
+    assert json.loads(written_paths["validation_report.json"].read_text(encoding="utf-8"))["status"] == "PASS"
+
+
 def test_p4_review_command_reports_decision_binding(tmp_path: Path, capsys):
     candidate = tmp_path / "candidate"
     candidate.mkdir()
