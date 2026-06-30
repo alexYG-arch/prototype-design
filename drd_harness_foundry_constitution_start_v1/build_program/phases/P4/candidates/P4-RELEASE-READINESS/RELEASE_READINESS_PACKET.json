@@ -1,0 +1,78 @@
+{
+  "release_candidate_id": "P4-RELEASE-READINESS-001",
+  "p4_spec_lock_ref": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "test_suite_reports": {
+    "GOLDEN": "2f9c6d9e2fa09210ee81dc8c8400b34e607d857926110b2e8c26bd69835b0cb5",
+    "INTEGRATION": "cb1d1c07ba3bcdfdcfbeef4568f83a1b599f0f9963a544c9f4ac209928705e63",
+    "RELEASE": "b7c215b0bdc524a8a112e589fd4b2c2ace418d17dcdad0b40013aeae184be6f4"
+  },
+  "migration_coverage_report": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+  "package_manifest": "d233aaa7dd2f93008130626e127b8ed13d74e650d29e8c7a236dff6a2bd6dfae",
+  "example_project_manifest": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+  "source_git_commit": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46",
+  "missing_gate_list": [
+    "p4_build_lock_creation_result_review_decision_not_committed_or_pushed",
+    "p4_build_lock_file_not_committed_or_pushed_after_creation",
+    "release_suite_status_not_pass_pending_clean_release_input_replay"
+  ],
+  "dirty_state_policy": "BLOCKED_DIRTY",
+  "dirty_state_records": [
+    {
+      "path": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/",
+      "git_status": "??",
+      "is_release_input": true,
+      "classification": "AFFECTS_RELEASE_INPUTS",
+      "reason": "approved build-lock review decision is required by the release lock input bundle but is not committed in the current source git commit",
+      "required_action": "commit_and_push_after_explicit_user_authorization"
+    },
+    {
+      "path": "control/locks/P4_BUILD_LOCK.json",
+      "git_status": "??",
+      "is_release_input": true,
+      "classification": "AFFECTS_RELEASE_INPUTS",
+      "reason": "P4 build lock is required by the release lock input bundle but is not committed in the current source git commit",
+      "required_action": "commit_and_push_after_explicit_user_authorization"
+    }
+  ],
+  "release_lock_input_bundle_preview": {
+    "expected_bundle_id": "release-lock-inputs-191a043f20052108",
+    "required_input_kinds": [
+      "p4_spec_lock_ref",
+      "p4_build_lock_ref",
+      "approved_spec_decisions",
+      "approved_build_decision",
+      "suite_report_hashes",
+      "package_manifest_hash",
+      "example_project_manifest_hash",
+      "migration_coverage_hash",
+      "release_readiness_packet_hash",
+      "source_git_commit",
+      "required_human_authorization"
+    ],
+    "missing_input_kinds": [
+      "p4_build_lock_creation_result_review_decision_not_committed_or_pushed",
+      "p4_build_lock_file_not_committed_or_pushed_after_creation",
+      "release_suite_status_not_pass_pending_clean_release_input_replay"
+    ],
+    "blocked_until_human_authorization": true
+  },
+  "human_authorization_required": true,
+  "will_create_release_lock": false,
+  "will_publish_package": false,
+  "status": "BLOCKED_DIRTY",
+  "release_lock_eligibility_state": "NOT_ELIGIBLE",
+  "readiness_packet_hash": "56411bcf0375e30ab2a411825c266d888d054b3f4d100baca1efaf39289549a2",
+  "source_git_commit_ref": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+  "source_git_commit_hash_basis": "sha256(git commit id string)"
+}

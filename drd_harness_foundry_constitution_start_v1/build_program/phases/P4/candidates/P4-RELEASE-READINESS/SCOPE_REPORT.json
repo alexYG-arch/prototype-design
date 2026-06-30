@@ -1,0 +1,51 @@
+{
+  "scope_id": "P4-RELEASE-READINESS-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-READINESS",
+  "status": "PASS",
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**"
+  ],
+  "actual_writes": [
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/WORKPACK_EXECUTION_RESULT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_READINESS_PACKET.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_EVIDENCE_INDEX.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_GATE_BLOCKERS.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/MIGRATION_COVERAGE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/PACKAGE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/PACKAGE_DRY_RUN_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/EXAMPLE_PROJECT_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/EXAMPLE_PROJECT_SMOKE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/SUITE_REPORTS.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/SCOPE_REPORT.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/VALIDATION_EVIDENCE.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/CANDIDATE_MANIFEST.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/PART_SELF_CHECK.md",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/HANDOFF.md"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "control/locks/P4_BUILD_LOCK.json",
+    "control/locks/P4_SPEC_LOCK.json",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-BUILD-*/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "forbidden_write_violations": [],
+  "repository_files_modified": false,
+  "control_lock_files_modified_by_this_candidate": false,
+  "release_lock_created": false,
+  "package_published": false,
+  "pre_existing_dirty_state_snapshot": [
+    "?? build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/",
+    "?? control/locks/P4_BUILD_LOCK.json"
+  ]
+}

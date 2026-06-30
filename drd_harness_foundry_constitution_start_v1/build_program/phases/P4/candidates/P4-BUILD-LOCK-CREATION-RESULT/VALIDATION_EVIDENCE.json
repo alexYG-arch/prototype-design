@@ -1,0 +1,95 @@
+{
+  "evidence_id": "P4-BUILD-LOCK-CREATION-RESULT-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-BUILD-LOCK-CREATION-RESULT",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "P4_BUILD_LOCK_JSON_VALID",
+      "command": "python3 -m json.tool control/locks/P4_BUILD_LOCK.json >/tmp/p4_build_lock.pretty.json",
+      "exit_code": 0,
+      "summary": "created build lock parses as valid JSON",
+      "status": "PASS",
+      "result_hash": "32a2c130b54a94a08de4f545c59b813983b7643f605c107609a264e6f6f8aeb0",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_BUILD_LOCK_PHASE_GATE",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY2'\nimport json\nfrom pathlib import Path\nfrom drd_harness.validators.phase_gate import canonical_lock_root, validate_build_lock_readiness\nlock=json.loads(Path('control/locks/P4_BUILD_LOCK.json').read_text())\nassert not validate_build_lock_readiness(lock)\nassert lock['root_sha256'] == canonical_lock_root(lock)\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "validate_build_lock_readiness returns zero findings and root hash recomputes",
+      "status": "PASS",
+      "result_hash": "ac3e50f67eac4b6958d5cfc0240446de598296d6f5acbfc5ccbbda66f6759312",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_BUILD_LOCK_FILE_HASH_BINDINGS",
+      "command": "PYTHONPATH=repository/src python3 - <<'PY2'\nimport hashlib, json\nfrom pathlib import Path\nlock=json.loads(Path('control/locks/P4_BUILD_LOCK.json').read_text())\ndef sha(path):\n    h=hashlib.sha256(); h.update(Path(path).read_bytes()); return h.hexdigest()\nfor entry in lock['files']:\n    assert sha(entry['path']) == entry['sha256'], entry['path']\nassert sha('control/locks/P4_SPEC_LOCK.json') == lock['spec_lock_hash']\nprint('PASS')\nPY2",
+      "exit_code": 0,
+      "summary": "every build lock file entry and the upstream spec lock hash match current files",
+      "status": "PASS",
+      "result_hash": "89cf10009606be716a031a889d8e4d8e4071c4db76309bb539b5266fa64f941e",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_BUILD_LOCK_RESULT_SCOPE",
+      "command": "python3 -c \"import json; from pathlib import Path; root=Path('build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT'); scope=json.loads((root/'SCOPE_REPORT.json').read_text()); assert Path(scope['created_control_lock']).is_file(); assert all(Path(p).is_file() for p in scope['actual_writes']); assert not scope['forbidden_write_violations']; assert scope['control_files_modified'] is True; assert scope['repository_files_modified'] is False; assert scope['release_lock_created'] is False; print('PASS')\"",
+      "exit_code": 0,
+      "summary": "scope report records the authorized build lock write and no repository or release lock writes",
+      "status": "PASS",
+      "result_hash": "229eaf906eb4f6abb581b58b0adb572b56a58b08af2455bd6aeceb2456891814",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_BUILD_LOCK_RESULT_CANDIDATE_CHECK",
+      "command": "PYTHONPATH=repository/src python3 -m drd_harness.cli.main candidate-check build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT",
+      "exit_code": 0,
+      "summary": "candidate-check returns PASS with zero findings for the P4 build lock creation result candidate",
+      "status": "PASS",
+      "result_hash": "e64a48b03b0ac2d5096ffb5dbaef2f349e29dce9c814459fc323d29d63a22984",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    },
+    {
+      "check": "P4_DIFF_CHECK",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "summary": "git diff whitespace check returns PASS after build lock creation",
+      "status": "PASS",
+      "result_hash": "ca1504d0ea5c6a7faa47d49a8977ded286db442dde354daf48fc099a09bea939",
+      "result_hash_basis": "sha256(canonical_json({command, exit_code, summary, status}))"
+    }
+  ],
+  "validator_identity_refs": [
+    "repository/src/drd_harness/validators/phase_gate.py",
+    "repository/src/drd_harness/validators/spec_validator.py",
+    "repository/schemas/locks/build_lock.schema.json",
+    "control/schemas/build_lock.schema.json",
+    "control/locks/P4_BUILD_LOCK.json"
+  ],
+  "recorded_prior_test_results": [
+    {
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4",
+      "exit_code": 0,
+      "result_hash": "33fb611c9db3d6a985db3241e9f405c8824ead53743e7514fb4b1898034d7c0e",
+      "summary": "70 passed"
+    },
+    {
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "result_hash": "1beef049db463fbd59903bb45c832c53786315e464176bb429e7d08572a179e3",
+      "summary": "480 passed"
+    },
+    {
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "result_hash": "d10ee825ad77cff0bdfd56d6c7900a95e3cf4b6d561b558ebd02b21126505524",
+      "summary": "runtime-boundary-check PASS"
+    },
+    {
+      "command": "P4 implementation candidate review binding aggregate check",
+      "exit_code": 0,
+      "result_hash": "e208d2824ed5e397fd9daa36aa722bb3ad1ba4c7f90af4848dbb7edd860f6dd2",
+      "summary": "P4-IMPL-01 through P4-IMPL-05 candidate-check --review-decision PASS"
+    }
+  ]
+}

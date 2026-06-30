@@ -1,0 +1,140 @@
+{
+  "GOLDEN": {
+    "suite_id": "GOLDEN",
+    "run_id": "suite-run-ae765f81aaa5f16f",
+    "command": "p4 golden suite --readiness-record-only",
+    "input_hashes": {
+      "approved_build_decision": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+      "p4_build_lock": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+      "p4_spec_lock": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+      "source_git_commit_hash": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46"
+    },
+    "upstream_lock_refs": [
+      "control/locks/P4_BUILD_LOCK.json",
+      "control/locks/P4_SPEC_LOCK.json"
+    ],
+    "status": "PASS",
+    "findings": [],
+    "exit_code": 0,
+    "started_at": "1970-01-01T00:00:00Z",
+    "finished_at": "1970-01-01T00:00:00Z",
+    "fixture_hash_report": {
+      "p4_release_smoke_readme": "2ddcad889c96fbac43370bd5c162cff4614cdcc2609e1dc45d4c85973e9e0588",
+      "p4_release_smoke_source_prd": "6241f9c56d1272bded2f3a5528c1e3e76a1025a6c932006c22cdb14cad5ec676"
+    },
+    "output_hash_comparison": [
+      {
+        "output_id": "p4_build_lock",
+        "expected_sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+        "actual_sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
+      },
+      {
+        "output_id": "p4_spec_lock",
+        "expected_sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+        "actual_sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7"
+      }
+    ],
+    "unexpected_diff_report": [],
+    "golden_update_policy": {
+      "requested": false,
+      "allowed": false
+    },
+    "rewritten_expected_outputs": false,
+    "report_hash": "2f9c6d9e2fa09210ee81dc8c8400b34e607d857926110b2e8c26bd69835b0cb5"
+  },
+  "INTEGRATION": {
+    "suite_id": "INTEGRATION",
+    "run_id": "suite-run-bf5f68a9c692961b",
+    "command": "p4 integration suite --readiness-record-only",
+    "input_hashes": {
+      "approved_build_decision": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+      "p4_build_lock": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+      "p4_spec_lock": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+      "source_git_commit_hash": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46"
+    },
+    "upstream_lock_refs": [
+      "control/locks/P4_BUILD_LOCK.json",
+      "control/locks/P4_SPEC_LOCK.json"
+    ],
+    "status": "PASS",
+    "findings": [],
+    "exit_code": 0,
+    "started_at": "1970-01-01T00:00:00Z",
+    "finished_at": "1970-01-01T00:00:00Z",
+    "command_status_payloads": [
+      {
+        "command": "candidate-check P4-BUILD-LOCK-CREATION-RESULT --review-decision",
+        "status": "PASS",
+        "run_id": "p4-build-lock-review-binding",
+        "written_paths": [],
+        "findings": [],
+        "exit_code": 0
+      },
+      {
+        "command": "validate_build_lock_readiness P4_BUILD_LOCK",
+        "status": "PASS",
+        "run_id": "p4-build-lock-phase-gate",
+        "written_paths": [],
+        "findings": [],
+        "exit_code": 0
+      }
+    ],
+    "gate_stop_report": {
+      "human_gate_bypassed": false,
+      "lock_gate_bypassed": false,
+      "release_lock_creation_blocked_without_explicit_authorization": true
+    },
+    "write_scope_report": {
+      "status": "PASS",
+      "violations": [],
+      "candidate_only_writes": true
+    },
+    "coverage_report": {
+      "adapters": true,
+      "cli": true,
+      "human_gate": true,
+      "lock_gate": true,
+      "program_driver": true,
+      "recovery": true,
+      "write_scope": true
+    },
+    "report_hash": "cb1d1c07ba3bcdfdcfbeef4568f83a1b599f0f9963a544c9f4ac209928705e63"
+  },
+  "RELEASE": {
+    "suite_id": "RELEASE",
+    "run_id": "suite-run-b55c887751de68ef",
+    "command": "p4 release suite --readiness-record-only",
+    "input_hashes": {
+      "approved_build_decision": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+      "example_project_smoke_report": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f",
+      "migration_coverage_report": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+      "p4_build_lock": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+      "p4_spec_lock": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+      "package_dry_run_report": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b",
+      "source_git_commit_hash": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46"
+    },
+    "upstream_lock_refs": [
+      "control/locks/P4_BUILD_LOCK.json",
+      "control/locks/P4_SPEC_LOCK.json"
+    ],
+    "status": "BLOCKED_UNSAFE_STATE",
+    "findings": [
+      {
+        "code": "P4REL-RELEASE-READINESS-FINAL-HASH-BLOCKED",
+        "subject_id": "release_readiness_packet",
+        "message": "final release readiness packet hash cannot be cited by the release suite until dirty release inputs are committed and the suite is replayed"
+      }
+    ],
+    "exit_code": 1,
+    "started_at": "1970-01-01T00:00:00Z",
+    "finished_at": "1970-01-01T00:00:00Z",
+    "package_dry_run_report": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b",
+    "example_project_smoke_report": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f",
+    "migration_coverage_report": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+    "release_readiness_verification": "blocked_pending_clean_committed_release_inputs",
+    "forbidden_actions_requested": [],
+    "would_publish_package": false,
+    "would_create_release_lock": false,
+    "report_hash": "b7c215b0bdc524a8a112e589fd4b2c2ace418d17dcdad0b40013aeae184be6f4"
+  }
+}

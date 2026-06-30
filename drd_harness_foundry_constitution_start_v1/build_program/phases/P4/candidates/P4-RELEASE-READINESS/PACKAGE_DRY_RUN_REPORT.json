@@ -1,0 +1,12 @@
+{
+  "report_id": "package-dry-run-ae121aed805f84e2",
+  "package_name": "drd-harness",
+  "package_version": "0.0.0-p4-readiness",
+  "status": "PASS",
+  "findings": [],
+  "would_publish_package": false,
+  "would_upload_artifacts": false,
+  "would_create_lock": false,
+  "included_file_count": 70,
+  "dry_run_report_hash": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b"
+}

@@ -1,0 +1,61 @@
+{
+  "workpack_id": "P4-RELEASE-READINESS",
+  "candidate_id": "P4-RELEASE-READINESS",
+  "phase": "P4",
+  "lane": "RELEASE_READINESS",
+  "status": "BLOCKED_DIRTY_READY_FOR_HUMAN_REVIEW",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-RELEASE-READINESS",
+  "upstream_candidate": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT",
+  "upstream_review_decision": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "upstream_review_decision_hash": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+  "upstream_review_decision_subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+  "upstream_spec_lock": "control/locks/P4_SPEC_LOCK.json",
+  "upstream_build_lock": "control/locks/P4_BUILD_LOCK.json",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RELEASE_READINESS_PACKET.json",
+    "RELEASE_EVIDENCE_INDEX.json",
+    "RELEASE_GATE_BLOCKERS.json",
+    "MIGRATION_COVERAGE_REPORT.json",
+    "PACKAGE_MANIFEST.json",
+    "PACKAGE_DRY_RUN_REPORT.json",
+    "EXAMPLE_PROJECT_MANIFEST.json",
+    "EXAMPLE_PROJECT_SMOKE_REPORT.json",
+    "SUITE_REPORTS.json",
+    "RELEASE_LOCK_INPUT_BUNDLE_PREVIEW.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "supporting_outputs": [
+    "REVIEW_TARGET.json"
+  ],
+  "approval_state": "NOT_APPROVED",
+  "review_decision": null,
+  "seal_state": "NOT_SEALED",
+  "release_lock_state": "NOT_CREATED",
+  "release_lock_created": false,
+  "package_published": false,
+  "allowed_write_paths": [
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "control/locks/P4_BUILD_LOCK.json",
+    "control/locks/P4_SPEC_LOCK.json",
+    "repository/**",
+    "build_program/phases/P1/**",
+    "build_program/phases/P2/**",
+    "build_program/phases/P3/**",
+    "build_program/phases/P4/candidates/P4-SPEC-*/**",
+    "build_program/phases/P4/candidates/P4-IMPL-*/**",
+    "build_program/phases/P4/candidates/P4-BUILD-*/**",
+    "build_program/phases/P4/PHASE.md",
+    "build_program/phases/P4/PHASE_MANIFEST.json",
+    "build_program/phases/P4/RELEASE_SCOPE.md"
+  ],
+  "actual_write_scope_status": "PASS",
+  "next_action": "Commit and push P4 build lock files only after explicit authorization, then replay release readiness for a clean PASS packet."
+}

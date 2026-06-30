@@ -1,0 +1,40 @@
+{
+  "expected_bundle_id": "release-lock-inputs-191a043f20052108",
+  "required_input_kinds": [
+    "p4_spec_lock_ref",
+    "p4_build_lock_ref",
+    "approved_spec_decisions",
+    "approved_build_decision",
+    "suite_report_hashes",
+    "package_manifest_hash",
+    "example_project_manifest_hash",
+    "migration_coverage_hash",
+    "release_readiness_packet_hash",
+    "source_git_commit",
+    "required_human_authorization"
+  ],
+  "missing_input_kinds": [
+    "p4_build_lock_creation_result_review_decision_not_committed_or_pushed",
+    "p4_build_lock_file_not_committed_or_pushed_after_creation",
+    "release_suite_status_not_pass_pending_clean_release_input_replay"
+  ],
+  "blocked_until_human_authorization": true,
+  "preview_status": "BLOCKED_PENDING_CLEAN_COMMITTED_RELEASE_INPUTS",
+  "will_create_release_lock": false,
+  "will_publish_package": false,
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "approved_build_decision": {
+    "path": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "sha256": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+    "subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "decision": "APPROVED",
+    "open_blockers": []
+  },
+  "approved_spec_decision_count": 3
+}

@@ -1,0 +1,27 @@
+{
+  "result_id": "P4-RELEASE-READINESS-RESULT-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-READINESS",
+  "status": "BLOCKED_DIRTY_READY_FOR_HUMAN_REVIEW",
+  "objective": "Materialize release readiness evidence without creating DRD_HARNESS_RELEASE_LOCK or publishing packages.",
+  "basis": {
+    "p4_build_lock_creation_result_approved": true,
+    "p4_build_lock_creation_result_review_decision": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "p4_build_lock_creation_result_subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "p4_build_lock_sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
+  },
+  "result": {
+    "release_readiness_packet_created": true,
+    "release_readiness_status": "BLOCKED_DIRTY",
+    "release_lock_eligibility_state": "NOT_ELIGIBLE",
+    "release_lock_created": false,
+    "package_published": false,
+    "release_lock_input_bundle_created": false,
+    "release_lock_input_bundle_preview_created": true
+  },
+  "why_blocked": [
+    "P4_BUILD_LOCK and its approved build-lock creation result are release inputs but are not committed or pushed after creation.",
+    "The release suite report is intentionally blocked until clean committed release inputs can be replayed."
+  ],
+  "next_action": "Explicitly authorize commit and push of the P4 build lock files, then replay P4 release readiness to produce a clean PASS packet."
+}

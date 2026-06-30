@@ -1,0 +1,68 @@
+{
+  "evidence_id": "P4-RELEASE-READINESS-EVIDENCE-INDEX-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-READINESS",
+  "status": "BLOCKED_DIRTY_WITH_HASHED_EVIDENCE",
+  "p4_spec_lock_ref": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001"
+  },
+  "p4_build_lock_ref": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be"
+  },
+  "approved_spec_decisions": [
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-01/REVIEW_DECISION.json",
+      "sha256": "9c7d9b84164ef55a8dd16de4845984f42728864c9dab8fa763cb72a2586e87e8",
+      "subject_hash": "e57488d92627fd98b9db1700987284985224035ee34b680a726a2ebc5c74c975",
+      "decision": "APPROVED",
+      "open_blockers": []
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-02/REVIEW_DECISION.json",
+      "sha256": "b8e63fc5417845e1dfc59f46b668f703f74250de3806af067d47fda975f2d7c4",
+      "subject_hash": "ad3cd18be72e36a8775ddf227df6bad0016207c7a294f93dd8b47aac193a9f34",
+      "decision": "APPROVED",
+      "open_blockers": []
+    },
+    {
+      "path": "build_program/phases/P4/candidates/P4-SPEC-03/REVIEW_DECISION.json",
+      "sha256": "61cfd439abc0abe9a4202c380429d42c478c308070f5ae6404d7c43c1be75164",
+      "subject_hash": "fd3eec593c29d3d81e459da8535cfa60b1e270b49ac46446c0c3e837cb413755",
+      "decision": "APPROVED",
+      "open_blockers": []
+    }
+  ],
+  "approved_build_decision": {
+    "path": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+    "sha256": "92eb39424de7563afdf87cc7450cdd8d34335d178fad567192b6a011db288908",
+    "subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "decision": "APPROVED",
+    "open_blockers": []
+  },
+  "suite_report_hashes": {
+    "GOLDEN": "2f9c6d9e2fa09210ee81dc8c8400b34e607d857926110b2e8c26bd69835b0cb5",
+    "INTEGRATION": "cb1d1c07ba3bcdfdcfbeef4568f83a1b599f0f9963a544c9f4ac209928705e63",
+    "RELEASE": "b7c215b0bdc524a8a112e589fd4b2c2ace418d17dcdad0b40013aeae184be6f4"
+  },
+  "package_manifest_hash": "d233aaa7dd2f93008130626e127b8ed13d74e650d29e8c7a236dff6a2bd6dfae",
+  "package_dry_run_report_hash": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b",
+  "example_project_manifest_hash": "635d293ff0f5f2be73f994d7963ff435eda1d9362cf5e88d3617ba929a47b3dc",
+  "example_project_smoke_report_hash": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f",
+  "migration_coverage_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b",
+  "release_readiness_packet_hash": "56411bcf0375e30ab2a411825c266d888d054b3f4d100baca1efaf39289549a2",
+  "source_git_commit_ref": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+  "source_git_commit_hash": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46",
+  "hash_basis": {
+    "suite_report_hashes": "report.report_hash from release.suites",
+    "package_manifest_hash": "canonical_json_sha256(PACKAGE_MANIFEST.json content)",
+    "example_project_manifest_hash": "canonical_json_sha256(EXAMPLE_PROJECT_MANIFEST.json content)",
+    "migration_coverage_hash": "MIGRATION_COVERAGE_REPORT.report_hash",
+    "release_readiness_packet_hash": "RELEASE_READINESS_PACKET.readiness_packet_hash excluding itself"
+  }
+}

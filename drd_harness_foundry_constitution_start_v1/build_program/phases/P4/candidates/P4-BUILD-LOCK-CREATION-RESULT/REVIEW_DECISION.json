@@ -1,0 +1,48 @@
+{
+  "decision_id": "P4-BUILD-LOCK-CREATION-RESULT-REVIEW-001",
+  "subject": "P4-BUILD-LOCK-CREATION-RESULT",
+  "subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+  "decision": "APPROVED",
+  "reviewer": "HUMAN_GATE",
+  "reviewed_at": "2026-06-30",
+  "basis": "User said pass after reviewing the P4 BUILD_LOCK creation result candidate. This approval covers the P4 BUILD_LOCK creation result only.",
+  "approved_sections": [
+    "BUILD_LOCK_CREATION_RESULT.json",
+    "BUILD_LOCK_VALIDATION_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "SCOPE_REPORT.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approved_scope": [
+    "control/locks/P4_BUILD_LOCK.json",
+    "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/**"
+  ],
+  "approved_lock": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+    "spec_lock_hash": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7"
+  },
+  "validation_summary": {
+    "candidate_check_subject_hash": "6f9c8a91b50071a0e94a87e0ada99027fd62c7cef6540199d4ae2f48639600fe",
+    "build_lock_readiness": "PASS",
+    "bound_file_hashes": "32 passed",
+    "p4_tests": "70 passed",
+    "full_repository_tests": "480 passed",
+    "runtime_boundary_check": "PASS",
+    "json_and_diff_checks": "PASS",
+    "bound_git_commit_was_pushed_before_lock_creation": "PASS"
+  },
+  "open_blockers": [],
+  "not_a_release_lock": true,
+  "not_a_promotion": true,
+  "remaining_followups": [
+    "Release lock creation requires a separate explicit authorization after this approval.",
+    "Publishing requires a separate explicit authorization after release-lock gating.",
+    "This approval does not commit or push the newly created P4 build lock files."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "evidence_id": "P4-RELEASE-READINESS-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-RELEASE-READINESS",
+  "status": "PASS_WITH_EXPECTED_RELEASE_BLOCKERS",
+  "validation_results": [
+    {
+      "check": "P4_RELEASE_READINESS_PACKET_VALIDATES_AS_BLOCKED",
+      "command": "validate_release_readiness_packet(RELEASE_READINESS_PACKET.json)",
+      "exit_code": 0,
+      "summary": "release readiness packet returns expected blocking findings and does not create a release lock",
+      "status": "PASS",
+      "expected_blocking_finding_codes": [
+        "P4READY-CHECK-004",
+        "P4READY-CHECK-006"
+      ],
+      "result_hash": "9219ae18ecd9bdc348ae0e90919be9b4217c284a737f3f16e285503df3638f87"
+    },
+    {
+      "check": "P4_MIGRATION_COVERAGE_REPORT_VALID",
+      "command": "validate_migration_coverage_report(MIGRATION_COVERAGE_REPORT.json)",
+      "exit_code": 0,
+      "summary": "migration coverage report validates with zero findings",
+      "status": "PASS",
+      "finding_count": 0,
+      "result_hash": "d50f0c3c1c126cdf0b9aee9b1a51710534d56fa8d605f3475d15b2d96e4240e9"
+    },
+    {
+      "check": "P4_PACKAGE_MANIFEST_VALID",
+      "command": "validate_package_manifest(PACKAGE_MANIFEST.json)",
+      "exit_code": 0,
+      "summary": "package manifest validates and does not publish a package",
+      "status": "PASS",
+      "finding_count": 0,
+      "result_hash": "d69faebac49cdd52290741a3744dcba733a9f0c6e5eb36f9a80a88e7d8924c22"
+    },
+    {
+      "check": "P4_EXAMPLE_PROJECT_MANIFEST_VALID",
+      "command": "validate_example_project_manifest(EXAMPLE_PROJECT_MANIFEST.json)",
+      "exit_code": 0,
+      "summary": "example project manifest validates and smoke report passes against observed fixture hashes",
+      "status": "PASS",
+      "finding_count": 0,
+      "result_hash": "262449182a6bc9b615bbcebd586a2a7455947d27eac80268b17d8e69331f21b7"
+    },
+    {
+      "check": "P4_SUITE_REPORT_SHAPES_VALID",
+      "command": "validate_suite_report(GOLDEN, INTEGRATION, RELEASE)",
+      "exit_code": 0,
+      "summary": "suite report shapes validate; RELEASE suite remains blocked by clean-input replay gate",
+      "status": "PASS",
+      "suite_statuses": {
+        "GOLDEN": "PASS",
+        "INTEGRATION": "PASS",
+        "RELEASE": "BLOCKED_UNSAFE_STATE"
+      },
+      "result_hash": "ecd6a36844066ffd89ceb551c5ad4b8523bf34c31ea90b24eef62c4de1674dc6"
+    }
+  ],
+  "release_readiness_findings": [
+    {
+      "code": "P4READY-CHECK-004",
+      "subject_id": "p4_build_lock_creation_result_review_decision_not_committed_or_pushed",
+      "message": "missing release gate blocks release readiness"
+    },
+    {
+      "code": "P4READY-CHECK-004",
+      "subject_id": "p4_build_lock_file_not_committed_or_pushed_after_creation",
+      "message": "missing release gate blocks release readiness"
+    },
+    {
+      "code": "P4READY-CHECK-004",
+      "subject_id": "release_suite_status_not_pass_pending_clean_release_input_replay",
+      "message": "missing release gate blocks release readiness"
+    },
+    {
+      "code": "P4READY-CHECK-006",
+      "subject_id": "P4-RELEASE-READINESS-001",
+      "message": "BLOCKED_DIRTY blocks release readiness"
+    },
+    {
+      "code": "P4READY-CHECK-006",
+      "subject_id": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/",
+      "message": "dirty state affects release readiness"
+    },
+    {
+      "code": "P4READY-CHECK-006",
+      "subject_id": "control/locks/P4_BUILD_LOCK.json",
+      "message": "dirty state affects release readiness"
+    }
+  ],
+  "migration_findings": [],
+  "package_findings": [],
+  "example_findings": [],
+  "suite_shape_findings": {
+    "GOLDEN": [],
+    "INTEGRATION": [],
+    "RELEASE": []
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "lock_id": "P4-BUILD-LOCK-001",
+  "phase": "P4",
+  "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+  "spec_lock_hash": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+  "files": [
+    {
+      "path": "repository/examples/p4_release_smoke/README.md",
+      "sha256": "2ddcad889c96fbac43370bd5c162cff4614cdcc2609e1dc45d4c85973e9e0588"
+    },
+    {
+      "path": "repository/examples/p4_release_smoke/example_manifest.json",
+      "sha256": "cf39e7a994f0a3635ccccc62eb0ee57b53e052f121d13321e35d8eb40586cf1e"
+    },
+    {
+      "path": "repository/examples/p4_release_smoke/source_prd.md",
+      "sha256": "6241f9c56d1272bded2f3a5528c1e3e76a1025a6c932006c22cdb14cad5ec676"
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/markdown_prd.py",
+      "sha256": "f463c51bb138a54cc25591a6c35b3c1050decc83a885b830c361f9cf4f03b756"
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/prd_harness.py",
+      "sha256": "fc93ff669e0315e3bc2bf1fa4b5a7ded0f08df10904ff2b9768ad84d73af11f3"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/main.py",
+      "sha256": "a0101cae3e0a60648dfc4e2a423071ef051e2a6abb9c3ad8d6a05d81e7f00590"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+      "sha256": "818fc0a5c2b8f8ffc6d0b08b28f463d60325bdb1b5759a9659319fd5578466c1"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "sha256": "fd8bd349e378f5761802ec42ba3b670d2df932cefdbeaf3c90d5cfab3844ebef"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/recovery.py",
+      "sha256": "bb768df8b20a94ef0cdf73f919a611772133c359bc7938fe723df8c1d729df95"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/review_recovery.py",
+      "sha256": "2df041bc308f607e55400ba708c249734162c3c025a4cf05509b964dbf4ba062"
+    },
+    {
+      "path": "repository/src/drd_harness/release/lock_inputs.py",
+      "sha256": "d4add5985052f091ab9c2053c12767158762fc963055bdff1395b339ed2e5b51"
+    },
+    {
+      "path": "repository/src/drd_harness/release/migration.py",
+      "sha256": "b0cffaf3f9634407032ac2eafe0aa529d1b3ecc878d50c30bf98b04461733705"
+    },
+    {
+      "path": "repository/src/drd_harness/release/packaging.py",
+      "sha256": "04826bcb3adc20098ce9e66d9aeb57ff6d7058c7f66b0110b0632dc523f35e0c"
+    },
+    {
+      "path": "repository/src/drd_harness/release/readiness.py",
+      "sha256": "015974bf1838a3bc031b809bdcf7fdd2acd033151bcadf3ac59f9df46e4f0de0"
+    },
+    {
+      "path": "repository/src/drd_harness/release/suites.py",
+      "sha256": "a0997b09bc98114d03a89e8a45a4ba70a0440cee3c67b74659e12f61ae4555aa"
+    },
+    {
+      "path": "repository/tests/integration/test_cli_thinness.py",
+      "sha256": "dff10ee465f5a299fb0b8ca3978a5e6c9cef855f84c8f90e711ba365d3df9798"
+    },
+    {
+      "path": "repository/tests/p4/test_cli_contracts.py",
+      "sha256": "1f7d3cf8d773146aa4898829df5b53c59f3616c7ac217f6fee11b338244feadb"
+    },
+    {
+      "path": "repository/tests/p4/test_example_project_smoke.py",
+      "sha256": "48f5ba312819d368a433d8c8c859bc03a7ff7ad0746fd5c9a65a4bef033d2eae"
+    },
+    {
+      "path": "repository/tests/p4/test_golden_regression.py",
+      "sha256": "dcf8017371f03ccfb2c5c6702cace300843b429540f093a35a8e77822cc9c895"
+    },
+    {
+      "path": "repository/tests/p4/test_input_adapters.py",
+      "sha256": "4a3a024c374cdadf209d9ad2300721a2a74d271b86fd8da95c428c1a59d162d8"
+    },
+    {
+      "path": "repository/tests/p4/test_integration_end_to_end.py",
+      "sha256": "e2a61cc6c88cee2bd1a497e3338bfad5b40531e81656c054bf2ddea8fe3d71a2"
+    },
+    {
+      "path": "repository/tests/p4/test_integration_gate_stops.py",
+      "sha256": "fb55a337867e54aa77f5dd3c8bdb7ffb97fb2dabfdd4875f000692416dd3f4c5"
+    },
+    {
+      "path": "repository/tests/p4/test_lock_rebuild_requests.py",
+      "sha256": "186b32a05e462997c6cea2de98d148550b3c96bf7ac62af6dd1c4bf670293009"
+    },
+    {
+      "path": "repository/tests/p4/test_migration_coverage.py",
+      "sha256": "71b733fd208c9a4ce774a7fe8f2d8b20afb03c44845dc13a7770b0caf42083ac"
+    },
+    {
+      "path": "repository/tests/p4/test_packaging_manifest.py",
+      "sha256": "7d8f177a0cb3e2c8161c25e3a3853ae4eb544809c1aca7f9903cce404d44c71c"
+    },
+    {
+      "path": "repository/tests/p4/test_program_driver.py",
+      "sha256": "bb1fb8016f33e078bacaf88175c633ecbaa225a6ea5b386d7cd525909c8f2285"
+    },
+    {
+      "path": "repository/tests/p4/test_recovery_invalidation.py",
+      "sha256": "6766276de91f27b22419f3d5702bbe90878249385c8d9fda19948333b7b10ad4"
+    },
+    {
+      "path": "repository/tests/p4/test_recovery_state_model.py",
+      "sha256": "f17dc2f4527703b395d1e8955339e568ddf101acc6beed0ca65959891498963a"
+    },
+    {
+      "path": "repository/tests/p4/test_release_lock_boundary.py",
+      "sha256": "ecf6f193f25d30b59fdafe0148b2f49a83fa80f3cb1b70a53b8c6fbc30d34ecf"
+    },
+    {
+      "path": "repository/tests/p4/test_release_readiness.py",
+      "sha256": "7dd8ea3cb2387dd35eed5aa7ce1f1850c37dc80754af26f610226211c675fa44"
+    },
+    {
+      "path": "repository/tests/p4/test_resume_decisions.py",
+      "sha256": "07613362f0260cd420a58e79b699ac8c84f6647782c4885bd94bef11144ed0a4"
+    },
+    {
+      "path": "repository/tests/p4/test_review_recovery.py",
+      "sha256": "4a29222412d16883eb2a0a5b36c70147c2ff594de9dabb07dd56dcb038a2ef1c"
+    }
+  ],
+  "test_results": [
+    {
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests/p4",
+      "exit_code": 0,
+      "result_hash": "33fb611c9db3d6a985db3241e9f405c8824ead53743e7514fb4b1898034d7c0e"
+    },
+    {
+      "command": "PYTHONPATH=. uv run --project repository --with pytest pytest repository/tests",
+      "exit_code": 0,
+      "result_hash": "1beef049db463fbd59903bb45c832c53786315e464176bb429e7d08572a179e3"
+    },
+    {
+      "command": "PYTHONPATH=. uv run --project repository python -m drd_harness.cli.main runtime-boundary-check repository/src",
+      "exit_code": 0,
+      "result_hash": "d10ee825ad77cff0bdfd56d6c7900a95e3cf4b6d561b558ebd02b21126505524"
+    },
+    {
+      "command": "P4 implementation candidate review binding aggregate check",
+      "exit_code": 0,
+      "result_hash": "e208d2824ed5e397fd9daa36aa722bb3ad1ba4c7f90af4848dbb7edd860f6dd2"
+    }
+  ],
+  "validator_identity_hashes": [
+    "dc368ac5f3cf0d21ad89b503ef00b0e3c2044a00f8258a8038367e75e4c03148"
+  ],
+  "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+  "invalidates_on": [
+    "P4_SPEC_LOCK changes: 716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "Any file entry in P4_BUILD_LOCK.files changes",
+    "Any P4 test result hash changes",
+    "Any P4 implementation review decision hash changes",
+    "Any P4 implementation review subject hash changes",
+    "P4-IMPL-01 review_decision=98942b547340ee93f310b34e424b247240b1df0c0545bada506e3986e9316a94 subject=0e8d1a6d5b79d8ac869e51b64b0efa1660d4fe327413523c4b7e0d721c85a1e2",
+    "P4-IMPL-02 review_decision=0c53e0f05b977c6893f4bb481b641c6716960e868ee445bf242c8f67a3ca9420 subject=d9ef35121dbc10153653df62877f9d146bf40feceec93c37d523e552934dacb5",
+    "P4-IMPL-03 review_decision=339674ec59240677a31a7319214509cccacba37bfaf68c1c55c71cf15a3ebe40 subject=c1302c6d4da02abcb4f2b240fb4b5ff23d64e4db2ee08d2f428dcd5df50b6301",
+    "P4-IMPL-04 review_decision=1889cbd48b5b94cefc734e44fccf63b7d5c34976bf92cbb3549167e46585c537 subject=94372f08489f687e0e6d8ffa804262381711b20bcdff7bff6344202d405bb1dd",
+    "P4-IMPL-05 review_decision=98b8eb68ef11a81c96bc5e7faceda66a5f73d6670995556eb6b24c8b4d513227 subject=c52a7022f7a14d7f4b5d086a0eb682d00cd1d649d8bcc0e9df01db558281db7c"
+  ]
+}

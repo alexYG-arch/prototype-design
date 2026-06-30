@@ -1,0 +1,13 @@
+{
+  "example_id": "p4-release-smoke-readiness",
+  "smoke_command": "drd-harness run --dry-run --readiness-smoke",
+  "status": "PASS",
+  "findings": [],
+  "observed_output_hashes": {
+    "repository/examples/p4_release_smoke/README.md": "2ddcad889c96fbac43370bd5c162cff4614cdcc2609e1dc45d4c85973e9e0588"
+  },
+  "would_create_product_semantics": false,
+  "would_publish_package": false,
+  "would_create_lock": false,
+  "smoke_report_hash": "f11980e250b3124152f450d10d9cc07debe3b464e20aa3a259194584a5d4683f"
+}

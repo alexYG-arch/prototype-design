@@ -1,0 +1,304 @@
+{
+  "package_name": "drd-harness",
+  "package_version": "0.0.0-p4-readiness",
+  "source_git_commit": "d749d7af1ce385891430b0e30ec16df7b57fdb0237cb36c018a153dd02040a46",
+  "source_git_commit_ref": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+  "source_dirty_state": "DOCUMENTED_DIRTY",
+  "included_files": [
+    {
+      "path": "repository/README.md",
+      "sha256": "cfea0b08a823ff5597ee05523d8022dcee5c2513c4fe78db5cc4c4709aeb4b3d"
+    },
+    {
+      "path": "repository/pyproject.toml",
+      "sha256": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b"
+    },
+    {
+      "path": "repository/src/drd_harness/__init__.py",
+      "sha256": "4a15d00558f2892387c684094b606f346dfde56e0a65fa8cc59581011d0c66b1"
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/README.md",
+      "sha256": "34b7434ea41996de1b9605f996c6c693f4584016bb33a20bb8709d1908b5056f"
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/markdown_prd.py",
+      "sha256": "f463c51bb138a54cc25591a6c35b3c1050decc83a885b830c361f9cf4f03b756"
+    },
+    {
+      "path": "repository/src/drd_harness/adapters/prd_harness.py",
+      "sha256": "fc93ff669e0315e3bc2bf1fa4b5a7ded0f08df10904ff2b9768ad84d73af11f3"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/README.md",
+      "sha256": "fd4b862602edfad5ef9a2a32089f23ecc6f1b84c3985b7f7fe3cbec9425fe1b6"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/__init__.py",
+      "sha256": "39d17e40b8f9c70517050d8144bc0dc40fc7fb972589393a1d6fbb3367f761f4"
+    },
+    {
+      "path": "repository/src/drd_harness/cli/main.py",
+      "sha256": "a0101cae3e0a60648dfc4e2a423071ef051e2a6abb9c3ad8d6a05d81e7f00590"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/README.md",
+      "sha256": "d3618776b603fabbf686e7675e311f0dcdef52e3e8679ebdfdc2d3290873e23b"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/__init__.py",
+      "sha256": "f70ceb5c123bbec37d31266fa0cf64543228c6732706dc8afaf9607ffde923ab"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/conservation.py",
+      "sha256": "8074fe2dafd7e155a9f37e0da40548b85652e34f7ff7583f8e62ef7fe7f16d76"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/final_drd.py",
+      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/README.md",
+      "sha256": "8b0b16f6e75df9e04418463ca11b296e878609ad26a47e5805aecea0528ac401"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/__init__.py",
+      "sha256": "8e8c130c70d85f1666cc8dfc62f9034dd8f7cf9910a4702f342759405629d0a0"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/artifacts.py",
+      "sha256": "d8289ea881c9bf3d036c48551d8768e95961db1110166681c71f7b56e9f3f349"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/authority.py",
+      "sha256": "a1a0e27c2b385d114b6671669cfdbd5c871e8ece6dfe6cab88580ee379ae5ad3"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/hashline.py",
+      "sha256": "6638c001c20fc7ea4ad4a501b140ee1f41158cc7d33162b8066478df5d8cc44e"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "sha256": "12f5527c13cfa6bf951e9f669ac19663a4ae1447fac173d117bf3a079d94e825"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/promoted_authority.py",
+      "sha256": "c2a58409cbfaafffe424f868e9c7c700d0b70fed0cfc95ef6c83a62d85058ee6"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/runtime.py",
+      "sha256": "ddfcf3123cd16695cb2c9e1790f1b75fcab7b4de05090bb5c05c5b7fc90074d5"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/README.md",
+      "sha256": "2b6cce6b2192b398673177a729107fa3382c1ea95c4e29e07c09312b08e3e700"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/__init__.py",
+      "sha256": "e93cc8a18f0386d27099d141d5c2dd4d9ceb68dabd169bc19fdce2c18bd47334"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/invalidation.py",
+      "sha256": "8effdc8ce72dda99e061f39587cfdb0b285db9e3bb471e3ae435b4351bb3b5e7"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/lock_rebuild.py",
+      "sha256": "818fc0a5c2b8f8ffc6d0b08b28f463d60325bdb1b5759a9659319fd5578466c1"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/program_driver.py",
+      "sha256": "fd8bd349e378f5761802ec42ba3b670d2df932cefdbeaf3c90d5cfab3844ebef"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/promotion.py",
+      "sha256": "fab0ddf9685694e7591a1daf3fe4829838f5017f98bc151b521049d2845503fe"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/recovery.py",
+      "sha256": "bb768df8b20a94ef0cdf73f919a611772133c359bc7938fe723df8c1d729df95"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/review_recovery.py",
+      "sha256": "2df041bc308f607e55400ba708c249734162c3c025a4cf05509b964dbf4ba062"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/traceability.py",
+      "sha256": "6acd61b5cbbc8cc431b05f401f52800191b0298d870d7fd56b3a58e141fb3ece"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/workpacks.py",
+      "sha256": "86f9bbcaf53a0ad07f117ead08571461a6836efd1e87d9106fb28d8ee8ec6034"
+    },
+    {
+      "path": "repository/src/drd_harness/release/lock_inputs.py",
+      "sha256": "d4add5985052f091ab9c2053c12767158762fc963055bdff1395b339ed2e5b51"
+    },
+    {
+      "path": "repository/src/drd_harness/release/migration.py",
+      "sha256": "b0cffaf3f9634407032ac2eafe0aa529d1b3ecc878d50c30bf98b04461733705"
+    },
+    {
+      "path": "repository/src/drd_harness/release/packaging.py",
+      "sha256": "04826bcb3adc20098ce9e66d9aeb57ff6d7058c7f66b0110b0632dc523f35e0c"
+    },
+    {
+      "path": "repository/src/drd_harness/release/readiness.py",
+      "sha256": "015974bf1838a3bc031b809bdcf7fdd2acd033151bcadf3ac59f9df46e4f0de0"
+    },
+    {
+      "path": "repository/src/drd_harness/release/suites.py",
+      "sha256": "a0997b09bc98114d03a89e8a45a4ba70a0440cee3c67b74659e12f61ae4555aa"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/__init__.py",
+      "sha256": "5df52d779a3017e1ac2d78bfa3a48164ba97ebc6531d207aa22681124ed60c30"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/interaction.py",
+      "sha256": "7bdcf2a51b9acc57535023c07e7d52d08b4dbc307de6247e4f32486a2c4ddb53"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/layout.py",
+      "sha256": "73134d144c00eaab3799f832f9c2bb922be57059ffcdeb0727385ff5bd13c157"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/prd_adoption.py",
+      "sha256": "e81f0233d904b68664b4db5c58f0b1023cf559d36ab2fa34d7f9c9bbb9b14200"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/presentation.py",
+      "sha256": "5bff002a9e8dbde3e11666c9c93c8d0aed0e3318fca367d04069616459a1c2bc"
+    },
+    {
+      "path": "repository/src/drd_harness/rules/reasoning.py",
+      "sha256": "c3f3768be58fe017d0d6ab7bba5b1135b12b6514080f2e4c0a225bddab80a0d9"
+    },
+    {
+      "path": "repository/src/drd_harness/runtimes/README.md",
+      "sha256": "f6651f778cbae67013beb638303a51ab13d0336f5634ea04a363fa925817f4b5"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/README.md",
+      "sha256": "73ff71c1f5e4616abfc6b980ed0558f36e7032f4c27c54ee3918db53f2f0a87b"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/__init__.py",
+      "sha256": "fb88fb0a2066dabb5a7f68874fbc3b057d1229780a4093bb472e9cee6e7b97dd"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/contracts.py",
+      "sha256": "180f8301032e1fb1b363d0b6ff1c5d9379b1ece392872bc0ce761fa3d3a6ce87"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/experience_distillation.py",
+      "sha256": "15afe8440207af2b9c4101dc0e45a1f5f2b58119c5a5aa093fe200c35e4917e2"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/read_only_qa.py",
+      "sha256": "f0a5a4e832808055b645143fded6df29d878f743665be7f6b8b79d6b570da837"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/review_binding.py",
+      "sha256": "979899a92d65eb541d051fca4f49163c73d6701002546b20d7085038efa896aa"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/source_snapshot.py",
+      "sha256": "1358801563ef3244981e186aad326a579c6e348497f76b8c8c24c1f2f91bb567"
+    },
+    {
+      "path": "repository/src/drd_harness/stages/stage_order.py",
+      "sha256": "860174ca5eb68b57589773c63971377c9e509aee80b3e1a1ff120d04e686ef0b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/README.md",
+      "sha256": "1dc2f0f8dc595fbe9111922c7b89a0d5580e578a70a4c51d9a2417d6e326012c"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/__init__.py",
+      "sha256": "b34f66575c065612d64019e92450db7cc359557276cc5a66dd143295df082060"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "sha256": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/interaction_closure.py",
+      "sha256": "616c57ef6ad172ea6fd5ce22c239a8c930305e0e62b63cc29f5b587b1899b2c9"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/layout_completeness.py",
+      "sha256": "395e8ce8c13b08e5bbf6d7c664c077f97fdbdaa24f82442a4db2aa48df74f768"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_compiler.py",
+      "sha256": "b3736d1a9a790f4bdbc356baa61dc5d88b6446c66e03e04b03062ef0582a2cdd"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_interaction_closure.py",
+      "sha256": "ca26a98a42e721caab6dbe2ce7f6670ef3eba34310de9df22ccd0d6123ea6907"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_layout.py",
+      "sha256": "de11e9d546dfd2e4102e91be39bfa4b7c3e4adfc85b2de5735e25006885c2d92"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_page_elements.py",
+      "sha256": "50bf7b2cb1e51a850471a0791ceb166ff557df96921a85096bbba1a0017d5c6c"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/p3_patterns.py",
+      "sha256": "e8a0d2fc33517ed214e97286cf07a50fa62dd00e6160c82d30e52067ac9267b9"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/phase_gate.py",
+      "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/postflight.py",
+      "sha256": "c61323a23d94006ad098177dd59f98988d5638e8f978c9a24523d2483a7c872b"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/prd_adoption.py",
+      "sha256": "f89573c7d1636dd32f590f803506b3df1993cc4246efa6292f98222068161a01"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/presentation_consistency.py",
+      "sha256": "fee746ca46fd29c34decb51453f3894ff3d3f6cee716ec4e5436c5cfb0305780"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/reasoning.py",
+      "sha256": "8a9e0cb3cde92fe24f92c3f2af0b7c312c31bc80ec0a297acadd07fe7e9bbf24"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/source_intake.py",
+      "sha256": "9e4558593bf4ca5b4a84b15744a03638dd02279c4b006356353720b4bb232722"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/spec_validator.py",
+      "sha256": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/traceability.py",
+      "sha256": "6741fbfd0529f69a94b3910102cbc4a91878931cf6951800530bcb8053630d14"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/workpack_scope.py",
+      "sha256": "40d85a107c6bd350d01d14c775cd61b5fe9987447e1c143823235b28a29a913a"
+    }
+  ],
+  "excluded_files": [
+    ".git/**",
+    ".env",
+    "*.pem",
+    "*.key",
+    "build_program/phases/**/REVIEW_DECISION.json",
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json"
+  ],
+  "entrypoints": {
+    "drd-harness": "drd_harness.cli.main:main"
+  },
+  "dependency_lock_hash": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b",
+  "build_command": "python -m build --wheel --no-isolation --dry-run-record-only",
+  "package_artifact_hash": "ac5c5156aa7193cb77bac906fe0004db013849f1dda736c1569e89d30e3c7fe6",
+  "dry_run_report_hash": "4978fbaeb2495c5a1b47736ea1351894c219076db0501c601096757126cdbb6b"
+}

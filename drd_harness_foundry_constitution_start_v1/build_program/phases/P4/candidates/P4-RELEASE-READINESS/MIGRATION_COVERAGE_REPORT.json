@@ -1,0 +1,55 @@
+{
+  "coverage_id": "p4-v3.1-migration-readiness",
+  "source_version": "v3.1",
+  "target_version": "p4-release",
+  "capability_rows": [
+    {
+      "legacy_capability_id": "adapter-inputs",
+      "legacy_capability_name": "PRD and markdown input adapters",
+      "legacy_source_ref": "v3.1#adapter-inputs",
+      "target_status": "MIGRATED",
+      "target_evidence_ref": "repository/src/drd_harness/adapters",
+      "rationale": "covered by P4 adapter implementation and tests",
+      "review_required": false
+    },
+    {
+      "legacy_capability_id": "cli-entrypoints",
+      "legacy_capability_name": "CLI entrypoints and orchestration",
+      "legacy_source_ref": "v3.1#cli-entrypoints",
+      "target_status": "MIGRATED",
+      "target_evidence_ref": "repository/src/drd_harness/cli/main.py",
+      "rationale": "covered by P4 CLI contracts and P4 implementation lock inputs",
+      "review_required": false
+    },
+    {
+      "legacy_capability_id": "recovery-resume",
+      "legacy_capability_name": "Recovery, resume, and lock rebuild requests",
+      "legacy_source_ref": "v3.1#recovery-resume",
+      "target_status": "MIGRATED",
+      "target_evidence_ref": "repository/src/drd_harness/orchestrator",
+      "rationale": "covered by P4 recovery implementation and review recovery tests",
+      "review_required": false
+    },
+    {
+      "legacy_capability_id": "release-governance",
+      "legacy_capability_name": "Release readiness and release-lock input governance",
+      "legacy_source_ref": "v3.1#release-governance",
+      "target_status": "MIGRATED",
+      "target_evidence_ref": "repository/src/drd_harness/release",
+      "rationale": "covered by P4 release readiness, lock input, suite, packaging, and migration modules",
+      "review_required": false
+    }
+  ],
+  "coverage_summary": {
+    "total_legacy_capabilities": 4,
+    "migrated_count": 4,
+    "replaced_count": 0,
+    "dropped_count": 0,
+    "blocked_count": 0,
+    "unmapped_count": 0,
+    "release_blocking": false
+  },
+  "blocked_rows": [],
+  "human_review_required": false,
+  "report_hash": "5216644ab36cf1e6edce5cd3211f80496e00151436fafbc5301288893815ef7b"
+}

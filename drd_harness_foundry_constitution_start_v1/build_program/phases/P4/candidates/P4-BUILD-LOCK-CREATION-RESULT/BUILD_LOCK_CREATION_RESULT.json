@@ -1,0 +1,93 @@
+{
+  "result_id": "P4-BUILD-LOCK-CREATION-RESULT-001",
+  "phase": "P4",
+  "status": "BUILD_LOCK_CREATED",
+  "created_lock": {
+    "path": "control/locks/P4_BUILD_LOCK.json",
+    "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99",
+    "lock_id": "P4-BUILD-LOCK-001",
+    "root_sha256": "5264628f70258ec578a99905f85858c67c7f225db55c816978785ea8e11d84be",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+    "git_commit_binding_note": "P4 locked runtime inputs are present at the pushed main commit; every locked file is directly hash-bound in the lock.",
+    "spec_lock_hash": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "file_entry_count": 32,
+    "test_result_count": 4,
+    "validator_identity_hash_count": 1,
+    "invalidates_on_count": 10
+  },
+  "pushed_input_commit": {
+    "remote": "origin",
+    "branch": "main",
+    "git_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+    "push_order": "completed before P4_BUILD_LOCK creation"
+  },
+  "upstream_spec_lock": {
+    "path": "control/locks/P4_SPEC_LOCK.json",
+    "sha256": "716ef8980ea0e07b703a405500839f5cf031a0e13e94a61184378e6c05f3c2f7",
+    "lock_id": "P4-SPEC-LOCK-001",
+    "root_sha256": "531e25436495be2c0087ebf505262446089be89920b476405ff5f97f0a94130c"
+  },
+  "authorized_by_review": {
+    "readiness_candidate": "build_program/phases/P4/candidates/P4-BUILD-READINESS",
+    "readiness_review_decision": "build_program/phases/P4/candidates/P4-BUILD-READINESS/REVIEW_DECISION.json",
+    "readiness_review_decision_sha256": "5500025215445fe478da280d4b5c38f96157d13e83a4de80bd591e3119f98450",
+    "readiness_subject_hash": "ce2b8829dfbad56086e67246ae6b28201e7aa5a3d55dfc33ed31b04c5ebe1d93",
+    "readiness_decision": "APPROVED",
+    "readiness_open_blockers": []
+  },
+  "source_input_matrix": {
+    "path": "build_program/phases/P4/candidates/P4-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+    "sha256": "8ffb45de1b70e8e502b5615704f3f0338bbfea334b6b46b71d52d76a2a73c598",
+    "lock_file_candidate_count": 32,
+    "test_result_count": 4,
+    "validator_identity_hash_count": 1
+  },
+  "schemas": [
+    {
+      "path": "repository/schemas/locks/build_lock.schema.json",
+      "sha256": "b08f9d49d967a94828ec499789a289587462226d45d2e78bb7f7ba4cc25cd505"
+    },
+    {
+      "path": "control/schemas/build_lock.schema.json",
+      "sha256": "41d3ca5e27606ccad6b050b4c3f50c913586f265fd9a72f21fc6c320d1faa19f"
+    }
+  ],
+  "validator": {
+    "path": "repository/src/drd_harness/validators/phase_gate.py",
+    "sha256": "ebf817cab9992ea1f6c712bbe0b0acde8d72ca302f347b46d78a8489bd63963c",
+    "function": "validate_build_lock_readiness",
+    "validator_identity_hash": "dc368ac5f3cf0d21ad89b503ef00b0e3c2044a00f8258a8038367e75e4c03148"
+  },
+  "creation_runtime": {
+    "kind": "python",
+    "version": "3.9.6"
+  },
+  "authorized_by_user_request": {
+    "request_text": "推送github，然后lock",
+    "request_interpretation": "push the approved P4 implementation/readiness commit to GitHub first, then create control/locks/P4_BUILD_LOCK.json",
+    "request_date": "2026-06-30"
+  },
+  "worktree_state_note": {
+    "locked_input_commit": "c9cb85cd215df9f5beeef8c262967cb5782e20be",
+    "clean_committed_input_before_lock_creation": true,
+    "direct_file_hash_locking": true,
+    "lock_result_candidate_excluded_from_runtime_file_entries": true
+  },
+  "not_a_release_lock": true,
+  "not_a_spec_lock": true,
+  "not_a_promotion": true,
+  "human_review_status": "APPROVED_BY_HUMAN",
+  "review_decision": "build_program/phases/P4/candidates/P4-BUILD-LOCK-CREATION-RESULT/REVIEW_DECISION.json",
+  "result_approval_boundary": {
+    "approves_created_build_lock_result": true,
+    "creates_release_lock": false,
+    "publishes_package": false,
+    "updates_root_phase_files": false,
+    "commits_or_pushes_lock_files": false
+  },
+  "approval_notes": [
+    "Approved by explicit user pass after P4 BUILD_LOCK creation result review.",
+    "This approval validates that control/locks/P4_BUILD_LOCK.json was created from the approved P4 build readiness inputs and is independently hash-bound.",
+    "This approval does not create DRD_HARNESS_RELEASE_LOCK, publish a package, update root P4 phase files, commit, or push the lock files."
+  ]
+}
