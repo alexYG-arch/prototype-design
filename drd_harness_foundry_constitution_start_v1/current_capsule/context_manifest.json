@@ -1,5 +1,6 @@
 {
   "acceptance_commands": [
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/compiler/test_final_drd_compilation.py",
     "python3 tooling/verify_start_package.py",
     "python3 tooling/validate_constitution.py",
     "python3 tooling/validate_program.py",
@@ -7,15 +8,35 @@
     "python3 tooling/preflight_current_workpack.py"
   ],
   "allowed_write_paths": [
+    "repository/src/drd_harness/**",
+    "repository/tests/**",
+    "current_capsule/PROMPT.md",
+    "current_capsule/TASK.md",
+    "current_capsule/context_manifest.json",
     "current_capsule/outputs/**"
   ],
   "candidate_dir": "current_capsule/outputs",
+  "external_prd_run_guardrails": {
+    "execution_package_phase_label_is_internal": true,
+    "external_prd_drd_generation_command": "drd-harness generate-drd",
+    "external_prd_outputs_allowed_prefix": "current_capsule/outputs/**",
+    "external_prd_outputs_forbidden_prefixes": [
+      "build_program/**",
+      "constitution/**",
+      "control/**",
+      "repository/**",
+      "tooling/**"
+    ],
+    "p4_label_does_not_assign_external_prd_to_p4": true,
+    "release_chain_for_prd_to_drd": false,
+    "source_preserving_generation_only": true
+  },
   "forbidden_write_paths": [
     "constitution/**",
     "control/**",
     ".agents/skills/**",
     "build_program/program/**",
-    "repository/**",
+    "build_program/phases/**",
     "references/**",
     "tooling/**"
   ],
@@ -40,11 +61,11 @@
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "a2b370763d301b0bce9ba5962ca225660886e8f8778c1147a73df1744ee397ee"
+      "sha256": "8a095381a26eb4aa3b175248b9c10c882091a4017a772fb2f492999550942e00"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "32a9244536e54ce4261b05902cb4de35b1bd123284da16e6fe7e4b4b0e135d15"
+      "sha256": "823505a236ec453df39a4369e27e099bf2ba70a99505b3478cc4dea207c3651a"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
@@ -76,15 +97,27 @@
     },
     {
       "path": "repository/src/drd_harness/cli/main.py",
-      "sha256": "f4ed7de2951643b0ac02f1bea56320d663113bab0dafcd02f80b0bd2d3e1625e"
+      "sha256": "ae86de8f7fe064b89765e62229258692a2f844c268a25b228862d5b1da7e4228"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/external_prd.py",
+      "sha256": "b333f9b841fac9010ee9b523030c5b072788dba9ab7b49e676e4dda98a03974a"
+    },
+    {
+      "path": "repository/src/drd_harness/compiler/final_drd.py",
+      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/program_driver.py",
-      "sha256": "8d5b0ac70b4befcafbe98bf07d6c3b994738b9274c065c8da20fa87afffd36f4"
+      "sha256": "864293cfca56e0aa51281443e46d92757938c1f2f425edfc8b797ea8ba0b7d94"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/recovery.py",
       "sha256": "c60c442436fabf517bb171fc02a3e39320823f4ad98ed2dda8df9b90582589e6"
+    },
+    {
+      "path": "repository/tests/p4/test_external_prd_generate_drd.py",
+      "sha256": "c5e1db7f784bcd4a58a5465656be8f41c00a9c063ed2e639b73a579f2046f0b5"
     },
     {
       "path": "tooling/verify_start_package.py",
@@ -99,20 +132,8 @@
       "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
     }
   ],
-  "external_prd_run_guardrails": {
-    "execution_package_phase_label_is_internal": true,
-    "external_prd_outputs_allowed_prefix": "current_capsule/outputs/**",
-    "external_prd_outputs_forbidden_prefixes": [
-      "build_program/**",
-      "constitution/**",
-      "control/**",
-      "repository/**",
-      "tooling/**"
-    ],
-    "p4_label_does_not_assign_external_prd_to_p4": true
-  },
   "required_outputs": [],
   "required_skills": [],
-  "status": "COMPLETE_READY_FOR_HARNESS_RUN",
+  "status": "COMPLETE_READY_FOR_EXTERNAL_PRD_TO_DRD_HARNESS_RUN",
   "workpack_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC"
 }

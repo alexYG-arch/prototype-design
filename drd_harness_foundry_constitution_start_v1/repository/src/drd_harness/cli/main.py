@@ -16,6 +16,7 @@ from drd_harness.kernel.import_boundaries import (
 from drd_harness.orchestrator.program_driver import (
     build_status_payload,
     output_hashes_for_written_paths,
+    plan_generate_drd,
     plan_release_request,
     plan_resume,
     plan_run,
@@ -56,6 +57,13 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--target-workpack")
     run.add_argument("--dry-run", action="store_true")
     run.set_defaults(func=_run_p4_run)
+
+    generate_drd = subparsers.add_parser("generate-drd")
+    generate_drd.add_argument("--work-dir", required=True)
+    generate_drd.add_argument("--source-ref", required=True)
+    generate_drd.add_argument("--output-dir", required=True)
+    generate_drd.add_argument("--dry-run", action="store_true")
+    generate_drd.set_defaults(func=_run_generate_drd)
 
     review = subparsers.add_parser("review")
     review.add_argument("candidate_dir")
@@ -187,6 +195,17 @@ def _run_p4_run(args) -> int:
             findings=[_finding("CLI-INPUT", str(args.source_ref), str(exc))],
             exit_code=1,
         )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_generate_drd(args) -> int:
+    payload = plan_generate_drd(
+        work_dir=Path(args.work_dir),
+        source_ref=Path(args.source_ref),
+        output_dir=Path(args.output_dir),
+        dry_run=args.dry_run,
+    )
     _emit(payload)
     return int(payload["exit_code"])
 
