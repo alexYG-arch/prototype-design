@@ -1,6 +1,12 @@
 {
   "acceptance_commands": [
-    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/compiler/test_final_drd_compilation.py",
+    "uv pip install --python repository/.venv/bin/python -e repository",
+    "repository/.venv/bin/drd-harness --help",
+    "test ! -d repository/src/drd_harness.egg-info",
+    "test -f current_capsule/REPAIR_AUDIT.md",
+    "rg -n \"LOCAL_SEQUENCE_INVERSION|FUTURE_REPAIR_SEQUENCE|AUDIT_RECORDED_AND_BOUND\" current_capsule/REPAIR_AUDIT.md",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py",
+    "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
     "python3 tooling/verify_start_package.py",
     "python3 tooling/validate_constitution.py",
     "python3 tooling/validate_program.py",
@@ -8,15 +14,31 @@
     "python3 tooling/preflight_current_workpack.py"
   ],
   "allowed_write_paths": [
-    "repository/src/drd_harness/**",
-    "repository/tests/**",
+    "START_HERE.md",
+    "CODEX_START_PROMPT.md",
+    "current_capsule/AGENTS.md",
     "current_capsule/PROMPT.md",
+    "current_capsule/REPAIR_AUDIT.md",
     "current_capsule/TASK.md",
     "current_capsule/context_manifest.json",
-    "current_capsule/outputs/**"
+    "current_capsule/outputs/**",
+    "repository/pyproject.toml",
+    "repository/setup.cfg",
+    "repository/src/drd_harness/**",
+    "repository/tests/**"
   ],
   "candidate_dir": "current_capsule/outputs",
   "external_prd_run_guardrails": {
+    "document_generation_stage_order": [
+      "DRD-00",
+      "DRD-01",
+      "DRD-02",
+      "DRD-03",
+      "DRD-03B",
+      "DRD-04",
+      "DRD-05",
+      "DRD-06"
+    ],
     "execution_package_phase_label_is_internal": true,
     "external_prd_drd_generation_command": "drd-harness generate-drd",
     "external_prd_outputs_allowed_prefix": "current_capsule/outputs/**",
@@ -27,9 +49,23 @@
       "repository/**",
       "tooling/**"
     ],
+    "external_prd_run_forbidden_outputs": [
+      "stage_execution_plan.json",
+      "harness_run_result.json",
+      "validation_report.json"
+    ],
+    "external_prd_run_forbidden_payload_fields": [
+      "program_dag_snapshot",
+      "stage_execution_plan",
+      "upstream_lock_refs",
+      "gate_states"
+    ],
+    "external_prd_run_receipt_only": true,
+    "lock_or_release_in_external_prd_run": false,
     "p4_label_does_not_assign_external_prd_to_p4": true,
     "release_chain_for_prd_to_drd": false,
-    "source_preserving_generation_only": true
+    "source_preserving_generation_only": true,
+    "source_tree_egg_info_after_install": false
   },
   "forbidden_write_paths": [
     "constitution/**",
@@ -49,23 +85,23 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "4b0fd28186fae192e8c737b5e4135a081411cb4a17d8a524558e4b0d93975128"
+      "sha256": "08961a941cbcdee8aad20993d68de8992a0b31f2591abcacf6a28c0ed15bf51b"
     },
     {
       "path": "CODEX_START_PROMPT.md",
-      "sha256": "686c5e1c92c9afbb14b76bfe0f6b7023aecf3099d8dd2a6965e9dfeb53281719"
+      "sha256": "588ebe7fc25831bc8ee1e63f2e7f04263934a981367c5afba02d371c154fca3c"
     },
     {
       "path": "current_capsule/AGENTS.md",
-      "sha256": "24bb7836e2fe39f8074a2a8240b5dea2a1686a7008b7355b33931dd326c22ff1"
+      "sha256": "6dad6928545d674641ae2206d7a4e9c4400eb4120ba80d6beb127cf21b069037"
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "8a095381a26eb4aa3b175248b9c10c882091a4017a772fb2f492999550942e00"
+      "sha256": "0ff3eb32956e9e795bbf31c6646309dab90162f3d30d7d0fbda05c23a0f9a34b"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "823505a236ec453df39a4369e27e099bf2ba70a99505b3478cc4dea207c3651a"
+      "sha256": "e3c6e78184dba035cb95e13362ba5a6dea14448d7746c2a3ede39f15b0c8a4fe"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
@@ -93,15 +129,15 @@
     },
     {
       "path": "repository/pyproject.toml",
-      "sha256": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b"
+      "sha256": "69f521539c078e896bad8186d7187bb87feeec97022177c102ca03d37464cdc0"
     },
     {
       "path": "repository/src/drd_harness/cli/main.py",
-      "sha256": "ae86de8f7fe064b89765e62229258692a2f844c268a25b228862d5b1da7e4228"
+      "sha256": "7c51467f41a0cef4d2021e2c5b9ec54bcc82e752fc7f3e48602dfa1770ee015e"
     },
     {
       "path": "repository/src/drd_harness/compiler/external_prd.py",
-      "sha256": "b333f9b841fac9010ee9b523030c5b072788dba9ab7b49e676e4dda98a03974a"
+      "sha256": "a87d6642d66a163e4874f089cc34827f99b68c6e415eb530deb2f3adcb4ef1ae"
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
@@ -109,15 +145,27 @@
     },
     {
       "path": "repository/src/drd_harness/orchestrator/program_driver.py",
-      "sha256": "864293cfca56e0aa51281443e46d92757938c1f2f425edfc8b797ea8ba0b7d94"
+      "sha256": "bee26ebf9bf0878509ef0b2ebefd898eac7308bb215d8335d4754fb9d1e354f2"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/recovery.py",
       "sha256": "c60c442436fabf517bb171fc02a3e39320823f4ad98ed2dda8df9b90582589e6"
     },
     {
+      "path": "repository/tests/p4/test_cli_contracts.py",
+      "sha256": "e15831a61ff9215fe76ac0f5d0d90d8c5482da8018b997e2f44cec617212426f"
+    },
+    {
       "path": "repository/tests/p4/test_external_prd_generate_drd.py",
-      "sha256": "c5e1db7f784bcd4a58a5465656be8f41c00a9c063ed2e639b73a579f2046f0b5"
+      "sha256": "82eebce5abe38341f57eed95c052482eca6f5849d5313c81e970b742105a6311"
+    },
+    {
+      "path": "repository/tests/p4/test_input_adapters.py",
+      "sha256": "30c03d550d628f56b5b47aece31a1198b38fc25ae58a3860a9a5998339ef1ca9"
+    },
+    {
+      "path": "repository/tests/p4/test_program_driver.py",
+      "sha256": "7882e22d68d9f9711ce5d37297c093a3559f837e437b1a81d37283c752665f4e"
     },
     {
       "path": "tooling/verify_start_package.py",
@@ -130,10 +178,26 @@
     {
       "path": "tooling/preflight_current_workpack.py",
       "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
+    },
+    {
+      "path": "repository/setup.cfg",
+      "sha256": "105c3e5d3105df3238a212002d1dd11078e90548cc21af5cf1ba5f8b5b7fc716"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "sha256": "b12c7a671df00827e0a2e4e3409360be5f02f55768f2290179cafd52bcd52a7c"
+    },
+    {
+      "path": "repository/tests/kernel/test_import_boundaries.py",
+      "sha256": "33c2d1ddc74f4004bc7953350d71106bf2b6fae6e86c135b10412bfe12979bb5"
+    },
+    {
+      "path": "current_capsule/REPAIR_AUDIT.md",
+      "sha256": "f768aaa0b21b6dca324505027b6ceed5f39ac7a4b9c72c7304f358622a595fdc"
     }
   ],
   "required_outputs": [],
   "required_skills": [],
-  "status": "COMPLETE_READY_FOR_EXTERNAL_PRD_TO_DRD_HARNESS_RUN",
+  "status": "COMPLETE_READY_FOR_EXTERNAL_PRD_RUN_RECEIPT_INSTALL",
   "workpack_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC"
 }

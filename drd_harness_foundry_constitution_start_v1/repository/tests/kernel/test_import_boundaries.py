@@ -35,6 +35,24 @@ def test_forbidden_runtime_reads_are_reported(tmp_path: Path):
     assert findings[0].code == "FND010"
 
 
+def test_forbidden_runtime_reads_are_reported_for_path_division(tmp_path: Path):
+    source = tmp_path / "module.py"
+    source.write_text('Path() / "control" / "locks" / "P3_BUILD_LOCK.json"\n', encoding="utf-8")
+
+    findings = find_forbidden_runtime_reads(tmp_path)
+
+    assert len(findings) == 1
+    assert findings[0].code == "FND010"
+    assert "control/locks/P3_BUILD_LOCK.json" in findings[0].message
+
+
+def test_current_capsule_outputs_boundary_is_allowed(tmp_path: Path):
+    source = tmp_path / "module.py"
+    source.write_text('Path("current_capsule") / "outputs" / "run"\n', encoding="utf-8")
+
+    assert find_forbidden_runtime_reads(tmp_path) == []
+
+
 def test_runtime_read_boundary_ignores_policy_constants(tmp_path: Path):
     source = tmp_path / "module.py"
     source.write_text(

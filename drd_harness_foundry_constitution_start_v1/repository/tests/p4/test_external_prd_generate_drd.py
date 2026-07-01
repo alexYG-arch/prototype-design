@@ -42,7 +42,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
         "external_prd_review_decision.json",
         "external_prd_source_snapshot_binding.json",
         "external_prd_validation_report.json",
-        "external_prd_stage_order.json",
+        "drd_generation_stage_plan.json",
         "compiler_input_bundle.json",
         "FINAL_DRD.md",
         "final_drd_manifest.json",
@@ -59,6 +59,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     bundle = json.loads(written_paths["compiler_input_bundle.json"].read_text(encoding="utf-8"))["bundle"]
     review = json.loads(written_paths["external_prd_review_decision.json"].read_text(encoding="utf-8"))
     source_binding = json.loads(written_paths["external_prd_source_snapshot_binding.json"].read_text(encoding="utf-8"))
+    stage_plan = json.loads(written_paths["drd_generation_stage_plan.json"].read_text(encoding="utf-8"))
 
     assert "Primary button starts scan." in final_drd
     assert "Responsive layout must preserve all information." in final_drd
@@ -72,12 +73,33 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert review["requires_human_review_before_product_inference"] is True
     assert source_binding["creates_control_lock"] is False
     assert source_binding["creates_release_lock"] is False
+    assert stage_plan["lock_or_release_stage_included"] is False
+    assert [row["stage_id"] for row in stage_plan["stage_order"]] == [
+        "DRD-00",
+        "DRD-01",
+        "DRD-02",
+        "DRD-03",
+        "DRD-03B",
+        "DRD-04",
+        "DRD-05",
+        "DRD-06",
+    ]
+    assert payload["document_generation_stage_order"] == [
+        "DRD-00",
+        "DRD-01",
+        "DRD-02",
+        "DRD-03",
+        "DRD-03B",
+        "DRD-04",
+        "DRD-05",
+        "DRD-06",
+    ]
 
 
 def test_generate_drd_dry_run_writes_nothing(tmp_path: Path, capsys):
     source = tmp_path / "prd.md"
     source.write_text("# PRD\nContent\n", encoding="utf-8")
-    output = tmp_path / "out"
+    output = tmp_path / "current_capsule" / "outputs" / "out"
 
     exit_code = main(
         [
@@ -98,3 +120,28 @@ def test_generate_drd_dry_run_writes_nothing(tmp_path: Path, capsys):
     assert payload["written_paths"] == []
     assert payload["planned_written_paths"]
     assert not output.exists()
+
+
+def test_generate_drd_rejects_repository_output_dir(tmp_path: Path, capsys):
+    source = tmp_path / "prd.md"
+    source.write_text("# PRD\nContent\n", encoding="utf-8")
+    output = tmp_path / "repository" / "out"
+
+    exit_code = main(
+        [
+            "generate-drd",
+            "--work-dir",
+            str(tmp_path),
+            "--source-ref",
+            str(source),
+            "--output-dir",
+            str(output),
+            "--dry-run",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+
+    assert exit_code == 1
+    assert payload["status"] == "STOPPED"
+    assert payload["written_paths"] == []
+    assert "RUN-CHECK-OUTPUT-SCOPE" in {finding["code"] for finding in payload["findings"]}

@@ -66,4 +66,4 @@ def test_adapter_semantic_boundary_rejects_forbidden_output_keys():
         }
     )
 
-    assert findings[0].code == "P4INT-GATE-SEMANTIC-BOUNDARY"
+    assert findings[0].code == "RUN-CHECK-SEMANTIC-BOUNDARY"

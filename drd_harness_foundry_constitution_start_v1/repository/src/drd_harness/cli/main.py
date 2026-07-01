@@ -175,8 +175,6 @@ def _run_p4_run(args) -> int:
             try:
                 _materialize_run_outputs(payload)
                 payload["output_hashes"] = output_hashes_for_written_paths(payload)
-                payload["run_state_path"] = _default_run_state_path(payload)
-                _materialize_run_state(payload)
             except OSError as exc:
                 payload = build_status_payload(
                     command="run",
@@ -292,7 +290,7 @@ def _adapt_source(adapter_id: str, source_ref: Path) -> dict:
 
 
 def _should_materialize_run_outputs(payload: dict) -> bool:
-    return payload.get("command") == "run" and payload.get("status") == "PLANNED" and not payload.get("dry_run")
+    return payload.get("command") == "run" and payload.get("status") == "RECEIPT_READY" and not payload.get("dry_run")
 
 
 def _materialize_run_outputs(payload: dict) -> None:
@@ -307,67 +305,9 @@ def _materialize_run_outputs(payload: dict) -> None:
         path.write_text(json.dumps(artifact, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def _default_run_state_path(payload: dict) -> str:
-    planned = payload.get("planned_written_paths", [])
-    if not planned:
-        return "harness_run_result.json"
-    return (Path(str(planned[0])).parent / "harness_run_result.json").as_posix()
-
-
-def _materialize_run_state(payload: dict) -> None:
-    path = Path(str(payload["run_state_path"]))
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-
 def _run_output_artifacts(payload: dict) -> dict:
-    adapter_manifest = payload.get("adapter_result_manifest", {})
-    dag = payload.get("program_dag_snapshot", {})
-    handoff = adapter_manifest.get("handoff_manifest", {})
-    source_ref_records = adapter_manifest.get("source_ref_records", [])
-    source_section_records = adapter_manifest.get("source_section_records", [])
-    planned_written_paths = payload.get("planned_written_paths", [])
-    findings = payload.get("findings", [])
     return {
-        "adapter_result_manifest.json": adapter_manifest,
-        "source_intake_plan.json": {
-            "artifact": "source_intake_plan",
-            "command": payload.get("command"),
-            "findings": adapter_manifest.get("findings", []),
-            "normalization_report": adapter_manifest.get("normalization_report", {}),
-            "run_id": payload.get("run_id"),
-            "source_path": adapter_manifest.get("source_path") or handoff.get("source_path"),
-            "source_ref_count": len(source_ref_records),
-            "source_ref_records": source_ref_records,
-            "source_section_count": len(source_section_records),
-            "source_section_records": source_section_records,
-            "source_sha256": adapter_manifest.get("source_sha256") or handoff.get("source_sha256"),
-            "status": payload.get("status"),
-            "unsupported_content_report": adapter_manifest.get("unsupported_content_report", []),
-        },
-        "stage_execution_plan.json": {
-            "artifact": "stage_execution_plan",
-            "command": payload.get("command"),
-            "execution_plan": payload.get("stage_execution_plan", []),
-            "lock_gate_refs": dag.get("lock_gate_refs", []),
-            "planned_written_paths": planned_written_paths,
-            "program_dag_snapshot": dag,
-            "review_gate_refs": dag.get("review_gate_refs", []),
-            "run_id": payload.get("run_id"),
-            "status": payload.get("status"),
-        },
-        "validation_report.json": {
-            "artifact": "validation_report",
-            "command": payload.get("command"),
-            "dry_run": payload.get("dry_run", False),
-            "findings": findings,
-            "human_review_gate_required": bool(dag.get("review_gate_refs")),
-            "lock_gate_required": bool(dag.get("lock_gate_refs")),
-            "run_id": payload.get("run_id"),
-            "status": "PASS" if not findings else "FAIL",
-            "validated_written_paths": planned_written_paths,
-            "validation_scope": "harness_execution_plan_only",
-        },
+        "run_receipt.json": payload.get("run_receipt", {}),
     }
 
 

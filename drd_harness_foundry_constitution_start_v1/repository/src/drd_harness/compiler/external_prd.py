@@ -10,7 +10,7 @@ from drd_harness.kernel.hashline import sha256_bytes, sha256_file
 from drd_harness.orchestrator.program_driver import (
     DriverFinding,
     build_status_payload,
-    validate_output_scope,
+    validate_external_prd_output_scope,
 )
 from drd_harness.validators.compiler_conservation import (
     compute_closed_input_hash,
@@ -25,12 +25,22 @@ STAGE_ORDER_ROWS = [
     {"stage_id": "DRD-03B", "stage_order_index": 40},
     {"stage_id": "DRD-04", "stage_order_index": 50},
 ]
+DOCUMENT_GENERATION_STAGE_ROWS = [
+    {"stage_id": "DRD-00", "stage_order_index": 0, "status": "SOURCE_SNAPSHOT_BOUND"},
+    {"stage_id": "DRD-01", "stage_order_index": 10, "status": "SOURCE_PRESERVING_INVENTORY_BOUND"},
+    {"stage_id": "DRD-02", "stage_order_index": 20, "status": "REQUIRES_HUMAN_REVIEW_FOR_INFERENCE"},
+    {"stage_id": "DRD-03", "stage_order_index": 30, "status": "REQUIRES_HUMAN_REVIEW_FOR_INTERACTION_CLOSURE"},
+    {"stage_id": "DRD-03B", "stage_order_index": 35, "status": "REQUIRES_HUMAN_REVIEW_FOR_PRESENTATION"},
+    {"stage_id": "DRD-04", "stage_order_index": 40, "status": "REQUIRES_HUMAN_REVIEW_FOR_LAYOUT"},
+    {"stage_id": "DRD-05", "stage_order_index": 50, "status": "FINAL_DRD_COMPILED"},
+    {"stage_id": "DRD-06", "stage_order_index": 60, "status": "READ_ONLY_QA_RECORDED"},
+]
 GENERATED_FILENAMES = [
     "external_prd_section_index.json",
     "external_prd_review_decision.json",
     "external_prd_source_snapshot_binding.json",
     "external_prd_validation_report.json",
-    "external_prd_stage_order.json",
+    "drd_generation_stage_plan.json",
     "compiler_input_bundle.json",
     "FINAL_DRD.md",
     "final_drd_manifest.json",
@@ -52,7 +62,7 @@ def generate_external_prd_drd(
     """Compile a Markdown PRD into a source-preserving DRD package."""
     planned_paths = [(output_dir / filename).as_posix() for filename in GENERATED_FILENAMES]
     findings: List[Any] = []
-    findings.extend(validate_output_scope(work_dir, output_dir))
+    findings.extend(validate_external_prd_output_scope(work_dir, output_dir))
     if not source_ref.is_file():
         findings.append(DriverFinding("DRDGEN-INPUT-001", str(source_ref), "source_ref must be a readable file"))
 
@@ -94,6 +104,7 @@ def generate_external_prd_drd(
             planned_written_paths=planned_paths,
             source_sha256=source_hash,
             source_section_count=len(sections),
+            document_generation_stage_order=[row["stage_id"] for row in DOCUMENT_GENERATION_STAGE_ROWS],
             dry_run=True,
             release_lock_eligibility_state="NOT_APPLICABLE",
             will_create_release_lock=False,
@@ -140,6 +151,7 @@ def generate_external_prd_drd(
         final_drd_hash=sha256_file(output_dir / "FINAL_DRD.md"),
         compiler_input_bundle_hash=deterministic_hash(bundle),
         conservation_status=artifacts[output_dir / "compiler_conservation_report.json"]["status"],
+        document_generation_stage_order=[row["stage_id"] for row in DOCUMENT_GENERATION_STAGE_ROWS],
         dry_run=False,
         release_lock_eligibility_state="NOT_APPLICABLE",
         will_create_release_lock=False,
@@ -201,10 +213,11 @@ def build_external_prd_drd_artifacts(
 ) -> tuple[Dict[Path, Any], dict]:
     section_index = _section_index(source_ref, source_hash, sections)
     review_decision = _review_decision(source_ref, source_hash, sections)
-    stage_order = {
-        "artifact": "external_prd_stage_order",
-        "stage_order": STAGE_ORDER_ROWS,
-        "section_stage_policy": "All source-preserved external PRD sections enter DRD-01; later enrichment requires separate reviewed inputs.",
+    stage_plan = {
+        "artifact": "drd_generation_stage_plan",
+        "stage_order": DOCUMENT_GENERATION_STAGE_ROWS,
+        "section_stage_policy": "All source-preserved external PRD lines enter DRD-01; DRD-02 through DRD-04 enrichment requires separate human-reviewed inputs.",
+        "lock_or_release_stage_included": False,
     }
     source_binding = {
         "artifact": "external_prd_source_snapshot_binding",
@@ -233,7 +246,7 @@ def build_external_prd_drd_artifacts(
         "review_decision": output_dir / "external_prd_review_decision.json",
         "source_binding": output_dir / "external_prd_source_snapshot_binding.json",
         "validation_report": output_dir / "external_prd_validation_report.json",
-        "stage_order": output_dir / "external_prd_stage_order.json",
+        "stage_order": output_dir / "drd_generation_stage_plan.json",
         "schema": Path("repository/schemas/compiler/final_drd_manifest.schema.json"),
     }
     generated_hashes = {
@@ -241,7 +254,7 @@ def build_external_prd_drd_artifacts(
         paths["review_decision"].as_posix(): _json_sha256(review_decision),
         paths["source_binding"].as_posix(): _json_sha256(source_binding),
         paths["validation_report"].as_posix(): _json_sha256(validation_report),
-        paths["stage_order"].as_posix(): _json_sha256(stage_order),
+        paths["stage_order"].as_posix(): _json_sha256(stage_plan),
     }
     schema_hash = sha256_file(paths["schema"])
     bundle = _compiler_bundle(
@@ -259,7 +272,7 @@ def build_external_prd_drd_artifacts(
         paths["review_decision"]: review_decision,
         paths["source_binding"]: source_binding,
         paths["validation_report"]: validation_report,
-        paths["stage_order"]: stage_order,
+        paths["stage_order"]: stage_plan,
         output_dir / "compiler_input_bundle.json": {"bundle": bundle},
     }
     artifacts.update({output_dir / filename: value for filename, value in compiled.items()})

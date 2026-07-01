@@ -1,9 +1,4 @@
-"""P4 integration program driver primitives.
-
-The driver coordinates locked harness capabilities. It records deterministic
-plans and gate stops, but does not create review decisions, locks, packages, or
-product semantics.
-"""
+"""External PRD run and package governance driver primitives."""
 
 import json
 from dataclasses import asdict, dataclass
@@ -15,11 +10,19 @@ from drd_harness.orchestrator.recovery import current_hashes_for_paths, load_run
 
 
 START_PACKAGE_ROOT = Path(__file__).resolve().parents[4]
-P3_BUILD_LOCK_PATH = Path() / "control" / "locks" / "P3_BUILD_LOCK.json"
+EXTERNAL_PRD_OUTPUT_ROOT = Path("current_capsule") / "outputs"
 P3_BUILD_LOCK_SHA256 = "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e"
 P3_BUILD_LOCK_ROOT_SHA256 = "0ef47227a39e3eb75923e7506523b734769485431c2a7c3a1e1265f9d937fa8f"
-DRIVER_VERSION = "p4-impl-01"
-LOCK_GATE_STATUSES = {"LOCK_GATE", "HUMAN_REVIEW_GATE", "RELEASE_REQUEST"}
+DOCUMENT_GENERATION_STAGE_ORDER = [
+    {"stage_id": "DRD-00", "stage_order_index": 0, "purpose": "source snapshot"},
+    {"stage_id": "DRD-01", "stage_order_index": 10, "purpose": "prd element inventory"},
+    {"stage_id": "DRD-02", "stage_order_index": 20, "purpose": "structural completion review"},
+    {"stage_id": "DRD-03", "stage_order_index": 30, "purpose": "interaction closure"},
+    {"stage_id": "DRD-03B", "stage_order_index": 35, "purpose": "presentation and shared patterns"},
+    {"stage_id": "DRD-04", "stage_order_index": 40, "purpose": "carrier layout and layering"},
+    {"stage_id": "DRD-05", "stage_order_index": 50, "purpose": "final DRD compilation"},
+    {"stage_id": "DRD-06", "stage_order_index": 60, "purpose": "read-only QA"},
+]
 
 
 @dataclass(frozen=True)
@@ -27,24 +30,6 @@ class DriverFinding:
     code: str
     subject_id: str
     message: str
-
-
-@dataclass(frozen=True)
-class ProgramNode:
-    node_id: str
-    node_type: str
-    label: str
-    reads: List[str]
-    writes: List[str]
-    gate: bool = False
-
-
-@dataclass(frozen=True)
-class ProgramEdge:
-    edge_id: str
-    edge_type: str
-    source_node_id: str
-    target_node_id: str
 
 
 def build_status_payload(
@@ -70,7 +55,14 @@ def build_status_payload(
 
 
 def bind_upstream_p3_build_lock(lock_path: Optional[Path] = None) -> List[DriverFinding]:
-    lock_path = lock_path or START_PACKAGE_ROOT / P3_BUILD_LOCK_PATH
+    if lock_path is None:
+        return [
+            DriverFinding(
+                "P4INT-GATE-001",
+                "P3_BUILD_LOCK",
+                "P3 build lock path must be supplied by the execution package",
+            )
+        ]
     subject_id = _display_path(lock_path)
     if not lock_path.is_file():
         return [DriverFinding("P4INT-GATE-001", subject_id, "required P3 build lock is missing")]
@@ -92,86 +84,6 @@ def bind_upstream_p3_build_lock(lock_path: Optional[Path] = None) -> List[Driver
     return findings
 
 
-def build_program_dag(
-    *,
-    adapter_result_manifest: Mapping[str, Any],
-    upstream_lock_refs: Iterable[str],
-    target_phase: Optional[str] = None,
-    target_workpack: Optional[str] = None,
-    output_dir: Optional[str] = None,
-) -> dict:
-    source_refs = _source_refs(adapter_result_manifest)
-    read_refs = sorted(set(source_refs + list(upstream_lock_refs)))
-    output_root = output_dir or ""
-    stage_label = target_workpack or target_phase or "bounded-stage"
-
-    nodes = [
-        ProgramNode(
-            node_id=_stable_id("node", ["INPUT_ADAPTER", adapter_result_manifest.get("adapter_id", "")] + read_refs),
-            node_type="INPUT_ADAPTER",
-            label=str(adapter_result_manifest.get("adapter_id", "input_adapter")),
-            reads=read_refs,
-            writes=_planned_path(output_root, "adapter_result_manifest.json"),
-        ),
-        ProgramNode(
-            node_id=_stable_id("node", ["SOURCE_INTAKE"] + source_refs),
-            node_type="SOURCE_INTAKE",
-            label="source_intake",
-            reads=source_refs,
-            writes=_planned_path(output_root, "source_intake_plan.json"),
-        ),
-        ProgramNode(
-            node_id=_stable_id("node", ["STAGE_EXECUTION", stage_label] + source_refs),
-            node_type="STAGE_EXECUTION",
-            label=stage_label,
-            reads=source_refs,
-            writes=_planned_path(output_root, "stage_execution_plan.json"),
-        ),
-        ProgramNode(
-            node_id=_stable_id("node", ["CANDIDATE_VALIDATION", stage_label]),
-            node_type="CANDIDATE_VALIDATION",
-            label="candidate_validation",
-            reads=_planned_path(output_root, "stage_execution_plan.json"),
-            writes=_planned_path(output_root, "validation_report.json"),
-        ),
-        ProgramNode(
-            node_id=_stable_id("node", ["HUMAN_REVIEW_GATE", stage_label]),
-            node_type="HUMAN_REVIEW_GATE",
-            label="human_review_gate",
-            reads=_planned_path(output_root, "validation_report.json"),
-            writes=[],
-            gate=True,
-        ),
-        ProgramNode(
-            node_id=_stable_id("node", ["LOCK_GATE", stage_label]),
-            node_type="LOCK_GATE",
-            label="lock_gate",
-            reads=[],
-            writes=[],
-            gate=True,
-        ),
-    ]
-    edges = [
-        ProgramEdge(_stable_id("edge", ["SOURCE_TO_STAGE", nodes[0].node_id, nodes[1].node_id]), "SOURCE_TO_STAGE", nodes[0].node_id, nodes[1].node_id),
-        ProgramEdge(_stable_id("edge", ["STAGE_TO_STAGE", nodes[1].node_id, nodes[2].node_id]), "STAGE_TO_STAGE", nodes[1].node_id, nodes[2].node_id),
-        ProgramEdge(_stable_id("edge", ["STAGE_TO_STAGE", nodes[2].node_id, nodes[3].node_id]), "STAGE_TO_STAGE", nodes[2].node_id, nodes[3].node_id),
-        ProgramEdge(_stable_id("edge", ["CANDIDATE_TO_REVIEW", nodes[3].node_id, nodes[4].node_id]), "CANDIDATE_TO_REVIEW", nodes[3].node_id, nodes[4].node_id),
-        ProgramEdge(_stable_id("edge", ["REVIEW_TO_LOCK", nodes[4].node_id, nodes[5].node_id]), "REVIEW_TO_LOCK", nodes[4].node_id, nodes[5].node_id),
-    ]
-    node_dicts = [asdict(node) for node in nodes]
-    edge_dicts = [asdict(edge) for edge in edges]
-    return {
-        "program_id": _stable_id("program", [target_phase or "", target_workpack or ""] + read_refs),
-        "driver_version": DRIVER_VERSION,
-        "dag_nodes": node_dicts,
-        "dag_edges": edge_dicts,
-        "execution_plan": [node["node_id"] for node in node_dicts],
-        "review_gate_refs": [node["node_id"] for node in node_dicts if node["node_type"] == "HUMAN_REVIEW_GATE"],
-        "lock_gate_refs": [node["node_id"] for node in node_dicts if node["node_type"] == "LOCK_GATE"],
-        "findings": [asdict(finding) for finding in validate_acyclic(node_dicts, edge_dicts)],
-    }
-
-
 def plan_run(
     *,
     work_dir: Path,
@@ -181,26 +93,19 @@ def plan_run(
     target_workpack: Optional[str] = None,
     dry_run: bool = False,
 ) -> dict:
-    run_id = _stable_id("run", [str(work_dir.resolve()), str(output_dir), target_phase or "", target_workpack or ""])
+    run_id = _stable_id("run", [str(work_dir.resolve()), str(output_dir), str(adapter_result_manifest.get("source_sha256", ""))])
     findings: List[DriverFinding] = []
-    findings.extend(bind_upstream_p3_build_lock())
-    findings.extend(validate_output_scope(work_dir, output_dir))
+    findings.extend(validate_external_prd_output_scope(work_dir, output_dir))
     findings.extend(validate_adapter_semantic_boundary(adapter_result_manifest))
-
-    dag = build_program_dag(
+    planned_paths = [(output_dir / "run_receipt.json").as_posix()]
+    receipt = build_run_receipt(
+        run_id=run_id,
         adapter_result_manifest=adapter_result_manifest,
-        upstream_lock_refs=[str(P3_BUILD_LOCK_PATH)],
+        output_dir=output_dir,
         target_phase=target_phase,
         target_workpack=target_workpack,
-        output_dir=str(output_dir),
     )
-    findings.extend(DriverFinding(**item) for item in dag["findings"])
-    planned_paths = sorted(
-        path
-        for node in dag["dag_nodes"]
-        for path in node["writes"]
-    )
-    status = "STOPPED" if findings else "DRY_RUN" if dry_run else "PLANNED"
+    status = "STOPPED" if findings else "DRY_RUN" if dry_run else "RECEIPT_READY"
     return build_status_payload(
         command="run",
         status=status,
@@ -208,18 +113,55 @@ def plan_run(
         written_paths=[] if dry_run or findings else planned_paths,
         findings=findings,
         exit_code=1 if findings else 0,
-        adapter_result_manifest=adapter_result_manifest,
-        program_dag_snapshot=dag,
-        stage_execution_plan=dag["execution_plan"],
         planned_written_paths=planned_paths,
-        evidence_paths=planned_paths,
+        run_receipt=receipt,
+        document_generation_stage_order=list(DOCUMENT_GENERATION_STAGE_ORDER),
+        input_hashes=_source_hashes(adapter_result_manifest),
+        source_sha256=adapter_result_manifest.get("source_sha256"),
+        source_section_count=len(adapter_result_manifest.get("source_section_records", [])),
+        source_ref_count=len(adapter_result_manifest.get("source_ref_records", [])),
+        lock_in_external_prd_run=False,
+        release_in_external_prd_run=False,
+        package_publish_in_external_prd_run=False,
         dry_run=dry_run,
-        **_run_state_fields(
-            adapter_result_manifest=adapter_result_manifest,
-            dag=dag,
-            dry_run=dry_run,
-        ),
     )
+
+
+def build_run_receipt(
+    *,
+    run_id: str,
+    adapter_result_manifest: Mapping[str, Any],
+    output_dir: Path,
+    target_phase: Optional[str] = None,
+    target_workpack: Optional[str] = None,
+) -> dict:
+    source_sections = adapter_result_manifest.get("source_section_records", [])
+    source_refs = adapter_result_manifest.get("source_ref_records", [])
+    return {
+        "artifact": "external_prd_run_receipt",
+        "run_id": run_id,
+        "adapter_id": adapter_result_manifest.get("adapter_id"),
+        "adapter_status": adapter_result_manifest.get("status"),
+        "input_kind": adapter_result_manifest.get("input_kind"),
+        "source_path": adapter_result_manifest.get("source_path"),
+        "source_sha256": adapter_result_manifest.get("source_sha256"),
+        "source_section_count": len(source_sections),
+        "source_ref_count": len(source_refs),
+        "input_hashes": _source_hashes(adapter_result_manifest),
+        "document_generation_stage_order": list(DOCUMENT_GENERATION_STAGE_ORDER),
+        "output_dir": output_dir.as_posix(),
+        "write_scope": "current_capsule/outputs/**",
+        "ignored_execution_package_labels": {
+            "target_phase": target_phase,
+            "target_workpack": target_workpack,
+            "reason": "external PRD run does not enter execution-package workpack stages",
+        },
+        "lock_in_external_prd_run": False,
+        "release_in_external_prd_run": False,
+        "package_publish_in_external_prd_run": False,
+        "resume_gate_in_external_prd_run": False,
+        "evidence_chain_stage_in_external_prd_run": False,
+    }
 
 
 def plan_resume(run_state_ref: str, requested_resume_node: str, *, dry_run: bool = False) -> dict:
@@ -250,7 +192,7 @@ def plan_resume(run_state_ref: str, requested_resume_node: str, *, dry_run: bool
     finding = DriverFinding(
         "P4INT-GATE-RESUME",
         requested_resume_node,
-        "resume policy is reserved for P4-IMPL-02 recovery implementation",
+        "resume policy is reserved for execution-package recovery and is not part of external PRD run",
     )
     return build_status_payload(
         command="resume",
@@ -305,44 +247,33 @@ def plan_release_request(build_lock_refs: Iterable[str], release_scope_ref: str,
     )
 
 
-def validate_acyclic(nodes: Iterable[Mapping[str, Any]], edges: Iterable[Mapping[str, Any]]) -> List[DriverFinding]:
-    node_ids = {str(node["node_id"]) for node in nodes}
-    incoming = {node_id: 0 for node_id in node_ids}
-    outgoing = {node_id: [] for node_id in node_ids}
-    findings: List[DriverFinding] = []
-    for edge in edges:
-        source = str(edge["source_node_id"])
-        target = str(edge["target_node_id"])
-        if source not in node_ids or target not in node_ids:
-            findings.append(DriverFinding("P4INT-DAG-001", str(edge.get("edge_id", "edge")), "edge references unknown node"))
-            continue
-        outgoing[source].append(target)
-        incoming[target] += 1
-
-    ready = sorted(node_id for node_id, count in incoming.items() if count == 0)
-    visited = []
-    while ready:
-        node_id = ready.pop(0)
-        visited.append(node_id)
-        for target in sorted(outgoing[node_id]):
-            incoming[target] -= 1
-            if incoming[target] == 0:
-                ready.append(target)
-                ready.sort()
-    if len(visited) != len(node_ids):
-        findings.append(DriverFinding("P4INT-DAG-002", "program_dag", "program DAG contains a cycle"))
-    return findings
-
-
 def validate_output_scope(work_dir: Path, output_dir: Path) -> List[DriverFinding]:
     try:
         output_dir.resolve().relative_to(work_dir.resolve())
     except ValueError:
         return [
             DriverFinding(
-                "P4INT-GATE-OUTPUT-SCOPE",
+                "RUN-CHECK-OUTPUT-SCOPE",
                 str(output_dir),
                 "output_dir must stay inside the declared work_dir",
+            )
+        ]
+    return []
+
+
+def validate_external_prd_output_scope(work_dir: Path, output_dir: Path) -> List[DriverFinding]:
+    findings = validate_output_scope(work_dir, output_dir)
+    if findings:
+        return findings
+    allowed_root = (work_dir.resolve() / EXTERNAL_PRD_OUTPUT_ROOT).resolve()
+    try:
+        output_dir.resolve().relative_to(allowed_root)
+    except ValueError:
+        return [
+            DriverFinding(
+                "RUN-CHECK-OUTPUT-SCOPE",
+                str(output_dir),
+                "external PRD output_dir must stay inside current_capsule/outputs",
             )
         ]
     return []
@@ -354,44 +285,12 @@ def validate_adapter_semantic_boundary(adapter_result_manifest: Mapping[str, Any
     if present:
         return [
             DriverFinding(
-                "P4INT-GATE-SEMANTIC-BOUNDARY",
+                "RUN-CHECK-SEMANTIC-BOUNDARY",
                 str(adapter_result_manifest.get("adapter_id", "adapter")),
                 "adapter result contains forbidden semantic keys: " + ", ".join(present),
             )
         ]
     return []
-
-
-def _source_refs(adapter_result_manifest: Mapping[str, Any]) -> List[str]:
-    records = adapter_result_manifest.get("source_ref_records") or adapter_result_manifest.get("source_section_records") or []
-    refs = []
-    for record in records:
-        if isinstance(record, Mapping):
-            refs.append(str(record.get("source_ref") or record.get("source_path") or record.get("section_id") or record))
-        else:
-            refs.append(str(record))
-    return sorted(refs)
-
-
-def _run_state_fields(*, adapter_result_manifest: Mapping[str, Any], dag: Mapping[str, Any], dry_run: bool) -> dict:
-    return {
-        "program_id": dag.get("program_id", ""),
-        "driver_version": dag.get("driver_version", DRIVER_VERSION),
-        "original_command": "run",
-        "adapter_id": str(adapter_result_manifest.get("adapter_id", "")),
-        "source_refs": _source_refs(adapter_result_manifest),
-        "input_hashes": _source_hashes(adapter_result_manifest),
-        "upstream_lock_refs": {str(P3_BUILD_LOCK_PATH): P3_BUILD_LOCK_SHA256},
-        "candidate_subject_hashes": {},
-        "review_decision_hashes": {},
-        "dag_snapshot_hash": _canonical_hash(dag),
-        "execution_plan_hash": _canonical_hash(dag.get("execution_plan", [])),
-        "node_states": _node_states(dag, dry_run=dry_run),
-        "output_hashes": {},
-        "gate_states": _gate_states(dag),
-        "failure_records": {},
-        "recovery_history": [],
-    }
 
 
 def _source_hashes(adapter_result_manifest: Mapping[str, Any]) -> dict:
@@ -414,52 +313,6 @@ def _source_hashes(adapter_result_manifest: Mapping[str, Any]) -> dict:
     if isinstance(handoff, Mapping) and handoff.get("source_path") and handoff.get("source_sha256"):
         hashes[str(handoff["source_path"])] = str(handoff["source_sha256"])
     return dict(sorted(hashes.items()))
-
-
-def _node_states(dag: Mapping[str, Any], *, dry_run: bool) -> dict:
-    states = {}
-    for node in dag.get("dag_nodes", []):
-        if not isinstance(node, Mapping) or not node.get("node_id"):
-            continue
-        node_type = str(node.get("node_type", ""))
-        if dry_run:
-            state = "NODE_PLANNED"
-        elif node_type == "HUMAN_REVIEW_GATE":
-            state = "NODE_BLOCKED_HUMAN_REVIEW"
-        elif node_type == "LOCK_GATE":
-            state = "NODE_BLOCKED_LOCK_BOUNDARY"
-        else:
-            state = "NODE_COMPLETED"
-        states[str(node["node_id"])] = {
-            "state": state,
-            "node_type": node_type,
-            "label": str(node.get("label", "")),
-        }
-    return states
-
-
-def _gate_states(dag: Mapping[str, Any]) -> dict:
-    states = {}
-    for node in dag.get("dag_nodes", []):
-        if not isinstance(node, Mapping) or not node.get("node_id") or not node.get("gate"):
-            continue
-        node_type = str(node.get("node_type", ""))
-        states[str(node["node_id"])] = {
-            "gate_type": node_type,
-            "human_gate_required": node_type == "HUMAN_REVIEW_GATE",
-            "lock_requested": node_type == "LOCK_GATE",
-        }
-    return states
-
-
-def _canonical_hash(value: Any) -> str:
-    return sha256_text(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
-
-
-def _planned_path(output_root: str, name: str) -> List[str]:
-    if not output_root:
-        return [name]
-    return [(Path(output_root) / name).as_posix()]
 
 
 def _stable_id(prefix: str, parts: Iterable[str]) -> str:

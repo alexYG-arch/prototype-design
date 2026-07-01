@@ -3,7 +3,7 @@
 import ast
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Set
+from typing import Iterable, List, Optional, Set
 
 
 FORBIDDEN_IMPORT_ROOTS = {
@@ -21,6 +21,9 @@ FORBIDDEN_RUNTIME_READ_ROOTS = {
     "current_capsule",
     "references",
     "tooling",
+}
+ALLOWED_RUNTIME_PATH_PREFIXES = {
+    "current_capsule/outputs",
 }
 
 
@@ -57,7 +60,7 @@ def find_forbidden_runtime_reads(source_root: Path, forbidden_roots: Iterable[st
         literals = _runtime_path_literals(tree)
         for literal in sorted(literals):
             root = literal.split("/", 1)[0]
-            if root in roots:
+            if root in roots and not _is_allowed_runtime_path(literal):
                 findings.append(
                     BoundaryFinding(
                         code="FND010",
@@ -66,6 +69,14 @@ def find_forbidden_runtime_reads(source_root: Path, forbidden_roots: Iterable[st
                     )
                 )
     return findings
+
+
+def _is_allowed_runtime_path(literal: str) -> bool:
+    normalized = literal.rstrip("/")
+    return any(
+        normalized == prefix or normalized.startswith(prefix + "/")
+        for prefix in ALLOWED_RUNTIME_PATH_PREFIXES
+    )
 
 
 def _python_files(source_root: Path):
@@ -90,15 +101,54 @@ def _imported_roots(node: ast.AST) -> Set[str]:
 def _runtime_path_literals(tree: ast.AST) -> Set[str]:
     literals: Set[str] = set()
     for node in ast.walk(tree):
-        if not isinstance(node, ast.Call) or not node.args:
+        if isinstance(node, ast.BinOp):
+            literal = _path_literal_from_expr(node)
+            if literal:
+                literals.add(literal)
             continue
-        first_arg = node.args[0]
-        if not isinstance(first_arg, ast.Constant) or not isinstance(first_arg.value, str):
+        if not isinstance(node, ast.Call):
             continue
         call_name = _call_name(node.func)
-        if call_name in {"Path", "open"} or call_name.endswith(".open"):
-            literals.add(first_arg.value)
-    return literals
+        if call_name == "Path":
+            literal = _path_literal_from_expr(node)
+        elif (call_name == "open" or call_name.endswith(".open")) and node.args:
+            literal = _path_literal_from_expr(node.args[0]) or _string_literal(node.args[0])
+        else:
+            literal = None
+        if literal:
+            literals.add(literal)
+    return _longest_path_literals(literals)
+
+
+def _path_literal_from_expr(node: ast.AST) -> Optional[str]:
+    if isinstance(node, ast.Call) and _call_name(node.func) == "Path":
+        if not node.args:
+            return ""
+        return _string_literal(node.args[0])
+    if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div):
+        left = _path_literal_from_expr(node.left)
+        right = _string_literal(node.right)
+        if left is None or right is None:
+            return None
+        if not left:
+            return right
+        return left.rstrip("/") + "/" + right.lstrip("/")
+    return None
+
+
+def _string_literal(node: ast.AST) -> Optional[str]:
+    if isinstance(node, ast.Constant) and isinstance(node.value, str):
+        return node.value
+    return None
+
+
+def _longest_path_literals(literals: Set[str]) -> Set[str]:
+    result = set()
+    for literal in literals:
+        prefix = literal.rstrip("/") + "/"
+        if not any(other != literal and other.startswith(prefix) for other in literals):
+            result.add(literal)
+    return result
 
 
 def _call_name(node: ast.AST) -> str:

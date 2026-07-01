@@ -3,13 +3,12 @@ from pathlib import Path
 
 from drd_harness.cli.main import main
 from drd_harness.kernel.hashline import sha256_file
-from drd_harness.orchestrator.recovery import validate_run_state_shape
 
 
-def test_p4_run_command_emits_status_payload(tmp_path: Path, capsys):
+def test_external_prd_run_command_emits_minimal_receipt_payload(tmp_path: Path, capsys):
     source = tmp_path / "prd.md"
     source.write_text("# PRD\nContent\n", encoding="utf-8")
-    output = tmp_path / "out"
+    output = tmp_path / "current_capsule" / "outputs" / "out"
 
     exit_code = main(
         [
@@ -36,15 +35,28 @@ def test_p4_run_command_emits_status_payload(tmp_path: Path, capsys):
     assert payload["written_paths"] == []
     assert payload["findings"] == []
     assert payload["exit_code"] == 0
-    assert payload["adapter_result_manifest"]["source_sha256"]
-    assert payload["program_dag_snapshot"]["dag_nodes"]
-    assert payload["stage_execution_plan"]
+    assert payload["source_sha256"]
+    assert payload["source_section_count"] == 1
+    assert [row["stage_id"] for row in payload["document_generation_stage_order"]] == [
+        "DRD-00",
+        "DRD-01",
+        "DRD-02",
+        "DRD-03",
+        "DRD-03B",
+        "DRD-04",
+        "DRD-05",
+        "DRD-06",
+    ]
+    assert "program_dag_snapshot" not in payload
+    assert "stage_execution_plan" not in payload
+    assert "upstream_lock_refs" not in payload
+    assert "gate_states" not in payload
 
 
-def test_p4_run_command_materializes_declared_written_paths(tmp_path: Path, capsys):
+def test_external_prd_run_command_materializes_only_run_receipt(tmp_path: Path, capsys):
     source = tmp_path / "prd.md"
     source.write_text("# PRD\nContent\n", encoding="utf-8")
-    output = tmp_path / "out"
+    output = tmp_path / "current_capsule" / "outputs" / "out"
 
     exit_code = main(
         [
@@ -65,42 +77,50 @@ def test_p4_run_command_materializes_declared_written_paths(tmp_path: Path, caps
     written_paths = {Path(path).name: Path(path) for path in payload["written_paths"]}
 
     assert exit_code == 0
-    assert payload["status"] == "PLANNED"
-    assert set(written_paths) == {
-        "adapter_result_manifest.json",
-        "source_intake_plan.json",
-        "stage_execution_plan.json",
-        "validation_report.json",
-    }
+    assert payload["status"] == "RECEIPT_READY"
+    assert set(written_paths) == {"run_receipt.json"}
     for path in written_paths.values():
         assert path.is_file()
         json.loads(path.read_text(encoding="utf-8"))
-    assert json.loads(written_paths["adapter_result_manifest.json"].read_text(encoding="utf-8")) == payload["adapter_result_manifest"]
-    assert json.loads(written_paths["source_intake_plan.json"].read_text(encoding="utf-8"))["source_section_count"] == 1
-    assert json.loads(written_paths["stage_execution_plan.json"].read_text(encoding="utf-8"))["execution_plan"] == payload["stage_execution_plan"]
-    assert json.loads(written_paths["validation_report.json"].read_text(encoding="utf-8"))["status"] == "PASS"
-    assert validate_run_state_shape(payload) == []
+    receipt = json.loads(written_paths["run_receipt.json"].read_text(encoding="utf-8"))
+    assert receipt == payload["run_receipt"]
+    assert receipt["source_section_count"] == 1
+    assert receipt["lock_in_external_prd_run"] is False
+    assert receipt["release_in_external_prd_run"] is False
+    assert receipt["package_publish_in_external_prd_run"] is False
+    assert receipt["resume_gate_in_external_prd_run"] is False
+    assert receipt["evidence_chain_stage_in_external_prd_run"] is False
     assert payload["output_hashes"] == {str(path): sha256_file(path) for path in sorted(written_paths.values())}
+    assert not (output / "harness_run_result.json").exists()
+    assert not (output / "stage_execution_plan.json").exists()
+    assert not (output / "validation_report.json").exists()
 
-    state_path = output / "harness_run_result.json"
-    assert payload["run_state_path"] == state_path.as_posix()
-    assert json.loads(state_path.read_text(encoding="utf-8")) == payload
-    lock_gate = payload["program_dag_snapshot"]["lock_gate_refs"][0]
-    resume_exit = main(
+
+def test_external_prd_run_command_rejects_repository_output_dir(tmp_path: Path, capsys):
+    source = tmp_path / "prd.md"
+    source.write_text("# PRD\nContent\n", encoding="utf-8")
+    output = tmp_path / "repository" / "out"
+
+    exit_code = main(
         [
-            "resume",
-            "--run-state-ref",
-            str(state_path),
-            "--requested-resume-node",
-            lock_gate,
+            "run",
+            "--work-dir",
+            str(tmp_path),
+            "--adapter-id",
+            "markdown_prd_adapter",
+            "--source-ref",
+            str(source),
+            "--output-dir",
+            str(output),
             "--dry-run",
         ]
     )
-    resume_payload = json.loads(capsys.readouterr().out)
+    payload = json.loads(capsys.readouterr().out)
 
-    assert resume_exit == 1
-    assert resume_payload["resume_eligibility"] == "BLOCK_LOCK_BOUNDARY"
-    assert resume_payload["next_command_plan"] == ["REQUEST_EXPLICIT_LOCK_AUTHORIZATION"]
+    assert exit_code == 1
+    assert payload["status"] == "STOPPED"
+    assert payload["written_paths"] == []
+    assert "RUN-CHECK-OUTPUT-SCOPE" in {finding["code"] for finding in payload["findings"]}
 
 
 def test_p4_review_command_reports_decision_binding(tmp_path: Path, capsys):
