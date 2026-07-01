@@ -188,6 +188,11 @@
       "size_bytes": 602
     },
     {
+      "path": "README.md",
+      "sha256": "03b1ffaa11fef3f0a25187cb52fb9ebeb420e391bf5f1752857a7f44b872898c",
+      "size_bytes": 1303
+    },
+    {
       "path": "START_HERE.md",
       "sha256": "08ebf0a27018b1665126e7f96f92e5d9a7af7acc5476cbd16fa631f6b00efe95",
       "size_bytes": 2285
@@ -604,7 +609,7 @@
     }
   ],
   "package_id": "DRD-HARNESS-FOUNDRY-CONSTITUTION-START-001",
-  "root_sha256": "27c30e132c7a1e5fed6df47ab5d42eb56bd48f9694fd6adcfca9986f1f111a27",
+  "root_sha256": "4b6a8b215cbb51e8aa6d76330807034f2bfb75408c0e0740cd50041e6662caa3",
   "status": "SEALED",
   "target": "DRD_HARNESS_RELEASE_LOCK",
   "version": "1.0.0"
