@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "variant_page_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "parent_page_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "variant_kind": {
+      "enum": [
+        "BASE",
+        "STATE_VARIANT"
+      ]
+    },
+    "source_state_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "render_surface_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "state_condition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "shared_element_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "variant_element_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "source_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "trace_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "figma_frame_required": {
+      "type": "boolean"
+    },
+    "product_capability_addition": {
+      "const": false
+    }
+  },
+  "required": [
+    "variant_page_id",
+    "parent_page_id",
+    "variant_kind",
+    "source_state_id",
+    "render_surface_id",
+    "state_condition",
+    "shared_element_refs",
+    "variant_element_refs",
+    "source_refs",
+    "trace_refs",
+    "figma_frame_required",
+    "product_capability_addition"
+  ],
+  "type": "object"
+}

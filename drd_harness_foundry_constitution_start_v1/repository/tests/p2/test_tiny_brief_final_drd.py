@@ -4,7 +4,11 @@ import json
 from pathlib import Path
 
 from drd_harness.compiler.final_drd import compile_final_drd
-from drd_harness.validators.compiler_conservation import validate_final_manifest, validate_section_order
+from drd_harness.validators.compiler_conservation import (
+    validate_final_drd_reader_structure,
+    validate_final_manifest,
+    validate_section_order,
+)
 
 
 FIXTURE_ROOT = Path("repository/fixtures/p2/tiny_brief_intake")
@@ -52,13 +56,19 @@ def test_section_order_rejects_duplicate_order_slot():
     assert any("section order slot must be unique" in finding.message for finding in findings)
 
 
-def test_final_drd_cites_source_hashes_for_every_section():
+def test_final_drd_keeps_source_hashes_out_of_reader_text_and_in_reference_index():
     bundle = _load_json("compiler_input_bundle.json")["bundle"]
     final_drd_text = (FIXTURE_ROOT / "FINAL_DRD.md").read_text(encoding="utf-8")
+    reference_index = _load_json("final_drd_reference_index.json")["reference_index"]
 
+    assert validate_final_drd_reader_structure(final_drd_text) == []
+    assert "_Source:" not in final_drd_text
+    assert "sha256:" not in final_drd_text
+    refs_by_section = {entry["compiled_section_id"]: entry for entry in reference_index}
     for section in bundle["sections"]:
-        citation = f"{section['source_path']}#{section['section_id']} sha256:{section['source_hash']}"
-        assert citation in final_drd_text
+        ref = refs_by_section[section["section_id"]]
+        assert ref["source_path"] == section["source_path"]
+        assert ref["source_hash"] == section["source_hash"]
 
 
 def test_final_drd_contains_only_compiled_semantic_unit_values():
@@ -81,6 +91,19 @@ def test_final_drd_manifest_has_zero_blocking_counts():
     assert manifest["hash_drift_count"] == 0
     assert manifest["unapproved_input_count"] == 0
     assert manifest["compiled_semantic_unit_count"] == 33
+
+
+def test_final_drd_reader_structure_rejects_candidate_or_evidence_bundle_text():
+    bad_text = (
+        "# Final DRD\n\n"
+        "## Section\n\n"
+        "# DRD-01 PRD 体验事实简报（候选）\n\n"
+        "_Source: staged/DRD-01/PRD_EXPERIENCE_BRIEF.md sha256:abc approval:review_gates/DRD-01_REVIEW_DECISION.json_\n"
+    )
+
+    findings = validate_final_drd_reader_structure(bad_text)
+
+    assert any(finding.code == "COMP-CHECK-021" for finding in findings)
 
 
 def _load_json(filename: str):

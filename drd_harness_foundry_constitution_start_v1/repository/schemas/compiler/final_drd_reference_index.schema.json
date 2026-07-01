@@ -4,6 +4,7 @@
     "additionalProperties": false,
     "properties": {
       "approval_ref": {"minLength": 1, "type": "string"},
+      "approved_semantic_artifact_ref": {"type": ["string", "null"]},
       "compiled_section_id": {"minLength": 1, "type": "string"},
       "lock_ref": {"type": ["string", "null"]},
       "reference_id": {"minLength": 1, "type": "string"},
@@ -15,7 +16,8 @@
     },
     "required": [
       "reference_id", "compiled_section_id", "source_stage_id", "source_path",
-      "source_hash", "approval_ref", "lock_ref", "validator_result_refs",
+      "source_hash", "approval_ref", "approved_semantic_artifact_ref",
+      "lock_ref", "validator_result_refs",
       "source_snapshot_identity"
     ],
     "type": "object"

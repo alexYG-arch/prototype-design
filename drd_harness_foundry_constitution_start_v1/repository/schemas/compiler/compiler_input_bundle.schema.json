@@ -5,6 +5,8 @@
       "additionalProperties": false,
       "properties": {
         "approval_ref": {"type": ["string", "null"]},
+        "approved_semantic_artifact_ref": {"type": "string"},
+        "artifact_kind": {"type": "string"},
         "covered_paths": {"items": {"type": "string"}, "type": "array"},
         "input_id": {"minLength": 1, "type": "string"},
         "input_type": {
@@ -26,8 +28,11 @@
         "schema_id": {"type": "string"},
         "schema_ref": {"type": "string"},
         "section_index_ref": {"type": "string"},
+        "semantic_body_path": {"type": "string"},
+        "semantic_body_sha256": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
         "semantic_role": {"type": "string"},
         "sha256": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+        "source_candidate_refs": {"items": {"type": "string"}, "type": "array"},
         "stage_id": {"type": "string"},
         "status": {"type": "string"},
         "subject_hash": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
@@ -41,6 +46,7 @@
   "additionalProperties": true,
   "properties": {
     "approved_operational_indexes": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
+    "approved_semantic_artifact_manifests": {"items": {"type": "object"}, "type": "array"},
     "approved_semantic_artifacts": {"items": {"$ref": "#/$defs/inputRecord"}, "minItems": 1, "type": "array"},
     "bundle_id": {"minLength": 1, "type": "string"},
     "bundle_version": {"minLength": 1, "type": "string"},
@@ -51,6 +57,7 @@
     "review_decisions": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"},
     "schemas": {"items": {"$ref": "#/$defs/inputRecord"}, "minItems": 1, "type": "array"},
     "section_order": {"items": {"type": "object"}, "minItems": 1, "type": "array"},
+    "requires_approved_stage_semantic_artifacts": {"type": "boolean"},
     "source_snapshot_identity": {"type": "object"},
     "stage_order": {"items": {"type": "object"}, "minItems": 5, "type": "array"},
     "validator_results": {"items": {"$ref": "#/$defs/inputRecord"}, "type": "array"}
@@ -69,6 +76,7 @@
     "schemas",
     "stage_order",
     "section_order",
+    "requires_approved_stage_semantic_artifacts",
     "closed_input_hash"
   ],
   "type": "object"

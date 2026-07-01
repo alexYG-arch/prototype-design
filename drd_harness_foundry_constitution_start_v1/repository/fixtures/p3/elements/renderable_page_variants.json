@@ -1,0 +1,133 @@
+{
+  "artifact_id": "p3.elements.renderable_page_variants",
+  "stage_id": "DRD-03-PAGE-ELEMENTS",
+  "fixture_id": "p3_elements_fixture",
+  "path": "repository/fixtures/p3/elements/renderable_page_variants.json",
+  "schema_ref": "repository/schemas/reasoning/renderable_page_variant.schema.json",
+  "schema_payload_key": "records",
+  "source_refs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/elements/prd_element_decisions.json",
+    "repository/fixtures/p3/elements/derived_element_decisions.json",
+    "repository/fixtures/p3/elements/product_expansion_gaps.json",
+    "repository/fixtures/p3/closure/interaction_nodes.json"
+  ],
+  "upstream_artifact_refs": [
+    "p3.elements.prd_element_inventory",
+    "p3.elements.prd_element_decisions",
+    "p3.elements.derived_element_decisions",
+    "p3.elements.product_expansion_gaps",
+    "p3.closure.interaction_nodes"
+  ],
+  "upstream_hashes": {
+    "p3.elements.prd_element_inventory": "f1bf73dbc34294c28e2d6b39329e9a404ac90ab0ca9a51d9fe388b7ca4288c5b",
+    "p3.elements.prd_element_decisions": "c08e53408b800c8bb99f635681aeb7419abdc1a55ebdb27611212d54ff8f9ab3",
+    "p3.elements.derived_element_decisions": "82b494ce0e9d4f80100b874977eadcf3f821e163e14d1d34311f6e096a411f81",
+    "p3.elements.product_expansion_gaps": "cb9f611dc168f4d275faa2c0f992300f5ab1de3eef126610f43222f9eb636949",
+    "p3.closure.interaction_nodes": "ee645567824e745dffc73759aad8aff189817659e160e44e222ac7a188dad11b"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/prd_adoption.py",
+  "review_gate": "HUMAN_REQUIRED_FOR_PRODUCT_EXPANSION_ONLY",
+  "promotion_state": "CANDIDATE",
+  "invalidation_inputs": [
+    "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/elements/prd_element_decisions.json",
+    "repository/fixtures/p3/elements/derived_element_decisions.json",
+    "repository/fixtures/p3/elements/product_expansion_gaps.json",
+    "repository/fixtures/p3/closure/interaction_nodes.json"
+  ],
+  "records": [
+    {
+      "variant_page_id": "p3-el-operations-console",
+      "parent_page_id": "p3-el-operations-console",
+      "variant_kind": "BASE",
+      "source_state_id": null,
+      "render_surface_id": "p3-el-operations-console",
+      "state_condition": "Default operations console presentation before a specific case state is selected.",
+      "shared_element_refs": [
+        "p3-el-operations-console"
+      ],
+      "variant_element_refs": [],
+      "source_refs": [
+        "p3-node-operations-console"
+      ],
+      "trace_refs": [
+        "p3-el-operations-console",
+        "p3-node-operations-console"
+      ],
+      "figma_frame_required": true,
+      "product_capability_addition": false
+    },
+    {
+      "variant_page_id": "p3-el-operations-console--case-ready-state",
+      "parent_page_id": "p3-el-operations-console",
+      "variant_kind": "STATE_VARIANT",
+      "source_state_id": "p3-el-case-ready-state",
+      "render_surface_id": "p3-el-operations-console--case-ready-state",
+      "state_condition": "Case ready state is active.",
+      "shared_element_refs": [
+        "p3-el-operations-console"
+      ],
+      "variant_element_refs": [
+        "p3-el-case-ready-state"
+      ],
+      "source_refs": [
+        "p3-node-case-ready-state"
+      ],
+      "trace_refs": [
+        "p3-el-case-ready-state",
+        "p3-node-case-ready-state"
+      ],
+      "figma_frame_required": true,
+      "product_capability_addition": false
+    },
+    {
+      "variant_page_id": "p3-el-operations-console--case-blocked-state",
+      "parent_page_id": "p3-el-operations-console",
+      "variant_kind": "STATE_VARIANT",
+      "source_state_id": "p3-el-case-blocked-state",
+      "render_surface_id": "p3-el-operations-console--case-blocked-state",
+      "state_condition": "Case blocked state is active.",
+      "shared_element_refs": [
+        "p3-el-operations-console"
+      ],
+      "variant_element_refs": [
+        "p3-el-case-blocked-state"
+      ],
+      "source_refs": [
+        "p3-node-case-blocked-state"
+      ],
+      "trace_refs": [
+        "p3-el-case-blocked-state",
+        "p3-node-case-blocked-state"
+      ],
+      "figma_frame_required": true,
+      "product_capability_addition": false
+    },
+    {
+      "variant_page_id": "p3-el-operations-console--human-review-waiting-state",
+      "parent_page_id": "p3-el-operations-console",
+      "variant_kind": "STATE_VARIANT",
+      "source_state_id": "p3-el-human-review-waiting-state",
+      "render_surface_id": "p3-el-operations-console--human-review-waiting-state",
+      "state_condition": "Human review waiting state is active.",
+      "shared_element_refs": [
+        "p3-el-operations-console"
+      ],
+      "variant_element_refs": [
+        "p3-el-human-review-waiting-state",
+        "p3-el-review-gap-blocked-message"
+      ],
+      "source_refs": [
+        "p3-node-human-review-waiting-state"
+      ],
+      "trace_refs": [
+        "p3-el-human-review-waiting-state",
+        "p3-el-review-gap-blocked-message",
+        "p3-node-human-review-waiting-state"
+      ],
+      "figma_frame_required": true,
+      "product_capability_addition": false
+    }
+  ]
+}

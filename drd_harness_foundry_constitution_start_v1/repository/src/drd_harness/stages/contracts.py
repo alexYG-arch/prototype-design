@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, Iterable, List, Optional
+from typing import Dict, Iterable, List, Optional, Union
 
 from drd_harness.kernel.runtime import PrimaryRuntime
 
@@ -64,6 +64,49 @@ REQUIRED_UPSTREAM = {
     StageId.DRD_06: [StageId.DRD_00, StageId.DRD_01, StageId.DRD_02, StageId.DRD_03, StageId.DRD_03B, StageId.DRD_04, StageId.DRD_05],
 }
 
+CANONICAL_CANDIDATE_OUTPUTS = {
+    StageId.DRD_01: ["DRD-01/PRD_EXPERIENCE_BRIEF.md", "DRD-01/experience_fact_index.json"],
+    StageId.DRD_02: [
+        "DRD-02/USER_TASK_FLOW.md",
+        "DRD-02/INTERACTION_CLOSURE_REPORT.md",
+        "DRD-02/interaction_graph.json",
+    ],
+    StageId.DRD_03: ["DRD-03/PAGE_ELEMENT_BLUEPRINT.md", "DRD-03/prd_element_decision_index.json"],
+    StageId.DRD_03B: [
+        "DRD-03B/SHARED_COMPONENT_REGISTRY.md",
+        "DRD-03B/INFORMATION_PRESENTATION_REGISTRY.md",
+        "DRD-03B/shared_pattern_index.json",
+    ],
+    StageId.DRD_04: [
+        "DRD-04/LAYOUT_COMPOSITION_SPEC.md",
+        "DRD-04/FIGMA_RECONSTRUCTION_GUIDANCE.md",
+        "DRD-04/layout_anchor_index.json",
+    ],
+}
+
+CANONICAL_PROMOTION_OUTPUTS = {
+    stage_id: [
+        f"{stage_id.value}/APPROVED_SEMANTIC_ARTIFACT.md",
+        f"{stage_id.value}/approved_semantic_artifact.json",
+    ]
+    for stage_id in SEMANTIC_SOURCE_STAGES
+}
+
+CANONICAL_NON_CANDIDATE_OUTPUTS = {
+    StageId.DRD_00: ["DRD-00/source_prd_snapshot.md", "DRD-00/source_snapshot_manifest.json"],
+    StageId.DRD_05: [
+        "DRD-05/FINAL_DRD.md",
+        "DRD-05/final_drd_manifest.json",
+        "DRD-05/final_drd_toc.json",
+        "DRD-05/final_drd_reference_index.json",
+        "DRD-05/final_drd_hash_index.json",
+        "DRD-05/compiler_conservation_report.json",
+        "DRD-05/compiler_semantic_unit_inventory.json",
+        "DRD-05/compiler_input_bundle.json",
+    ],
+    StageId.DRD_06: ["DRD-06/READ_ONLY_QA_REPORT.md", "DRD-06/qa_finding_index.json"],
+}
+
 
 @dataclass(frozen=True)
 class ArtifactRef:
@@ -84,6 +127,7 @@ class StageContract:
     required_upstream_hashes: List[str]
     authority_inputs: List[str]
     candidate_outputs: List[str]
+    promotion_outputs: List[str]
     validator: str
     human_gate: str
     promotion_target: str
@@ -134,5 +178,26 @@ def canonical_stage_order() -> List[Dict[str, int]]:
     ]
 
 
+def candidate_outputs_for_stage(stage_id: Union[StageId, str]) -> List[str]:
+    stage = _coerce_stage_id(stage_id)
+    return list(CANONICAL_CANDIDATE_OUTPUTS.get(stage, []))
+
+
+def promotion_outputs_for_stage(stage_id: Union[StageId, str]) -> List[str]:
+    stage = _coerce_stage_id(stage_id)
+    return list(CANONICAL_PROMOTION_OUTPUTS.get(stage, []))
+
+
+def canonical_outputs_for_stage(stage_id: Union[StageId, str]) -> List[str]:
+    stage = _coerce_stage_id(stage_id)
+    if stage in CANONICAL_CANDIDATE_OUTPUTS:
+        return candidate_outputs_for_stage(stage) + promotion_outputs_for_stage(stage)
+    return list(CANONICAL_NON_CANDIDATE_OUTPUTS[stage])
+
+
 def sort_stage_ids_by_contract(stage_ids: Iterable[StageId]) -> List[StageId]:
     return sorted(stage_ids, key=lambda stage_id: CANONICAL_STAGE_ORDER[stage_id])
+
+
+def _coerce_stage_id(stage_id: Union[StageId, str]) -> StageId:
+    return stage_id if isinstance(stage_id, StageId) else StageId(stage_id)

@@ -1,9 +1,4 @@
 {
-  "matrix_id": "P2-BUILD-READINESS-MATRIX-001",
-  "phase": "P2",
-  "workpack_id": "P2-IMPL-05",
-  "status": "BLOCKED_PENDING_HUMAN_REVIEW_AND_GIT_COMMIT",
-  "not_a_build_lock": true,
   "build_lock_created": false,
   "build_lock_path": "control/locks/P2_BUILD_LOCK.json",
   "candidate_build_lock_fields": [
@@ -18,9 +13,9 @@
       "value": "P2"
     },
     {
+      "current_head": "3bb13fabe02c397a27f98192caf539b3c64675bb",
       "field": "git_commit",
-      "status": "BLOCKED_PENDING_CLEAN_COMMIT",
-      "current_head": "3bb13fabe02c397a27f98192caf539b3c64675bb"
+      "status": "BLOCKED_PENDING_CLEAN_COMMIT"
     },
     {
       "field": "spec_lock_hash",
@@ -28,51 +23,59 @@
       "value": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
     },
     {
+      "count": 44,
       "field": "files",
-      "status": "READY_CANDIDATE",
-      "count": 44
+      "status": "READY_CANDIDATE"
     },
     {
+      "count": 3,
       "field": "test_results",
-      "status": "READY_CANDIDATE",
-      "count": 3
+      "status": "READY_CANDIDATE"
     },
     {
+      "count": 1,
       "field": "validator_identity_hashes",
-      "status": "READY_CANDIDATE",
-      "count": 1
+      "status": "READY_CANDIDATE"
     },
     {
       "field": "root_sha256",
       "status": "BLOCKED_UNTIL_LOCK_CREATION_STEP"
     },
     {
+      "count": 4,
       "field": "invalidates_on",
-      "status": "READY_CANDIDATE",
-      "count": 4
+      "status": "READY_CANDIDATE"
     }
   ],
-  "spec_lock": {
-    "path": "control/locks/P2_SPEC_LOCK.json",
-    "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+  "final_review_binding": {
+    "decision": "APPROVED",
+    "decision_path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+    "open_blockers": [],
+    "subject_hash": "adf981ca575f5071238b1bde667fb079be88aa9ece0c90d0773dbd7153a49a38",
+    "target_path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+    "validation_result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c"
   },
+  "git_status": {
+    "head_commit": "3bb13fabe02c397a27f98192caf539b3c64675bb",
+    "reason_build_lock_not_created": "P2 build lock requires a clean committed tree and explicit lock creation authorization.",
+    "status_line_count": 12,
+    "worktree_clean": false
+  },
+  "invalidates_on": [
+    "P2_SPEC_LOCK changes",
+    "Any P2 fixture artifact hash changes",
+    "Any P2 test file hash changes",
+    "Final review subject hash changes"
+  ],
   "latest_required_review_decision": {
     "path": "build_program/phases/P2/candidates/P2-IMPL-04/REVIEW_DECISION.json",
     "sha256": "8bba84f739833fdf26e917d51a8bfa96df4b8a5399b743ad0a7ac1a554db66b6",
     "subject_hash": "30f0a087746b6074604721f332fa5a15768b80ef3c232faf893fe4fefe99cd36"
   },
-  "final_review_binding": {
-    "target_path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-    "decision_path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
-    "subject_hash": "220688a2e62bcb3b168db3b1b7f993d134580eed3721a303610082ed7a2faa78",
-    "decision": "APPROVED",
-    "open_blockers": [],
-    "validation_result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c"
-  },
   "lock_file_candidates": [
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
-      "sha256": "1ed4dec63093a86377185cd0ac31da6d8007651d913a0f0ca6206348ff7674af"
+      "sha256": "0b380426bf21e6a54c344ecc1398b69f9603d1b758637bc23905e54ec0a4ca10"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
@@ -88,15 +91,15 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
-      "sha256": "06b266dafb4ddb26fc2ed7e520bfea01e1d2b18b590c6bde170058f1b6c4ad0d"
+      "sha256": "d030bb9c542941137603e6cd39febec397d6f331a25320fbf6329f38de720ceb"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
-      "sha256": "92f70cced25235b4fb01d51ad175f942c3e7a8bb4777e1e099c0d16612a9a58f"
+      "sha256": "83dd6d1e3ce3d370affcea586d407e16617b30b83ce9ef73acbb91bba84d0813"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
-      "sha256": "a30e56fd087e17e3eec9e1723da41b7c5a8a864328148bb99e759cdf217be768"
+      "sha256": "bfe605ba0d47b834ac5b5b468382091abd3a1fd426001c5fc54ab13c4c040dd2"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
@@ -112,23 +115,23 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
-      "sha256": "477f60ae03659b89eb1beb4431c81fefef98d466a303b8c0d3554eb18a115bde"
+      "sha256": "16f311dc7359e258ab18162b46a7b4d6c8c05533cddd994a1eaee582a72dd488"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
-      "sha256": "87dcb5ec018b5bd58a889756c93361e221e61897cb06bde249c5533b03f0567c"
+      "sha256": "f73f8731539b33dba16634596bd7de0daed24024a00e748d308b047e4df865eb"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
-      "sha256": "9b70065d19a68ac7760ddbb29a908c1c18f9a9b4c4e5754eff8cc77424c7fd67"
+      "sha256": "dce0006e8878834c5161945f255a9c8e8ff59c84733be965bce95009b4bad72b"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
-      "sha256": "550e521737e79040fea4609c4818db41c35ec51e067028403a263588b0c53d09"
+      "sha256": "eba74b02f5336a5efbe3b32fb3408e582a0e67de54c3e214c3c36af8dbdc368d"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-      "sha256": "968b705ec223c57a1850b5556275d8e172013e3606059e35c0f6272b5e2534bb"
+      "sha256": "4e53604b3d4db3e620f0c3deeeb192416c77a05ed1c3f0f3724163e14ae70fdb"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
@@ -180,7 +183,7 @@
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+      "sha256": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe"
     },
     {
       "path": "repository/src/drd_harness/stages/source_snapshot.py",
@@ -188,7 +191,7 @@
     },
     {
       "path": "repository/src/drd_harness/validators/compiler_conservation.py",
-      "sha256": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b"
+      "sha256": "af7fd27901d9d6517c84ba8d10e5f833d4c710d92374fe48af2a641ac4a72c99"
     },
     {
       "path": "repository/src/drd_harness/validators/interaction_closure.py",
@@ -220,7 +223,7 @@
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_final_drd.py",
-      "sha256": "fdbd2b24d14d23a3760bcb3df7e35a545dc3624ae4f55dce10b1357e53a46d12"
+      "sha256": "25c32c14d7b19d21c3c9d6afbe9b2df7576179e8cf23a61e5fd16745ad243d03"
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_interaction.py",
@@ -247,58 +250,8 @@
       "sha256": "44e5141713cb3c4ef80356e2e107d89d5c4a50d77ee6d1e59458a3e34ca1222e"
     }
   ],
-  "test_results": [
-    {
-      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q",
-      "exit_code": 0,
-      "status": "PASS",
-      "summary": "8 passed",
-      "result_hash": "e07fcea8e0f7b40a87298b4c30a2c93711772638cfa2df72a19b12a9d8ad8ee1"
-    },
-    {
-      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2 -q",
-      "exit_code": 0,
-      "status": "PASS",
-      "summary": "85 passed",
-      "result_hash": "a9bbf291e68bf748ebe1675384ed712b16afe8790a91407bbb3bdc86ea5912f7"
-    },
-    {
-      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
-      "exit_code": 0,
-      "status": "PASS",
-      "summary": "301 passed",
-      "result_hash": "53e6e64fcf1fc5d7b0cef0abae9b44428ba45ae039306c8f996079f58006ec67"
-    }
-  ],
-  "validator_identity_candidates": [
-    {
-      "validator_id": "spec_validator",
-      "validator_kind": "python_module",
-      "validator_version": "1.0.0",
-      "validator_code_hash": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
-      "schema_hashes": {
-        "validation_result.schema.json": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2",
-        "review_decision.schema.json": "bbe75ae5e256008f431d8254bf7c89e522649e1316daf110a7ebf8676d6a6220"
-      },
-      "runtime_identity": "python-3.9.6",
-      "result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c"
-    }
-  ],
-  "validator_identity_hashes": [
-    "59123623c11578535024ef3ee784635afb57a9b9c8ccfe683f3321821c7a39b3"
-  ],
-  "invalidates_on": [
-    "P2_SPEC_LOCK changes",
-    "Any P2 fixture artifact hash changes",
-    "Any P2 test file hash changes",
-    "Final review subject hash changes"
-  ],
-  "git_status": {
-    "head_commit": "3bb13fabe02c397a27f98192caf539b3c64675bb",
-    "worktree_clean": false,
-    "status_line_count": 12,
-    "reason_build_lock_not_created": "P2 build lock requires a clean committed tree and explicit lock creation authorization."
-  },
+  "matrix_id": "P2-BUILD-READINESS-MATRIX-001",
+  "not_a_build_lock": true,
   "p2_code_target_file_candidates": [
     {
       "path": "repository/src/drd_harness/stages/source_snapshot.py",
@@ -332,5 +285,52 @@
       "path": "repository/src/drd_harness/compiler/final_drd.py",
       "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
     }
-  ]
+  ],
+  "phase": "P2",
+  "spec_lock": {
+    "path": "control/locks/P2_SPEC_LOCK.json",
+    "sha256": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd"
+  },
+  "status": "BLOCKED_PENDING_HUMAN_REVIEW_AND_GIT_COMMIT",
+  "test_results": [
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q",
+      "exit_code": 0,
+      "result_hash": "e07fcea8e0f7b40a87298b4c30a2c93711772638cfa2df72a19b12a9d8ad8ee1",
+      "status": "PASS",
+      "summary": "8 passed"
+    },
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2 -q",
+      "exit_code": 0,
+      "result_hash": "a9bbf291e68bf748ebe1675384ed712b16afe8790a91407bbb3bdc86ea5912f7",
+      "status": "PASS",
+      "summary": "85 passed"
+    },
+    {
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests -q",
+      "exit_code": 0,
+      "result_hash": "53e6e64fcf1fc5d7b0cef0abae9b44428ba45ae039306c8f996079f58006ec67",
+      "status": "PASS",
+      "summary": "301 passed"
+    }
+  ],
+  "validator_identity_candidates": [
+    {
+      "result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c",
+      "runtime_identity": "python-3.9.6",
+      "schema_hashes": {
+        "review_decision.schema.json": "bbe75ae5e256008f431d8254bf7c89e522649e1316daf110a7ebf8676d6a6220",
+        "validation_result.schema.json": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2"
+      },
+      "validator_code_hash": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
+      "validator_id": "spec_validator",
+      "validator_kind": "python_module",
+      "validator_version": "1.0.0"
+    }
+  ],
+  "validator_identity_hashes": [
+    "59123623c11578535024ef3ee784635afb57a9b9c8ccfe683f3321821c7a39b3"
+  ],
+  "workpack_id": "P2-IMPL-05"
 }

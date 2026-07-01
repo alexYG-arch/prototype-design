@@ -1,64 +1,6 @@
 {
   "artifact_id": "p2.tiny_brief.final_review_target",
-  "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-  "schema_ref": null,
-  "schema_payload_key": "review_target",
-  "stage_id": "DRD-06-FINAL-REVIEW",
   "fixture_id": "tiny_brief_intake",
-  "source_refs": [
-    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
-  ],
-  "upstream_artifact_refs": [
-    "p2.tiny_brief.source_prd",
-    "p2.tiny_brief.source_snapshot_manifest",
-    "p2.tiny_brief.prd_element_inventory",
-    "p2.tiny_brief.derived_element_decisions",
-    "p2.tiny_brief.product_expansion_gaps",
-    "p2.tiny_brief.inference_records",
-    "p2.tiny_brief.structural_completion_review",
-    "p2.tiny_brief.interaction_graph",
-    "p2.tiny_brief.clickable_inventory",
-    "p2.tiny_brief.async_behavior",
-    "p2.tiny_brief.failure_recovery",
-    "p2.tiny_brief.interaction_messages",
-    "p2.tiny_brief.information_presentation_registry",
-    "p2.tiny_brief.shared_component_registry",
-    "p2.tiny_brief.natural_language_layout",
-    "p2.tiny_brief.carrier_adaptation_profile",
-    "p2.tiny_brief.containment_hierarchy",
-    "p2.tiny_brief.z_axis_layering",
-    "p2.tiny_brief.compiler_input_bundle",
-    "p2.tiny_brief.compiler_semantic_unit_inventory",
-    "p2.tiny_brief.compiler_conservation_report",
-    "p2.tiny_brief.final_drd"
-  ],
-  "upstream_hashes": {
-    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
-    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
-    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
-    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
-    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
-    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
-    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
-    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
-    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
-    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
-    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
-    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86",
-    "p2.tiny_brief.information_presentation_registry": "07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7",
-    "p2.tiny_brief.shared_component_registry": "b45ba8f5be59be1522e195c0cb53edb701d5604e93050f346853e6d2c86e8449",
-    "p2.tiny_brief.natural_language_layout": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
-    "p2.tiny_brief.carrier_adaptation_profile": "79ed33c9311aeab787c92076008ea4d7cfcde1286c990bb462eaa4acb01e3424",
-    "p2.tiny_brief.containment_hierarchy": "d72fe7cac15f5e269a3432960108ac1ce1568e2f505563df6a3a5295a8f60c62",
-    "p2.tiny_brief.z_axis_layering": "30487219f7e9e6e45c63935263a6ac19cc1dee597b63bbee2e9c7d2b7f18c46d",
-    "p2.tiny_brief.compiler_input_bundle": "92f70cced25235b4fb01d51ad175f942c3e7a8bb4777e1e099c0d16612a9a58f",
-    "p2.tiny_brief.compiler_semantic_unit_inventory": "a30e56fd087e17e3eec9e1723da41b7c5a8a864328148bb99e759cdf217be768",
-    "p2.tiny_brief.compiler_conservation_report": "06b266dafb4ddb26fc2ed7e520bfea01e1d2b18b590c6bde170058f1b6c4ad0d",
-    "p2.tiny_brief.final_drd": "1ed4dec63093a86377185cd0ac31da6d8007651d913a0f0ca6206348ff7674af"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/spec_validator.py",
-  "review_gate": "FINAL_HUMAN_GATE",
-  "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "p2.tiny_brief.source_prd",
     "p2.tiny_brief.source_snapshot_manifest",
@@ -88,27 +30,10 @@
     "build_program/phases/P2/candidates/P2-IMPL-04/REVIEW_DECISION.json",
     "control/locks/P2_SPEC_LOCK.json"
   ],
+  "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+  "promotion_state": "CANDIDATE",
+  "review_gate": "FINAL_HUMAN_GATE",
   "review_target": {
-    "target_id": "p2.tiny_brief.final_review_target.001",
-    "workpack_id": "P2-IMPL-05",
-    "fixture_id": "tiny_brief_intake",
-    "stage_id": "DRD-06-FINAL-REVIEW",
-    "review_subject_paths": [
-      "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
-      "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
-      "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
-      "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
-      "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json"
-    ],
-    "review_subject_hash": "220688a2e62bcb3b168db3b1b7f993d134580eed3721a303610082ed7a2faa78",
-    "review_subject_hash_algorithm": "sha256(join_lines(path + NUL + sha256_file(path)))",
-    "review_sections": [
-      "FINAL_DRD.md",
-      "compiler_conservation_report.json",
-      "final_drd_manifest.json",
-      "final_drd_hash_index.json",
-      "final_drd_reference_index.json"
-    ],
     "checked_artifact_ids": [
       "p2.tiny_brief.final_drd_manifest",
       "p2.tiny_brief.final_drd_hash_index",
@@ -116,13 +41,27 @@
       "p2.tiny_brief.final_review_target",
       "p2.tiny_brief.final_review_decision"
     ],
+    "fixture_id": "tiny_brief_intake",
+    "not_a_build_lock": true,
+    "review_sections": [
+      "FINAL_DRD.md",
+      "compiler_conservation_report.json",
+      "final_drd_manifest.json",
+      "final_drd_hash_index.json",
+      "final_drd_reference_index.json"
+    ],
+    "review_subject_hash": "adf981ca575f5071238b1bde667fb079be88aa9ece0c90d0773dbd7153a49a38",
+    "review_subject_hash_algorithm": "sha256(join_lines(path + NUL + sha256_file(path)))",
+    "review_subject_paths": [
+      "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+      "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+      "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+      "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+      "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json"
+    ],
+    "stage_id": "DRD-06-FINAL-REVIEW",
+    "target_id": "p2.tiny_brief.final_review_target.001",
     "validation_result": {
-      "result_id": "P2-VAL-FINAL-REVIEW-BINDING-001",
-      "validation_id": "P2-VAL-FINAL-REVIEW-BINDING",
-      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q",
-      "exit_code": 0,
-      "status": "PASS",
-      "checked_subject_hash": "220688a2e62bcb3b168db3b1b7f993d134580eed3721a303610082ed7a2faa78",
       "checked_artifact_ids": [
         "p2.tiny_brief.final_drd_manifest",
         "p2.tiny_brief.final_drd_hash_index",
@@ -130,20 +69,82 @@
         "p2.tiny_brief.final_review_target",
         "p2.tiny_brief.final_review_decision"
       ],
-      "result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c",
+      "checked_subject_hash": "adf981ca575f5071238b1bde667fb079be88aa9ece0c90d0773dbd7153a49a38",
+      "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q",
+      "exit_code": 0,
+      "result_hash": "8335c000a20f0ff3bc3734b407af99a999f2d2a43cfb2f946b5b131e401d5783",
+      "result_id": "P2-VAL-FINAL-REVIEW-BINDING-001",
+      "status": "PASS",
+      "subject_hash": "adf981ca575f5071238b1bde667fb079be88aa9ece0c90d0773dbd7153a49a38",
+      "validation_id": "P2-VAL-FINAL-REVIEW-BINDING",
       "validator_identity": {
+        "result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c",
+        "runtime_identity": "python-3.9.6",
+        "schema_hashes": {
+          "review_decision.schema.json": "bbe75ae5e256008f431d8254bf7c89e522649e1316daf110a7ebf8676d6a6220",
+          "validation_result.schema.json": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2"
+        },
+        "validator_code_hash": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
         "validator_id": "spec_validator",
         "validator_kind": "python_module",
-        "validator_version": "1.0.0",
-        "validator_code_hash": "75d9889e9e64d4eb8ac6939132b270fa6329d4dc98edab86b3396cedcdd985e6",
-        "schema_hashes": {
-          "validation_result.schema.json": "f2c06a5df19da015b9f644148584a6efb60044f49da7c6700b14e1b3d24360a2",
-          "review_decision.schema.json": "bbe75ae5e256008f431d8254bf7c89e522649e1316daf110a7ebf8676d6a6220"
-        },
-        "runtime_identity": "python-3.9.6",
-        "result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c"
+        "validator_version": "1.0.0"
       }
     },
-    "not_a_build_lock": true
-  }
+    "workpack_id": "P2-IMPL-05"
+  },
+  "schema_payload_key": "review_target",
+  "schema_ref": null,
+  "source_refs": [
+    "build_program/phases/P2/candidates/P2-SPEC-01/P2_VERTICAL_SLICE_PRD.md"
+  ],
+  "stage_id": "DRD-06-FINAL-REVIEW",
+  "upstream_artifact_refs": [
+    "p2.tiny_brief.source_prd",
+    "p2.tiny_brief.source_snapshot_manifest",
+    "p2.tiny_brief.prd_element_inventory",
+    "p2.tiny_brief.derived_element_decisions",
+    "p2.tiny_brief.product_expansion_gaps",
+    "p2.tiny_brief.inference_records",
+    "p2.tiny_brief.structural_completion_review",
+    "p2.tiny_brief.interaction_graph",
+    "p2.tiny_brief.clickable_inventory",
+    "p2.tiny_brief.async_behavior",
+    "p2.tiny_brief.failure_recovery",
+    "p2.tiny_brief.interaction_messages",
+    "p2.tiny_brief.information_presentation_registry",
+    "p2.tiny_brief.shared_component_registry",
+    "p2.tiny_brief.natural_language_layout",
+    "p2.tiny_brief.carrier_adaptation_profile",
+    "p2.tiny_brief.containment_hierarchy",
+    "p2.tiny_brief.z_axis_layering",
+    "p2.tiny_brief.compiler_input_bundle",
+    "p2.tiny_brief.compiler_semantic_unit_inventory",
+    "p2.tiny_brief.compiler_conservation_report",
+    "p2.tiny_brief.final_drd"
+  ],
+  "upstream_hashes": {
+    "p2.tiny_brief.async_behavior": "22d02f462a43b29642eecb12da093ad013bec069ce2ce21e03dbae7938582889",
+    "p2.tiny_brief.carrier_adaptation_profile": "79ed33c9311aeab787c92076008ea4d7cfcde1286c990bb462eaa4acb01e3424",
+    "p2.tiny_brief.clickable_inventory": "a91880bd38ff948671a5a822c960faf0620cd7d1f6464c5495be955f5f1a738d",
+    "p2.tiny_brief.compiler_conservation_report": "d030bb9c542941137603e6cd39febec397d6f331a25320fbf6329f38de720ceb",
+    "p2.tiny_brief.compiler_input_bundle": "83dd6d1e3ce3d370affcea586d407e16617b30b83ce9ef73acbb91bba84d0813",
+    "p2.tiny_brief.compiler_semantic_unit_inventory": "bfe605ba0d47b834ac5b5b468382091abd3a1fd426001c5fc54ab13c4c040dd2",
+    "p2.tiny_brief.containment_hierarchy": "d72fe7cac15f5e269a3432960108ac1ce1568e2f505563df6a3a5295a8f60c62",
+    "p2.tiny_brief.derived_element_decisions": "98809eff811fbb4f3dc83a5ff815bb073b480e1ee69703c626b0a48817fe2fa0",
+    "p2.tiny_brief.failure_recovery": "5871378efd94bf89c0c0717232a948e695c39899a1c905a9ac6b64d71371a79a",
+    "p2.tiny_brief.final_drd": "0b380426bf21e6a54c344ecc1398b69f9603d1b758637bc23905e54ec0a4ca10",
+    "p2.tiny_brief.inference_records": "f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3",
+    "p2.tiny_brief.information_presentation_registry": "07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7",
+    "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
+    "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86",
+    "p2.tiny_brief.natural_language_layout": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+    "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
+    "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
+    "p2.tiny_brief.shared_component_registry": "b45ba8f5be59be1522e195c0cb53edb701d5604e93050f346853e6d2c86e8449",
+    "p2.tiny_brief.source_prd": "c27f881e66fc6fddfe0acb3e3a20513502a249f34d1628d3502fb0f17d23a0bb",
+    "p2.tiny_brief.source_snapshot_manifest": "5799ff99dcb72c3f76fd668bddbb702d776e71d7e9a02ff1da296031694826ca",
+    "p2.tiny_brief.structural_completion_review": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
+    "p2.tiny_brief.z_axis_layering": "30487219f7e9e6e45c63935263a6ac19cc1dee597b63bbee2e9c7d2b7f18c46d"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/spec_validator.py"
 }

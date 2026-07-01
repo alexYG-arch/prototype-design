@@ -1,30 +1,6 @@
 {
   "artifact_id": "p3.compiler.conservation_report",
-  "stage_id": "DRD-05-COMPILATION",
   "fixture_id": "p3_compiler_fixture",
-  "path": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
-  "schema_ref": "repository/schemas/compiler/compiler_conservation_report.schema.json",
-  "schema_payload_key": "report",
-  "source_refs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
-  ],
-  "upstream_artifact_refs": [
-    "approved semantic units",
-    "compiled semantic units",
-    "current input hashes"
-  ],
-  "upstream_hashes": {
-    "input_bundle_hash": "36fd6d09ff9c8fff328b4f4510fbdf64808ecc4628e7573df78fcbc4d90dd93a",
-    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
-  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
-  "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
     "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
@@ -40,8 +16,11 @@
     "repository/fixtures/p3/layout/layout_composition_index.json",
     "repository/fixtures/p3/layout/state_placement_index.json"
   ],
+  "manual_review_route_for_upstream_conflict_only": "Human review may classify upstream ambiguity or approval conflict only; compiler cannot repair semantics.",
+  "path": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+  "promotion_state": "CANDIDATE",
   "report": {
-    "status": "PASS",
+    "added_semantic_units": [],
     "approved_input_semantic_units": [
       "p3.compiler.unit.layout-authority",
       "p3.compiler.unit.layout-state-copy",
@@ -58,6 +37,8 @@
       "p3.compiler.unit.review-gap-pattern",
       "p3.compiler.unit.source-intake-brief"
     ],
+    "hash_drift": [],
+    "human_review_required": false,
     "matched_semantic_units": [
       "p3.compiler.unit.layout-authority",
       "p3.compiler.unit.layout-state-copy",
@@ -66,16 +47,35 @@
       "p3.compiler.unit.review-gap-pattern",
       "p3.compiler.unit.source-intake-brief"
     ],
-    "added_semantic_units": [],
-    "omitted_semantic_units": [],
     "non_atomic_semantic_units": [],
-    "hash_drift": [],
-    "unapproved_inputs": [],
-    "ordering_findings": [],
     "nondeterminism_findings": [],
+    "omitted_semantic_units": [],
+    "ordering_findings": [],
     "read_only_qa_boundary_status": "NOT_RUN",
-    "human_review_required": false
+    "status": "PASS",
+    "unapproved_inputs": []
   },
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "schema_payload_key": "report",
+  "schema_ref": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "stage_id": "DRD-05-COMPILATION",
   "status_is_blocking_when_not_pass": true,
-  "manual_review_route_for_upstream_conflict_only": "Human review may classify upstream ambiguity or approval conflict only; compiler cannot repair semantics."
+  "upstream_artifact_refs": [
+    "approved semantic units",
+    "compiled semantic units",
+    "current input hashes"
+  ],
+  "upstream_hashes": {
+    "input_bundle_hash": "36fd6d09ff9c8fff328b4f4510fbdf64808ecc4628e7573df78fcbc4d90dd93a",
+    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

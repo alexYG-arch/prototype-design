@@ -90,6 +90,9 @@ def generate_external_prd_drd(
             release_lock_eligibility_state="NOT_APPLICABLE",
             will_create_release_lock=False,
             will_publish_package=False,
+            source_preserving_compile_only=True,
+            staged_execution_complete=False,
+            staged_execution_command="staged-run",
         )
         return payload
 
@@ -109,6 +112,9 @@ def generate_external_prd_drd(
             release_lock_eligibility_state="NOT_APPLICABLE",
             will_create_release_lock=False,
             will_publish_package=False,
+            source_preserving_compile_only=True,
+            staged_execution_complete=False,
+            staged_execution_command="staged-run",
         )
 
     try:
@@ -133,6 +139,9 @@ def generate_external_prd_drd(
             release_lock_eligibility_state="NOT_APPLICABLE",
             will_create_release_lock=False,
             will_publish_package=False,
+            source_preserving_compile_only=True,
+            staged_execution_complete=False,
+            staged_execution_command="staged-run",
         )
 
     written_paths = sorted(path.as_posix() for path in artifacts)
@@ -156,6 +165,9 @@ def generate_external_prd_drd(
         release_lock_eligibility_state="NOT_APPLICABLE",
         will_create_release_lock=False,
         will_publish_package=False,
+        source_preserving_compile_only=True,
+        staged_execution_complete=False,
+        staged_execution_command="staged-run",
     )
 
 
@@ -341,6 +353,7 @@ def _compiler_bundle(
         "compiler_version": "1.0.0",
         "compiler_code_hash": sha256_file(Path(__file__).with_name("final_drd.py")),
         "compiler_stage_id": "DRD-05",
+        "requires_approved_stage_semantic_artifacts": False,
         "source_snapshot_identity": {
             "snapshot_id": "external-prd-source-snapshot-" + source_hash[:16],
             "source_path": str(source_ref),

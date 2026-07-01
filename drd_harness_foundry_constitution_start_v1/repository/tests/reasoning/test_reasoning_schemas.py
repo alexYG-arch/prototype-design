@@ -46,3 +46,10 @@ def test_product_gap_and_input_obligation_schemas_exist():
 
     assert "STRUCTURAL_COMPLETION_ESCALATED" in gap["properties"]["gap_type"]["enum"]
     assert {"acquisition_path", "gap_ref"} <= set(obligation["required"])
+
+
+def test_renderable_page_variant_schema_prevents_product_capability_addition():
+    schema = load_schema("renderable_page_variant.schema.json")
+
+    assert schema["properties"]["product_capability_addition"]["const"] is False
+    assert {"variant_page_id", "parent_page_id", "source_state_id"} <= set(schema["required"])

@@ -7,6 +7,7 @@
   "schema_payload_key": "layering",
   "source_refs": [
     "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/elements/renderable_page_variants.json",
     "repository/fixtures/p3/closure/interaction_messages.json",
     "repository/fixtures/p3/patterns/shared_component_registry.json",
     "repository/fixtures/p3/patterns/information_presentation_registry.json",
@@ -14,6 +15,7 @@
   ],
   "upstream_artifact_refs": [
     "p3.elements.prd_element_inventory",
+    "p3.elements.renderable_page_variants",
     "p3.closure.interaction_messages",
     "p3.patterns.shared_component_registry",
     "p3.patterns.information_presentation_registry",
@@ -24,13 +26,15 @@
     "p3.closure.interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
     "p3.patterns.shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
     "p3.patterns.information_presentation_registry": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb",
-    "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9"
+    "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
+    "p3.elements.renderable_page_variants": "93acb321989a6deca1c66dc1e596df977c080053fe9160b29138a52e2ef210d7"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_layout.py",
   "review_gate": "HUMAN_REQUIRED_FOR_LAYOUT_DISPUTE",
   "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "repository/fixtures/p3/elements/prd_element_inventory.json",
+    "repository/fixtures/p3/elements/renderable_page_variants.json",
     "repository/fixtures/p3/closure/interaction_messages.json",
     "repository/fixtures/p3/patterns/shared_component_registry.json",
     "repository/fixtures/p3/patterns/information_presentation_registry.json",

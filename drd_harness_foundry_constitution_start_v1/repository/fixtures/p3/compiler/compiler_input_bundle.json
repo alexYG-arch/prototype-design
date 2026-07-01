@@ -1,374 +1,523 @@
 {
   "artifact_id": "p3.compiler.input_bundle",
-  "stage_id": "DRD-05-COMPILATION",
-  "fixture_id": "p3_compiler_fixture",
-  "path": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
-  "schema_ref": "repository/schemas/compiler/compiler_input_bundle.schema.json",
-  "schema_payload_key": "bundle",
-  "source_refs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
-  ],
-  "upstream_artifact_refs": [
-    "p3.source_intake.intake_decisions",
-    "p3.distill.semantic_unit_map",
-    "p3.closure.interaction_messages",
-    "p3.patterns.shared_component_registry",
-    "p3.layout.natural_language_layout",
-    "p3.layout.layout_composition_index",
-    "p3.layout.state_placement_index",
-    "P3_SPEC_LOCK"
-  ],
-  "upstream_hashes": {
-    "REVIEW_DECISION": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
-    "intake_decisions": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
-    "semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-    "interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-    "shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-    "natural_language_layout": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-    "layout_composition_index": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
-    "state_placement_index": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
-    "P3_SPEC_LOCK": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
-  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
-  "promotion_state": "CANDIDATE",
-  "invalidation_inputs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-    "repository/fixtures/p3/source_intake/intake_decisions.json",
-    "repository/fixtures/p3/distill/semantic_unit_map.json",
-    "repository/fixtures/p3/closure/interaction_messages.json",
-    "repository/fixtures/p3/patterns/shared_component_registry.json",
-    "repository/fixtures/p3/layout/natural_language_layout.json",
-    "repository/fixtures/p3/layout/layout_composition_index.json",
-    "repository/fixtures/p3/layout/state_placement_index.json"
-  ],
   "bundle": {
-    "bundle_id": "p3.compiler.input_bundle.001",
-    "bundle_version": "1.0",
-    "compiler_id": "drd_harness.compiler.final_drd",
-    "compiler_version": "1.0.0",
-    "compiler_code_hash": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef",
-    "compiler_stage_id": "DRD-05",
-    "source_snapshot_identity": {
-      "source_item_id": "p3-source-brief",
-      "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-      "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-      "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-    },
-    "approved_semantic_artifacts": [
-      {
-        "input_id": "p3.source_intake.intake_decisions",
-        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
-        "path": "repository/fixtures/p3/source_intake/intake_decisions.json",
-        "sha256": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
-        "semantic_role": "source intake decisions approved for compiler closure",
-        "invalidation_state": "CURRENT",
-        "stage_id": "DRD-01",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9"
-      },
-      {
-        "input_id": "p3.distill.semantic_unit_map",
-        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
-        "path": "repository/fixtures/p3/distill/semantic_unit_map.json",
-        "sha256": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-        "semantic_role": "experience distillation semantic authority approved for compiler closure",
-        "invalidation_state": "CURRENT",
-        "stage_id": "DRD-02",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "subject_hash": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1"
-      },
-      {
-        "input_id": "p3.closure.interaction_messages",
-        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
-        "path": "repository/fixtures/p3/closure/interaction_messages.json",
-        "sha256": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-        "semantic_role": "interaction closure messages approved for compiler closure",
-        "invalidation_state": "CURRENT",
-        "stage_id": "DRD-03",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e"
-      },
-      {
-        "input_id": "p3.patterns.shared_component_registry",
-        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
-        "path": "repository/fixtures/p3/patterns/shared_component_registry.json",
-        "sha256": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-        "semantic_role": "shared pattern authority approved for compiler closure",
-        "invalidation_state": "CURRENT",
-        "stage_id": "DRD-03B",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "subject_hash": "4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8"
-      },
-      {
-        "input_id": "p3.layout.natural_language_layout",
-        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
-        "path": "repository/fixtures/p3/layout/natural_language_layout.json",
-        "sha256": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-        "semantic_role": "natural-language layout authority approved for compiler closure",
-        "invalidation_state": "CURRENT",
-        "stage_id": "DRD-04",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
-      }
-    ],
     "approved_operational_indexes": [
       {
         "input_id": "p3.layout.layout_composition_index",
         "input_type": "APPROVED_OPERATIONAL_INDEX",
-        "path": "repository/fixtures/p3/layout/layout_composition_index.json",
-        "sha256": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
-        "semantic_role": "layout composition index for deterministic compiler references",
         "invalidation_state": "CURRENT",
-        "stage_id": "DRD-04",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
         "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/layout/layout_composition_index.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "semantic_role": "layout composition index for deterministic compiler references",
+        "sha256": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
+        "stage_id": "DRD-04",
         "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       },
       {
         "input_id": "p3.layout.state_placement_index",
         "input_type": "APPROVED_OPERATIONAL_INDEX",
-        "path": "repository/fixtures/p3/layout/state_placement_index.json",
-        "sha256": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
-        "semantic_role": "state placement index for deterministic compiler references",
         "invalidation_state": "CURRENT",
-        "stage_id": "DRD-04",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
         "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/layout/state_placement_index.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "semantic_role": "state placement index for deterministic compiler references",
+        "sha256": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
+        "stage_id": "DRD-04",
         "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       }
     ],
-    "review_decisions": [
+    "approved_semantic_artifacts": [
       {
-        "input_id": "P3-IMPL-SOURCE.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-        "sha256": "d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36",
-        "semantic_role": "P3-IMPL-SOURCE subject-bound approval",
+        "input_id": "p3.source_intake.intake_decisions",
+        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
         "invalidation_state": "CURRENT",
-        "subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json"
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+        "semantic_role": "source intake decisions approved for compiler closure",
+        "sha256": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+        "stage_id": "DRD-01",
+        "subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9"
       },
       {
-        "input_id": "P3-IMPL-DISTILL.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-        "sha256": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
-        "semantic_role": "P3-IMPL-DISTILL subject-bound approval",
+        "input_id": "p3.distill.semantic_unit_map",
+        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
         "invalidation_state": "CURRENT",
-        "subject_hash": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json"
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+        "semantic_role": "experience distillation semantic authority approved for compiler closure",
+        "sha256": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+        "stage_id": "DRD-02",
+        "subject_hash": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1"
       },
       {
-        "input_id": "P3-IMPL-CLOSURE.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-        "sha256": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
-        "semantic_role": "P3-IMPL-CLOSURE subject-bound approval",
+        "input_id": "p3.closure.interaction_messages",
+        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
         "invalidation_state": "CURRENT",
-        "subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json"
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/closure/interaction_messages.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+        "semantic_role": "interaction closure messages approved for compiler closure",
+        "sha256": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+        "stage_id": "DRD-03",
+        "subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e"
       },
       {
-        "input_id": "P3-IMPL-ELEMENTS.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-        "sha256": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
-        "semantic_role": "P3-IMPL-ELEMENTS subject-bound approval",
+        "input_id": "p3.patterns.shared_component_registry",
+        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
         "invalidation_state": "CURRENT",
-        "subject_hash": "57b9b7849de3948abd1b7513ec8a3820f7df6aaed1983bf2bc7a4c8d7990e633",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json"
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/patterns/shared_component_registry.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+        "semantic_role": "shared pattern authority approved for compiler closure",
+        "sha256": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+        "stage_id": "DRD-03B",
+        "subject_hash": "4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8"
       },
       {
-        "input_id": "P3-IMPL-PATTERNS.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-        "sha256": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
-        "semantic_role": "P3-IMPL-PATTERNS subject-bound approval",
+        "input_id": "p3.layout.natural_language_layout",
+        "input_type": "APPROVED_SEMANTIC_ARTIFACT",
         "invalidation_state": "CURRENT",
-        "subject_hash": "4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json"
-      },
-      {
-        "input_id": "P3-IMPL-LAYOUT.review_decision",
-        "input_type": "REVIEW_DECISION",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-        "sha256": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
-        "semantic_role": "P3-IMPL-LAYOUT subject-bound approval",
-        "invalidation_state": "CURRENT",
-        "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651",
-        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "repository/fixtures/p3/layout/natural_language_layout.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "semantic_role": "natural-language layout authority approved for compiler closure",
+        "sha256": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "stage_id": "DRD-04",
+        "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       }
     ],
-    "lock_refs": [
-      {
-        "input_id": "P3-SPEC-LOCK",
-        "input_type": "SPEC_LOCK_REF",
-        "path": "control/locks/P3_SPEC_LOCK.json",
-        "sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
-        "semantic_role": "P3 spec lock bound before compiler implementation",
-        "invalidation_state": "CURRENT",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json"
-      }
-    ],
-    "validator_results": [
-      {
-        "input_id": "P3-IMPL-SOURCE-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
-        "sha256": "13a788f14a07a16a676aa5ccf6b6248f2916de9418edadf02081ff4d23367bfc",
-        "semantic_role": "P3-IMPL-SOURCE-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      },
-      {
-        "input_id": "P3-IMPL-DISTILL-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
-        "sha256": "aec31cbf736d5bac79b16e5646f2d38a3980d3f43dbd5c94251bcf6550750149",
-        "semantic_role": "P3-IMPL-DISTILL-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      },
-      {
-        "input_id": "P3-IMPL-CLOSURE-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json",
-        "sha256": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee",
-        "semantic_role": "P3-IMPL-CLOSURE-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      },
-      {
-        "input_id": "P3-IMPL-ELEMENTS-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
-        "sha256": "3d30173b4f7b8325ed95aeab510b69caadefc6f106a9c39b2f164ef74585dfcd",
-        "semantic_role": "P3-IMPL-ELEMENTS-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      },
-      {
-        "input_id": "P3-IMPL-PATTERNS-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
-        "sha256": "f4d53e94d8639ca073a5d19f757dabe973949ef45da678062c6e4a52a5436c73",
-        "semantic_role": "P3-IMPL-PATTERNS-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      },
-      {
-        "input_id": "P3-IMPL-LAYOUT-VALIDATION",
-        "input_type": "VALIDATOR_RESULT",
-        "path": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json",
-        "sha256": "cc02636da0df6de9fd0ea6e7d3ec5dee3897c1903dcce97e46588da4050d4853",
-        "semantic_role": "P3-IMPL-LAYOUT-VALIDATION evidence for compiler closure",
-        "invalidation_state": "CURRENT"
-      }
-    ],
+    "bundle_id": "p3.compiler.input_bundle.001",
+    "bundle_version": "1.0",
+    "closed_input_hash": "e5baa2da0765969d040e5aad93dd6bc2fb0e02c1015fefbf254e89ad32f91883",
+    "compiler_code_hash": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe",
+    "compiler_id": "drd_harness.compiler.final_drd",
+    "compiler_stage_id": "DRD-05",
+    "compiler_version": "1.0.0",
     "control_indexes": [
       {
         "input_id": "P3-PHASE-MANIFEST",
         "input_type": "CONTROL_INDEX",
+        "invalidation_state": "CURRENT",
         "path": "build_program/phases/P3/PHASE_MANIFEST.json",
-        "sha256": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
         "semantic_role": "P3 implementation order control index",
-        "invalidation_state": "CURRENT"
+        "sha256": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7"
       }
     ],
+    "current_hashes": {
+      "build_program/phases/P3/PHASE_MANIFEST.json": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
+      "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
+      "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee",
+      "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
+      "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json": "aec31cbf736d5bac79b16e5646f2d38a3980d3f43dbd5c94251bcf6550750149",
+      "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
+      "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json": "3d30173b4f7b8325ed95aeab510b69caadefc6f106a9c39b2f164ef74585dfcd",
+      "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
+      "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json": "cc02636da0df6de9fd0ea6e7d3ec5dee3897c1903dcce97e46588da4050d4853",
+      "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
+      "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json": "f4d53e94d8639ca073a5d19f757dabe973949ef45da678062c6e4a52a5436c73",
+      "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json": "d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36",
+      "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json": "13a788f14a07a16a676aa5ccf6b6248f2916de9418edadf02081ff4d23367bfc",
+      "control/locks/P3_SPEC_LOCK.json": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+      "repository/fixtures/p3/closure/interaction_messages.json": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+      "repository/fixtures/p3/distill/semantic_unit_map.json": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+      "repository/fixtures/p3/layout/layout_composition_index.json": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
+      "repository/fixtures/p3/layout/natural_language_layout.json": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+      "repository/fixtures/p3/layout/state_placement_index.json": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
+      "repository/fixtures/p3/patterns/shared_component_registry.json": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+      "repository/fixtures/p3/source_intake/intake_decisions.json": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+      "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
+      "repository/schemas/compiler/compiler_conservation_report.schema.json": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
+      "repository/schemas/compiler/compiler_input_bundle.schema.json": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
+      "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
+      "repository/schemas/compiler/final_drd_hash_index.schema.json": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
+      "repository/schemas/compiler/final_drd_manifest.schema.json": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
+      "repository/schemas/compiler/final_drd_reference_index.schema.json": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
+      "repository/schemas/compiler/final_drd_toc.schema.json": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
+      "repository/schemas/compiler/read_only_qa_boundary.schema.json": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+    },
+    "default_lock_ref": "control/locks/P3_SPEC_LOCK.json",
+    "lock_refs": [
+      {
+        "input_id": "P3-SPEC-LOCK",
+        "input_type": "SPEC_LOCK_REF",
+        "invalidation_state": "CURRENT",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "path": "control/locks/P3_SPEC_LOCK.json",
+        "semantic_role": "P3 spec lock bound before compiler implementation",
+        "sha256": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1"
+      }
+    ],
+    "requires_approved_stage_semantic_artifacts": false,
+    "review_decisions": [
+      {
+        "input_id": "P3-IMPL-SOURCE.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-SOURCE subject-bound approval",
+        "sha256": "d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36",
+        "subject_hash": "5c15f6ae67873ba8a64a27eedea421a480d53a0a4078696fb65f2c107b5554a9"
+      },
+      {
+        "input_id": "P3-IMPL-DISTILL.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-DISTILL subject-bound approval",
+        "sha256": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
+        "subject_hash": "eead9dd3e67806b5656d3451b48005a5fa2c3f71c118dc0e5e9bdf35216a47d1"
+      },
+      {
+        "input_id": "P3-IMPL-CLOSURE.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-CLOSURE subject-bound approval",
+        "sha256": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
+        "subject_hash": "f881fc6ab1fb600480e6388fa4debc470584bae768632a5bbdf397e68f8d592e"
+      },
+      {
+        "input_id": "P3-IMPL-ELEMENTS.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-ELEMENTS subject-bound approval",
+        "sha256": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
+        "subject_hash": "57b9b7849de3948abd1b7513ec8a3820f7df6aaed1983bf2bc7a4c8d7990e633"
+      },
+      {
+        "input_id": "P3-IMPL-PATTERNS.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-PATTERNS subject-bound approval",
+        "sha256": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
+        "subject_hash": "4de3e15e02c3fb3f1c22ca5e38e70ce71bc9b8d964a82543b6f1f0267b6c1fb8"
+      },
+      {
+        "input_id": "P3-IMPL-LAYOUT.review_decision",
+        "input_type": "REVIEW_DECISION",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "semantic_role": "P3-IMPL-LAYOUT subject-bound approval",
+        "sha256": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
+        "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
+      }
+    ],
+    "schema_hashes": {
+      "compiler_atomic_semantic_unit": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
+      "compiler_conservation_report": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
+      "compiler_input_bundle": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163",
+      "compiler_semantic_unit_inventory": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
+      "final_drd_hash_index": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
+      "final_drd_manifest": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
+      "final_drd_reference_index": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81",
+      "final_drd_toc": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
+      "read_only_qa_boundary": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+    },
     "schemas": [
       {
         "input_id": "compiler_atomic_semantic_unit.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json",
-        "sha256": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
-        "semantic_role": "compiler_atomic_semantic_unit compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "compiler_atomic_semantic_unit"
+        "path": "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json",
+        "schema_id": "compiler_atomic_semantic_unit",
+        "semantic_role": "compiler_atomic_semantic_unit compiler schema identity",
+        "sha256": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b"
       },
       {
         "input_id": "compiler_conservation_report.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/compiler_conservation_report.schema.json",
-        "sha256": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-        "semantic_role": "compiler_conservation_report compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "compiler_conservation_report"
+        "path": "repository/schemas/compiler/compiler_conservation_report.schema.json",
+        "schema_id": "compiler_conservation_report",
+        "semantic_role": "compiler_conservation_report compiler schema identity",
+        "sha256": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab"
       },
       {
         "input_id": "compiler_input_bundle.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
-        "sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
-        "semantic_role": "compiler_input_bundle compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "compiler_input_bundle"
+        "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+        "schema_id": "compiler_input_bundle",
+        "semantic_role": "compiler_input_bundle compiler schema identity",
+        "sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
       },
       {
         "input_id": "compiler_semantic_unit_inventory.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
-        "sha256": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
-        "semantic_role": "compiler_semantic_unit_inventory compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "compiler_semantic_unit_inventory"
+        "path": "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json",
+        "schema_id": "compiler_semantic_unit_inventory",
+        "semantic_role": "compiler_semantic_unit_inventory compiler schema identity",
+        "sha256": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2"
       },
       {
         "input_id": "final_drd_hash_index.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/final_drd_hash_index.schema.json",
-        "sha256": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
-        "semantic_role": "final_drd_hash_index compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "final_drd_hash_index"
+        "path": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+        "schema_id": "final_drd_hash_index",
+        "semantic_role": "final_drd_hash_index compiler schema identity",
+        "sha256": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24"
       },
       {
         "input_id": "final_drd_manifest.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/final_drd_manifest.schema.json",
-        "sha256": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-        "semantic_role": "final_drd_manifest compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "final_drd_manifest"
+        "path": "repository/schemas/compiler/final_drd_manifest.schema.json",
+        "schema_id": "final_drd_manifest",
+        "semantic_role": "final_drd_manifest compiler schema identity",
+        "sha256": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1"
       },
       {
         "input_id": "final_drd_reference_index.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
-        "sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
-        "semantic_role": "final_drd_reference_index compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "final_drd_reference_index"
+        "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+        "schema_id": "final_drd_reference_index",
+        "semantic_role": "final_drd_reference_index compiler schema identity",
+        "sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a"
       },
       {
         "input_id": "final_drd_toc.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/final_drd_toc.schema.json",
-        "sha256": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
-        "semantic_role": "final_drd_toc compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "final_drd_toc"
+        "path": "repository/schemas/compiler/final_drd_toc.schema.json",
+        "schema_id": "final_drd_toc",
+        "semantic_role": "final_drd_toc compiler schema identity",
+        "sha256": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08"
       },
       {
         "input_id": "read_only_qa_boundary.schema",
         "input_type": "SCHEMA",
-        "path": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
-        "sha256": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520",
-        "semantic_role": "read_only_qa_boundary compiler schema identity",
         "invalidation_state": "CURRENT",
-        "schema_id": "read_only_qa_boundary"
+        "path": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+        "schema_id": "read_only_qa_boundary",
+        "semantic_role": "read_only_qa_boundary compiler schema identity",
+        "sha256": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
       }
     ],
+    "section_order": [
+      {
+        "section_id": "SEC-P3-SOURCE-INTAKE",
+        "section_order_index": 1,
+        "stage_id": "DRD-01"
+      },
+      {
+        "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
+        "section_order_index": 1,
+        "stage_id": "DRD-02"
+      },
+      {
+        "section_id": "SEC-P3-INTERACTION-CLOSURE",
+        "section_order_index": 1,
+        "stage_id": "DRD-03"
+      },
+      {
+        "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
+        "section_order_index": 1,
+        "stage_id": "DRD-03B"
+      },
+      {
+        "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
+        "section_order_index": 1,
+        "stage_id": "DRD-04"
+      }
+    ],
+    "sections": [
+      {
+        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+        "body": "local markdown brief is frozen and hash-bound",
+        "heading_text": "P3 Source Intake Closure",
+        "section_id": "SEC-P3-SOURCE-INTAKE",
+        "section_order_index": 1,
+        "semantic_unit_ids": [
+          "p3.compiler.unit.source-intake-brief"
+        ],
+        "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+        "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+        "stage_id": "DRD-01",
+        "stage_order_index": 10
+      },
+      {
+        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+        "body": "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions.",
+        "heading_text": "P3 Experience Distillation",
+        "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
+        "section_order_index": 1,
+        "semantic_unit_ids": [
+          "p3.compiler.unit.operations-console-surface"
+        ],
+        "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+        "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+        "stage_id": "DRD-02",
+        "stage_order_index": 20
+      },
+      {
+        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+        "body": "Missing product details remain blocked for human review. Wait for a human review decision before adding behavior.",
+        "heading_text": "P3 Interaction Closure",
+        "section_id": "SEC-P3-INTERACTION-CLOSURE",
+        "section_order_index": 1,
+        "semantic_unit_ids": [
+          "p3.compiler.unit.review-gap-message"
+        ],
+        "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+        "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
+        "stage_id": "DRD-03",
+        "stage_order_index": 30
+      },
+      {
+        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+        "body": "Human review gap blocking message. The approved closure message and canonical element carry the same blocked human-review semantic obligation.",
+        "heading_text": "P3 Elements And Shared Patterns",
+        "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
+        "section_order_index": 1,
+        "semantic_unit_ids": [
+          "p3.compiler.unit.review-gap-pattern"
+        ],
+        "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+        "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
+        "stage_id": "DRD-03B",
+        "stage_order_index": 40
+      },
+      {
+        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "body": "Natural language is the canonical semantic authority for this layout, while structured inventories are only an index and validation skeleton. The desktop, tablet, mobile, iOS, and Material carrier rules preserve the same case review sequence. The desktop carrier uses a header region and main container with row and column structure; tablet and mobile carriers stack sections responsively. The hierarchy has primary and secondary group structure inside parent and child containment, with the operations console containing state containers and the human review message nested inside the waiting state. The semantic order is ready state before blocked state, then human review waiting state, and local child order is preserved after reflow. Each section defines width, height, minimum and maximum sizing, density, wrapping, scroll, sticky, fixed, and overflow behavior. Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index. Long content growth can wrap, overflow into vertical scroll, truncate only with recovery, expand, disclose detail, or use pagination. The z-axis layer model defines base, sticky, overlay, modal, drawer, popover, snackbar, and loading layer behavior with Material elevation. iOS safe area, status bar, home indicator, navigation stack, and keyboard constraints are respected; Material system bar, app bar, keyboard inset, dialog, snackbar, bottom action, and responsive constraints are respected.",
+        "heading_text": "P3 Natural Language Layout",
+        "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
+        "section_order_index": 1,
+        "semantic_unit_ids": [
+          "p3.compiler.unit.layout-authority",
+          "p3.compiler.unit.layout-state-copy"
+        ],
+        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
+        "stage_id": "DRD-04",
+        "stage_order_index": 50
+      }
+    ],
+    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe",
+    "semantic_units": [
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+        "canonical_value": "local markdown brief is frozen and hash-bound",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": null,
+        "relationship_kind": "ROOT",
+        "semantic_unit_id": "p3.compiler.unit.source-intake-brief",
+        "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+        "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+        "source_section_id": "decision:p3-source-brief",
+        "source_span_ref": "decision_reasons[0]",
+        "stage_id": "DRD-01",
+        "unit_class": "Trace object",
+        "unit_hash": "25a80e4e9e81871a533ae63bc9347caef21bbdc6e5799ad6e588dec8ccd942a9",
+        "unit_type": "TRACE_BINDING"
+      },
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+        "canonical_value": "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions.",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": null,
+        "relationship_kind": "ROOT",
+        "semantic_unit_id": "p3.compiler.unit.operations-console-surface",
+        "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+        "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+        "source_section_id": "p3-unit-console-surface",
+        "source_span_ref": "records[0].claim",
+        "stage_id": "DRD-02",
+        "unit_class": "Product object",
+        "unit_hash": "5c4013a2052c890e4b8556c7dee1efad6d6b97d5f673cc64939043ad83e945e4",
+        "unit_type": "PAGE"
+      },
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+        "canonical_value": "Missing product details remain blocked for human review. Wait for a human review decision before adding behavior.",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": "p3.compiler.unit.operations-console-surface",
+        "relationship_kind": "TRACE",
+        "semantic_unit_id": "p3.compiler.unit.review-gap-message",
+        "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+        "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
+        "source_section_id": "p3-msg-review-gap-blocked",
+        "source_span_ref": "records[0].user_visible_summary+required_user_next_step",
+        "stage_id": "DRD-03",
+        "unit_class": "Copy object",
+        "unit_hash": "baab09d2aab79e9aca578b38b5ce2cfe8ffa9997f9579fd180f63388971b471d",
+        "unit_type": "COPY_STRING"
+      },
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+        "canonical_value": "Human review gap blocking message. The approved closure message and canonical element carry the same blocked human-review semantic obligation.",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": "p3.compiler.unit.review-gap-message",
+        "relationship_kind": "TRACE",
+        "semantic_unit_id": "p3.compiler.unit.review-gap-pattern",
+        "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+        "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
+        "source_section_id": "p3-pattern-review-gap-message",
+        "source_span_ref": "registry.patterns[1].semantic_role+reuse_reason",
+        "stage_id": "DRD-03B",
+        "unit_class": "Presentation object",
+        "unit_hash": "779ae2dae7329af7e702f9b3dfea5ae17e7fb452a6b34990b4e37643ec55501d",
+        "unit_type": "SHARED_PATTERN"
+      },
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "canonical_value": "Natural language is the canonical semantic authority for this layout, while structured inventories are only an index and validation skeleton. The desktop, tablet, mobile, iOS, and Material carrier rules preserve the same case review sequence. The desktop carrier uses a header region and main container with row and column structure; tablet and mobile carriers stack sections responsively. The hierarchy has primary and secondary group structure inside parent and child containment, with the operations console containing state containers and the human review message nested inside the waiting state. The semantic order is ready state before blocked state, then human review waiting state, and local child order is preserved after reflow. Each section defines width, height, minimum and maximum sizing, density, wrapping, scroll, sticky, fixed, and overflow behavior. Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index. Long content growth can wrap, overflow into vertical scroll, truncate only with recovery, expand, disclose detail, or use pagination. The z-axis layer model defines base, sticky, overlay, modal, drawer, popover, snackbar, and loading layer behavior with Material elevation. iOS safe area, status bar, home indicator, navigation stack, and keyboard constraints are respected; Material system bar, app bar, keyboard inset, dialog, snackbar, bottom action, and responsive constraints are respected.",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": "p3.compiler.unit.operations-console-surface",
+        "relationship_kind": "TRACE",
+        "semantic_unit_id": "p3.compiler.unit.layout-authority",
+        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
+        "source_section_id": "p3-layout-operations-console",
+        "source_span_ref": "layout.layout_text",
+        "stage_id": "DRD-04",
+        "unit_class": "Layout object",
+        "unit_hash": "b3c7021da5dc82057bc15b79e770dbc318cf05e56c8bacdf80c753e3be581213",
+        "unit_type": "ARRANGEMENT_RULE"
+      },
+      {
+        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+        "canonical_value": "Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index.",
+        "inventory_version": "1.0",
+        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+        "parent_unit_id": "p3.compiler.unit.layout-authority",
+        "relationship_kind": "TRACE",
+        "semantic_unit_id": "p3.compiler.unit.layout-state-copy",
+        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
+        "source_section_id": "p3-layout-state-placement-index",
+        "source_span_ref": "layout.layout_text:error-state-placement",
+        "stage_id": "DRD-04",
+        "unit_class": "Copy object",
+        "unit_hash": "fdcd7d246daca986baf88dda9808e755b21dffaf169e6e8aca53b8ccca7a2376",
+        "unit_type": "COPY_STRING"
+      }
+    ],
+    "source_snapshot_identity": {
+      "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+      "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+      "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+      "source_item_id": "p3-source-brief"
+    },
     "stage_order": [
       {
         "stage_id": "DRD-01",
@@ -391,221 +540,6 @@
         "stage_order_index": 50
       }
     ],
-    "section_order": [
-      {
-        "stage_id": "DRD-01",
-        "section_id": "SEC-P3-SOURCE-INTAKE",
-        "section_order_index": 1
-      },
-      {
-        "stage_id": "DRD-02",
-        "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
-        "section_order_index": 1
-      },
-      {
-        "stage_id": "DRD-03",
-        "section_id": "SEC-P3-INTERACTION-CLOSURE",
-        "section_order_index": 1
-      },
-      {
-        "stage_id": "DRD-03B",
-        "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
-        "section_order_index": 1
-      },
-      {
-        "stage_id": "DRD-04",
-        "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-        "section_order_index": 1
-      }
-    ],
-    "sections": [
-      {
-        "section_id": "SEC-P3-SOURCE-INTAKE",
-        "stage_id": "DRD-01",
-        "stage_order_index": 10,
-        "section_order_index": 1,
-        "heading_text": "P3 Source Intake Closure",
-        "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
-        "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
-        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-        "body": "local markdown brief is frozen and hash-bound",
-        "semantic_unit_ids": [
-          "p3.compiler.unit.source-intake-brief"
-        ]
-      },
-      {
-        "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
-        "stage_id": "DRD-02",
-        "stage_order_index": 20,
-        "section_order_index": 1,
-        "heading_text": "P3 Experience Distillation",
-        "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
-        "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-        "body": "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions.",
-        "semantic_unit_ids": [
-          "p3.compiler.unit.operations-console-surface"
-        ]
-      },
-      {
-        "section_id": "SEC-P3-INTERACTION-CLOSURE",
-        "stage_id": "DRD-03",
-        "stage_order_index": 30,
-        "section_order_index": 1,
-        "heading_text": "P3 Interaction Closure",
-        "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
-        "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-        "body": "Missing product details remain blocked for human review. Wait for a human review decision before adding behavior.",
-        "semantic_unit_ids": [
-          "p3.compiler.unit.review-gap-message"
-        ]
-      },
-      {
-        "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
-        "stage_id": "DRD-03B",
-        "stage_order_index": 40,
-        "section_order_index": 1,
-        "heading_text": "P3 Elements And Shared Patterns",
-        "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
-        "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-        "body": "Human review gap blocking message. The approved closure message and canonical element carry the same blocked human-review semantic obligation.",
-        "semantic_unit_ids": [
-          "p3.compiler.unit.review-gap-pattern"
-        ]
-      },
-      {
-        "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-        "stage_id": "DRD-04",
-        "stage_order_index": 50,
-        "section_order_index": 1,
-        "heading_text": "P3 Natural Language Layout",
-        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-        "approved_hash_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-        "body": "Natural language is the canonical semantic authority for this layout, while structured inventories are only an index and validation skeleton. The desktop, tablet, mobile, iOS, and Material carrier rules preserve the same case review sequence. The desktop carrier uses a header region and main container with row and column structure; tablet and mobile carriers stack sections responsively. The hierarchy has primary and secondary group structure inside parent and child containment, with the operations console containing state containers and the human review message nested inside the waiting state. The semantic order is ready state before blocked state, then human review waiting state, and local child order is preserved after reflow. Each section defines width, height, minimum and maximum sizing, density, wrapping, scroll, sticky, fixed, and overflow behavior. Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index. Long content growth can wrap, overflow into vertical scroll, truncate only with recovery, expand, disclose detail, or use pagination. The z-axis layer model defines base, sticky, overlay, modal, drawer, popover, snackbar, and loading layer behavior with Material elevation. iOS safe area, status bar, home indicator, navigation stack, and keyboard constraints are respected; Material system bar, app bar, keyboard inset, dialog, snackbar, bottom action, and responsive constraints are respected.",
-        "semantic_unit_ids": [
-          "p3.compiler.unit.layout-authority",
-          "p3.compiler.unit.layout-state-copy"
-        ]
-      }
-    ],
-    "semantic_units": [
-      {
-        "semantic_unit_id": "p3.compiler.unit.source-intake-brief",
-        "unit_type": "TRACE_BINDING",
-        "unit_class": "Trace object",
-        "stage_id": "DRD-01",
-        "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
-        "source_section_id": "decision:p3-source-brief",
-        "source_span_ref": "decision_reasons[0]",
-        "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": null,
-        "relationship_kind": "ROOT",
-        "canonical_value": "local markdown brief is frozen and hash-bound",
-        "unit_hash": "25a80e4e9e81871a533ae63bc9347caef21bbdc6e5799ad6e588dec8ccd942a9",
-        "inventory_version": "1.0"
-      },
-      {
-        "semantic_unit_id": "p3.compiler.unit.operations-console-surface",
-        "unit_type": "PAGE",
-        "unit_class": "Product object",
-        "stage_id": "DRD-02",
-        "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
-        "source_section_id": "p3-unit-console-surface",
-        "source_span_ref": "records[0].claim",
-        "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": null,
-        "relationship_kind": "ROOT",
-        "canonical_value": "Create a compact operational console for reviewing submitted cases, their intake state, and required reviewer actions.",
-        "unit_hash": "5c4013a2052c890e4b8556c7dee1efad6d6b97d5f673cc64939043ad83e945e4",
-        "inventory_version": "1.0"
-      },
-      {
-        "semantic_unit_id": "p3.compiler.unit.review-gap-message",
-        "unit_type": "COPY_STRING",
-        "unit_class": "Copy object",
-        "stage_id": "DRD-03",
-        "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
-        "source_section_id": "p3-msg-review-gap-blocked",
-        "source_span_ref": "records[0].user_visible_summary+required_user_next_step",
-        "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": "p3.compiler.unit.operations-console-surface",
-        "relationship_kind": "TRACE",
-        "canonical_value": "Missing product details remain blocked for human review. Wait for a human review decision before adding behavior.",
-        "unit_hash": "baab09d2aab79e9aca578b38b5ce2cfe8ffa9997f9579fd180f63388971b471d",
-        "inventory_version": "1.0"
-      },
-      {
-        "semantic_unit_id": "p3.compiler.unit.review-gap-pattern",
-        "unit_type": "SHARED_PATTERN",
-        "unit_class": "Presentation object",
-        "stage_id": "DRD-03B",
-        "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
-        "source_section_id": "p3-pattern-review-gap-message",
-        "source_span_ref": "registry.patterns[1].semantic_role+reuse_reason",
-        "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": "p3.compiler.unit.review-gap-message",
-        "relationship_kind": "TRACE",
-        "canonical_value": "Human review gap blocking message. The approved closure message and canonical element carry the same blocked human-review semantic obligation.",
-        "unit_hash": "779ae2dae7329af7e702f9b3dfea5ae17e7fb452a6b34990b4e37643ec55501d",
-        "inventory_version": "1.0"
-      },
-      {
-        "semantic_unit_id": "p3.compiler.unit.layout-authority",
-        "unit_type": "ARRANGEMENT_RULE",
-        "unit_class": "Layout object",
-        "stage_id": "DRD-04",
-        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
-        "source_section_id": "p3-layout-operations-console",
-        "source_span_ref": "layout.layout_text",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": "p3.compiler.unit.operations-console-surface",
-        "relationship_kind": "TRACE",
-        "canonical_value": "Natural language is the canonical semantic authority for this layout, while structured inventories are only an index and validation skeleton. The desktop, tablet, mobile, iOS, and Material carrier rules preserve the same case review sequence. The desktop carrier uses a header region and main container with row and column structure; tablet and mobile carriers stack sections responsively. The hierarchy has primary and secondary group structure inside parent and child containment, with the operations console containing state containers and the human review message nested inside the waiting state. The semantic order is ready state before blocked state, then human review waiting state, and local child order is preserved after reflow. Each section defines width, height, minimum and maximum sizing, density, wrapping, scroll, sticky, fixed, and overflow behavior. Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index. Long content growth can wrap, overflow into vertical scroll, truncate only with recovery, expand, disclose detail, or use pagination. The z-axis layer model defines base, sticky, overlay, modal, drawer, popover, snackbar, and loading layer behavior with Material elevation. iOS safe area, status bar, home indicator, navigation stack, and keyboard constraints are respected; Material system bar, app bar, keyboard inset, dialog, snackbar, bottom action, and responsive constraints are respected.",
-        "unit_hash": "b3c7021da5dc82057bc15b79e770dbc318cf05e56c8bacdf80c753e3be581213",
-        "inventory_version": "1.0"
-      },
-      {
-        "semantic_unit_id": "p3.compiler.unit.layout-state-copy",
-        "unit_type": "COPY_STRING",
-        "unit_class": "Copy object",
-        "stage_id": "DRD-04",
-        "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
-        "source_section_id": "p3-layout-state-placement-index",
-        "source_span_ref": "layout.layout_text:error-state-placement",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-        "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
-        "lock_ref": "control/locks/P3_SPEC_LOCK.json",
-        "parent_unit_id": "p3.compiler.unit.layout-authority",
-        "relationship_kind": "TRACE",
-        "canonical_value": "Empty, loading, error, disabled, permission, success, recovery, validation, and blocked state placement remains visible through the state placement index.",
-        "unit_hash": "fdcd7d246daca986baf88dda9808e755b21dffaf169e6e8aca53b8ccca7a2376",
-        "inventory_version": "1.0"
-      }
-    ],
-    "schema_hashes": {
-      "compiler_atomic_semantic_unit": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
-      "compiler_conservation_report": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-      "compiler_input_bundle": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
-      "compiler_semantic_unit_inventory": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
-      "final_drd_hash_index": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
-      "final_drd_manifest": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-      "final_drd_reference_index": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
-      "final_drd_toc": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
-      "read_only_qa_boundary": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
-    },
     "validator_result_refs": [
       "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
       "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -614,40 +548,108 @@
       "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
       "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
     ],
-    "default_lock_ref": "control/locks/P3_SPEC_LOCK.json",
-    "current_hashes": {
-      "repository/fixtures/p3/source_intake/intake_decisions.json": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
-      "repository/fixtures/p3/distill/semantic_unit_map.json": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-      "repository/fixtures/p3/closure/interaction_messages.json": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-      "repository/fixtures/p3/patterns/shared_component_registry.json": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-      "repository/fixtures/p3/layout/natural_language_layout.json": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-      "repository/fixtures/p3/layout/layout_composition_index.json": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
-      "repository/fixtures/p3/layout/state_placement_index.json": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
-      "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json": "d30c3cb78993560c512b05fd6820b879b07298adf05771b306096f4e800d7f36",
-      "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
-      "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
-      "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json": "14d74bb99e7cde891c979bf5d97f23b3e33e31a1c5ff8ae03f11dd0ce832f4bf",
-      "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
-      "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
-      "control/locks/P3_SPEC_LOCK.json": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
-      "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json": "13a788f14a07a16a676aa5ccf6b6248f2916de9418edadf02081ff4d23367bfc",
-      "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json": "aec31cbf736d5bac79b16e5646f2d38a3980d3f43dbd5c94251bcf6550750149",
-      "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee",
-      "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json": "3d30173b4f7b8325ed95aeab510b69caadefc6f106a9c39b2f164ef74585dfcd",
-      "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json": "f4d53e94d8639ca073a5d19f757dabe973949ef45da678062c6e4a52a5436c73",
-      "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json": "cc02636da0df6de9fd0ea6e7d3ec5dee3897c1903dcce97e46588da4050d4853",
-      "build_program/phases/P3/PHASE_MANIFEST.json": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
-      "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
-      "repository/schemas/compiler/compiler_conservation_report.schema.json": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-      "repository/schemas/compiler/compiler_input_bundle.schema.json": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
-      "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
-      "repository/schemas/compiler/final_drd_hash_index.schema.json": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
-      "repository/schemas/compiler/final_drd_manifest.schema.json": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-      "repository/schemas/compiler/final_drd_reference_index.schema.json": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
-      "repository/schemas/compiler/final_drd_toc.schema.json": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
-      "repository/schemas/compiler/read_only_qa_boundary.schema.json": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
-    },
-    "closed_input_hash": "77ea028a5548af1f2a86e6c958e1b262b20ab3b9205514e749abca40aa15e880",
-    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe"
-  }
+    "validator_results": [
+      {
+        "input_id": "P3-IMPL-SOURCE-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-SOURCE-VALIDATION evidence for compiler closure",
+        "sha256": "13a788f14a07a16a676aa5ccf6b6248f2916de9418edadf02081ff4d23367bfc"
+      },
+      {
+        "input_id": "P3-IMPL-DISTILL-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-DISTILL-VALIDATION evidence for compiler closure",
+        "sha256": "aec31cbf736d5bac79b16e5646f2d38a3980d3f43dbd5c94251bcf6550750149"
+      },
+      {
+        "input_id": "P3-IMPL-CLOSURE-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-CLOSURE-VALIDATION evidence for compiler closure",
+        "sha256": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee"
+      },
+      {
+        "input_id": "P3-IMPL-ELEMENTS-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-ELEMENTS-VALIDATION evidence for compiler closure",
+        "sha256": "3d30173b4f7b8325ed95aeab510b69caadefc6f106a9c39b2f164ef74585dfcd"
+      },
+      {
+        "input_id": "P3-IMPL-PATTERNS-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-PATTERNS-VALIDATION evidence for compiler closure",
+        "sha256": "f4d53e94d8639ca073a5d19f757dabe973949ef45da678062c6e4a52a5436c73"
+      },
+      {
+        "input_id": "P3-IMPL-LAYOUT-VALIDATION",
+        "input_type": "VALIDATOR_RESULT",
+        "invalidation_state": "CURRENT",
+        "path": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json",
+        "semantic_role": "P3-IMPL-LAYOUT-VALIDATION evidence for compiler closure",
+        "sha256": "cc02636da0df6de9fd0ea6e7d3ec5dee3897c1903dcce97e46588da4050d4853"
+      }
+    ]
+  },
+  "closed_input_hash": "aa59f0b1d70b27c5c076e533d41491697f3b185b581d3945d96daa9d9fd737ba",
+  "fixture_id": "p3_compiler_fixture",
+  "invalidation_inputs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+    "repository/fixtures/p3/source_intake/intake_decisions.json",
+    "repository/fixtures/p3/distill/semantic_unit_map.json",
+    "repository/fixtures/p3/closure/interaction_messages.json",
+    "repository/fixtures/p3/patterns/shared_component_registry.json",
+    "repository/fixtures/p3/layout/natural_language_layout.json",
+    "repository/fixtures/p3/layout/layout_composition_index.json",
+    "repository/fixtures/p3/layout/state_placement_index.json"
+  ],
+  "path": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+  "promotion_state": "CANDIDATE",
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "schema_payload_key": "bundle",
+  "schema_ref": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "stage_id": "DRD-05-COMPILATION",
+  "upstream_artifact_refs": [
+    "p3.source_intake.intake_decisions",
+    "p3.distill.semantic_unit_map",
+    "p3.closure.interaction_messages",
+    "p3.patterns.shared_component_registry",
+    "p3.layout.natural_language_layout",
+    "p3.layout.layout_composition_index",
+    "p3.layout.state_placement_index",
+    "P3_SPEC_LOCK"
+  ],
+  "upstream_hashes": {
+    "P3_SPEC_LOCK": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
+    "REVIEW_DECISION": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
+    "intake_decisions": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+    "interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+    "layout_composition_index": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
+    "natural_language_layout": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+    "semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+    "shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+    "state_placement_index": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

@@ -1,28 +1,6 @@
 {
   "artifact_id": "p3.compiler.final_drd_reference_index",
-  "stage_id": "DRD-05-COMPILATION",
   "fixture_id": "p3_compiler_fixture",
-  "path": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
-  "schema_ref": "repository/schemas/compiler/final_drd_reference_index.schema.json",
-  "schema_payload_key": "records",
-  "source_refs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
-  ],
-  "upstream_artifact_refs": [
-    "approved section lineage",
-    "approved source snapshot identity"
-  ],
-  "upstream_hashes": {
-    "reference_index_hash": "ddd9bb416f156f628393050d2a3fab4061a04cf81bef0a4c23e9aee2d90ec9f5"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
-  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
-  "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
     "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
@@ -38,15 +16,24 @@
     "repository/fixtures/p3/layout/layout_composition_index.json",
     "repository/fixtures/p3/layout/state_placement_index.json"
   ],
+  "path": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+  "promotion_state": "CANDIDATE",
   "records": [
     {
-      "reference_id": "REF-DRD-01-SEC-P3-SOURCE-INTAKE",
-      "compiled_section_id": "SEC-P3-SOURCE-INTAKE",
-      "source_stage_id": "DRD-01",
-      "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
-      "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
       "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+      "approved_semantic_artifact_ref": null,
+      "compiled_section_id": "SEC-P3-SOURCE-INTAKE",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+      "reference_id": "REF-DRD-01-SEC-P3-SOURCE-INTAKE",
+      "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
+      "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
+      "source_snapshot_identity": {
+        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+        "source_item_id": "p3-source-brief"
+      },
+      "source_stage_id": "DRD-01",
       "validator_result_refs": [
         "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -54,22 +41,23 @@
         "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
-      ],
-      "source_snapshot_identity": {
-        "source_item_id": "p3-source-brief",
-        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-      }
+      ]
     },
     {
-      "reference_id": "REF-DRD-02-SEC-P3-EXPERIENCE-DISTILLATION",
-      "compiled_section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
-      "source_stage_id": "DRD-02",
-      "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
-      "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
       "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+      "approved_semantic_artifact_ref": null,
+      "compiled_section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+      "reference_id": "REF-DRD-02-SEC-P3-EXPERIENCE-DISTILLATION",
+      "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
+      "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
+      "source_snapshot_identity": {
+        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+        "source_item_id": "p3-source-brief"
+      },
+      "source_stage_id": "DRD-02",
       "validator_result_refs": [
         "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -77,22 +65,23 @@
         "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
-      ],
-      "source_snapshot_identity": {
-        "source_item_id": "p3-source-brief",
-        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-      }
+      ]
     },
     {
-      "reference_id": "REF-DRD-03-SEC-P3-INTERACTION-CLOSURE",
-      "compiled_section_id": "SEC-P3-INTERACTION-CLOSURE",
-      "source_stage_id": "DRD-03",
-      "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
-      "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
       "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+      "approved_semantic_artifact_ref": null,
+      "compiled_section_id": "SEC-P3-INTERACTION-CLOSURE",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+      "reference_id": "REF-DRD-03-SEC-P3-INTERACTION-CLOSURE",
+      "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
+      "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
+      "source_snapshot_identity": {
+        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+        "source_item_id": "p3-source-brief"
+      },
+      "source_stage_id": "DRD-03",
       "validator_result_refs": [
         "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -100,22 +89,23 @@
         "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
-      ],
-      "source_snapshot_identity": {
-        "source_item_id": "p3-source-brief",
-        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-      }
+      ]
     },
     {
-      "reference_id": "REF-DRD-03B-SEC-P3-ELEMENTS-AND-PATTERNS",
-      "compiled_section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
-      "source_stage_id": "DRD-03B",
-      "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
-      "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
       "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+      "approved_semantic_artifact_ref": null,
+      "compiled_section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+      "reference_id": "REF-DRD-03B-SEC-P3-ELEMENTS-AND-PATTERNS",
+      "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
+      "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
+      "source_snapshot_identity": {
+        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+        "source_item_id": "p3-source-brief"
+      },
+      "source_stage_id": "DRD-03B",
       "validator_result_refs": [
         "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -123,22 +113,23 @@
         "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
-      ],
-      "source_snapshot_identity": {
-        "source_item_id": "p3-source-brief",
-        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-      }
+      ]
     },
     {
-      "reference_id": "REF-DRD-04-SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-      "compiled_section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-      "source_stage_id": "DRD-04",
-      "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
-      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
       "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
+      "approved_semantic_artifact_ref": null,
+      "compiled_section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
+      "reference_id": "REF-DRD-04-SEC-P3-NATURAL-LANGUAGE-LAYOUT",
+      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+      "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
+      "source_snapshot_identity": {
+        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
+        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
+        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json",
+        "source_item_id": "p3-source-brief"
+      },
+      "source_stage_id": "DRD-04",
       "validator_result_refs": [
         "build_program/phases/P3/candidates/P3-IMPL-SOURCE/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-DISTILL/VALIDATION_EVIDENCE.json",
@@ -146,13 +137,27 @@
         "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/VALIDATION_EVIDENCE.json",
         "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/VALIDATION_EVIDENCE.json"
-      ],
-      "source_snapshot_identity": {
-        "source_item_id": "p3-source-brief",
-        "snapshot_ref": "repository/fixtures/p3/source_intake/source_snapshot_manifests.json",
-        "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
-        "source_authority_index_ref": "repository/fixtures/p3/source_intake/source_authority_index.json"
-      }
+      ]
     }
-  ]
+  ],
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "schema_payload_key": "records",
+  "schema_ref": "repository/schemas/compiler/final_drd_reference_index.schema.json",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "stage_id": "DRD-05-COMPILATION",
+  "upstream_artifact_refs": [
+    "approved section lineage",
+    "approved source snapshot identity"
+  ],
+  "upstream_hashes": {
+    "reference_index_hash": "ddd9bb416f156f628393050d2a3fab4061a04cf81bef0a4c23e9aee2d90ec9f5"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

@@ -227,6 +227,17 @@ def plan_generate_drd(*, work_dir: Path, source_ref: Path, output_dir: Path, dry
     )
 
 
+def plan_staged_run(*, work_dir: Path, source_ref: Path, output_dir: Path, dry_run: bool = False) -> dict:
+    from drd_harness.orchestrator.external_staged_run import run_external_prd_staged
+
+    return run_external_prd_staged(
+        work_dir=work_dir,
+        source_ref=source_ref,
+        output_dir=output_dir,
+        dry_run=dry_run,
+    )
+
+
 def plan_release_request(build_lock_refs: Iterable[str], release_scope_ref: str, evidence_bundle_ref: str) -> dict:
     finding = DriverFinding(
         "P4INT-GATE-RELEASE",

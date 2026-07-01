@@ -168,6 +168,48 @@ def test_p3_layout_state_placement_mode_must_match_approved_presentation():
     assert any(finding.code == "PL011" and "presentation_mode" in finding.message for finding in findings)
 
 
+def test_p3_layout_state_placement_must_bind_renderable_page_variant():
+    artifacts = _load_fixture_artifacts()
+    artifacts["state_placement_index"]["index"]["placements"][0]["surface_id"] = "p3-el-review-gap-blocked-message"
+
+    findings = validate_layout_artifacts(**artifacts)
+
+    assert any(finding.code == "PL020" and "renderable page variant" in finding.message for finding in findings)
+
+
+def test_p3_layout_renderable_variants_must_have_layout_and_figma_frames():
+    artifacts = _load_fixture_artifacts()
+    artifacts["natural_language_layout"]["layout"]["state_variants"].remove(
+        "p3-el-operations-console--case-ready-state"
+    )
+
+    findings = validate_layout_artifacts(**artifacts)
+
+    assert any(
+        finding.code == "PL020"
+        and finding.subject_id == "p3-el-operations-console--case-ready-state"
+        for finding in findings
+    )
+
+
+def test_p3_layout_renderable_variants_must_exist_in_containment_hierarchy():
+    artifacts = _load_fixture_artifacts()
+    artifacts["containment_hierarchy"]["hierarchy"]["nodes"] = [
+        node
+        for node in artifacts["containment_hierarchy"]["hierarchy"]["nodes"]
+        if node["node_id"] != "p3-el-operations-console--case-ready-state"
+    ]
+
+    findings = validate_layout_artifacts(**artifacts)
+
+    assert any(
+        finding.code == "PL020"
+        and finding.subject_id == "p3-el-operations-console--case-ready-state"
+        and "containment hierarchy" in finding.message
+        for finding in findings
+    )
+
+
 def test_p3_layout_material_z_axis_requires_elevation_intent():
     artifacts = _load_fixture_artifacts()
     artifacts["z_axis_layering"]["layering"]["material_elevation_intent"] = None
@@ -251,6 +293,7 @@ def _load_fixture_artifacts():
             _load_json(LAYOUT_ROOT / "figma_reconstruction_metadata.json")
         ),
         "element_inventory": copy.deepcopy(_load_json(ELEMENTS_ROOT / "prd_element_inventory.json")),
+        "renderable_page_variants": copy.deepcopy(_load_json(ELEMENTS_ROOT / "renderable_page_variants.json")),
         "closure_interaction_messages": copy.deepcopy(_load_json(CLOSURE_ROOT / "interaction_messages.json")),
         "shared_component_registry": copy.deepcopy(_load_json(PATTERNS_ROOT / "shared_component_registry.json")),
         "information_presentation_registry": copy.deepcopy(

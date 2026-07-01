@@ -6,6 +6,7 @@
     "test -f current_capsule/REPAIR_AUDIT.md",
     "rg -n \"LOCAL_SEQUENCE_INVERSION|FUTURE_REPAIR_SEQUENCE|AUDIT_RECORDED_AND_BOUND\" current_capsule/REPAIR_AUDIT.md",
     "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_staged_run.py",
     "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
     "python3 tooling/verify_start_package.py",
     "python3 tooling/validate_constitution.py",
@@ -22,10 +23,14 @@
     "current_capsule/TASK.md",
     "current_capsule/context_manifest.json",
     "current_capsule/outputs/**",
+    "repository/fixtures/p2/tiny_brief_intake/**",
+    "repository/fixtures/p3/compiler/**",
     "repository/pyproject.toml",
     "repository/setup.cfg",
     "repository/src/drd_harness/**",
-    "repository/tests/**"
+    "repository/tests/**",
+    "repository/schemas/compiler/compiler_input_bundle.schema.json",
+    "repository/schemas/stages/approved_semantic_artifact.schema.json"
   ],
   "candidate_dir": "current_capsule/outputs",
   "external_prd_run_guardrails": {
@@ -61,11 +66,15 @@
       "gate_states"
     ],
     "external_prd_run_receipt_only": true,
+    "external_prd_staged_run_command": "drd-harness staged-run",
+    "generate_drd_source_preserving_only": true,
     "lock_or_release_in_external_prd_run": false,
     "p4_label_does_not_assign_external_prd_to_p4": true,
     "release_chain_for_prd_to_drd": false,
     "source_preserving_generation_only": true,
-    "source_tree_egg_info_after_install": false
+    "source_tree_egg_info_after_install": false,
+    "staged_run_blocks_at_drd01_codex_runtime_gate_without_approved_candidate": true,
+    "staged_run_source_preserving_compile_substitute": false
   },
   "forbidden_write_paths": [
     "constitution/**",
@@ -84,24 +93,12 @@
       "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec"
     },
     {
-      "path": "START_HERE.md",
-      "sha256": "08961a941cbcdee8aad20993d68de8992a0b31f2591abcacf6a28c0ed15bf51b"
-    },
-    {
       "path": "CODEX_START_PROMPT.md",
-      "sha256": "588ebe7fc25831bc8ee1e63f2e7f04263934a981367c5afba02d371c154fca3c"
+      "sha256": "edb9efea7e377fc2b457ed8d378f642f9c5518ed4f96f65ea4ba1c2dbcd6806a"
     },
     {
-      "path": "current_capsule/AGENTS.md",
-      "sha256": "6dad6928545d674641ae2206d7a4e9c4400eb4120ba80d6beb127cf21b069037"
-    },
-    {
-      "path": "current_capsule/PROMPT.md",
-      "sha256": "0ff3eb32956e9e795bbf31c6646309dab90162f3d30d7d0fbda05c23a0f9a34b"
-    },
-    {
-      "path": "current_capsule/TASK.md",
-      "sha256": "e3c6e78184dba035cb95e13362ba5a6dea14448d7746c2a3ede39f15b0c8a4fe"
+      "path": "START_HERE.md",
+      "sha256": "3409c554bd2a1641697dca5c46ca447dffb05aae0a77455d5b7abafd727dcef3"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
@@ -116,6 +113,10 @@
       "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779"
     },
     {
+      "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+      "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+    },
+    {
       "path": "control/locks/P3_BUILD_LOCK.json",
       "sha256": "52936deb8a497b4749434bfcb049555c0595748ff8bf7ac27b97273ffbdf917e"
     },
@@ -124,32 +125,148 @@
       "sha256": "ddd99c49134387181bd1979fa10947499b595554dacb650e8c9107aa346e1f99"
     },
     {
-      "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
-      "sha256": "da28f0f58a96f04503d2c107535fe5eaedd8e2ed0003afb57252a36bc2a56caa"
+      "path": "current_capsule/AGENTS.md",
+      "sha256": "6dad6928545d674641ae2206d7a4e9c4400eb4120ba80d6beb127cf21b069037"
+    },
+    {
+      "path": "current_capsule/PROMPT.md",
+      "sha256": "9830408b967382569e4ee69cb0280962805b1a0d8952ed011f1b6bdfe3d92573"
+    },
+    {
+      "path": "current_capsule/REPAIR_AUDIT.md",
+      "sha256": "09560109a8b9c7e5f65598c1654f8bf2996718fadef3d5b641110c3ad1b4dab9"
+    },
+    {
+      "path": "current_capsule/TASK.md",
+      "sha256": "6206ca5e40258e1aa8095c1fac6466bbccc1dd764314b1554d0aef639b77b417"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
+      "sha256": "0b380426bf21e6a54c344ecc1398b69f9603d1b758637bc23905e54ec0a4ca10"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
+      "sha256": "d030bb9c542941137603e6cd39febec397d6f331a25320fbf6329f38de720ceb"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
+      "sha256": "83dd6d1e3ce3d370affcea586d407e16617b30b83ce9ef73acbb91bba84d0813"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
+      "sha256": "bfe605ba0d47b834ac5b5b468382091abd3a1fd426001c5fc54ab13c4c040dd2"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
+      "sha256": "16f311dc7359e258ab18162b46a7b4d6c8c05533cddd994a1eaee582a72dd488"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
+      "sha256": "f73f8731539b33dba16634596bd7de0daed24024a00e748d308b047e4df865eb"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
+      "sha256": "dce0006e8878834c5161945f255a9c8e8ff59c84733be965bce95009b4bad72b"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
+      "sha256": "eba74b02f5336a5efbe3b32fb3408e582a0e67de54c3e214c3c36af8dbdc368d"
+    },
+    {
+      "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
+      "sha256": "4e53604b3d4db3e620f0c3deeeb192416c77a05ed1c3f0f3724163e14ae70fdb"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/FINAL_DRD.md",
+      "sha256": "7c62d4eda64c2b87e4dfa185ba1d1941b68332fa4f008220f997d8a3bc07842e"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
+      "sha256": "4c66c5ab040ab9afde909c475cb1543f5c4852e31195acac56c715b6a3a44d81"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
+      "sha256": "bb92e6fd72c0e7956b4cc6fcc41a67d944b169ada022c7e2987718d831f44886"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
+      "sha256": "2d68aa95e52628de6a180b883ce72420a5f399453dd05c6d66fe3b402313043e"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
+      "sha256": "ebef2b2fea4e229bde9ae04b9d3689b34c8fe0bb353a8365e6beab1699e96341"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_manifest.json",
+      "sha256": "fb0e40d5b82d1966408a6fd799bdc66137497e1a9c1ceb2255c936f6bb14b5d5"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
+      "sha256": "8a6e05325c1fd5701f10e1f5e7f41e6ad0e2f7089b503e4d64bfb73800ad1948"
+    },
+    {
+      "path": "repository/fixtures/p3/compiler/final_drd_toc.json",
+      "sha256": "f39a876016d3a24d98bec2e57149f75ad01498438f0f045eecd278de3cfbd478"
     },
     {
       "path": "repository/pyproject.toml",
       "sha256": "69f521539c078e896bad8186d7187bb87feeec97022177c102ca03d37464cdc0"
     },
     {
+      "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
+      "sha256": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163"
+    },
+    {
+      "path": "repository/schemas/stages/approved_semantic_artifact.schema.json",
+      "sha256": "0c72aa2ab33e34c057e7c519be7492c80b389e6139e8c2bb4a5f48b2b3b0a68d"
+    },
+    {
+      "path": "repository/setup.cfg",
+      "sha256": "105c3e5d3105df3238a212002d1dd11078e90548cc21af5cf1ba5f8b5b7fc716"
+    },
+    {
       "path": "repository/src/drd_harness/cli/main.py",
-      "sha256": "7c51467f41a0cef4d2021e2c5b9ec54bcc82e752fc7f3e48602dfa1770ee015e"
+      "sha256": "ab45c8d538422b75c9d3207dae655bb0debb6f860a23c836b4f130987d9b191e"
     },
     {
       "path": "repository/src/drd_harness/compiler/external_prd.py",
-      "sha256": "a87d6642d66a163e4874f089cc34827f99b68c6e415eb530deb2f3adcb4ef1ae"
+      "sha256": "ab5bd5608d6e82c52ce322a2da1cfc02278f9819c738c5d931e8c572f06d74c1"
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+      "sha256": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe"
+    },
+    {
+      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
+      "sha256": "b12c7a671df00827e0a2e4e3409360be5f02f55768f2290179cafd52bcd52a7c"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/external_staged_run.py",
+      "sha256": "767f3ac338e14ae04fec74cb148767b4b763af2522b58c24a7a1e3a808986125"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/program_driver.py",
-      "sha256": "bee26ebf9bf0878509ef0b2ebefd898eac7308bb215d8335d4754fb9d1e354f2"
+      "sha256": "1f7ed21c7a5406115c426c85ac2dd3164cc00374a86cd80ddc2e09e5e2c09379"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/recovery.py",
       "sha256": "c60c442436fabf517bb171fc02a3e39320823f4ad98ed2dda8df9b90582589e6"
+    },
+    {
+      "path": "repository/src/drd_harness/validators/compiler_conservation.py",
+      "sha256": "af7fd27901d9d6517c84ba8d10e5f833d4c710d92374fe48af2a641ac4a72c99"
+    },
+    {
+      "path": "repository/tests/compiler/test_final_drd_compilation.py",
+      "sha256": "6ed051a9d21b9a2ffd761eb1d523f054c004fd9c846b0ad4b1a775e86d5388eb"
+    },
+    {
+      "path": "repository/tests/kernel/test_import_boundaries.py",
+      "sha256": "33c2d1ddc74f4004bc7953350d71106bf2b6fae6e86c135b10412bfe12979bb5"
+    },
+    {
+      "path": "repository/tests/p2/test_tiny_brief_final_drd.py",
+      "sha256": "25c32c14d7b19d21c3c9d6afbe9b2df7576179e8cf23a61e5fd16745ad243d03"
     },
     {
       "path": "repository/tests/p4/test_cli_contracts.py",
@@ -157,7 +274,11 @@
     },
     {
       "path": "repository/tests/p4/test_external_prd_generate_drd.py",
-      "sha256": "82eebce5abe38341f57eed95c052482eca6f5849d5313c81e970b742105a6311"
+      "sha256": "dd56ddf5fcb61e1148bf5a82a0e216fd3a8d00837a28f4f3e079feb6110c9fee"
+    },
+    {
+      "path": "repository/tests/p4/test_external_prd_staged_run.py",
+      "sha256": "3d89c5d5592681233bbc6b294f074f16511a43c1d39eba23c460440d71796d19"
     },
     {
       "path": "repository/tests/p4/test_input_adapters.py",
@@ -168,36 +289,20 @@
       "sha256": "7882e22d68d9f9711ce5d37297c093a3559f837e437b1a81d37283c752665f4e"
     },
     {
-      "path": "tooling/verify_start_package.py",
-      "sha256": "26efbe31ccbafbde366f5ee49ab03cc80ce4c6fc199ed159f0b69df1984957d2"
+      "path": "tooling/preflight_current_workpack.py",
+      "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
     },
     {
       "path": "tooling/validate_program.py",
       "sha256": "7af697c088b5fde0bcbf019f41e6ff70506a9382ec8a3ce75e8a5c95b006f2e8"
     },
     {
-      "path": "tooling/preflight_current_workpack.py",
-      "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168"
-    },
-    {
-      "path": "repository/setup.cfg",
-      "sha256": "105c3e5d3105df3238a212002d1dd11078e90548cc21af5cf1ba5f8b5b7fc716"
-    },
-    {
-      "path": "repository/src/drd_harness/kernel/import_boundaries.py",
-      "sha256": "b12c7a671df00827e0a2e4e3409360be5f02f55768f2290179cafd52bcd52a7c"
-    },
-    {
-      "path": "repository/tests/kernel/test_import_boundaries.py",
-      "sha256": "33c2d1ddc74f4004bc7953350d71106bf2b6fae6e86c135b10412bfe12979bb5"
-    },
-    {
-      "path": "current_capsule/REPAIR_AUDIT.md",
-      "sha256": "f768aaa0b21b6dca324505027b6ceed5f39ac7a4b9c72c7304f358622a595fdc"
+      "path": "tooling/verify_start_package.py",
+      "sha256": "26efbe31ccbafbde366f5ee49ab03cc80ce4c6fc199ed159f0b69df1984957d2"
     }
   ],
   "required_outputs": [],
   "required_skills": [],
-  "status": "COMPLETE_READY_FOR_EXTERNAL_PRD_RUN_RECEIPT_INSTALL",
+  "status": "COMPLETE_READY_FOR_EXTERNAL_PRD_STAGED_RUN_INSTALL",
   "workpack_id": "P4-PROGRAM-CLOSURE-STATUS-SYNC"
 }

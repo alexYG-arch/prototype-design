@@ -121,6 +121,7 @@ def validate_layout_artifacts(
     layout_composition_index: Mapping[str, object],
     figma_reconstruction_metadata: Mapping[str, object],
     element_inventory: Mapping[str, object],
+    renderable_page_variants: Mapping[str, object],
     closure_interaction_messages: Mapping[str, object],
     shared_component_registry: Mapping[str, object],
     information_presentation_registry: Mapping[str, object],
@@ -170,10 +171,12 @@ def validate_layout_artifacts(
     known_information_refs = _canonical_information_refs(element_inventory) | message_ids | presentation_ids
     traceable_refs = _traceable_ref_ids(
         element_inventory,
+        renderable_page_variants,
         closure_interaction_messages,
         shared_component_registry,
         information_presentation_registry,
     )
+    renderable_variant_ids = _renderable_page_variant_ids(renderable_page_variants)
 
     findings.extend(
         validate_layout_package(
@@ -193,6 +196,8 @@ def validate_layout_artifacts(
     findings.extend(_validate_required_carriers(carrier_profile))
     findings.extend(_validate_pattern_refs(layout.pattern_refs, pattern_ids))
     findings.extend(_validate_state_placement_presentations(state_index.placements, information_presentation_registry))
+    findings.extend(_validate_state_placement_renderable_variants(state_index.placements, renderable_variant_ids))
+    findings.extend(_validate_renderable_page_variant_layout_refs(layout, hierarchy, figma_metadata, renderable_page_variants))
     findings.extend(
         _validate_composition_index(
             composition_index,
@@ -473,6 +478,24 @@ def _validate_state_placement_presentations(placements: Iterable[object], inform
     return findings
 
 
+def _validate_state_placement_renderable_variants(
+    placements: Iterable[object],
+    renderable_page_variant_ids: Iterable[str],
+) -> List[LayoutFinding]:
+    variant_ids = set(renderable_page_variant_ids)
+    findings: List[LayoutFinding] = []
+    for placement in placements:
+        if placement.surface_id not in variant_ids:
+            findings.append(
+                LayoutFinding(
+                    "PL020",
+                    placement.message_id,
+                    "state placement surface_id does not resolve to renderable page variant",
+                )
+            )
+    return findings
+
+
 def _validate_composition_index(
     index: Mapping[str, object],
     layout_id: str,
@@ -573,22 +596,30 @@ def _layout_ref_ids(artifacts: Mapping[str, Mapping[str, object]]) -> Set[str]:
                         refs.update(_text_values([layer.get("surface_ref")]))
                 for placement in record.get("placements", []) if isinstance(record.get("placements"), list) else []:
                     if isinstance(placement, Mapping):
-                        refs.update(_text_values([placement.get("message_id"), placement.get("surface_id")]))
+                        refs.update(
+                            _text_values(
+                                [
+                                    placement.get("message_id"),
+                                    placement.get("surface_id"),
+                                ]
+                            )
+                        )
     refs.discard("None")
     return refs
 
 
 def _traceable_ref_ids(
     element_inventory: Mapping[str, object],
+    renderable_page_variants: Mapping[str, object],
     closure_interaction_messages: Mapping[str, object],
     shared_component_registry: Mapping[str, object],
     information_presentation_registry: Mapping[str, object],
 ) -> Set[str]:
     refs: Set[str] = set()
-    for artifact in (element_inventory, closure_interaction_messages):
+    for artifact in (element_inventory, renderable_page_variants, closure_interaction_messages):
         for record in _payload_records(artifact):
             refs.update(_text_values(record.values()))
-            for list_key in ("source_refs", "trace_refs", "recovery_targets"):
+            for list_key in ("source_refs", "trace_refs", "shared_element_refs", "variant_element_refs", "recovery_targets"):
                 refs.update(_text_values(record.get(list_key)))
     for record in _registry_records(shared_component_registry, "patterns"):
         refs.update(_text_values(record.values()))
@@ -607,6 +638,43 @@ def _canonical_information_refs(element_inventory: Mapping[str, object]) -> Set[
         for record in _payload_records(element_inventory)
         if record.get("element_type") in {"STATE", "MESSAGE"}
     }
+
+
+def _renderable_page_variant_ids(renderable_page_variants: Mapping[str, object]) -> Set[str]:
+    return {
+        str(record.get("variant_page_id"))
+        for record in _payload_records(renderable_page_variants)
+        if record.get("variant_page_id")
+    }
+
+
+def _validate_renderable_page_variant_layout_refs(
+    layout,
+    hierarchy,
+    figma_metadata,
+    renderable_page_variants: Mapping[str, object],
+) -> List[LayoutFinding]:
+    findings: List[LayoutFinding] = []
+    layout_state_refs = set(layout.state_variants)
+    layout_sections = set(layout.section_index)
+    hierarchy_node_ids = set(hierarchy.node_ids())
+    figma_frames = set(figma_metadata.frame_hierarchy)
+    figma_state_refs = set(figma_metadata.state_variants)
+    for record in _payload_records(renderable_page_variants):
+        variant_id = str(record.get("variant_page_id", ""))
+        if not variant_id:
+            continue
+        if variant_id not in layout_state_refs:
+            findings.append(LayoutFinding("PL020", variant_id, "renderable page variant is absent from layout.state_variants"))
+        if variant_id not in layout_sections:
+            findings.append(LayoutFinding("PL020", variant_id, "renderable page variant is absent from layout.section_index"))
+        if variant_id not in hierarchy_node_ids:
+            findings.append(LayoutFinding("PL020", variant_id, "renderable page variant is absent from containment hierarchy"))
+        if record.get("figma_frame_required") is True and variant_id not in figma_frames:
+            findings.append(LayoutFinding("PL020", variant_id, "renderable page variant lacks required Figma frame"))
+        if variant_id not in figma_state_refs:
+            findings.append(LayoutFinding("PL020", variant_id, "renderable page variant is absent from Figma state_variants"))
+    return findings
 
 
 def _pattern_ids(shared_component_registry: Mapping[str, object]) -> Set[str]:

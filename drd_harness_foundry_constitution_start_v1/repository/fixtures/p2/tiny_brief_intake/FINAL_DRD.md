@@ -10,8 +10,6 @@
 ---
 
 ## PRD Element Inventory
-_Source: repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json#SEC-PRD-ELEMENTS sha256:d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb_
-
 - Brief Intake is the single real page for this fixture.
 - Project name input field is required in the brief form.
 - Audience input field is required in the brief form.
@@ -25,8 +23,6 @@ _Source: repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json#SEC
 ---
 
 ## Deduction and Structural Completion
-_Source: repository/fixtures/p2/tiny_brief_intake/inference_records.json#SEC-REASONING sha256:f2a5d5406d5a3b7ed78fb068acd29c8c1db60e4c45195642a0946428c76c01d3_
-
 - Failure recovery copy is deduced as necessary for recoverable async failure paths.
 - Generate action remains disabled until validation succeeds.
 - No secondary page or child workflow is promoted without human review.
@@ -34,8 +30,6 @@ _Source: repository/fixtures/p2/tiny_brief_intake/inference_records.json#SEC-REA
 ---
 
 ## Interaction Closure
-_Source: repository/fixtures/p2/tiny_brief_intake/interaction_graph.json#SEC-INTERACTION sha256:081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967_
-
 - Editing state accepts draft changes and exposes validation flow.
 - Validate action moves the draft into validation progress or recoverable failure.
 - Generate action moves a valid draft into generation progress and final ready state.
@@ -48,8 +42,6 @@ _Source: repository/fixtures/p2/tiny_brief_intake/interaction_graph.json#SEC-INT
 ---
 
 ## Information Presentation and Shared Patterns
-_Source: repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json#SEC-PRESENTATION sha256:07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7_
-
 - Validation progress uses inline status treatment tied to the current task context.
 - Missing required field copy uses recoverable summary treatment, not transient-only messaging.
 - Validate and generate share a primary action pattern because task context, state, recovery, and hierarchy match.
@@ -57,8 +49,6 @@ _Source: repository/fixtures/p2/tiny_brief_intake/information_presentation_regis
 ---
 
 ## Carrier Layout and Layering
-_Source: repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json#SEC-LAYOUT sha256:dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae_
-
 - Layout arranges the page as header, field stack, action group, state region, and validation overlay.
 - Width adaptation wraps and stacks required fields and actions without clipping required information.
 - Height constraints preserve full information through vertical scroll or disclosure paths.

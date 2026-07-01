@@ -99,6 +99,94 @@ def test_p3_elements_closure_message_must_map_to_canonical_element_or_blocked_ga
     assert "REASON018" in {finding.code for finding in findings}
 
 
+def test_p3_elements_each_canonical_state_requires_renderable_page_variant():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"] = [
+        record
+        for record in artifacts["renderable_page_variants"]["records"]
+        if record.get("source_state_id") != "p3-el-case-blocked-state"
+    ]
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(
+        finding.code == "REASON021"
+        and finding.subject_id == "p3-el-case-blocked-state"
+        and "STATE_VARIANT" in finding.message
+        for finding in findings
+    )
+
+
+def test_p3_elements_renderable_page_variant_cannot_add_product_capability():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"][1]["product_capability_addition"] = True
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(finding.code == "REASON021" and "product capability" in finding.message for finding in findings)
+
+
+def test_p3_elements_renderable_surface_id_must_match_variant_page_id():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"][1]["render_surface_id"] = "p3-el-operations-console--wrong"
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(finding.code == "REASON021" and "render_surface_id" in finding.message for finding in findings)
+
+
+def test_p3_elements_state_variant_parent_must_follow_closure_parent_page():
+    artifacts = _load_fixture_artifacts()
+    second_closure_node = copy.deepcopy(artifacts["closure_interaction_nodes"]["records"][0])
+    second_closure_node["node_id"] = "p3-node-secondary-console"
+    second_closure_node["source_refs"] = ["p3-unit-secondary-console"]
+    artifacts["closure_interaction_nodes"]["records"].append(second_closure_node)
+    second_page = copy.deepcopy(artifacts["prd_element_inventory"]["records"][0])
+    second_page["element_id"] = "p3-el-secondary-console"
+    second_page["source_refs"] = ["p3-node-secondary-console"]
+    second_page["source_text_hash"] = "d" * 64
+    artifacts["prd_element_inventory"]["records"].append(second_page)
+    second_decision = copy.deepcopy(artifacts["prd_element_decisions"]["records"][0])
+    second_decision["element_id"] = "p3-el-secondary-console"
+    second_decision["source_refs"] = ["p3-node-secondary-console"]
+    artifacts["prd_element_decisions"]["records"].append(second_decision)
+    second_base = copy.deepcopy(artifacts["renderable_page_variants"]["records"][0])
+    second_base["variant_page_id"] = "p3-el-secondary-console"
+    second_base["parent_page_id"] = "p3-el-secondary-console"
+    second_base["render_surface_id"] = "p3-el-secondary-console"
+    second_base["source_refs"] = ["p3-node-secondary-console"]
+    second_base["trace_refs"] = ["p3-el-secondary-console", "p3-node-secondary-console"]
+    artifacts["renderable_page_variants"]["records"].append(second_base)
+    artifacts["renderable_page_variants"]["records"][1]["parent_page_id"] = "p3-el-secondary-console"
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(
+        finding.code == "REASON021"
+        and finding.subject_id == "p3-el-operations-console--case-ready-state"
+        and "closure state parent page" in finding.message
+        for finding in findings
+    )
+
+
+def test_p3_elements_base_page_variant_must_exist():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"] = [
+        record
+        for record in artifacts["renderable_page_variants"]["records"]
+        if record.get("variant_kind") != "BASE"
+    ]
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(
+        finding.code == "REASON021"
+        and finding.subject_id == "p3-el-operations-console"
+        and "BASE" in finding.message
+        for finding in findings
+    )
+
+
 def test_p3_elements_unknown_closure_source_ref_cannot_enter_canonical_projection():
     artifacts = _load_fixture_artifacts()
     row = copy.deepcopy(artifacts["prd_element_inventory"]["records"][0])
@@ -253,6 +341,7 @@ def _load_fixture_artifacts():
         "input_obligations": copy.deepcopy(_load_json(ELEMENTS_ROOT / "input_obligations.json")),
         "structural_completion_review": copy.deepcopy(_load_json(ELEMENTS_ROOT / "structural_completion_review.json")),
         "product_expansion_gaps": copy.deepcopy(_load_json(ELEMENTS_ROOT / "product_expansion_gaps.json")),
+        "renderable_page_variants": copy.deepcopy(_load_json(ELEMENTS_ROOT / "renderable_page_variants.json")),
         "closure_interaction_nodes": copy.deepcopy(_load_json(CLOSURE_ROOT / "interaction_nodes.json")),
         "closure_clickable_inventory": copy.deepcopy(_load_json(CLOSURE_ROOT / "clickable_inventory.json")),
         "closure_interaction_messages": copy.deepcopy(_load_json(CLOSURE_ROOT / "interaction_messages.json")),

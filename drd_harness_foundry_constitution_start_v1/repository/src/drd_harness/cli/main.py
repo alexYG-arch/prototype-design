@@ -20,6 +20,7 @@ from drd_harness.orchestrator.program_driver import (
     plan_release_request,
     plan_resume,
     plan_run,
+    plan_staged_run,
 )
 from drd_harness.orchestrator.workpacks import compute_workpack_readiness_state
 from drd_harness.validators.spec_validator import (
@@ -64,6 +65,13 @@ def build_parser() -> argparse.ArgumentParser:
     generate_drd.add_argument("--output-dir", required=True)
     generate_drd.add_argument("--dry-run", action="store_true")
     generate_drd.set_defaults(func=_run_generate_drd)
+
+    staged_run = subparsers.add_parser("staged-run")
+    staged_run.add_argument("--work-dir", required=True)
+    staged_run.add_argument("--source-ref", required=True)
+    staged_run.add_argument("--output-dir", required=True)
+    staged_run.add_argument("--dry-run", action="store_true")
+    staged_run.set_defaults(func=_run_staged_run)
 
     review = subparsers.add_parser("review")
     review.add_argument("candidate_dir")
@@ -199,6 +207,17 @@ def _run_p4_run(args) -> int:
 
 def _run_generate_drd(args) -> int:
     payload = plan_generate_drd(
+        work_dir=Path(args.work_dir),
+        source_ref=Path(args.source_ref),
+        output_dir=Path(args.output_dir),
+        dry_run=args.dry_run,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_staged_run(args) -> int:
+    payload = plan_staged_run(
         work_dir=Path(args.work_dir),
         source_ref=Path(args.source_ref),
         output_dir=Path(args.output_dir),

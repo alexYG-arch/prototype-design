@@ -1,27 +1,6 @@
 {
   "artifact_id": "p3.compiler.final_drd_toc",
-  "stage_id": "DRD-05-COMPILATION",
   "fixture_id": "p3_compiler_fixture",
-  "path": "repository/fixtures/p3/compiler/final_drd_toc.json",
-  "schema_ref": "repository/schemas/compiler/final_drd_toc.schema.json",
-  "schema_payload_key": "records",
-  "source_refs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
-  ],
-  "upstream_artifact_refs": [
-    "approved section order"
-  ],
-  "upstream_hashes": {
-    "toc_hash": "f3991c54b4ef0a091f2d1d07cde3f5389b1131f6d30e9db6887ae79c7fca1e75"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
-  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
-  "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
     "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
@@ -37,56 +16,77 @@
     "repository/fixtures/p3/layout/layout_composition_index.json",
     "repository/fixtures/p3/layout/state_placement_index.json"
   ],
+  "path": "repository/fixtures/p3/compiler/final_drd_toc.json",
+  "promotion_state": "CANDIDATE",
   "records": [
     {
-      "toc_entry_id": "TOC-DRD-01-SEC-P3-SOURCE-INTAKE",
-      "stage_id": "DRD-01",
-      "section_id": "SEC-P3-SOURCE-INTAKE",
-      "stage_order_index": 10,
-      "section_order_index": 1,
       "heading_text": "P3 Source Intake Closure",
+      "section_id": "SEC-P3-SOURCE-INTAKE",
+      "section_order_index": 1,
+      "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
       "source_path": "repository/fixtures/p3/source_intake/intake_decisions.json",
-      "source_hash": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f"
+      "stage_id": "DRD-01",
+      "stage_order_index": 10,
+      "toc_entry_id": "TOC-DRD-01-SEC-P3-SOURCE-INTAKE"
     },
     {
-      "toc_entry_id": "TOC-DRD-02-SEC-P3-EXPERIENCE-DISTILLATION",
-      "stage_id": "DRD-02",
-      "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
-      "stage_order_index": 20,
-      "section_order_index": 1,
       "heading_text": "P3 Experience Distillation",
+      "section_id": "SEC-P3-EXPERIENCE-DISTILLATION",
+      "section_order_index": 1,
+      "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
       "source_path": "repository/fixtures/p3/distill/semantic_unit_map.json",
-      "source_hash": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9"
+      "stage_id": "DRD-02",
+      "stage_order_index": 20,
+      "toc_entry_id": "TOC-DRD-02-SEC-P3-EXPERIENCE-DISTILLATION"
     },
     {
-      "toc_entry_id": "TOC-DRD-03-SEC-P3-INTERACTION-CLOSURE",
-      "stage_id": "DRD-03",
-      "section_id": "SEC-P3-INTERACTION-CLOSURE",
-      "stage_order_index": 30,
-      "section_order_index": 1,
       "heading_text": "P3 Interaction Closure",
+      "section_id": "SEC-P3-INTERACTION-CLOSURE",
+      "section_order_index": 1,
+      "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
       "source_path": "repository/fixtures/p3/closure/interaction_messages.json",
-      "source_hash": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358"
+      "stage_id": "DRD-03",
+      "stage_order_index": 30,
+      "toc_entry_id": "TOC-DRD-03-SEC-P3-INTERACTION-CLOSURE"
     },
     {
-      "toc_entry_id": "TOC-DRD-03B-SEC-P3-ELEMENTS-AND-PATTERNS",
-      "stage_id": "DRD-03B",
-      "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
-      "stage_order_index": 40,
-      "section_order_index": 1,
       "heading_text": "P3 Elements And Shared Patterns",
+      "section_id": "SEC-P3-ELEMENTS-AND-PATTERNS",
+      "section_order_index": 1,
+      "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
       "source_path": "repository/fixtures/p3/patterns/shared_component_registry.json",
-      "source_hash": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c"
+      "stage_id": "DRD-03B",
+      "stage_order_index": 40,
+      "toc_entry_id": "TOC-DRD-03B-SEC-P3-ELEMENTS-AND-PATTERNS"
     },
     {
-      "toc_entry_id": "TOC-DRD-04-SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-      "stage_id": "DRD-04",
-      "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-      "stage_order_index": 50,
-      "section_order_index": 1,
       "heading_text": "P3 Natural Language Layout",
+      "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
+      "section_order_index": 1,
+      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
       "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
-      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555"
+      "stage_id": "DRD-04",
+      "stage_order_index": 50,
+      "toc_entry_id": "TOC-DRD-04-SEC-P3-NATURAL-LANGUAGE-LAYOUT"
     }
-  ]
+  ],
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "schema_payload_key": "records",
+  "schema_ref": "repository/schemas/compiler/final_drd_toc.schema.json",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "stage_id": "DRD-05-COMPILATION",
+  "upstream_artifact_refs": [
+    "approved section order"
+  ],
+  "upstream_hashes": {
+    "toc_hash": "f3991c54b4ef0a091f2d1d07cde3f5389b1131f6d30e9db6887ae79c7fca1e75"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

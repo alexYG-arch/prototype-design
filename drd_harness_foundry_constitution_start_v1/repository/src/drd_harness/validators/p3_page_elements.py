@@ -90,6 +90,11 @@ P3_ELEMENTS_ARTIFACTS = {
         "records",
         P3_PRD_ADOPTION_VALIDATOR_REF,
     ),
+    "renderable_page_variants": (
+        "p3.elements.renderable_page_variants",
+        "records",
+        P3_PRD_ADOPTION_VALIDATOR_REF,
+    ),
 }
 
 ADOPTED_OUTCOMES = {AdoptionOutcome.ADOPT_AS_IS, AdoptionOutcome.ADOPT_NORMALIZED}
@@ -119,6 +124,7 @@ def validate_page_element_artifacts(
     input_obligations: Mapping[str, object],
     structural_completion_review: Mapping[str, object],
     product_expansion_gaps: Mapping[str, object],
+    renderable_page_variants: Mapping[str, object],
     closure_interaction_nodes: Mapping[str, object],
     closure_clickable_inventory: Mapping[str, object],
     closure_interaction_messages: Mapping[str, object],
@@ -136,6 +142,7 @@ def validate_page_element_artifacts(
         "input_obligations": input_obligations,
         "structural_completion_review": structural_completion_review,
         "product_expansion_gaps": product_expansion_gaps,
+        "renderable_page_variants": renderable_page_variants,
     }
     findings: List[AdoptionFinding] = []
     for name, artifact in artifacts.items():
@@ -182,6 +189,14 @@ def validate_page_element_artifacts(
     findings.extend(_validate_element_cross_references(decisions, derived, obligations, reviews, gap_records, inferences))
     canonical_projection = compute_canonical_element_ids(inventory, decisions, derived, gap_records)
     findings.extend(_validate_canonical_inference_use(decisions, derived, inferences))
+    findings.extend(
+        _validate_renderable_page_variants(
+            renderable_page_variants,
+            inventory,
+            canonical_projection,
+            closure_interaction_nodes,
+        )
+    )
     findings.extend(
         _validate_closure_element_coverage(
             inventory,
@@ -541,6 +556,126 @@ def _validate_canonical_inference_use(
     return findings
 
 
+def _validate_renderable_page_variants(
+    renderable_page_variants: Mapping[str, object],
+    inventory: Sequence[PrdElementInventoryItem],
+    canonical_projection: Set[str],
+    closure_interaction_nodes: Mapping[str, object],
+) -> List[AdoptionFinding]:
+    canonical_pages = {
+        item.element_id
+        for item in inventory
+        if item.element_type == ElementType.PAGE and item.element_id in canonical_projection
+    }
+    canonical_states = {
+        item.element_id
+        for item in inventory
+        if item.element_type == ElementType.STATE and item.element_id in canonical_projection
+    }
+    canonical_elements = set(canonical_projection)
+    findings: List[AdoptionFinding] = []
+    seen_variant_ids: Set[str] = set()
+    base_pages: Set[str] = set()
+    rendered_states: Set[str] = set()
+    expected_parent_page_by_state = _expected_parent_page_by_state(inventory, closure_interaction_nodes)
+
+    for record in _payload_records(renderable_page_variants):
+        variant_id = str(record.get("variant_page_id", ""))
+        parent_page_id = str(record.get("parent_page_id", ""))
+        variant_kind = str(record.get("variant_kind", ""))
+        source_state_id = _optional_string(record.get("source_state_id"))
+        subject_id = variant_id or "p3.elements.renderable_page_variants"
+
+        if not variant_id:
+            findings.append(AdoptionFinding("REASON021", subject_id, "variant_page_id is required"))
+            continue
+        if variant_id in seen_variant_ids:
+            findings.append(AdoptionFinding("REASON021", variant_id, "variant_page_id must be unique"))
+        seen_variant_ids.add(variant_id)
+
+        if parent_page_id not in canonical_pages:
+            findings.append(AdoptionFinding("REASON021", variant_id, "parent_page_id must resolve to a canonical PAGE"))
+        if str(record.get("render_surface_id", "")) != variant_id:
+            findings.append(AdoptionFinding("REASON021", variant_id, "render_surface_id must equal variant_page_id"))
+        if record.get("figma_frame_required") is not True:
+            findings.append(AdoptionFinding("REASON021", variant_id, "figma_frame_required must be true"))
+        if record.get("product_capability_addition") is not False:
+            findings.append(AdoptionFinding("REASON021", variant_id, "renderable page variants cannot add product capability"))
+        if not str(record.get("state_condition", "")).strip():
+            findings.append(AdoptionFinding("REASON021", variant_id, "state_condition is required"))
+
+        unresolved_refs = sorted(
+            set(_text_values(record.get("shared_element_refs")) + _text_values(record.get("variant_element_refs")))
+            - canonical_elements
+        )
+        for element_ref in unresolved_refs:
+            findings.append(AdoptionFinding("REASON020", element_ref, "renderable page variant ref is not canonical"))
+
+        if variant_kind == "BASE":
+            if source_state_id is not None:
+                findings.append(AdoptionFinding("REASON021", variant_id, "BASE variant must not bind source_state_id"))
+            if parent_page_id and variant_id != parent_page_id:
+                findings.append(AdoptionFinding("REASON021", variant_id, "BASE variant must use the parent page id"))
+            base_pages.add(parent_page_id)
+        elif variant_kind == "STATE_VARIANT":
+            if not source_state_id or source_state_id not in canonical_states:
+                findings.append(
+                    AdoptionFinding("REASON021", variant_id, "STATE_VARIANT source_state_id must resolve to a canonical STATE")
+                )
+            else:
+                rendered_states.add(source_state_id)
+                expected_parent_page_id = expected_parent_page_by_state.get(source_state_id)
+                if expected_parent_page_id and parent_page_id != expected_parent_page_id:
+                    findings.append(
+                        AdoptionFinding(
+                            "REASON021",
+                            variant_id,
+                            "STATE_VARIANT parent_page_id does not match closure state parent page",
+                        )
+                    )
+            if variant_id == parent_page_id:
+                findings.append(AdoptionFinding("REASON021", variant_id, "STATE_VARIANT must use a distinct page variant id"))
+        else:
+            findings.append(AdoptionFinding("REASON021", variant_id, "variant_kind must be BASE or STATE_VARIANT"))
+
+    for page_id in sorted(canonical_pages - base_pages):
+        findings.append(AdoptionFinding("REASON021", page_id, "canonical PAGE lacks a BASE renderable page variant"))
+    for state_id in sorted(canonical_states - rendered_states):
+        findings.append(AdoptionFinding("REASON021", state_id, "canonical STATE lacks a STATE_VARIANT renderable page variant"))
+    return findings
+
+
+def _expected_parent_page_by_state(
+    inventory: Sequence[PrdElementInventoryItem],
+    closure_interaction_nodes: Mapping[str, object],
+) -> Dict[str, str]:
+    page_by_node_id: Dict[str, str] = {}
+    state_source_refs_by_element_id: Dict[str, Set[str]] = {}
+    for item in inventory:
+        if item.element_type == ElementType.PAGE:
+            for source_ref in item.source_refs:
+                page_by_node_id[source_ref] = item.element_id
+        elif item.element_type == ElementType.STATE:
+            state_source_refs_by_element_id[item.element_id] = set(item.source_refs)
+
+    closure_node_by_id = {
+        str(record.get("node_id")): record
+        for record in _payload_records(closure_interaction_nodes)
+        if record.get("node_id")
+    }
+    expected: Dict[str, str] = {}
+    for state_element_id, source_refs in state_source_refs_by_element_id.items():
+        for source_ref in source_refs:
+            closure_node = closure_node_by_id.get(source_ref)
+            if not isinstance(closure_node, Mapping):
+                continue
+            resume_source = closure_node.get("resume_source")
+            if isinstance(resume_source, str) and resume_source in page_by_node_id:
+                expected[state_element_id] = page_by_node_id[resume_source]
+                break
+    return expected
+
+
 def _validate_closure_element_coverage(
     inventory: Sequence[PrdElementInventoryItem],
     product_gaps: Sequence[Mapping[str, object]],
@@ -680,6 +815,7 @@ def _load_upstream_authority_refs(
 def _record_subject_id(record: Mapping[str, object], fallback: str) -> str:
     for key in (
         "element_id",
+        "variant_page_id",
         "derived_element_id",
         "inference_id",
         "obligation_id",

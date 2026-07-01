@@ -11,7 +11,6 @@ STAGE_ORDER = ["DRD-01", "DRD-02", "DRD-03", "DRD-03B", "DRD-04"]
 ALLOWED_MECHANICAL_TEMPLATES = {
     "title": "# Final DRD",
     "toc_heading": "## Table of Contents",
-    "section_attribution": "_Source: {source_path}#{section_id} sha256:{source_hash}_",
     "separator": "---",
     "references_heading": "## Reference Index",
     "hashes_heading": "## Hash Index",
@@ -36,6 +35,7 @@ class ApprovedSection:
     approved_hash_ref: str
     body: str
     semantic_unit_ids: List[str]
+    approved_semantic_artifact_ref: Optional[str] = None
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -144,12 +144,6 @@ def render_final_drd(sections: Iterable[ApprovedSection]) -> str:
                 ALLOWED_MECHANICAL_TEMPLATES["separator"],
                 "",
                 f"## {section.heading_text}",
-                ALLOWED_MECHANICAL_TEMPLATES["section_attribution"].format(
-                    source_path=section.source_path,
-                    section_id=section.section_id,
-                    source_hash=section.source_hash,
-                ),
-                "",
                 section.body.rstrip(),
             ]
         )
@@ -183,6 +177,7 @@ def build_reference_index(bundle: Mapping[str, Any], sections: Iterable[Approved
             "source_path": section.source_path,
             "source_hash": section.source_hash,
             "approval_ref": section.approved_hash_ref,
+            "approved_semantic_artifact_ref": section.approved_semantic_artifact_ref,
             "lock_ref": bundle.get("default_lock_ref"),
             "validator_result_refs": list(bundle.get("validator_result_refs", [])),
             "source_snapshot_identity": source_snapshot,
@@ -259,4 +254,5 @@ def _section_from_dict(value: Mapping[str, Any]) -> ApprovedSection:
         approved_hash_ref=str(value.get("approved_hash_ref")),
         body=str(value.get("body")),
         semantic_unit_ids=list(value.get("semantic_unit_ids", [])),
+        approved_semantic_artifact_ref=value.get("approved_semantic_artifact_ref"),
     )

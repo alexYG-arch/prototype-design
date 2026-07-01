@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {"const": "approved_semantic_artifact", "type": "string"},
+    "artifact_kind": {"const": "APPROVED_SEMANTIC_ARTIFACT", "type": "string"},
+    "artifact_id": {"minLength": 1, "type": "string"},
+    "compiler_eligible": {"const": true, "type": "boolean"},
+    "final_drd_section_id": {"minLength": 1, "type": "string"},
+    "final_drd_section_title": {"minLength": 1, "type": "string"},
+    "process_evidence_refs": {"items": {"type": "string"}, "minItems": 1, "type": "array"},
+    "product_capability_additions_allowed": {"const": false, "type": "boolean"},
+    "review_decision_ref": {"minLength": 1, "type": "string"},
+    "review_decision_sha256": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "semantic_body_path": {"minLength": 1, "type": "string"},
+    "semantic_body_sha256": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+    "source_candidate_hashes": {
+      "additionalProperties": {"pattern": "^[a-f0-9]{64}$", "type": "string"},
+      "type": "object"
+    },
+    "source_candidate_refs": {"items": {"type": "string"}, "minItems": 1, "type": "array"},
+    "stage_id": {
+      "enum": ["DRD-01", "DRD-02", "DRD-03", "DRD-03B", "DRD-04"],
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact",
+    "artifact_kind",
+    "artifact_id",
+    "stage_id",
+    "semantic_body_path",
+    "semantic_body_sha256",
+    "review_decision_ref",
+    "review_decision_sha256",
+    "source_candidate_refs",
+    "source_candidate_hashes",
+    "final_drd_section_id",
+    "final_drd_section_title",
+    "compiler_eligible",
+    "product_capability_additions_allowed",
+    "process_evidence_refs"
+  ],
+  "type": "object"
+}

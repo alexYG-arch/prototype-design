@@ -1,33 +1,27 @@
 {
   "artifact_id": "p3.compiler.final_drd_hash_index",
-  "stage_id": "DRD-05-COMPILATION",
   "fixture_id": "p3_compiler_fixture",
-  "path": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
-  "schema_ref": "repository/schemas/compiler/final_drd_hash_index.schema.json",
-  "schema_payload_key": "index",
-  "source_refs": [
-    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
-    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
-  ],
-  "upstream_artifact_refs": [
-    "compiler input bundle",
-    "semantic inventory",
-    "conservation report",
-    "final DRD text",
-    "toc",
-    "reference index"
-  ],
-  "upstream_hashes": {
-    "schema_hashes": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
-    "full_output_hash": "24656eb68cb44c9bad12f422eab7760235d90a5146dad5d64be0de4dbd0fb773"
+  "index": {
+    "compiler_code_hash": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe",
+    "conservation_report_hash": "2832d1557e216b604c3063e12db72edb8898313e80a37947a2797db95bbdd6b0",
+    "full_output_hash": "7c62d4eda64c2b87e4dfa185ba1d1941b68332fa4f008220f997d8a3bc07842e",
+    "input_bundle_hash": "e30bc35a10426ef18f1691ba747b86f8bda08bf154b39cf6bf6e443873c407e8",
+    "mechanical_hash": "c0372da8f5896f67fb905dce5a5782a8cee22edf55d5caa258e3f1f4b6851e10",
+    "reference_index_hash": "e0158db4f7b1cbd1cece73844693db16e475d4bf1aff2dfb52bc7627940f17f6",
+    "schema_hashes": {
+      "compiler_atomic_semantic_unit": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
+      "compiler_conservation_report": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
+      "compiler_input_bundle": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163",
+      "compiler_semantic_unit_inventory": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
+      "final_drd_hash_index": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
+      "final_drd_manifest": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
+      "final_drd_reference_index": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81",
+      "final_drd_toc": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
+      "read_only_qa_boundary": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
+    },
+    "semantic_hash": "5e074ccea86b104219a81cc6c9c2f71a82aafca4f0107be9361272449e59cae9",
+    "toc_hash": "f3991c54b4ef0a091f2d1d07cde3f5389b1131f6d30e9db6887ae79c7fca1e75"
   },
-  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py",
-  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
-  "promotion_state": "CANDIDATE",
   "invalidation_inputs": [
     "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
     "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
@@ -43,25 +37,31 @@
     "repository/fixtures/p3/layout/layout_composition_index.json",
     "repository/fixtures/p3/layout/state_placement_index.json"
   ],
-  "index": {
-    "input_bundle_hash": "36fd6d09ff9c8fff328b4f4510fbdf64808ecc4628e7573df78fcbc4d90dd93a",
-    "semantic_hash": "5e074ccea86b104219a81cc6c9c2f71a82aafca4f0107be9361272449e59cae9",
-    "mechanical_hash": "a0f5e861cc0da9c2a01acf211f7fbd3adfcbd654ae6d224bc6c1dff3cdeb94ff",
+  "path": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
+  "promotion_state": "CANDIDATE",
+  "review_gate": "HUMAN_REVIEW_BEFORE_P3_BUILD_LOCK",
+  "schema_payload_key": "index",
+  "schema_ref": "repository/schemas/compiler/final_drd_hash_index.schema.json",
+  "source_refs": [
+    "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-ELEMENTS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-PATTERNS/REVIEW_DECISION.json",
+    "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json"
+  ],
+  "stage_id": "DRD-05-COMPILATION",
+  "upstream_artifact_refs": [
+    "compiler input bundle",
+    "semantic inventory",
+    "conservation report",
+    "final DRD text",
+    "toc",
+    "reference index"
+  ],
+  "upstream_hashes": {
     "full_output_hash": "24656eb68cb44c9bad12f422eab7760235d90a5146dad5d64be0de4dbd0fb773",
-    "toc_hash": "f3991c54b4ef0a091f2d1d07cde3f5389b1131f6d30e9db6887ae79c7fca1e75",
-    "reference_index_hash": "ddd9bb416f156f628393050d2a3fab4061a04cf81bef0a4c23e9aee2d90ec9f5",
-    "conservation_report_hash": "2832d1557e216b604c3063e12db72edb8898313e80a37947a2797db95bbdd6b0",
-    "schema_hashes": {
-      "compiler_atomic_semantic_unit": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
-      "compiler_conservation_report": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-      "compiler_input_bundle": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
-      "compiler_semantic_unit_inventory": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
-      "final_drd_hash_index": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
-      "final_drd_manifest": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-      "final_drd_reference_index": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
-      "final_drd_toc": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
-      "read_only_qa_boundary": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
-    },
-    "compiler_code_hash": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
-  }
+    "schema_hashes": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from drd_harness.cli.main import main
+from drd_harness.validators.compiler_conservation import validate_final_drd_reader_structure
 
 
 def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, capsys):
@@ -35,6 +36,9 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert payload["conservation_status"] == "PASS"
     assert payload["will_create_release_lock"] is False
     assert payload["will_publish_package"] is False
+    assert payload["source_preserving_compile_only"] is True
+    assert payload["staged_execution_complete"] is False
+    assert payload["staged_execution_command"] == "staged-run"
     assert "release_readiness_packet" not in payload
     assert all("build_program/" not in path and "control/locks/" not in path for path in payload["written_paths"])
     assert set(written_paths) == {
@@ -63,9 +67,11 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
 
     assert "Primary button starts scan." in final_drd
     assert "Responsive layout must preserve all information." in final_drd
+    assert validate_final_drd_reader_structure(final_drd) == []
     assert manifest["added_semantic_unit_count"] == 0
     assert conservation["added_semantic_units"] == []
     assert bundle["compiler_stage_id"] == "DRD-05"
+    assert bundle["requires_approved_stage_semantic_artifacts"] is False
     assert bundle["approved_semantic_artifacts"][0]["path"] == str(source)
     assert bundle["approved_semantic_artifacts"][0]["semantic_role"] == "source_prd"
     assert review["human_approval"] is False
