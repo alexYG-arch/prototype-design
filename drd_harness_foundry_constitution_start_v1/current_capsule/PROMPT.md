@@ -26,4 +26,6 @@
 15. DRD-01 到 DRD-04/03B 的 candidate artifacts 只能用于 review/gate；通过 gate 后必须 promotion 为 `APPROVED_SEMANTIC_ARTIFACT`，该产物才允许进入 DRD-05 compiler bundle。
 16. 同一个 stage 文件不得同时承担 candidate 与 approved semantic artifact 双角色；缺少 approved semantic artifact 时必须停住，不能用 candidate 代替。
 17. F 修复必须先更新执行包或当前 capsule 约束，再修改 `repository/**`；若发生局部倒序，必须写入并绑定 `current_capsule/REPAIR_AUDIT.md`。
-18. 不得创建锁、提交或推送，除非用户单独明确要求。
+18. 新增 Codex runtime continuation 必须走 `drd-harness codex-stage`；该命令只能调用 Codex runtime 生成 candidate、校验输出并更新 `run_state.json`，不得 review、approval、promotion、compile、release 或 package publish。
+19. `DRD-05` 必须通过 `drd-harness compile-stage` 从 promoted approved semantic artifacts 做 deterministic compile；`DRD-06` 必须通过 `codex-stage` 生成 read-only QA，再由 `qa-complete-stage` 在 QA PASS 且无 DRD-05 hash 漂移时完成 staged execution。
+20. 不得创建锁、提交或推送，除非用户单独明确要求。

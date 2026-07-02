@@ -22,6 +22,10 @@ from drd_harness.orchestrator.program_driver import (
     plan_source_preserving_drd,
     plan_staged_run,
 )
+from drd_harness.orchestrator.qa_completion import run_qa_completion
+from drd_harness.orchestrator.codex_stage import run_codex_stage
+from drd_harness.orchestrator.stage_compilation import run_stage_compilation
+from drd_harness.orchestrator.stage_promotion import run_stage_promotion
 from drd_harness.orchestrator.workpacks import compute_workpack_readiness_state
 from drd_harness.validators.spec_validator import (
     compute_candidate_subject_hash,
@@ -37,7 +41,7 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(
         dest="command",
         required=True,
-        metavar="{candidate-check,runtime-boundary-check,workpack-readiness,run,compile-source-preserving-drd,staged-run,review,resume,release}",
+        metavar="{candidate-check,runtime-boundary-check,workpack-readiness,run,compile-source-preserving-drd,staged-run,codex-stage,promote-stage,compile-stage,qa-complete-stage,review,resume,release}",
     )
 
     candidate = subparsers.add_parser("candidate-check")
@@ -73,6 +77,40 @@ def build_parser() -> argparse.ArgumentParser:
     staged_run.add_argument("--output-dir", required=True)
     staged_run.add_argument("--dry-run", action="store_true")
     staged_run.set_defaults(func=_run_staged_run)
+
+    codex_stage = subparsers.add_parser("codex-stage")
+    codex_stage.add_argument("--work-dir", required=True)
+    codex_stage.add_argument("--run-state-ref", required=True)
+    codex_stage.add_argument("--stage-id", required=True)
+    codex_stage.add_argument("--runtime-command")
+    codex_stage.add_argument("--codex-bin")
+    codex_stage.add_argument("--model")
+    codex_stage.add_argument("--timeout-seconds", type=int, default=1800)
+    codex_stage.add_argument("--dry-run", action="store_true")
+    codex_stage.set_defaults(func=_run_codex_stage)
+
+    promote_stage = subparsers.add_parser("promote-stage")
+    promote_stage.add_argument("--work-dir", required=True)
+    promote_stage.add_argument("--run-state-ref", required=True)
+    promote_stage.add_argument("--stage-id", required=True)
+    promote_stage.add_argument("--approved-subject-hash", required=True)
+    promote_stage.add_argument("--reviewer", default="human-user")
+    promote_stage.add_argument("--approval-note", default="User approved candidate for promotion.")
+    promote_stage.set_defaults(func=_run_promote_stage)
+
+    compile_stage = subparsers.add_parser("compile-stage")
+    compile_stage.add_argument("--work-dir", required=True)
+    compile_stage.add_argument("--run-state-ref", required=True)
+    compile_stage.add_argument("--stage-id", default="DRD-05")
+    compile_stage.add_argument("--dry-run", action="store_true")
+    compile_stage.set_defaults(func=_run_compile_stage)
+
+    qa_complete_stage = subparsers.add_parser("qa-complete-stage")
+    qa_complete_stage.add_argument("--work-dir", required=True)
+    qa_complete_stage.add_argument("--run-state-ref", required=True)
+    qa_complete_stage.add_argument("--stage-id", default="DRD-06")
+    qa_complete_stage.add_argument("--dry-run", action="store_true")
+    qa_complete_stage.set_defaults(func=_run_qa_complete_stage)
 
     review = subparsers.add_parser("review")
     review.add_argument("candidate_dir")
@@ -220,6 +258,56 @@ def _run_source_preserving_drd(args) -> int:
         output_dir=Path(args.output_dir),
         dry_run=args.dry_run,
         command_name=args.command,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_codex_stage(args) -> int:
+    payload = run_codex_stage(
+        work_dir=Path(args.work_dir),
+        run_state_ref=Path(args.run_state_ref),
+        stage_id=args.stage_id,
+        runtime_command=args.runtime_command,
+        codex_bin=args.codex_bin,
+        model=args.model,
+        timeout_seconds=args.timeout_seconds,
+        dry_run=args.dry_run,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_promote_stage(args) -> int:
+    payload = run_stage_promotion(
+        work_dir=Path(args.work_dir),
+        run_state_ref=Path(args.run_state_ref),
+        stage_id=args.stage_id,
+        approved_subject_hash=args.approved_subject_hash,
+        reviewer=args.reviewer,
+        approval_note=args.approval_note,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_compile_stage(args) -> int:
+    payload = run_stage_compilation(
+        work_dir=Path(args.work_dir),
+        run_state_ref=Path(args.run_state_ref),
+        stage_id=args.stage_id,
+        dry_run=args.dry_run,
+    )
+    _emit(payload)
+    return int(payload["exit_code"])
+
+
+def _run_qa_complete_stage(args) -> int:
+    payload = run_qa_completion(
+        work_dir=Path(args.work_dir),
+        run_state_ref=Path(args.run_state_ref),
+        stage_id=args.stage_id,
+        dry_run=args.dry_run,
     )
     _emit(payload)
     return int(payload["exit_code"])

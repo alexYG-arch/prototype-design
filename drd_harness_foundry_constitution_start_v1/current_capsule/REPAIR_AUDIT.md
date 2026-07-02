@@ -110,6 +110,54 @@
 - `repository/schemas/stages/approved_semantic_artifact.schema.json` 定义 promoted artifact 结构；
 - `repository/tests/compiler/test_final_drd_compilation.py` 覆盖 raw candidate 被拒绝、approved semantic body 被接受、candidate 过程标记被拒绝。
 
+## RF Review Finding
+
+`RF_CODEX_RUNTIME_CONTINUATION_EXECUTOR_REPAIR`
+
+后续 R/F 复查发现 staged-run 修复后仍存在更深一层的执行缺口：
+
+- 宪章 runtime chain 要求 `DRD-01`、`DRD-02`、`DRD-03`、`DRD-03B`、`DRD-04` 和 `DRD-06` 由 Codex 或 Codex+Python loop 负责候选语义推理 / 只读 QA；
+- 当前 `staged-run` 能诚实停在 `DRD-01 CODEX_RUNTIME_GATE`，但 harness 没有正式 continuation executor 把该 gate 接到 Codex CLI 或显式 runtime command；
+- 这导致运行者容易把当前聊天中的手工 continuation 或 Python materialization 误认为正式 stage runtime，削弱 `CODEX` runtime 声明和实际执行之间的可审计性。
+
+修复要求：
+
+- 保持 `staged-run` 的 DRD-00 + runtime gate stop 行为不变；
+- 新增 `drd-harness codex-stage` continuation 入口；
+- `codex-stage` 必须读取 `run_state.json` 和 `stage_execution_plan.json`，只允许执行 plan 中声明为 `CODEX`、`CODEX_PYTHON_LOOP` 或 `CODEX_READ_ONLY` 的 stage；
+- Python 只负责生成/绑定 prompt、调用 Codex runtime、校验预期 candidate outputs、记录 invocation/result sidecars 和更新 run_state；
+- `codex-stage` 不得 review、approval、promotion、compile `FINAL_DRD.md`、创建 lock/release 或发布 package；
+- 没有可用 Codex runtime 时必须返回 `CODEX_RUNTIME_UNAVAILABLE`，不得降级为 Python 语义生成。
+
+修复后：
+
+- `repository/src/drd_harness/runtimes/codex_cli.py` 提供 Codex CLI / runtime command adapter；
+- `repository/src/drd_harness/orchestrator/codex_stage.py` 提供 stage continuation 编排；
+- `repository/src/drd_harness/cli/main.py` 暴露 `codex-stage`；
+- `repository/tests/p4/test_external_prd_staged_run.py` 覆盖 dry-run、无 runtime 停止和 fake runtime candidate-ready 更新。
+
+`RF_STAGE_COMPILE_AND_QA_COMPLETION_REPAIR`
+
+真实 staged execution 继续到 DRD-05/DRD-06 时暴露两个缺口：
+
+- promoted approved semantic artifact 仍保留部分 candidate/status/run/source hash 过程标记，导致 DRD-05 reader-facing compiler 可能拒绝或污染 `FINAL_DRD.md`；
+- harness 有 deterministic compiler 函数和 DRD-06 read-only boundary validator，但缺少正式 staged continuation CLI 将 DRD-05 编译、DRD-06 QA PASS 和 `staged_execution_complete=true` 串起来。
+
+修复要求：
+
+- `promote-stage` 在生成 `APPROVED_SEMANTIC_ARTIFACT.md` 时必须删除 candidate status、run id、source hash、stage boundary 等过程行；
+- 新增 `drd-harness compile-stage`，只允许 `DRD-05`，只消费 promoted approved semantic artifacts，调用现有 deterministic compiler，写出 `DRD-05/FINAL_DRD.md` 与 compiler sidecars，不调用 Codex、不创建 lock/release/package；
+- 新增 `drd-harness qa-complete-stage`，只允许 `DRD-06`，必须在 QA status PASS、DRD-05 canonical output hash 未漂移、DRD-06 只写 read-only QA outputs 时才声明 staged execution complete；
+- `codex-stage` 对 `DRD-06` 必须返回 read-only QA ready 状态，而不是 semantic candidate promotion 状态。
+
+修复后：
+
+- `repository/src/drd_harness/orchestrator/stage_compilation.py` 提供 DRD-05 compile continuation；
+- `repository/src/drd_harness/orchestrator/qa_completion.py` 提供 DRD-06 completion validation；
+- `repository/src/drd_harness/orchestrator/stage_promotion.py` 清理 approved body 的候选过程标记；
+- `repository/src/drd_harness/orchestrator/codex_stage.py` 支持 DRD-06 `CODEX_READ_ONLY_QA_READY`；
+- `repository/tests/p4/test_external_prd_staged_run.py` 覆盖 DRD-05 compile 和 DRD-06 completion。
+
 ## Final Binding
 
 最终状态已重新绑定到当前 capsule：
@@ -119,6 +167,11 @@
 - `repository/src/drd_harness/orchestrator/program_driver.py` 使用外部 PRD 输出边界校验；
 - `repository/src/drd_harness/compiler/external_prd.py` 使用同一输出边界校验；
 - `repository/src/drd_harness/orchestrator/external_staged_run.py` 只完成 DRD-00，并在 DRD-01 Codex runtime gate 停止；
+- `repository/src/drd_harness/orchestrator/codex_stage.py` 负责从 Codex runtime gate 继续到 stage candidate-ready，但不做 approval/promotion；
+- `repository/src/drd_harness/orchestrator/stage_promotion.py` 负责人工批准后的 approved semantic artifact promotion；
+- `repository/src/drd_harness/orchestrator/stage_compilation.py` 负责 DRD-05 deterministic compile continuation；
+- `repository/src/drd_harness/orchestrator/qa_completion.py` 负责 DRD-06 read-only QA completion validation；
+- `repository/src/drd_harness/runtimes/codex_cli.py` 负责 Codex CLI / explicit runtime command 调用边界；
 - `repository/src/drd_harness/kernel/import_boundaries.py` 补强 runtime boundary path 检查；
 - `repository/setup.cfg` 将 editable install 元数据导向 `.venv`，避免污染源码树。
 

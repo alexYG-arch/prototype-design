@@ -78,7 +78,24 @@
     "source_preserving_generation_only": true,
     "source_tree_egg_info_after_install": false,
     "staged_run_blocks_at_drd01_codex_runtime_gate_without_approved_candidate": true,
-    "staged_run_source_preserving_compile_substitute": false
+    "staged_run_source_preserving_compile_substitute": false,
+    "external_prd_codex_stage_command": "drd-harness codex-stage",
+    "codex_stage_supported_stage_ids": [
+      "DRD-01",
+      "DRD-02",
+      "DRD-03",
+      "DRD-03B",
+      "DRD-04",
+      "DRD-06"
+    ],
+    "codex_stage_candidate_only": true,
+    "codex_stage_no_promotion_or_compile": true,
+    "codex_stage_runtime_unavailable_must_stop": true,
+    "external_prd_compile_stage_command": "drd-harness compile-stage",
+    "external_prd_qa_complete_stage_command": "drd-harness qa-complete-stage",
+    "compile_stage_drd05_requires_approved_semantic_artifacts": true,
+    "compile_stage_no_codex_no_release_no_package": true,
+    "qa_complete_stage_requires_pass_and_no_drd05_hash_drift": true
   },
   "forbidden_write_paths": [
     "constitution/**",
@@ -101,16 +118,16 @@
       "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec"
     },
     {
-      "path": "README.md",
-      "sha256": "5228854b610ed17f98b4e95e30ec97e57f5d4a1315721693747c6c5b51a20357"
-    },
-    {
       "path": "CODEX_START_PROMPT.md",
       "sha256": "d58cd3c1fd163931dc76bec3b3db6ed21825a534ca469aafb5d66af73f37a226"
     },
     {
+      "path": "README.md",
+      "sha256": "5228854b610ed17f98b4e95e30ec97e57f5d4a1315721693747c6c5b51a20357"
+    },
+    {
       "path": "START_HERE.md",
-      "sha256": "cc85f661baae7731b6ad5b91d23276cc11f6f2c85c0796e539f7f79abc4f32bb"
+      "sha256": "0ac2a171524be19694a5a9a4149a646a5d3320fcac299543cb82d40b5ab618ee"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
@@ -142,15 +159,15 @@
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "5cc23a77c83821e8064801c639b23fe6017d02e1ab75417859baf3e87621258d"
+      "sha256": "c5e058501c026d5c25d6bda262e1f708e67c2647c33eb3c8faa651b74655b670"
     },
     {
       "path": "current_capsule/REPAIR_AUDIT.md",
-      "sha256": "2c9ed5da4b67806fbab29d20c6df1dc98feac84de5e378778141ae0ab5fecb23"
+      "sha256": "3f770d01983ddbb6ced85260c34feffa2cfe15a672345c0d41e7cb2ab90ff615"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "1e8d34f5291cd267c984e5d478ca1c5b7cadfa48392d7877ab65a0d9828b6b80"
+      "sha256": "324a174fe49253fd203ed424df4ee624c9601d2eed06281c98cd645f3a1c9818"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
@@ -238,7 +255,7 @@
     },
     {
       "path": "repository/src/drd_harness/cli/main.py",
-      "sha256": "8ca502e23f20c215df9c40d0bf4cf75e696752b462a57e7d4848e6994d1e148b"
+      "sha256": "907c4879eff86d9096fcd69862445b26e6784f295efb94be73d8243b149c1cb7"
     },
     {
       "path": "repository/src/drd_harness/compiler/external_prd.py",
@@ -253,6 +270,10 @@
       "sha256": "b12c7a671df00827e0a2e4e3409360be5f02f55768f2290179cafd52bcd52a7c"
     },
     {
+      "path": "repository/src/drd_harness/orchestrator/codex_stage.py",
+      "sha256": "747951e1691773e2fb6e6ffbf97d9f7d0ba07c47094a89e4210655960af28f87"
+    },
+    {
       "path": "repository/src/drd_harness/orchestrator/external_staged_run.py",
       "sha256": "d612d007368b2e6c0a9b0343b86ba0cff1d19b814af48e41dfa9453aead73885"
     },
@@ -265,12 +286,32 @@
       "sha256": "c60c442436fabf517bb171fc02a3e39320823f4ad98ed2dda8df9b90582589e6"
     },
     {
+      "path": "repository/src/drd_harness/orchestrator/stage_promotion.py",
+      "sha256": "9a5648e3d2db40fccb2c8ede2ca4344fd080a366336018134cda26b4cf6087d0"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/qa_completion.py",
+      "sha256": "c507ec970cb9bb56eae0d03911a5d0a24d8e6238834c9b20b808372122e3b149"
+    },
+    {
+      "path": "repository/src/drd_harness/orchestrator/stage_compilation.py",
+      "sha256": "d5374df2959f1224bcd242172df8b10a4cdbfeb014ec7e0ea7f20a054f3e1a81"
+    },
+    {
+      "path": "repository/src/drd_harness/runtimes/codex_cli.py",
+      "sha256": "191ae94a7b9587e5e3ea03bd5316d123a6f28f0c268f08d7d827d2bf489c8f3c"
+    },
+    {
       "path": "repository/src/drd_harness/validators/compiler_conservation.py",
       "sha256": "af7fd27901d9d6517c84ba8d10e5f833d4c710d92374fe48af2a641ac4a72c99"
     },
     {
       "path": "repository/tests/compiler/test_final_drd_compilation.py",
       "sha256": "6ed051a9d21b9a2ffd761eb1d523f054c004fd9c846b0ad4b1a775e86d5388eb"
+    },
+    {
+      "path": "repository/tests/integration/test_cli_thinness.py",
+      "sha256": "72b627d9b1dbe83f009b96d96124fa9d8be8c8851f86f1ce36c28686f393d62c"
     },
     {
       "path": "repository/tests/kernel/test_import_boundaries.py",
@@ -290,7 +331,7 @@
     },
     {
       "path": "repository/tests/p4/test_external_prd_staged_run.py",
-      "sha256": "1b52e35db45a60e79738e448291a146d61e9d650932a09fa979bcf8012ad450f"
+      "sha256": "3757568a91f0d99c0f47ee0c6f40294b2b47bde878c29df94b5633803e52bbde"
     },
     {
       "path": "repository/tests/p4/test_input_adapters.py",

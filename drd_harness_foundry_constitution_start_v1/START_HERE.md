@@ -103,3 +103,20 @@ repository/.venv/bin/drd-harness staged-run \
 无 Codex 运行时，或尚未存在已批准 DRD-01 候选输入时，标准 staged run 只会完成 `DRD-00` source freeze，然后停在 `DRD-01` 的 `CODEX_RUNTIME_GATE`。这不是失败；它表示体验事实提炼、后续用户任务、交互闭包、元素补全、共用模式和布局语义必须由 Codex 候选与人工 review/校验继续，不能由 Python CLI 静默推导。
 
 标准 staged run 会写出 `stage_execution_plan.json`、`DRD-00/**`、`review_gates/DRD-01_EXPERIENCE_FACT_EXTRACTION_REQUEST.json`、`codex_prompts/DRD-01_EXPERIENCE_FACT_EXTRACTION_PROMPT.md` 和 `run_state.json`。它不得产出 `DRD-01/PRD_EXPERIENCE_BRIEF.md`、`DRD-01/experience_fact_index.json`、`SOURCE_PRESERVING_DRD.md` 或 `FINAL_DRD.md`，不得创建 lock/release，不得发布 package。
+
+## 标准 Codex stage continuation
+
+`staged-run` 停在 `CODEX_RUNTIME_GATE` 后，继续执行 Codex-owned stage 必须使用独立 continuation 入口：
+
+```bash
+repository/.venv/bin/drd-harness codex-stage \
+  --work-dir . \
+  --run-state-ref current_capsule/outputs/<run_dir>/staged/run_state.json \
+  --stage-id DRD-01
+```
+
+该命令默认调用本机 `codex exec`。测试、离线或替代 runtime 环境可以显式传入 `--runtime-command`。`codex-stage` 只负责让 Codex runtime 产出 candidate、校验预期输出、记录 invocation/result sidecar 并更新 `run_state.json`；它不得 approval、promotion、编译 `FINAL_DRD.md`、创建 lock/release 或发布 package。
+
+后续 `DRD-02`、`DRD-03`、`DRD-03B`、`DRD-04` 和 `DRD-06` 也通过 `codex-stage` 继续，但必须满足各自上游 approved semantic artifact 或 `DRD-05/FINAL_DRD.md` 输入要求。缺少上游批准时必须停住。
+
+`DRD-01` 到 `DRD-04/03B` 的 candidate 通过人工 review 后，使用 `promote-stage` 生成 `APPROVED_SEMANTIC_ARTIFACT`。`DRD-05` 使用 `compile-stage` 做 Python deterministic compile，只消费 approved semantic artifacts。`DRD-06` 通过 `codex-stage` 生成 read-only QA 输出后，使用 `qa-complete-stage` 校验 QA PASS、DRD-05 hash 未漂移和只读边界，再标记 staged execution complete。
