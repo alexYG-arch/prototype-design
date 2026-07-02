@@ -26,3 +26,9 @@ DRD Harness 输出 Figma 还原兼容说明，但不实现 Figma Renderer。
 - 组件实例和 Variant；
 - Overlay 与锚点；
 - 状态差异和显示隐藏关系。
+
+## Arrangement authority
+
+Figma 还原顺序必须来自 DRD 页面排序模型，而不是文件顺序或生成顺序。页面排序模型至少包含模块、功能组、页面顺序、状态变体顺序和 Figma frame 顺序。
+
+推荐排布为：模块 → 功能组 → 页面 base → 状态变体 → 覆盖层/弹层 → 共享组件。移动端、平板和桌面可以采用不同布局，但不能改变语义顺序或隐藏必须展示的信息。

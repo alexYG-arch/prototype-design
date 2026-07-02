@@ -49,7 +49,27 @@
       "decision": "Business skills are generated only after applicable specs are locked.",
       "id": "DEC-010",
       "status": "LOCKED"
+    },
+    {
+      "decision": "Reader-facing FINAL_DRD is a unique final artifact identity; candidates and process evidence cannot use or enter it.",
+      "id": "DEC-011",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "PRD page detail must be conserved into page detail inventory or reader-facing DRD with traceable source lines.",
+      "id": "DEC-012",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Page and Figma arrangement is ordered by module, function group, base page, state variant, and frame order.",
+      "id": "DEC-013",
+      "status": "LOCKED"
+    },
+    {
+      "decision": "Renderable pages and state variants expose derivation origin and review status.",
+      "id": "DEC-014",
+      "status": "LOCKED"
     }
   ],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

@@ -18,6 +18,11 @@
       "status": "COMPLETE"
     },
     {
+      "build_lock": {
+        "path": "control/locks/P2_BUILD_LOCK.json",
+        "root_sha256": "b5338f9ed4139fd6b84aadbb4a1f97a711301735a4a429946f85d2f9255ea5b3",
+        "sha256": "3c64693e652cf3fea901c3e1b07c00055906023d49e8e262a190563fad08b66e"
+      },
       "id": "P2",
       "name": "Minimum vertical slice",
       "outputs": [

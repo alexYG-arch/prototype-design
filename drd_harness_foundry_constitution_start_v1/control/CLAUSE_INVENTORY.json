@@ -109,6 +109,30 @@
       "verification": "hybrid"
     },
     {
+      "id": "DRD-CHARTER-019",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-020",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-021",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
+      "id": "DRD-CHARTER-022",
+      "owner": "constitution/DRD_HARNESS_CHARTER.md",
+      "status": "LOCKED",
+      "verification": "hybrid"
+    },
+    {
       "id": "RD-RULE-001",
       "owner": "constitution/REASONING_DOCTRINE.md",
       "status": "LOCKED",
@@ -157,5 +181,5 @@
       "verification": "hybrid"
     }
   ],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

@@ -26,8 +26,8 @@
     "control/locks/P2_SPEC_LOCK.json"
   ],
   "inventory": {
-    "inventory_id": "p2.tiny_brief.compiler_semantic_unit_inventory.001",
-    "inventory_version": "1.0",
+    "inventory_id": "p2.tiny_brief.compiler_semantic_unit_inventory",
+    "inventory_version": "1.0.0",
     "semantic_units": [
       {
         "approval_ref": "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json",
@@ -428,13 +428,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.arrangement",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "layout.tiny_brief.main",
         "source_span_ref": "record:p2.tiny_brief.layout.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "d087e0c55fd7798b91183150ec10c866ba445e373cfbefe6b8a9c5acba6a6be3",
+        "unit_hash": "f54f0c4b79b14df7e2e76291bb3f239fabd8146ad02c88dc858ca7985bd3b794",
         "unit_type": "ARRANGEMENT_RULE"
       },
       {
@@ -445,13 +445,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.width",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.info_completeness.required_fields.001",
         "source_span_ref": "record:p2.tiny_brief.info_completeness.required_fields.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "636912aff039022d23c4b1f659d591d0cf3d4f4f373c20022903345a246fee2d",
+        "unit_hash": "3a32cf0231270993bafa62f4334e736dd06c66a4fbfbdcf63db6ad38224aa27b",
         "unit_type": "WIDTH_BEHAVIOR"
       },
       {
@@ -462,13 +462,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.height_scroll",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.info_completeness.overlay_copy.001",
         "source_span_ref": "record:p2.tiny_brief.info_completeness.overlay_copy.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "67b0e857f10c506c66a14f0af430c431d714c4b471ff5ec6370871580d3216f3",
+        "unit_hash": "1af53832688b3177f90f04696043676a36dff0bee068d96aa12cb9138bbd190c",
         "unit_type": "HEIGHT_SCROLL_BEHAVIOR"
       },
       {
@@ -581,19 +581,19 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.state_placement",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.state_placement.001",
         "source_span_ref": "index:p2.tiny_brief.state_placement.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "7325941f70ad379e9f9e775649f5afbfe0dc6ad1c8450df6a04b227c112a3b09",
+        "unit_hash": "ff22c08b65937aa063c0a4c9170f7f14655df1c6b08cf567d78a42aa31e65275",
         "unit_type": "STATE_PLACEMENT"
       }
     ],
-    "source_artifact_hash": "367ab45b35f115fee45fb908fddd335e25a780ea2fb219b0b9ecc8f508fbead3",
-    "source_artifact_ref": "p2.tiny_brief.compiler_input_bundle",
-    "validator_result_ref": "P2-VAL-COMPILER-CONSERVATION"
+    "source_artifact_hash": "3e5ef5974396a67f3682d9e09488190f80144f57b252f0cedaa7cee43bf094eb",
+    "source_artifact_ref": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json#bundle.semantic_content_hash",
+    "validator_result_ref": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json"
   },
   "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
   "promotion_state": "CANDIDATE",
@@ -635,7 +635,7 @@
     "p2.tiny_brief.information_presentation_registry": "07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7",
     "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
     "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86",
-    "p2.tiny_brief.natural_language_layout": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+    "p2.tiny_brief.natural_language_layout": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
     "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
     "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
     "p2.tiny_brief.shared_component_registry": "b45ba8f5be59be1522e195c0cb53edb701d5604e93050f346853e6d2c86e8449",

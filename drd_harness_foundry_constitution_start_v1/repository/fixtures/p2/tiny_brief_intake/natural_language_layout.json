@@ -349,6 +349,18 @@
     ],
     "trace_refs": [
       "build_program/phases/P2/candidates/P2-SPEC-01/P2_LAYOUT_VALIDATION_PARAMETERS.json"
+    ],
+    "page_arrangement_order": [
+      {
+        "module_id": "p2-module-brief-intake",
+        "function_group_id": "p2-function-brief-entry",
+        "variant_page_id": "brief.page",
+        "frame_id": "brief.page",
+        "page_order_index": 0,
+        "variant_order_index": 0,
+        "figma_frame_order_index": 0,
+        "derivation_origin": "PRD_EXPLICIT"
+      }
     ]
   }
 }

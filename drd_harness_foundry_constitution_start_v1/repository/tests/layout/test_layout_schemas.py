@@ -48,3 +48,11 @@ def test_information_completeness_schema_allows_horizontal_scroll_exception():
     schema = load_schema("information_completeness_rule.schema.json")
 
     assert "horizontal_scroll_exception" in schema["properties"]
+
+
+def test_figma_metadata_schema_requires_page_arrangement_order():
+    schema = load_schema("figma_reconstruction_metadata.schema.json")
+
+    assert "page_arrangement_order" in schema["required"]
+    order_props = schema["properties"]["page_arrangement_order"]["items"]["properties"]
+    assert {"module_id", "function_group_id", "figma_frame_order_index", "derivation_origin"} <= set(order_props)

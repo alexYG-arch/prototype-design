@@ -1,9 +1,11 @@
 from pathlib import Path
 
 from drd_harness.orchestrator.program_driver import (
+    START_PACKAGE_ROOT,
     build_run_receipt,
     build_status_payload,
     plan_run,
+    validate_external_prd_output_scope,
 )
 
 
@@ -86,6 +88,13 @@ def test_plan_run_stops_when_output_dir_is_not_current_capsule_outputs(tmp_path:
     assert payload["status"] == "STOPPED"
     assert payload["exit_code"] == 1
     assert "RUN-CHECK-OUTPUT-SCOPE" in {finding["code"] for finding in payload["findings"]}
+
+
+def test_external_prd_output_scope_accepts_package_current_capsule_run_dir():
+    work_dir = START_PACKAGE_ROOT / "current_capsule" / "outputs" / "unit-scope-run"
+    output_dir = work_dir / "drd"
+
+    assert validate_external_prd_output_scope(work_dir, output_dir) == []
 
 
 def test_plan_run_binds_section_refs_to_content_hashes(tmp_path: Path):

@@ -1,0 +1,49 @@
+{
+  "workpack_id": "P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "candidate_id": "P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "phase": "P4",
+  "lane": "POST_RELEASE_HARNESS_REPAIR",
+  "status": "CANDIDATE",
+  "candidate_directory": "build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "intent": "Repair DRD harness rules for external PRD to DRD conversion while preserving constitution -> execution package -> harness traceability.",
+  "generated_outputs": [
+    "WORKPACK_EXECUTION_RESULT.json",
+    "RF_REVIEW.json",
+    "SCOPE_REPORT.json",
+    "VALIDATION_EVIDENCE.json",
+    "CANDIDATE_MANIFEST.json",
+    "PART_SELF_CHECK.md",
+    "HANDOFF.md"
+  ],
+  "approval_state": "CANDIDATE",
+  "seal_state": "NOT_SEALED",
+  "release_lock_state": "NOT_CREATED",
+  "release_lock_created": false,
+  "package_published": false,
+  "external_prd_fixture_embedded": false,
+  "allowed_write_paths": [
+    "ROOT.sha256",
+    "START_PACKAGE_MANIFEST.json",
+    "build_program/program/PROGRAM_MANIFEST.json",
+    "build_program/program/PROGRAM_STATE.json",
+    "constitution/**",
+    "control/CLAUSE_INVENTORY.json",
+    "control/CONSTITUTION_LOCK.json",
+    "control/DECISION_CATALOG.json",
+    "control/locks/P2_BUILD_LOCK.json",
+    "build_program/phases/P2/candidates/P2-BUILD-READINESS/BUILD_LOCK_INPUT_MATRIX.json",
+    "build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES/**",
+    "repository/schemas/**",
+    "repository/src/**",
+    "repository/fixtures/p2/**",
+    "repository/fixtures/p3/**",
+    "repository/tests/**"
+  ],
+  "forbidden_write_paths": [
+    "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
+    "build_program/phases/P4/candidates/P4-RELEASE-READINESS/**",
+    "current_capsule/outputs/** as execution package source evidence",
+    "external PRD content inside repository fixtures"
+  ],
+  "next_action": "Human review can approve or reject this repair candidate. No lock, release, commit, or push is implied by this candidate."
+}

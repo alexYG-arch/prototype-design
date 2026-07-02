@@ -179,8 +179,8 @@
     },
     {
       "path": "CODEX_START_PROMPT.md",
-      "sha256": "143b75d6162b1690abe51c46ce0bb1f23eda3e92dfc8ce86edb00df80af7532e",
-      "size_bytes": 1207
+      "sha256": "edb9efea7e377fc2b457ed8d378f642f9c5518ed4f96f65ea4ba1c2dbcd6806a",
+      "size_bytes": 2251
     },
     {
       "path": "PACKAGE_SCOPE.md",
@@ -194,8 +194,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "08ebf0a27018b1665126e7f96f92e5d9a7af7acc5476cbd16fa631f6b00efe95",
-      "size_bytes": 2285
+      "sha256": "3409c554bd2a1641697dca5c46ca447dffb05aae0a77455d5b7abafd727dcef3",
+      "size_bytes": 5441
     },
     {
       "path": "build_program/phases/P1/P1_SPEC_SEED.md",
@@ -209,8 +209,8 @@
     },
     {
       "path": "build_program/phases/P1/PHASE_MANIFEST.json",
-      "sha256": "b31a8aeccb695a5a75d81868e92fe159593b65111eb10bbc681461faae512ec9",
-      "size_bytes": 533
+      "sha256": "cbd6e60c3a1b82649aee3fcbfacd7dc52d73d78c5dfd94a6ec22d7a073951fbb",
+      "size_bytes": 535
     },
     {
       "path": "build_program/phases/P1/workpacks/P1-SPEC-00.json",
@@ -224,8 +224,8 @@
     },
     {
       "path": "build_program/phases/P2/PHASE_MANIFEST.json",
-      "sha256": "0ae4ee8e319d8f4223b92b3aa3c20cb779a1a2f43a8e3f6bfcdf0e5d1294e12a",
-      "size_bytes": 444
+      "sha256": "f2cb6dbcbc71f0ea497a4dfb82665289f696f502a8d7583efaa317e671dde725",
+      "size_bytes": 431
     },
     {
       "path": "build_program/phases/P2/VERTICAL_SLICE_SCOPE.md",
@@ -244,8 +244,8 @@
     },
     {
       "path": "build_program/phases/P3/PHASE_MANIFEST.json",
-      "sha256": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
-      "size_bytes": 675
+      "sha256": "a80895e57bcd919bc384cd21fc73a04f829459b1ec935460435cd817af32b77f",
+      "size_bytes": 662
     },
     {
       "path": "build_program/phases/P4/PHASE.md",
@@ -254,8 +254,8 @@
     },
     {
       "path": "build_program/phases/P4/PHASE_MANIFEST.json",
-      "sha256": "5aa6b6f016f3d98bfe949a9ba0650017f12b5203e57f30072c27ff95acde90b5",
-      "size_bytes": 482
+      "sha256": "6263a26906ce4af464dfbb1b3062ac27c08f6df3d9e31f035d80d2c7fe41df3b",
+      "size_bytes": 469
     },
     {
       "path": "build_program/phases/P4/RELEASE_SCOPE.md",
@@ -274,13 +274,13 @@
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
-      "sha256": "c53643af8bf6c8d8fd5db4692d21619f637216275d6f5c40c3130ca74b4c2526",
-      "size_bytes": 1041
+      "sha256": "6e663597cc9e0265d835580d8d60a31cd58be345f1e3df9d5b3ea69947e3c878",
+      "size_bytes": 1761
     },
     {
       "path": "build_program/program/PROGRAM_STATE.json",
-      "sha256": "083b34a07ebe854cd1f79fd53e2947d906c4404a17ee7f2d23363ea5cb36a288",
-      "size_bytes": 477
+      "sha256": "c2e12f25fcca0fc9319b72a7b6d3eeeadd02be4c3f75b29e72b7baa1fa32e20a",
+      "size_bytes": 4341
     },
     {
       "path": "build_program/program/run_program.py",
@@ -294,8 +294,8 @@
     },
     {
       "path": "constitution/DRD_HARNESS_CHARTER.md",
-      "sha256": "934e859bbb2fb7520b81a3533b0f7cd1d4942658dc1ec0a3f7baa9277f272d48",
-      "size_bytes": 4046
+      "sha256": "d034ee7614529502a9b214834de3d2f5e807eeb2206c896032d5fb5cc702693f",
+      "size_bytes": 5259
     },
     {
       "path": "constitution/ENGINEERING_DIRECTORY_RULES.md",
@@ -304,8 +304,8 @@
     },
     {
       "path": "constitution/FIGMA_COMPATIBILITY_POLICY.md",
-      "sha256": "637d8155f7760e35b69720d4f475e0a5bfcc3becca111dba64ce78475e8cac3e",
-      "size_bytes": 721
+      "sha256": "f6a558832eef04f103f6750133ef345615c639ad3d4020c1da6f6ded727e62a7",
+      "size_bytes": 1181
     },
     {
       "path": "constitution/GLOSSARY.md",
@@ -329,13 +329,13 @@
     },
     {
       "path": "constitution/OUTPUT_FORMAT_POLICY.md",
-      "sha256": "2c12ba7cb3ee7a1ebb439d4a19b9751cc4b305de1152e3ea458d91633cd70096",
-      "size_bytes": 752
+      "sha256": "df8dd7f188825e890d53644830066bf47b970fbecee91182b5aa8208ccd96b9d",
+      "size_bytes": 1228
     },
     {
       "path": "constitution/PRD_ELEMENT_ADOPTION_POLICY.md",
-      "sha256": "a44315069483b7fb414064a6b491b103e23a0a5ca35542e82bce883338c8a288",
-      "size_bytes": 957
+      "sha256": "3cd3f6ed0b2caa769031a7f866fd66cd163ec21aca4fe10857173f259f5ea83e",
+      "size_bytes": 1957
     },
     {
       "path": "constitution/REASONING_DOCTRINE.md",
@@ -374,18 +374,18 @@
     },
     {
       "path": "control/CLAUSE_INVENTORY.json",
-      "sha256": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8",
-      "size_bytes": 4034
+      "sha256": "20b78875ebd791356131ad6cdf39f5b13eb992301161269dd9bd946a081f6d4f",
+      "size_bytes": 4654
     },
     {
       "path": "control/CONSTITUTION_LOCK.json",
-      "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779",
-      "size_bytes": 3743
+      "sha256": "7c6a04b6c18d2b3bda35725edb9d687deec6efce6a215dc8df302e485b4e5e62",
+      "size_bytes": 3746
     },
     {
       "path": "control/DECISION_CATALOG.json",
-      "sha256": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb",
-      "size_bytes": 1496
+      "sha256": "d0594a20e8ab1766eceafdf54d61b97318f678120d58d92f2f5f58da4ffa18d9",
+      "size_bytes": 2240
     },
     {
       "path": "control/ERROR_CODE_CATALOG.json",
@@ -429,23 +429,23 @@
     },
     {
       "path": "current_capsule/AGENTS.md",
-      "sha256": "d2f5fa9411b186d1a3fdf6c21735334e9d72d6ad8f1217086bc36fada2bfc3ad",
-      "size_bytes": 371
+      "sha256": "6dad6928545d674641ae2206d7a4e9c4400eb4120ba80d6beb127cf21b069037",
+      "size_bytes": 676
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "143b75d6162b1690abe51c46ce0bb1f23eda3e92dfc8ce86edb00df80af7532e",
-      "size_bytes": 1207
+      "sha256": "9830408b967382569e4ee69cb0280962805b1a0d8952ed011f1b6bdfe3d92573",
+      "size_bytes": 2994
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "88fe4af2b0df5efc92702b62b77c0f962823816ed749236c33da992ee58372e8",
-      "size_bytes": 1406
+      "sha256": "6206ca5e40258e1aa8095c1fac6466bbccc1dd764314b1554d0aef639b77b417",
+      "size_bytes": 9993
     },
     {
       "path": "current_capsule/context_manifest.json",
-      "sha256": "4d9e7e585b1ef3f6084a0913de8e4f709e1b81e2585cfee0362877f23838e619",
-      "size_bytes": 4288
+      "sha256": "beb90c11b083d76ff117cd554b7a53df91b6b0f4582e95a429613b2e600b7630",
+      "size_bytes": 12289
     },
     {
       "path": "current_capsule/output_schema.json",
@@ -474,8 +474,8 @@
     },
     {
       "path": "repository/README.md",
-      "sha256": "cfea0b08a823ff5597ee05523d8022dcee5c2513c4fe78db5cc4c4709aeb4b3d",
-      "size_bytes": 151
+      "sha256": "d61c0ee1f8076695fe92b3a2154f90f9ae6afaffe3cfbd2d2f77999dc0b948b9",
+      "size_bytes": 1042
     },
     {
       "path": "repository/contracts/README.md",
@@ -494,8 +494,8 @@
     },
     {
       "path": "repository/pyproject.toml",
-      "sha256": "3f91a8ddcb40c9e0caf657380b5a2472fe0143c632a2cf5e9bbeb68eb763145b",
-      "size_bytes": 255
+      "sha256": "69f521539c078e896bad8186d7187bb87feeec97022177c102ca03d37464cdc0",
+      "size_bytes": 316
     },
     {
       "path": "repository/rules/README.md",
@@ -574,8 +574,8 @@
     },
     {
       "path": "tooling/preflight_current_workpack.py",
-      "sha256": "373d4b81a08b6d205f902f78ed072b50e475b54e23b786ff18b2bf564d5c3f09",
-      "size_bytes": 865
+      "sha256": "3c24ce5ad95146239524e7dd21a620c37de8fab07efea6f480fc48c533cf5168",
+      "size_bytes": 922
     },
     {
       "path": "tooling/run_codex_current.sh",
@@ -594,8 +594,8 @@
     },
     {
       "path": "tooling/validate_program.py",
-      "sha256": "262b88a63e627c8d8c31f0b1e454d32b2f4d4302a747eddad0dd7192fbd1d9cd",
-      "size_bytes": 835
+      "sha256": "7af697c088b5fde0bcbf019f41e6ff70506a9382ec8a3ce75e8a5c95b006f2e8",
+      "size_bytes": 4716
     },
     {
       "path": "tooling/validate_skills.py",
@@ -604,12 +604,12 @@
     },
     {
       "path": "tooling/verify_start_package.py",
-      "sha256": "6ed1bcc6ecda28080c8b6d90719642c1099603bf32b7d13a8a9e3b831dc1f4d0",
-      "size_bytes": 1271
+      "sha256": "26efbe31ccbafbde366f5ee49ab03cc80ce4c6fc199ed159f0b69df1984957d2",
+      "size_bytes": 7550
     }
   ],
   "package_id": "DRD-HARNESS-FOUNDRY-CONSTITUTION-START-001",
-  "root_sha256": "4b6a8b215cbb51e8aa6d76330807034f2bfb75408c0e0740cd50041e6662caa3",
+  "root_sha256": "ff9053f5d98c35ac415bbbf12e8676626f848d351301b869aa01e74dacf7d073",
   "status": "SEALED",
   "target": "DRD_HARNESS_RELEASE_LOCK",
   "version": "1.0.0"

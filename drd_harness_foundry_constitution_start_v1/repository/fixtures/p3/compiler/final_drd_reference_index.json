@@ -121,7 +121,7 @@
       "compiled_section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
       "lock_ref": "control/locks/P3_SPEC_LOCK.json",
       "reference_id": "REF-DRD-04-SEC-P3-NATURAL-LANGUAGE-LAYOUT",
-      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+      "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
       "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
       "source_snapshot_identity": {
         "snapshot_hash": "512dfa6992cf7141da76d83a2b3d96c98e30ac2d697a1ada227320c9650c65b6",
@@ -157,7 +157,7 @@
     "approved source snapshot identity"
   ],
   "upstream_hashes": {
-    "reference_index_hash": "ddd9bb416f156f628393050d2a3fab4061a04cf81bef0a4c23e9aee2d90ec9f5"
+    "reference_index_hash": "ae27c1c8a29029e0d8cebcde47dc71b70ac2052220e2d0ddccbfc4e3f543eddf"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

@@ -99,6 +99,18 @@ P3_ELEMENTS_ARTIFACTS = {
 
 ADOPTED_OUTCOMES = {AdoptionOutcome.ADOPT_AS_IS, AdoptionOutcome.ADOPT_NORMALIZED}
 NON_CANONICAL_GAP_STATUSES = {"OPEN", "RESOLVED_REJECTED", "SUPERSEDED"}
+RENDERABLE_DERIVATION_ORIGINS = {
+    "PRD_EXPLICIT",
+    "DEDUCTIVE_REQUIRED",
+    "HUMAN_APPROVED_INFERENCE",
+    "REVIEW_REQUIRED_INFERENCE",
+}
+RENDERABLE_ORDER_FIELDS = (
+    "module_order_index",
+    "page_order_index",
+    "variant_order_index",
+    "figma_frame_order_index",
+)
 
 REQUIRED_SEMANTIC_SOURCE_MODEL = {
     "primary_semantics": "natural_language_source_and_approved_closure",
@@ -577,6 +589,8 @@ def _validate_renderable_page_variants(
     seen_variant_ids: Set[str] = set()
     base_pages: Set[str] = set()
     rendered_states: Set[str] = set()
+    seen_frame_order_indexes: Dict[int, str] = {}
+    seen_variant_order_slots: Dict[tuple, str] = {}
     expected_parent_page_by_state = _expected_parent_page_by_state(inventory, closure_interaction_nodes)
 
     for record in _payload_records(renderable_page_variants):
@@ -584,6 +598,9 @@ def _validate_renderable_page_variants(
         parent_page_id = str(record.get("parent_page_id", ""))
         variant_kind = str(record.get("variant_kind", ""))
         source_state_id = _optional_string(record.get("source_state_id"))
+        module_id = str(record.get("module_id", ""))
+        function_group_id = str(record.get("function_group_id", ""))
+        derivation_origin = str(record.get("derivation_origin", ""))
         subject_id = variant_id or "p3.elements.renderable_page_variants"
 
         if not variant_id:
@@ -603,6 +620,53 @@ def _validate_renderable_page_variants(
             findings.append(AdoptionFinding("REASON021", variant_id, "renderable page variants cannot add product capability"))
         if not str(record.get("state_condition", "")).strip():
             findings.append(AdoptionFinding("REASON021", variant_id, "state_condition is required"))
+        if not module_id:
+            findings.append(AdoptionFinding("REASON021", variant_id, "module_id is required for module/function page ordering"))
+        if not function_group_id:
+            findings.append(AdoptionFinding("REASON021", variant_id, "function_group_id is required for module/function page ordering"))
+        for order_field in RENDERABLE_ORDER_FIELDS:
+            value = record.get(order_field)
+            if not isinstance(value, int) or value < 0:
+                findings.append(AdoptionFinding("REASON021", variant_id, f"{order_field} must be a non-negative integer"))
+        frame_order = record.get("figma_frame_order_index")
+        if isinstance(frame_order, int) and frame_order >= 0:
+            if frame_order in seen_frame_order_indexes:
+                findings.append(
+                    AdoptionFinding(
+                        "REASON021",
+                        variant_id,
+                        "figma_frame_order_index must be unique; duplicates " + seen_frame_order_indexes[frame_order],
+                    )
+                )
+            seen_frame_order_indexes.setdefault(frame_order, variant_id)
+        variant_order_slot = (
+            record.get("module_id"),
+            record.get("function_group_id"),
+            record.get("page_order_index"),
+            record.get("variant_order_index"),
+        )
+        if all(value not in (None, "") for value in variant_order_slot):
+            if variant_order_slot in seen_variant_order_slots:
+                findings.append(
+                    AdoptionFinding(
+                        "REASON021",
+                        variant_id,
+                        "variant order slot must be unique within module/function/page; duplicates "
+                        + seen_variant_order_slots[variant_order_slot],
+                    )
+                )
+            seen_variant_order_slots.setdefault(variant_order_slot, variant_id)
+        if derivation_origin not in RENDERABLE_DERIVATION_ORIGINS:
+            findings.append(AdoptionFinding("REASON021", variant_id, "derivation_origin must declare explicit or inferred origin"))
+        if not _text_values(record.get("derivation_basis_refs")):
+            findings.append(AdoptionFinding("REASON021", variant_id, "derivation_basis_refs must bind source or inference basis"))
+        requires_review = record.get("requires_human_review")
+        if not isinstance(requires_review, bool):
+            findings.append(AdoptionFinding("REASON021", variant_id, "requires_human_review must be boolean"))
+        elif derivation_origin == "REVIEW_REQUIRED_INFERENCE" and requires_review is not True:
+            findings.append(AdoptionFinding("REASON021", variant_id, "review-required inference must require human review"))
+        elif derivation_origin in {"PRD_EXPLICIT", "DEDUCTIVE_REQUIRED", "HUMAN_APPROVED_INFERENCE"} and requires_review is not False:
+            findings.append(AdoptionFinding("REASON021", variant_id, "approved or explicit variant must not remain human-review required"))
 
         unresolved_refs = sorted(
             set(_text_values(record.get("shared_element_refs")) + _text_values(record.get("variant_element_refs")))

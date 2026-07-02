@@ -1,12 +1,8 @@
 {
-  "lock_id": "P2-BUILD-LOCK-001",
-  "phase": "P2",
-  "git_commit": "043611842c5c5a00616cc822098ac5295389e02b",
-  "spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
   "files": [
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
-      "sha256": "1ed4dec63093a86377185cd0ac31da6d8007651d913a0f0ca6206348ff7674af"
+      "sha256": "0b380426bf21e6a54c344ecc1398b69f9603d1b758637bc23905e54ec0a4ca10"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/async_behavior.json",
@@ -22,15 +18,15 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
-      "sha256": "06b266dafb4ddb26fc2ed7e520bfea01e1d2b18b590c6bde170058f1b6c4ad0d"
+      "sha256": "75f4c566d97f0f233c816d755e414d2548436368f790a2f4912b9938985f2e2a"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
-      "sha256": "92f70cced25235b4fb01d51ad175f942c3e7a8bb4777e1e099c0d16612a9a58f"
+      "sha256": "2e5b1f5999dee928a14d9abab10a9643804c6dc3e182d60e2782ded85e3d07c5"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
-      "sha256": "a30e56fd087e17e3eec9e1723da41b7c5a8a864328148bb99e759cdf217be768"
+      "sha256": "79dbea9051dce6594ccb502b482fd6592310fff10631250e9964f49d27c38524"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
@@ -46,23 +42,23 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
-      "sha256": "477f60ae03659b89eb1beb4431c81fefef98d466a303b8c0d3554eb18a115bde"
+      "sha256": "22a0070e1e13a7def9a5aba2b7c79dcb3859008d578cab85c38058b43766067b"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
-      "sha256": "87dcb5ec018b5bd58a889756c93361e221e61897cb06bde249c5533b03f0567c"
+      "sha256": "94a3f8f171618daa231dffd3f1a8406794e4f1ffc95264f5fa7b6e1fb1e27b3f"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
-      "sha256": "9b70065d19a68ac7760ddbb29a908c1c18f9a9b4c4e5754eff8cc77424c7fd67"
+      "sha256": "10874a1aaf720c22d87987c52dc536efe108eda1188c80e6a1334929f645c9e4"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
-      "sha256": "550e521737e79040fea4609c4818db41c35ec51e067028403a263588b0c53d09"
+      "sha256": "669526bb6a1b1361670311bc8ff397993dddb790996d3c40a587388bca049d2e"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-      "sha256": "968b705ec223c57a1850b5556275d8e172013e3606059e35c0f6272b5e2534bb"
+      "sha256": "1003186e1640e4bdd7c77e031ce7809b94ddcc75d02408d13596d38a49c53595"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
@@ -82,7 +78,7 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
-      "sha256": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae"
+      "sha256": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
@@ -114,7 +110,7 @@
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+      "sha256": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed"
     },
     {
       "path": "repository/src/drd_harness/stages/source_snapshot.py",
@@ -122,7 +118,7 @@
     },
     {
       "path": "repository/src/drd_harness/validators/compiler_conservation.py",
-      "sha256": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b"
+      "sha256": "af7fd27901d9d6517c84ba8d10e5f833d4c710d92374fe48af2a641ac4a72c99"
     },
     {
       "path": "repository/src/drd_harness/validators/interaction_closure.py",
@@ -130,7 +126,7 @@
     },
     {
       "path": "repository/src/drd_harness/validators/layout_completeness.py",
-      "sha256": "395e8ce8c13b08e5bbf6d7c664c077f97fdbdaa24f82442a4db2aa48df74f768"
+      "sha256": "c315810d50d97f9c9729a4331c2c7ac6b6b95b38f62d5873e9cb6f1a79b88bfc"
     },
     {
       "path": "repository/src/drd_harness/validators/prd_adoption.py",
@@ -154,7 +150,7 @@
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_final_drd.py",
-      "sha256": "fdbd2b24d14d23a3760bcb3df7e35a545dc3624ae4f55dce10b1357e53a46d12"
+      "sha256": "25c32c14d7b19d21c3c9d6afbe9b2df7576179e8cf23a61e5fd16745ad243d03"
     },
     {
       "path": "repository/tests/p2/test_tiny_brief_interaction.py",
@@ -181,6 +177,17 @@
       "sha256": "44e5141713cb3c4ef80356e2e107d89d5c4a50d77ee6d1e59458a3e34ca1222e"
     }
   ],
+  "git_commit": "043611842c5c5a00616cc822098ac5295389e02b",
+  "invalidates_on": [
+    "P2_SPEC_LOCK changes",
+    "Any P2 fixture artifact hash changes",
+    "Any P2 test file hash changes",
+    "Final review subject hash changes"
+  ],
+  "lock_id": "P2-BUILD-LOCK-001",
+  "phase": "P2",
+  "root_sha256": "b5338f9ed4139fd6b84aadbb4a1f97a711301735a4a429946f85d2f9255ea5b3",
+  "spec_lock_hash": "0704164683e6c2253c2b34e05d50ee9cb59cd330837dab3f6dae020def852dcd",
   "test_results": [
     {
       "command": "PYTHONPATH=repository/src python3 -m pytest repository/tests/p2/test_tiny_brief_end_to_end.py -q",
@@ -200,12 +207,5 @@
   ],
   "validator_identity_hashes": [
     "59123623c11578535024ef3ee784635afb57a9b9c8ccfe683f3321821c7a39b3"
-  ],
-  "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d",
-  "invalidates_on": [
-    "P2_SPEC_LOCK changes",
-    "Any P2 fixture artifact hash changes",
-    "Any P2 test file hash changes",
-    "Final review subject hash changes"
   ]
 }

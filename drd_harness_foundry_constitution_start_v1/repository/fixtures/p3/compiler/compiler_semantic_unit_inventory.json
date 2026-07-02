@@ -18,8 +18,8 @@
     "repository/fixtures/p3/layout/state_placement_index.json"
   ],
   "inventory": {
-    "inventory_id": "p3.compiler.semantic_unit_inventory.001",
-    "inventory_version": "1.0",
+    "inventory_id": "p3.compiler.semantic_unit_inventory",
+    "inventory_version": "1.0.0",
     "semantic_units": [
       {
         "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
@@ -97,13 +97,13 @@
         "parent_unit_id": "p3.compiler.unit.operations-console-surface",
         "relationship_kind": "TRACE",
         "semantic_unit_id": "p3.compiler.unit.layout-authority",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "source_section_id": "p3-layout-operations-console",
         "source_span_ref": "layout.layout_text",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "b3c7021da5dc82057bc15b79e770dbc318cf05e56c8bacdf80c753e3be581213",
+        "unit_hash": "c0716542a3aa763d7fd653867eaa22e4ed0bdf1941f1aecefbf2130138bdb01f",
         "unit_type": "ARRANGEMENT_RULE"
       },
       {
@@ -114,19 +114,19 @@
         "parent_unit_id": "p3.compiler.unit.layout-authority",
         "relationship_kind": "TRACE",
         "semantic_unit_id": "p3.compiler.unit.layout-state-copy",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "source_section_id": "p3-layout-state-placement-index",
         "source_span_ref": "layout.layout_text:error-state-placement",
         "stage_id": "DRD-04",
         "unit_class": "Copy object",
-        "unit_hash": "fdcd7d246daca986baf88dda9808e755b21dffaf169e6e8aca53b8ccca7a2376",
+        "unit_hash": "fb25fbdf202b679ce771555ae6c7d9c63d9dd1f5d249268c12f9ea4e4698a5f1",
         "unit_type": "COPY_STRING"
       }
     ],
-    "source_artifact_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe",
-    "source_artifact_ref": "p3.compiler.input_bundle",
-    "validator_result_ref": "P3-IMPL-COMPILER-CONSERVATION"
+    "source_artifact_hash": "533d6a3aefddc07f4a68184cef23ca904228b1a791a4905e33265c2c4420500e",
+    "source_artifact_ref": "repository/fixtures/p3/compiler/compiler_input_bundle.json#bundle.semantic_content_hash",
+    "validator_result_ref": "repository/fixtures/p3/compiler/compiler_conservation_report.json"
   },
   "path": "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
   "promotion_state": "CANDIDATE",
@@ -155,7 +155,7 @@
     "compiler_input_bundle.semantic_units"
   ],
   "upstream_hashes": {
-    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe"
+    "semantic_content_hash": "533d6a3aefddc07f4a68184cef23ca904228b1a791a4905e33265c2c4420500e"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

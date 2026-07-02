@@ -1,0 +1,107 @@
+{
+  "review_id": "P4-POST-RELEASE-HARNESS-DRD-RULES-RF-001",
+  "protocol": "R/F loop",
+  "intent_boundary": "External PRD to DRD harness rule repair only; no new product capability and no release or lock stage for external PRD runs.",
+  "findings": [
+    {
+      "id": "RF-001",
+      "category": "verifiability",
+      "evidence": [
+        "repository/src/drd_harness/compiler/final_drd.py",
+        "repository/src/drd_harness/validators/compiler_conservation.py"
+      ],
+      "why_it_breaks": "Final DRD could retain process markers such as candidate wording, making reader-facing final output indistinguishable from review evidence.",
+      "inside_intent": true,
+      "fix_direction": "Add final reader-structure validation for strict staged compiler output and constitution/output-format clauses."
+    },
+    {
+      "id": "RF-002",
+      "category": "verifiability",
+      "evidence": [
+        "repository/src/drd_harness/compiler/external_prd.py",
+        "constitution/PRD_ELEMENT_ADOPTION_POLICY.md"
+      ],
+      "why_it_breaks": "Important visible PRD page details can be collapsed into summaries without a separate inventory, so omissions are hard to detect.",
+      "inside_intent": true,
+      "fix_direction": "Create source-bound page detail inventory and fail page detail conservation when required source details are absent from FINAL_DRD.md."
+    },
+    {
+      "id": "RF-003",
+      "category": "implementability",
+      "evidence": [
+        "repository/schemas/layout/figma_reconstruction_metadata.schema.json",
+        "repository/src/drd_harness/validators/layout_completeness.py"
+      ],
+      "why_it_breaks": "Figma reconstruction had no enforceable module/function/page/state order, so output frame ordering could drift by filesystem or author habit.",
+      "inside_intent": true,
+      "fix_direction": "Require page_arrangement_order and validate module -> function_group -> base page -> state variant -> frame order."
+    },
+    {
+      "id": "RF-004",
+      "category": "maintainability",
+      "evidence": [
+        "repository/schemas/reasoning/renderable_page_variant.schema.json",
+        "repository/src/drd_harness/validators/p3_page_elements.py"
+      ],
+      "why_it_breaks": "Generated or inferred pages were not distinguishable from PRD-explicit pages, weakening review routing and downstream implementation trust.",
+      "inside_intent": true,
+      "fix_direction": "Require derivation_origin, derivation_basis_refs, human-review flag, and deterministic variant/frame order fields."
+    },
+    {
+      "id": "RF-005",
+      "category": "implementability",
+      "evidence": [
+        "repository/src/drd_harness/orchestrator/program_driver.py",
+        "current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715/generate_drd_result.json"
+      ],
+      "why_it_breaks": "Installed harness rejected a valid package-root current_capsule output path, preventing real external PRD runs even when tests with tmp work_dir passed.",
+      "inside_intent": true,
+      "fix_direction": "Allow output scope under both work_dir/current_capsule/outputs and the start-package current_capsule/outputs root while still requiring output_dir to remain inside work_dir."
+    },
+    {
+      "id": "RF-006",
+      "category": "verifiability",
+      "evidence": [
+        "build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES/CANDIDATE_MANIFEST.json",
+        "ROOT.sha256",
+        "START_PACKAGE_MANIFEST.json",
+        "build_program/program/PROGRAM_STATE.json",
+        "build_program/program/PROGRAM_MANIFEST.json"
+      ],
+      "why_it_breaks": "The candidate allowed_write_paths omitted package and program rebinding files that changed to keep the complete package and P2 build-lock references verifiable.",
+      "inside_intent": true,
+      "fix_direction": "Add package root/manifest and program state/manifest rebinding writes to candidate scope evidence."
+    },
+    {
+      "id": "RF-007",
+      "category": "verifiability",
+      "evidence": [
+        "build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES/VALIDATION_EVIDENCE.json",
+        "current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715/resume_dry_result.json"
+      ],
+      "why_it_breaks": "Resume dry-run returns exit_code=1 when it correctly stops at BLOCK_HUMAN_GATE; recording the combined check as a single successful command exit code hides the expected gate behavior.",
+      "inside_intent": true,
+      "fix_direction": "Record staged-run and resume dry-run observed exit codes separately and mark the resume STOPPED result as an expected gate."
+    },
+    {
+      "id": "RF-008",
+      "category": "maintainability",
+      "evidence": [
+        "build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES/PART_SELF_CHECK.md"
+      ],
+      "why_it_breaks": "The self-check implied a false pre-approved execution order. That weakens the trace because this is a post-release repair candidate that records and validates the repair after implementation.",
+      "inside_intent": true,
+      "fix_direction": "State honestly that this candidate is post-release repair evidence which trace-binds the constitution, repository implementation, tests, package rebinding, and installation."
+    }
+  ],
+  "fix_policy": {
+    "fixed_only_listed_findings": true,
+    "product_capability_added": false,
+    "external_prd_release_or_lock_added": false,
+    "source_prd_embedded_in_execution_package": false
+  },
+  "post_fix_review": {
+    "status": "NO_FINDINGS_FOR_LISTED_REPAIR_SCOPE",
+    "remaining_gate": "Human review is still required before promoting this candidate."
+  }
+}

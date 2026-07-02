@@ -201,6 +201,51 @@ def validate_figma_metadata(
                 message="Figma metadata introduces refs absent from layout authority: " + ", ".join(sorted(drift_refs)),
             )
         )
+    findings.extend(_validate_page_arrangement_order(metadata))
+    return findings
+
+
+def _validate_page_arrangement_order(metadata: FigmaReconstructionMetadata) -> List[LayoutFinding]:
+    findings: List[LayoutFinding] = []
+    rows = list(metadata.page_arrangement_order or [])
+    if not rows:
+        return findings
+    frame_ids = set(metadata.frame_hierarchy)
+    seen_frame_order: Set[int] = set()
+    previous_sort_key = None
+    for position, row in enumerate(rows):
+        subject = str(row.get("variant_page_id") or row.get("frame_id") or f"page_arrangement_order[{position}]")
+        frame_id = str(row.get("frame_id") or "")
+        if frame_id not in frame_ids:
+            findings.append(LayoutFinding("PL017", subject, "page arrangement frame_id must exist in frame_hierarchy"))
+        order_value = row.get("figma_frame_order_index")
+        if not isinstance(order_value, int) or order_value < 0:
+            findings.append(LayoutFinding("PL017", subject, "figma_frame_order_index must be a non-negative integer"))
+            continue
+        if order_value in seen_frame_order:
+            findings.append(LayoutFinding("PL017", subject, "figma_frame_order_index must be unique"))
+        seen_frame_order.add(order_value)
+        sort_key = (
+            str(row.get("module_id") or ""),
+            str(row.get("function_group_id") or ""),
+            row.get("page_order_index") if isinstance(row.get("page_order_index"), int) else -1,
+            row.get("variant_order_index") if isinstance(row.get("variant_order_index"), int) else -1,
+            order_value,
+        )
+        if previous_sort_key is not None and sort_key < previous_sort_key:
+            findings.append(LayoutFinding("PL017", subject, "page arrangement must be sorted by module, function, page, variant, and frame order"))
+        previous_sort_key = sort_key
+        if row.get("derivation_origin") not in {
+            "PRD_EXPLICIT",
+            "DEDUCTIVE_REQUIRED",
+            "HUMAN_APPROVED_INFERENCE",
+            "REVIEW_REQUIRED_INFERENCE",
+        }:
+            findings.append(LayoutFinding("PL017", subject, "page arrangement must expose derivation_origin"))
+    expected_frame_order = [metadata.frame_hierarchy[index] for index in sorted(seen_frame_order) if index < len(metadata.frame_hierarchy)]
+    arranged_frame_order = [str(row.get("frame_id")) for row in sorted(rows, key=lambda row: row.get("figma_frame_order_index", -1))]
+    if arranged_frame_order and arranged_frame_order != expected_frame_order:
+        findings.append(LayoutFinding("PL017", metadata.figma_metadata_id, "page arrangement frame order must match frame_hierarchy order"))
     return findings
 
 
@@ -452,6 +497,11 @@ def figma_reconstruction_metadata_from_mapping(record: Mapping[str, object]) -> 
         constraints=_string_list(record["constraints"]),
         non_goals=_string_list(record["non_goals"]),
         trace_refs=_string_list(record["trace_refs"]),
+        page_arrangement_order=[
+            dict(item)
+            for item in record.get("page_arrangement_order", [])
+            if isinstance(item, Mapping)
+        ],
     )
 
 

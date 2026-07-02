@@ -43,6 +43,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert all("build_program/" not in path and "control/locks/" not in path for path in payload["written_paths"])
     assert set(written_paths) == {
         "external_prd_section_index.json",
+        "external_prd_page_detail_inventory.json",
         "external_prd_review_decision.json",
         "external_prd_source_snapshot_binding.json",
         "external_prd_validation_report.json",
@@ -64,6 +65,8 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     review = json.loads(written_paths["external_prd_review_decision.json"].read_text(encoding="utf-8"))
     source_binding = json.loads(written_paths["external_prd_source_snapshot_binding.json"].read_text(encoding="utf-8"))
     stage_plan = json.loads(written_paths["drd_generation_stage_plan.json"].read_text(encoding="utf-8"))
+    detail_inventory = json.loads(written_paths["external_prd_page_detail_inventory.json"].read_text(encoding="utf-8"))
+    validation_report = json.loads(written_paths["external_prd_validation_report.json"].read_text(encoding="utf-8"))
 
     assert "Primary button starts scan." in final_drd
     assert "Responsive layout must preserve all information." in final_drd
@@ -79,7 +82,17 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert review["requires_human_review_before_product_inference"] is True
     assert source_binding["creates_control_lock"] is False
     assert source_binding["creates_release_lock"] is False
+    assert source_binding["page_detail_inventory_ref"] == str(written_paths["external_prd_page_detail_inventory.json"])
     assert stage_plan["lock_or_release_stage_included"] is False
+    assert stage_plan["page_detail_conservation_policy"]
+    assert payload["page_detail_conservation_status"] == "PASS"
+    assert payload["page_detail_record_count"] == detail_inventory["record_count"]
+    assert validation_report["page_detail_conservation_status"] == "PASS"
+    assert {record["detail_kind"] for record in detail_inventory["records"]} >= {
+        "CONTROL_OR_INTERACTION_DETAIL",
+        "STATE_OR_FEEDBACK_COPY",
+        "PAGE_STRUCTURE_DETAIL",
+    }
     assert [row["stage_id"] for row in stage_plan["stage_order"]] == [
         "DRD-00",
         "DRD-01",

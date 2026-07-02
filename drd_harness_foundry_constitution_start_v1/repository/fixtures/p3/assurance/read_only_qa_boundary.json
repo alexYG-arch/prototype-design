@@ -1,34 +1,11 @@
 {
   "artifact_id": "p3.assurance.read_only_qa_boundary",
-  "stage_id": "DRD-06-ASSURANCE",
-  "fixture_id": "p3_assurance",
-  "path": "repository/fixtures/p3/assurance/read_only_qa_boundary.json",
-  "schema_ref": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
-  "schema_payload_key": "boundary",
-  "source_refs": [
-    "p3.compiler.read_only_qa_boundary"
-  ],
-  "upstream_artifact_refs": [
-    "FINAL_DRD.md",
-    "compiler output indexes"
-  ],
-  "upstream_hashes": {
-    "compiler_read_only_qa_boundary": "d2cc0e49d8a45c0b653cec85167b60dc76b4ff8804f629cfc6ed95289e948cb3"
-  },
-  "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py",
-  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
-  "promotion_state": "candidate_only",
-  "invalidation_inputs": [
-    "compiler review decision superseded",
-    "compiler output hash drift",
-    "validator drift",
-    "test evidence drift",
-    "human review decision drift"
-  ],
   "boundary": {
     "drd06_run_id": "p3.compiler.read_only_qa.001",
-    "qa_finding_id": "p3.compiler.qa.no-mutation",
     "finding_type": "READ_ONLY_BOUNDARY_CONFIRMATION",
+    "mutated_artifacts": [],
+    "mutation_claim": "NO_MUTATION",
+    "qa_finding_id": "p3.compiler.qa.no-mutation",
     "read_paths": [
       "repository/fixtures/p3/compiler/FINAL_DRD.md",
       "repository/fixtures/p3/compiler/compiler_input_bundle.json",
@@ -42,8 +19,31 @@
     "written_paths": [
       "READ_ONLY_QA_REPORT.md",
       "qa_finding_index.json"
-    ],
-    "mutated_artifacts": [],
-    "mutation_claim": "NO_MUTATION"
-  }
+    ]
+  },
+  "fixture_id": "p3_assurance",
+  "invalidation_inputs": [
+    "compiler review decision superseded",
+    "compiler output hash drift",
+    "validator drift",
+    "test evidence drift",
+    "human review decision drift"
+  ],
+  "path": "repository/fixtures/p3/assurance/read_only_qa_boundary.json",
+  "promotion_state": "candidate_only",
+  "review_gate": "human review decision binds exact assurance candidate subject hash before P3_BUILD_LOCK",
+  "schema_payload_key": "boundary",
+  "schema_ref": "repository/schemas/compiler/read_only_qa_boundary.schema.json",
+  "source_refs": [
+    "p3.compiler.read_only_qa_boundary"
+  ],
+  "stage_id": "DRD-06-ASSURANCE",
+  "upstream_artifact_refs": [
+    "FINAL_DRD.md",
+    "compiler output indexes"
+  ],
+  "upstream_hashes": {
+    "compiler_read_only_qa_boundary": "b5ec12aea9eb26cf5f9129f46321ff25d35e0d32e405338a3944f6df33f15e4b"
+  },
+  "validator_ref": "repository/src/drd_harness/validators/compiler_conservation.py"
 }

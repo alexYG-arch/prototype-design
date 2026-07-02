@@ -77,6 +77,7 @@ def test_staged_run_materializes_real_stage_boundary_and_human_gate_stop(tmp_pat
     assert drd01_stage["candidate_outputs"] == [
         "DRD-01/PRD_EXPERIENCE_BRIEF.md",
         "DRD-01/experience_fact_index.json",
+        "DRD-01/page_detail_inventory.json",
     ]
     assert drd01_stage["promotion_outputs"] == [
         "DRD-01/APPROVED_SEMANTIC_ARTIFACT.md",
@@ -100,6 +101,7 @@ def test_staged_run_materializes_real_stage_boundary_and_human_gate_stop(tmp_pat
     assert gate["expected_candidate_outputs"] == [
         "DRD-01/PRD_EXPERIENCE_BRIEF.md",
         "DRD-01/experience_fact_index.json",
+        "DRD-01/page_detail_inventory.json",
     ]
     assert gate["post_review_promotion_outputs"] == [
         "DRD-01/APPROVED_SEMANTIC_ARTIFACT.md",
@@ -109,6 +111,15 @@ def test_staged_run_materializes_real_stage_boundary_and_human_gate_stop(tmp_pat
     assert gate["compiler_eligible_artifact_kind"] == "APPROVED_SEMANTIC_ARTIFACT"
     assert gate["product_capability_additions_allowed"] is False
     assert gate["lock_or_release_allowed"] is False
+    assert gate["page_detail_conservation_required"] is True
+    assert gate["page_detail_inventory_output"] == "DRD-01/page_detail_inventory.json"
+    assert gate["derivation_origin_required"] is True
+    assert gate["page_arrangement_required_by_successor_stages"] is True
+
+    prompt = written_paths["codex_prompts/DRD-01_EXPERIENCE_FACT_EXTRACTION_PROMPT.md"].read_text(encoding="utf-8")
+    assert "page_detail_inventory.json" in prompt
+    assert "Do not collapse page detail into feature-only summaries" in prompt
+    assert "PRD_EXPLICIT" in prompt
 
     run_state = json.loads(written_paths["run_state.json"].read_text(encoding="utf-8"))
     assert run_state["original_command"] == "staged-run"

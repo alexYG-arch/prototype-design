@@ -24,10 +24,9 @@
     },
     "P2": {
       "build_lock": {
-        "lock_id": "P2-BUILD-LOCK-001",
         "path": "control/locks/P2_BUILD_LOCK.json",
-        "root_sha256": "fea4cf94a12d073d16803cbe4daa4c5d511fdd5c4cda1ce8800c06cd3ed1567d",
-        "sha256": "b7a85510c2a7b839ca5461341017da9bcaa3ddd031019936b921bf881af29aad"
+        "root_sha256": "b5338f9ed4139fd6b84aadbb4a1f97a711301735a4a429946f85d2f9255ea5b3",
+        "sha256": "3c64693e652cf3fea901c3e1b07c00055906023d49e8e262a190563fad08b66e"
       },
       "spec_lock": {
         "lock_id": "P2-SPEC-LOCK-001",

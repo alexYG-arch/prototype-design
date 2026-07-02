@@ -276,10 +276,12 @@ def validate_external_prd_output_scope(work_dir: Path, output_dir: Path) -> List
     findings = validate_output_scope(work_dir, output_dir)
     if findings:
         return findings
-    allowed_root = (work_dir.resolve() / EXTERNAL_PRD_OUTPUT_ROOT).resolve()
-    try:
-        output_dir.resolve().relative_to(allowed_root)
-    except ValueError:
+    resolved_output = output_dir.resolve()
+    allowed_roots = {
+        (work_dir.resolve() / EXTERNAL_PRD_OUTPUT_ROOT).resolve(),
+        (START_PACKAGE_ROOT / EXTERNAL_PRD_OUTPUT_ROOT).resolve(),
+    }
+    if not any(_is_relative_to(resolved_output, allowed_root) for allowed_root in allowed_roots):
         return [
             DriverFinding(
                 "RUN-CHECK-OUTPUT-SCOPE",
@@ -288,6 +290,14 @@ def validate_external_prd_output_scope(work_dir: Path, output_dir: Path) -> List
             )
         ]
     return []
+
+
+def _is_relative_to(path: Path, root: Path) -> bool:
+    try:
+        path.relative_to(root)
+    except ValueError:
+        return False
+    return True
 
 
 def validate_adapter_semantic_boundary(adapter_result_manifest: Mapping[str, Any]) -> List[DriverFinding]:

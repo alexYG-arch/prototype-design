@@ -51,9 +51,9 @@
     "decision": "APPROVED",
     "decision_path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
     "open_blockers": [],
-    "subject_hash": "adf981ca575f5071238b1bde667fb079be88aa9ece0c90d0773dbd7153a49a38",
+    "subject_hash": "fe0fa90631189f0e97b51af33236a549ef34291544f6e1ef7cf112fc5c9ab5b0",
     "target_path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-    "validation_result_hash": "0a0be3c198907962322f260e22485734f50c8e3f2688d45963129994d7866d4c"
+    "validation_result_hash": "91384d3390235e4f11676e86a4e897a48e68d78f48d5c20a34c816a56858a521"
   },
   "git_status": {
     "head_commit": "3bb13fabe02c397a27f98192caf539b3c64675bb",
@@ -91,15 +91,15 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
-      "sha256": "d030bb9c542941137603e6cd39febec397d6f331a25320fbf6329f38de720ceb"
+      "sha256": "75f4c566d97f0f233c816d755e414d2548436368f790a2f4912b9938985f2e2a"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
-      "sha256": "83dd6d1e3ce3d370affcea586d407e16617b30b83ce9ef73acbb91bba84d0813"
+      "sha256": "2e5b1f5999dee928a14d9abab10a9643804c6dc3e182d60e2782ded85e3d07c5"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
-      "sha256": "bfe605ba0d47b834ac5b5b468382091abd3a1fd426001c5fc54ab13c4c040dd2"
+      "sha256": "79dbea9051dce6594ccb502b482fd6592310fff10631250e9964f49d27c38524"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/containment_hierarchy.json",
@@ -115,23 +115,23 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
-      "sha256": "16f311dc7359e258ab18162b46a7b4d6c8c05533cddd994a1eaee582a72dd488"
+      "sha256": "22a0070e1e13a7def9a5aba2b7c79dcb3859008d578cab85c38058b43766067b"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
-      "sha256": "f73f8731539b33dba16634596bd7de0daed24024a00e748d308b047e4df865eb"
+      "sha256": "94a3f8f171618daa231dffd3f1a8406794e4f1ffc95264f5fa7b6e1fb1e27b3f"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
-      "sha256": "dce0006e8878834c5161945f255a9c8e8ff59c84733be965bce95009b4bad72b"
+      "sha256": "10874a1aaf720c22d87987c52dc536efe108eda1188c80e6a1334929f645c9e4"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
-      "sha256": "eba74b02f5336a5efbe3b32fb3408e582a0e67de54c3e214c3c36af8dbdc368d"
+      "sha256": "669526bb6a1b1361670311bc8ff397993dddb790996d3c40a587388bca049d2e"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-      "sha256": "4e53604b3d4db3e620f0c3deeeb192416c77a05ed1c3f0f3724163e14ae70fdb"
+      "sha256": "1003186e1640e4bdd7c77e031ce7809b94ddcc75d02408d13596d38a49c53595"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/inference_records.json",
@@ -151,7 +151,7 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
-      "sha256": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae"
+      "sha256": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json",
@@ -183,7 +183,7 @@
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe"
+      "sha256": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed"
     },
     {
       "path": "repository/src/drd_harness/stages/source_snapshot.py",
@@ -199,7 +199,7 @@
     },
     {
       "path": "repository/src/drd_harness/validators/layout_completeness.py",
-      "sha256": "395e8ce8c13b08e5bbf6d7c664c077f97fdbdaa24f82442a4db2aa48df74f768"
+      "sha256": "c315810d50d97f9c9729a4331c2c7ac6b6b95b38f62d5873e9cb6f1a79b88bfc"
     },
     {
       "path": "repository/src/drd_harness/validators/prd_adoption.py",
@@ -275,15 +275,15 @@
     },
     {
       "path": "repository/src/drd_harness/validators/layout_completeness.py",
-      "sha256": "395e8ce8c13b08e5bbf6d7c664c077f97fdbdaa24f82442a4db2aa48df74f768"
+      "sha256": "c315810d50d97f9c9729a4331c2c7ac6b6b95b38f62d5873e9cb6f1a79b88bfc"
     },
     {
       "path": "repository/src/drd_harness/validators/compiler_conservation.py",
-      "sha256": "97e9f0a7a7ec763366ac2a420cc7a92d2a703177e9b43704be3bd5dd4017f48b"
+      "sha256": "af7fd27901d9d6517c84ba8d10e5f833d4c710d92374fe48af2a641ac4a72c99"
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "45d2bfec19c408d9a80d033101f1686149523c7eae13ac72b01dfe50afc267ef"
+      "sha256": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed"
     }
   ],
   "phase": "P2",

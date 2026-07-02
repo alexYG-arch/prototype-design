@@ -126,6 +126,24 @@ def test_p3_elements_renderable_page_variant_cannot_add_product_capability():
     assert any(finding.code == "REASON021" and "product capability" in finding.message for finding in findings)
 
 
+def test_p3_elements_renderable_page_variant_requires_derivation_origin():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"][1].pop("derivation_origin")
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(finding.code == "REASON021" and "derivation_origin" in finding.message for finding in findings)
+
+
+def test_p3_elements_renderable_page_variant_requires_unique_figma_order():
+    artifacts = _load_fixture_artifacts()
+    artifacts["renderable_page_variants"]["records"][1]["figma_frame_order_index"] = 0
+
+    findings = validate_page_element_artifacts(**artifacts)
+
+    assert any(finding.code == "REASON021" and "figma_frame_order_index" in finding.message for finding in findings)
+
+
 def test_p3_elements_renderable_surface_id_must_match_variant_page_id():
     artifacts = _load_fixture_artifacts()
     artifacts["renderable_page_variants"]["records"][1]["render_surface_id"] = "p3-el-operations-console--wrong"

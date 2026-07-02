@@ -48,6 +48,7 @@ def test_semantic_stage_outputs_split_candidate_and_promotion_artifacts():
     assert candidate_outputs == [
         "DRD-01/PRD_EXPERIENCE_BRIEF.md",
         "DRD-01/experience_fact_index.json",
+        "DRD-01/page_detail_inventory.json",
     ]
     assert promotion_outputs == [
         "DRD-01/APPROVED_SEMANTIC_ARTIFACT.md",

@@ -50,6 +50,8 @@ def compile_final_drd(bundle: Mapping[str, Any]) -> dict:
     sections = [_section_from_dict(section) for section in bundle.get("sections", [])]
     ordered_sections = sort_sections(sections)
     final_drd = render_final_drd(ordered_sections)
+    if bundle.get("requires_approved_stage_semantic_artifacts"):
+        _require_reader_facing_final_drd(final_drd)
     toc = build_toc(ordered_sections)
     reference_index = build_reference_index(bundle, ordered_sections)
     approved_units = list(bundle.get("semantic_units", []))
@@ -204,6 +206,14 @@ def _require_compilable_bundle(bundle: Mapping[str, Any]) -> None:
     current_hashes = bundle.get("current_hashes", {})
     if current_hashes:
         findings.extend(validate_hash_drift(input_records(bundle), current_hashes))
+    if findings:
+        raise CompilerFailure(findings)
+
+
+def _require_reader_facing_final_drd(final_drd: str) -> None:
+    from drd_harness.validators.compiler_conservation import validate_final_drd_reader_structure
+
+    findings = validate_final_drd_reader_structure(final_drd)
     if findings:
         raise CompilerFailure(findings)
 

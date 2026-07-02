@@ -1,6 +1,6 @@
 {
-  "clauses_hash": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8",
-  "decisions_hash": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb",
+  "clauses_hash": "20b78875ebd791356131ad6cdf39f5b13eb992301161269dd9bd946a081f6d4f",
+  "decisions_hash": "d0594a20e8ab1766eceafdf54d61b97318f678120d58d92f2f5f58da4ffa18d9",
   "files": [
     {
       "path": "constitution/AUTHORITY_MODEL.md",
@@ -9,8 +9,8 @@
     },
     {
       "path": "constitution/DRD_HARNESS_CHARTER.md",
-      "sha256": "934e859bbb2fb7520b81a3533b0f7cd1d4942658dc1ec0a3f7baa9277f272d48",
-      "size_bytes": 4046
+      "sha256": "d034ee7614529502a9b214834de3d2f5e807eeb2206c896032d5fb5cc702693f",
+      "size_bytes": 5259
     },
     {
       "path": "constitution/ENGINEERING_DIRECTORY_RULES.md",
@@ -19,8 +19,8 @@
     },
     {
       "path": "constitution/FIGMA_COMPATIBILITY_POLICY.md",
-      "sha256": "637d8155f7760e35b69720d4f475e0a5bfcc3becca111dba64ce78475e8cac3e",
-      "size_bytes": 721
+      "sha256": "f6a558832eef04f103f6750133ef345615c639ad3d4020c1da6f6ded727e62a7",
+      "size_bytes": 1181
     },
     {
       "path": "constitution/GLOSSARY.md",
@@ -44,13 +44,13 @@
     },
     {
       "path": "constitution/OUTPUT_FORMAT_POLICY.md",
-      "sha256": "2c12ba7cb3ee7a1ebb439d4a19b9751cc4b305de1152e3ea458d91633cd70096",
-      "size_bytes": 752
+      "sha256": "df8dd7f188825e890d53644830066bf47b970fbecee91182b5aa8208ccd96b9d",
+      "size_bytes": 1228
     },
     {
       "path": "constitution/PRD_ELEMENT_ADOPTION_POLICY.md",
-      "sha256": "a44315069483b7fb414064a6b491b103e23a0a5ca35542e82bce883338c8a288",
-      "size_bytes": 957
+      "sha256": "3cd3f6ed0b2caa769031a7f866fd66cd163ec21aca4fe10857173f259f5ea83e",
+      "size_bytes": 1957
     },
     {
       "path": "constitution/REASONING_DOCTRINE.md",
@@ -89,17 +89,17 @@
     },
     {
       "path": "control/CLAUSE_INVENTORY.json",
-      "sha256": "166e1c558eb8a411e44b745eec7abaf4ebf636dd710d1ba4e75d9cb2b7746dd8",
-      "size_bytes": 4034
+      "sha256": "20b78875ebd791356131ad6cdf39f5b13eb992301161269dd9bd946a081f6d4f",
+      "size_bytes": 4654
     },
     {
       "path": "control/DECISION_CATALOG.json",
-      "sha256": "e0f906df2ae02a3d550c2d441532502b1371ec3d4329518c05b955ac2af97feb",
-      "size_bytes": 1496
+      "sha256": "d0594a20e8ab1766eceafdf54d61b97318f678120d58d92f2f5f58da4ffa18d9",
+      "size_bytes": 2240
     }
   ],
   "lock_id": "DRD-HARNESS-CONSTITUTION-LOCK-001",
-  "root_sha256": "0b6d795e44c7e32dc3c570592487550f8bdbb32c82bb5bd43de757e176e43610",
+  "root_sha256": "70f03b2c29c948fe8ac2220d7e25d098563a0a179bbd5591844c7641795d5937",
   "status": "SEALED",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }

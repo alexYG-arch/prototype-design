@@ -37,6 +37,7 @@ DOCUMENT_GENERATION_STAGE_ROWS = [
 ]
 GENERATED_FILENAMES = [
     "external_prd_section_index.json",
+    "external_prd_page_detail_inventory.json",
     "external_prd_review_decision.json",
     "external_prd_source_snapshot_binding.json",
     "external_prd_validation_report.json",
@@ -160,6 +161,10 @@ def generate_external_prd_drd(
         final_drd_hash=sha256_file(output_dir / "FINAL_DRD.md"),
         compiler_input_bundle_hash=deterministic_hash(bundle),
         conservation_status=artifacts[output_dir / "compiler_conservation_report.json"]["status"],
+        page_detail_conservation_status=artifacts[output_dir / "external_prd_validation_report.json"].get(
+            "page_detail_conservation_status"
+        ),
+        page_detail_record_count=artifacts[output_dir / "external_prd_validation_report.json"].get("page_detail_record_count"),
         document_generation_stage_order=[row["stage_id"] for row in DOCUMENT_GENERATION_STAGE_ROWS],
         dry_run=False,
         release_lock_eligibility_state="NOT_APPLICABLE",
@@ -224,11 +229,14 @@ def build_external_prd_drd_artifacts(
     output_dir: Path,
 ) -> tuple[Dict[Path, Any], dict]:
     section_index = _section_index(source_ref, source_hash, sections)
+    page_detail_inventory = _page_detail_inventory(source_ref, source_hash, sections)
     review_decision = _review_decision(source_ref, source_hash, sections)
     stage_plan = {
         "artifact": "drd_generation_stage_plan",
         "stage_order": DOCUMENT_GENERATION_STAGE_ROWS,
         "section_stage_policy": "All source-preserved external PRD lines enter DRD-01; DRD-02 through DRD-04 enrichment requires separate human-reviewed inputs.",
+        "page_detail_conservation_policy": "Visible page text, controls, example values, ASCII wireframes, and layout table rows must have traceable representation in FINAL_DRD.md.",
+        "page_arrangement_policy": "Enriched staged runs must arrange pages by module, function group, base page, state variant, and Figma frame order after review.",
         "lock_or_release_stage_included": False,
     }
     source_binding = {
@@ -238,6 +246,8 @@ def build_external_prd_drd_artifacts(
         "source_sha256": source_hash,
         "section_index_ref": (output_dir / "external_prd_section_index.json").as_posix(),
         "section_index_sha256": _json_sha256(section_index),
+        "page_detail_inventory_ref": (output_dir / "external_prd_page_detail_inventory.json").as_posix(),
+        "page_detail_inventory_sha256": _json_sha256(page_detail_inventory),
         "control_scope": "current_capsule_outputs_only",
         "creates_control_lock": False,
         "creates_release_lock": False,
@@ -250,11 +260,14 @@ def build_external_prd_drd_artifacts(
         "source_section_count": len(sections),
         "validation_scope": "source_preserving_prd_to_drd_generation",
         "product_capability_additions_allowed": False,
+        "page_detail_record_count": page_detail_inventory["record_count"],
+        "page_detail_conservation_status": "PENDING_COMPILE",
         "findings": [],
     }
 
     paths = {
         "section_index": output_dir / "external_prd_section_index.json",
+        "page_detail_inventory": output_dir / "external_prd_page_detail_inventory.json",
         "review_decision": output_dir / "external_prd_review_decision.json",
         "source_binding": output_dir / "external_prd_source_snapshot_binding.json",
         "validation_report": output_dir / "external_prd_validation_report.json",
@@ -263,6 +276,7 @@ def build_external_prd_drd_artifacts(
     }
     generated_hashes = {
         paths["section_index"].as_posix(): _json_sha256(section_index),
+        paths["page_detail_inventory"].as_posix(): _json_sha256(page_detail_inventory),
         paths["review_decision"].as_posix(): _json_sha256(review_decision),
         paths["source_binding"].as_posix(): _json_sha256(source_binding),
         paths["validation_report"].as_posix(): _json_sha256(validation_report),
@@ -279,8 +293,13 @@ def build_external_prd_drd_artifacts(
         schema_hash=schema_hash,
     )
     compiled = compile_final_drd(bundle)
+    detail_findings = _page_detail_conservation_findings(page_detail_inventory, compiled["FINAL_DRD.md"])
+    if detail_findings:
+        raise CompilerFailure(detail_findings)
+    validation_report["page_detail_conservation_status"] = "PASS"
     artifacts: Dict[Path, Any] = {
         paths["section_index"]: section_index,
+        paths["page_detail_inventory"]: page_detail_inventory,
         paths["review_decision"]: review_decision,
         paths["source_binding"]: source_binding,
         paths["validation_report"]: validation_report,
@@ -304,6 +323,7 @@ def _compiler_bundle(
     review_path = record_paths["review_decision"].as_posix()
     binding_path = record_paths["source_binding"].as_posix()
     section_index_path = record_paths["section_index"].as_posix()
+    page_detail_inventory_path = record_paths["page_detail_inventory"].as_posix()
     validation_path = record_paths["validation_report"].as_posix()
     stage_order_path = record_paths["stage_order"].as_posix()
     schema_path = record_paths["schema"].as_posix()
@@ -340,6 +360,7 @@ def _compiler_bundle(
     current_hashes = {
         str(source_ref): source_hash,
         section_index_path: generated_hashes[section_index_path],
+        page_detail_inventory_path: generated_hashes[page_detail_inventory_path],
         review_path: generated_hashes[review_path],
         binding_path: generated_hashes[binding_path],
         validation_path: generated_hashes[validation_path],
@@ -381,6 +402,15 @@ def _compiler_bundle(
                 "sha256": generated_hashes[section_index_path],
                 "approval_ref": review_path,
                 "semantic_role": "source_section_index",
+            },
+            {
+                "input_id": "EXTERNAL-PRD-PAGE-DETAIL-INVENTORY",
+                "input_type": "APPROVED_OPERATIONAL_INDEX",
+                "stage_id": "DRD-01",
+                "path": page_detail_inventory_path,
+                "sha256": generated_hashes[page_detail_inventory_path],
+                "approval_ref": review_path,
+                "semantic_role": "page_detail_inventory",
             }
         ],
         "review_decisions": [
@@ -457,6 +487,88 @@ def _section_index(source_ref: Path, source_hash: str, sections: Sequence[Mappin
             for section in sections
         ],
     }
+
+
+def _page_detail_inventory(source_ref: Path, source_hash: str, sections: Sequence[Mapping[str, Any]]) -> dict:
+    records = []
+    for section in sections:
+        for row in section.get("body_lines", section.get("source_lines", [])):
+            text = str(row["text"]).rstrip()
+            if not text.strip():
+                continue
+            detail_kinds = _page_detail_kinds(text)
+            if not detail_kinds:
+                continue
+            line_number = int(row["line_number"])
+            for detail_kind in detail_kinds:
+                records.append(
+                    {
+                        "detail_id": "PAGE-DETAIL-" + sha256_text(f"{source_hash}\0{line_number}\0{detail_kind}\0{text}")[:16],
+                        "detail_kind": detail_kind,
+                        "source_path": str(source_ref),
+                        "source_sha256": source_hash,
+                        "source_section_id": str(section["section_id"]),
+                        "source_span_ref": f"line:{line_number}",
+                        "source_line_number": line_number,
+                        "canonical_text": text,
+                        "representation_required_in_final_drd": True,
+                        "drop_reason": None,
+                    }
+                )
+    return {
+        "artifact": "external_prd_page_detail_inventory",
+        "inventory_version": "page-detail-conservation-v1",
+        "source_path": str(source_ref),
+        "source_sha256": source_hash,
+        "record_count": len(records),
+        "records": records,
+    }
+
+
+def _page_detail_kinds(line: str) -> List[str]:
+    stripped = line.strip()
+    lowered = stripped.lower()
+    kinds = []
+    if any(char in line for char in "│┌┐└┘├┤─"):
+        kinds.append("ASCII_WIREFRAME_LINE")
+    if stripped.startswith("|") and stripped.endswith("|"):
+        kinds.append("TABLE_LAYOUT_ROW")
+    if any(token in stripped for token in ("[", "]", "按钮", "CTA", "点击", "→")) or any(
+        token in lowered for token in ("button", "cta", "click")
+    ):
+        kinds.append("CONTROL_OR_INTERACTION_DETAIL")
+    if any(token in stripped for token in ("页面布局", "交互细节", "状态", "弹窗", "卡片", "列表", "Tab", "入口")) or any(
+        token in lowered for token in ("layout", "responsive", "screen", "page", "card", "list", "tab")
+    ):
+        kinds.append("PAGE_STRUCTURE_DETAIL")
+    if any(token in stripped for token in ("今天", "15 天", "15天", "280MB", "3 个", "3个")) or any(char.isdigit() for char in stripped):
+        kinds.append("EXAMPLE_VALUE_OR_STATE_COPY")
+    if any(token in lowered for token in ("empty", "loading", "error", "failed", "failure")) or any(
+        token in stripped for token in ("空", "加载", "失败", "错误", "异常", "拒绝", "权限", "成功")
+    ):
+        kinds.append("STATE_OR_FEEDBACK_COPY")
+    if any(token in stripped for token in ("★", "新增", "优先级")):
+        kinds.append("PRIORITY_OR_VISUAL_ANNOTATION")
+    return sorted(set(kinds))
+
+
+def _page_detail_conservation_findings(page_detail_inventory: Mapping[str, Any], final_drd_text: str) -> List[DriverFinding]:
+    findings: List[DriverFinding] = []
+    for record in page_detail_inventory.get("records", []):
+        if not record.get("representation_required_in_final_drd"):
+            continue
+        text = str(record.get("canonical_text") or "").strip()
+        if not text:
+            continue
+        if text not in final_drd_text:
+            findings.append(
+                DriverFinding(
+                    "DRDGEN-DETAIL-001",
+                    str(record.get("detail_id") or record.get("source_span_ref") or "page_detail"),
+                    "page detail inventory record is missing from FINAL_DRD.md",
+                )
+            )
+    return findings
 
 
 def _review_decision(source_ref: Path, source_hash: str, sections: Sequence[Mapping[str, Any]]) -> dict:

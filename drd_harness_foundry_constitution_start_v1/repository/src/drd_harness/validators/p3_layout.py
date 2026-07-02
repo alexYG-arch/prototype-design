@@ -92,7 +92,7 @@ P3_LAYOUT_ARTIFACTS = {
         "p3.layout.figma_reconstruction_metadata",
         "metadata",
         "repository/schemas/layout/figma_reconstruction_metadata.schema.json",
-        "4e77c3b3401601f486b57b2b4e39f5d70656cbca6dde95e4462e7b4c5ab9e4a2",
+        "59e743676ec5818b32398b3e97bd04e3cc06057f8d16482b764a14e4ae0fdea6",
     ),
 }
 

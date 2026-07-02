@@ -10,7 +10,7 @@
         "path": "repository/fixtures/p3/layout/layout_composition_index.json",
         "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
         "semantic_role": "layout composition index for deterministic compiler references",
-        "sha256": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
+        "sha256": "65fa64801d73d1385ae9aa4d7d6e02b904edcef36f98bfbaf1d50248f4e1d74f",
         "stage_id": "DRD-04",
         "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       },
@@ -22,7 +22,7 @@
         "path": "repository/fixtures/p3/layout/state_placement_index.json",
         "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
         "semantic_role": "state placement index for deterministic compiler references",
-        "sha256": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
+        "sha256": "e8272d96204c32fb89adb44e102b884dfee6f31cff4d378feab8cfc9f4970abb",
         "stage_id": "DRD-04",
         "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       }
@@ -84,15 +84,15 @@
         "path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "review_decision_ref": "build_program/phases/P3/candidates/P3-IMPL-LAYOUT/REVIEW_DECISION.json",
         "semantic_role": "natural-language layout authority approved for compiler closure",
-        "sha256": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "sha256": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "stage_id": "DRD-04",
         "subject_hash": "df3088aa58b9c2e0022418c912ce49db9d9acbaccb3a267951e5465f485c2651"
       }
     ],
     "bundle_id": "p3.compiler.input_bundle.001",
     "bundle_version": "1.0",
-    "closed_input_hash": "e5baa2da0765969d040e5aad93dd6bc2fb0e02c1015fefbf254e89ad32f91883",
-    "compiler_code_hash": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe",
+    "closed_input_hash": "f19333b41625bd5bc5afc69e0ab2ab78112bf0cb5ec3b3118e035adae87b9589",
+    "compiler_code_hash": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed",
     "compiler_id": "drd_harness.compiler.final_drd",
     "compiler_stage_id": "DRD-05",
     "compiler_version": "1.0.0",
@@ -103,11 +103,11 @@
         "invalidation_state": "CURRENT",
         "path": "build_program/phases/P3/PHASE_MANIFEST.json",
         "semantic_role": "P3 implementation order control index",
-        "sha256": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7"
+        "sha256": "a80895e57bcd919bc384cd21fc73a04f829459b1ec935460435cd817af32b77f"
       }
     ],
     "current_hashes": {
-      "build_program/phases/P3/PHASE_MANIFEST.json": "34f854ae71bdfedd52a52de2d86edb2ea4dfc921492869b56e6e41f4ada447f7",
+      "build_program/phases/P3/PHASE_MANIFEST.json": "a80895e57bcd919bc384cd21fc73a04f829459b1ec935460435cd817af32b77f",
       "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/REVIEW_DECISION.json": "ed1732e3b62ba4a91fd7e80471ef7c645128a3bbb8d8fb26208e779187f5c27e",
       "build_program/phases/P3/candidates/P3-IMPL-CLOSURE/VALIDATION_EVIDENCE.json": "ac32c6e588a06cb769aed7d380e91cecf161f81aa00676fe983ef8d74d00b0ee",
       "build_program/phases/P3/candidates/P3-IMPL-DISTILL/REVIEW_DECISION.json": "f5b131099d5bb67bd080e7f94fc316652c869f9e60b866d97c257a48d6c15f0c",
@@ -123,18 +123,18 @@
       "control/locks/P3_SPEC_LOCK.json": "d8b45ecdc5417b4aab89c39038077d79da8b056f5c9558c97ecbe57d2f0cbff1",
       "repository/fixtures/p3/closure/interaction_messages.json": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
       "repository/fixtures/p3/distill/semantic_unit_map.json": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
-      "repository/fixtures/p3/layout/layout_composition_index.json": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
-      "repository/fixtures/p3/layout/natural_language_layout.json": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
-      "repository/fixtures/p3/layout/state_placement_index.json": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418",
+      "repository/fixtures/p3/layout/layout_composition_index.json": "65fa64801d73d1385ae9aa4d7d6e02b904edcef36f98bfbaf1d50248f4e1d74f",
+      "repository/fixtures/p3/layout/natural_language_layout.json": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
+      "repository/fixtures/p3/layout/state_placement_index.json": "e8272d96204c32fb89adb44e102b884dfee6f31cff4d378feab8cfc9f4970abb",
       "repository/fixtures/p3/patterns/shared_component_registry.json": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
       "repository/fixtures/p3/source_intake/intake_decisions.json": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
       "repository/schemas/compiler/compiler_atomic_semantic_unit.schema.json": "db67622879f11d5c1512ba803914584ae395ba7b928c4c06fec155f9dbcb0b7b",
       "repository/schemas/compiler/compiler_conservation_report.schema.json": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-      "repository/schemas/compiler/compiler_input_bundle.schema.json": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
+      "repository/schemas/compiler/compiler_input_bundle.schema.json": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163",
       "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
       "repository/schemas/compiler/final_drd_hash_index.schema.json": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
       "repository/schemas/compiler/final_drd_manifest.schema.json": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-      "repository/schemas/compiler/final_drd_reference_index.schema.json": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
+      "repository/schemas/compiler/final_drd_reference_index.schema.json": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81",
       "repository/schemas/compiler/final_drd_toc.schema.json": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08",
       "repository/schemas/compiler/read_only_qa_boundary.schema.json": "c575117a7e20253151491455b09f91e3b64f6fb2e0ac5974275739f888015520"
     },
@@ -250,7 +250,7 @@
         "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
         "schema_id": "compiler_input_bundle",
         "semantic_role": "compiler_input_bundle compiler schema identity",
-        "sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
+        "sha256": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163"
       },
       {
         "input_id": "compiler_semantic_unit_inventory.schema",
@@ -286,7 +286,7 @@
         "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
         "schema_id": "final_drd_reference_index",
         "semantic_role": "final_drd_reference_index compiler schema identity",
-        "sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a"
+        "sha256": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81"
       },
       {
         "input_id": "final_drd_toc.schema",
@@ -401,13 +401,13 @@
           "p3.compiler.unit.layout-authority",
           "p3.compiler.unit.layout-state-copy"
         ],
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "stage_id": "DRD-04",
         "stage_order_index": 50
       }
     ],
-    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe",
+    "semantic_content_hash": "533d6a3aefddc07f4a68184cef23ca904228b1a791a4905e33265c2c4420500e",
     "semantic_units": [
       {
         "approval_ref": "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
@@ -485,13 +485,13 @@
         "parent_unit_id": "p3.compiler.unit.operations-console-surface",
         "relationship_kind": "TRACE",
         "semantic_unit_id": "p3.compiler.unit.layout-authority",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "source_section_id": "p3-layout-operations-console",
         "source_span_ref": "layout.layout_text",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "b3c7021da5dc82057bc15b79e770dbc318cf05e56c8bacdf80c753e3be581213",
+        "unit_hash": "c0716542a3aa763d7fd653867eaa22e4ed0bdf1941f1aecefbf2130138bdb01f",
         "unit_type": "ARRANGEMENT_RULE"
       },
       {
@@ -502,13 +502,13 @@
         "parent_unit_id": "p3.compiler.unit.layout-authority",
         "relationship_kind": "TRACE",
         "semantic_unit_id": "p3.compiler.unit.layout-state-copy",
-        "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+        "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
         "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
         "source_section_id": "p3-layout-state-placement-index",
         "source_span_ref": "layout.layout_text:error-state-placement",
         "stage_id": "DRD-04",
         "unit_class": "Copy object",
-        "unit_hash": "fdcd7d246daca986baf88dda9808e755b21dffaf169e6e8aca53b8ccca7a2376",
+        "unit_hash": "fb25fbdf202b679ce771555ae6c7d9c63d9dd1f5d249268c12f9ea4e4698a5f1",
         "unit_type": "COPY_STRING"
       }
     ],
@@ -599,7 +599,7 @@
       }
     ]
   },
-  "closed_input_hash": "aa59f0b1d70b27c5c076e533d41491697f3b185b581d3945d96daa9d9fd737ba",
+  "closed_input_hash": "f19333b41625bd5bc5afc69e0ab2ab78112bf0cb5ec3b3118e035adae87b9589",
   "fixture_id": "p3_compiler_fixture",
   "invalidation_inputs": [
     "build_program/phases/P3/candidates/P3-IMPL-SOURCE/REVIEW_DECISION.json",
@@ -645,11 +645,11 @@
     "REVIEW_DECISION": "20c4a08a2d93800e398b7c394f754147584d34d46959998caac7ece526e31983",
     "intake_decisions": "cf381c586ee833d5d600c8d304b06773cbe6216c3ad9f402a15cf91bb6e4ca9f",
     "interaction_messages": "7856c50202acc598b500d26f797e6d9fc94840fa225fb07ad672c473cf72b358",
-    "layout_composition_index": "16ec73997e37733313b8558373651790ea6aba38d1fb546449e66ea6af60c926",
-    "natural_language_layout": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+    "layout_composition_index": "65fa64801d73d1385ae9aa4d7d6e02b904edcef36f98bfbaf1d50248f4e1d74f",
+    "natural_language_layout": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
     "semantic_unit_map": "46583ec106989c42a18110383f4e502e17113848a3cd8a0564155c98a1cd56b9",
     "shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
-    "state_placement_index": "4eec87cdc62f0e2a4addd5e69c31f980817a2baee3373a50fac8e2829121d418"
+    "state_placement_index": "e8272d96204c32fb89adb44e102b884dfee6f31cff4d378feab8cfc9f4970abb"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

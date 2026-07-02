@@ -330,6 +330,23 @@ def _drd01_runtime_gate_request(
         "expected_candidate_outputs": [
             *candidate_outputs_for_stage("DRD-01"),
         ],
+        "page_detail_conservation_required": True,
+        "page_detail_inventory_output": "DRD-01/page_detail_inventory.json",
+        "page_detail_inventory_obligations": [
+            "capture visible page text from wireframes and tables",
+            "capture controls, CTA labels, example values, state copy, priority markers, and visual order",
+            "bind every detail record to immutable source line references",
+            "do not collapse page detail into feature-only summaries",
+        ],
+        "derivation_origin_required": True,
+        "allowed_derivation_origins": [
+            "PRD_EXPLICIT",
+            "DEDUCTIVE_REQUIRED",
+            "HUMAN_APPROVED_INFERENCE",
+            "REVIEW_REQUIRED_INFERENCE",
+        ],
+        "page_arrangement_required_by_successor_stages": True,
+        "page_arrangement_order": "module -> function_group -> base page -> state variant -> overlay/shared component",
         "post_review_promotion_outputs": promotion_outputs_for_stage("DRD-01"),
         "promotion_required_before_successor": True,
         "compiler_eligible_artifact_kind": "APPROVED_SEMANTIC_ARTIFACT",
@@ -349,6 +366,10 @@ def _drd01_prompt(source_ref: Path, source_hash: str, output_dir: Path) -> str:
         "Rules:\n"
         "- Do not add product capabilities absent from the PRD.\n"
         "- Re-read the immutable source snapshot; do not rely on a summary as authority.\n"
+        "- Create `DRD-01/page_detail_inventory.json` and preserve visible page details from ASCII wireframes, layout tables, CTA labels, example values, state copy, priority markers, and visual order.\n"
+        "- Do not collapse page detail into feature-only summaries. Every visible detail either appears in the candidate DRD semantics or has a reviewable drop reason.\n"
+        "- Label each page or state origin as PRD_EXPLICIT, DEDUCTIVE_REQUIRED, HUMAN_APPROVED_INFERENCE, or REVIEW_REQUIRED_INFERENCE.\n"
+        "- Prepare downstream ordering by module, function group, base page, state variant, and Figma frame order.\n"
         "- Output only DRD-01 candidate artifacts and wait for validation or conditional Human Gate.\n"
     )
 

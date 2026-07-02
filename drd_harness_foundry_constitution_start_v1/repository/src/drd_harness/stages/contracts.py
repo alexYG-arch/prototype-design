@@ -65,7 +65,11 @@ REQUIRED_UPSTREAM = {
 }
 
 CANONICAL_CANDIDATE_OUTPUTS = {
-    StageId.DRD_01: ["DRD-01/PRD_EXPERIENCE_BRIEF.md", "DRD-01/experience_fact_index.json"],
+    StageId.DRD_01: [
+        "DRD-01/PRD_EXPERIENCE_BRIEF.md",
+        "DRD-01/experience_fact_index.json",
+        "DRD-01/page_detail_inventory.json",
+    ],
     StageId.DRD_02: [
         "DRD-02/USER_TASK_FLOW.md",
         "DRD-02/INTERACTION_CLOSURE_REPORT.md",

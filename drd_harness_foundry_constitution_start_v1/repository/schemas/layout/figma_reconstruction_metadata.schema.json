@@ -52,6 +52,62 @@
       "minItems": 1,
       "type": "array"
     },
+    "page_arrangement_order": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "derivation_origin": {
+            "enum": [
+              "PRD_EXPLICIT",
+              "DEDUCTIVE_REQUIRED",
+              "HUMAN_APPROVED_INFERENCE",
+              "REVIEW_REQUIRED_INFERENCE"
+            ]
+          },
+          "figma_frame_order_index": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "frame_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "function_group_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "module_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "page_order_index": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "variant_order_index": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "variant_page_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "module_id",
+          "function_group_id",
+          "variant_page_id",
+          "frame_id",
+          "page_order_index",
+          "variant_order_index",
+          "figma_frame_order_index",
+          "derivation_origin"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
     "scroll_frames": {
       "items": {
         "minLength": 1,
@@ -99,7 +155,8 @@
     "scroll_frames",
     "constraints",
     "non_goals",
-    "trace_refs"
+    "trace_refs",
+    "page_arrangement_order"
   ],
   "type": "object"
 }

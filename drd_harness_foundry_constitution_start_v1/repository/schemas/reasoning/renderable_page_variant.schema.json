@@ -16,6 +16,49 @@
         "STATE_VARIANT"
       ]
     },
+    "module_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "module_order_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "function_group_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "page_order_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "variant_order_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "figma_frame_order_index": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "derivation_origin": {
+      "enum": [
+        "PRD_EXPLICIT",
+        "DEDUCTIVE_REQUIRED",
+        "HUMAN_APPROVED_INFERENCE",
+        "REVIEW_REQUIRED_INFERENCE"
+      ]
+    },
+    "derivation_basis_refs": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
     "source_state_id": {
       "type": [
         "string",
@@ -71,6 +114,15 @@
     "variant_page_id",
     "parent_page_id",
     "variant_kind",
+    "module_id",
+    "module_order_index",
+    "function_group_id",
+    "page_order_index",
+    "variant_order_index",
+    "figma_frame_order_index",
+    "derivation_origin",
+    "derivation_basis_refs",
+    "requires_human_review",
     "source_state_id",
     "render_surface_id",
     "state_condition",

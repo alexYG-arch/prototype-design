@@ -27,7 +27,7 @@
     "p3.patterns.shared_component_registry": "e70ad68feefa071e6d4f7af475e1279934bf6483c467f6142299cbee9299737c",
     "p3.patterns.information_presentation_registry": "6006a1b90c7b284278f296c71f07c8a194d8c8c39e56f93cc5f742937ec09adb",
     "p3.impl.patterns.review_decision": "f9290a8faadae626c08f11f65a8534b84705b5b31cbfd741b17757d77b352dd9",
-    "p3.elements.renderable_page_variants": "93acb321989a6deca1c66dc1e596df977c080053fe9160b29138a52e2ef210d7"
+    "p3.elements.renderable_page_variants": "3b4c142a5bef8938c1a082ab2a994261eaf18029a5e8a90b9e223fa544c33b87"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_layout.py",
   "review_gate": "HUMAN_REQUIRED_FOR_LAYOUT_DISPUTE",
@@ -96,6 +96,48 @@
       "p3-el-operations-console--human-review-waiting-state",
       "p3-pattern-case-state-status",
       "p3-pattern-review-gap-message"
+    ],
+    "page_arrangement_order": [
+      {
+        "module_id": "p3-module-operations",
+        "function_group_id": "p3-function-case-review",
+        "variant_page_id": "p3-el-operations-console",
+        "frame_id": "p3-el-operations-console",
+        "page_order_index": 0,
+        "variant_order_index": 0,
+        "figma_frame_order_index": 0,
+        "derivation_origin": "PRD_EXPLICIT"
+      },
+      {
+        "module_id": "p3-module-operations",
+        "function_group_id": "p3-function-case-review",
+        "variant_page_id": "p3-el-operations-console--case-ready-state",
+        "frame_id": "p3-el-operations-console--case-ready-state",
+        "page_order_index": 0,
+        "variant_order_index": 1,
+        "figma_frame_order_index": 1,
+        "derivation_origin": "PRD_EXPLICIT"
+      },
+      {
+        "module_id": "p3-module-operations",
+        "function_group_id": "p3-function-case-review",
+        "variant_page_id": "p3-el-operations-console--case-blocked-state",
+        "frame_id": "p3-el-operations-console--case-blocked-state",
+        "page_order_index": 0,
+        "variant_order_index": 2,
+        "figma_frame_order_index": 2,
+        "derivation_origin": "PRD_EXPLICIT"
+      },
+      {
+        "module_id": "p3-module-operations",
+        "function_group_id": "p3-function-case-review",
+        "variant_page_id": "p3-el-operations-console--human-review-waiting-state",
+        "frame_id": "p3-el-operations-console--human-review-waiting-state",
+        "page_order_index": 0,
+        "variant_order_index": 3,
+        "figma_frame_order_index": 3,
+        "derivation_origin": "DEDUCTIVE_REQUIRED"
+      }
     ]
   }
 }

@@ -53,3 +53,12 @@ def test_renderable_page_variant_schema_prevents_product_capability_addition():
 
     assert schema["properties"]["product_capability_addition"]["const"] is False
     assert {"variant_page_id", "parent_page_id", "source_state_id"} <= set(schema["required"])
+    assert {
+        "module_id",
+        "function_group_id",
+        "figma_frame_order_index",
+        "derivation_origin",
+        "derivation_basis_refs",
+        "requires_human_review",
+    } <= set(schema["required"])
+    assert "DEDUCTIVE_REQUIRED" in schema["properties"]["derivation_origin"]["enum"]

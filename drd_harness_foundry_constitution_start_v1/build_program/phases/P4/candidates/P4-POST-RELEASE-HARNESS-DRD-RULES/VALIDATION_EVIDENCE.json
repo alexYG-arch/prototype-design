@@ -1,0 +1,68 @@
+{
+  "evidence_id": "P4-POST-RELEASE-HARNESS-DRD-RULES-VALIDATION-001",
+  "phase": "P4",
+  "workpack_id": "P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "status": "PASS",
+  "validation_results": [
+    {
+      "check": "CONSTITUTION_VALIDATION",
+      "command": "python3 tooling/validate_constitution.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "CONSTITUTION VALIDATION: PASS (30 clauses)"
+    },
+    {
+      "check": "COMPLETE_PACKAGE_INTEGRITY",
+      "command": "python3 tooling/verify_start_package.py --mode complete",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "COMPLETE PACKAGE INTEGRITY: PASS"
+    },
+    {
+      "check": "CANDIDATE_CHECK",
+      "command": "repository/.venv/bin/drd-harness candidate-check build_program/phases/P4/candidates/P4-POST-RELEASE-HARNESS-DRD-RULES",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "candidate-check reports no findings for the post-release repair candidate; subject_hash is recomputed by command and intentionally not embedded to avoid self-reference"
+    },
+    {
+      "check": "FULL_REPOSITORY_TESTS",
+      "command": "repository/.venv/bin/python -m pytest repository/tests -q",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "523 passed in 0.57s"
+    },
+    {
+      "check": "EDITABLE_INSTALL",
+      "command": "uv pip install --python repository/.venv/bin/python -e repository",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "drd-harness==0.0.0 installed from repository source in editable mode"
+    },
+    {
+      "check": "QICAI_GENERATE_DRD",
+      "command": "repository/.venv/bin/drd-harness generate-drd --work-dir current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715 --source-ref /Users/xiaomuyou/Downloads/奇彩手机管家_PRD.md --output-dir current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715/drd",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Generated source-preserving FINAL_DRD.md with conservation_status=PASS and page_detail_conservation_status=PASS"
+    },
+    {
+      "check": "QICAI_DETAIL_PRESENCE",
+      "command": "rg detail examples in FINAL_DRD.md and external_prd_page_detail_inventory.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "summary": "Checked health check and storage prediction card details are present; candidate markers are absent from FINAL_DRD.md"
+    },
+    {
+      "check": "QICAI_STAGED_RUN_AND_RESUME",
+      "command": "inspect staged_run_result.json and resume_dry_result.json from current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715",
+      "exit_code": 0,
+      "observed_exit_codes": {
+        "staged_run": 0,
+        "resume_dry_run": 1
+      },
+      "status": "PASS_EXPECTED_GATE",
+      "summary": "Staged run writes DRD-00 receipt and stops at DRD-01 CODEX gate; resume dry-run is expected to return STOPPED with invalidation_state=CLEAR and BLOCK_HUMAN_GATE"
+    }
+  ]
+}

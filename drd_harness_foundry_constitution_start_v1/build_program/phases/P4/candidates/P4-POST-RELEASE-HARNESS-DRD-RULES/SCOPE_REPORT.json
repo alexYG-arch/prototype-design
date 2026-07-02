@@ -1,0 +1,37 @@
+{
+  "scope_id": "P4-POST-RELEASE-HARNESS-DRD-RULES-SCOPE-001",
+  "phase": "P4",
+  "workpack_id": "P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "status": "PASS",
+  "intent_scope": [
+    "final DRD reader identity",
+    "external PRD page detail conservation",
+    "module/function/page/state arrangement metadata",
+    "inferred page derivation origin marking",
+    "installed harness output scope for current_capsule runs"
+  ],
+  "allowed_write_families_used": [
+    "package root hash and start package manifest rebinding",
+    "program state and manifest lock-reference rebinding",
+    "constitution policy documents and control indexes",
+    "repository schemas, validators, compiler, staged-run contracts, and tests",
+    "P2/P3 fixture hash rebinding required by changed schemas and compiler code",
+    "P4 post-release repair candidate evidence"
+  ],
+  "package_integrity_rebinding_writes": [
+    "ROOT.sha256",
+    "START_PACKAGE_MANIFEST.json"
+  ],
+  "program_lock_reference_rebinding_writes": [
+    "build_program/program/PROGRAM_MANIFEST.json",
+    "build_program/program/PROGRAM_STATE.json"
+  ],
+  "external_prd_run_outputs": {
+    "path": "current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715",
+    "used_as_execution_package_source": false,
+    "purpose": "isolated harness smoke and staged-run verification"
+  },
+  "forbidden_write_violations": [],
+  "lock_or_release_created": false,
+  "intent_drift_detected": false
+}

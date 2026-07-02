@@ -166,7 +166,7 @@
         "path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "review_decision_ref": "build_program/phases/P2/candidates/P2-IMPL-03/REVIEW_DECISION.json",
         "semantic_role": "approved semantic source for Tiny Brief final DRD",
-        "sha256": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "sha256": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "stage_id": "DRD-04"
       },
       {
@@ -205,8 +205,8 @@
     ],
     "bundle_id": "p2.tiny_brief.compiler_input_bundle.001",
     "bundle_version": "1.0",
-    "closed_input_hash": "78c1d8c96a237b7ef74de2bc50ec0ab9340e2b6bf40efb5a271404474953fc0f",
-    "compiler_code_hash": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe",
+    "closed_input_hash": "d7e0d2256e0107e69b0ef2aac6571a3e16ba4afed4142f265b38e99c3bc43ac7",
+    "compiler_code_hash": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed",
     "compiler_id": "drd_harness.compiler.final_drd",
     "compiler_stage_id": "DRD-05",
     "compiler_version": "1.0.0",
@@ -244,7 +244,7 @@
       "repository/fixtures/p2/tiny_brief_intake/information_presentation_registry.json": "07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7",
       "repository/fixtures/p2/tiny_brief_intake/interaction_graph.json": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
       "repository/fixtures/p2/tiny_brief_intake/interaction_messages.json": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86",
-      "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+      "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
       "repository/fixtures/p2/tiny_brief_intake/prd_element_inventory.json": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
       "repository/fixtures/p2/tiny_brief_intake/product_expansion_gaps.json": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
       "repository/fixtures/p2/tiny_brief_intake/shared_component_registry.json": "b45ba8f5be59be1522e195c0cb53edb701d5604e93050f346853e6d2c86e8449",
@@ -253,11 +253,11 @@
       "repository/fixtures/p2/tiny_brief_intake/structural_completion_review.json": "cc0477656e3a257db44631614d8f7a95b1a8add18610791264647dd3ce237188",
       "repository/fixtures/p2/tiny_brief_intake/z_axis_layering.json": "30487219f7e9e6e45c63935263a6ac19cc1dee597b63bbee2e9c7d2b7f18c46d",
       "repository/schemas/compiler/compiler_conservation_report.schema.json": "05125c0f0314d07c9f021a064ab47bc77b73cd399f9748ca98cb1764635c56ab",
-      "repository/schemas/compiler/compiler_input_bundle.schema.json": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe",
+      "repository/schemas/compiler/compiler_input_bundle.schema.json": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163",
       "repository/schemas/compiler/compiler_semantic_unit_inventory.schema.json": "825baeaeeaf0b329cf7f67e0ec62668024e82172be08573b7605278405c862d2",
       "repository/schemas/compiler/final_drd_hash_index.schema.json": "bde807f8a7f3ebdf6af001fbf608329f205e0411f0b2203740585b8ba81efa24",
       "repository/schemas/compiler/final_drd_manifest.schema.json": "f7ba25af69444091c8368f94bd6a3bfc3bd5fc75131c276ac168edac81cabcc1",
-      "repository/schemas/compiler/final_drd_reference_index.schema.json": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a",
+      "repository/schemas/compiler/final_drd_reference_index.schema.json": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81",
       "repository/schemas/compiler/final_drd_toc.schema.json": "893b3eae6362d9fdc6b03caa4233d39748b70c9a7ca4fa3f3d3097be4f613f08"
     },
     "default_lock_ref": "control/locks/P2_SPEC_LOCK.json",
@@ -309,7 +309,7 @@
         "input_type": "SCHEMA",
         "path": "repository/schemas/compiler/compiler_input_bundle.schema.json",
         "schema_id": "compiler_input_bundle",
-        "sha256": "ea1ace76d1eb888d9bc2d2cfc1290180cc76f0c9a9c1f2cf8d9868a0c2dfcebe"
+        "sha256": "f61eeeb0aee5576b438e32a78a73efbc31b5f226e79b47b0b0385c74bdc8d163"
       },
       {
         "input_id": "schema.compiler_semantic_unit_inventory",
@@ -351,7 +351,7 @@
         "input_type": "SCHEMA",
         "path": "repository/schemas/compiler/final_drd_reference_index.schema.json",
         "schema_id": "final_drd_reference_index",
-        "sha256": "5bb55217aeb4459e092c98032542584517aa4b0fcb81839002441a511879075a"
+        "sha256": "b161948c58fe31f986ef0e32edc26b61c5407969d6db01500bb37237e9776b81"
       }
     ],
     "section_order": [
@@ -490,13 +490,13 @@
           "p2.unit.layout.material_elevation",
           "p2.unit.layout.state_placement"
         ],
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "stage_id": "DRD-04",
         "stage_order_index": 50
       }
     ],
-    "semantic_content_hash": "367ab45b35f115fee45fb908fddd335e25a780ea2fb219b0b9ecc8f508fbead3",
+    "semantic_content_hash": "3e5ef5974396a67f3682d9e09488190f80144f57b252f0cedaa7cee43bf094eb",
     "semantic_units": [
       {
         "approval_ref": "build_program/phases/P2/candidates/P2-IMPL-01/REVIEW_DECISION.json",
@@ -897,13 +897,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.arrangement",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "layout.tiny_brief.main",
         "source_span_ref": "record:p2.tiny_brief.layout.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "d087e0c55fd7798b91183150ec10c866ba445e373cfbefe6b8a9c5acba6a6be3",
+        "unit_hash": "f54f0c4b79b14df7e2e76291bb3f239fabd8146ad02c88dc858ca7985bd3b794",
         "unit_type": "ARRANGEMENT_RULE"
       },
       {
@@ -914,13 +914,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.width",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.info_completeness.required_fields.001",
         "source_span_ref": "record:p2.tiny_brief.info_completeness.required_fields.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "636912aff039022d23c4b1f659d591d0cf3d4f4f373c20022903345a246fee2d",
+        "unit_hash": "3a32cf0231270993bafa62f4334e736dd06c66a4fbfbdcf63db6ad38224aa27b",
         "unit_type": "WIDTH_BEHAVIOR"
       },
       {
@@ -931,13 +931,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.height_scroll",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.info_completeness.overlay_copy.001",
         "source_span_ref": "record:p2.tiny_brief.info_completeness.overlay_copy.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "67b0e857f10c506c66a14f0af430c431d714c4b471ff5ec6370871580d3216f3",
+        "unit_hash": "1af53832688b3177f90f04696043676a36dff0bee068d96aa12cb9138bbd190c",
         "unit_type": "HEIGHT_SCROLL_BEHAVIOR"
       },
       {
@@ -1050,13 +1050,13 @@
         "parent_unit_id": "p2.unit.page.brief_intake",
         "relationship_kind": "CONSTRAINS",
         "semantic_unit_id": "p2.unit.layout.state_placement",
-        "source_hash": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+        "source_hash": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
         "source_path": "repository/fixtures/p2/tiny_brief_intake/natural_language_layout.json",
         "source_section_id": "p2.tiny_brief.state_placement.001",
         "source_span_ref": "index:p2.tiny_brief.state_placement.001",
         "stage_id": "DRD-04",
         "unit_class": "Layout object",
-        "unit_hash": "7325941f70ad379e9f9e775649f5afbfe0dc6ad1c8450df6a04b227c112a3b09",
+        "unit_hash": "ff22c08b65937aa063c0a4c9170f7f14655df1c6b08cf567d78a42aa31e65275",
         "unit_type": "STATE_PLACEMENT"
       }
     ],
@@ -1128,7 +1128,7 @@
       }
     ]
   },
-  "closed_input_hash": "aa59f0b1d70b27c5c076e533d41491697f3b185b581d3945d96daa9d9fd737ba",
+  "closed_input_hash": "d7e0d2256e0107e69b0ef2aac6571a3e16ba4afed4142f265b38e99c3bc43ac7",
   "fixture_id": "tiny_brief_intake",
   "invalidation_inputs": [
     "p2.tiny_brief.source_prd",
@@ -1194,7 +1194,7 @@
     "p2.tiny_brief.information_presentation_registry": "07de2bf39350287ff248ded6073ebb9f3723ed9c2d9f867789221bc6fa6aa4f7",
     "p2.tiny_brief.interaction_graph": "081ad2ec812097f2e0403352691d0f4bce600d02ccb4ace54fd22e92d60cd967",
     "p2.tiny_brief.interaction_messages": "a4daca6a69040e8d5c16042206426b43ff8aacee291aa76043f2e0c6dd701c86",
-    "p2.tiny_brief.natural_language_layout": "dbfbaf7ca74b34991da138c3dec4d545a10ac71e826125833ed65be5b7d775ae",
+    "p2.tiny_brief.natural_language_layout": "fa3d5f1857a78331b0355aed072e37d2af1fc7331d519478820466ea9fcbd69c",
     "p2.tiny_brief.prd_element_inventory": "d1e33b55716b03be45f4ffb737b11c103bea594fe2ceda88e176fc718ff563eb",
     "p2.tiny_brief.product_expansion_gaps": "8ea04d48916077c23c617ccfc376c02ef2074f7fdce4785536b37c3e525995f6",
     "p2.tiny_brief.shared_component_registry": "b45ba8f5be59be1522e195c0cb53edb701d5604e93050f346853e6d2c86e8449",

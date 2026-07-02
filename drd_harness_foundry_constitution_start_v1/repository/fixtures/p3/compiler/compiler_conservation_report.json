@@ -74,8 +74,8 @@
     "current input hashes"
   ],
   "upstream_hashes": {
-    "input_bundle_hash": "36fd6d09ff9c8fff328b4f4510fbdf64808ecc4628e7573df78fcbc4d90dd93a",
-    "semantic_content_hash": "8bbef2eee93ba7e95cce3ad04a7069a55a62853aac1679477b6d38ae1c67cafe"
+    "input_bundle_hash": "b9390a08230b506a04e58836990724de871f10efb32975efa4263c4c5451929e",
+    "semantic_content_hash": "533d6a3aefddc07f4a68184cef23ca904228b1a791a4905e33265c2c4420500e"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

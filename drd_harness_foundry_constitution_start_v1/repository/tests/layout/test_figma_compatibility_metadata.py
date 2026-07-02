@@ -17,6 +17,18 @@ def metadata(**overrides):
         "constraints": ["Header fills width", "Activity list vertical scroll"],
         "non_goals": ["No Figma API call", "No renderer implementation", "No file write"],
         "trace_refs": ["FIGMA-CONTRACT-001"],
+        "page_arrangement_order": [
+            {
+                "module_id": "module-project",
+                "function_group_id": "function-project",
+                "variant_page_id": "Page frame",
+                "frame_id": "Page frame",
+                "page_order_index": 0,
+                "variant_order_index": 0,
+                "figma_frame_order_index": 0,
+                "derivation_origin": "PRD_EXPLICIT",
+            }
+        ],
     }
     values.update(overrides)
     return FigmaReconstructionMetadata(**values)
@@ -63,3 +75,34 @@ def test_figma_metadata_rejects_semantic_drift():
     )
 
     assert "PL016" in {finding.code for finding in findings}
+
+
+def test_figma_metadata_requires_module_function_page_arrangement():
+    findings = validate_figma_metadata(
+        metadata(page_arrangement_order=[]),
+        layout(),
+    )
+
+    assert "PL014" in {finding.code for finding in findings}
+
+
+def test_figma_metadata_rejects_arrangement_frame_order_drift():
+    findings = validate_figma_metadata(
+        metadata(
+            page_arrangement_order=[
+                {
+                    "module_id": "module-project",
+                    "function_group_id": "function-project",
+                    "variant_page_id": "Header",
+                    "frame_id": "Header",
+                    "page_order_index": 0,
+                    "variant_order_index": 0,
+                    "figma_frame_order_index": 0,
+                    "derivation_origin": "PRD_EXPLICIT",
+                }
+            ]
+        ),
+        layout(),
+    )
+
+    assert "PL017" in {finding.code for finding in findings}

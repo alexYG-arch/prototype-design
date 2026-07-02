@@ -63,7 +63,7 @@
       "heading_text": "P3 Natural Language Layout",
       "section_id": "SEC-P3-NATURAL-LANGUAGE-LAYOUT",
       "section_order_index": 1,
-      "source_hash": "99ab329bc487271e45af3a8675599c64e1d531d05160f7f04567900e8a730555",
+      "source_hash": "81baa65e632d9cd1e4421144d2c4d0bf45a59f6e7c390abf6d98325ca3ccf25c",
       "source_path": "repository/fixtures/p3/layout/natural_language_layout.json",
       "stage_id": "DRD-04",
       "stage_order_index": 50,
@@ -86,7 +86,7 @@
     "approved section order"
   ],
   "upstream_hashes": {
-    "toc_hash": "f3991c54b4ef0a091f2d1d07cde3f5389b1131f6d30e9db6887ae79c7fca1e75"
+    "toc_hash": "e7ac72b83616188a246ca9ac191b5b928839fec199c0e815d2b43d9d7373d0cc"
   },
   "validator_ref": "repository/src/drd_harness/validators/p3_compiler.py"
 }

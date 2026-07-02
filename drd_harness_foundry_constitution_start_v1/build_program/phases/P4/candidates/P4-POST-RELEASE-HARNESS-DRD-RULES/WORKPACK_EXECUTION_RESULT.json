@@ -1,0 +1,75 @@
+{
+  "result_id": "P4-POST-RELEASE-HARNESS-DRD-RULES-RESULT-001",
+  "phase": "P4",
+  "workpack_id": "P4-POST-RELEASE-HARNESS-DRD-RULES",
+  "status": "CANDIDATE_READY_FOR_REVIEW",
+  "objective": "Repair harness rules for final DRD identity, page detail conservation, Figma/page ordering, inferred page marking, and installed output scope validation.",
+  "constitution_trace": [
+    "DRD-CHARTER-019 Final artifact identity",
+    "DRD-CHARTER-020 Page detail conservation",
+    "DRD-CHARTER-021 Module/function arrangement",
+    "DRD-CHARTER-022 Derivation origin visibility"
+  ],
+  "implementation_summary": [
+    "Added constitution and policy clauses for reader-facing final DRD, page detail conservation, page arrangement, and derivation origin visibility.",
+    "Extended renderable page variant schema and validators with module/function/order/derivation fields.",
+    "Extended Figma reconstruction metadata with page_arrangement_order and validator coverage.",
+    "Added external PRD page detail inventory and conservation checks.",
+    "Blocked process evidence markers from strict final DRD compilation.",
+    "Updated staged DRD-01 runtime gate to require page detail inventory and derivation-origin preparation.",
+    "Fixed installed external PRD output scope for package-root current_capsule runs."
+  ],
+  "harness_installation": {
+    "command": "uv pip install --python repository/.venv/bin/python -e repository",
+    "exit_code": 0,
+    "mode": "editable install from repository source"
+  },
+  "external_prd_smoke_run": {
+    "source": "/Users/xiaomuyou/Downloads/奇彩手机管家_PRD.md",
+    "output_root": "current_capsule/outputs/qicai_prd_harness_rulecheck_20260702_112715",
+    "generate_drd_status": "PASS",
+    "conservation_status": "PASS",
+    "page_detail_conservation_status": "PASS",
+    "page_detail_record_count": 2325,
+    "final_drd_contains_candidate_marker": false,
+    "checked_detail_examples": [
+      "手机健康体检",
+      "上次体检：今天 10:23",
+      "发现 3 个问题需要处理",
+      "开始体检",
+      "存储空间预测",
+      "趋势缩略图",
+      "还有 15 天存储就满了",
+      "每天新增约280MB",
+      "提前清理"
+    ]
+  },
+  "staged_run_check": {
+    "status": "STAGE_GATE_STOPPED",
+    "completed_stage_ids": [
+      "DRD-00"
+    ],
+    "blocked_stage_id": "DRD-01",
+    "stage_execution_order": [
+      "DRD-00",
+      "DRD-01",
+      "DRD-02",
+      "DRD-03",
+      "DRD-03B",
+      "DRD-04",
+      "DRD-05",
+      "DRD-06"
+    ],
+    "resume_dry_run": {
+      "status": "STOPPED",
+      "resume_eligibility": "BLOCK_HUMAN_GATE",
+      "invalidation_state": "CLEAR"
+    }
+  },
+  "non_actions": {
+    "release_lock_created": false,
+    "package_published": false,
+    "external_prd_content_added_to_repository_fixtures": false,
+    "product_capability_added": false
+  }
+}

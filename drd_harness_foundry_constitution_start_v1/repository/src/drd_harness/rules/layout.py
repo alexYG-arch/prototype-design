@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Optional
+from typing import Dict, List, Mapping, Optional
 
 
 class Carrier(str, Enum):
@@ -292,6 +292,7 @@ class FigmaReconstructionMetadata:
     constraints: List[str]
     non_goals: List[str]
     trace_refs: List[str]
+    page_arrangement_order: Optional[List[Mapping[str, object]]] = None
 
     def require_complete(self) -> None:
         _require_text(self.figma_metadata_id, "figma_metadata_id")
@@ -304,6 +305,8 @@ class FigmaReconstructionMetadata:
         _require_non_empty(self.constraints, "constraints")
         _require_non_empty(self.non_goals, "non_goals")
         _require_non_empty(self.trace_refs, "trace_refs")
+        if not self.page_arrangement_order:
+            raise ValueError("page_arrangement_order must declare module/function/page/frame order")
 
 
 def _require_text(value: str, field: str) -> None:
