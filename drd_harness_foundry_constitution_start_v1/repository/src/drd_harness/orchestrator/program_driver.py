@@ -216,7 +216,14 @@ def output_hashes_for_written_paths(payload: Mapping[str, Any]) -> dict:
     }
 
 
-def plan_generate_drd(*, work_dir: Path, source_ref: Path, output_dir: Path, dry_run: bool = False) -> dict:
+def plan_source_preserving_drd(
+    *,
+    work_dir: Path,
+    source_ref: Path,
+    output_dir: Path,
+    dry_run: bool = False,
+    command_name: str = "compile-source-preserving-drd",
+) -> dict:
     from drd_harness.compiler.external_prd import generate_external_prd_drd
 
     return generate_external_prd_drd(
@@ -224,6 +231,17 @@ def plan_generate_drd(*, work_dir: Path, source_ref: Path, output_dir: Path, dry
         source_ref=source_ref,
         output_dir=output_dir,
         dry_run=dry_run,
+        command_name=command_name,
+    )
+
+
+def plan_generate_drd(*, work_dir: Path, source_ref: Path, output_dir: Path, dry_run: bool = False) -> dict:
+    return plan_source_preserving_drd(
+        work_dir=work_dir,
+        source_ref=source_ref,
+        output_dir=output_dir,
+        dry_run=dry_run,
+        command_name="generate-drd",
     )
 
 

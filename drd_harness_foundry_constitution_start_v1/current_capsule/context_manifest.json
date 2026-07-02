@@ -5,7 +5,7 @@
     "test ! -d repository/src/drd_harness.egg-info",
     "test -f current_capsule/REPAIR_AUDIT.md",
     "rg -n \"LOCAL_SEQUENCE_INVERSION|FUTURE_REPAIR_SEQUENCE|AUDIT_RECORDED_AND_BOUND\" current_capsule/REPAIR_AUDIT.md",
-    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py",
+    "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_source_preserving_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py",
     "PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_staged_run.py",
     "PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src",
     "python3 tooling/verify_start_package.py",
@@ -15,6 +15,8 @@
     "python3 tooling/preflight_current_workpack.py"
   ],
   "allowed_write_paths": [
+    "../README.md",
+    "README.md",
     "START_HERE.md",
     "CODEX_START_PROMPT.md",
     "current_capsule/AGENTS.md",
@@ -45,7 +47,9 @@
       "DRD-06"
     ],
     "execution_package_phase_label_is_internal": true,
-    "external_prd_drd_generation_command": "drd-harness generate-drd",
+    "external_prd_drd_generation_command": "drd-harness compile-source-preserving-drd",
+    "external_prd_drd_generation_legacy_alias": "drd-harness generate-drd",
+    "external_prd_source_preserving_drd_filename": "SOURCE_PRESERVING_DRD.md",
     "external_prd_outputs_allowed_prefix": "current_capsule/outputs/**",
     "external_prd_outputs_forbidden_prefixes": [
       "build_program/**",
@@ -67,7 +71,7 @@
     ],
     "external_prd_run_receipt_only": true,
     "external_prd_staged_run_command": "drd-harness staged-run",
-    "generate_drd_source_preserving_only": true,
+    "compile_source_preserving_drd_only": true,
     "lock_or_release_in_external_prd_run": false,
     "p4_label_does_not_assign_external_prd_to_p4": true,
     "release_chain_for_prd_to_drd": false,
@@ -89,28 +93,36 @@
   "phase": "P4",
   "required_files": [
     {
+      "path": "../README.md",
+      "sha256": "5701e5f3b9ccc9f3630de3ce6399e980547b73012cb5bba29c3f85563c72776f"
+    },
+    {
       "path": "AGENTS.md",
       "sha256": "2b9954869dca4bd12737609a391c4b3df8397227619e053fdc93499f2d676eec"
     },
     {
+      "path": "README.md",
+      "sha256": "5228854b610ed17f98b4e95e30ec97e57f5d4a1315721693747c6c5b51a20357"
+    },
+    {
       "path": "CODEX_START_PROMPT.md",
-      "sha256": "edb9efea7e377fc2b457ed8d378f642f9c5518ed4f96f65ea4ba1c2dbcd6806a"
+      "sha256": "d58cd3c1fd163931dc76bec3b3db6ed21825a534ca469aafb5d66af73f37a226"
     },
     {
       "path": "START_HERE.md",
-      "sha256": "3409c554bd2a1641697dca5c46ca447dffb05aae0a77455d5b7abafd727dcef3"
+      "sha256": "cc85f661baae7731b6ad5b91d23276cc11f6f2c85c0796e539f7f79abc4f32bb"
     },
     {
       "path": "build_program/program/PROGRAM_MANIFEST.json",
-      "sha256": "12109eadaf52398cb47ab48b1fb43f1002e1072fbafe8c5955ef981ceae016a4"
+      "sha256": "6e663597cc9e0265d835580d8d60a31cd58be345f1e3df9d5b3ea69947e3c878"
     },
     {
       "path": "build_program/program/PROGRAM_STATE.json",
-      "sha256": "069837ee6a3b5b2d88c3a363fd5266c41b45eebc12b84d995c90638e75f0a330"
+      "sha256": "c2e12f25fcca0fc9319b72a7b6d3eeeadd02be4c3f75b29e72b7baa1fa32e20a"
     },
     {
       "path": "control/CONSTITUTION_LOCK.json",
-      "sha256": "c60f7964564e2d4783e0107a3d9a5af78f9cf17726289fed87af46ef28b80779"
+      "sha256": "7c6a04b6c18d2b3bda35725edb9d687deec6efce6a215dc8df302e485b4e5e62"
     },
     {
       "path": "control/locks/DRD_HARNESS_RELEASE_LOCK.json",
@@ -130,15 +142,15 @@
     },
     {
       "path": "current_capsule/PROMPT.md",
-      "sha256": "9830408b967382569e4ee69cb0280962805b1a0d8952ed011f1b6bdfe3d92573"
+      "sha256": "5cc23a77c83821e8064801c639b23fe6017d02e1ab75417859baf3e87621258d"
     },
     {
       "path": "current_capsule/REPAIR_AUDIT.md",
-      "sha256": "09560109a8b9c7e5f65598c1654f8bf2996718fadef3d5b641110c3ad1b4dab9"
+      "sha256": "2c9ed5da4b67806fbab29d20c6df1dc98feac84de5e378778141ae0ab5fecb23"
     },
     {
       "path": "current_capsule/TASK.md",
-      "sha256": "6206ca5e40258e1aa8095c1fac6466bbccc1dd764314b1554d0aef639b77b417"
+      "sha256": "1e8d34f5291cd267c984e5d478ca1c5b7cadfa48392d7877ab65a0d9828b6b80"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/FINAL_DRD.md",
@@ -146,35 +158,35 @@
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_conservation_report.json",
-      "sha256": "d030bb9c542941137603e6cd39febec397d6f331a25320fbf6329f38de720ceb"
+      "sha256": "75f4c566d97f0f233c816d755e414d2548436368f790a2f4912b9938985f2e2a"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_input_bundle.json",
-      "sha256": "83dd6d1e3ce3d370affcea586d407e16617b30b83ce9ef73acbb91bba84d0813"
+      "sha256": "2e5b1f5999dee928a14d9abab10a9643804c6dc3e182d60e2782ded85e3d07c5"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/compiler_semantic_unit_inventory.json",
-      "sha256": "bfe605ba0d47b834ac5b5b468382091abd3a1fd426001c5fc54ab13c4c040dd2"
+      "sha256": "79dbea9051dce6594ccb502b482fd6592310fff10631250e9964f49d27c38524"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_hash_index.json",
-      "sha256": "16f311dc7359e258ab18162b46a7b4d6c8c05533cddd994a1eaee582a72dd488"
+      "sha256": "22a0070e1e13a7def9a5aba2b7c79dcb3859008d578cab85c38058b43766067b"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_manifest.json",
-      "sha256": "f73f8731539b33dba16634596bd7de0daed24024a00e748d308b047e4df865eb"
+      "sha256": "94a3f8f171618daa231dffd3f1a8406794e4f1ffc95264f5fa7b6e1fb1e27b3f"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_drd_reference_index.json",
-      "sha256": "dce0006e8878834c5161945f255a9c8e8ff59c84733be965bce95009b4bad72b"
+      "sha256": "10874a1aaf720c22d87987c52dc536efe108eda1188c80e6a1334929f645c9e4"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_decision.json",
-      "sha256": "eba74b02f5336a5efbe3b32fb3408e582a0e67de54c3e214c3c36af8dbdc368d"
+      "sha256": "669526bb6a1b1361670311bc8ff397993dddb790996d3c40a587388bca049d2e"
     },
     {
       "path": "repository/fixtures/p2/tiny_brief_intake/final_review_target.json",
-      "sha256": "4e53604b3d4db3e620f0c3deeeb192416c77a05ed1c3f0f3724163e14ae70fdb"
+      "sha256": "1003186e1640e4bdd7c77e031ce7809b94ddcc75d02408d13596d38a49c53595"
     },
     {
       "path": "repository/fixtures/p3/compiler/FINAL_DRD.md",
@@ -182,31 +194,31 @@
     },
     {
       "path": "repository/fixtures/p3/compiler/compiler_conservation_report.json",
-      "sha256": "4c66c5ab040ab9afde909c475cb1543f5c4852e31195acac56c715b6a3a44d81"
+      "sha256": "58f977ede8282955f9ba407f22b114d7d67b17c05db8bc944379a0bbf3d6d69e"
     },
     {
       "path": "repository/fixtures/p3/compiler/compiler_input_bundle.json",
-      "sha256": "bb92e6fd72c0e7956b4cc6fcc41a67d944b169ada022c7e2987718d831f44886"
+      "sha256": "1bc5345128a29581ee9a8044dca0cb89159c72672741904ca7e03d4e6001179b"
     },
     {
       "path": "repository/fixtures/p3/compiler/compiler_semantic_unit_inventory.json",
-      "sha256": "2d68aa95e52628de6a180b883ce72420a5f399453dd05c6d66fe3b402313043e"
+      "sha256": "916a0a59aad9f47edb1c84d8daea8a11a51364f3f75a5849cc0cc2c8cfeae8ca"
     },
     {
       "path": "repository/fixtures/p3/compiler/final_drd_hash_index.json",
-      "sha256": "ebef2b2fea4e229bde9ae04b9d3689b34c8fe0bb353a8365e6beab1699e96341"
+      "sha256": "1d53e4c85b587fd241145b4825df53a7538bdfb21230e9711e7fbef3ff425dd6"
     },
     {
       "path": "repository/fixtures/p3/compiler/final_drd_manifest.json",
-      "sha256": "fb0e40d5b82d1966408a6fd799bdc66137497e1a9c1ceb2255c936f6bb14b5d5"
+      "sha256": "dfdbbb3854d02173347d60f4e2423c416eccc6f5143c2ac6da37ab681e07f3b1"
     },
     {
       "path": "repository/fixtures/p3/compiler/final_drd_reference_index.json",
-      "sha256": "8a6e05325c1fd5701f10e1f5e7f41e6ad0e2f7089b503e4d64bfb73800ad1948"
+      "sha256": "663b10e6f1d294ae740a9e4932d695523849ae9d04a52782cdea7d1afc77c2f0"
     },
     {
       "path": "repository/fixtures/p3/compiler/final_drd_toc.json",
-      "sha256": "f39a876016d3a24d98bec2e57149f75ad01498438f0f045eecd278de3cfbd478"
+      "sha256": "ec66939100ca9fa5989571fe16cd53cdeb42f2ddbd12980779d1441a6bc4454c"
     },
     {
       "path": "repository/pyproject.toml",
@@ -226,15 +238,15 @@
     },
     {
       "path": "repository/src/drd_harness/cli/main.py",
-      "sha256": "ab45c8d538422b75c9d3207dae655bb0debb6f860a23c836b4f130987d9b191e"
+      "sha256": "8ca502e23f20c215df9c40d0bf4cf75e696752b462a57e7d4848e6994d1e148b"
     },
     {
       "path": "repository/src/drd_harness/compiler/external_prd.py",
-      "sha256": "ab5bd5608d6e82c52ce322a2da1cfc02278f9819c738c5d931e8c572f06d74c1"
+      "sha256": "3549e998ce130815d2e88ce38b579f7e3592a38744b04fe4dc0927f3e03bf5dc"
     },
     {
       "path": "repository/src/drd_harness/compiler/final_drd.py",
-      "sha256": "98d84269103ca03aa501e5ac2dc746f9aa5d20ca54a00fc3213b6caa19b3fbfe"
+      "sha256": "8311b260f1d6c3059802ece38946b1d015ab2e53ea08b70d92c6df52df291fed"
     },
     {
       "path": "repository/src/drd_harness/kernel/import_boundaries.py",
@@ -242,11 +254,11 @@
     },
     {
       "path": "repository/src/drd_harness/orchestrator/external_staged_run.py",
-      "sha256": "767f3ac338e14ae04fec74cb148767b4b763af2522b58c24a7a1e3a808986125"
+      "sha256": "d612d007368b2e6c0a9b0343b86ba0cff1d19b814af48e41dfa9453aead73885"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/program_driver.py",
-      "sha256": "1f7ed21c7a5406115c426c85ac2dd3164cc00374a86cd80ddc2e09e5e2c09379"
+      "sha256": "543068e5b9052c5c6b4de5f12bd7159aadd19f6d088c39c11cfe416e50a9d305"
     },
     {
       "path": "repository/src/drd_harness/orchestrator/recovery.py",
@@ -273,12 +285,12 @@
       "sha256": "e15831a61ff9215fe76ac0f5d0d90d8c5482da8018b997e2f44cec617212426f"
     },
     {
-      "path": "repository/tests/p4/test_external_prd_generate_drd.py",
-      "sha256": "dd56ddf5fcb61e1148bf5a82a0e216fd3a8d00837a28f4f3e079feb6110c9fee"
+      "path": "repository/tests/p4/test_external_prd_source_preserving_drd.py",
+      "sha256": "b28175b0a8c4c119b2d6a5c2023b2425c7e21bf892804ae1ba56c4326da85892"
     },
     {
       "path": "repository/tests/p4/test_external_prd_staged_run.py",
-      "sha256": "3d89c5d5592681233bbc6b294f074f16511a43c1d39eba23c460440d71796d19"
+      "sha256": "1b52e35db45a60e79738e448291a146d61e9d650932a09fa979bcf8012ad450f"
     },
     {
       "path": "repository/tests/p4/test_input_adapters.py",
@@ -286,7 +298,7 @@
     },
     {
       "path": "repository/tests/p4/test_program_driver.py",
-      "sha256": "7882e22d68d9f9711ce5d37297c093a3559f837e437b1a81d37283c752665f4e"
+      "sha256": "9793276b853f2ac9727bea1d22cecd5722a34da513d1dd23c9da5fcfc04cbefe"
     },
     {
       "path": "tooling/preflight_current_workpack.py",

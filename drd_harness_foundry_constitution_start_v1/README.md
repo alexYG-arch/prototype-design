@@ -27,7 +27,7 @@ repository/.venv/bin/drd-harness --help
 
 ```bash
 repository/.venv/bin/drd-harness run --help
-repository/.venv/bin/drd-harness generate-drd --help
+repository/.venv/bin/drd-harness compile-source-preserving-drd --help
 repository/.venv/bin/drd-harness staged-run --help
 ```
 

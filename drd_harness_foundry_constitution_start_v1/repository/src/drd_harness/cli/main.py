@@ -16,10 +16,10 @@ from drd_harness.kernel.import_boundaries import (
 from drd_harness.orchestrator.program_driver import (
     build_status_payload,
     output_hashes_for_written_paths,
-    plan_generate_drd,
     plan_release_request,
     plan_resume,
     plan_run,
+    plan_source_preserving_drd,
     plan_staged_run,
 )
 from drd_harness.orchestrator.workpacks import compute_workpack_readiness_state
@@ -34,7 +34,11 @@ from drd_harness.validators.workpack_scope import validate_workpack_readiness
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="drd-harness")
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    subparsers = parser.add_subparsers(
+        dest="command",
+        required=True,
+        metavar="{candidate-check,runtime-boundary-check,workpack-readiness,run,compile-source-preserving-drd,staged-run,review,resume,release}",
+    )
 
     candidate = subparsers.add_parser("candidate-check")
     candidate.add_argument("candidate_dir")
@@ -59,12 +63,9 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--dry-run", action="store_true")
     run.set_defaults(func=_run_p4_run)
 
-    generate_drd = subparsers.add_parser("generate-drd")
-    generate_drd.add_argument("--work-dir", required=True)
-    generate_drd.add_argument("--source-ref", required=True)
-    generate_drd.add_argument("--output-dir", required=True)
-    generate_drd.add_argument("--dry-run", action="store_true")
-    generate_drd.set_defaults(func=_run_generate_drd)
+    source_preserving_drd = subparsers.add_parser("compile-source-preserving-drd", aliases=["generate-drd"])
+    _add_source_preserving_drd_args(source_preserving_drd)
+    source_preserving_drd.set_defaults(func=_run_source_preserving_drd)
 
     staged_run = subparsers.add_parser("staged-run")
     staged_run.add_argument("--work-dir", required=True)
@@ -205,12 +206,20 @@ def _run_p4_run(args) -> int:
     return int(payload["exit_code"])
 
 
-def _run_generate_drd(args) -> int:
-    payload = plan_generate_drd(
+def _add_source_preserving_drd_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--work-dir", required=True)
+    parser.add_argument("--source-ref", required=True)
+    parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--dry-run", action="store_true")
+
+
+def _run_source_preserving_drd(args) -> int:
+    payload = plan_source_preserving_drd(
         work_dir=Path(args.work_dir),
         source_ref=Path(args.source_ref),
         output_dir=Path(args.output_dir),
         dry_run=args.dry_run,
+        command_name=args.command,
     )
     _emit(payload)
     return int(payload["exit_code"])

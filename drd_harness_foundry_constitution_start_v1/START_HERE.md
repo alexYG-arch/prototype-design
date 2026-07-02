@@ -8,7 +8,7 @@
 - P1 至 P4 的 Spec / Build locks 已生成；
 - `DRD_HARNESS_RELEASE_LOCK` 已存在；
 - Program State 停在 `P4-PROGRAM-CLOSURE-STATUS-SYNC`；
-- 当前用途是安装并运行 `drd-harness`，对输入 PRD 做隔离 run receipt、真实 staged-run 边界执行，以及 source-preserving DRD 文档生成。
+- 当前用途是安装并运行 `drd-harness`，对输入 PRD 做隔离 run receipt、真实 staged-run 边界执行，以及 source-preserving DRD 文档编译。
 - 外部 PRD run receipt 不包含执行包证据链 stage，不包含 lock/release/resume gate；lock/release 只属于执行包治理。外部 PRD `staged-run` 会单独产出 `run_state.json`，用于恢复校验当前停在的 Human Gate。
 
 权威状态以这些文件为准：
@@ -75,17 +75,17 @@ run_receipt.json
 这是保守编译入口，不是完整 harness stage run：
 
 ```bash
-repository/.venv/bin/drd-harness generate-drd \
+repository/.venv/bin/drd-harness compile-source-preserving-drd \
   --work-dir . \
   --source-ref /path/to/input_prd.md \
   --output-dir current_capsule/outputs/<run_dir>/drd
 ```
 
-DRD 生成只能使用 `DRD-00` 到 `DRD-06` 作为文档生成 stage。缺失页面、二三级页面、元素或业务能力不得自动补全；必须进入人工 review。不得调用 release，不得创建锁，不得发布 package。CLI payload 必须声明 `source_preserving_compile_only=true` 与 `staged_execution_complete=false`。
+该命令产出 `SOURCE_PRESERVING_DRD.md`，只能使用 `DRD-00` 到 `DRD-06` 作为文档生成 stage。缺失页面、二三级页面、元素或业务能力不得自动补全；必须进入人工 review。不得调用 release，不得创建锁，不得发布 package。CLI payload 必须声明 `source_preserving_compile_only=true` 与 `staged_execution_complete=false`。旧命令 `generate-drd` 仅作为兼容 alias。
 
 同一语义页面下的用户可见状态必须在 DRD-03 形成 `renderable_page_variants`：基础页使用原页面 ID，状态页使用稳定变体页 ID。DRD-04 的自然语言布局与 Figma 还原说明必须把这些变体当作独立可呈现页面/Frame 引用，例如页面 A、A1、A2、A3。该展开只呈现已采纳页面和状态，不得借机新增产品能力；如果必须新增页面、二三级页面、元素或能力才能补齐，进入人工 review。
 
-`DRD-05/FINAL_DRD.md` 必须是面向读者的最终规格，不是证据包。hash、source path、review decision、gate 状态、run_state、完整 inventory dump 和候选过程标签必须留在 manifest/reference/hash/QA sidecar 中，不得混入正文。最终正文不得把 `DRD-01` 到 `DRD-04` 候选文档原文整段拼接，也不得出现多个一级标题。
+`SOURCE_PRESERVING_DRD.md` 必须是面向读者的保源规格，不是证据包。hash、source path、review decision、gate 状态、run_state、完整 inventory dump 和候选过程标签必须留在 manifest/reference/hash/QA sidecar 中，不得混入正文。完整 staged execution 的 `DRD-05/FINAL_DRD.md` 命名保持不变。最终正文不得把 `DRD-01` 到 `DRD-04` 候选文档原文整段拼接，也不得出现多个一级标题。
 
 完整 staged execution 中，`DRD-01` 到 `DRD-04/03B` 的输出必须区分双角色：candidate artifacts 只用于 review/gate，approved semantic artifacts 才能进入 `DRD-05` compiler bundle。approved semantic artifact 必须绑定 source candidate、review decision、semantic body hash 和过程证据 sidecar，正文不得包含“候选/CANDIDATE”、source/hash/review/gate/run_state 等过程信息。同一个文件不得同时作为候选和 approved semantic artifact；缺少 approved semantic artifact 时必须停住，不能用 candidate 顶替。
 
@@ -102,4 +102,4 @@ repository/.venv/bin/drd-harness staged-run \
 
 无 Codex 运行时，或尚未存在已批准 DRD-01 候选输入时，标准 staged run 只会完成 `DRD-00` source freeze，然后停在 `DRD-01` 的 `CODEX_RUNTIME_GATE`。这不是失败；它表示体验事实提炼、后续用户任务、交互闭包、元素补全、共用模式和布局语义必须由 Codex 候选与人工 review/校验继续，不能由 Python CLI 静默推导。
 
-标准 staged run 会写出 `stage_execution_plan.json`、`DRD-00/**`、`review_gates/DRD-01_EXPERIENCE_FACT_EXTRACTION_REQUEST.json`、`codex_prompts/DRD-01_EXPERIENCE_FACT_EXTRACTION_PROMPT.md` 和 `run_state.json`。它不得产出 `DRD-01/PRD_EXPERIENCE_BRIEF.md`、`DRD-01/experience_fact_index.json` 或 `FINAL_DRD.md`，不得创建 lock/release，不得发布 package。
+标准 staged run 会写出 `stage_execution_plan.json`、`DRD-00/**`、`review_gates/DRD-01_EXPERIENCE_FACT_EXTRACTION_REQUEST.json`、`codex_prompts/DRD-01_EXPERIENCE_FACT_EXTRACTION_PROMPT.md` 和 `run_state.json`。它不得产出 `DRD-01/PRD_EXPERIENCE_BRIEF.md`、`DRD-01/experience_fact_index.json`、`SOURCE_PRESERVING_DRD.md` 或 `FINAL_DRD.md`，不得创建 lock/release，不得发布 package。

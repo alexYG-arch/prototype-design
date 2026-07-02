@@ -15,7 +15,7 @@ drd_harness_foundry_constitution_start_v1/
 - Harness 源码：`repository/src/drd_harness/` 提供 CLI、compiler、orchestrator、validators 和 stage contracts。
 - 外部 PRD 入口：
   - `run`：只做外部 PRD 输入适配和最小 run receipt。
-  - `generate-drd`：source-preserving compile，不伪造完整 staged execution。
+  - `compile-source-preserving-drd`：source-preserving compile，不伪造完整 staged execution；`generate-drd` 仅作为兼容 alias。
   - `staged-run`：完整 harness stage 链路入口；无 Codex/Human Gate 输入时会停在对应 stage。
 - DRD 编译：`DRD-05` 使用 Python 确定性编译，只消费已批准语义产物，不新增页面、状态、CTA、组件、交互或布局决策。
 - Review/校验：包含 compiler conservation、reader-facing final DRD、approved semantic artifact、runtime boundary、start package、program 和 skill 校验。
@@ -47,7 +47,7 @@ repository/.venv/bin/drd-harness --help
 
 ```bash
 repository/.venv/bin/drd-harness run --help
-repository/.venv/bin/drd-harness generate-drd --help
+repository/.venv/bin/drd-harness compile-source-preserving-drd --help
 repository/.venv/bin/drd-harness staged-run --help
 repository/.venv/bin/drd-harness resume --help
 ```

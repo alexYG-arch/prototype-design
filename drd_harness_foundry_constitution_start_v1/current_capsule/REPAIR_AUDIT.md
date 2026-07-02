@@ -8,7 +8,7 @@
 
 - 执行包入口和当前 capsule 约束；
 - `drd-harness run` 的最小 receipt 行为；
-- `drd-harness generate-drd` 的 DRD-00 到 DRD-06 文档生成行为；
+- `drd-harness compile-source-preserving-drd` 的 DRD-00 到 DRD-06 文档生成行为；`generate-drd` 只保留为兼容 alias；
 - `drd-harness staged-run` 的宪章 runtime 边界；
 - runtime boundary checker；
 - editable install 后的源码树卫生。
@@ -34,6 +34,23 @@
 - 当前执行包和 harness 的最终状态已经重新绑定；
 - 未修改 `constitution/**`、`control/**`、`build_program/**`、`references/**` 或 `tooling/**`；
 - 风险集中在过程可审计性，而不是输出正确性。
+
+## RF Review Finding
+
+`RF_SOURCE_PRESERVING_NAMING_REPAIR`
+
+后续 R/F 复查发现 source-preserving 外部 PRD 编译入口命名存在语义混淆：
+
+- `generate-drd` 看起来像完整 staged execution，而实际只做 source-preserving DRD compile；
+- 产物名 `FINAL_DRD.md` 容易和 `staged-run` 的 `DRD-05/FINAL_DRD.md` 混淆；
+- 首次命令命名不精确会让 check、memory 和执行记录看起来像完整 run 包。
+
+修复后：
+
+- 正式入口改为 `drd-harness compile-source-preserving-drd`；
+- `generate-drd` 只保留为兼容 alias，不再出现在主 help 的 canonical 命令列表中；
+- source-preserving 输出改为 `SOURCE_PRESERVING_DRD.md`；
+- 完整 staged execution 的 `DRD-05/FINAL_DRD.md` 名称保持不变，只能由 `staged-run` 链路生成。
 
 ## RF Review Finding
 

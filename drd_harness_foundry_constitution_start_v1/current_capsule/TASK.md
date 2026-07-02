@@ -6,9 +6,9 @@
 
 - 删除外部 PRD run 中的证据链 stage；
 - 外部 PRD run 只保留最小 `run_receipt.json`；
-- source-preserving 文档生成必须显式声明不是完整 staged execution；
+- source-preserving 文档生成必须使用清晰命名，显式声明不是完整 staged execution；
 - 新增外部 PRD 的真实 staged-run 边界，用 `DRD-00` 到 `DRD-06` 作为唯一 stage chain；
-- `DRD-05/FINAL_DRD.md` 必须是面向读者的最终规格文档，不得退化为候选产物拼接、证据包、hash/source/review 日志或 inventory dump；
+- 完整 staged execution 的 `DRD-05/FINAL_DRD.md` 必须是面向读者的最终规格文档，不得退化为候选产物拼接、证据包、hash/source/review 日志或 inventory dump；
 - lock/release 保留给执行包治理，不放进外部 PRD run。
 
 ## Scope guardrail
@@ -21,7 +21,7 @@
 
 外部 PRD 运行产物只能写入 `current_capsule/outputs/**`。PRD 转 DRD 的生成过程不得新增 PRD 产品能力；若需要推导缺失页面、二三级页面、元素或业务能力，必须进入人工 review，而不能由 harness 自动补全。
 
-完整 harness stage run 不能由 `generate-drd` 代替。`generate-drd` 只是 source-preserving compile；完整 stage 执行必须使用 `drd-harness staged-run`，并且在缺少 Codex/Human Gate 输入时停在相应 stage，而不是伪造后续语义产物。
+完整 harness stage run 不能由保源编译入口代替。`compile-source-preserving-drd` 只是 source-preserving compile；完整 stage 执行必须使用 `drd-harness staged-run`，并且在缺少 Codex/Human Gate 输入时停在相应 stage，而不是伪造后续语义产物。旧入口名 `generate-drd` 只能作为兼容 alias，不得作为主入口命名。
 
 DRD-01 到 DRD-04/03B 必须拆分两个产物身份：
 
@@ -32,11 +32,11 @@ DRD-01 到 DRD-04/03B 必须拆分两个产物身份：
 
 `DRD-05` 汇编必须执行 reader-facing structure gate：
 
-- `FINAL_DRD.md` 只能包含最终规格正文、确定性目录和必要章节标题；
-- 证据引用、hash、source path、review decision、gate 状态、run_state 和 approval 绑定必须保存在 manifest/reference/hash/QA sidecar 中，不得进入 `FINAL_DRD.md` 主体；
-- 不得把 `DRD-01` 到 `DRD-04` 的候选文档原文整段拼接进 `FINAL_DRD.md`；
+- 完整 staged execution 的 `FINAL_DRD.md` 只能包含最终规格正文、确定性目录和必要章节标题；
+- 证据引用、hash、source path、review decision、gate 状态、run_state 和 approval 绑定必须保存在 manifest/reference/hash/QA sidecar 中，不得进入最终正文主体；
+- 不得把 `DRD-01` 到 `DRD-04` 的候选文档原文整段拼接进最终正文；
 - 不得出现多个一级标题，不得保留“候选/CANDIDATE”过程标签；
-- 页面变体完整 inventory 应保存在结构化 index 或附录 sidecar；`FINAL_DRD.md` 只能保留面向实现/设计阅读的分组规格，不得逐行 dump `renderable_page_variants`。
+- 页面变体完整 inventory 应保存在结构化 index 或附录 sidecar；最终正文只能保留面向实现/设计阅读的分组规格，不得逐行 dump `renderable_page_variants`。
 
 若修复过程中出现先改 harness 再补执行包约束的局部倒序，必须记录到 `current_capsule/REPAIR_AUDIT.md`，并在 context manifest 中绑定该审计文件。
 
@@ -64,7 +64,7 @@ current_capsule/outputs/
 
 ## Required DRD generation outputs
 
-`drd-harness generate-drd` 的输出目录由调用方指定，实际使用时必须位于：
+`drd-harness compile-source-preserving-drd` 的输出目录由调用方指定，实际使用时必须位于：
 
 ```text
 current_capsule/outputs/
@@ -78,7 +78,7 @@ current_capsule/outputs/
 4. `external_prd_validation_report.json`
 5. `drd_generation_stage_plan.json`
 6. `compiler_input_bundle.json`
-7. `FINAL_DRD.md`
+7. `SOURCE_PRESERVING_DRD.md`
 8. `final_drd_manifest.json`
 9. `final_drd_toc.json`
 10. `final_drd_reference_index.json`
@@ -86,11 +86,13 @@ current_capsule/outputs/
 12. `compiler_conservation_report.json`
 13. `compiler_semantic_unit_inventory.json`
 
-`generate-drd` 的 status payload 必须显式包含：
+`compile-source-preserving-drd` 的 status payload 必须显式包含：
 
 - `source_preserving_compile_only=true`
 - `staged_execution_complete=false`
 - `staged_execution_command=staged-run`
+- `canonical_command=compile-source-preserving-drd`
+- `legacy_command_aliases=["generate-drd"]`
 
 ## Required staged-run outputs
 
@@ -119,7 +121,7 @@ current_capsule/outputs/
 - `staged_execution_complete=false`
 - 不创建 control lock、release lock，不发布 package。
 
-标准 staged run 不得产出 `FINAL_DRD.md`，也不得用 Python 产出 `DRD-01/PRD_EXPERIENCE_BRIEF.md` 或 `DRD-01/experience_fact_index.json`。只有 Codex 产出并通过校验的 DRD-01 candidate、后续 DRD-02 到 DRD-04/03B candidate、对应 gate decision，以及每个 stage 的 `approved semantic artifact` 都存在后，DRD-05 才能编译；DRD-05/DRD-06 通过后才能声明 staged execution complete。
+标准 staged run 不得产出 `FINAL_DRD.md` 或 `SOURCE_PRESERVING_DRD.md`，也不得用 Python 产出 `DRD-01/PRD_EXPERIENCE_BRIEF.md` 或 `DRD-01/experience_fact_index.json`。只有 Codex 产出并通过校验的 DRD-01 candidate、后续 DRD-02 到 DRD-04/03B candidate、对应 gate decision，以及每个 stage 的 `approved semantic artifact` 都存在后，DRD-05 才能编译；DRD-05/DRD-06 通过后才能声明 staged execution complete。
 
 ## Required behavior
 
@@ -128,12 +130,13 @@ current_capsule/outputs/
 - `output_hashes` 必须绑定实际落盘的 `run_receipt.json`；
 - `input_hashes` 必须绑定源 PRD 与 section refs；
 - run 不得新增 PRD 产品能力，只能做输入适配和最小 receipt。
-- `generate-drd` 必须直接调用 DRD 编译器，不得调用 release；
-- `generate-drd` 的 status payload 必须显式声明不会创建 release lock、不会发布 package；
-- `generate-drd` 只能做 source-preserving 编译和原文行级 inventory，不得根据缺失内容推导新增产品能力；
-- `generate-drd` 必须输出 DRD-00 到 DRD-06 的文档生成 stage plan；
+- `compile-source-preserving-drd` 必须直接调用 DRD 编译器，不得调用 release；
+- `compile-source-preserving-drd` 的 status payload 必须显式声明不会创建 release lock、不会发布 package；
+- `compile-source-preserving-drd` 只能做 source-preserving 编译和原文行级 inventory，不得根据缺失内容推导新增产品能力；
+- `compile-source-preserving-drd` 必须输出 DRD-00 到 DRD-06 的文档生成 stage plan；
+- `generate-drd` 只能作为兼容 alias，payload 必须暴露 `canonical_command=compile-source-preserving-drd`；
 - 外部 PRD 生成的 compiler bundle、section index、validation report、final DRD 均必须保持在 `current_capsule/outputs/**`。
-- `FINAL_DRD.md` 必须通过 reader-facing structure validator；过程证据必须落在 `final_drd_manifest.json`、reference index、hash index、conservation report 或 `DRD-06` QA sidecar，不能混进正文。
+- `SOURCE_PRESERVING_DRD.md` 必须通过 reader-facing structure validator；过程证据必须落在 `final_drd_manifest.json`、reference index、hash index、conservation report 或 sidecar，不能混进正文。完整 staged execution 的 `DRD-05/FINAL_DRD.md` 命名保持不变。
 - `staged-run` 才是完整 harness stage 链路的外部 PRD 入口；它必须落盘 stage plan、stage receipt、run state 和下一 stage 的 Codex runtime gate 证据。
 - `staged-run` 不得把 source-preserving compile 当作 DRD-02 到 DRD-04 的语义执行结果。
 - `DRD-01` 到 `DRD-04/03B` 的 stage candidate 通过 review 后，必须 promotion 为 `APPROVED_SEMANTIC_ARTIFACT` 后才能进入 compiler bundle；compiler bundle 必须设置 `requires_approved_stage_semantic_artifacts=true`。
@@ -150,7 +153,7 @@ repository/.venv/bin/drd-harness --help
 test ! -d repository/src/drd_harness.egg-info
 test -f current_capsule/REPAIR_AUDIT.md
 rg -n "LOCAL_SEQUENCE_INVERSION|FUTURE_REPAIR_SEQUENCE|AUDIT_RECORDED_AND_BOUND" current_capsule/REPAIR_AUDIT.md
-PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_generate_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py
+PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_source_preserving_drd.py repository/tests/p4/test_cli_contracts.py repository/tests/p4/test_program_driver.py repository/tests/p4/test_input_adapters.py repository/tests/kernel/test_import_boundaries.py repository/tests/compiler/test_final_drd_compilation.py
 PYTHONPATH=repository/src python3 -m pytest repository/tests/p4/test_external_prd_staged_run.py
 PYTHONPATH=repository/src python3 -m drd_harness.cli.main runtime-boundary-check repository/src
 python3 tooling/verify_start_package.py

@@ -127,6 +127,7 @@ def test_staged_run_materializes_real_stage_boundary_and_human_gate_stop(tmp_pat
     assert run_state["gate_states"]["DRD-01"]["human_gate_required"] is True
     assert payload["output_hashes"] == {str(path): sha256_file(path) for path in sorted(written_paths.values())}
     assert not (output / "FINAL_DRD.md").exists()
+    assert not (output / "SOURCE_PRESERVING_DRD.md").exists()
     assert not (output / "DRD-01" / "PRD_EXPERIENCE_BRIEF.md").exists()
 
     resume_exit = main(

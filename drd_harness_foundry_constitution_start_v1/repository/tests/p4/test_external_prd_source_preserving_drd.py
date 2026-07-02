@@ -5,7 +5,7 @@ from drd_harness.cli.main import main
 from drd_harness.validators.compiler_conservation import validate_final_drd_reader_structure
 
 
-def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, capsys):
+def test_compile_source_preserving_drd_materializes_reader_facing_drd(tmp_path: Path, capsys):
     source = tmp_path / "prd.md"
     source.write_text(
         "# Utility PRD\n"
@@ -18,7 +18,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
 
     exit_code = main(
         [
-            "generate-drd",
+            "compile-source-preserving-drd",
             "--work-dir",
             str(tmp_path),
             "--source-ref",
@@ -31,7 +31,9 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     written_paths = {Path(path).name: Path(path) for path in payload["written_paths"]}
 
     assert exit_code == 0
-    assert payload["command"] == "generate-drd"
+    assert payload["command"] == "compile-source-preserving-drd"
+    assert payload["canonical_command"] == "compile-source-preserving-drd"
+    assert payload["legacy_command_aliases"] == ["generate-drd"]
     assert payload["status"] == "PASS"
     assert payload["conservation_status"] == "PASS"
     assert payload["will_create_release_lock"] is False
@@ -39,6 +41,8 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert payload["source_preserving_compile_only"] is True
     assert payload["staged_execution_complete"] is False
     assert payload["staged_execution_command"] == "staged-run"
+    assert payload["source_preserving_drd_filename"] == "SOURCE_PRESERVING_DRD.md"
+    assert Path(payload["source_preserving_drd_path"]).name == "SOURCE_PRESERVING_DRD.md"
     assert "release_readiness_packet" not in payload
     assert all("build_program/" not in path and "control/locks/" not in path for path in payload["written_paths"])
     assert set(written_paths) == {
@@ -49,7 +53,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
         "external_prd_validation_report.json",
         "drd_generation_stage_plan.json",
         "compiler_input_bundle.json",
-        "FINAL_DRD.md",
+        "SOURCE_PRESERVING_DRD.md",
         "final_drd_manifest.json",
         "final_drd_toc.json",
         "final_drd_reference_index.json",
@@ -58,7 +62,7 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
         "compiler_semantic_unit_inventory.json",
     }
 
-    final_drd = written_paths["FINAL_DRD.md"].read_text(encoding="utf-8")
+    final_drd = written_paths["SOURCE_PRESERVING_DRD.md"].read_text(encoding="utf-8")
     manifest = json.loads(written_paths["final_drd_manifest.json"].read_text(encoding="utf-8"))
     conservation = json.loads(written_paths["compiler_conservation_report.json"].read_text(encoding="utf-8"))
     bundle = json.loads(written_paths["compiler_input_bundle.json"].read_text(encoding="utf-8"))["bundle"]
@@ -71,6 +75,9 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     assert "Primary button starts scan." in final_drd
     assert "Responsive layout must preserve all information." in final_drd
     assert validate_final_drd_reader_structure(final_drd) == []
+    assert manifest["final_drd_path"] == "SOURCE_PRESERVING_DRD.md"
+    assert "SOURCE_PRESERVING_DRD.md" in manifest["assembly_plan"]["output_files"]
+    assert "FINAL_DRD.md" not in manifest["assembly_plan"]["output_files"]
     assert manifest["added_semantic_unit_count"] == 0
     assert conservation["added_semantic_units"] == []
     assert bundle["compiler_stage_id"] == "DRD-05"
@@ -115,10 +122,64 @@ def test_generate_drd_materializes_source_preserving_final_drd(tmp_path: Path, c
     ]
 
 
-def test_generate_drd_dry_run_writes_nothing(tmp_path: Path, capsys):
+def test_compile_source_preserving_drd_dry_run_writes_nothing(tmp_path: Path, capsys):
     source = tmp_path / "prd.md"
     source.write_text("# PRD\nContent\n", encoding="utf-8")
     output = tmp_path / "current_capsule" / "outputs" / "out"
+
+    exit_code = main(
+        [
+            "compile-source-preserving-drd",
+            "--work-dir",
+            str(tmp_path),
+            "--source-ref",
+            str(source),
+            "--output-dir",
+            str(output),
+            "--dry-run",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+
+    assert exit_code == 0
+    assert payload["command"] == "compile-source-preserving-drd"
+    assert payload["canonical_command"] == "compile-source-preserving-drd"
+    assert payload["status"] == "DRY_RUN"
+    assert payload["written_paths"] == []
+    assert payload["planned_written_paths"]
+    assert not output.exists()
+
+
+def test_compile_source_preserving_drd_rejects_repository_output_dir(tmp_path: Path, capsys):
+    source = tmp_path / "prd.md"
+    source.write_text("# PRD\nContent\n", encoding="utf-8")
+    output = tmp_path / "repository" / "out"
+
+    exit_code = main(
+        [
+            "compile-source-preserving-drd",
+            "--work-dir",
+            str(tmp_path),
+            "--source-ref",
+            str(source),
+            "--output-dir",
+            str(output),
+            "--dry-run",
+        ]
+    )
+    payload = json.loads(capsys.readouterr().out)
+
+    assert exit_code == 1
+    assert payload["command"] == "compile-source-preserving-drd"
+    assert payload["status"] == "STOPPED"
+    assert payload["written_paths"] == []
+    assert "RUN-CHECK-OUTPUT-SCOPE" in {finding["code"] for finding in payload["findings"]}
+
+
+def test_generate_drd_legacy_alias_remains_compatible(tmp_path: Path, capsys):
+    source = tmp_path / "prd.md"
+    source.write_text("# PRD\nContent\n", encoding="utf-8")
+    output = tmp_path / "current_capsule" / "outputs" / "legacy"
 
     exit_code = main(
         [
@@ -135,32 +196,7 @@ def test_generate_drd_dry_run_writes_nothing(tmp_path: Path, capsys):
     payload = json.loads(capsys.readouterr().out)
 
     assert exit_code == 0
-    assert payload["status"] == "DRY_RUN"
-    assert payload["written_paths"] == []
-    assert payload["planned_written_paths"]
-    assert not output.exists()
-
-
-def test_generate_drd_rejects_repository_output_dir(tmp_path: Path, capsys):
-    source = tmp_path / "prd.md"
-    source.write_text("# PRD\nContent\n", encoding="utf-8")
-    output = tmp_path / "repository" / "out"
-
-    exit_code = main(
-        [
-            "generate-drd",
-            "--work-dir",
-            str(tmp_path),
-            "--source-ref",
-            str(source),
-            "--output-dir",
-            str(output),
-            "--dry-run",
-        ]
-    )
-    payload = json.loads(capsys.readouterr().out)
-
-    assert exit_code == 1
-    assert payload["status"] == "STOPPED"
-    assert payload["written_paths"] == []
-    assert "RUN-CHECK-OUTPUT-SCOPE" in {finding["code"] for finding in payload["findings"]}
+    assert payload["command"] == "generate-drd"
+    assert payload["canonical_command"] == "compile-source-preserving-drd"
+    assert payload["legacy_command_aliases"] == ["generate-drd"]
+    assert payload["source_preserving_drd_filename"] == "SOURCE_PRESERVING_DRD.md"

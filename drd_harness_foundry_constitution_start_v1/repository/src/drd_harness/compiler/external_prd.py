@@ -1,4 +1,4 @@
-"""Source-preserving external PRD to final DRD generation."""
+"""Source-preserving external PRD to DRD compilation."""
 
 import json
 from pathlib import Path
@@ -32,9 +32,12 @@ DOCUMENT_GENERATION_STAGE_ROWS = [
     {"stage_id": "DRD-03", "stage_order_index": 30, "status": "REQUIRES_HUMAN_REVIEW_FOR_INTERACTION_CLOSURE"},
     {"stage_id": "DRD-03B", "stage_order_index": 35, "status": "REQUIRES_HUMAN_REVIEW_FOR_PRESENTATION"},
     {"stage_id": "DRD-04", "stage_order_index": 40, "status": "REQUIRES_HUMAN_REVIEW_FOR_LAYOUT"},
-    {"stage_id": "DRD-05", "stage_order_index": 50, "status": "FINAL_DRD_COMPILED"},
+    {"stage_id": "DRD-05", "stage_order_index": 50, "status": "SOURCE_PRESERVING_DRD_COMPILED"},
     {"stage_id": "DRD-06", "stage_order_index": 60, "status": "READ_ONLY_QA_RECORDED"},
 ]
+SOURCE_PRESERVING_DRD_COMMAND = "compile-source-preserving-drd"
+LEGACY_GENERATE_DRD_COMMAND = "generate-drd"
+SOURCE_PRESERVING_DRD_FILENAME = "SOURCE_PRESERVING_DRD.md"
 GENERATED_FILENAMES = [
     "external_prd_section_index.json",
     "external_prd_page_detail_inventory.json",
@@ -43,7 +46,7 @@ GENERATED_FILENAMES = [
     "external_prd_validation_report.json",
     "drd_generation_stage_plan.json",
     "compiler_input_bundle.json",
-    "FINAL_DRD.md",
+    SOURCE_PRESERVING_DRD_FILENAME,
     "final_drd_manifest.json",
     "final_drd_toc.json",
     "final_drd_reference_index.json",
@@ -59,6 +62,7 @@ def generate_external_prd_drd(
     source_ref: Path,
     output_dir: Path,
     dry_run: bool = False,
+    command_name: str = SOURCE_PRESERVING_DRD_COMMAND,
 ) -> dict:
     """Compile a Markdown PRD into a source-preserving DRD package."""
     planned_paths = [(output_dir / filename).as_posix() for filename in GENERATED_FILENAMES]
@@ -80,9 +84,9 @@ def generate_external_prd_drd(
 
     if findings:
         payload = build_status_payload(
-            command="generate-drd",
+            command=command_name,
             status="STOPPED",
-            run_id=_stable_id("drdgen", [str(source_ref), str(output_dir), source_hash]),
+            run_id=_stable_id("spdrd", [str(source_ref), str(output_dir), source_hash]),
             written_paths=[],
             findings=findings,
             exit_code=1,
@@ -94,14 +98,17 @@ def generate_external_prd_drd(
             source_preserving_compile_only=True,
             staged_execution_complete=False,
             staged_execution_command="staged-run",
+            canonical_command=SOURCE_PRESERVING_DRD_COMMAND,
+            legacy_command_aliases=[LEGACY_GENERATE_DRD_COMMAND],
+            source_preserving_drd_filename=SOURCE_PRESERVING_DRD_FILENAME,
         )
         return payload
 
     if dry_run:
         return build_status_payload(
-            command="generate-drd",
+            command=command_name,
             status="DRY_RUN",
-            run_id=_stable_id("drdgen", [str(source_ref), str(output_dir), source_hash]),
+            run_id=_stable_id("spdrd", [str(source_ref), str(output_dir), source_hash]),
             written_paths=[],
             findings=[],
             exit_code=0,
@@ -116,6 +123,9 @@ def generate_external_prd_drd(
             source_preserving_compile_only=True,
             staged_execution_complete=False,
             staged_execution_command="staged-run",
+            canonical_command=SOURCE_PRESERVING_DRD_COMMAND,
+            legacy_command_aliases=[LEGACY_GENERATE_DRD_COMMAND],
+            source_preserving_drd_filename=SOURCE_PRESERVING_DRD_FILENAME,
         )
 
     try:
@@ -127,9 +137,9 @@ def generate_external_prd_drd(
             {"code": "DRDGEN-COMPILE-001", "subject_id": str(source_ref), "message": str(exc)}
         ]
         return build_status_payload(
-            command="generate-drd",
+            command=command_name,
             status="FAIL",
-            run_id=_stable_id("drdgen", [str(source_ref), str(output_dir), source_hash]),
+            run_id=_stable_id("spdrd", [str(source_ref), str(output_dir), source_hash]),
             written_paths=[],
             findings=findings,
             exit_code=1,
@@ -143,13 +153,16 @@ def generate_external_prd_drd(
             source_preserving_compile_only=True,
             staged_execution_complete=False,
             staged_execution_command="staged-run",
+            canonical_command=SOURCE_PRESERVING_DRD_COMMAND,
+            legacy_command_aliases=[LEGACY_GENERATE_DRD_COMMAND],
+            source_preserving_drd_filename=SOURCE_PRESERVING_DRD_FILENAME,
         )
 
     written_paths = sorted(path.as_posix() for path in artifacts)
     return build_status_payload(
-        command="generate-drd",
+        command=command_name,
         status="PASS",
-        run_id=_stable_id("drdgen", [str(source_ref), str(output_dir), source_hash]),
+        run_id=_stable_id("spdrd", [str(source_ref), str(output_dir), source_hash]),
         written_paths=written_paths,
         findings=[],
         exit_code=0,
@@ -157,8 +170,11 @@ def generate_external_prd_drd(
         output_hashes={path: sha256_file(Path(path)) for path in written_paths},
         source_sha256=source_hash,
         source_section_count=len(sections),
-        final_drd_path=(output_dir / "FINAL_DRD.md").as_posix(),
-        final_drd_hash=sha256_file(output_dir / "FINAL_DRD.md"),
+        final_drd_path=(output_dir / SOURCE_PRESERVING_DRD_FILENAME).as_posix(),
+        final_drd_hash=sha256_file(output_dir / SOURCE_PRESERVING_DRD_FILENAME),
+        source_preserving_drd_path=(output_dir / SOURCE_PRESERVING_DRD_FILENAME).as_posix(),
+        source_preserving_drd_hash=sha256_file(output_dir / SOURCE_PRESERVING_DRD_FILENAME),
+        source_preserving_drd_filename=SOURCE_PRESERVING_DRD_FILENAME,
         compiler_input_bundle_hash=deterministic_hash(bundle),
         conservation_status=artifacts[output_dir / "compiler_conservation_report.json"]["status"],
         page_detail_conservation_status=artifacts[output_dir / "external_prd_validation_report.json"].get(
@@ -173,6 +189,8 @@ def generate_external_prd_drd(
         source_preserving_compile_only=True,
         staged_execution_complete=False,
         staged_execution_command="staged-run",
+        canonical_command=SOURCE_PRESERVING_DRD_COMMAND,
+        legacy_command_aliases=[LEGACY_GENERATE_DRD_COMMAND],
     )
 
 
@@ -235,7 +253,7 @@ def build_external_prd_drd_artifacts(
         "artifact": "drd_generation_stage_plan",
         "stage_order": DOCUMENT_GENERATION_STAGE_ROWS,
         "section_stage_policy": "All source-preserved external PRD lines enter DRD-01; DRD-02 through DRD-04 enrichment requires separate human-reviewed inputs.",
-        "page_detail_conservation_policy": "Visible page text, controls, example values, ASCII wireframes, and layout table rows must have traceable representation in FINAL_DRD.md.",
+        "page_detail_conservation_policy": f"Visible page text, controls, example values, ASCII wireframes, and layout table rows must have traceable representation in {SOURCE_PRESERVING_DRD_FILENAME}.",
         "page_arrangement_policy": "Enriched staged runs must arrange pages by module, function group, base page, state variant, and Figma frame order after review.",
         "lock_or_release_stage_included": False,
     }
@@ -293,7 +311,8 @@ def build_external_prd_drd_artifacts(
         schema_hash=schema_hash,
     )
     compiled = compile_final_drd(bundle)
-    detail_findings = _page_detail_conservation_findings(page_detail_inventory, compiled["FINAL_DRD.md"])
+    compiled = _rename_compiled_drd_artifact(compiled)
+    detail_findings = _page_detail_conservation_findings(page_detail_inventory, compiled[SOURCE_PRESERVING_DRD_FILENAME])
     if detail_findings:
         raise CompilerFailure(detail_findings)
     validation_report["page_detail_conservation_status"] = "PASS"
@@ -308,6 +327,23 @@ def build_external_prd_drd_artifacts(
     }
     artifacts.update({output_dir / filename: value for filename, value in compiled.items()})
     return artifacts, bundle
+
+
+def _rename_compiled_drd_artifact(compiled: Mapping[str, Any]) -> Dict[str, Any]:
+    renamed = dict(compiled)
+    source_preserving_text = renamed.pop("FINAL_DRD.md")
+    renamed[SOURCE_PRESERVING_DRD_FILENAME] = source_preserving_text
+    manifest = dict(renamed["final_drd_manifest.json"])
+    manifest["final_drd_path"] = SOURCE_PRESERVING_DRD_FILENAME
+    assembly_plan = dict(manifest.get("assembly_plan", {}))
+    output_files = [
+        SOURCE_PRESERVING_DRD_FILENAME if filename == "FINAL_DRD.md" else filename
+        for filename in assembly_plan.get("output_files", [])
+    ]
+    assembly_plan["output_files"] = output_files
+    manifest["assembly_plan"] = assembly_plan
+    renamed["final_drd_manifest.json"] = manifest
+    return renamed
 
 
 def _compiler_bundle(
@@ -565,7 +601,7 @@ def _page_detail_conservation_findings(page_detail_inventory: Mapping[str, Any],
                 DriverFinding(
                     "DRDGEN-DETAIL-001",
                     str(record.get("detail_id") or record.get("source_span_ref") or "page_detail"),
-                    "page detail inventory record is missing from FINAL_DRD.md",
+                    f"page detail inventory record is missing from {SOURCE_PRESERVING_DRD_FILENAME}",
                 )
             )
     return findings
